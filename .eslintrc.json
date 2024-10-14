@@ -1,0 +1,48 @@
+{
+  "root": true,
+  "extends": [
+    "next",
+    "prettier",
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@next/next", "@typescript-eslint", "tailwindcss"],
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": "./tsconfig.json",
+        "projectService": true,
+        "tsconfigRootDir": "__dirname"
+      },
+      "extends": ["next/core-web-vitals", "prettier"],
+      "rules": { "no-param-reassign": ["error", { "props": false }] }
+    }
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-filename-extension": [2, { "extensions": [".ts", ".tsx"] }],
+    "import/extentions": [
+      "error",
+      "ignorePackages",
+      { "ts": "never", "tsx": "never" }
+    ],
+    "react/jsx-props-no-spreading": 0,
+    "jsx-ally/label-has-associated-control": [2, { "assert": "either" }],
+    "linebreak-style": 0,
+    "no-restricted-imports": 0,
+    // warning
+    "@next/next/google-font-display": 1,
+    "@next/next/google-font-preconnect": 1,
+    // error
+    "@next/next/inline-script-id": "error",
+    "@next/next/no-assign-module-variable": "error",
+    "@next/next/no-html-link-for-pages": "error",
+    "@next/next/no-sync-scripts": "error",
+    // off
+    "tailwindcss/classnames-order": "off"
+  }
+}
