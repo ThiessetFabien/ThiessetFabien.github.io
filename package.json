@@ -12,22 +12,27 @@
     "build": "prettier --check . && next build",
     "build:local": "prettier --write . && next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && stylelint '**/*.scss' '**/*.css'",
     "format": "prettier --write --ignore-path .gitignore .",
     "prepare": "husky"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "next": "14.2.15",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-scroll": "^1.9.0",
+    "react-scroll-parallax": "^3.4.5",
+    "sass": "^1.80.3"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-scroll": "^1.8.10",
     "@typescript-eslint/eslint-plugin": "^8.8.1",
     "@typescript-eslint/parser": "^8.8.1",
-    "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.15",
     "eslint-config-prettier": "^9.1.0",
@@ -39,9 +44,11 @@
     "eslint-plugin-tailwindcss": "^3.17.5",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-scss": "^6.8.1",
     "typescript": "^5.6.3"
   }
 }
