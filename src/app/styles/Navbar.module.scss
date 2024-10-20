@@ -1,0 +1,35 @@
+.navbar {
+  height: 14.2rem;
+  width: 100%;
+  background: var(--background);
+  padding: 4.8rem 1.12rem;
+
+  &__content {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding: 0.6rem;
+    border: 0.1rem solid var(--border);
+    border-radius: 2.4rem;
+  }
+
+  &__filter {
+    color: var(--filter-text);
+    background: var(--background);
+    border-radius: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.2rem;
+    width: 8.1rem;
+    padding: 0 3.2rem;
+    font-size: 1.4rem;
+
+    transition: opacity 0.3s ease 0s;
+    cursor: pointer;
+  }
+
+  &--active {
+    background: var(--bg-lightgray);
+  }
+}

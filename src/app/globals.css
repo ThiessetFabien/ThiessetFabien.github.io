@@ -5,19 +5,37 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #090c10;
+    --bg-lightgray: #bdbfc6;
+
     --foreground: #ededed;
+
+    --filter-text: #f0f2f8;
+
+    --border: #e7e7eb;
   }
 }
 
-* {
+*,
+::after,
+::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.92rem;
+  scroll-behavior: smooth;
+  width: 100vw;
+  margin: -1.6rem 0 0;
+  padding: 0 0 8rem;
 }
