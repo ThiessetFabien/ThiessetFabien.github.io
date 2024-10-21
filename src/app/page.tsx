@@ -14,7 +14,7 @@ import styles from './Page.module.scss';
 
 export default function Home() {
   const [filter, setFilter] = useState<'all' | 'about' | 'work'>('all');
-  const handleFilterChange = (newFilter: 'all' | 'about' | 'work') => {
+  const handlefilterchange = (newFilter: 'all' | 'about' | 'work') => {
     setFilter(newFilter);
   };
 

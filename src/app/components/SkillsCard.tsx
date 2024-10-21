@@ -1,9 +1,6 @@
 import React from 'react';
+import { SkillsCardProps } from '../@types/skills.d';
 import styles from '../styles/SkillsCard.module.scss';
-
-interface SkillsCardProps {
-  skills: string[];
-}
 
 export const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
   return (

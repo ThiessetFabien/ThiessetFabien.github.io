@@ -1,14 +1,6 @@
 import React from 'react';
+import { RecommendationCardProps } from '../@types/recommandation.d';
 import styles from '../styles/RecommendationCard.module.scss';
-
-interface Recommendation {
-  text: string;
-  author: string;
-}
-
-interface RecommendationCardProps {
-  recommendations: Recommendation[];
-}
 
 export const RecommendationCard: React.FC<RecommendationCardProps> = ({
   recommendations,

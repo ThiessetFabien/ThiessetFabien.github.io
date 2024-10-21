@@ -2,17 +2,17 @@ import Image from 'next/image.js';
 import React from 'react';
 import styles from '../styles/ProjectCard.module.scss';
 
-interface Project {
+interface project {
   image: string;
   link: string;
   tags: string[];
 }
 
-interface ProjectCardProps {
-  projects: Project[];
+interface projectcardprops {
+  projects: project[];
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ projects }) => {
+export const ProjectCard: React.FC<projectcardprops> = ({ projects }) => {
   return (
     <div className={styles.projectCard}>
       {projects.map((project, index) => (
