@@ -1,5 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* // styles personnalisés
+.mon-element {
+    @apply bg-blue-500 text-white p-4; // Utilisation de @apply pour appliquer les classes Tailwind
+} */
+
 :root {
-  --background: #ffffff;
+  --background: #fff;
   --foreground: #171717;
 }
 
@@ -7,11 +16,8 @@
   :root {
     --background: #090c10;
     --bg-lightgray: #bdbfc6;
-
     --foreground: #ededed;
-
     --filter-text: #f0f2f8;
-
     --border: #e7e7eb;
   }
 }
@@ -19,9 +25,9 @@
 *,
 ::after,
 ::before {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -30,12 +36,12 @@ html {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  width: 100vw;
+  padding: 0 0 8rem;
+  margin: -1.6rem 0 0;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.92rem;
+  color: var(--foreground);
+  background: var(--background);
   scroll-behavior: smooth;
-  width: 100vw;
-  margin: -1.6rem 0 0;
-  padding: 0 0 8rem;
 }

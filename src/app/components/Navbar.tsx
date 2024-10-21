@@ -5,12 +5,12 @@ import styles from '../styles/Navbar.module.scss';
 
 type FilterType = 'all' | 'about' | 'work';
 
-interface NavbarProps {
+interface navbarProps {
   currentFilter: FilterType;
   onFilterChange: (filter: FilterType) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
+export const Navbar: React.FC<navbarProps> = ({
   currentFilter,
   onFilterChange,
 }) => {

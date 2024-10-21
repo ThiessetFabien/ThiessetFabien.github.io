@@ -7,13 +7,14 @@
   },
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "prettier --write --ignore-path .gitignore . && next dev",
-    "build": "prettier --check . && next build",
+    "dev": "next dev",
+    "build": "prettier --check . && stylelint --allow-empty-input \"**/*.{css,scss}\" && next build",
     "build:local": "prettier --write . && next build",
     "start": "next start",
-    "lint": "next lint && stylelint '**/*.scss' '**/*.css'",
-    "format": "prettier --write --ignore-path .gitignore .",
+    "lint": "npx stylelint --allow-empty-input \"**/*.{css,scss}\" --fix && next lint",
+    "format": "prettier --write --ignore-path .gitignore . && npx stylelint --allow-empty-input \"**/*.{css,scss}\" --fix --formatter verbose",
     "prepare": "husky"
   },
   "dependencies": {
@@ -22,9 +23,7 @@
     "next": "14.2.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-scroll": "^1.9.0",
-    "react-scroll-parallax": "^3.4.5",
-    "sass": "^1.80.3"
+    "tailwindcss": "^3.4.14"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -33,6 +32,7 @@
     "@types/react-scroll": "^1.8.10",
     "@typescript-eslint/eslint-plugin": "^8.8.1",
     "@typescript-eslint/parser": "^8.8.1",
+    "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.15",
     "eslint-config-prettier": "^9.1.0",
@@ -44,11 +44,19 @@
     "eslint-plugin-tailwindcss": "^3.17.5",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
+    "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
+    "sass": "^1.80.3",
     "stylelint": "^16.10.0",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-recess-order": "^5.1.1",
     "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-config-tailwindcss": "^0.0.7",
+    "stylelint-scales": "^5.0.0",
     "stylelint-scss": "^6.8.1",
+    "stylelint-selector-bem-pattern": "^4.0.1",
     "typescript": "^5.6.3"
   }
 }

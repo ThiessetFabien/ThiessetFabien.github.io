@@ -1,10 +1,6 @@
 import React from 'react';
+import { SocialCardProps } from '../@types/social.d';
 import styles from '../styles/SocialCard.module.scss';
-
-interface SocialCardProps {
-  platform: 'GitHub' | 'LinkedIn';
-  link: string;
-}
 
 export const SocialCard: React.FC<SocialCardProps> = ({ platform, link }) => {
   return (
