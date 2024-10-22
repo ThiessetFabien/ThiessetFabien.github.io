@@ -8,17 +8,14 @@
 } */
 
 :root {
-  --background: #fff;
+  --background: #ffffff;
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #090c10;
-    --bg-lightgray: #bdbfc6;
+    --background: #0a0a0a;
     --foreground: #ededed;
-    --filter-text: #f0f2f8;
-    --border: #e7e7eb;
   }
 }
 
@@ -28,7 +25,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  @apply antialiased;
 }
 
 html {
@@ -36,12 +36,11 @@ html {
 }
 
 body {
-  width: 100vw;
-  padding: 0 0 8rem;
-  margin: -1.6rem 0 0;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
   line-height: 1.92rem;
   color: var(--foreground);
-  background: var(--background);
-  scroll-behavior: smooth;
+  background-size: 6.2rem;
+  background-image: url('./assets/Static.png');
+  @apply h-full w-full bg-repeat;
 }

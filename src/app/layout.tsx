@@ -1,7 +1,5 @@
 'use client';
 import type { Metadata } from 'next';
-import { Footer } from './components/Footer';
-import { Navbar } from './components/Navbar';
 import './globals.css';
 
 const metadata: Metadata = {
@@ -16,16 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='fr'>
-      <body>
-        <Navbar
-          currentFilter={'all'}
-          onFilterChange={function (filter: 'all' | 'about' | 'work'): void {
-            throw new Error('Function not implemented.');
-          }}
-        />
-        {children}
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
