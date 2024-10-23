@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import styles from '../styles/Navbar.module.scss';
+import styles from './Navbar.module.scss';
 
 type FilterType = 'all' | 'about' | 'work';
 

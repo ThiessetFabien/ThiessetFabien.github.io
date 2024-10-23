@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/TitleCard.module.scss';
+import styles from './TitleCard.module.scss';
 
 export const TitleCard: React.FC = () => {
   return (

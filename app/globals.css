@@ -8,7 +8,7 @@
 } */
 
 :root {
-  --background: #ffffff;
+  --background: #fff;
   --foreground: #171717;
 }
 
@@ -40,7 +40,7 @@ body {
   font-size: 1.4rem;
   line-height: 1.92rem;
   color: var(--foreground);
-  background-size: 6.2rem;
   background-image: url('./assets/Static.png');
+  background-size: 6.2rem;
   @apply h-full w-full bg-repeat;
 }

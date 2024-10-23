@@ -1,6 +1,6 @@
 import React from 'react';
-import { SkillsCardProps } from '../@types/skills.d';
-import styles from '../styles/SkillsCard.module.scss';
+import { SkillsCardProps } from '../../@types/skills';
+import styles from './SkillsCard.module.scss';
 
 export const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
   return (
