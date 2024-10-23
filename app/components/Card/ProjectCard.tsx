@@ -1,6 +1,6 @@
 import Image from 'next/image.js';
 import React from 'react';
-import styles from '../styles/ProjectCard.module.scss';
+import styles from './ProjectCard.module.scss';
 
 interface project {
   image: string;

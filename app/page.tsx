@@ -1,16 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { ContactCard } from './components/ContactCard';
-import { CVCard } from './components/CVCard';
-import { ExperienceCard } from './components/ExperienceCard';
-import { MapCard } from './components/MapCard';
-import { PresentationCard } from './components/PresentationCard';
-import { ProjectCard } from './components/ProjectCard';
-import { RecommendationCard } from './components/RecommendationCard';
-import { SkillsCard } from './components/SkillsCard';
-import { SocialCard } from './components/SocialCard';
-import { TitleCard } from './components/TitleCard';
+import { ContactCard } from './components/Card/ContactCard';
+import { CVCard } from './components/Card/CVCard';
+import { ExperienceCard } from './components/Card/ExperienceCard';
+import { MapCard } from './components/Card/MapCard';
+import { PresentationCard } from './components/Card/PresentationCard';
+import { ProjectCard } from './components/Card/ProjectCard';
+import { RecommendationCard } from './components/Card/RecommendationCard';
+import { SkillsCard } from './components/Card/SkillsCard';
+import { SocialCard } from './components/Card/SocialCard';
+import { TitleCard } from './components/Card/TitleCard';
 import styles from './Home.module.scss';
 
 const HomePage = () => {

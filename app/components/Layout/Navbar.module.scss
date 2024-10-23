@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 14.2rem;
+  padding: 3.5vw 3rem;
+  background-color: green;
+
+  &__content {
+    position: relative;
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0.1rem;
+    background-color: hsl(0deg 0% 100% / 10%);
+    filter: blur(0);
+    border-radius: 2.4rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  &__filter {
+    display: flex;
+    align-items: center;
+    height: 3.2rem;
+    padding: 0 3.2rem;
+    background-image: radial-gradient(
+      circle at 50% 150%,
+      rgb(32 141 229 / 17%),
+      transparent
+    );
+  }
+}

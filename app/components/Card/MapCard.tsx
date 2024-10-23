@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/MapCard.module.scss';
+import styles from './MapCard.module.scss';
 
 export const MapCard: React.FC = () => {
   return (

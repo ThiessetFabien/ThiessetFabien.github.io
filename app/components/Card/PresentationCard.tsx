@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import styles from '../styles/PresentationCard.module.scss';
+import styles from './PresentationCard.module.scss';
 
 export const PresentationCard: React.FC = () => {
   return (

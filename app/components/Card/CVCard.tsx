@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/CVCard.module.scss';
+import styles from './CVCard.module.scss';
 
 export const CVCard: React.FC = () => {
   return (

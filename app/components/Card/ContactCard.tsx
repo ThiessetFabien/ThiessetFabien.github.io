@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/ContactCard.module.scss';
+import styles from './ContactCard.module.scss';
 
 export const ContactCard: React.FC = () => {
   return (
