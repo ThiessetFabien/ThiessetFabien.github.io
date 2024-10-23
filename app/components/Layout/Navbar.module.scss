@@ -1,9 +1,10 @@
 .navbar {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 14.2rem;
-  padding: 3.5vw 3rem;
+  padding: 1.26rem 4.8rem;
   background-color: green;
 
   &__content {
@@ -12,12 +13,13 @@
     gap: 0.25rem;
     align-items: center;
     justify-content: space-evenly;
-    width: 100%;
+    width: 30.6rem;
+    height: 4.4rem;
     max-width: 1200px;
-    padding: 0.1rem;
+    padding: 0.6rem;
     background-color: hsl(0deg 0% 100% / 10%);
     filter: blur(0);
-    border-radius: 2.4rem;
+    border-radius: 3.6rem;
     opacity: 1;
     transform: none;
   }
