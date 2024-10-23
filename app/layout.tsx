@@ -2,7 +2,8 @@
 import type { Metadata } from 'next';
 import { Footer } from './components/Layout/Footer';
 import { Navbar } from './components/Layout/Navbar';
-import './globals.css';
+import './styles/globals.css';
+import './styles/reset.css';
 
 const metadata: Metadata = {
   title: 'Thiesset Fabien - Portfolio',
