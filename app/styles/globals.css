@@ -16,6 +16,8 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --filterText: #f0f2f8;
   }
 }
 
