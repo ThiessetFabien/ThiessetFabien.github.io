@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* // styles personnalisés
+.mon-element {
+    @apply bg-blue-500 text-white p-4; // Utilisation de @apply pour appliquer les classes Tailwind
+} */
+
+:root {
+  --background: #fff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+
+    --filterText: #f0f2f8;
+  }
+}
+
+* {
+  padding: 0;
+}
+
+* {
+  @apply antialiased;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.92rem;
+  color: var(--foreground);
+  background-image: url('../assets/images/Static.png');
+  background-size: 6.2rem;
+  @apply h-full w-full bg-repeat;
+}
