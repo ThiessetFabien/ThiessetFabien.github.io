@@ -3,8 +3,10 @@ import styles from './TitleCard.module.scss';
 
 export const TitleCard: React.FC = () => {
   return (
-    <div className={styles.titleCard}>
-      <h1>🌞 Personal Portfolio</h1>
+    <div className={styles.title}>
+      <h1 className={styles.title__text}>
+        🌞 Personal Portfolio 🌞 Personal Portfolio 🌞 Personal Portfolio
+      </h1>
     </div>
   );
 };

@@ -10,13 +10,14 @@
 :root {
   --background: #fff;
   --foreground: #171717;
+
+  --animation-duration: 10s;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-
     --filterText: #f0f2f8;
   }
 }

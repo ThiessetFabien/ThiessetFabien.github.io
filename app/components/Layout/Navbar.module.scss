@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 14.2rem;
   padding: 1.26rem 4.8rem;
@@ -13,8 +13,8 @@
     align-items: center;
     justify-content: space-evenly;
     width: 30.6rem;
-    height: 4.4rem;
     max-width: 1200px;
+    height: 4.4rem;
     padding: 0.6rem;
     background-color: hsl(0deg 0% 100% / 10%);
     filter: blur(0);
@@ -29,18 +29,18 @@
     align-items: center;
     height: 3.2rem;
     padding: 0 3.2rem;
+    cursor: pointer;
     background-image: radial-gradient(
       circle at 50% 150%,
       rgb(32 141 229 / 17%),
       transparent
     );
-    cursor: pointer;
   }
 }
 
 .active {
-  border-radius: 5rem;
-  border: 0.1rem solid #fff;
-  transition: opacity 0.3s ease-in-out 0s;
   color: var(--filterText);
+  border: 0.1rem solid #fff;
+  border-radius: 5rem;
+  transition: opacity 0.3s ease-in-out 0s;
 }

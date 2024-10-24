@@ -23,8 +23,8 @@ const HomePage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
-        <PresentationCard />
         <TitleCard />
+        <PresentationCard />
         <MapCard />
         <SocialCard platform='GitHub' link='https://github.com/username' />
         <SocialCard
