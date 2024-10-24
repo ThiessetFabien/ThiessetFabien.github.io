@@ -1,5 +1,5 @@
 import React from 'react';
-import { RecommendationCardProps } from '../../../@types/recommendation';
+import { RecommendationCardProps } from '../../@types/recommendation';
 import styles from './RecommendationCard.module.scss';
 
 export const RecommendationCard: React.FC<RecommendationCardProps> = ({
