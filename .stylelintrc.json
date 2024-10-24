@@ -1,0 +1,60 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier-scss",
+    "stylelint-scss",
+    "stylelint-config-tailwindcss",
+    "stylelint-config-recess-order",
+    "stylelint-selector-bem-pattern"
+  ],
+  "plugins": ["stylelint-scales", "stylelint-selector-bem-pattern"],
+  "overrides": [
+    {
+      "files": ["**/*{css,scss}"]
+    }
+  ],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["include", "mixin", "apply", "tailwind", "screen"]
+      }
+    ],
+    "order/properties-alphabetical-order": true,
+    "plugin/selector-bem-pattern": {
+      "componentName": "[A-Z]+",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:-[a-z]+)?$",
+        "combined": "^\\.componentName(?:-[a-z]+)?$"
+      },
+      "scales/alpha-values": [80, 90],
+      "scales/border-widths": [{ "scale": [1, 2], "units": ["px"] }],
+      "scales/font-sizes": [
+        [
+          { "scale": [1, 1.5, 2], "units": ["em", "rem"] },
+          { "scale": [12, 14, 16], "units": ["px"] }
+        ],
+        {
+          "ignoreFunctionArguments": {
+            "clamp": [1]
+          }
+        }
+      ],
+      "scales/font-weights": [400, 600],
+      "scales/line-heights": [1, 1.5],
+      "scales/radii": [{ "scale": [2, 4], "units": ["px"] }],
+      "scales/space": [{ "scale": [0.5, 1, 2, 4], "units": ["rem"] }],
+      "utilitySelectors": "^\\.u-[a-z]+"
+    },
+    "declaration-property-unit-allowed-list": {
+      "/^border/": ["px"],
+      "/^margin|^padding|^gap/": ["rem"],
+      "/^font-size/": ["rem"]
+    },
+    "unit-allowed-list": ["%", "deg", "px", "rem", "vh", "vw", "s", "ms"],
+    "color-named": "never",
+    "color-no-hex": true,
+    "function-disallowed-list": ["rgb", "hwb", "lch"],
+    "selector-max-id": 0
+  }
+}
