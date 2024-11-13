@@ -13,6 +13,7 @@ export default {
       },
       fontFamily: {
         title: ['Orpheus Pro', 'Georgia', 'Times New Roman', 'Times', 'serif'],
+        body: ['Poppins', 'Arial', 'sans-serif'],
       },
     },
   },
