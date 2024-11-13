@@ -1,11 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false,
-  content: [],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'site-background-color': 'hsla(0, 0%, 0%, 1)',
+        'site-text-color': 'hsla(0, 0%, 100%, 1)',
+      },
+      fontFamily: {
+        title: ['Orpheus Pro', 'Georgia', 'Times New Roman', 'Times', 'serif'],
+      },
+    },
   },
-
   plugins: [],
 };

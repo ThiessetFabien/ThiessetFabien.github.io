@@ -1,9 +1,13 @@
 'use client';
 import type { Metadata } from 'next';
-import { Footer } from './components/Layout/Footer';
-import { Navbar } from './components/Layout/Navbar';
-import './styles/globals.css';
+
+import './styles/fonts.scss';
 import './styles/reset.css';
+
+import './styles/globals.css';
+
+import { Footer } from './components/layout/Footer/Footer';
+import { Header } from './components/layout/Header/Header';
 
 const metadata: Metadata = {
   title: 'Thiesset Fabien - Portfolio',
@@ -18,12 +22,7 @@ export default function RootLayout({
   return (
     <html lang='fr'>
       <body>
-        <Navbar
-          currentFilter={'all'}
-          onFilterChange={function (filter: 'all' | 'about' | 'work'): void {
-            throw new Error('Function not implemented.');
-          }}
-        />
+        <Header />
         {children}
         <Footer />
       </body>
