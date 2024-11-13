@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className='grid justify-center p-4 text-center'>
       <div>
-        <p className='font-body text-gray-500'>
+        <p className='font-body text-xs text-gray-500'>
           &copy; {year} Fabien Thiesset - Developer. All rights reserved.
           <br />
           Fonts made from
