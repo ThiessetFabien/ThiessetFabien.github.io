@@ -1,17 +1,36 @@
-@font-face {
-  font-family: 'Orpheus Pro';
-  font-style: normal;
-  font-weight: normal;
-  src:
-    url('../../public/fonts/OrpheusPro/OrpheusPro.woff2') format('woff2'),
-    url('../../public/fonts/OrpheusPro/OrpheusPro.woff') format('woff');
+@mixin font-face($name, $weight, $woff2-path, $woff-path) {
+  @font-face {
+    font-family: $name;
+    font-style: normal;
+    font-weight: $weight;
+    src:
+      url($woff2-path) format('woff2'),
+      url($woff-path) format('woff');
+  }
 }
 
-@font-face {
-  font-family: 'Orpheus Pro';
-  font-style: normal;
-  font-weight: bold;
-  src:
-    url('../../public/fonts/OrpheusPro/OrpheusPro.woff2') format('woff2'),
-    url('../../public/fonts/OrpheusPro/OrpheusPro.woff') format('woff');
-}
+@include font-face(
+  'Orpheus Pro',
+  normal,
+  '../../public/fonts/OrpheusPro/OrpheusPro.woff2',
+  '../../public/fonts/OrpheusPro/OrpheusPro.woff'
+);
+@include font-face(
+  'Orpheus Pro',
+  bold,
+  '../../public/fonts/OrpheusPro/OrpheusPro.woff2',
+  '../../public/fonts/OrpheusPro/OrpheusPro.woff'
+);
+
+@include font-face(
+  'Poppins',
+  normal,
+  '../../public/fonts/Poppins/Poppins.woff2',
+  '../../public/fonts/Poppins/Poppins.woff'
+);
+@include font-face(
+  'Poppins',
+  bold,
+  '../../public/fonts/Poppins/Poppins.woff2',
+  '../../public/fonts/Poppins/Poppins.woff'
+);
