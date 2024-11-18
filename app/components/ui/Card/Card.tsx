@@ -1,22 +1,29 @@
 import Image from 'next/image';
 import React from 'react';
+import { CallToAction } from '../CallToAction/CallToAction';
 
 interface CardProps {
   title: string;
   imageSrc: string;
   imageAlt: string;
+  cta1: string;
+  cta2: string;
+  href: string;
   content: React.ReactNode;
 }
 
 export const Card: React.FC<CardProps> = ({
   title,
-  content,
   imageSrc,
   imageAlt,
+  cta1,
+  cta2,
+  href,
+  content,
 }) => {
   return (
     <div className='grid gap-grid-gutter px-10 py-16'>
-      <div className='border-[0.1rem] border-solid border-red-500'>
+      <div>
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -25,12 +32,11 @@ export const Card: React.FC<CardProps> = ({
           className='h-auto w-full'
         ></Image>
       </div>
-      <div className='flex h-[9.4rem] flex-col justify-end border-[0.1rem] border-solid border-blue-500'>
-        <div className='font-title text-3xl'>{title}</div>
+      <div className='flex h-[9.4rem] flex-col justify-end'>
+        <div className='font-title text-4xl'>{title}</div>
       </div>
-      <div className='border-[0.1rem] border-solid border-green-500 font-body text-lg'>
-        {content}
-      </div>
+      <div className='font-body text-2xl'>{content}</div>
+      <CallToAction cta1={cta1} cta2={cta2} href={href} />
     </div>
   );
 };
