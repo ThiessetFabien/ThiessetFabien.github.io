@@ -15,7 +15,7 @@ export const Card: React.FC<CardProps> = ({
   imageAlt,
 }) => {
   return (
-    <div className='grid gap-[1.1rem] px-10 py-16'>
+    <div className='grid gap-grid-gutter px-10 py-16'>
       <div className='border-[0.1rem] border-solid border-red-500'>
         <Image
           src={imageSrc}
@@ -28,7 +28,7 @@ export const Card: React.FC<CardProps> = ({
       <div className='flex h-[9.4rem] flex-col justify-end border-[0.1rem] border-solid border-blue-500'>
         <div className='font-title text-3xl'>{title}</div>
       </div>
-      <div className='border-[0.1rem] border-solid border-green-500 font-body text-lg font-normal'>
+      <div className='border-[0.1rem] border-solid border-green-500 font-body text-lg'>
         {content}
       </div>
     </div>

@@ -16,6 +16,9 @@ export default {
         title: ['Orpheus Pro', 'Georgia', 'Times New Roman', 'Times', 'serif'],
         body: ['Poppins', 'Arial', 'sans-serif'],
       },
+      gap: {
+        'grid-gutter': '1.1rem',
+      },
     },
   },
   plugins: [],
