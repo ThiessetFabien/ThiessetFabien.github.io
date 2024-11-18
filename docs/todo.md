@@ -4,9 +4,9 @@
 
 **Carte présentation**
 
-- [ ] Photo
-- [ ] Nom et prénom
-- [ ] Présentation (1 phrase)
+- [x] Photo
+- [x] Nom et prénom
+- [x] Présentation (1 phrase)
 
 **Carte CV**
 
