@@ -26,9 +26,9 @@ export const Card: React.FC<CardProps> = ({
         ></Image>
       </div>
       <div className='flex h-[9.4rem] flex-col justify-end border-[0.1rem] border-solid border-blue-500'>
-        <div className='font-title text-3xl text-white'>{title}</div>
+        <div className='font-title text-3xl'>{title}</div>
       </div>
-      <div className='border-[0.1rem] border-solid border-green-500 font-body text-lg font-normal text-white'>
+      <div className='border-[0.1rem] border-solid border-green-500 font-body text-lg font-normal'>
         {content}
       </div>
     </div>

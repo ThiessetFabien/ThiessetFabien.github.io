@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='fr'>
-      <body className='bg-site-background-color text-site-text-color'>
+      <body className='text-site-text-color bg-site-background-color'>
         <Header />
         {children}
         <Footer />
