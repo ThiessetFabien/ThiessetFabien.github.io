@@ -9,6 +9,9 @@ const HomePage = () => {
         title='Développeur humain, créatif et innovant.'
         imageSrc='/images/photo.png'
         imageAlt='Photo de Fabien'
+        cta1='Embauchez un expert'
+        cta2='Découvrez mes projets'
+        href='#'
         content={
           <p>
             Soyons honnêtes et oeuvrons ensemble pour un monde accessible et
