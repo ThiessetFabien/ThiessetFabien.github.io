@@ -2,13 +2,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect } from 'react';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
-
-// Configurer les icônes de leaflet
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: '/leaflet/images/marker-icon-2x.png',
-  iconUrl: '/leaflet/images/marker-icon.png',
-  shadowUrl: '/leaflet/images/marker-shadow.png',
-});
+import { leafletConfig } from '../../../config/leafletConfig';
 
 const OpenPopupMarker = ({ position }: { position: [number, number] }) => {
   const map = useMap();
@@ -23,6 +17,8 @@ const OpenPopupMarker = ({ position }: { position: [number, number] }) => {
 
 export function Map() {
   const position: [number, number] = [50.38164502950426, 3.0532336241209292];
+
+  leafletConfig();
 
   return (
     <div className='h-96 w-full'>
