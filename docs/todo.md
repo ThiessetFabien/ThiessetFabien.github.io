@@ -17,5 +17,5 @@
 
 **Carte localisation**
 
-- [ ] Localisation sur une carte
-- [ ] Mobilité devant la carte
+- [x] Localisation sur une carte (api externe)
+- [x] Mobilité dans la carte
