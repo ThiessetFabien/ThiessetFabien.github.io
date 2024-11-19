@@ -1,10 +1,5 @@
 import React from 'react';
-
-interface CallToActionProps {
-  cta1: string;
-  cta2: string;
-  href: string;
-}
+import { CallToActionProps } from '../../../types/CallToActionProps';
 
 export const CallToAction: React.FC<CallToActionProps> = ({
   cta1,
@@ -12,7 +7,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
   href,
 }) => {
   return (
-    <div>
+    <>
       <a
         href={href}
         className='flex h-24 w-full items-center justify-center border border-border-color px-8 text-center text-xl font-bold'
@@ -26,6 +21,6 @@ export const CallToAction: React.FC<CallToActionProps> = ({
       >
         {cta2.toLocaleUpperCase()}
       </a>
-    </div>
+    </>
   );
 };
