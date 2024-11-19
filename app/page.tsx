@@ -22,7 +22,7 @@ const HomePage = () => {
         }
       />
       <Card
-        title='Véhiculé sur site à 20 km et plus si télétravail'
+        title='Mobile et véhiculé à 30 minutes et plus si télétravail'
         imageSrc=''
         imageAlt=''
         cta1=''
