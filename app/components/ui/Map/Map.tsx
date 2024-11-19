@@ -15,9 +15,7 @@ const OpenPopupMarker = ({ position }: { position: [number, number] }) => {
 
   useEffect(() => {
     const marker = L.marker(position).addTo(map);
-    marker
-      .bindPopup('Mobilité sur site à 20 km et plus si télétravail')
-      .openPopup();
+    marker.bindPopup('Je suis ici !').openPopup();
   }, [map, position]);
 
   return null;
@@ -30,7 +28,7 @@ export function Map() {
     <div className='h-96 w-full'>
       <MapContainer
         center={position}
-        zoom={13}
+        zoom={8}
         scrollWheelZoom={false}
         className='h-full w-full'
       >
