@@ -1,6 +1,7 @@
 'use client';
 
 import { Card } from './components/ui/Card/Card';
+import { Map } from './components/ui/Map/Map';
 
 const HomePage = () => {
   return (
@@ -19,6 +20,15 @@ const HomePage = () => {
             fonctionne réellement.
           </p>
         }
+      />
+      <Card
+        title='Véhiculé sur site à 20 km et plus si télétravail'
+        imageSrc=''
+        imageAlt=''
+        cta1=''
+        cta2=''
+        href=''
+        content={<Map />}
       />
     </div>
   );
