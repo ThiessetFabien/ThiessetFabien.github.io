@@ -1,0 +1,29 @@
+[
+  {
+    "title": "🚧🚧 En construction 🚧🚧",
+    "imageSrc": null,
+    "imageAlt": null,
+    "cta1": null,
+    "cta2": null,
+    "href": null,
+    "content": null
+  },
+  {
+    "title": "Développeur humain, créatif et innovant.",
+    "imageSrc": "/images/photo.png",
+    "imageAlt": "Photo de Fabien",
+    "cta1": "Embauchez un expert",
+    "cta2": "Découvrez mes projets",
+    "href": "#",
+    "content": "Soyons honnêtes et oeuvrons ensemble pour un monde accessible et humain. Vous avez besoin d'un site Web qui soit superbe et qui fonctionne réellement."
+  },
+  {
+    "title": "Véhiculé et mobile à 30 minutes et plus si télétravail",
+    "imageSrc": null,
+    "imageAlt": null,
+    "cta1": null,
+    "cta2": null,
+    "href": null,
+    "content": "Map"
+  }
+]
