@@ -7,6 +7,15 @@ const HomePage = () => {
   return (
     <div>
       <Card
+        title='🚧🚧 En construction 🚧🚧'
+        imageSrc=''
+        imageAlt=''
+        cta1=''
+        cta2=''
+        href=''
+        content=''
+      />
+      <Card
         title='Développeur humain, créatif et innovant.'
         imageSrc='/images/photo.png'
         imageAlt='Photo de Fabien'
@@ -22,7 +31,7 @@ const HomePage = () => {
         }
       />
       <Card
-        title='Mobile et véhiculé à 30 minutes et plus si télétravail'
+        title='Véhiculé et mobile à 30 minutes et plus si télétravail'
         imageSrc=''
         imageAlt=''
         cta1=''
