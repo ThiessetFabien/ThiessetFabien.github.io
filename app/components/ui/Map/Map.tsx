@@ -1,7 +1,7 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect } from 'react';
-import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import { Circle, MapContainer, TileLayer, useMap } from 'react-leaflet';
 import { leafletConfig } from '../../../config/leafletConfig';
 
 const OpenPopupMarker = ({ position }: { position: [number, number] }) => {
@@ -20,6 +20,8 @@ export function Map() {
 
   leafletConfig();
 
+  const radius = 60000 / 2;
+
   return (
     <div className='h-[41.6rem] w-[27rem]'>
       <MapContainer
@@ -33,6 +35,13 @@ export function Map() {
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
         <OpenPopupMarker position={position} />
+        <Circle
+          center={position}
+          radius={radius}
+          color='blue'
+          fillColor='blue'
+          fillOpacity={0.2}
+        />
       </MapContainer>
     </div>
   );
