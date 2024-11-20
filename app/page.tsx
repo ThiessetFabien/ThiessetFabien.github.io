@@ -1,12 +1,12 @@
 'use client';
 
-import { cards } from './api/cards.api';
+import CardData from './api/cards.data.json';
 import { Card } from './components/ui/Card/Card';
 
 const HomePage = () => {
   return (
     <div>
-      {cards.map((cardProps, index) => (
+      {CardData.map((cardProps, index) => (
         <Card key={index} {...cardProps} />
       ))}
     </div>
