@@ -21,10 +21,10 @@ export function Map() {
   leafletConfig();
 
   return (
-    <div className='h-96 w-full'>
+    <div className='h-[41.6rem] w-[27rem]'>
       <MapContainer
         center={position}
-        zoom={8}
+        zoom={9}
         scrollWheelZoom={false}
         className='h-full w-full'
       >

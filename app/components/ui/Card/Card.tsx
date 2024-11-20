@@ -18,7 +18,7 @@ export const Card: React.FC<CardProps> = ({
         <div className='grid gap-4'>
           <Image
             src={imageSrc}
-            alt={imageAlt}
+            alt={imageAlt || ''}
             width={100}
             height={100}
             className='h-auto w-full'
@@ -31,7 +31,9 @@ export const Card: React.FC<CardProps> = ({
         </div>
       )}
       {content && <div className='font-body text-2xl'>{content}</div>}
-      {(cta1 || cta2) && <CallToAction cta1={cta1} cta2={cta2} href={href} />}
+      {(cta1 || cta2) && (
+        <CallToAction cta1={cta1 || ''} cta2={cta2 || ''} href={href || ''} />
+      )}
     </div>
   );
 };
