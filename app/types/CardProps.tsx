@@ -1,6 +1,6 @@
 export interface CardProps {
   imageSrc?: string | null;
-  imageAlt: string | null;
+  imageAlt?: string | null;
   title: string | null;
   cta1?: string | null;
   cta2?: string | null;

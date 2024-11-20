@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
 import { CardProps } from '../../../types/CardProps';
-import { isMapComponent } from '../../../utils/isMapComponent';
 import { CallToAction } from '../CallToAction/CallToAction';
+import { Map } from '../Map/Map';
 
 const ImageSection = ({
   imageSrc,
@@ -43,14 +43,18 @@ export const Card: React.FC<CardProps> = ({
   href,
   content,
 }) => {
-  const contentIsMapComponent = isMapComponent(content);
+  const contentIsMapComponent = content === 'Map';
 
   return (
     <div className='container mx-auto grid gap-grid-gutter px-10 py-16'>
       {imageSrc && !contentIsMapComponent && (
         <ImageSection imageSrc={imageSrc} imageAlt={imageAlt || ''} />
       )}
-      {contentIsMapComponent && <div className='grid gap-4'>{content}</div>}
+      {contentIsMapComponent && (
+        <div className='grid gap-4'>
+          <Map />
+        </div>
+      )}
       {title && <TitleSection title={title} />}
       {content && !contentIsMapComponent && (
         <ContentSection content={content} />
