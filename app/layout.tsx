@@ -1,9 +1,9 @@
 'use client';
 import type { Metadata } from 'next';
+import Head from 'next/head';
 
 import './styles/fonts.scss';
 import './styles/reset.css';
-
 import './styles/globals.css';
 
 import { Footer } from './components/layout/Footer/Footer';
@@ -21,6 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='fr'>
+      <Head>
+        <link
+          rel='stylesheet'
+          type='text/css'
+          href='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css'
+        />
+      </Head>
       <body className='text-site-text-color bg-site-background-color'>
         <Header />
         {children}

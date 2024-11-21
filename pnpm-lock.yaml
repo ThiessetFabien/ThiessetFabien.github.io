@@ -16,6 +16,9 @@ importers:
       '@fortawesome/react-fontawesome':
         specifier: ^0.2.2
         version: 0.2.2(@fortawesome/fontawesome-svg-core@6.6.0)(react@18.3.1)
+      devicon:
+        specifier: ^2.16.0
+        version: 2.16.0
       embla-carousel:
         specifier: ^8.5.1
         version: 8.5.1
@@ -1289,6 +1292,12 @@ packages:
       }
     engines: { node: '>=0.10' }
     hasBin: true
+
+  devicon@2.16.0:
+    resolution:
+      {
+        integrity: sha512-PE5a2HBNeN4av+Iu975OiiWEwS8LJPw5HAvlv0JUHb62jZTdYxTpz4ga+cQyvdtb3x1side2P9Sr1mmOmUkO/g==,
+      }
 
   didyoumean@1.2.2:
     resolution:
@@ -4719,6 +4728,8 @@ snapshots:
       object-keys: 1.1.1
 
   detect-libc@1.0.3: {}
+
+  devicon@2.16.0: {}
 
   didyoumean@1.2.2: {}
 

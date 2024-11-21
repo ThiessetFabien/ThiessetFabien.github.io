@@ -1,12 +1,9 @@
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import React, { useEffect } from 'react';
+import { TechCarouselProps } from '../../../types/TechCarouselProps';
 
-interface CarouselProps {
-  technologies: { name: string; iconSrc: string }[];
-}
-
-const Carousel: React.FC<CarouselProps> = ({ technologies }) => {
+export const TechCarousel: React.FC<TechCarouselProps> = ({ technologies }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
 
   useEffect(() => {
@@ -18,19 +15,18 @@ const Carousel: React.FC<CarouselProps> = ({ technologies }) => {
   return (
     <div className='w-full overflow-hidden' ref={emblaRef}>
       <div className='flex'>
-        {technologies.map((tech, index) => (
-          <div className='min-w-20% relative p-2.5' key={index}>
-            <img
-              src={tech.iconSrc}
-              alt={tech.name}
-              className='block h-auto w-full'
-            />
-            <p>{tech.name}</p>
-          </div>
-        ))}
+        {technologies.map((tech, index) => {
+          const iconClass = `devicon-${tech.slug}`;
+          return (
+            <div key={index} className='flex flex-col items-center border'>
+              <i className={`${iconClass} colored h-60 w-60 text-6xl`}></i>
+              <p>{tech.name}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-export default Carousel;
+export default TechCarousel;
