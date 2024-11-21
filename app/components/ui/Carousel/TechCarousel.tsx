@@ -14,13 +14,13 @@ export const TechCarousel: React.FC<TechCarouselProps> = ({ technologies }) => {
 
   return (
     <div className='w-full overflow-hidden' ref={emblaRef}>
-      <div className='flex'>
+      <div className='mx-[1.1rem] flex'>
         {technologies.map((tech, index) => {
           const iconClass = `devicon-${tech.slug}`;
           return (
             <div key={index} className='flex flex-col items-center border'>
-              <i className={`${iconClass} colored h-60 w-60 text-6xl`}></i>
-              <p>{tech.name}</p>
+              <i className={`${iconClass} colored h-50 w-50 text-6xl`}></i>
+              <p className='text-2xl'>{tech.name}</p>
             </div>
           );
         })}
