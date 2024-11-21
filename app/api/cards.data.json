@@ -18,6 +18,82 @@
     "content": "Soyons honnêtes et oeuvrons ensemble pour un monde accessible et humain. Vous avez besoin d'un site Web qui soit superbe et qui fonctionne réellement."
   },
   {
+    "title": "Technologies",
+    "content": "Confort quotidien",
+    "technologies": [
+      {
+        "name": "TypeScript",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original",
+        "iconAlt": "TypeScript"
+      },
+      {
+        "name": "React.js",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original",
+        "iconAlt": "React.js"
+      },
+      {
+        "name": "Node.js",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original",
+        "iconAlt": "Node.js"
+      },
+      {
+        "name": "Express.js",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original",
+        "iconAlt": "Express.js"
+      },
+      {
+        "name": "PostgreSQL",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original",
+        "iconAlt": "PostgreSQL"
+      },
+      {
+        "name": "MongoDB",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original",
+        "iconAlt": "MongoDB"
+      },
+      {
+        "name": "Docker",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original",
+        "iconAlt": "Docker"
+      },
+      {
+        "name": "Git",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original",
+        "iconAlt": "Git"
+      },
+      {
+        "name": "GitHub",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original",
+        "iconAlt": "GitHub"
+      },
+      {
+        "name": "Next.js",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original",
+        "iconAlt": "Next.js"
+      },
+      {
+        "name": "Jest",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain",
+        "iconAlt": "Jest"
+      },
+      {
+        "name": "SASS",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original",
+        "iconAlt": "SASS"
+      },
+      {
+        "name": "Tailwind CSS",
+        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original",
+        "iconAlt": "Tailwind CSS"
+      }
+    ]
+  },
+  {
+    "title": "Expériences",
+    "cta1": "Voir mon CV",
+    "cta2": "Télécharger mon CV"
+  },
+  {
     "title": "Véhiculé et mobile sur site",
     "imageSrc": null,
     "imageAlt": null,

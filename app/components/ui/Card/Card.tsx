@@ -29,9 +29,9 @@ const TitleSection = ({ title }: { title: string }) => (
 );
 
 const ContentSection = ({ content }: { content: React.ReactNode }) => (
-  <div>
+  <article>
     <div className='font-body text-2xl'>{content}</div>
-  </div>
+  </article>
 );
 
 export const Card: React.FC<CardProps> = ({
@@ -46,7 +46,7 @@ export const Card: React.FC<CardProps> = ({
   const contentIsMapComponent = content === 'Map';
 
   return (
-    <div className='container mx-auto grid gap-grid-gutter px-10 py-16'>
+    <section className='container mx-auto grid gap-grid-gutter px-10 py-16'>
       {imageSrc && !contentIsMapComponent && (
         <ImageSection imageSrc={imageSrc} imageAlt={imageAlt || ''} />
       )}
@@ -62,6 +62,6 @@ export const Card: React.FC<CardProps> = ({
       {(cta1 || cta2) && (
         <CallToAction cta1={cta1 || ''} cta2={cta2 || ''} href={href || ''} />
       )}
-    </div>
+    </section>
   );
 };
