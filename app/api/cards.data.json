@@ -17,68 +17,55 @@
     "technologies": [
       {
         "name": "TypeScript",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original",
-        "iconAlt": "TypeScript"
+        "slug": "typescript/typescript-original"
       },
       {
         "name": "React.js",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original",
-        "iconAlt": "React.js"
+        "slug": "react/react-original"
       },
       {
         "name": "Node.js",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original",
-        "iconAlt": "Node.js"
+        "slug": "nodejs/nodejs-original"
       },
       {
         "name": "Express.js",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original",
-        "iconAlt": "Express.js"
+        "slug": "express/express-original"
       },
       {
         "name": "PostgreSQL",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original",
-        "iconAlt": "PostgreSQL"
+        "slug": "postgresql/postgresql-original"
       },
       {
         "name": "MongoDB",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original",
-        "iconAlt": "MongoDB"
+        "slug": "mongodb/mongodb-original"
       },
       {
         "name": "Docker",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original",
-        "iconAlt": "Docker"
+        "slug": "socker/docker-original"
       },
       {
         "name": "Git",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original",
-        "iconAlt": "Git"
+        "slug": "git/git-original"
       },
       {
         "name": "GitHub",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original",
-        "iconAlt": "GitHub"
+        "slug": "github/github-original"
       },
       {
         "name": "Next.js",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original",
-        "iconAlt": "Next.js"
+        "slug": "nextjs/nextjs-original"
       },
       {
         "name": "Jest",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain",
-        "iconAlt": "Jest"
+        "slug": "jest/jest-plain"
       },
       {
         "name": "SASS",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original",
-        "iconAlt": "SASS"
+        "slug": "sass/sass-original"
       },
       {
         "name": "Tailwind CSS",
-        "iconSrc": "cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original",
-        "iconAlt": "Tailwind CSS"
+        "slug": "tailwindcss/tailwindcss-original"
       }
     ]
   },

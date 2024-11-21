@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { CardProps } from '../../../types/CardProps';
 import { CallToAction } from '../CallToAction/CallToAction';
-import TechCarousel from '../Carousel/TechCarousel';
+import { TechCarousel } from '../Carousel/TechCarousel';
 import { Map } from '../Map/Map';
 
 const ImageSection = ({
@@ -62,7 +62,12 @@ export const Card: React.FC<CardProps> = ({
         <ContentSection content={content} />
       )}
       {technologies && technologies.length > 0 && (
-        <TechCarousel technologies={technologies} />
+        <TechCarousel
+          technologies={technologies.map((tech) => ({
+            name: tech.name,
+            icon: tech.iconSrc,
+          }))}
+        />
       )}
       {(cta1 || cta2) && (
         <CallToAction cta1={cta1 || ''} cta2={cta2 || ''} href={href || ''} />

@@ -6,8 +6,5 @@ export interface CardProps {
   cta2?: string | null;
   href?: string | null;
   content?: React.ReactNode;
-  technologies?: {
-    name: string;
-    iconSrc: string;
-  }[];
+  technologies?: [name: string, icon: string][];
 }
