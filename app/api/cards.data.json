@@ -1,12 +1,6 @@
 [
   {
-    "title": "🚧🚧 En construction 🚧🚧",
-    "imageSrc": null,
-    "imageAlt": null,
-    "cta1": null,
-    "cta2": null,
-    "href": null,
-    "content": null
+    "title": "🚧🚧 En construction 🚧🚧"
   },
   {
     "title": "Développeur humain, créatif et innovant.",
@@ -95,11 +89,6 @@
   },
   {
     "title": "Véhiculé et mobile sur site",
-    "imageSrc": null,
-    "imageAlt": null,
-    "cta1": null,
-    "cta2": null,
-    "href": null,
     "content": "Map"
   }
 ]
