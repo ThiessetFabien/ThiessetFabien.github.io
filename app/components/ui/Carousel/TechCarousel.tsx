@@ -27,8 +27,7 @@ export const TechCarousel: React.FC<TechCarouselProps> = ({ technologies }) => {
                 src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
                 alt={tech.name}
                 width={100}
-                height={100}
-                className={'colored h-50 w-50 text-6xl'}
+                height={auto}
               />
               <p className='text-2xl'>{tech.name}</p>
             </div>
