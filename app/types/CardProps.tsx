@@ -1,3 +1,5 @@
+import Technology from './Technology';
+
 export interface CardProps {
   imageSrc?: string | null;
   imageAlt?: string | null;
@@ -6,5 +8,5 @@ export interface CardProps {
   cta2?: string | null;
   href?: string | null;
   content?: React.ReactNode;
-  technologies?: [name: string, icon: string][];
+  technologies?: Technology[];
 }

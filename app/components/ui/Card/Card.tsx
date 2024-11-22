@@ -65,7 +65,7 @@ export const Card: React.FC<CardProps> = ({
         <TechCarousel
           technologies={technologies.map((tech) => ({
             name: tech.name,
-            icon: tech.iconSrc,
+            slug: tech.slug,
           }))}
         />
       )}
