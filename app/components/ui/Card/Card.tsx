@@ -62,12 +62,7 @@ export const Card: React.FC<CardProps> = ({
         <ContentSection content={content} />
       )}
       {technologies && technologies.length > 0 && (
-        <TechCarousel
-          technologies={technologies.map((tech) => ({
-            name: tech.name,
-            slug: tech.slug,
-          }))}
-        />
+        <TechCarousel technologies={technologies} />
       )}
       {(cta1 || cta2) && (
         <CallToAction cta1={cta1 || ''} cta2={cta2 || ''} href={href || ''} />
