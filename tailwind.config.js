@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -22,6 +22,10 @@ export default {
       fontSize: {},
       gap: {
         'grid-gutter': '1.1rem',
+      },
+      filter: {
+        white:
+          'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',
       },
     },
   },
