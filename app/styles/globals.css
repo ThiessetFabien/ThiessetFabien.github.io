@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --font-color-primary: #fff;
+  --font-orpheus-pro: 'Orpheus Pro', serif;
+  --font-poppins: 'Poppins', sans-serif;
 }
 
 * {
@@ -22,9 +23,17 @@ body {
   color: var(--font-color-primary);
 }
 
+body {
+  font-family: var(--font-poppins);
+}
+
 .filter-white {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%)
     contrast(100%);
+}
+
+.font-title {
+  font-family: var(--font-orpheus-pro);
 }
 
 @layer base {

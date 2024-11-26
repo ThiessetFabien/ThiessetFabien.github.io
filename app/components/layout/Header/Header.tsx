@@ -1,3 +1,5 @@
+import { ToggleDarkMode } from '../../ui/ToggleDarkMode/ToggleDarkMode';
+
 export const Header = () => {
   return (
     <header className='h-[8.119rem] border-b'>
@@ -8,6 +10,7 @@ export const Header = () => {
         >
           FT
         </a>
+        <ToggleDarkMode />
       </div>
     </header>
   );
