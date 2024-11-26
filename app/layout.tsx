@@ -8,7 +8,9 @@ import '@/styles/globals.css';
 
 import { Footer } from '@/components/layout/Footer/Footer';
 import { Header } from '@/components/layout/Header/Header';
-import { poppins } from '@/fonts/poppins';
+import { Poppins } from '@/fonts/Poppins';
+import { cn } from '@/lib/utils';
+import { OrpheusPro } from './fonts/OrpheusPro';
 
 const metadata: Metadata = {
   title: 'Thiesset Fabien - Portfolio',
@@ -21,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='fr' className={`${poppins} font-sans`}>
-      <body>
+    <html lang='fr'>
+      <body className={cn(Poppins.variable, OrpheusPro.variable, 'font-sans')}>
         <Header />
         <ThemeProvider
           attribute='class'
