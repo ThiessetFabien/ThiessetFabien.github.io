@@ -1,4 +1,4 @@
-import Technology from './Technology';
+import { Technology } from '@/types/Technology';
 
 export interface CardProps {
   imageSrc?: string | null;

@@ -1,26 +1,24 @@
 import React from 'react';
-import { CallToActionProps } from '@/types/CallToActionProps';
+import { Button } from '@/components/ui/button';
+
+interface CallToActionProps {
+  title: string;
+  description: string;
+  ctaText: string;
+  onClick: () => void;
+}
 
 export const CallToAction: React.FC<CallToActionProps> = ({
-  cta1,
-  cta2,
-  href,
+  title,
+  description,
+  ctaText,
+  onClick,
 }) => {
   return (
-    <>
-      <a
-        href={href}
-        className='border-border-color flex h-24 w-full items-center justify-center border px-8 text-center text-xl font-bold'
-      >
-        {cta1.toLocaleUpperCase()}
-        <span className='ml-2'>&rarr;</span>
-      </a>
-      <a
-        href={href}
-        className='flex h-24 w-full items-end justify-center px-8 text-center text-xl font-bold'
-      >
-        {cta2.toLocaleUpperCase()}
-      </a>
-    </>
+    <div className='rounded-lg bg-gray-100 p-6 shadow-md'>
+      <h2 className='mb-4 text-2xl font-bold'>{title}</h2>
+      <p className='mb-6 text-gray-700'>{description}</p>
+      <Button onClick={onClick}>{ctaText}</Button>
+    </div>
   );
 };

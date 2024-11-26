@@ -2,13 +2,14 @@ import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import React, { useEffect } from 'react';
-import { TechCarouselProps } from '../../../types/TechCarouselProps';
-import { Technology } from '../../../types/Technology';
+import { Technology } from '@/types/Technology';
 
-export const TechCarousel: React.FC<TechCarouselProps> = ({ technologies }) => {
+export const TechCarousel: React.FC<{ technologies: Technology[] }> = ({
+  technologies,
+}) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: 'start', speed: 2 },
-    [Autoplay({ delay: 1000, stopOnInteraction: false, speed: 2 })]
+    { loop: true, align: 'start' },
+    [Autoplay({ delay: 750, stopOnInteraction: false })]
   );
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export const TechCarousel: React.FC<TechCarouselProps> = ({ technologies }) => {
   return (
     <div className='w-full overflow-hidden' ref={emblaRef}>
       <div className='flex'>
-        {technologies.map((tech, index) => (
+        {technologies.map((tech: Technology, index: number) => (
           <div
             key={index}
             className='mx-[1.1rem] flex flex-col items-center gap-y-[1.1rem] p-[1.1rem]'
