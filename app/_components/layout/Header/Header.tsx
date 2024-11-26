@@ -1,15 +1,16 @@
-import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
 import Link from 'next/link';
+import Header from 'next/headers';
+import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
 
 export const Header = () => {
   return (
-    <header className='h-[8.119rem]'>
-      <div className='align-center flex h-full items-center justify-between p-8'>
+    <header>
+      <div className='align-center flex h-full items-center justify-between p-8 font-bold'>
         <Link
           href='/'
           className='pointer-events-auto text-center font-caption text-5xl'
         >
-          FT
+          Fabien Thiesset
         </Link>
         <ToggleDarkMode />
       </div>
