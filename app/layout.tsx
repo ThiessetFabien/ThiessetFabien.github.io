@@ -6,15 +6,14 @@ import '@/styles/reset.css';
 
 import '@/styles/globals.css';
 
-import { Footer } from '@/components/layout/Footer/Footer';
-import { Header } from '@/components/layout/Header/Header';
 import { Poppins } from '@/fonts/Poppins';
 import { cn } from '@/lib/utils';
 import { OrpheusPro } from './fonts/OrpheusPro';
 
 const metadata: Metadata = {
-  title: 'Thiesset Fabien - Portfolio',
-  description: 'My personal portfolio crafted with ❤️ using Next.js',
+  title: 'Thiesset Fabien - Web developer',
+  description:
+    'Web developer about React, Next.js, TailwindCSS, TypeScript, and more.',
 };
 
 export default function RootLayout({
