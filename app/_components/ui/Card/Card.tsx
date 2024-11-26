@@ -21,7 +21,7 @@ const ImageSection = ({
   imageSrc: string;
   imageAlt: string;
 }) => (
-  <div className='grid gap-4'>
+  <div>
     <Image
       src={imageSrc}
       alt={imageAlt || ''}
@@ -43,7 +43,7 @@ const TitleSection = ({ title }: { title: string }) => (
 
 const ContentSection = ({ content }: { content: React.ReactNode }) => (
   <CardContent>
-    <div className='font-body text-base'>{content}</div>
+    <div className='font-body text-base font-light'>{content}</div>
   </CardContent>
 );
 
@@ -66,15 +66,13 @@ export const CardComponent: React.FC<CardProps> = ({
         {imageSrc && !contentIsMapComponent && (
           <ImageSection imageSrc={imageSrc} imageAlt={imageAlt || ''} />
         )}
-        {contentIsMapComponent && (
+        {!imageSrc && contentIsMapComponent && (
           <CardContent>
             <Map />
           </CardContent>
         )}
         {title && <TitleSection title={title} />}
-        {content && !contentIsMapComponent && (
-          <ContentSection content={content} />
-        )}
+        {!contentIsMapComponent && <ContentSection content={content} />}
         {technologies && technologies.length > 0 && (
           <CardContent>
             <TechCarousel technologies={technologies} />

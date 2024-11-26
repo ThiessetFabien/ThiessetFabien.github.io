@@ -23,7 +23,7 @@ export function ToggleDarkMode() {
   return (
     <Toggle
       variant='outline'
-      size='default'
+      size='sm'
       onClick={handleToggle}
       className='relative'
       data-state={resolvedTheme === 'dark' ? 'on' : 'off'}

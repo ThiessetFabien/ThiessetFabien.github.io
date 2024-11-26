@@ -8,7 +8,7 @@ export const Header = () => {
       <div className='align-center m-auto flex h-full max-w-3xl items-center justify-between px-4 py-8'>
         <Link
           href='/'
-          className='pointer-events-auto text-center font-caption text-2xl tracking-tight'
+          className='pointer-events-auto text-center font-caption text-xl tracking-tight'
         >
           FT
         </Link>
