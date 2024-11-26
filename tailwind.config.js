@@ -1,50 +1,58 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
-  content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['app/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      borderColor: {
-        'border-color': 'hsla(220, 45%, 28%, 1)',
-      },
       colors: {
-        'site-background-color': 'hsla(0, 0%, 0%, 1)',
-        'site-text-color-primary': 'hsla(0, 0%, 100%, 1)',
-        'site-text-color-footer': 'hsla(0, 0%, 50%, 1)',
-        'shadcn-purple': {
-          50: '270 100% 98%',
-          100: '268.7 100% 95.5%',
-          200: '268.6 100% 91.8%',
-          300: '269.2 97.4% 85.1%',
-          400: '270 95.2% 75.3%',
-          500: '270.7 91% 65.1%',
-          600: '271.5 81.3% 55.9%',
-          700: '272.1 71.7% 47.1%',
-          800: '272.9 67.2% 39.4%',
-          900: '273.6 65.6% 32%',
-          950: '273.5 86.9% 21%',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
       },
-      fontFamily: {
-        title: ['Orpheus Pro', 'Georgia', 'Times New Roman', 'Times', 'serif'],
-        body: ['Poppins', 'Arial', 'sans-serif'],
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: 'calc(var(--radius) - 4px)',
       },
-      fontSize: {},
-      gap: {
-        'grid-gutter': '1.1rem',
-      },
+
       filter: {
         white:
           'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+
+      fontFamily: {
+        caption: ['var(--font-caption)'],
+        sans: ['var(--font-poppins-sans)'],
       },
     },
   },
