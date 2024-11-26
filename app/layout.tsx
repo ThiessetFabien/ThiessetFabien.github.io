@@ -1,12 +1,14 @@
 'use client';
 import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 
-import './styles/fonts.css';
-import './styles/reset.css';
-import './styles/globals.css';
+import '@/styles/reset.css';
 
-import { Footer } from './components/layout/Footer/Footer';
-import { Header } from './components/layout/Header/Header';
+import '@/styles/globals.css';
+
+import { Footer } from '@/components/layout/Footer/Footer';
+import { Header } from '@/components/layout/Header/Header';
+import { poppins } from '@/fonts/poppins';
 
 const metadata: Metadata = {
   title: 'Thiesset Fabien - Portfolio',
@@ -19,10 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='fr'>
-      <body className='text-site-text-color bg-site-background-color'>
+    <html lang='fr' className={`${poppins} font-sans`}>
+      <body>
         <Header />
-        {children}
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
         <Footer />
       </body>
     </html>
