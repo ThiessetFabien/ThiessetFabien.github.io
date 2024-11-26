@@ -1,9 +1,18 @@
 import Image from 'next/image';
 import React from 'react';
-import { CardProps } from '@/types/CardProps';
+import CardProps from '@/types/CardProps';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { TechCarousel } from '@/ui/Carousel/TechCarousel';
 import { Map } from '@/ui/Map/Map';
+import { isMapComponent } from '@/utils/isMapComponent';
+import { Section } from '@/components/Section/Section';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from '@/ui/card';
 
 const ImageSection = ({
   imageSrc,
@@ -25,47 +34,64 @@ const ImageSection = ({
 );
 
 const TitleSection = ({ title }: { title: string }) => (
-  <div className='flex h-[9.4rem] flex-col justify-end'>
-    <div className='font-caption text-4xl'>{title}</div>
-  </div>
+  <CardHeader>
+    <CardTitle className='font-caption text-2xl tracking-tight'>
+      {title}
+    </CardTitle>
+  </CardHeader>
 );
 
 const ContentSection = ({ content }: { content: React.ReactNode }) => (
-  <article>
-    <div className='m-w-[8.214rem] font-body text-2xl'>{content}</div>
-  </article>
+  <CardContent>
+    <div className='font-body text-base'>{content}</div>
+  </CardContent>
 );
 
-export const Card: React.FC<CardProps> = ({
+export const CardComponent: React.FC<CardProps> = ({
   imageSrc,
   imageAlt,
   title,
   cta1,
   cta2,
-  href,
+  href1,
+  href2,
   content,
   technologies,
 }) => {
-  const contentIsMapComponent = content === 'Map';
+  const contentIsMapComponent = isMapComponent(content);
 
   return (
-    <section className='gap-grid-gutter container mx-auto grid px-10 py-16'>
-      {imageSrc && !contentIsMapComponent && (
-        <ImageSection imageSrc={imageSrc} imageAlt={imageAlt || ''} />
-      )}
-      {contentIsMapComponent && (
-        <div className='grid gap-4'>{/* <Map /> */}</div>
-      )}
-      {title && <TitleSection title={title} />}
-      {content && !contentIsMapComponent && (
-        <ContentSection content={content} />
-      )}
-      {technologies && technologies.length > 0 && (
-        <TechCarousel technologies={technologies} />
-      )}
-      {(cta1 || cta2) && (
-        <CallToAction cta1={cta1 || ''} cta2={cta2 || ''} href={href || ''} />
-      )}
-    </section>
+    <Section>
+      <Card>
+        {imageSrc && !contentIsMapComponent && (
+          <ImageSection imageSrc={imageSrc} imageAlt={imageAlt || ''} />
+        )}
+        {contentIsMapComponent && (
+          <CardContent>
+            <Map />
+          </CardContent>
+        )}
+        {title && <TitleSection title={title} />}
+        {content && !contentIsMapComponent && (
+          <ContentSection content={content} />
+        )}
+        {technologies && technologies.length > 0 && (
+          <CardContent>
+            <TechCarousel technologies={technologies} />
+          </CardContent>
+        )}
+        {(cta1 || cta2) && (
+          <CardFooter>
+            <CallToAction
+              title={title || ''}
+              cta1={cta1 || ''}
+              cta2={cta2 || ''}
+              href1={href1 || ''}
+              href2={href2 || ''}
+            />
+          </CardFooter>
+        )}
+      </Card>
+    </Section>
   );
 };
