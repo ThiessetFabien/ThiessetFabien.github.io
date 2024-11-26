@@ -23,9 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='fr'>
-      <body className={cn(Poppins.variable, OrpheusPro.variable, 'font-sans')}>
-        <Header />
+    <html lang='fr' className={'h-full'}>
+      <body
+        className={cn(
+          Poppins.variable,
+          OrpheusPro.variable,
+          'h-full bg-background font-sans text-foreground'
+        )}
+      >
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
@@ -34,7 +39,6 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-        <Footer />
       </body>
     </html>
   );

@@ -19,14 +19,16 @@
     ],
     "baseUrl": "app/",
     "paths": {
+      "@/components/*": ["_components/*"],
+      "@/ui/*": ["_components/ui/*"],
+      "@/layout/*": ["_components/layout/*"],
+      "@api/*": ["api/*"],
       "@/config/*": ["config/*"],
-      "@/components/*": ["components/*"],
-      "@/ui/*": ["components/ui/*"],
-      "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"],
-      "@/types/*": ["types/*"],
       "@/fonts/*": ["fonts/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lib/*": ["lib/*"],
+      "@/types/*": ["types/*"],
+      "@/styles/*": ["styles/*"],
+      "@/utils/*": ["utils/*"]
     },
     "target": "ES2017"
   },

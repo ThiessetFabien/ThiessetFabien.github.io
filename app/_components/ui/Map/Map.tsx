@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import { Circle, TileLayer, useMap } from 'react-leaflet';
-import { leafletConfig, titleLayerUrl } from '../../../config/leafletConfig';
+import { leafletConfig, titleLayerUrl } from '@/config/leafletConfig';
 
 const OpenPopupMarker = ({ position }: { position: [number, number] }) => {
   const map = useMap();
@@ -25,12 +25,14 @@ const DynamicMapContainer = dynamic(
 export function Map() {
   const position: [number, number] = [50.38164502950426, 3.0532336241209292];
 
-  leafletConfig();
+  useEffect(() => {
+    leafletConfig();
+  }, []);
 
   const radius = 60000 / 2;
 
   return (
-    <div className='h-[41.6rem] w-[27rem]'>
+    <div id='map-container' className='h-[41.6rem] w-[27rem]'>
       <DynamicMapContainer center={position} zoom={9} className='h-full w-full'>
         <TileLayer url={titleLayerUrl} />
         <OpenPopupMarker position={position} />

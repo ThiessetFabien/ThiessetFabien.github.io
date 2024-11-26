@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
-import { CardProps } from '../../../types/CardProps';
-import { CallToAction } from '../CallToAction/CallToAction';
-import { TechCarousel } from '../Carousel/TechCarousel';
-import { Map } from '../Map/Map';
+import { CardProps } from '@/types/CardProps';
+import { CallToAction } from '@/ui/CallToAction/CallToAction';
+import { TechCarousel } from '@/ui/Carousel/TechCarousel';
+import { Map } from '@/ui/Map/Map';
 
 const ImageSection = ({
   imageSrc,
@@ -26,7 +26,7 @@ const ImageSection = ({
 
 const TitleSection = ({ title }: { title: string }) => (
   <div className='flex h-[9.4rem] flex-col justify-end'>
-    <div className='font-title text-4xl'>{title}</div>
+    <div className='font-caption text-4xl'>{title}</div>
   </div>
 );
 
@@ -49,14 +49,12 @@ export const Card: React.FC<CardProps> = ({
   const contentIsMapComponent = content === 'Map';
 
   return (
-    <section className='container mx-auto grid gap-grid-gutter px-10 py-16'>
+    <section className='gap-grid-gutter container mx-auto grid px-10 py-16'>
       {imageSrc && !contentIsMapComponent && (
         <ImageSection imageSrc={imageSrc} imageAlt={imageAlt || ''} />
       )}
       {contentIsMapComponent && (
-        <div className='grid gap-4'>
-          <Map />
-        </div>
+        <div className='grid gap-4'>{/* <Map /> */}</div>
       )}
       {title && <TitleSection title={title} />}
       {content && !contentIsMapComponent && (
