@@ -2,13 +2,13 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 
+import { cn } from '@/lib/utils';
+
 import '@/styles/reset.css';
+import { Poppins } from '@/fonts/Poppins';
+import { OrpheusPro } from './fonts/OrpheusPro';
 
 import '@/styles/globals.css';
-
-import { Poppins } from '@/fonts/Poppins';
-import { cn } from '@/lib/utils';
-import { OrpheusPro } from './fonts/OrpheusPro';
 
 const metadata: Metadata = {
   title: 'Thiesset Fabien - Web developer',

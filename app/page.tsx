@@ -2,7 +2,7 @@
 
 import React from 'react';
 import CardData from '@api/cards.data.json';
-import { Card } from '@/ui/Card/Card';
+import { CardComponent } from '@/ui/Card/Card';
 import { Header } from '@/layout/Header/Header';
 import { Footer } from '@/layout/Footer/Footer';
 
@@ -11,7 +11,7 @@ const HomePage = () => {
     <main>
       <Header />
       {CardData.map((cardProps, index) => (
-        <Card key={index} {...cardProps} />
+        <CardComponent key={index} {...cardProps} />
       ))}
       <Footer />
     </main>

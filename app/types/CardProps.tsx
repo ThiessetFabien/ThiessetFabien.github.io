@@ -1,12 +1,13 @@
 import { Technology } from '@/types/Technology';
 
-export interface CardProps {
+export default interface CardProps {
   imageSrc?: string | null;
   imageAlt?: string | null;
   title: string | null;
-  cta1?: string | null;
-  cta2?: string | null;
-  href?: string | null;
+  cta1?: string | null | undefined;
+  cta2?: string | null | undefined;
+  href1?: string | null | undefined;
+  href2?: string | null | undefined;
   content?: React.ReactNode;
   technologies?: Technology[];
 }
