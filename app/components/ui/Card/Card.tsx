@@ -32,7 +32,7 @@ const TitleSection = ({ title }: { title: string }) => (
 
 const ContentSection = ({ content }: { content: React.ReactNode }) => (
   <article>
-    <div className='font-body text-2xl'>{content}</div>
+    <div className='m-w-[8.214rem] font-body text-2xl'>{content}</div>
   </article>
 );
 
