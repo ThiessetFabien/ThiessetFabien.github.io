@@ -1,16 +1,16 @@
 [
   {
-    "title": "Développeur humain, créatif et innovant.",
+    "title": "Human, creative, and innovative developer.",
     "imageSrc": "/images/photo.png",
     "imageAlt": "Photo de Fabien",
-    "cta1": "Embauchez un expert",
-    "cta2": "Découvrez mes projets",
+    "cta1": "Hire an expert",
+    "cta2": "Discover my works",
     "href1": "#",
     "href2": "#",
-    "content": "Soyons honnêtes et oeuvrons ensemble pour un monde accessible et humain. Vous avez besoin d'un site Web qui soit superbe et qui fonctionne réellement."
+    "content": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional."
   },
   {
-    "title": "Technologies",
+    "title": "I ❤️ Technologies",
     "technologies": [
       {
         "name": "TypeScript",
@@ -64,15 +64,16 @@
         "name": "Tailwind CSS",
         "slug": "tailwindcss/tailwindcss-original"
       }
-    ]
+    ],
+    "content": "Currently using"
   },
   {
-    "title": "Expériences",
-    "cta1": "Voir mon CV",
-    "cta2": "Télécharger mon CV"
+    "title": "Experiences",
+    "cta1": "My resume",
+    "cta2": "Download my resume"
   },
   {
-    "title": "Véhiculé et mobile sur site",
+    "title": "Mobile and vehicle on the site",
     "content": "Map"
   }
 ]

@@ -14,7 +14,7 @@ export const CallToAction: React.FC<CardProps> = ({
     <Section>
       <Link href={`${href1}`}>
         <Button
-          size='sm'
+          size='lg'
           variant={'default'}
           className='mb-4 flex w-full items-center justify-center text-center'
         >
@@ -24,7 +24,7 @@ export const CallToAction: React.FC<CardProps> = ({
       </Link>
       <Link href={`${href2}`}>
         <Button
-          size='sm'
+          size='lg'
           variant={'outline'}
           className='flex w-full items-center justify-center text-center'
         >
