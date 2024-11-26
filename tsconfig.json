@@ -17,7 +17,14 @@
         "name": "next"
       }
     ],
-    "paths": {},
+    "baseUrl": "app/",
+    "paths": {
+      "@/config/*": ["config/*"],
+      "@/components/*": ["components/*"],
+      "@/styles/*": ["styles/*"],
+      "@/utils/*": ["utils/*"],
+      "@/types/*": ["types/*"]
+    },
     "target": "ES2017"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

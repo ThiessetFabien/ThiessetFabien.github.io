@@ -8,7 +8,7 @@ import { Technology } from '../../../types/Technology';
 export const TechCarousel: React.FC<TechCarouselProps> = ({ technologies }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start', speed: 2 },
-    [Autoplay({ delay: 2000, stopOnInteraction: false, speed: 2 })]
+    [Autoplay({ delay: 1000, stopOnInteraction: false, speed: 2 })]
   );
 
   useEffect(() => {
