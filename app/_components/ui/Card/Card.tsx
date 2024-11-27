@@ -35,7 +35,7 @@ const ImageSection = ({
 
 const TitleSection = ({ title }: { title: string }) => (
   <CardHeader>
-    <CardTitle className='font-caption text-2xl tracking-tight'>
+    <CardTitle className='font-caption text-2xl leading-tight tracking-tight'>
       {title}
     </CardTitle>
   </CardHeader>
@@ -43,7 +43,9 @@ const TitleSection = ({ title }: { title: string }) => (
 
 const ContentSection = ({ content }: { content: React.ReactNode }) => (
   <CardContent>
-    <div className='font-body text-base font-light'>{content}</div>
+    <div className='font-body max-w-prose text-base font-light leading-relaxed'>
+      {content}
+    </div>
   </CardContent>
 );
 
