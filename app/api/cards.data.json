@@ -2,7 +2,7 @@
   {
     "title": "Human, creative, and innovative developer.",
     "imageSrc": "/images/photo.png",
-    "imageAlt": "Photo de Fabien",
+    "imageAlt": "Picture of Fabien",
     "cta1": "Hire an expert",
     "cta2": "Discover my works",
     "href1": "#",
@@ -68,12 +68,40 @@
     "content": "Currently using"
   },
   {
-    "title": "Experiences",
+    "title": "1 year of experience in web development",
+    "content": "5 years of experience in project coordination and the first label of kindness with 20 years of experience in the paramedical field",
     "cta1": "My resume",
-    "cta2": "Download my resume"
+    "cta2": "Download my resume",
+    "experience": [
+      {
+        "title": "Freelancing",
+        "company": "O'Clock School",
+        "date": "nov 2024 - present"
+      },
+      {
+        "title": "Web developer and Scrum Master",
+        "company": "O'Clock School",
+        "date": "may - jun 2024"
+      },
+      {
+        "title": "Web developer",
+        "company": "O'Clock School",
+        "date": "dec 2023 - jun 2024"
+      },
+      {
+        "title": "Web developer front-end",
+        "company": "Chimenbou sole proprietorship",
+        "date": "jul 2023"
+      },
+      {
+        "title": "Self-training in HTML, CSS, and JavaScript",
+        "company": "Chimenbou sole proprietorship",
+        "date": "avr 2023 - dec 2023"
+      }
+    ]
   },
   {
-    "title": "Mobile and vehicle on the site",
+    "title": "Mobile and vehicle on the site and more if remote",
     "content": "Map"
   }
 ]
