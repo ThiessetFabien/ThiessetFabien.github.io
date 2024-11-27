@@ -4,7 +4,6 @@ import CardProps from '@/types/CardProps';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { TechCarousel } from '@/ui/Carousel/TechCarousel';
 import { Map } from '@/ui/Map/Map';
-import { isMapComponent } from '@/utils/isMapComponent';
 import { Section } from '@/components/Section/Section';
 import {
   Card,
@@ -21,7 +20,7 @@ const ImageSection = ({
   imageSrc: string;
   imageAlt: string;
 }) => (
-  <div>
+  <CardContent>
     <Image
       src={imageSrc}
       alt={imageAlt || ''}
@@ -30,7 +29,7 @@ const ImageSection = ({
       className='h-auto w-full'
       priority
     />
-  </div>
+  </CardContent>
 );
 
 const TitleSection = ({ title }: { title: string }) => (
@@ -60,21 +59,19 @@ export const CardComponent: React.FC<CardProps> = ({
   content,
   technologies,
 }) => {
-  const contentIsMapComponent = isMapComponent(content);
-
   return (
     <Section>
       <Card>
-        {imageSrc && !contentIsMapComponent && (
+        {imageSrc && content !== 'Map' && (
           <ImageSection imageSrc={imageSrc} imageAlt={imageAlt || ''} />
         )}
-        {!imageSrc && contentIsMapComponent && (
+        {content === 'Map' && (
           <CardContent>
             <Map />
           </CardContent>
         )}
         {title && <TitleSection title={title} />}
-        {!contentIsMapComponent && <ContentSection content={content} />}
+        {content !== 'Map' && <ContentSection content={content} />}
         {technologies && technologies.length > 0 && (
           <CardContent>
             <TechCarousel technologies={technologies} />
