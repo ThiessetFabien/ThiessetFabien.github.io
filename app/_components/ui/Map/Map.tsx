@@ -8,7 +8,7 @@ const OpenPopupMarker = ({ position }: { position: [number, number] }) => {
 
   useEffect(() => {
     const marker = L.marker(position).addTo(map);
-    marker.bindPopup('Je suis ici !').openPopup();
+    marker.bindPopup("I'm here").openPopup();
   }, [map, position]);
 
   return null;
@@ -25,8 +25,16 @@ export function Map() {
 
   return (
     <div className='h-[41.6rem] w-full'>
-      <MapContainer center={position} zoom={9} className='h-full w-full'>
-        <TileLayer url={titleLayerUrl} />
+      <MapContainer
+        center={position}
+        zoom={9}
+        className='h-full w-full'
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url={titleLayerUrl}
+        />
         <OpenPopupMarker position={position} />
         <Circle
           center={position}
