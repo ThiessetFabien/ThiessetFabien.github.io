@@ -7,6 +7,3 @@ export function leafletConfig() {
     shadowUrl: '/leaflet/images/marker-shadow.png',
   });
 }
-
-export const titleLayerUrl =
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';

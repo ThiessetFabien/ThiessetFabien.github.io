@@ -1,49 +1,65 @@
-import { useEffect } from 'react';
-import { Circle, TileLayer, useMap, MapContainer } from 'react-leaflet';
+import React from 'react';
+import {
+  MapContainer,
+  TileLayer,
+  useMapEvents,
+  Circle,
+  Marker,
+  Popup,
+} from 'react-leaflet';
 import L from 'leaflet';
-import { leafletConfig, titleLayerUrl } from '@/config/leafletConfig';
 
-const OpenPopupMarker = ({ position }: { position: [number, number] }) => {
-  const map = useMap();
+interface LocationEventsProps {
+  position: [number, number];
+}
 
-  useEffect(() => {
-    const marker = L.marker(position).addTo(map);
-    marker.bindPopup("I'm here").openPopup();
-  }, [map, position]);
+const LocationEvents: React.FC<LocationEventsProps> = ({ position }) => {
+  const map = useMapEvents({
+    click: () => {
+      map.flyTo(position, map.getZoom());
+    },
+  });
 
   return null;
 };
 
-export function Map() {
-  const position: [number, number] = [50.38164502950426, 3.0532336241209292];
-
-  useEffect(() => {
-    leafletConfig();
-  }, []);
-
+export const Map: React.FC = () => {
+  const francePosition: [number, number] = [46.6034, 3.1236];
+  const finalPosition: [number, number] = [
+    50.38164502950426, 3.0532336241209292,
+  ];
   const radius = 60000 / 2;
 
   return (
     <div className='h-[41.6rem] w-full'>
       <MapContainer
-        center={position}
-        zoom={9}
+        center={francePosition}
+        zoom={10}
         className='h-full w-full'
         scrollWheelZoom={false}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url={titleLayerUrl}
-        />
-        <OpenPopupMarker position={position} />
         <Circle
-          center={position}
+          center={finalPosition}
           radius={radius}
           color='blue'
           fillColor='blue'
           fillOpacity={0.2}
         />
+        <Marker
+          position={finalPosition}
+          icon={L.icon({
+            iconUrl: '/leaflet/images/marker-icon.png',
+            shadowUrl: '/leaflet/images/marker-shadow.png',
+          })}
+        >
+          <Popup>I'm here</Popup>
+        </Marker>
+        <LocationEvents position={finalPosition} />
+        <TileLayer
+          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
       </MapContainer>
     </div>
   );
-}
+};
