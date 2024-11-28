@@ -9,6 +9,8 @@ import { Poppins } from '@/fonts/Poppins';
 import { OrpheusPro } from './fonts/OrpheusPro';
 
 import '@/styles/globals.css';
+import { Header } from '@/components/layout/Header/Header';
+import { Footer } from '@/components/layout/Footer/Footer';
 
 const metadata: Metadata = {
   title: 'Thiesset Fabien - Web developer',
@@ -36,7 +38,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
