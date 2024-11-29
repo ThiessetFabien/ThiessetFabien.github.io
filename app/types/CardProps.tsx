@@ -1,4 +1,5 @@
-import { Technology } from '@/types/Technology';
+import { Technologies } from './Technologies';
+import { Experiences } from './Experiences';
 
 export default interface CardProps {
   imageSrc?: string;
@@ -9,6 +10,7 @@ export default interface CardProps {
   href1?: string;
   href2?: string;
   map?: boolean;
+  experiences?: Experiences[];
   content?: React.ReactNode;
-  technologies?: Technology[];
+  technologies?: Technologies[];
 }

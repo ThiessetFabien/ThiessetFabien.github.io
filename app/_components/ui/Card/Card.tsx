@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import CardProps from '@/types/CardProps';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
@@ -12,41 +11,10 @@ import {
   CardContent,
   CardFooter,
 } from '@/lib/components/ui/card';
-
-const ImageSection = ({
-  imageSrc,
-  imageAlt,
-}: {
-  imageSrc: string;
-  imageAlt: string;
-}) => (
-  <CardContent>
-    <Image
-      src={imageSrc}
-      alt={imageAlt || ''}
-      width={100}
-      height={100}
-      className='h-auto w-full'
-      priority
-    />
-  </CardContent>
-);
-
-const TitleSection = ({ title }: { title: string }) => (
-  <CardHeader>
-    <CardTitle className='font-caption text-2xl leading-tight tracking-tight'>
-      {title}
-    </CardTitle>
-  </CardHeader>
-);
-
-const ContentSection = ({ content }: { content: React.ReactNode }) => (
-  <CardContent>
-    <div className='font-body max-w-prose text-base font-light leading-relaxed'>
-      {content}
-    </div>
-  </CardContent>
-);
+import { ImageSection } from '@/components/ui/Card/Sections/CardImageSection';
+import { TitleSection } from '@/components/ui/Card/Sections/CardTitleSection';
+import { ContentSection } from '@/components/ui/Card/Sections/CardContentSection';
+import { ExperiencesSection } from '@/components/ui/Card/Sections/CardExperiencesSection';
 
 export const CardComponent: React.FC<CardProps> = ({
   imageSrc,
@@ -57,6 +25,7 @@ export const CardComponent: React.FC<CardProps> = ({
   href1,
   href2,
   map,
+  experiences,
   content,
   technologies,
 }) => {
@@ -64,24 +33,51 @@ export const CardComponent: React.FC<CardProps> = ({
     <Section>
       <Card>
         {imageSrc && !map && (
-          <ImageSection imageSrc={imageSrc} imageAlt={imageAlt || ''} />
+          <CardContent>
+            <ImageSection
+              className='h-auto w-full'
+              imageSrc={imageSrc}
+              imageAlt={imageAlt || ''}
+            />
+          </CardContent>
         )}
         {!imageSrc && map && (
           <CardContent>
             <Map />
           </CardContent>
         )}
-        {title && <TitleSection title={title} />}
-        {content !== 'Map' && <ContentSection content={content} />}
+        {title && (
+          <CardHeader>
+            <TitleSection
+              className={'font-caption text-2xl leading-tight tracking-tight'}
+              title={title}
+            />
+          </CardHeader>
+        )}
+        {content && (
+          <CardContent>
+            <ContentSection
+              className='font-body max-w-prose text-base font-light leading-relaxed'
+              content={content}
+            />
+            {experiences && experiences.length > 0 && (
+              <CardContent>
+                <ExperiencesSection
+                  className='h-auto w-full rounded-full p-2'
+                  experiences={experiences}
+                />
+              </CardContent>
+            )}
+          </CardContent>
+        )}
         {technologies && technologies.length > 0 && (
           <CardContent>
             <TechCarousel technologies={technologies} />
           </CardContent>
         )}
-        {(cta1 || cta2) && (
+        {cta1 && cta2 && href1 && href2 && (
           <CardFooter>
             <CallToAction
-              title={title || ''}
               cta1={cta1 || ''}
               cta2={cta2 || ''}
               href1={href1 || ''}
