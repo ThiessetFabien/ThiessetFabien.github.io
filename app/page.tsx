@@ -2,7 +2,7 @@
 
 import React from 'react';
 import CardData from '@api/cards.data.json';
-import { CardComponent } from '@/ui/Card/Card';
+import { CardComponent } from '@/components/ui/Card/Card';
 
 const HomePage = () => {
   return (

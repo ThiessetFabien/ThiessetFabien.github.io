@@ -43,7 +43,7 @@ export const Map: React.FC = () => {
           fillColor='blue'
           fillOpacity={0.2}
         />
-        <Marker
+        {/* <Marker
           position={myPosition}
           icon={L.icon({
             iconUrl: '/leaflet/images/marker-icon.png',
@@ -51,7 +51,7 @@ export const Map: React.FC = () => {
           })}
         >
           <Popup>I'm here</Popup>
-        </Marker>
+        </Marker> */}
         <LocationEvents position={myPosition} />
         <TileLayer
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
