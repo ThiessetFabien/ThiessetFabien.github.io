@@ -13,11 +13,11 @@ export const ExperiencesSection = ({
     {experiences.map((experience, index) => (
       <div key={index} className='space-2 flex items-center'>
         <CardTitle
-          className={`${className} max-w-3xl font-caption text-xl leading-tight tracking-tight`}
+          className={`${className} w-2/3 max-w-3xl font-caption text-xl leading-tight tracking-tight`}
         >
           {experience.title}
         </CardTitle>
-        <div className='flex flex-col'>
+        <div className='flex w-1/3 flex-col'>
           <Skeleton
             className={`${className} m-2 text-center text-sm font-bold`}
           >
