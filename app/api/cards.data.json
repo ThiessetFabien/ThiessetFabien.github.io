@@ -102,6 +102,7 @@
   },
   {
     "title": "Mobile and vehicle on the site and more if remote",
-    "content": "Map"
+    "map": true,
+    "content": "Click on the map to see the places where I can work."
   }
 ]

@@ -56,16 +56,17 @@ export const CardComponent: React.FC<CardProps> = ({
   cta2,
   href1,
   href2,
+  map,
   content,
   technologies,
 }) => {
   return (
     <Section>
       <Card>
-        {imageSrc && content !== 'Map' && (
+        {imageSrc && !map && (
           <ImageSection imageSrc={imageSrc} imageAlt={imageAlt || ''} />
         )}
-        {content === 'Map' && (
+        {!imageSrc && map && (
           <CardContent>
             <Map />
           </CardContent>

@@ -8,6 +8,7 @@ export default interface CardProps {
   cta2?: string;
   href1?: string;
   href2?: string;
+  map?: boolean;
   content?: React.ReactNode;
   technologies?: Technology[];
 }
