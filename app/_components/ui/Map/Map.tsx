@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  MapContainer,
-  TileLayer,
-  useMapEvents,
-  Circle,
-  Marker,
-  Popup,
-} from 'react-leaflet';
-import L from 'leaflet';
+import { MapContainer, TileLayer, useMapEvents, Circle } from 'react-leaflet';
 
 interface LocationEventsProps {
   position: [number, number];
@@ -43,15 +35,6 @@ export const Map: React.FC = () => {
           fillColor='blue'
           fillOpacity={0.2}
         />
-        {/* <Marker
-          position={myPosition}
-          icon={L.icon({
-            iconUrl: '/leaflet/images/marker-icon.png',
-            shadowUrl: '/leaflet/images/marker-shadow.png',
-          })}
-        >
-          <Popup>I'm here</Popup>
-        </Marker> */}
         <LocationEvents position={myPosition} />
         <TileLayer
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
