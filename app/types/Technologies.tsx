@@ -1,4 +1,4 @@
-export interface Technology {
+export interface Technologies {
   name: string;
   slug: string;
 }

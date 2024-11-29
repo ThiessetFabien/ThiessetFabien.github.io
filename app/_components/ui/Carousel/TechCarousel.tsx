@@ -3,11 +3,11 @@ import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-import { Technology } from '@/types/Technology';
+import { Technologies } from '@/types/Technologies';
 import { Section } from '@/components/Section/Section';
 import { Card } from '@/lib/components/ui/card';
 
-export const TechCarousel: React.FC<{ technologies: Technology[] }> = ({
+export const TechCarousel: React.FC<{ technologies: Technologies[] }> = ({
   technologies,
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -24,7 +24,7 @@ export const TechCarousel: React.FC<{ technologies: Technology[] }> = ({
   return (
     <Card className='w-full overflow-hidden' ref={emblaRef}>
       <div className='flex'>
-        {technologies.map((tech: Technology, index: number) => (
+        {technologies.map((tech: Technologies, index: number) => (
           <div
             key={index}
             className='mx-[1.1rem] flex flex-col items-center gap-y-[1.1rem] p-[1.1rem]'

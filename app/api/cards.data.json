@@ -72,11 +72,16 @@
     "content": "5 years of experience in project coordination and the first label of kindness with 20 years of experience in the paramedical field",
     "cta1": "My resume",
     "cta2": "Download my resume",
-    "experience": [
+    "experiences": [
       {
         "title": "Freelancing",
-        "company": "O'Clock School",
+        "company": "My company",
         "date": "nov 2024 - present"
+      },
+      {
+        "title": "Specialisation React and Self-training Next.js",
+        "company": "O'Clock School",
+        "date": "jul 2023 - present"
       },
       {
         "title": "Web developer and Scrum Master",
@@ -84,25 +89,25 @@
         "date": "may - jun 2024"
       },
       {
-        "title": "Web developer",
+        "title": "Apprentice Web developer",
         "company": "O'Clock School",
         "date": "dec 2023 - jun 2024"
       },
       {
-        "title": "Web developer front-end",
+        "title": "Stage Web developer front-end",
         "company": "Chimenbou sole proprietorship",
         "date": "jul 2023"
       },
       {
-        "title": "Self-training in HTML, CSS, and JavaScript",
-        "company": "Chimenbou sole proprietorship",
+        "title": "Self-training (HTML, CSS, JavaScript)",
+        "company": "Grafikart Cursus",
         "date": "avr 2023 - dec 2023"
       }
     ]
   },
   {
-    "title": "Mobile and vehicle on the site and more if remote",
+    "title": "Available for Mobile, Vehicle, and Remote in France",
     "map": true,
-    "content": "Click on the map to see the places where I can work."
+    "content": "Click on the map to see the locations where I can work on-site every day."
   }
 ]
