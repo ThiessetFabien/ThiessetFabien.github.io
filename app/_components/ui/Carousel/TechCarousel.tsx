@@ -5,7 +5,7 @@ import Autoplay from 'embla-carousel-autoplay';
 
 import { Technology } from '@/types/Technology';
 import { Section } from '@/components/Section/Section';
-import { Card } from '@/ui/card';
+import { Card } from '@/lib/components/ui/card';
 
 export const TechCarousel: React.FC<{ technologies: Technology[] }> = ({
   technologies,

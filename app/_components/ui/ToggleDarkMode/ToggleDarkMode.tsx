@@ -2,7 +2,7 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { Toggle } from '@/components/ui/toggle';
+import { Toggle } from '@/lib/components/ui/toggle';
 
 export function ToggleDarkMode() {
   const { setTheme, resolvedTheme } = useTheme();

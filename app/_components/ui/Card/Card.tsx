@@ -11,7 +11,7 @@ import {
   CardTitle,
   CardContent,
   CardFooter,
-} from '@/ui/card';
+} from '@/lib/components/ui/card';
 
 const ImageSection = ({
   imageSrc,
