@@ -74,27 +74,27 @@
     "cta2": "Download my resume",
     "experiences": [
       {
-        "title": "Freelancing",
+        "title": "Freelancer",
         "company": "My company",
         "date": "nov 2024 - present"
       },
       {
-        "title": "Specialisation React and Self-training Next.js",
+        "title": "React Specialization and Self-training Next.js",
         "company": "O'Clock School",
         "date": "jul 2023 - present"
       },
       {
-        "title": "Web developer and Scrum Master",
+        "title": "Full-Stack JavaScript Web developer and Scrum Master",
         "company": "O'Clock School",
         "date": "may - jun 2024"
       },
       {
-        "title": "Apprentice Web developer",
+        "title": "Full-Stack JavaScript Web Developer Learner",
         "company": "O'Clock School",
         "date": "dec 2023 - jun 2024"
       },
       {
-        "title": "Stage Web developer front-end",
+        "title": "Front-end Developer Intern",
         "company": "Chimenbou sole proprietorship",
         "date": "jul 2023"
       },
