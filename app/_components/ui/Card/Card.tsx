@@ -63,7 +63,7 @@ export const CardComponent: React.FC<CardProps> = ({
             {experiences && experiences.length > 0 && (
               <CardContent>
                 <ExperiencesSection
-                  className='h-auto rounded-full p-2'
+                  className='h-auto rounded-full'
                   experiences={experiences}
                 />
               </CardContent>
