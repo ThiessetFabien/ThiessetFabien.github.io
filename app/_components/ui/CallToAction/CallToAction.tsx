@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/lib/components/ui/button';
+
 import { Section } from '@/components/Section/Section';
 import CardProps from '@/types/CardProps';
 
@@ -19,7 +20,6 @@ export const CallToAction: React.FC<CardProps> = ({
           className='mb-4 flex w-full items-center justify-center text-center'
         >
           {(cta1 ?? '').toLocaleUpperCase()}
-          <span className='ml-2'>&rarr;</span>
         </Button>
       </Link>
       <Link href={`${href2}`}>

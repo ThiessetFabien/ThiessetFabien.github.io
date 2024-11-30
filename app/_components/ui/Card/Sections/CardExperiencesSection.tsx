@@ -1,6 +1,8 @@
+import { MapPin, CalendarClock } from 'lucide-react';
 import { Experiences } from '@/types/Experiences';
 import { CardTitle } from '@/lib/components/ui/card';
 import { Skeleton } from '@/lib/components/ui/skeleton';
+import { JSX } from 'react';
 
 export const ExperiencesSection = ({
   experiences,
@@ -8,28 +10,38 @@ export const ExperiencesSection = ({
 }: {
   experiences: Experiences[];
   className?: string;
-}) => (
-  <div>
-    {experiences.map((experience, index) => (
-      <div key={index} className='space-2 flex items-center'>
-        <CardTitle
-          className={`${className} w-2/3 max-w-3xl font-caption text-xl leading-tight tracking-tight`}
-        >
-          {experience.title}
-        </CardTitle>
-        <div className='flex w-1/3 flex-col'>
-          <Skeleton
-            className={`${className} m-2 text-center text-sm font-bold`}
+}) => {
+  const isFinished = (experience: Experiences) => {
+    return experience.date.includes('present')
+      ? ''
+      : 'line-through text-secondary';
+  };
+
+  return (
+    <div>
+      {experiences.map((experience, index) => (
+        <div key={index} className='space-2 flex flex-col'>
+          <CardTitle
+            className={`${className} max-w-3xl font-caption text-xl leading-tight tracking-tight ${isFinished(experience)}`}
           >
-            {experience.company}
-          </Skeleton>
-          <Skeleton
-            className={`${className} m-2 text-center text-sm font-light`}
-          >
-            {experience.date}
-          </Skeleton>
+            {experience.title}
+          </CardTitle>
+          <div className='flex flex-row'>
+            <Skeleton
+              className={`${className} m-1 flex items-center text-center text-xs font-bold ${isFinished(experience)}`}
+            >
+              <MapPin className='mr-1' />
+              {experience.company}
+            </Skeleton>
+            <Skeleton
+              className={`${className} m-1 flex items-center text-center text-xs font-bold ${isFinished(experience)}`}
+            >
+              <CalendarClock className='mr-1' />
+              {experience.date}
+            </Skeleton>
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-);
+      ))}
+    </div>
+  );
+};
