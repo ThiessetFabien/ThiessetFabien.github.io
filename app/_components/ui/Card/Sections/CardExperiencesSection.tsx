@@ -16,9 +16,12 @@ export const ExperiencesSection = ({
       ? ''
       : 'line-through text-secondary';
   };
+<<<<<<< HEAD
   const noCompagny = (experience: Experiences) => {
     return experience.company === '' ? 'hidden' : '';
   };
+=======
+>>>>>>> 435698ed1bcb879833a4ed8593d2490a13ec10c0
 
   return (
     <div>
