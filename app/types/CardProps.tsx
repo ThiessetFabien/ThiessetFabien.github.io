@@ -5,6 +5,7 @@ export default interface CardProps {
   imageSrc?: string;
   imageAlt?: string;
   title?: string;
+  description?: string;
   cta1?: string;
   cta2?: string;
   href1?: string;
@@ -13,4 +14,5 @@ export default interface CardProps {
   experiences?: Experiences[];
   content?: React.ReactNode;
   technologies?: Technologies[];
+  className?: string;
 }
