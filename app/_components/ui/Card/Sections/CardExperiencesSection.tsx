@@ -21,7 +21,7 @@ export const ExperiencesSection = ({
   };
 
   return (
-    <ScrollArea className='h-[16.6rem] w-full rounded-md border p-2'>
+    <ScrollArea className='h-[16.5rem] w-full rounded-md border p-4'>
       {experiences.map((experience, index) => (
         <div
           key={index}

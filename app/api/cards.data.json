@@ -7,7 +7,7 @@
     "cta2": "Discover my works",
     "href1": "#",
     "href2": "#",
-    "content": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional."
+    "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional."
   },
   {
     "title": "I ❤️ Technologies",
@@ -65,11 +65,11 @@
         "slug": "tailwindcss/tailwindcss-original"
       }
     ],
-    "content": "Currently using"
+    "description": "Currently using"
   },
   {
     "title": "1 year of experience in web development",
-    "content": "5 years of experience in project coordination and the first label of kindness with 20 years of experience in the paramedical field",
+    "description": "5 years of experience in project coordination and the first label of kindness with 20 years of experience in the paramedical field",
     "cta1": "My resume",
     "cta2": "Download my resume",
     "experiences": [
@@ -118,6 +118,6 @@
   {
     "title": "Available for Mobile, Vehicle, and Remote in France",
     "map": true,
-    "content": "Click on the map to see the locations where I can work on-site every day."
+    "description": "Click on the map to see the locations where I can work on-site."
   }
 ]

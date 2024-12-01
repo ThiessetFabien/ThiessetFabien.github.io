@@ -10,9 +10,9 @@ import {
   CardTitle,
   CardContent,
   CardFooter,
+  CardDescription,
 } from '@/lib/components/ui/card';
 import { ImageSection } from '@/components/ui/Card/Sections/CardImageSection';
-import { TitleSection } from '@/components/ui/Card/Sections/CardTitleSection';
 import { ContentSection } from '@/components/ui/Card/Sections/CardContentSection';
 import { ExperiencesSection } from '@/components/ui/Card/Sections/CardExperiencesSection';
 
@@ -20,6 +20,7 @@ export const CardComponent: React.FC<CardProps> = ({
   imageSrc,
   imageAlt,
   title,
+  description,
   cta1,
   cta2,
   href1,
@@ -46,33 +47,39 @@ export const CardComponent: React.FC<CardProps> = ({
             <Map />
           </CardContent>
         )}
-        {title && (
+        {title && description && (
           <CardHeader>
-            <TitleSection
-              className={'font-caption text-2xl leading-tight tracking-tight'}
-              title={title}
-            />
+            <CardTitle className='font-caption text-2xl leading-tight tracking-tight'>
+              {title}
+            </CardTitle>
+            <CardDescription className='text-base font-light leading-relaxed'>
+              {description}
+            </CardDescription>
           </CardHeader>
         )}
-        {content && (
+        {experiences && !technologies && (
           <CardContent>
             <ContentSection
-              className='font-body max-w-prose text-base font-light leading-relaxed'
+              className='max-w-prose text-base font-light leading-relaxed'
               content={content}
             />
-            {experiences && experiences.length > 0 && (
-              <CardContent>
-                <ExperiencesSection
-                  className='h-auto rounded-full'
-                  experiences={experiences}
-                />
-              </CardContent>
-            )}
+
+            <ExperiencesSection
+              className='max-w-prose text-base font-light leading-relaxed'
+              experiences={experiences}
+            />
           </CardContent>
         )}
         {technologies && technologies.length > 0 && (
           <CardContent>
-            <TechCarousel technologies={technologies} />
+            <ContentSection
+              className='max-w-prose text-base font-light leading-relaxed'
+              content={content}
+            />
+            <TechCarousel
+              className='w-full text-base font-light leading-relaxed'
+              technologies={technologies}
+            />
           </CardContent>
         )}
         {cta1 && cta2 && href1 && href2 && (
