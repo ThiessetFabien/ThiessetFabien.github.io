@@ -22,7 +22,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
   className,
 }) => {
   const isFinished = (date: string) => {
-    return date.includes('present') ? '' : 'line-through text-secondary';
+    return date.includes('present') ? '' : 'line-through text-muted-foreground';
   };
 
   const hideCompagny = (company: string) => {
@@ -50,7 +50,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
                 >
                   {developer.title}
                 </CardTitle>
-                <div className='flex w-1/3 flex-col'>
+                <div className='flex flex-col'>
                   <Badge
                     variant='outline'
                     className={cn(
@@ -92,7 +92,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
             Humanitude label.
           </p>
           <CollapsibleTrigger asChild>
-            <Button variant='ghost' size='sm'>
+            <Button variant='outline' size='sm'>
               <ChevronsUpDown className='h-4 w-4' />
               <span className='sr-only'>Toggle</span>
             </Button>
@@ -100,10 +100,57 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
         </div>
         <CollapsibleContent className='space-y-2'>
           <div className='rounded-md border px-4 py-2 font-mono text-sm shadow-sm'>
-            @radix-ui/colors
-          </div>
-          <div className='rounded-md border px-4 py-2 font-mono text-sm shadow-sm'>
-            @stitches/react
+            {experiences.map((experience) => (
+              <>
+                {experience.projectCoordinator.map(
+                  (projectCoordinator, projectCooIndex) => (
+                    <div
+                      key={projectCooIndex}
+                      className='flex items-center justify-between space-x-3'
+                    >
+                      <CardTitle
+                        className={cn(
+                          className,
+                          'max-w-3xl font-caption text-xl leading-tight tracking-tight',
+                          isFinished(projectCoordinator.date)
+                        )}
+                      >
+                        {projectCoordinator.title}
+                      </CardTitle>
+                      <div className='flex flex-col'>
+                        <Badge
+                          variant='outline'
+                          className={cn(
+                            className,
+                            'm-1 flex w-full items-center justify-end border-0 text-right text-sm font-bold',
+                            hideCompagny(projectCoordinator.company)
+                          )}
+                        >
+                          {projectCoordinator.company}
+                          <MapPin
+                            size={20}
+                            className={cn(
+                              'ml-1',
+                              hideCompagny(projectCoordinator.company)
+                            )}
+                          />
+                        </Badge>
+                        <Badge
+                          variant='outline'
+                          className={cn(
+                            className,
+                            'm-1 flex w-full items-center justify-end border-0 text-right text-xs font-light'
+                          )}
+                        >
+                          {projectCoordinator.date}
+                          <CalendarClock size={20} className='ml-1' />
+                        </Badge>
+                      </div>
+                    </div>
+                  )
+                )}
+              </>
+            ))}
           </div>
         </CollapsibleContent>
       </Collapsible>{' '}
