@@ -1,5 +1,6 @@
 import { Technologies } from './Technologies';
 import { Experiences } from './Experiences';
+import { OtherExperiences } from './OtherExperiences';
 
 export default interface CardProps {
   imageSrc?: string;
@@ -12,6 +13,7 @@ export default interface CardProps {
   href2?: string;
   map?: boolean;
   experiences?: Experiences[];
+  otherExperiences?: OtherExperiences[];
   content?: React.ReactNode;
   technologies?: Technologies[];
   className?: string;
