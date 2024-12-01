@@ -4,20 +4,22 @@ import { Button } from '@/lib/components/ui/button';
 
 import { Section } from '@/components/Section/Section';
 import CardProps from '@/types/CardProps';
+import { cn } from '@/lib/utils';
 
 export const CallToAction: React.FC<CardProps> = ({
   cta1,
   cta2,
   href1,
   href2,
+  className,
 }) => {
   return (
-    <Section>
+    <Section className={cn(className)}>
       <Link href={`${href1}`}>
         <Button
           size='lg'
           variant={'default'}
-          className='mb-4 flex w-full items-center justify-center text-center'
+          className='mb-4 flex w-full items-center justify-evenly text-center'
         >
           {(cta1 ?? '').toLocaleUpperCase()}
         </Button>
