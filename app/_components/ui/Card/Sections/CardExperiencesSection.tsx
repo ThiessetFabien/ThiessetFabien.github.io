@@ -86,7 +86,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
         onOpenChange={setIsOpen}
         className='w-full space-y-2'
       >
-        <div className='flex items-center justify-between space-x-4 px-4'>
+        <div className='flex items-center justify-between space-x-4'>
           <p className='text-base font-light leading-relaxed text-muted-foreground'>
             Over 6 years of professional experience in project coordination and
             Humanitude label.

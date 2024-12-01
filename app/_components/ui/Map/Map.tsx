@@ -1,16 +1,17 @@
-import React from 'react';
-import { MapContainer, TileLayer, useMapEvents, Circle } from 'react-leaflet';
+import React, { useEffect } from 'react';
+import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
+import useIntersectionObserver from '@/hooks/IntersectionObserver';
 
 interface LocationEventsProps {
   position: [number, number];
 }
 
 const LocationEvents: React.FC<LocationEventsProps> = ({ position }) => {
-  const map = useMapEvents({
-    click: () => {
-      map.flyTo(position, 10);
-    },
-  });
+  const map = useMap();
+
+  useEffect(() => {
+    map.flyTo(position, 10);
+  }, [map, position]);
 
   return null;
 };
@@ -20,14 +21,25 @@ export const Map: React.FC = () => {
   const myPosition: [number, number] = [50.381645, 3.053234];
   const radius = 60000 / 2;
 
+  const [ref, isIntersecting] = useIntersectionObserver({
+    root: null,
+    rootMargin: '0px',
+    threshold: 1.0,
+  });
+
   return (
-    <div className='h-[41.6rem] w-full'>
+    <div ref={ref} className='h-[41.6rem] w-full'>
       <MapContainer
         center={francePosition}
         zoom={6}
         className='h-full w-full'
         scrollWheelZoom={false}
       >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        />
+        {isIntersecting && <LocationEvents position={myPosition} />}
         <Circle
           center={myPosition}
           radius={radius}
@@ -35,12 +47,9 @@ export const Map: React.FC = () => {
           fillColor='blue'
           fillOpacity={0.2}
         />
-        <LocationEvents position={myPosition} />
-        <TileLayer
-          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
       </MapContainer>
     </div>
   );
 };
+
+export default Map;

@@ -12,7 +12,7 @@ export const TechCarousel: React.FC<{
 }> = ({ technologies, className }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' },
-    [Autoplay({ delay: 800, stopOnInteraction: false })]
+    [Autoplay({ delay: 500, jump: true, stopOnInteraction: false })]
   );
 
   useEffect(() => {
