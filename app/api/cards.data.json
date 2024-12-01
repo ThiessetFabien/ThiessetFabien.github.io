@@ -68,62 +68,72 @@
     "description": "Currently using"
   },
   {
-    "title": "1 year of experience in web development",
-    "description": "5 years of experience in project coordination and the first label of kindness with 20 years of experience in the paramedical field",
+    "title": "One year of experience",
     "cta1": "My resume",
     "cta2": "Download my resume",
     "experiences": [
       {
-        "title": "Freelancer",
-        "company": "My company SP.",
-        "date": "nov 2024 - present"
-      },
-      {
-        "title": "React & I++ Specializations with Self-training Next.js",
-        "company": "Replay O'Clock",
-        "date": "jul 2023 - present"
-      },
-      {
-        "title": "Full-Stack JavaScript Web developer and Scrum Master",
-        "company": "O'Clock",
-        "date": "may - jun 2024"
-      },
-      {
-        "title": "Data API Sepcialization",
-        "company": "O'Clock",
-        "date": "apr 2024"
-      },
-      {
-        "title": "Full-Stack JavaScript Web Developer Learner",
-        "company": "O'Clock",
-        "date": "dec 2023 - jun 2024"
-      },
-      {
-        "title": "Front-end Developer Intern",
-        "company": "Chimenbou SP.",
-        "date": "jul 2023"
-      },
-      {
-        "title": "Professional Transition Project.",
-        "company": "",
-        "date": "may 2023 - sep 2023"
-      },
-      {
-        "title": "Self-training Front-end",
-        "company": "Grafikart Cursus",
-        "date": "avr 2023 - dec 2023"
-      }
-    ],
-    "otherExperiences": [
-      {
-        "title": "Daily Life Referent",
-        "company": "Helene Borel Center",
-        "date": "2023 - 2024"
-      },
-      {
-        "title": "Humanitude Coordinator",
-        "company": "Helene Borel Center",
-        "date": "2018 - 2023"
+        "developer": [
+          {
+            "title": "Freelancer",
+            "company": "My company SP.",
+            "date": "nov 2024 - present"
+          },
+          {
+            "title": "React & I++ Specializations with Self-training Next.js",
+            "company": "Replay O'Clock",
+            "date": "jul 2023 - present"
+          },
+          {
+            "title": "Full-Stack JavaScript Web developer and Scrum Master",
+            "company": "O'Clock",
+            "date": "may - jun 2024"
+          },
+          {
+            "title": "Data API Sepcialization",
+            "company": "O'Clock",
+            "date": "apr 2024"
+          },
+          {
+            "title": "Full-Stack JavaScript Web Developer Learner",
+            "company": "O'Clock",
+            "date": "dec 2023 - jun 2024"
+          },
+          {
+            "title": "Front-end Developer Intern",
+            "company": "Chimenbou SP.",
+            "date": "jul 2023"
+          },
+          {
+            "title": "Professional Transition Project",
+            "company": "",
+            "date": "may 2023 - sep 2023"
+          },
+          {
+            "title": "Self-training Front-end",
+            "company": "Grafikart Cursus",
+            "date": "avr 2023 - dec 2023"
+          }
+        ],
+        "projectCoordinator": [
+          {
+            "title": "Daily Life Referent",
+            "company": "Helene Borel Center",
+            "date": "2018 - 2024"
+          },
+          {
+            "title": "Humanitude Coordinator",
+            "company": "Helene Borel Center",
+            "date": "2018 - 2023"
+          }
+        ],
+        "paramedical": [
+          {
+            "title": "Nursing Assistant",
+            "company": "Helene Borel Center",
+            "date": "2004 - present"
+          }
+        ]
       }
     ]
   },

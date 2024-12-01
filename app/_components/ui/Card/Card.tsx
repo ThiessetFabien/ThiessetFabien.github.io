@@ -14,7 +14,7 @@ import {
 } from '@/lib/components/ui/card';
 import { ImageSection } from '@/components/ui/Card/Sections/CardImageSection';
 import { ContentSection } from '@/components/ui/Card/Sections/CardContentSection';
-import { ExperiencesSection } from '@/components/ui/Card/Sections/CardExperiencesSection';
+import { CardExperiencesSection } from '@/components/ui/Card/Sections/CardExperiencesSection';
 
 export const CardComponent: React.FC<CardProps> = ({
   imageSrc,
@@ -47,7 +47,7 @@ export const CardComponent: React.FC<CardProps> = ({
             <Map />
           </CardContent>
         )}
-        {title && description && (
+        {title && (
           <CardHeader>
             <CardTitle className='font-caption text-2xl leading-tight tracking-tight'>
               {title}
@@ -57,14 +57,14 @@ export const CardComponent: React.FC<CardProps> = ({
             </CardDescription>
           </CardHeader>
         )}
-        {experiences && !technologies && (
+        {experiences && experiences.length > 0 && !technologies && (
           <CardContent>
             <ContentSection
               className='max-w-prose text-base font-light leading-relaxed'
               content={content}
             />
 
-            <ExperiencesSection
+            <CardExperiencesSection
               className='max-w-prose text-base font-light leading-relaxed'
               experiences={experiences}
             />
@@ -85,6 +85,7 @@ export const CardComponent: React.FC<CardProps> = ({
         {cta1 && cta2 && href1 && href2 && (
           <CardFooter>
             <CallToAction
+              className='flex flex-row'
               cta1={cta1 || ''}
               cta2={cta2 || ''}
               href1={href1 || ''}
