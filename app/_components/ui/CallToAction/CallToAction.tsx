@@ -20,13 +20,8 @@ export const CallToAction: React.FC<CardProps> = ({
   };
 
   return (
-    <Section
-      className={cn(
-        'flex h-auto w-full items-center justify-evenly',
-        className
-      )}
-    >
-      <div>
+    <Section className={cn('flex h-auto w-full items-center', className)}>
+      <div className='mr-4'>
         <a href={`/${href1}`} {...downloadAction(downloadActive1)}>
           <Button
             size='lg'

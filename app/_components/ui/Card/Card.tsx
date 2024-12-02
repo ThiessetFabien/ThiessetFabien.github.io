@@ -13,7 +13,6 @@ import {
   CardDescription,
 } from '@/lib/components/ui/card';
 import { ImageSection } from '@/components/ui/Card/Sections/CardImageSection';
-import { ContentSection } from '@/components/ui/Card/Sections/CardContentSection';
 import { CardExperiencesSection } from '@/components/ui/Card/Sections/CardExperiencesSection';
 
 export const CardComponent: React.FC<CardProps> = ({
@@ -60,12 +59,8 @@ export const CardComponent: React.FC<CardProps> = ({
           </CardHeader>
         )}
         {experiences && experiences.length > 0 && !technologies && (
-          <CardContent>
-            <ContentSection
-              className='max-w-prose text-base font-light leading-relaxed'
-              content={content}
-            />
-
+          <CardContent className='max-w-prose text-base font-light leading-relaxed'>
+            {content}
             <CardExperiencesSection
               className='max-w-prose text-base font-light leading-relaxed'
               experiences={experiences}
@@ -73,11 +68,8 @@ export const CardComponent: React.FC<CardProps> = ({
           </CardContent>
         )}
         {technologies && technologies.length > 0 && (
-          <CardContent>
-            <ContentSection
-              className='max-w-prose text-base font-light leading-relaxed'
-              content={content}
-            />
+          <CardContent className='max-w-prose text-base font-light leading-relaxed'>
+            {content}
             <TechCarousel
               className='w-full text-base font-light leading-relaxed'
               technologies={technologies}

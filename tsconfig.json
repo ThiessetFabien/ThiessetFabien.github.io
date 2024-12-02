@@ -22,7 +22,7 @@
       "@/components/*": ["_components/*"],
       "@/ui/*": ["_components/ui/*"],
       "@/layout/*": ["_components/layout/*"],
-      "@api/*": ["api/*"],
+      "@api/*": ["pages/api/*"],
       "@/config/*": ["config/*"],
       "@/fonts/*": ["fonts/*"],
       "@/lib/*": ["lib/*"],
@@ -38,7 +38,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/page.tsx"
+    "app/pages/page.tsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 import '@/styles/reset.css';
 import { Poppins } from '@/fonts/Poppins';
-import { OrpheusPro } from './fonts/OrpheusPro';
+import { OrpheusPro } from '@/fonts/OrpheusPro';
 
 import '@/styles/globals.css';
 import { Header } from '@/components/layout/Header/Header';

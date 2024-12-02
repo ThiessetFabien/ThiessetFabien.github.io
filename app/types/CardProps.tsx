@@ -15,7 +15,8 @@ export default interface CardProps {
   map?: boolean;
   experiences?: Experiences[];
   otherExperiences?: Experiences[];
-  content?: React.ReactNode;
   technologies?: Technologies[];
+
+  content?: React.ReactNode;
   className?: string;
 }
