@@ -150,6 +150,44 @@
     ]
   },
   {
+    "project": [
+      {
+        "title": "This portfolio",
+        "organisation": "",
+        "imageSrc": "",
+        "imageAlt": "",
+        "tags": ["TypeScript", "React.js", "Next.js", "Tailwind CSS"]
+      },
+      {
+        "title": "Casalink - Single Page Application",
+        "organisation": "Apotheosis O'Clock",
+        "imageSrc": "",
+        "imageAlt": "",
+        "tags": [
+          "Back-end",
+          "Node.js",
+          "Express.js",
+          "PostgreSQL",
+          "Mocha/Chai"
+        ]
+      },
+      {
+        "title": "Casalink - Single Page Application",
+        "organisation": "Apotheosis O'Clock",
+        "imageSrc": "",
+        "imageAlt": "",
+        "tags": [
+          "Front-end",
+          "TypeScript",
+          "React.js",
+          "Redux.js",
+          "SASS",
+          "Axios"
+        ]
+      }
+    ]
+  },
+  {
     "title": "Available for Mobile, Vehicle, and Remote in France",
     "map": true,
     "description": "Click on the map to see the locations where I can work on-site."

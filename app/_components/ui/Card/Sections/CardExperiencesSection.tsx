@@ -36,8 +36,8 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
   return (
     <div>
       <ScrollArea className='mb-4 h-[17.8rem] w-full rounded-md border p-4'>
-        {experiences.map((experience) => (
-          <>
+        {experiences.map((experience, expIndex) => (
+          <div key={expIndex}>
             {experience.developer.map((developer, devIndex) => (
               <div
                 key={devIndex}
@@ -80,7 +80,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
                 </div>
               </div>
             ))}
-          </>
+          </div>
         ))}
       </ScrollArea>
       <Collapsible
@@ -102,8 +102,8 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
         </div>
         <CollapsibleContent className='space-y-2'>
           <div className='rounded-md border px-4 py-2 text-sm shadow-sm'>
-            {experiences.map((experience) => (
-              <>
+            {experiences.map((experience, expIndex) => (
+              <div key={expIndex}>
                 {experience.projectCoordinator.map(
                   (projectCoordinator, projectCooIndex) => (
                     <div
@@ -151,7 +151,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
                     </div>
                   )
                 )}
-              </>
+              </div>
             ))}
           </div>
         </CollapsibleContent>
@@ -169,8 +169,8 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
         </div>
         <CollapsibleContent className='space-y-2'>
           <div className='rounded-md border px-4 py-2 text-sm shadow-sm'>
-            {experiences.map((experience) => (
-              <>
+            {experiences.map((experience, expIndex) => (
+              <div key={expIndex}>
                 {experience.nurseAssistant.map(
                   (nurseAssistant, projectCooIndex) => (
                     <div
@@ -218,7 +218,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
                     </div>
                   )
                 )}
-              </>
+              </div>
             ))}
           </div>
         </CollapsibleContent>
