@@ -58,6 +58,15 @@ export const CardComponent: React.FC<CardProps> = ({
             </CardDescription>
           </CardHeader>
         )}
+        {technologies && technologies.length > 0 && (
+          <CardContent className='max-w-prose text-base font-light leading-relaxed'>
+            {content}
+            <TechCarousel
+              className='w-full text-base font-light leading-relaxed'
+              technologies={technologies}
+            />
+          </CardContent>
+        )}
         {experiences && experiences.length > 0 && !technologies && (
           <CardContent className='max-w-prose text-base font-light leading-relaxed'>
             {content}
@@ -67,12 +76,12 @@ export const CardComponent: React.FC<CardProps> = ({
             />
           </CardContent>
         )}
-        {technologies && technologies.length > 0 && (
+        {projects && projects.length > 0 && !technologies && !experiences && (
           <CardContent className='max-w-prose text-base font-light leading-relaxed'>
             {content}
-            <TechCarousel
-              className='w-full text-base font-light leading-relaxed'
-              technologies={technologies}
+            <CardProjectsSection
+              className='max-w-prose text-base font-light leading-relaxed'
+              projects={projects}
             />
           </CardContent>
         )}
