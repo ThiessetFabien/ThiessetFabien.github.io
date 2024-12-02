@@ -14,25 +14,34 @@ export const CallToAction: React.FC<CardProps> = ({
   className,
 }) => {
   return (
-    <Section className={cn(className)}>
-      <Link href={`${href1}`}>
-        <Button
-          size='lg'
-          variant={'default'}
-          className='mb-4 flex w-full items-center justify-evenly text-center'
-        >
-          {(cta1 ?? '').toLocaleUpperCase()}
-        </Button>
-      </Link>
-      <Link href={`${href2}`}>
-        <Button
-          size='lg'
-          variant={'outline'}
-          className='flex w-full items-center justify-center text-center'
-        >
-          {(cta2 ?? '').toLocaleUpperCase()}
-        </Button>
-      </Link>
+    <Section
+      className={cn(
+        'flex h-auto w-full items-center justify-evenly',
+        className
+      )}
+    >
+      <div>
+        <Link href={`${href1}`}>
+          <Button
+            size='lg'
+            variant={'default'}
+            className='flex w-full items-center justify-evenly text-center'
+          >
+            {(cta1 ?? '').toLocaleUpperCase()}
+          </Button>
+        </Link>
+      </div>
+      <div>
+        <Link href={`${href2}`}>
+          <Button
+            size='lg'
+            variant={'outline'}
+            className='flex w-full items-center justify-center text-center'
+          >
+            {(cta2 ?? '').toLocaleUpperCase()}
+          </Button>
+        </Link>
+      </div>
     </Section>
   );
 };

@@ -81,22 +81,22 @@
           },
           {
             "title": "React & I++ Specializations",
-            "company": "Replay O'Clock",
+            "company": "O'Clock - Replay",
             "date": "jul 2023 - present"
           },
           {
             "title": "Full-Stack Web developer and Scrum Master",
-            "company": "O'Clock",
+            "company": "O'Clock - School",
             "date": "may - jun 2024"
           },
           {
             "title": "Data API Sepcialization",
-            "company": "O'Clock",
+            "company": "O'Clock - School",
             "date": "apr 2024"
           },
           {
             "title": "Full-Stack JavaScript Web Developer Learner",
-            "company": "O'Clock",
+            "company": "O'Clock - School",
             "date": "dec 2023 - jun 2024"
           },
           {
@@ -118,13 +118,25 @@
         "projectCoordinator": [
           {
             "title": "Daily Life Referent",
-            "company": "Helene Borel Center",
+            "company": "Helene Borel Center - Raimbeaucourt",
             "date": "2018 - 2024"
           },
           {
             "title": "Humanitude Coordinator",
-            "company": "Helene Borel Center",
+            "company": "Helene Borel Center - Raimbeaucourt",
             "date": "2018 - 2023"
+          }
+        ],
+        "nurseAssistant": [
+          {
+            "title": "Nurse Assistant",
+            "company": "UDAPEI - MAS Thumeries",
+            "date": "2024 - present"
+          },
+          {
+            "title": "Nurse Assistant",
+            "company": "Helene Borel Center - Raimbeaucourt",
+            "date": "2009 - 2024"
           }
         ]
       }
