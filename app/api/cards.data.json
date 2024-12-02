@@ -4,9 +4,11 @@
     "imageSrc": "/images/photo.png",
     "imageAlt": "Picture of Fabien",
     "cta1": "Hire an expert",
-    "cta2": "Discover my works",
     "href1": "#",
+    "downloadActive1": false,
+    "cta2": "Discover my works",
     "href2": "#",
+    "downloadActive2": false,
     "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional."
   },
   {
@@ -70,9 +72,12 @@
   {
     "title": "One year of experience",
     "cta1": "My resume",
-    "href1": "#",
+    "href1": "CV.pdf",
+    "downloadActive1": false,
     "cta2": "Download my resume",
-    "href2": "#",
+    "href2": "CV.pdf",
+    "downloadActive2": true,
+    "description": "CV 2024",
     "experiences": [
       {
         "developer": [
@@ -120,24 +125,24 @@
         "projectCoordinator": [
           {
             "title": "Daily Life Referent",
-            "company": "Helene Borel Center - Raimbeaucourt",
+            "company": "Helene Borel Medicalized Home Raimbeaucourt",
             "date": "2018 - 2024"
           },
           {
             "title": "Humanitude Coordinator",
-            "company": "Helene Borel Center - Raimbeaucourt",
+            "company": "Helene Borel Medicalized Home Raimbeaucourt",
             "date": "2018 - 2023"
           }
         ],
         "nurseAssistant": [
           {
             "title": "Nurse Assistant",
-            "company": "UDAPEI - MAS Thumeries",
+            "company": "UDAPEI MAS Thumeries",
             "date": "2024 - present"
           },
           {
             "title": "Nurse Assistant",
-            "company": "Helene Borel Center - Raimbeaucourt",
+            "company": "Helene Borel Center",
             "date": "2009 - 2024"
           }
         ]

@@ -22,9 +22,11 @@ export const CardComponent: React.FC<CardProps> = ({
   title,
   description,
   cta1,
-  cta2,
   href1,
+  downloadActive1,
+  cta2,
   href2,
+  downloadActive2,
   map,
   experiences,
   content,
@@ -82,14 +84,16 @@ export const CardComponent: React.FC<CardProps> = ({
             />
           </CardContent>
         )}
-        {cta1 && cta2 && href1 && href2 && (
+        {cta1 && href1 && cta2 && href2 && (
           <CardFooter>
             <CallToAction
               className='flex flex-row'
               cta1={cta1 || ''}
-              cta2={cta2 || ''}
               href1={href1 || ''}
+              downloadActive1={downloadActive1}
+              cta2={cta2 || ''}
               href2={href2 || ''}
+              downloadActive2={downloadActive2}
             />
           </CardFooter>
         )}

@@ -8,11 +8,17 @@ import { cn } from '@/lib/utils';
 
 export const CallToAction: React.FC<CardProps> = ({
   cta1,
-  cta2,
   href1,
+  downloadActive1,
+  cta2,
   href2,
+  downloadActive2,
   className,
 }) => {
+  const downloadAction = (downloadActive: boolean) => {
+    return downloadActive ? { download: true } : { target: '_blank' };
+  };
+
   return (
     <Section
       className={cn(
@@ -21,27 +27,29 @@ export const CallToAction: React.FC<CardProps> = ({
       )}
     >
       <div>
-        <Link href={`${href1}`}>
+        <a href={`/${href1}`} {...downloadAction(downloadActive1)}>
           <Button
             size='lg'
-            variant={'default'}
+            variant='default'
             className='flex w-full items-center justify-evenly text-center'
           >
             {(cta1 ?? '').toLocaleUpperCase()}
           </Button>
-        </Link>
+        </a>
       </div>
       <div>
-        <Link href={`${href2}`}>
+        <a href={`/${href2}`} {...downloadAction(downloadActive2)}>
           <Button
             size='lg'
-            variant={'outline'}
-            className='flex w-full items-center justify-center text-center'
+            variant='outline'
+            className='flex w-full items-center justify-evenly text-center'
           >
             {(cta2 ?? '').toLocaleUpperCase()}
           </Button>
-        </Link>
+        </a>
       </div>
     </Section>
   );
 };
+
+export default CallToAction;
