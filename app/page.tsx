@@ -16,6 +16,7 @@ import {
 } from '@/lib/components/ui/card';
 import { ImageSection } from '@/components/ui/Card/Sections/CardImageSection';
 import { CardExperiencesSection } from '@/components/ui/Card/Sections/CardExperiencesSection';
+import { CardProjectsSection } from '@/components/ui/Card/Sections/CardProjectsSection';
 
 const HomePage: React.FC = () => {
   return (
@@ -62,6 +63,14 @@ const HomePage: React.FC = () => {
                 <TechCarousel
                   className='w-full text-base font-light leading-relaxed'
                   technologies={cardProps.technologies}
+                />
+              </CardContent>
+            )}
+            {cardProps.projects && cardProps.projects.length > 0 && (
+              <CardContent>
+                <CardProjectsSection
+                  className='max-w-prose text-base font-light leading-relaxed'
+                  projects={cardProps.projects}
                 />
               </CardContent>
             )}

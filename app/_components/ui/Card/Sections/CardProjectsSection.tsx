@@ -4,46 +4,45 @@ import {
   CardDescription,
   CardContent,
   CardHeader,
+  Card,
 } from '@/lib/components/ui/card';
 import { Badge } from '@/lib/components/ui/badge';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';
-
-interface Project {
-  title: string;
-  organization: string;
-  tags: string[];
-}
+import { cn } from '@/lib/utils';
+import { Projects } from '@/types/Projects';
 
 interface CardProjectsSectionProps {
-  projects: Project[];
+  projects: Projects[];
+  className?: string;
 }
 
 export const CardProjectsSection: React.FC<CardProjectsSectionProps> = ({
   projects,
+  className,
 }) => {
   return (
-    <div className='p-4'>
-      <ScrollArea>
+    <>
+      <ScrollArea className={cn(className)}>
         {projects.map((project, projectIndex) => (
-          <div key={projectIndex} className='mb-4'>
+          <Card key={projectIndex} className='mb-4 rounded-xl border shadow'>
             <CardHeader>
-              <CardTitle className='font-caption text-2xl leading-tight tracking-tight'>
+              <CardTitle className='font-caption text-xl leading-tight tracking-tight'>
                 {project.title}
               </CardTitle>
-              <CardDescription className='text-base font-light leading-relaxed'>
+              <CardDescription className='text-sm font-light leading-relaxed'>
                 {project.organization}
               </CardDescription>
               <CardContent>
                 {project.tags.map((tag, tagIndex) => (
-                  <Badge key={tagIndex} className='mr-2'>
-                    {tag}
+                  <Badge key={tagIndex} variant='secondary' className='mr-2'>
+                    {tag.toString()}
                   </Badge>
                 ))}
               </CardContent>
             </CardHeader>
-          </div>
+          </Card>
         ))}
       </ScrollArea>
-    </div>
+    </>
   );
 };

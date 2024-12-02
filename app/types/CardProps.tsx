@@ -1,5 +1,6 @@
 import { Technologies } from './Technologies';
 import { Experiences } from './Experiences';
+import { Projects } from './Projects';
 
 export default interface CardProps {
   imageSrc?: string;
@@ -15,6 +16,7 @@ export default interface CardProps {
   map?: boolean;
   experiences?: Experiences[];
   otherExperiences?: Experiences[];
+  projects?: Projects[];
   technologies?: Technologies[];
 
   content?: React.ReactNode;

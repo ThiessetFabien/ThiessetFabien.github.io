@@ -22,7 +22,10 @@ export const TechCarousel: React.FC<{
   }, [emblaApi]);
 
   return (
-    <Card className={`overflow-hidden ${className}`} ref={emblaRef}>
+    <Card
+      className={`overflow-hidden rounded-xl border shadow ${className}`}
+      ref={emblaRef}
+    >
       <div className='flex'>
         {technologies.map((tech: Technologies, index: number) => (
           <div key={index} className='mx-4 flex flex-col items-center p-4'>
