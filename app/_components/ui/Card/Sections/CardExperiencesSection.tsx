@@ -1,3 +1,4 @@
+import React from 'react';
 import { MapPin, CalendarClock, ChevronsUpDown } from 'lucide-react';
 import { Experiences } from '@/types/Experiences';
 import { CardTitle } from '@/lib/components/ui/card';
@@ -10,7 +11,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/lib/components/ui/collapsible';
-import React from 'react';
 
 interface CardExperiencesSectionProps {
   experiences: Experiences[];
@@ -34,7 +34,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <div>
+    <>
       <ScrollArea className='mb-4 h-[17.8rem] w-full rounded-md border p-4'>
         {experiences.map((experience, expIndex) => (
           <div key={expIndex}>
@@ -223,7 +223,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
           </div>
         </CollapsibleContent>
       </Collapsible>{' '}
-    </div>
+    </>
   );
 };
 
