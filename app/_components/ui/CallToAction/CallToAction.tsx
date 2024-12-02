@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { Button } from '@/lib/components/ui/button';
 
 import { Section } from '@/components/Section/Section';
