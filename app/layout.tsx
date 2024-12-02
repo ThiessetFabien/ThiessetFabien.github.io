@@ -1,17 +1,21 @@
 'use client';
 import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 
-import './styles/fonts.scss';
-import './styles/reset.css';
+import { cn } from '@/lib/utils';
 
-import './styles/globals.css';
+import '@/styles/reset.css';
+import { Poppins } from '@/fonts/Poppins';
+import { OrpheusPro } from './fonts/OrpheusPro';
 
-import { Footer } from './components/layout/Footer/Footer';
-import { Header } from './components/layout/Header/Header';
+import '@/styles/globals.css';
+import { Header } from '@/components/layout/Header/Header';
+import { Footer } from '@/components/layout/Footer/Footer';
 
 const metadata: Metadata = {
-  title: 'Thiesset Fabien - Portfolio',
-  description: 'My personal portfolio crafted with ❤️ using Next.js',
+  title: 'Thiesset Fabien - Web developer',
+  description:
+    'Web developer about React, Next.js, TailwindCSS, TypeScript, and more.',
 };
 
 export default function RootLayout({
@@ -20,11 +24,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='fr'>
-      <body className='text-site-text-color bg-site-background-color'>
-        <Header />
-        {children}
-        <Footer />
+    <html lang='fr' className={'h-full'}>
+      <body
+        className={cn(
+          Poppins.variable,
+          OrpheusPro.variable,
+          'h-full bg-background font-sans text-foreground'
+        )}
+      >
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

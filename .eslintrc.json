@@ -4,11 +4,10 @@
     "next",
     "prettier",
     "next/core-web-vitals",
-    "plugin:tailwindcss/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["@next/next", "@typescript-eslint", "tailwindcss"],
+  "plugins": ["@next/next", "@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "overrides": [
     {
@@ -34,15 +33,11 @@
     "jsx-ally/label-has-associated-control": [2, { "assert": "either" }],
     "linebreak-style": 0,
     "no-restricted-imports": 0,
-    // warning
     "@next/next/google-font-display": 1,
     "@next/next/google-font-preconnect": 1,
-    // error
     "@next/next/inline-script-id": "error",
     "@next/next/no-assign-module-variable": "error",
     "@next/next/no-html-link-for-pages": "error",
-    "@next/next/no-sync-scripts": "error",
-    // off
-    "tailwindcss/classnames-order": "off"
+    "@next/next/no-sync-scripts": "error"
   }
 }
