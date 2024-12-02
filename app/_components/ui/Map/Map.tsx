@@ -4,6 +4,7 @@ import useIntersectionObserver from '@/hooks/IntersectionObserver';
 
 interface LocationEventsProps {
   position: [number, number];
+  ref?: React.RefObject<HTMLDivElement>;
 }
 
 const LocationEvents: React.FC<LocationEventsProps> = ({ position }) => {

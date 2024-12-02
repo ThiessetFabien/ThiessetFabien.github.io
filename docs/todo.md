@@ -20,7 +20,7 @@
 
 **Carte CV**
 
-- [ ] Titre "Curriculum Vitae"
+- [x] Titre "Curriculum Vitae"
 - [ ] Année d'actualisation
-- [ ] Lecture du CV
-- [ ] Téléchargement du CV
+- [x] Lecture du CV
+- [x] Téléchargement du CV
