@@ -7,7 +7,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["@next/next", "@typescript-eslint"],
+  "plugins": ["@next/next", "@typescript-eslint", "import", "jsx-a11y"],
   "parser": "@typescript-eslint/parser",
   "overrides": [
     {
@@ -38,6 +38,9 @@
     "@next/next/inline-script-id": "error",
     "@next/next/no-assign-module-variable": "error",
     "@next/next/no-html-link-for-pages": "error",
-    "@next/next/no-sync-scripts": "error"
+    "@next/next/no-sync-scripts": "error",
+    "import/extensions": "error",
+    "jsx-a11y/label-has-associated-control": "error",
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }
