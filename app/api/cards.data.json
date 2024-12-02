@@ -70,7 +70,9 @@
   {
     "title": "One year of experience",
     "cta1": "My resume",
+    "href1": "#",
     "cta2": "Download my resume",
+    "href2": "#",
     "experiences": [
       {
         "developer": [
