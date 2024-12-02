@@ -1,29 +1,157 @@
 [
   {
-    "title": "🚧🚧 En construction 🚧🚧",
-    "imageSrc": null,
-    "imageAlt": null,
-    "cta1": null,
-    "cta2": null,
-    "href": null,
-    "content": null
-  },
-  {
-    "title": "Développeur humain, créatif et innovant.",
+    "title": "Human, creative, and innovative developer.",
     "imageSrc": "/images/photo.png",
-    "imageAlt": "Photo de Fabien",
-    "cta1": "Embauchez un expert",
-    "cta2": "Découvrez mes projets",
-    "href": "#",
-    "content": "Soyons honnêtes et oeuvrons ensemble pour un monde accessible et humain. Vous avez besoin d'un site Web qui soit superbe et qui fonctionne réellement."
+    "imageAlt": "Picture of Fabien",
+    "cta1": "Hire an expert",
+    "href1": "#",
+    "downloadActive1": false,
+    "cta2": "Discover my works",
+    "href2": "#",
+    "downloadActive2": false,
+    "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional."
   },
   {
-    "title": "Véhiculé et mobile à 30 minutes et plus si télétravail",
-    "imageSrc": null,
-    "imageAlt": null,
-    "cta1": null,
-    "cta2": null,
-    "href": null,
-    "content": "Map"
+    "title": "I ❤️ Technologies",
+    "technologies": [
+      {
+        "name": "TypeScript",
+        "slug": "typescript/typescript-original"
+      },
+      {
+        "name": "React.js",
+        "slug": "react/react-original"
+      },
+      {
+        "name": "Node.js",
+        "slug": "nodejs/nodejs-original"
+      },
+      {
+        "name": "Express.js",
+        "slug": "express/express-original"
+      },
+      {
+        "name": "PostgreSQL",
+        "slug": "postgresql/postgresql-original"
+      },
+      {
+        "name": "MongoDB",
+        "slug": "mongodb/mongodb-original"
+      },
+      {
+        "name": "Docker",
+        "slug": "docker/docker-original"
+      },
+      {
+        "name": "Git",
+        "slug": "git/git-original"
+      },
+      {
+        "name": "GitHub",
+        "slug": "github/github-original"
+      },
+      {
+        "name": "Next.js",
+        "slug": "nextjs/nextjs-original"
+      },
+      {
+        "name": "Jest",
+        "slug": "jest/jest-plain"
+      },
+      {
+        "name": "SASS",
+        "slug": "sass/sass-original"
+      },
+      {
+        "name": "Tailwind CSS",
+        "slug": "tailwindcss/tailwindcss-original"
+      }
+    ],
+    "description": "Currently using"
+  },
+  {
+    "title": "One year of experience",
+    "cta1": "My resume",
+    "href1": "CV.pdf",
+    "downloadActive1": false,
+    "cta2": "Download my resume",
+    "href2": "CV.pdf",
+    "downloadActive2": true,
+    "description": "CV 2024",
+    "experiences": [
+      {
+        "developer": [
+          {
+            "title": "Freelancer",
+            "company": "My company SP.",
+            "date": "nov 2024 - present"
+          },
+          {
+            "title": "React & I++ Specializations",
+            "company": "O'Clock - Replay",
+            "date": "jul 2023 - present"
+          },
+          {
+            "title": "Full-Stack Web developer and Scrum Master",
+            "company": "O'Clock - School",
+            "date": "may - jun 2024"
+          },
+          {
+            "title": "Data API Sepcialization",
+            "company": "O'Clock - School",
+            "date": "apr 2024"
+          },
+          {
+            "title": "Full-Stack JavaScript Web Developer Learner",
+            "company": "O'Clock - School",
+            "date": "dec 2023 - jun 2024"
+          },
+          {
+            "title": "Front-end Developer Intern",
+            "company": "Chimenbou SP.",
+            "date": "jul 2023"
+          },
+          {
+            "title": "Professional Transition Project",
+            "company": "",
+            "date": "may 2023 - sep 2023"
+          },
+          {
+            "title": "Self-training Front-end",
+            "company": "Grafikart Cursus",
+            "date": "avr 2023 - dec 2023"
+          }
+        ],
+        "projectCoordinator": [
+          {
+            "title": "Daily Life Referent",
+            "company": "Helene Borel Medicalized Home Raimbeaucourt",
+            "date": "2018 - 2024"
+          },
+          {
+            "title": "Humanitude Coordinator",
+            "company": "Helene Borel Medicalized Home Raimbeaucourt",
+            "date": "2018 - 2023"
+          }
+        ],
+        "nurseAssistant": [
+          {
+            "title": "Nurse Assistant",
+            "company": "UDAPEI MAS Thumeries",
+            "date": "2024 - present"
+          },
+          {
+            "title": "Nurse Assistant",
+            "company": "Helene Borel Center",
+            "date": "2009 - 2024"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Available for Mobile, Vehicle, and Remote in France",
+    "map": true,
+    "description": "Click on the map to see the locations where I can work on-site."
   }
 ]
