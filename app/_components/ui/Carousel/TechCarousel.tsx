@@ -12,7 +12,7 @@ export const TechCarousel: React.FC<{
 }> = ({ technologies, className }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' },
-    [Autoplay({ delay: 500, jump: true, stopOnInteraction: false })]
+    [Autoplay({ delay: 500, stopOnInteraction: false })]
   );
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export const TechCarousel: React.FC<{
               alt={tech.name}
               width={100}
               height={100}
-              className={`h-full w-auto ${tech.slug.includes('express') ? 'filter-white' : ''}`}
+              className={`h-full w-auto ${tech.slug.includes('express') ? 'dark:filter-white' : ''}`}
               priority
             />
             <p className='text-center text-sm font-light'>{tech.name}</p>

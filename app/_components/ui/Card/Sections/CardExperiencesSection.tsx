@@ -22,7 +22,9 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
   className,
 }) => {
   const isFinished = (date: string) => {
-    return date.includes('present') ? '' : 'line-through text-muted-foreground';
+    return date.includes('present')
+      ? 'font-bold'
+      : 'line-through text-muted-foreground';
   };
 
   const hideCompagny = (company: string) => {
@@ -84,22 +86,22 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
-        className='w-full space-y-2'
+        className='mb-4 w-full space-y-2'
       >
         <div className='flex items-center justify-between space-x-4'>
           <p className='text-base font-light leading-relaxed text-muted-foreground'>
-            Over 6 years of professional experience in project coordination and
-            Humanitude label.
+            I have over 6 years of professional experience in project
+            coordination and Humanitude label.
           </p>
           <CollapsibleTrigger asChild>
-            <Button variant='outline' size='sm'>
+            <Button variant='secondary' size='sm'>
               <ChevronsUpDown className='h-4 w-4' />
               <span className='sr-only'>Toggle</span>
             </Button>
           </CollapsibleTrigger>
         </div>
         <CollapsibleContent className='space-y-2'>
-          <div className='rounded-md border px-4 py-2 font-mono text-sm shadow-sm'>
+          <div className='rounded-md border px-4 py-2 text-sm shadow-sm'>
             {experiences.map((experience) => (
               <>
                 {experience.projectCoordinator.map(
@@ -143,6 +145,73 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
                           )}
                         >
                           {projectCoordinator.date}
+                          <CalendarClock size={20} className='ml-1' />
+                        </Badge>
+                      </div>
+                    </div>
+                  )
+                )}
+              </>
+            ))}
+          </div>
+        </CollapsibleContent>
+      </Collapsible>{' '}
+      <Collapsible
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        className='w-full space-y-2'
+      >
+        <div className='flex items-center justify-between space-x-4'>
+          <p className='text-base font-light leading-relaxed text-muted-foreground'>
+            Additionally, I have more than 15 years in paramedical support for
+            individuals with disabilities.
+          </p>
+        </div>
+        <CollapsibleContent className='space-y-2'>
+          <div className='rounded-md border px-4 py-2 text-sm shadow-sm'>
+            {experiences.map((experience) => (
+              <>
+                {experience.nurseAssistant.map(
+                  (nurseAssistant, projectCooIndex) => (
+                    <div
+                      key={projectCooIndex}
+                      className='flex items-center justify-between space-x-3'
+                    >
+                      <CardTitle
+                        className={cn(
+                          className,
+                          'max-w-3xl font-caption text-xl leading-tight tracking-tight',
+                          isFinished(nurseAssistant.date)
+                        )}
+                      >
+                        {nurseAssistant.title}
+                      </CardTitle>
+                      <div className='flex flex-col'>
+                        <Badge
+                          variant='outline'
+                          className={cn(
+                            className,
+                            'm-1 flex w-full items-center justify-end border-0 text-right text-sm font-bold',
+                            hideCompagny(nurseAssistant.company)
+                          )}
+                        >
+                          {nurseAssistant.company}
+                          <MapPin
+                            size={20}
+                            className={cn(
+                              'ml-1',
+                              hideCompagny(nurseAssistant.company)
+                            )}
+                          />
+                        </Badge>
+                        <Badge
+                          variant='outline'
+                          className={cn(
+                            className,
+                            'm-1 flex w-full items-center justify-end border-0 text-right text-xs font-light'
+                          )}
+                        >
+                          {nurseAssistant.date}
                           <CalendarClock size={20} className='ml-1' />
                         </Badge>
                       </div>
