@@ -23,31 +23,31 @@ const HomePage: React.FC = () => {
     <main>
       {CardData.map((cardProps, index: number) => (
         <Section key={index}>
-          <Card className='border-0'>
-            {cardProps.imageSrc && !cardProps.map && (
-              <CardContent>
+          <Card>
+            <CardHeader>
+              {cardProps.imageSrc && !cardProps.map && (
                 <ImageSection
-                  className='h-auto w-full'
                   imageSrc={cardProps.imageSrc}
                   imageAlt={cardProps.imageAlt || ''}
+                  width={590}
+                  height={100}
+                  className='h-auto w-full'
                 />
-              </CardContent>
-            )}
-            {!cardProps.imageSrc && cardProps.map && (
-              <CardContent>
-                <Map />
-              </CardContent>
-            )}
-            {cardProps.title && (
-              <CardHeader>
-                <CardTitle className='font-caption text-2xl leading-tight tracking-tight'>
-                  {cardProps.title}
-                </CardTitle>
-                <CardDescription className='text-base font-light leading-relaxed'>
-                  {cardProps.description}
-                </CardDescription>
-              </CardHeader>
-            )}
+              )}
+              {!cardProps.imageSrc && cardProps.map && <Map />}
+              {cardProps.title && (
+                <>
+                  <CardTitle className='font-caption text-2xl leading-tight tracking-tight'>
+                    {cardProps.title}
+                  </CardTitle>
+                  {cardProps.description && (
+                    <CardDescription className='text-base font-light leading-relaxed'>
+                      {cardProps.description}
+                    </CardDescription>
+                  )}
+                </>
+              )}
+            </CardHeader>
             {cardProps.experiences &&
               cardProps.experiences.length > 0 &&
               !cardProps.technologies && (

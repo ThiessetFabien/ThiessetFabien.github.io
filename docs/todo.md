@@ -24,3 +24,12 @@
 - [x] Année d'actualisation
 - [x] Lecture du CV
 - [x] Téléchargement du CV
+
+**Carte projets**
+- [x] Titre "Projets"
+- [x] Liste de 3 projets
+- [x] Description des projets
+- [x] Liens vers les projets
+- [x] Liens vers les dépôts
+- [x] Liens vers les articles
+- [x] Technologies utilisées

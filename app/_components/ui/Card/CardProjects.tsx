@@ -13,6 +13,7 @@ import { ScrollArea } from '@/lib/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { Projects } from '@/types/Projects';
 import { ExternalLink, FolderGit2, SquarePlay } from 'lucide-react';
+import { ImageSection } from './CardImage';
 
 interface CardProjectsProps {
   projects: Projects[];
@@ -28,6 +29,15 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
       {projects.map((project, projectIndex) => (
         <Card key={projectIndex} className='mb-4 rounded-xl border shadow'>
           <CardHeader>
+            {project.imageSrc && project.imageAlt && (
+              <ImageSection
+                imageSrc={project.imageSrc}
+                imageAlt={project.imageAlt || ''}
+                width={590}
+                height={332}
+                className='mb-4 h-auto w-full'
+              />
+            )}
             <div className='flex items-center justify-between'>
               <CardTitle className='flex items-center font-caption text-xl leading-tight tracking-tight'>
                 <a
