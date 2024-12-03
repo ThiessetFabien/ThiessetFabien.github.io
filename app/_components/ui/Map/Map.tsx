@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
