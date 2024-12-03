@@ -24,10 +24,20 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
   projects,
   className,
 }) => {
+  const getCardMarginBottom = (index: number, length: number) => {
+    return index < 2 ? 'mb-4' : 'mb-0';
+  };
+
   return (
     <ScrollArea className={cn(className)}>
       {projects.map((project, projectIndex) => (
-        <Card key={projectIndex} className='mb-4 rounded-xl border shadow'>
+        <Card
+          key={projectIndex}
+          className={cn(
+            getCardMarginBottom(projectIndex, projects.length),
+            'rounded-xl border shadow'
+          )}
+        >
           <CardHeader>
             {project.imageSrc && project.imageAlt && (
               <ImageSection
@@ -75,8 +85,8 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
           </CardHeader>
           <CardContent>
             {project.tags.map((tag, tagIndex) => (
-              <Badge key={tagIndex} variant='secondary' className='mr-2'>
-                {tag.toString()}
+              <Badge key={tagIndex} variant='secondary' className='mr-4'>
+                {tag}
               </Badge>
             ))}
           </CardContent>
