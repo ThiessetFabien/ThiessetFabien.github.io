@@ -165,8 +165,8 @@
       {
         "title": "Casalink - Single Page Application",
         "organization": "Apotheosis O'Clock",
-        "imageSrc": "",
-        "imageAlt": "",
+        "imageSrc": "/images/casalink.webp",
+        "imageAlt": "Calendar of Casalink application",
         "demo": "https://www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
         "website": "https://o-clock-muffin.github.io/projet-planning-familial-front/",
         "github": "https://github.com/ThiessetFabien/Casalink-Frontend",
