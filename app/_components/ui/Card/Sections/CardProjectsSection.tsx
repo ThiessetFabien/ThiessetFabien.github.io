@@ -12,7 +12,7 @@ import { Badge } from '@/lib/components/ui/badge';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { Projects } from '@/types/Projects';
-import { ExternalLink, FolderGit2 } from 'lucide-react';
+import { ExternalLink, FolderGit2, Video } from 'lucide-react';
 
 interface CardProjectsSectionProps {
   projects: Projects[];
@@ -39,6 +39,16 @@ export const CardProjectsSection: React.FC<CardProjectsSectionProps> = ({
                   {project.title}
                   <ExternalLink className='ml-2' />
                 </a>
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='ml-2'
+                  >
+                    <Video />
+                  </a>
+                )}
                 <a
                   href={project.github}
                   target='_blank'
