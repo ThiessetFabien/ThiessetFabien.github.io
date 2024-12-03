@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { MapPin, CalendarClock, ChevronsUpDown } from 'lucide-react';
 import { Experiences } from '@/types/Experiences';
