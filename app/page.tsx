@@ -68,10 +68,7 @@ const HomePage: React.FC = () => {
             )}
             {cardProps.projects && cardProps.projects.length > 0 && (
               <CardContent>
-                <CardProjects
-                  className='max-w-prose text-base font-light leading-relaxed'
-                  projects={cardProps.projects}
-                />
+                <CardProjects projects={cardProps.projects} />
               </CardContent>
             )}
             {cardProps.cta1 &&
