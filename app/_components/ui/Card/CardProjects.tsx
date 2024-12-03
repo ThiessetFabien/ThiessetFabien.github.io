@@ -12,14 +12,14 @@ import { Badge } from '@/lib/components/ui/badge';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { Projects } from '@/types/Projects';
-import { ExternalLink, FolderGit2, Video } from 'lucide-react';
+import { ExternalLink, FolderGit2, SquarePlay } from 'lucide-react';
 
-interface CardProjectsSectionProps {
+interface CardProjectsProps {
   projects: Projects[];
   className?: string;
 }
 
-export const CardProjectsSection: React.FC<CardProjectsSectionProps> = ({
+export const CardProjects: React.FC<CardProjectsProps> = ({
   projects,
   className,
 }) => {
@@ -46,7 +46,7 @@ export const CardProjectsSection: React.FC<CardProjectsSectionProps> = ({
                     rel='noopener noreferrer'
                     className='ml-2'
                   >
-                    <Video />
+                    <SquarePlay />
                   </a>
                 )}
                 <a
