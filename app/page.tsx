@@ -14,9 +14,9 @@ import {
   CardFooter,
   CardDescription,
 } from '@/lib/components/ui/card';
-import { ImageSection } from '@/components/ui/Card/Sections/CardImageSection';
-import { CardExperiencesSection } from '@/components/ui/Card/Sections/CardExperiencesSection';
-import { CardProjectsSection } from '@/components/ui/Card/Sections/CardProjectsSection';
+import { ImageSection } from '@/components/ui/Card/CardImage';
+import { CardExperiences } from '@/ui/Card/CardExperiences';
+import { CardProjects } from '@/ui/Card/CardProjects';
 
 const HomePage: React.FC = () => {
   return (
@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
               cardProps.experiences.length > 0 &&
               !cardProps.technologies && (
                 <CardContent>
-                  <CardExperiencesSection
+                  <CardExperiences
                     className='max-w-prose text-base font-light leading-relaxed'
                     experiences={cardProps.experiences}
                   />
@@ -68,7 +68,7 @@ const HomePage: React.FC = () => {
             )}
             {cardProps.projects && cardProps.projects.length > 0 && (
               <CardContent>
-                <CardProjectsSection
+                <CardProjects
                   className='max-w-prose text-base font-light leading-relaxed'
                   projects={cardProps.projects}
                 />

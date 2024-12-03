@@ -150,7 +150,7 @@
     ]
   },
   {
-    "title": "Three bests projects",
+    "title": "3 bests projects",
     "description": "I'm here to help your application a success.",
     "projects": [
       {
@@ -198,7 +198,6 @@
   },
   {
     "title": "Available for Mobile, Vehicle, and Remote in France",
-    "map": true,
-    "description": "Click on the map to see the locations where I can work on-site."
+    "map": true
   }
 ]

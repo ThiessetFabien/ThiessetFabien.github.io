@@ -14,12 +14,12 @@ import {
   CollapsibleTrigger,
 } from '@/lib/components/ui/collapsible';
 
-interface CardExperiencesSectionProps {
+interface CardExperiencesProps {
   experiences: Experiences[];
   className?: string;
 }
 
-export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
+export const CardExperiences: React.FC<CardExperiencesProps> = ({
   experiences,
   className,
 }) => {
@@ -229,4 +229,4 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
   );
 };
 
-export default CardExperiencesSection;
+export default CardExperiences;
