@@ -3,6 +3,7 @@ export interface Projects {
   organization: string;
   imageSrc: string;
   imageAlt: string;
+  demo?: string;
   website: string;
   github: string;
   tags: string[];

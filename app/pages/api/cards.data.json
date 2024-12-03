@@ -163,6 +163,23 @@
         "tags": ["TypeScript", "React.js", "Next.js", "Tailwind CSS"]
       },
       {
+        "title": "Casalink - Single Page Application",
+        "organization": "Apotheosis O'Clock",
+        "imageSrc": "",
+        "imageAlt": "",
+        "demo": "https://www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
+        "website": "https://o-clock-muffin.github.io/projet-planning-familial-front/",
+        "github": "https://github.com/ThiessetFabien/Casalink-Frontend",
+        "tags": [
+          "Front-end",
+          "TypeScript",
+          "React.js",
+          "Redux.js",
+          "SASS",
+          "Axios"
+        ]
+      },
+      {
         "title": "Casalink - Secure server",
         "organization": "Apotheosis O'Clock",
         "imageSrc": "",
@@ -175,22 +192,6 @@
           "Express.js",
           "Mocha/Chai",
           "PostgreSQL"
-        ]
-      },
-      {
-        "title": "Casalink - Single Page Application",
-        "organization": "Apotheosis O'Clock",
-        "imageSrc": "",
-        "imageAlt": "",
-        "website": "https://o-clock-muffin.github.io/projet-planning-familial-front/",
-        "github": "https://github.com/ThiessetFabien/Casalink-Frontend",
-        "tags": [
-          "Front-end",
-          "TypeScript",
-          "React.js",
-          "Redux.js",
-          "SASS",
-          "Axios"
         ]
       }
     ]
