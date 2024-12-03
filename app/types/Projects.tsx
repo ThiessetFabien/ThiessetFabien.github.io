@@ -5,9 +5,5 @@ export interface Projects {
   imageAlt: string;
   website: string;
   github: string;
-  tags: Tags[];
-}
-
-export interface Tags {
-  tag: string;
+  tags: string[];
 }
