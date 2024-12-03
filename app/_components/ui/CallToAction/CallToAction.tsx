@@ -20,7 +20,7 @@ export const CallToAction: React.FC<CardProps> = ({
   };
 
   return (
-    <Section className={cn('flex h-auto w-full items-center', className)}>
+    <div className='flex h-auto w-full items-center'>
       <div className='mr-4'>
         <a href={`/${href1}`} {...downloadAction(downloadActive1)}>
           <Button
@@ -43,7 +43,7 @@ export const CallToAction: React.FC<CardProps> = ({
           </Button>
         </a>
       </div>
-    </Section>
+    </div>
   );
 };
 
