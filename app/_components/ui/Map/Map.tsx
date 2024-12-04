@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
 
@@ -55,4 +56,6 @@ export const Map: React.FC = () => {
   );
 };
 
-export default Map;
+export default dynamic(() => Promise.resolve(Map), {
+  ssr: false,
+});

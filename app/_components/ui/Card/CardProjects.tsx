@@ -24,7 +24,9 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
   projects,
   className,
 }) => {
-  const getCardMarginBottom = (index: number, length: number) => {
+  const baseUrl = 'https://';
+
+  const getCardMarginBottom = (index: number) => {
     return index < 2 ? 'mb-4' : 'mb-0';
   };
 
@@ -34,8 +36,8 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
         <Card
           key={projectIndex}
           className={cn(
-            getCardMarginBottom(projectIndex, projects.length),
-            'rounded-xl border shadow'
+            'rounded-xl border shadow',
+            getCardMarginBottom(projectIndex)
           )}
         >
           <CardHeader>
@@ -51,7 +53,7 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
             <div className='flex items-center justify-between'>
               <CardTitle className='flex items-center font-caption text-xl leading-tight tracking-tight'>
                 <a
-                  href={project.website}
+                  href={`${baseUrl}${project.website}`}
                   target='_blank'
                   rel='noopener noreferrer'
                   className='flex items-center'
@@ -61,7 +63,7 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
                 </a>
                 {project.demo && (
                   <a
-                    href={project.demo}
+                    href={`${baseUrl}${project.demo}`}
                     target='_blank'
                     rel='noopener noreferrer'
                     className='ml-2'
@@ -70,7 +72,7 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
                   </a>
                 )}
                 <a
-                  href={project.github}
+                  href={`${baseUrl}${project.github}`}
                   target='_blank'
                   rel='noopener noreferrer'
                   className='ml-2'
@@ -78,6 +80,7 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
                   <FolderGit2 />
                 </a>
               </CardTitle>
+              ••••
             </div>
             <CardDescription className='text-sm font-light leading-relaxed'>
               {project.organization}

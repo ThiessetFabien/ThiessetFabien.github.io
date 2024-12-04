@@ -158,8 +158,8 @@
         "organization": "Welcome on my universe",
         "imageSrc": "",
         "imageAlt": "",
-        "website": "",
-        "github": "",
+        "website": "/",
+        "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
         "tags": ["TypeScript", "React.js", "Next.js", "Tailwind CSS"]
       },
       {
@@ -167,9 +167,9 @@
         "organization": "Apotheosis O'Clock",
         "imageSrc": "/images/casalink.webp",
         "imageAlt": "Calendar of Casalink application",
-        "demo": "https://www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
-        "website": "https://o-clock-muffin.github.io/projet-planning-familial-front/",
-        "github": "https://github.com/ThiessetFabien/Casalink-Frontend",
+        "demo": "www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
+        "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
+        "github": "github.com/ThiessetFabien/Casalink-Frontend",
         "tags": [
           "Front-end",
           "TypeScript",
@@ -184,8 +184,8 @@
         "organization": "Apotheosis O'Clock",
         "imageSrc": "",
         "imageAlt": "",
-        "website": "",
-        "github": "https://github.com/ThiessetFabien/Casalink-Backend",
+        "website": "casalink-back.vercel.app/api-docs/",
+        "github": "github.com/ThiessetFabien/Casalink-Backend",
         "tags": [
           "Back-end",
           "Node.js",

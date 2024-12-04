@@ -26,6 +26,7 @@
 - [x] Téléchargement du CV
 
 **Carte projets**
+
 - [x] Titre "Projets"
 - [x] Liste de 3 projets
 - [x] Description des projets

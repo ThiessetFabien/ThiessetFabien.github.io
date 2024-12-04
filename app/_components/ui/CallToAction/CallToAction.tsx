@@ -2,9 +2,7 @@
 import React from 'react';
 import { Button } from '@/lib/components/ui/button';
 
-import { Section } from '@/components/Section/Section';
 import CardProps from '@/types/CardProps';
-import { cn } from '@/lib/utils';
 
 export const CallToAction: React.FC<CardProps> = ({
   cta1,
@@ -13,7 +11,6 @@ export const CallToAction: React.FC<CardProps> = ({
   cta2,
   href2,
   downloadActive2,
-  className,
 }) => {
   const downloadAction = (downloadActive: boolean) => {
     return downloadActive ? { download: true } : { target: '_blank' };
