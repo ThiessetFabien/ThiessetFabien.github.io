@@ -77,12 +77,13 @@ const HomePage: React.FC = () => {
               cardProps.href2 && (
                 <CardFooter>
                   <CallToAction
-                    className='flex flex-row'
-                    cta1={cardProps.cta1 || ''}
-                    href1={cardProps.href1 || ''}
+                    cta1={cardProps.cta1}
+                    icon1={cardProps.icon1}
+                    href1={cardProps.href1}
                     downloadActive1={cardProps.downloadActive1}
-                    cta2={cardProps.cta2 || ''}
-                    href2={cardProps.href2 || ''}
+                    cta2={cardProps.cta2}
+                    icon2={cardProps.icon2}
+                    href2={cardProps.href2}
                     downloadActive2={cardProps.downloadActive2}
                   />
                 </CardFooter>
