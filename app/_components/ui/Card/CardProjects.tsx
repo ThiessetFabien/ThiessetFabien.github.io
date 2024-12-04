@@ -42,13 +42,20 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
         >
           <CardHeader>
             {project.imageSrc && project.imageAlt && (
-              <ImageSection
-                imageSrc={project.imageSrc}
-                imageAlt={project.imageAlt || ''}
-                width={590}
-                height={332}
-                className='mb-4 h-auto w-full'
-              />
+              <a
+                href={`${baseUrl}${project.website}`}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center'
+              >
+                <ImageSection
+                  imageSrc={project.imageSrc}
+                  imageAlt={project.imageAlt || ''}
+                  width={590}
+                  height={332}
+                  className='mb-4 h-auto w-full'
+                />
+              </a>
             )}
             <div className='flex items-center justify-between'>
               <CardTitle className='flex items-center font-caption text-xl leading-tight tracking-tight'>
@@ -80,7 +87,6 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
                   <FolderGit2 />
                 </a>
               </CardTitle>
-              ••••
             </div>
             <CardDescription className='text-sm font-light leading-relaxed'>
               {project.organization}
