@@ -16,7 +16,7 @@ export const ImageSection = ({
   className?: string;
 }) => (
   <Image
-    src={imageSrc}
+    src={`/images${imageSrc}`}
     alt={imageAlt || ''}
     width={width}
     height={height}
