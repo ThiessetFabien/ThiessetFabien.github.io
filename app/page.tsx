@@ -4,7 +4,6 @@ import React from 'react';
 import CardData from '@api/cards.data.json';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { TechCarousel } from '@/ui/Carousel/TechCarousel';
-import { Map } from '@/ui/Map/Map';
 import { Section } from '@/components/Section/Section';
 import {
   Card,
@@ -14,7 +13,8 @@ import {
   CardFooter,
   CardDescription,
 } from '@/lib/components/ui/card';
-import { ImageSection } from '@/components/ui/Card/CardImage';
+import { Map } from '@/ui/Map/Map';
+import { ImageSection } from '@/ui/Card/CardImage';
 import { CardExperiences } from '@/ui/Card/CardExperiences';
 import { CardProjects } from '@/ui/Card/CardProjects';
 
