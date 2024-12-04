@@ -1,7 +1,7 @@
 [
   {
     "title": "Human, creative, and innovative developer.",
-    "imageSrc": "/images/photo.png",
+    "imageSrc": "/photo.webp",
     "imageAlt": "Picture of Fabien",
     "cta1": "Hire an expert",
     "href1": "#",
@@ -165,7 +165,7 @@
       {
         "title": "Casalink - Single Page Application",
         "organization": "Apotheosis O'Clock",
-        "imageSrc": "/images/casalink.webp",
+        "imageSrc": "/casalink.webp",
         "imageAlt": "Calendar of Casalink application",
         "demo": "www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
@@ -182,8 +182,8 @@
       {
         "title": "Casalink - Secure server",
         "organization": "Apotheosis O'Clock",
-        "imageSrc": "",
-        "imageAlt": "",
+        "imageSrc": "/casalink-documentation.webp",
+        "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
         "github": "github.com/ThiessetFabien/Casalink-Backend",
         "tags": [
