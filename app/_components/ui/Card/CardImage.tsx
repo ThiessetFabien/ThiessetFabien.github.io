@@ -10,7 +10,7 @@ export const ImageSection = ({
   className,
 }: {
   imageSrc: string;
-  imageAlt: string;
+  imageAlt?: string;
   width: number;
   height: number;
   className?: string;

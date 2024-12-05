@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-
 import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
 
 export const Header = () => {
