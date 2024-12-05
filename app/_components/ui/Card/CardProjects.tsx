@@ -14,6 +14,8 @@ import { cn } from '@/lib/utils';
 import { Projects } from '@/types/Projects';
 import { ExternalLink, FolderGit2, SquarePlay } from 'lucide-react';
 import { ImageSection } from './CardImage';
+import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
+import { baseUrl } from '@/utils/constants/baseUrl';
 
 interface CardProjectsProps {
   projects: Projects[];
@@ -24,12 +26,6 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
   projects,
   className,
 }) => {
-  const baseUrl = 'https://';
-
-  const getCardMarginBottom = (index: number) => {
-    return index < 2 ? 'mb-4' : 'mb-0';
-  };
-
   return (
     <ScrollArea className={cn(className)}>
       {projects.map((project, projectIndex) => (
@@ -37,7 +33,7 @@ export const CardProjects: React.FC<CardProjectsProps> = ({
           key={projectIndex}
           className={cn(
             'rounded-xl border shadow',
-            getCardMarginBottom(projectIndex)
+            dynamicMarginBottom(projectIndex)
           )}
         >
           <CardHeader>

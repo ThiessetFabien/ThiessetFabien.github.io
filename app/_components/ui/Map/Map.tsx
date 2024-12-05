@@ -2,23 +2,10 @@
 
 import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Circle } from 'react-leaflet';
+import LocationEventsMap from '../../../hooks/LocationEventsMap';
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
-
-interface LocationEventsProps {
-  position: [number, number];
-  ref?: React.RefObject<HTMLDivElement>;
-}
-
-const LocationEvents: React.FC<LocationEventsProps> = ({ position }) => {
-  const map = useMap();
-
-  useEffect(() => {
-    map.flyTo(position, 10);
-  }, [map, position]);
-
-  return null;
-};
+import { LocationEventsMapProps } from '@/types/LocationEventsProps';
 
 export const Map: React.FC = () => {
   const francePosition: [number, number] = [46.6034, 3.1236];
@@ -43,7 +30,7 @@ export const Map: React.FC = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
-        {isIntersecting && <LocationEvents position={myPosition} />}
+        {isIntersecting && <LocationEventsMap position={myPosition} />}
         <Circle
           center={myPosition}
           radius={radius}

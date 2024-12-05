@@ -4,7 +4,7 @@ import React from 'react';
 import CardData from '@api/cards.data.json';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { TechCarousel } from '@/ui/Carousel/TechCarousel';
-import { Section } from '@/components/Section/Section';
+import { Section } from '@/components/ui/Section/Section';
 import {
   Card,
   CardHeader,
