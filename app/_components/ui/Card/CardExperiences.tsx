@@ -13,13 +13,24 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/lib/components/ui/collapsible';
+import { ExperiencesProps } from '@/types/ExperiencesProps';
 
-interface CardExperiencesProps {
-  experiences: Experiences[];
-  className?: string;
-}
+/**
+ * @file CardProjects.tsx
+ * @description This file exports a component that renders a list of project cards.
+ */
 
-export const CardExperiences: React.FC<CardExperiencesProps> = ({
+/**
+ * CardProjects component.
+ * @param {Object} props - The props for the component.
+ * @param {Projects[]} props.projects - An array of project objects to be displayed.
+ * @param {string} [props.className] - Additional class names to apply to the component.
+ * @returns {JSX.Element} The rendered CardProjects component.
+ * @example
+ * <CardProjects projects={projects} className="custom-class" />
+ */
+
+export const CardExperiences: React.FC<ExperiencesProps> = ({
   experiences,
   className,
 }) => {

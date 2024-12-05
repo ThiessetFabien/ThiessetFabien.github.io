@@ -14,9 +14,19 @@ import {
   CardDescription,
 } from '@/lib/components/ui/card';
 import { Map } from '@/ui/Map/Map';
-import { ImageSection } from '@/ui/Card/CardImage';
+import { CardImage } from '@/ui/Card/CardImage';
 import { CardExperiences } from '@/ui/Card/CardExperiences';
 import { CardProjects } from '@/ui/Card/CardProjects';
+
+/**
+ * @file page.tsx
+ * @description This file renders the home page with various sections including cards, maps, and carousels.
+ */
+
+/**
+ * HomePage component.
+ * @returns {JSX.Element} The rendered component.
+ */
 
 const HomePage: React.FC = () => {
   return (
@@ -26,7 +36,7 @@ const HomePage: React.FC = () => {
           <Card>
             <CardHeader>
               {cardProps.imageSrc && !cardProps.map && (
-                <ImageSection
+                <CardImage
                   imageSrc={cardProps.imageSrc}
                   imageAlt={cardProps.imageAlt || ''}
                   width={590}

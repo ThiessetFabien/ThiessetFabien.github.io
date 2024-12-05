@@ -6,12 +6,23 @@ import { MapContainer, TileLayer, Circle } from 'react-leaflet';
 import LocationEventsMap from '../../../hooks/LocationEventsMap';
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
 import { LocationEventsMapProps } from '@/types/LocationEventsProps';
+import {
+  francePosition,
+  myPosition,
+  radius,
+} from '@/utils/constants/positions';
+
+/**
+ * @file Map.tsx
+ * @description This component renders a map with a specific position and radius.
+ */
+
+/**
+ * Map component.
+ * @returns {JSX.Element} The rendered component.
+ */
 
 export const Map: React.FC = () => {
-  const francePosition: [number, number] = [46.6034, 3.1236];
-  const myPosition: [number, number] = [50.381645, 3.053234];
-  const radius = 60000 / 2;
-
   const [ref, isIntersecting] = useIntersectionObserver({
     root: null,
     rootMargin: '0px',
