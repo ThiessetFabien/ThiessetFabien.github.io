@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-export const ImageSection = ({
+export const CardImage = ({
   imageSrc,
   imageAlt,
   width,
