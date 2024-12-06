@@ -23,7 +23,7 @@ export const Section = ({
   className,
 }: PropsWithChildren<{ className?: string }>) => {
   return (
-    <section className={cn('m-auto mb-4 max-w-3xl px-4', className)}>
+    <section className={cn('m-auto mb-4 max-w-5xl px-4', className)}>
       {children}
     </section>
   );

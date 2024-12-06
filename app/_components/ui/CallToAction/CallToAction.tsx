@@ -45,7 +45,7 @@ export const CallToAction: React.FC<CardProps> = ({
       <div className='mr-4'>
         <a href={`/${href1}`} {...dynamicDownload(downloadActive1)}>
           <Button
-            size='lg'
+            size='sm'
             variant='default'
             className='flex w-full items-center justify-evenly text-center'
           >
@@ -57,7 +57,7 @@ export const CallToAction: React.FC<CardProps> = ({
       <div>
         <a href={`/${href2}`} {...dynamicDownload(downloadActive2)}>
           <Button
-            size='lg'
+            size='sm'
             variant='outline'
             className='flex w-full items-center justify-evenly text-center'
           >
