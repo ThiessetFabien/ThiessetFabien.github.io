@@ -4,6 +4,18 @@ import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { Toggle } from '@/lib/components/ui/toggle';
 
+/**
+ * @file ToggleDarkMode.tsx
+ * @description This file exports a component that toggles between dark and light modes using the next-themes library.
+ */
+
+/**
+ * ToggleDarkMode component.
+ * @returns {JSX.Element} The rendered component.
+ * @example
+ * <ToggleDarkMode />
+ */
+
 export function ToggleDarkMode() {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);

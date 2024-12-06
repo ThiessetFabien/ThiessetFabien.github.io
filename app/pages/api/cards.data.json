@@ -1,11 +1,13 @@
 [
   {
     "title": "Human, creative, and innovative developer.",
-    "imageSrc": "/images/photo.png",
+    "imageSrc": "/photo.webp",
     "imageAlt": "Picture of Fabien",
+    "icon1": "PhoneOutgoing",
     "cta1": "Hire an expert",
-    "href1": "#",
+    "href1": "tel:+33610920974",
     "downloadActive1": false,
+    "icon2": "BriefcaseBusiness",
     "cta2": "Discover my works",
     "href2": "#",
     "downloadActive2": false,
@@ -71,13 +73,14 @@
   },
   {
     "title": "One year of experience",
-    "cta1": "My resume",
+    "icon1": "Eye",
+    "cta1": "CV 2024",
     "href1": "CV.pdf",
     "downloadActive1": false,
+    "icon2": "Download",
     "cta2": "Download my resume",
     "href2": "CV.pdf",
     "downloadActive2": true,
-    "description": "CV 2024",
     "experiences": [
       {
         "developer": [
@@ -150,8 +153,55 @@
     ]
   },
   {
+    "title": "3 projects",
+    "description": "I'm here to help your application a success.",
+    "projects": [
+      {
+        "title": "This portfolio",
+        "organization": "Welcome on my universe",
+        "imageSrc": "",
+        "imageAlt": "",
+        "website": "/",
+        "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
+        "tags": ["TypeScript", "React.js", "Next.js", "Tailwind CSS"]
+      },
+      {
+        "title": "Casalink - Single Page Application",
+        "organization": "Apotheosis O'Clock",
+        "imageSrc": "/casalink.webp",
+        "imageAlt": "Calendar of Casalink application",
+        "demo": "www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
+        "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
+        "github": "github.com/ThiessetFabien/Casalink-Frontend",
+        "tags": [
+          "Front-end",
+          "TypeScript",
+          "React.js",
+          "Redux.js",
+          "SASS",
+          "Axios"
+        ]
+      },
+      {
+        "title": "Casalink - Secure server",
+        "organization": "Apotheosis O'Clock",
+        "imageSrc": "/casalink-documentation.webp",
+        "imageAlt": "Casalink documentation",
+        "website": "casalink-back.vercel.app/api-docs/",
+        "github": "github.com/ThiessetFabien/Casalink-Backend",
+        "tags": [
+          "Back-end",
+          "Node.js",
+          "Express.js",
+          "Mocha/Chai",
+          "PostgreSQL",
+          "Swagger"
+        ]
+      }
+    ]
+  },
+  {
     "title": "Available for Mobile, Vehicle, and Remote in France",
-    "map": true,
-    "description": "Click on the map to see the locations where I can work on-site."
+    "map": true
   }
 ]

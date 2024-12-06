@@ -7,7 +7,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["@next/next", "@typescript-eslint"],
+  "plugins": ["@next/next", "@typescript-eslint", "import", "jsx-a11y"],
   "parser": "@typescript-eslint/parser",
   "overrides": [
     {
@@ -24,13 +24,13 @@
   "rules": {
     "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": [2, { "extensions": [".ts", ".tsx"] }],
-    "import/extentions": [
+    "import/extensions": [
       "error",
       "ignorePackages",
-      { "ts": "never", "tsx": "never" }
+      { "ts": "never", "tsx": "never", "js": "never", "jsx": "never" }
     ],
     "react/jsx-props-no-spreading": 0,
-    "jsx-ally/label-has-associated-control": [2, { "assert": "either" }],
+    "jsx-a11y/label-has-associated-control": [2, { "assert": "either" }],
     "linebreak-style": 0,
     "no-restricted-imports": 0,
     "@next/next/google-font-display": 1,
@@ -38,6 +38,7 @@
     "@next/next/inline-script-id": "error",
     "@next/next/no-assign-module-variable": "error",
     "@next/next/no-html-link-for-pages": "error",
-    "@next/next/no-sync-scripts": "error"
+    "@next/next/no-sync-scripts": "error",
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }
