@@ -1,64 +1,43 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-
+import GenericCarousel from './GenericCarousel';
 import { Technologies } from '@/types/TechnologiesProps';
-import { Card } from '@/lib/components/ui/card';
 
 /**
- * @file CardProjects.tsx
- * @description This file exports a component that renders a list of project cards.
+ * @file TechCarousel.tsx
+ * @description This file exports a component that renders a carousel of technology icons.
  */
 
 /**
- * CardProjects component.
+ * TechCarousel component.
  * @param {Object} props - The props for the component.
- * @param {Projects[]} props.projects - An array of project objects to be displayed.
- * @param {string} [props.className] - Additional class names to apply to the component.
- * @returns {JSX.Element} The rendered CardProjects component.
+ * @param {Technologies[]} props.technologies - An array of technology objects to be displayed.
+ * @param {string} props.className - Additional class names to apply to the component.
+ * @returns {JSX.Element} The rendered TechCarousel component.
  * @example
- * <CardProjects projects={projects} className="custom-class" />
+ * <TechCarousel technologies={technologies} className="custom-class" />
  */
+export const TechnologiesCarousel: React.FC<Technologies> = ({
+  technologies,
+  className,
+}) => {
+  const items = technologies.map((tech, index) => (
+    <div key={index} className='mx-4 flex flex-col items-center p-4'>
+      <Image
+        src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+        alt={tech.name}
+        width={100}
+        height={100}
+        className={`h-full w-auto ${tech.slug.includes('express') ? 'filter-white' : ''}`}
+        priority
+      />
+      <p className='text-center text-sm font-light'>{tech.name}</p>
+    </div>
+  ));
 
-export const TechnologiesCarousel: React.FC<{
-  technologies: Technologies[];
-  className: string;
-}> = ({ technologies, className }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: 'start' },
-    [Autoplay({ delay: 500, stopOnInteraction: false })]
-  );
-
-  useEffect(() => {
-    if (emblaApi) {
-      emblaApi.reInit();
-    }
-  }, [emblaApi]);
-
-  return (
-    <Card
-      className={`overflow-hidden rounded-xl border shadow ${className}`}
-      ref={emblaRef}
-    >
-      <div className='flex'>
-        {technologies.map((tech: Technologies, index: number) => (
-          <div key={index} className='mx-4 flex flex-col items-center p-4'>
-            <Image
-              src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
-              alt={tech.name}
-              width={100}
-              height={100}
-              className={`h-full w-auto ${tech.slug.includes('express') ? 'filter-white' : ''}`}
-              priority
-            />
-            <p className='text-center text-sm font-light'>{tech.name}</p>
-          </div>
-        ))}
-      </div>
-    </Card>
-  );
+  return <GenericCarousel items={items} className={className} delay={500} />;
 };
+
 export default TechnologiesCarousel;
