@@ -1,6 +1,6 @@
-import { Technologies } from './Technologies';
-import { Experiences } from './Experiences';
-import { Projects } from './Projects';
+import { Technologies } from './TechnologiesProps';
+import { Experiences } from './ExperiencesProps';
+import { Projects } from './ProjectsProps';
 
 /**
  * @file CardProps.tsx

@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import dynamic from 'next/dynamic';
 import { MapContainer, TileLayer, Circle } from 'react-leaflet';
 import LocationEventsMap from '../../../hooks/LocationEventsMap';
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
-import { LocationEventsMapProps } from '@/types/LocationEventsProps';
 import {
   francePosition,
   myPosition,
