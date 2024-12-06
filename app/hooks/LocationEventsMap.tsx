@@ -17,7 +17,9 @@ const LocationEventsMap: React.FC<LocationEventsMapProps> = ({ position }) => {
   const map = useMap();
 
   useEffect(() => {
-    map.flyTo(position, 10);
+    map.flyTo(position, 10, {
+      duration: 1,
+    });
   }, [map, position]);
 
   return null;
