@@ -46,6 +46,7 @@
 - [ ] Contenu de la recommandation
 - [ ] Slider de recommandations
 - [ ] Image de l'auteur
+- [ ] liens de contact (email, linkedin, téléphone)
 
 **Carte contact**
 - [ ] Titre
