@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-import { Technologies } from '@/types/Technologies';
+import { Technologies } from '@/types/TechnologiesProps';
 import { Card } from '@/lib/components/ui/card';
 
 /**
@@ -23,7 +23,7 @@ import { Card } from '@/lib/components/ui/card';
  * <CardProjects projects={projects} className="custom-class" />
  */
 
-export const TechCarousel: React.FC<{
+export const TechnologiesCarousel: React.FC<{
   technologies: Technologies[];
   className: string;
 }> = ({ technologies, className }) => {
@@ -61,4 +61,4 @@ export const TechCarousel: React.FC<{
     </Card>
   );
 };
-export default TechCarousel;
+export default TechnologiesCarousel;

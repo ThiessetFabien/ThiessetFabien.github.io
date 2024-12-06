@@ -3,7 +3,7 @@
 import React from 'react';
 import CardData from '@api/cards.data.json';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
-import { TechCarousel } from '@/ui/Carousel/TechCarousel';
+import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
 import { Section } from '@/components/ui/Section/Section';
 import {
   Card,
@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
               )}
             {cardProps.technologies && cardProps.technologies.length > 0 && (
               <CardContent>
-                <TechCarousel
+                <TechnologiesCarousel
                   className='w-full text-base font-light leading-relaxed'
                   technologies={cardProps.technologies}
                 />

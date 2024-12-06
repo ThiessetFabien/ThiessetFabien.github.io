@@ -35,11 +35,13 @@
 - [x] Images des projets
 
 **Carte compétences**
+
 - [x] Titre "Compétences"
 - [x] Liste de compétences
 - [x] Carousel de compétences
 
 **Carte recommandations**
+
 - [ ] Titre
 - [ ] Liste de recommandations
 - [ ] Auteur de la recommandation
@@ -49,6 +51,7 @@
 - [ ] liens de contact (email, linkedin, téléphone)
 
 **Carte contact**
+
 - [ ] Titre
 - [ ] Formulaire
 - [ ] Identité de l'expéditeur (nom, prénom, email)
