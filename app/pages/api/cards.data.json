@@ -200,24 +200,24 @@
     "title": "Recommandations",
     "recommandations": [
       {
-        "name": "Emilie Suray",
-        "context": "Responsable QGR - Helene Borel Center",
-        "date": "2021 - 2023",
-        "content": "Fabien est un collaborateur précieux, alliant rigueur, compétences relationnelles et une sensibilité humaine, avec une capacité remarquable à apprendre rapidement et à apporter une expertise technique solide.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1738800000&v=beta&t=ramanEZ0t_PF2f8oiQL1W2ZGSHZzElSuUUYgPtg-sTY",
-        "linkedin": "www.linkedin.com/in/emilie-s-065196130/",
+        "name": "Dupoirier Christophe",
+        "context": "Juré Professionnel au TP DWWM",
+        "date": "jul 2024",
+        "content": "Fabien a brillamment réussi sa conversion professionnelle en devenant un développeur Full Stack compétent, démontrant une connaissance technique approfondie et une implication sans faille.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1608645411974?e=1738800000&v=beta&t=Y8vLw6TqrTB63zwvwFp4OdpJIcwkqVWCCKfOv5ObJHE",
+        "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/",
         "mail": "",
-        "phone": "0633953700"
+        "phone": ""
       },
       {
-        "name": "Alexis Vignot",
-        "context": "Collaborateur du Projet Casalink et Collègue Promotion Muffin - O'Clock",
-        "date": "may - jun 2024",
-        "content": "Fabien est un développeur fullstack compétent et professionnel, maîtrisant les technologies front-end et back-end, avec une approche méthodique, une excellente capacité de résolution de problèmes et un excellent communicant.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1624568924087?e=1738800000&v=beta&t=y1ClVamyeHHACp-x56-wS9fAONngK2aAkQ-Aiu8rFLM",
-        "linkedin": "www.linkedin.com/in/alexis-vignot/",
+        "name": "Nicolas Zanforlini",
+        "context": "Juré Professionnel au TP DWWM",
+        "date": "jul 2024",
+        "content": "Je recommande Fabien, j'ai eu l'occasion d'évaluer ses compétences lors du passage de son diplôme, c'est un jeune homme motivé, compétent et curieux, il est un atout au sein d'une équipe avec une bonne communication. Je recommande fortement",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQG9eTvW6wRapQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1639988026836?e=1738800000&v=beta&t=wsWJ0VTfaoITJqppbU0HxROTFyy4zj41thC0NdyVcmI",
+        "linkedin": "www.linkedin.com/in/nicolas-zanforlini-5a06b518b/",
         "mail": "",
-        "phone": "0678309108"
+        "phone": ""
       },
       {
         "name": "Benoît Schiex",
@@ -234,10 +234,30 @@
         "context": "Référent Pédagogique de la Promotion Muffin - O'Clock",
         "date": "dec 2023 - jun 2024",
         "content": "Fabien s'est démarqué par son sérieux, sa motivation et sa capacité à relever chaque défi avec brio, en travaillant de manière autonome et en équipe.",
-        "imageSrc": "https://media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1709198087943?e=1738800000&v=beta&t=a2hpP6w93q4M2schEjpJSBlrWYi5dQrqP-u6gcMnyWA",
-        "linkedin": "https://www.linkedin.com/in/adrien-delcroix/",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1709198087943?e=1738800000&v=beta&t=a2hpP6w93q4M2schEjpJSBlrWYi5dQrqP-u6gcMnyWA",
+        "linkedin": "www.linkedin.com/in/adrien-delcroix/",
         "mail": "adrien@oclock.io",
         "phone": ""
+      },
+      {
+        "name": "Alexis Vignot",
+        "context": "Collaborateur du Projet Casalink et Collègue Promotion Muffin - O'Clock",
+        "date": "may - jun 2024",
+        "content": "Fabien est un développeur fullstack compétent et professionnel, maîtrisant les technologies front-end et back-end, avec une approche méthodique, une excellente capacité de résolution de problèmes et un excellent communicant.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1624568924087?e=1738800000&v=beta&t=y1ClVamyeHHACp-x56-wS9fAONngK2aAkQ-Aiu8rFLM",
+        "linkedin": "www.linkedin.com/in/alexis-vignot/",
+        "mail": "",
+        "phone": "0678309108"
+      },
+      {
+        "name": "Emilie Suray",
+        "context": "Responsable QGR - Helene Borel Center",
+        "date": "2021 - 2023",
+        "content": "Fabien est un collaborateur précieux, alliant rigueur, compétences relationnelles et une sensibilité humaine, avec une capacité remarquable à apprendre rapidement et à apporter une expertise technique solide.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1738800000&v=beta&t=ramanEZ0t_PF2f8oiQL1W2ZGSHZzElSuUUYgPtg-sTY",
+        "linkedin": "www.linkedin.com/in/emilie-s-065196130/",
+        "mail": "",
+        "phone": "0633953700"
       }
     ]
   }
