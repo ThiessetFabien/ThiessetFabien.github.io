@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
 
 /**
@@ -10,15 +11,16 @@ import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
 
 /**
  * Header component.
+ * @param {Object} props - The props for the component.
+ * @param {string} [props.className] - Additional class names to apply to the header.
  * @returns {JSX.Element} The rendered Header component.
  * @example
- * <Header />
+ * <Header className="custom-class" />
  */
-
-export const Header = () => {
+export const Header: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <header className='bg-background'>
-      <div className='align-center m-auto flex h-full max-w-3xl items-center justify-between p-8'>
+    <header className={cn(className)}>
+      <div className='align-center m-auto flex h-full items-center justify-between p-6'>
         <Link
           href='/'
           className='pointer-events-auto text-center font-caption text-2xl font-bold leading-tight tracking-tight'

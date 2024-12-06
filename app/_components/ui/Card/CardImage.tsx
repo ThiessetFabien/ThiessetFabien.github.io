@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 /**
  * @file CardImage.tsx
@@ -39,6 +40,6 @@ export const CardImage = ({
     width={width}
     height={height}
     priority
-    className={className}
+    className={cn('mb-4', className)}
   />
 );
