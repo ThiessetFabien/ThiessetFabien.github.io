@@ -1,9 +1,15 @@
+/**
+ * @file globals.css
+ * @description This file contains global CSS styles and custom properties for the application.
+ */
+
 @import url('leaflet/dist/leaflet.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom properties for theme colors */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -51,6 +57,7 @@
   }
 }
 
+/* Base layer styles */
 @layer base {
   * {
     @apply border-border;
@@ -60,14 +67,17 @@
   }
 }
 
+/* Reset padding for all elements */
 * {
   padding: 0;
 }
 
+/* Optional: Set base font size for html element */
 /* html {
   font-size: 62.5%;
 } */
 
+/* Dark mode filter for white elements */
 .dark .filter-white {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%)
     contrast(100%);

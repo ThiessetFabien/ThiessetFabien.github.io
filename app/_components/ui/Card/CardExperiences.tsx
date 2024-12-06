@@ -1,3 +1,6 @@
+'use client';
+
+import React from 'react';
 import { MapPin, CalendarClock, ChevronsUpDown } from 'lucide-react';
 import { Experiences } from '@/types/Experiences';
 import { CardTitle } from '@/lib/components/ui/card';
@@ -10,14 +13,24 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/lib/components/ui/collapsible';
-import React from 'react';
+import { ExperiencesProps } from '@/types/ExperiencesProps';
 
-interface CardExperiencesSectionProps {
-  experiences: Experiences[];
-  className?: string;
-}
+/**
+ * @file CardProjects.tsx
+ * @description This file exports a component that renders a list of project cards.
+ */
 
-export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
+/**
+ * CardProjects component.
+ * @param {Object} props - The props for the component.
+ * @param {Projects[]} props.projects - An array of project objects to be displayed.
+ * @param {string} [props.className] - Additional class names to apply to the component.
+ * @returns {JSX.Element} The rendered CardProjects component.
+ * @example
+ * <CardProjects projects={projects} className="custom-class" />
+ */
+
+export const CardExperiences: React.FC<ExperiencesProps> = ({
   experiences,
   className,
 }) => {
@@ -34,10 +47,10 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <div>
+    <>
       <ScrollArea className='mb-4 h-[17.8rem] w-full rounded-md border p-4'>
-        {experiences.map((experience) => (
-          <>
+        {experiences.map((experience, expIndex) => (
+          <div key={expIndex}>
             {experience.developer.map((developer, devIndex) => (
               <div
                 key={devIndex}
@@ -80,7 +93,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
                 </div>
               </div>
             ))}
-          </>
+          </div>
         ))}
       </ScrollArea>
       <Collapsible
@@ -102,8 +115,8 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
         </div>
         <CollapsibleContent className='space-y-2'>
           <div className='rounded-md border px-4 py-2 text-sm shadow-sm'>
-            {experiences.map((experience) => (
-              <>
+            {experiences.map((experience, expIndex) => (
+              <div key={expIndex}>
                 {experience.projectCoordinator.map(
                   (projectCoordinator, projectCooIndex) => (
                     <div
@@ -151,7 +164,7 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
                     </div>
                   )
                 )}
-              </>
+              </div>
             ))}
           </div>
         </CollapsibleContent>
@@ -169,8 +182,8 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
         </div>
         <CollapsibleContent className='space-y-2'>
           <div className='rounded-md border px-4 py-2 text-sm shadow-sm'>
-            {experiences.map((experience) => (
-              <>
+            {experiences.map((experience, expIndex) => (
+              <div key={expIndex}>
                 {experience.nurseAssistant.map(
                   (nurseAssistant, projectCooIndex) => (
                     <div
@@ -218,13 +231,13 @@ export const CardExperiencesSection: React.FC<CardExperiencesSectionProps> = ({
                     </div>
                   )
                 )}
-              </>
+              </div>
             ))}
           </div>
         </CollapsibleContent>
       </Collapsible>{' '}
-    </div>
+    </>
   );
 };
 
-export default CardExperiencesSection;
+export default CardExperiences;

@@ -1,27 +1,28 @@
+'use client';
+
 import React, { useEffect } from 'react';
-import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
+import dynamic from 'next/dynamic';
+import { MapContainer, TileLayer, Circle } from 'react-leaflet';
+import LocationEventsMap from '../../../hooks/LocationEventsMap';
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
+import { LocationEventsMapProps } from '@/types/LocationEventsProps';
+import {
+  francePosition,
+  myPosition,
+  radius,
+} from '@/utils/constants/positions';
 
-interface LocationEventsProps {
-  position: [number, number];
-  ref?: React.RefObject<HTMLDivElement>;
-}
+/**
+ * @file Map.tsx
+ * @description This component renders a map with a specific position and radius.
+ */
 
-const LocationEvents: React.FC<LocationEventsProps> = ({ position }) => {
-  const map = useMap();
-
-  useEffect(() => {
-    map.flyTo(position, 10);
-  }, [map, position]);
-
-  return null;
-};
+/**
+ * Map component.
+ * @returns {JSX.Element} The rendered component.
+ */
 
 export const Map: React.FC = () => {
-  const francePosition: [number, number] = [46.6034, 3.1236];
-  const myPosition: [number, number] = [50.381645, 3.053234];
-  const radius = 60000 / 2;
-
   const [ref, isIntersecting] = useIntersectionObserver({
     root: null,
     rootMargin: '0px',
@@ -29,18 +30,18 @@ export const Map: React.FC = () => {
   });
 
   return (
-    <div ref={ref} className='h-[41.6rem] w-full'>
+    <div ref={ref}>
       <MapContainer
         center={francePosition}
         zoom={6}
-        className='h-full w-full'
         scrollWheelZoom={false}
+        className='mb-4 h-[41.6rem] w-full'
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
-        {isIntersecting && <LocationEvents position={myPosition} />}
+        {isIntersecting && <LocationEventsMap position={myPosition} />}
         <Circle
           center={myPosition}
           radius={radius}
@@ -53,4 +54,6 @@ export const Map: React.FC = () => {
   );
 };
 
-export default Map;
+export default dynamic(() => Promise.resolve(Map), {
+  ssr: false,
+});
