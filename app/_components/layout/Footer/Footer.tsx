@@ -2,6 +2,18 @@
 import React from 'react';
 import dynamicYear from '@/utils/dynamicYear';
 
+/**
+ * @file Footer.tsx
+ * @description This file exports a Footer component that displays the current year and some additional information.
+ */
+
+/**
+ * Footer component.
+ * @returns {JSX.Element} The rendered Footer component.
+ * @example
+ * <Footer />
+ */
+
 export const Footer: React.FC = () => {
   return (
     <footer className='grid justify-center p-4 text-center'>
