@@ -8,7 +8,7 @@ import {
 } from '@/lib/components/ui/avatar';
 import { Recommandations } from '@/types/RecommandationsProps';
 import GenericCarousel from './GenericCarousel';
-import cn from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { Skeleton } from '@/lib/components/ui/skeleton';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { getRandomElement } from '@/utils/getRandomElement';
@@ -27,34 +27,32 @@ import { getRandomElement } from '@/utils/getRandomElement';
  * @example
  * <RecommandationsCarousel recommandations={recommandations} className="custom-class" />
  */
-export const RecommandationsCarousel: React.FC<{
-  recommandations: Recommandations[];
-  className?: string;
-}> = ({ recommandations, className }) => {
+export const RecommandationsCarousel: React.FC<Recommandations> = ({
+  recommandations,
+  className,
+}) => {
   // Obtenir une recommandation aléatoire
   const randomRecommandation = getRandomElement(recommandations);
 
   const items = (
-    <div className='flex flex-col items-center px-4'>
-      <p className={className}>"{randomRecommandation.content}"</p>
-      <div className='mt-4 flex w-full justify-end text-right'>
-        <div className='flex flex-col items-end px-4'>
-          <Skeleton>
-            <p className='rounded-3xl p-4 text-right text-sm font-light'>
-              {randomRecommandation.name}
-              <br />
-              {randomRecommandation.context}
-            </p>
-          </Skeleton>
-          <Avatar>
-            <AvatarImage
-              src={`${baseUrl}${randomRecommandation.imageSrc}`}
-              alt={randomRecommandation.name}
-            />
-            <AvatarFallback>{randomRecommandation.name}</AvatarFallback>
-          </Avatar>
-        </div>
+    <div className='flex flex-col items-center justify-center px-4'>
+      <Avatar>
+        <AvatarImage
+          src={`${baseUrl}${randomRecommandation.imageSrc}`}
+          alt={randomRecommandation.name}
+        />
+        <AvatarFallback className='text-xs'>
+          {randomRecommandation.name}
+        </AvatarFallback>
+      </Avatar>
+      <div className='mt-4 flex flex-col items-center justify-center space-y-2 px-4'>
+        <Skeleton>
+          <p className='flex h-4 items-center justify-center rounded-3xl p-4 text-right text-sm font-light'>
+            {randomRecommandation.name} - {randomRecommandation.context}
+          </p>
+        </Skeleton>
       </div>
+      <p className={className}>"{randomRecommandation.content}"</p>
     </div>
   );
 
