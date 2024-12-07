@@ -8,6 +8,7 @@ import {
 } from '@/lib/components/ui/avatar';
 import { Recommandations } from '@/types/RecommandationsProps';
 import GenericCarousel from './GenericCarousel';
+import cn from '@/lib/utils';
 import { Skeleton } from '@/lib/components/ui/skeleton';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { getRandomElement } from '@/utils/getRandomElement';
@@ -34,10 +35,17 @@ export const RecommandationsCarousel: React.FC<{
   const randomRecommandation = getRandomElement(recommandations);
 
   const items = (
-    <div className='mx-4 flex flex-col items-center p-4'>
-      <p className={className}>{randomRecommandation.content}</p>
-      <Skeleton>
-        <div className='flex'>
+    <div className='flex flex-col items-center px-4'>
+      <p className={className}>"{randomRecommandation.content}"</p>
+      <div className='mt-4 flex w-full justify-end text-right'>
+        <div className='flex flex-col items-end px-4'>
+          <Skeleton>
+            <p className='rounded-3xl p-4 text-right text-sm font-light'>
+              {randomRecommandation.name}
+              <br />
+              {randomRecommandation.context}
+            </p>
+          </Skeleton>
           <Avatar>
             <AvatarImage
               src={`${baseUrl}${randomRecommandation.imageSrc}`}
@@ -46,11 +54,7 @@ export const RecommandationsCarousel: React.FC<{
             <AvatarFallback>{randomRecommandation.name}</AvatarFallback>
           </Avatar>
         </div>
-        <div className='flex flex-col'>
-          <p className={className}>{randomRecommandation.name}</p>
-          <p className={className}>{randomRecommandation.context}</p>
-        </div>
-      </Skeleton>
+      </div>
     </div>
   );
 

@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import GenericCarousel from './GenericCarousel';
 import { Technologies } from '@/types/TechnologiesProps';
+import { baseUrl } from '@/utils/constants/baseUrl';
 
 /**
  * @file TechCarousel.tsx
@@ -23,14 +24,18 @@ export const TechnologiesCarousel: React.FC<Technologies> = ({
   technologies,
   className,
 }) => {
+  const useWhiteFilter = (item: string) => {
+    return item.includes('express') ? 'filter-white' : '';
+  };
+
   const items = technologies.map((tech, index) => (
     <div key={index} className='mx-4 flex flex-col items-center p-4'>
       <Image
-        src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+        src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
         alt={tech.name}
         width={100}
         height={100}
-        className={`h-full w-auto ${tech.slug.includes('express') ? 'filter-white' : ''}`}
+        className={`h-full w-auto ${useWhiteFilter(tech.slug)}`}
         priority
       />
       <p className='text-center text-sm font-light'>{tech.name}</p>
