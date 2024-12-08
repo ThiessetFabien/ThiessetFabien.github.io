@@ -9,7 +9,6 @@ import {
 import { Recommandations } from '@/types/RecommandationsProps';
 import GenericCarousel from './GenericCarousel';
 import { cn } from '@/lib/utils';
-import { Skeleton } from '@/lib/components/ui/skeleton';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { getRandomElement } from '@/utils/getRandomElement';
 
@@ -35,28 +34,30 @@ export const RecommandationsCarousel: React.FC<Recommandations> = ({
   const randomRecommandation = getRandomElement(recommandations);
 
   const items = (
-    <div className='flex flex-col items-center justify-center px-4'>
-      <Avatar>
-        <AvatarImage
-          src={`${baseUrl}${randomRecommandation.imageSrc}`}
-          alt={randomRecommandation.name}
-        />
-        <AvatarFallback className='text-xs'>
-          {randomRecommandation.name}
-        </AvatarFallback>
-      </Avatar>
-      <div className='mt-4 flex flex-col items-center justify-center space-y-2 px-4'>
-        <Skeleton>
-          <p className='flex h-4 items-center justify-center rounded-3xl p-4 text-right text-sm font-light'>
-            {randomRecommandation.name} - {randomRecommandation.context}
-          </p>
-        </Skeleton>
-      </div>
-      <p className={className}>"{randomRecommandation.content}"</p>
+    <div className='flex flex-col'>
+      <a href={`${baseUrl}${randomRecommandation.linkedin}`}>
+        <p className={className}>"{randomRecommandation.content}"</p>
+        <div className='mt-4 flex items-center'>
+          <Avatar>
+            <AvatarImage
+              src={`${baseUrl}${randomRecommandation.imageSrc}`}
+              alt={randomRecommandation.name}
+            />
+            <AvatarFallback className='text-xs'>
+              {randomRecommandation.name}
+            </AvatarFallback>
+          </Avatar>
+          <div className='ml-4 flex flex-col'>
+            <p className='text-xs font-bold'>{randomRecommandation.name}</p>
+            <p className='text-xs font-light'>{randomRecommandation.context}</p>
+            <p className='text-xs font-light'>{randomRecommandation.date}</p>
+          </div>
+        </div>
+      </a>
     </div>
   );
 
-  return <GenericCarousel items={[items]} className={className} delay={7000} />;
+  return <GenericCarousel items={[items]} className={className} delay={700} />;
 };
 
 export default RecommandationsCarousel;
