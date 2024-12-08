@@ -6,6 +6,7 @@ import {
   AvatarFallback,
   AvatarImage,
 } from '@/lib/components/ui/avatar';
+import { Mail, PhoneOutgoing } from 'lucide-react';
 import { Recommandations } from '@/types/RecommandationsProps';
 import GenericCarousel from './GenericCarousel';
 import { cn } from '@/lib/utils';
@@ -30,7 +31,6 @@ export const RecommandationsCarousel: React.FC<Recommandations> = ({
   recommandations,
   className,
 }) => {
-  // Obtenir une recommandation aléatoire
   const randomRecommandation = getRandomElement(recommandations);
 
   const items = (
@@ -51,6 +51,18 @@ export const RecommandationsCarousel: React.FC<Recommandations> = ({
             <p className='text-xs font-bold'>{randomRecommandation.name}</p>
             <p className='text-xs font-light'>{randomRecommandation.context}</p>
             <p className='text-xs font-light'>{randomRecommandation.date}</p>
+            <div>
+              {randomRecommandation.mail && (
+                <a href={`mailto:${randomRecommandation.mail}`}>
+                  <Mail size={12} />
+                </a>
+              )}
+              {randomRecommandation.phone && (
+                <a href={`tel:${randomRecommandation.phone}`}>
+                  <PhoneOutgoing size={12} />
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </a>
