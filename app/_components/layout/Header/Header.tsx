@@ -23,7 +23,7 @@ export const Header: React.FC<{ className?: string }> = ({ className }) => {
       <div className='align-center m-auto flex h-full items-center justify-between p-6'>
         <Link
           href='/'
-          className='pointer-events-auto text-center font-caption text-2xl font-bold leading-tight tracking-tight'
+          className='pointer-events-auto text-center font-caption font-bold leading-tight tracking-tight sm:text-xl md:text-2xl lg:text-3xl'
         >
           FT
         </Link>
