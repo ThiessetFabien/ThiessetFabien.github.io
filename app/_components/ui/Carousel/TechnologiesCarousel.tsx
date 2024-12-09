@@ -5,6 +5,7 @@ import Image from 'next/image';
 import GenericCarousel from './GenericCarousel';
 import { Technologies } from '@/types/TechnologiesProps';
 import { baseUrl } from '@/utils/constants/baseUrl';
+import { cn } from '@/lib/utils';
 
 /**
  * @file TechCarousel.tsx
@@ -30,14 +31,17 @@ export const TechnologiesCarousel: React.FC<Technologies> = ({
 
   const items = technologies.map((tech, index) => (
     <div key={index} className='mx-4 flex flex-col items-center p-4'>
-      <Image
-        src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
-        alt={tech.name}
-        width={100}
-        height={100}
-        className={`h-full w-auto ${useWhiteFilter(tech.slug)}`}
-        priority
-      />
+      <div className='relative mb-2 h-24 w-24'>
+        <Image
+          src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+          alt={tech.name}
+          width={100}
+          height={100}
+          objectFit='contain'
+          className={cn('h-full w-auto', useWhiteFilter(tech.slug))}
+          priority
+        />
+      </div>
       <p className='text-center text-sm font-light'>{tech.name}</p>
     </div>
   ));
