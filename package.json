@@ -14,7 +14,8 @@
     "build:local": "prettier --write . && next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write --ignore-path .gitignore ."
+    "format": "prettier --write --ignore-path .gitignore .",
+    "lint&format": "next format && next lint"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.0",

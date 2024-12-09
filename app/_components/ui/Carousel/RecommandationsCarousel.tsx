@@ -9,9 +9,9 @@ import {
 import { Mail, PhoneOutgoing } from 'lucide-react';
 import { Recommandations } from '@/types/RecommandationsProps';
 import GenericCarousel from './GenericCarousel';
-import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { getRandomElement } from '@/utils/getRandomElement';
+import { Button } from '@/lib/components/ui/button';
 
 /**
  * @file RecommandationsCarousel.tsx
@@ -35,41 +35,41 @@ export const RecommandationsCarousel: React.FC<Recommandations> = ({
 
   const items = (
     <div className='flex flex-col'>
-      <a href={`${baseUrl}${randomRecommandation.linkedin}`}>
-        <p className={className}>"{randomRecommandation.content}"</p>
-        <div className='mt-4 flex items-center'>
-          <Avatar>
-            <AvatarImage
-              src={`${baseUrl}${randomRecommandation.imageSrc}`}
-              alt={randomRecommandation.name}
-            />
-            <AvatarFallback className='text-xs'>
-              {randomRecommandation.name}
-            </AvatarFallback>
-          </Avatar>
-          <div className='ml-4 flex flex-col'>
+      <p className={className}>&quot;{randomRecommandation.content}&quot;</p>
+      <div className='mt-4 flex items-center'>
+        <Avatar>
+          <AvatarImage
+            src={`${baseUrl}${randomRecommandation.imageSrc}`}
+            alt={randomRecommandation.name}
+          />
+          <AvatarFallback className='text-xs'>
+            {randomRecommandation.name}
+          </AvatarFallback>
+        </Avatar>
+        <div className='ml-4 flex flex-col'>
+          <a href={`${baseUrl}${randomRecommandation.linkedin}`}>
             <p className='text-xs font-bold'>{randomRecommandation.name}</p>
             <p className='text-xs font-light'>{randomRecommandation.context}</p>
             <p className='text-xs font-light'>{randomRecommandation.date}</p>
-            <div>
-              {randomRecommandation.mail && (
-                <div>
-                  <a href={`mailto:${randomRecommandation.mail}`}>
-                    <Mail size={12} />
-                  </a>
-                </div>
-              )}
-              {randomRecommandation.phone && (
-                <div>
-                  <a href={`tel:${randomRecommandation.phone}`}>
-                    <PhoneOutgoing size={12} />
-                  </a>
-                </div>
-              )}
-            </div>
-          </div>
+          </a>
         </div>
-      </a>
+        <div className='ml-4'>
+          {randomRecommandation.mail && (
+            <a href={`mailto:${randomRecommandation.mail}`}>
+              <Button variant='secondary'>
+                <Mail size={12} />
+              </Button>
+            </a>
+          )}
+          {randomRecommandation.phone && (
+            <a href={`tel:${randomRecommandation.phone}`}>
+              <Button variant='secondary'>
+                <PhoneOutgoing size={12} />
+              </Button>
+            </a>
+          )}
+        </div>
+      </div>
     </div>
   );
 
