@@ -40,25 +40,25 @@ export const CallToAction: React.FC<CardProps> = ({
   downloadActive2,
 }) => {
   return (
-    <div className='flex h-auto w-full items-center'>
-      <div className='mr-4'>
+    <div className='flex h-auto w-full flex-col items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0'>
+      <div className='w-full md:w-auto'>
         <a href={`/${href1}`} {...dynamicDownload(downloadActive1)}>
           <Button
             size='sm'
             variant='default'
-            className='flex w-full items-center justify-evenly text-center'
+            className='flex w-full items-center justify-center text-center'
           >
             {IconLoader(icon1 ?? '')}
             {(cta1 ?? '').toLocaleUpperCase()}
           </Button>
         </a>
       </div>
-      <div>
+      <div className='w-full md:w-auto'>
         <a href={`/${href2}`} {...dynamicDownload(downloadActive2)}>
           <Button
             size='sm'
             variant='outline'
-            className='flex w-full items-center justify-evenly text-center'
+            className='flex w-full items-center justify-center text-center'
           >
             {IconLoader(icon2 ?? '')}
             {(cta2 ?? '').toLocaleUpperCase()}

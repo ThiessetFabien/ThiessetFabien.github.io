@@ -31,7 +31,7 @@ import { CardProjects } from '@/ui/Card/CardProjects';
 
 const HomePage: React.FC = () => {
   return (
-    <main className='container mx-auto p-4'>
+    <main className='container mx-auto'>
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
         {CardData.map((cardProps, index: number) => (
           <Section key={index}>
@@ -49,11 +49,11 @@ const HomePage: React.FC = () => {
                 {!cardProps.imageSrc && cardProps.map && <Map />}
                 {cardProps.title && (
                   <>
-                    <CardTitle className='font-caption text-2xl leading-tight tracking-tight'>
+                    <CardTitle className='font-caption text-lg leading-tight tracking-tight md:text-xl lg:text-2xl'>
                       {cardProps.title}
                     </CardTitle>
                     {cardProps.description && (
-                      <CardDescription className='text-base font-light leading-relaxed'>
+                      <CardDescription className='w-full min-w-full max-w-prose text-base font-light leading-relaxed'>
                         {cardProps.description}
                       </CardDescription>
                     )}
@@ -73,7 +73,7 @@ const HomePage: React.FC = () => {
               {cardProps.technologies && cardProps.technologies.length > 0 && (
                 <CardContent>
                   <TechnologiesCarousel
-                    className='w-full text-base font-light leading-relaxed'
+                    className='mx-auto max-w-prose text-base font-light leading-relaxed'
                     technologies={cardProps.technologies}
                   />
                 </CardContent>
@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
                 cardProps.recommandations.length > 0 && (
                   <CardContent>
                     <RecommandationsCarousel
-                      className='w-full text-base font-light leading-relaxed'
+                      className='max-w-prose text-base font-light leading-relaxed'
                       recommandations={cardProps.recommandations}
                     />
                   </CardContent>

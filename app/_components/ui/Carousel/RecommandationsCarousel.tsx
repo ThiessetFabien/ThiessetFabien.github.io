@@ -12,6 +12,7 @@ import GenericCarousel from './GenericCarousel';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { getRandomElement } from '@/utils/getRandomElement';
 import { Button } from '@/lib/components/ui/button';
+import { cn } from '@/lib/utils';
 
 /**
  * @file RecommandationsCarousel.tsx
@@ -34,8 +35,15 @@ export const RecommandationsCarousel: React.FC<Recommandations> = ({
   const randomRecommandation = getRandomElement(recommandations);
 
   const items = (
-    <div className='flex flex-col'>
-      <p className={className}>&quot;{randomRecommandation.content}&quot;</p>
+    <div className='mx-4 py-4'>
+      <p
+        className={cn(
+          'max-w-prose text-base font-light leading-relaxed',
+          className
+        )}
+      >
+        &quot;{randomRecommandation.content}&quot;
+      </p>
       <div className='mt-4 flex items-center'>
         <Avatar>
           <AvatarImage
@@ -48,9 +56,15 @@ export const RecommandationsCarousel: React.FC<Recommandations> = ({
         </Avatar>
         <div className='ml-4 flex flex-col'>
           <a href={`${baseUrl}${randomRecommandation.linkedin}`}>
-            <p className='text-xs font-bold'>{randomRecommandation.name}</p>
-            <p className='text-xs font-light'>{randomRecommandation.context}</p>
-            <p className='text-xs font-light'>{randomRecommandation.date}</p>
+            <p className='max-w-prose text-xs font-bold leading-relaxed'>
+              {randomRecommandation.name}
+            </p>
+            <p className='max-w-prose text-xs font-light leading-relaxed'>
+              {randomRecommandation.context}
+            </p>
+            <p className='max-w-prose text-xs font-light leading-relaxed'>
+              {randomRecommandation.date}
+            </p>
           </a>
         </div>
         <div className='ml-4'>
