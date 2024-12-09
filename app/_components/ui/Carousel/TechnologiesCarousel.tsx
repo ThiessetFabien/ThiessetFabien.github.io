@@ -30,19 +30,27 @@ export const TechnologiesCarousel: React.FC<Technologies> = ({
   };
 
   const items = technologies.map((tech, index) => (
-    <div key={index} className='mx-4 flex flex-col items-center p-4'>
-      <div className='relative mb-2 h-24 w-24'>
+    <div
+      key={index}
+      className={cn(
+        'mx-2 flex max-w-full flex-shrink-0 flex-col items-center justify-center p-2 md:mx-4 md:p-4',
+        className
+      )}
+    >
+      <div className='relative mb-2 flex h-16 w-16 justify-center md:h-24 md:w-24'>
         <Image
           src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
           alt={tech.name}
-          width={100}
-          height={100}
+          width={50}
+          height={50}
           objectFit='contain'
-          className={cn('h-full w-auto', useWhiteFilter(tech.slug))}
+          className={cn(useWhiteFilter(tech.slug))}
           priority
         />
       </div>
-      <p className='text-center text-sm font-light'>{tech.name}</p>
+      <p className='mt-2 text-center text-xs font-medium text-muted-foreground md:text-sm'>
+        {tech.name}
+      </p>
     </div>
   ));
 

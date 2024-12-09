@@ -40,6 +40,6 @@ export const CardImage = ({
     width={width}
     height={height}
     priority
-    className={cn('mb-4', className)}
+    className={cn('mb-4 rounded-xl', className)}
   />
 );

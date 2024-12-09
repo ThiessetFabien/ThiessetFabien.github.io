@@ -1,7 +1,12 @@
 'use client';
 
 import React from 'react';
-import { MapPin, CalendarClock, ChevronsUpDown } from 'lucide-react';
+import {
+  MapPin,
+  CalendarClock,
+  ChevronsUpDown,
+  ChevronsDownUp,
+} from 'lucide-react';
 import { CardTitle } from '@/lib/components/ui/card';
 import { Badge } from '@/lib/components/ui/badge';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';
@@ -47,7 +52,7 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
 
   return (
     <>
-      <ScrollArea className='mb-4 h-[17.8rem] w-full rounded-md border p-4'>
+      <ScrollArea className='mb-4 h-64 w-full rounded-md border p-4 md:p-6'>
         {experiences.map((experience, expIndex) => (
           <div key={expIndex}>
             {experience.developer.map((developer, devIndex) => (
@@ -58,7 +63,7 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
                 <CardTitle
                   className={cn(
                     className,
-                    'max-w-3xl font-caption text-xl leading-tight tracking-tight',
+                    'max-w-5xl font-caption text-base font-bold leading-tight tracking-tight md:text-lg',
                     isFinished(developer.date)
                   )}
                 >
@@ -69,13 +74,13 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
                     variant='outline'
                     className={cn(
                       className,
-                      'm-1 flex w-full items-center justify-end border-0 text-right text-sm font-bold',
+                      'm-1 flex w-full items-center justify-end border-0 text-right text-xs font-bold',
                       hideCompagny(developer.company)
                     )}
                   >
                     {developer.company}
                     <MapPin
-                      size={20}
+                      size={16}
                       className={cn('ml-1', hideCompagny(developer.company))}
                     />
                   </Badge>
@@ -87,7 +92,7 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
                     )}
                   >
                     {developer.date}
-                    <CalendarClock size={20} className='ml-1' />
+                    <CalendarClock size={16} className='ml-1' />
                   </Badge>
                 </div>
               </div>
@@ -107,7 +112,11 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
           </p>
           <CollapsibleTrigger asChild>
             <Button variant='secondary' size='sm'>
-              <ChevronsUpDown className='h-4 w-4' />
+              {isOpen ? (
+                <ChevronsDownUp className='h-4 w-4' />
+              ) : (
+                <ChevronsUpDown className='h-4 w-4' />
+              )}
               <span className='sr-only'>Toggle</span>
             </Button>
           </CollapsibleTrigger>
@@ -125,7 +134,7 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
                       <CardTitle
                         className={cn(
                           className,
-                          'max-w-3xl font-caption text-xl leading-tight tracking-tight',
+                          'max-w-5xl font-caption text-base font-bold leading-tight tracking-tight md:text-lg',
                           isFinished(projectCoordinator.date)
                         )}
                       >
@@ -136,13 +145,13 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
                           variant='outline'
                           className={cn(
                             className,
-                            'm-1 flex w-full items-center justify-end border-0 text-right text-sm font-bold',
+                            'm-1 flex w-full items-center justify-end border-0 text-right text-xs font-bold',
                             hideCompagny(projectCoordinator.company)
                           )}
                         >
                           {projectCoordinator.company}
                           <MapPin
-                            size={20}
+                            size={16}
                             className={cn(
                               'ml-1',
                               hideCompagny(projectCoordinator.company)
@@ -157,7 +166,7 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
                           )}
                         >
                           {projectCoordinator.date}
-                          <CalendarClock size={20} className='ml-1' />
+                          <CalendarClock size={16} className='ml-1' />
                         </Badge>
                       </div>
                     </div>
@@ -192,7 +201,7 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
                       <CardTitle
                         className={cn(
                           className,
-                          'max-w-3xl font-caption text-xl leading-tight tracking-tight',
+                          'max-w-5xl font-caption text-base font-bold leading-tight tracking-tight md:text-lg',
                           isFinished(nurseAssistant.date)
                         )}
                       >
@@ -203,13 +212,13 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
                           variant='outline'
                           className={cn(
                             className,
-                            'm-1 flex w-full items-center justify-end border-0 text-right text-sm font-bold',
+                            'm-1 flex w-full items-center justify-end border-0 text-right text-xs font-bold',
                             hideCompagny(nurseAssistant.company)
                           )}
                         >
                           {nurseAssistant.company}
                           <MapPin
-                            size={20}
+                            size={16}
                             className={cn(
                               'ml-1',
                               hideCompagny(nurseAssistant.company)
@@ -224,7 +233,7 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
                           )}
                         >
                           {nurseAssistant.date}
-                          <CalendarClock size={20} className='ml-1' />
+                          <CalendarClock size={16} className='ml-1' />
                         </Badge>
                       </div>
                     </div>

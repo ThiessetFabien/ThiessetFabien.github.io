@@ -31,7 +31,7 @@ export default function RootLayout({
         className={cn(
           Poppins.variable,
           OrpheusPro.variable,
-          'm-auto h-full max-w-5xl bg-background font-sans text-foreground'
+          'container mx-auto h-full max-w-5xl bg-background font-sans text-foreground'
         )}
       >
         <ThemeProvider
