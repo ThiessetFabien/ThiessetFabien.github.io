@@ -1,6 +1,7 @@
-import { Technologies } from './Technologies';
-import { Experiences } from './Experiences';
-import { Projects } from './Projects';
+import { Technologies } from './TechnologiesProps';
+import { Experiences } from './ExperiencesProps';
+import { Projects } from './ProjectsProps';
+import { Recommandations } from './RecommandationsProps';
 
 /**
  * @file CardProps.tsx
@@ -49,6 +50,7 @@ export default interface CardProps {
   otherExperiences?: Experiences[];
   projects?: Projects[];
   technologies?: Technologies[];
+  recommandations?: Recommandations[];
 
   content?: React.ReactNode;
   className?: string;

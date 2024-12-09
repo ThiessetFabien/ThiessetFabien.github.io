@@ -1,6 +1,5 @@
 'use client';
-import dynamic from 'next/dynamic';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button } from '@/lib/components/ui/button';
 import CardProps from '@/types/CardProps';
 import { dynamicDownload } from '@/utils/dynamicDownload';

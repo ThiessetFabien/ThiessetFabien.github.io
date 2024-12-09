@@ -14,10 +14,12 @@
     "build:local": "prettier --write . && next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write --ignore-path .gitignore ."
+    "format": "prettier --write --ignore-path .gitignore .",
+    "lint&format": "next format && next lint"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.0",
+    "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-collapsible": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-scroll-area": "^1.2.1",

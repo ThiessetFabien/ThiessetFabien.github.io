@@ -1,10 +1,6 @@
 'use client';
 
 import React from 'react';
-import CardData from '@api/cards.data.json';
-import { CallToAction } from '@/ui/CallToAction/CallToAction';
-import { TechCarousel } from '@/ui/Carousel/TechCarousel';
-import { Section } from '@/components/ui/Section/Section';
 import {
   Card,
   CardHeader,
@@ -13,6 +9,11 @@ import {
   CardFooter,
   CardDescription,
 } from '@/lib/components/ui/card';
+import CardData from '@api/cards.data.json';
+import { CallToAction } from '@/ui/CallToAction/CallToAction';
+import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
+import { RecommandationsCarousel } from '@/ui/Carousel/RecommandationsCarousel';
+import { Section } from '@/components/ui/Section/Section';
 import { Map } from '@/ui/Map/Map';
 import { CardImage } from '@/ui/Card/CardImage';
 import { CardExperiences } from '@/ui/Card/CardExperiences';
@@ -70,12 +71,21 @@ const HomePage: React.FC = () => {
               )}
             {cardProps.technologies && cardProps.technologies.length > 0 && (
               <CardContent>
-                <TechCarousel
+                <TechnologiesCarousel
                   className='w-full text-base font-light leading-relaxed'
                   technologies={cardProps.technologies}
                 />
               </CardContent>
             )}
+            {cardProps.recommandations &&
+              cardProps.recommandations.length > 0 && (
+                <CardContent>
+                  <RecommandationsCarousel
+                    className='w-full text-base font-light leading-relaxed'
+                    recommandations={cardProps.recommandations}
+                  />
+                </CardContent>
+              )}
             {cardProps.projects && cardProps.projects.length > 0 && (
               <CardContent>
                 <CardProjects projects={cardProps.projects} />

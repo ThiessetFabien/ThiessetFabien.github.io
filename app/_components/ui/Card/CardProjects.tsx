@@ -17,7 +17,7 @@ import { CardImage } from './CardImage';
 import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
 import { baseUrl } from '@/utils/constants/baseUrl';
 
-import { Projects } from '@/types/Projects';
+import { ProjectsProps } from '@/types/ProjectsProps';
 
 /**
  * @file CardProjects.tsx
