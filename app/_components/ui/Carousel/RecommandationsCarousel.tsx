@@ -53,14 +53,18 @@ export const RecommandationsCarousel: React.FC<Recommandations> = ({
             <p className='text-xs font-light'>{randomRecommandation.date}</p>
             <div>
               {randomRecommandation.mail && (
-                <a href={`mailto:${randomRecommandation.mail}`}>
-                  <Mail size={12} />
-                </a>
+                <div>
+                  <a href={`mailto:${randomRecommandation.mail}`}>
+                    <Mail size={12} />
+                  </a>
+                </div>
               )}
               {randomRecommandation.phone && (
-                <a href={`tel:${randomRecommandation.phone}`}>
-                  <PhoneOutgoing size={12} />
-                </a>
+                <div>
+                  <a href={`tel:${randomRecommandation.phone}`}>
+                    <PhoneOutgoing size={12} />
+                  </a>
+                </div>
               )}
             </div>
           </div>
