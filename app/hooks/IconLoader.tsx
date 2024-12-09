@@ -18,7 +18,7 @@ export const IconLoader = (icon: string) => {
 
   useEffect(() => {
     const loadIcon = async () => {
-      const iconModule: any = await import(`lucide-react`);
+      const iconModule = await import(`lucide-react`);
       setIcon(() => iconModule[icon] as React.ComponentType);
     };
     loadIcon();

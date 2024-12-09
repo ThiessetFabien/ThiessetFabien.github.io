@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { MapPin, CalendarClock, ChevronsUpDown } from 'lucide-react';
-import { Experiences } from '@/types/Experiences';
 import { CardTitle } from '@/lib/components/ui/card';
 import { Badge } from '@/lib/components/ui/badge';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';

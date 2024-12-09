@@ -4,13 +4,14 @@
  */
 
 /**
- * LocationEventsProps type.
- * @typedef {Object} LocationEventsProps
+ * LocationEvents interface.
+ * @typedef {Object} LocationEvents
  * @property {[number, number]} position - The position to fly to on the map.
  * @property {React.RefObject<HTMLDivElement>} [ref] - Optional ref for the component.
+ * @example
+ * const props: LocationEvents = { position: [50.381645, 3.053234] };
  */
-
-export interface LocationEventsMapProps {
+export interface LocationEvents {
   position: [number, number];
   ref?: React.RefObject<HTMLDivElement>;
 }
