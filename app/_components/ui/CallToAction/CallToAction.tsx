@@ -45,7 +45,6 @@ export const CallToAction: React.FC<CardProps> = ({
           href={href1}
           downloadActive={downloadActive1}
           variant='default'
-          size='sm'
         />
       )}
       {cta2 && href2 && (
@@ -55,7 +54,6 @@ export const CallToAction: React.FC<CardProps> = ({
           href={href2}
           downloadActive={downloadActive2}
           variant='outline'
-          size='sm'
         />
       )}
     </div>
