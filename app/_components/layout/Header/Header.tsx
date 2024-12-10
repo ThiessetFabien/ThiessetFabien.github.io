@@ -21,7 +21,7 @@ export const Header: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <header
       className={cn(
-        'align-center m-auto flex h-full items-center justify-between',
+        'align-center flex h-full items-center justify-between',
         className
       )}
     >
