@@ -87,7 +87,7 @@ export const RecommandationsCarousel: React.FC<Recommandations> = ({
     </div>
   );
 
-  return <GenericCarousel items={[items]} className={className} delay={700} />;
+  return <GenericCarousel items={[items]} className={className} delay={500} />;
 };
 
 export default RecommandationsCarousel;
