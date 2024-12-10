@@ -20,7 +20,7 @@ import dynamicYear from '@/utils/dynamicYear';
 export const Footer: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <footer className={cn(className)}>
-      <p className='p-4 text-xs font-light text-muted-foreground md:p-6'>
+      <p className='text-xs font-light text-muted-foreground'>
         &copy; {dynamicYear} Fabien Thiesset - All rights reserved.
         <br />
         Fonts made from

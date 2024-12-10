@@ -1,17 +1,12 @@
 [
   {
     "title": "Human, creative, and innovative developer.",
+    "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional.",
     "imageSrc": "/photo.webp",
     "imageAlt": "Picture of Fabien",
     "icon1": "PhoneOutgoing",
     "cta1": "Hire an expert",
-    "href1": "tel:+33610920974",
-    "downloadActive1": false,
-    "icon2": "BriefcaseBusiness",
-    "cta2": "Discover my works",
-    "href2": "#",
-    "downloadActive2": false,
-    "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional."
+    "href1": "tel:+33610920974"
   },
   {
     "title": "I ❤️ Technologies",
