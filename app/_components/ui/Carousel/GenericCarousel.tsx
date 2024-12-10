@@ -4,6 +4,10 @@ import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import { cn } from '@/lib/utils';
+import { usePrevNextButtons } from './ArrowButtonsCarousel';
+import { useDotButton } from './DotButtonCarousel';
+import { NextButton, PrevButton } from './ArrowButtonsCarousel';
+import { DotButton } from './DotButtonCarousel';
 
 /**
  * @file GenericCarousel.tsx
@@ -31,6 +35,15 @@ export const GenericCarousel: React.FC<{
     [AutoScroll({ delay, stopOnInteraction: false })]
   );
 
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi);
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick,
+  } = usePrevNextButtons(emblaApi);
+
   useEffect(() => {
     if (emblaApi) {
       emblaApi.reInit();
@@ -38,8 +51,11 @@ export const GenericCarousel: React.FC<{
     return;
   }, [emblaApi]);
 
+  const arrowButtonStyle =
+    'm-auto flex h-5 w-5 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 no-underline';
+
   return (
-    <div
+    <section
       className={cn(
         'container mx-auto overflow-hidden rounded-xl border shadow',
         className
@@ -53,7 +69,31 @@ export const GenericCarousel: React.FC<{
           </div>
         ))}
       </div>
-    </div>
+      <div className='flex justify-between'>
+        <div className='flex items-center gap-4 p-4 md:p-6'>
+          <PrevButton
+            onClick={onPrevButtonClick}
+            disabled={prevBtnDisabled}
+            className={arrowButtonStyle}
+          />
+          <NextButton
+            onClick={onNextButtonClick}
+            disabled={nextBtnDisabled}
+            className={arrowButtonStyle}
+          />
+        </div>
+        <div className='flex items-center justify-center space-x-2 p-4 md:p-6'>
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              isSelected={selectedIndex === index}
+              className='m-0 flex h-5 w-5 cursor-pointer touch-manipulation appearance-none items-center justify-center gap-4 rounded-full border-0 bg-transparent p-0 no-underline'
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
