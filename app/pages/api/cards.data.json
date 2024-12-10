@@ -9,7 +9,7 @@
     "href1": "tel:+33610920974"
   },
   {
-    "title": "Skills",
+    "title": "I ❤️ working on...",
     "top3Technologies": [
       {
         "name": "Tailwind",
@@ -56,8 +56,7 @@
         "name": "SASS",
         "slug": "sass/sass-original"
       }
-    ],
-    "description": "I ❤️ working on..."
+    ]
   },
   {
     "title": "One year of experience",
