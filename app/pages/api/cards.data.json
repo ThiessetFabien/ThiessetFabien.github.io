@@ -12,8 +12,8 @@
     "title": "Skills",
     "top3Technologies": [
       {
-        "name": "TailwindCSS",
-        "description": "I create beautiful application in seconds using TailwindCSS.",
+        "name": "Tailwind",
+        "description": "I create beautiful application in seconds using Tailwind CSS.",
         "slug": "tailwindcss/tailwindcss-original"
       },
       {
@@ -23,7 +23,7 @@
       },
       {
         "name": "Node.js",
-        "description": "I use Node.js and Express.js for secure server-side development.",
+        "description": "I use Node.js and Express.js for secure and robuste server-side development.",
         "slug": "nodejs/nodejs-original"
       }
     ],
@@ -43,10 +43,6 @@
       {
         "name": "MongoDB",
         "slug": "mongodb/mongodb-original"
-      },
-      {
-        "name": "Docker",
-        "slug": "docker/docker-original"
       },
       {
         "name": "Next.js",
