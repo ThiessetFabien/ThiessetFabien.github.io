@@ -29,15 +29,13 @@ const ActionButton: React.FC<{
   href: string;
   downloadActive: boolean;
   variant: 'default' | 'outline';
-  size: number;
 }> = ({ cta, icon, href, downloadActive, variant, size }) => {
   return (
     <div className='w-full md:w-auto'>
       <a href={`/${href}`} {...dynamicDownload(downloadActive)}>
         <Button
-          size={size}
           variant={variant}
-          className='flex w-full items-center justify-center text-center'
+          className='flex w-full items-center justify-center text-center text-xs md:h-9 md:px-4 md:py-2 lg:h-10 lg:px-8 lg:text-sm'
         >
           {IconLoader(icon ?? '')}
           {(cta ?? '').toLocaleUpperCase()}
