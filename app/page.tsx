@@ -17,6 +17,7 @@ import { RecommandationsCarousel } from '@/ui/Carousel/RecommandationsCarousel';
 import { Map } from '@/ui/Map/Map';
 import { CardExperiences } from '@/ui/Card/CardExperiences';
 import { CardProjects } from '@/ui/Card/CardProjects';
+import { SkillsCard } from '@/ui/Card/SkillsCard';
 import CardProps from '@/types/CardProps';
 
 /**
@@ -49,10 +50,10 @@ const HomePage: React.FC = () => {
                   />
                   <div className='ml-4 flex flex-col justify-center md:ml-0'>
                     <CardTitle className='font-caption text-lg leading-tight tracking-tight md:text-xl lg:text-2xl'>
-                      {CardProps.title}
+                      <h2>{CardProps.title}</h2>
                     </CardTitle>
                     <CardDescription className='w-full min-w-full max-w-prose text-base font-light leading-relaxed'>
-                      {CardProps.description}
+                      <p>{CardProps.description}</p>
                     </CardDescription>
                     <CallToAction
                       className='mt-4 h-auto space-y-4 md:mt-6 md:space-x-4'
@@ -74,38 +75,28 @@ const HomePage: React.FC = () => {
                 </CardDescription>
               )}
             </CardHeader>
-            {CardProps.experiences &&
-              CardProps.experiences.length > 0 &&
-              !CardProps.technologies && (
-                <CardContent>
-                  <CardExperiences
-                    className='max-w-prose text-base font-light leading-relaxed'
-                    experiences={CardProps.experiences}
-                  />
-                </CardContent>
+            <CardContent className='max-w-prose text-base font-light leading-relaxed'>
+              {CardProps.experiences &&
+                CardProps.experiences.length > 0 &&
+                !CardProps.technologies && (
+                  <CardExperiences experiences={CardProps.experiences} />
+                )}
+              {CardProps.technologies && CardProps.technologies.length > 0 && (
+                <>
+                  <SkillsCard top3Technologies={CardProps.top3Technologies} />
+                  <TechnologiesCarousel technologies={CardProps.technologies} />
+                </>
               )}
-            {CardProps.technologies && CardProps.technologies.length > 0 && (
-              <CardContent>
-                <TechnologiesCarousel
-                  className='mx-auto max-w-prose text-base font-light leading-relaxed'
-                  technologies={CardProps.technologies}
-                />
-              </CardContent>
-            )}
-            {CardProps.recommandations &&
-              CardProps.recommandations.length > 0 && (
-                <CardContent>
+              {CardProps.recommandations &&
+                CardProps.recommandations.length > 0 && (
                   <RecommandationsCarousel
-                    className='max-w-prose text-base font-light leading-relaxed'
                     recommandations={CardProps.recommandations}
                   />
-                </CardContent>
-              )}
-            {CardProps.projects && CardProps.projects.length > 0 && (
-              <CardContent>
+                )}
+              {CardProps.projects && CardProps.projects.length > 0 && (
                 <CardProjects projects={CardProps.projects} />
-              </CardContent>
-            )}
+              )}
+            </CardContent>
             {((CardProps.cta1 && CardProps.href1) ||
               (CardProps.cta2 && CardProps.href2)) &&
               !CardProps.imageSrc && (

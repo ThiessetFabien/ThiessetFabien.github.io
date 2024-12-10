@@ -2,7 +2,7 @@ import { Technologies } from './TechnologiesProps';
 import { Experiences } from './ExperiencesProps';
 import { Projects } from './ProjectsProps';
 import { Recommandations } from './RecommandationsProps';
-
+import { Top3Technologies } from './Top3TechnologiesProps';
 /**
  * @file CardProps.tsx
  * @description This file contains the type definition for the props used in various card components.
@@ -49,6 +49,7 @@ export default interface CardProps {
   experiences?: Experiences[];
   otherExperiences?: Experiences[];
   projects?: Projects[];
+  top3Technologies?: Top3Technologies[];
   technologies?: Technologies[];
   recommandations?: Recommandations[];
 
