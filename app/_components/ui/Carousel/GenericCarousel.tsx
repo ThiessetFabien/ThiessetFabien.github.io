@@ -41,7 +41,7 @@ export const GenericCarousel: React.FC<{
   return (
     <div
       className={cn(
-        'container mx-auto overflow-hidden rounded-xl border shadow',
+        'container z-0 mx-auto overflow-hidden rounded-xl border shadow',
         className
       )}
       ref={emblaRef}
@@ -50,7 +50,7 @@ export const GenericCarousel: React.FC<{
         {items.map((item, index) => (
           <div
             key={index}
-            className='flex flex-col items-center p-2 md:mx-4 md:p-4'
+            className='z-0 flex flex-col items-center p-2 md:mx-4 md:p-4'
           >
             {item}
           </div>
