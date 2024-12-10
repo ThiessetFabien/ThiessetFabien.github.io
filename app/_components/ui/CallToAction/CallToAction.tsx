@@ -1,9 +1,7 @@
 'use client';
 import React from 'react';
-import { Button } from '@/lib/components/ui/button';
+import ActionButton from './ActionButton';
 import CardProps from '@/types/CardProps';
-import { dynamicDownload } from '@/utils/dynamicDownload';
-import { IconLoader } from '@/hooks/IconLoader';
 
 /**
  * @file CallToAction.tsx
@@ -28,7 +26,6 @@ import { IconLoader } from '@/hooks/IconLoader';
  * @param {CardProps} props - The props for the component.
  * @returns {JSX.Element} The rendered component.
  */
-
 export const CallToAction: React.FC<CardProps> = ({
   cta1,
   icon1,
@@ -41,30 +38,26 @@ export const CallToAction: React.FC<CardProps> = ({
 }) => {
   return (
     <div className='flex h-auto w-full flex-col items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0'>
-      <div className='w-full md:w-auto'>
-        <a href={`/${href1}`} {...dynamicDownload(downloadActive1)}>
-          <Button
-            size='sm'
-            variant='default'
-            className='flex w-full items-center justify-center text-center'
-          >
-            {IconLoader(icon1 ?? '')}
-            {(cta1 ?? '').toLocaleUpperCase()}
-          </Button>
-        </a>
-      </div>
-      <div className='w-full md:w-auto'>
-        <a href={`/${href2}`} {...dynamicDownload(downloadActive2)}>
-          <Button
-            size='sm'
-            variant='outline'
-            className='flex w-full items-center justify-center text-center'
-          >
-            {IconLoader(icon2 ?? '')}
-            {(cta2 ?? '').toLocaleUpperCase()}
-          </Button>
-        </a>
-      </div>
+      {cta1 && href1 && (
+        <ActionButton
+          cta={cta1}
+          icon={icon1}
+          href={href1}
+          downloadActive={downloadActive1}
+          variant='default'
+          size='sm'
+        />
+      )}
+      {cta2 && href2 && (
+        <ActionButton
+          cta={cta2}
+          icon={icon2}
+          href={href2}
+          downloadActive={downloadActive2}
+          variant='outline'
+          size='sm'
+        />
+      )}
     </div>
   );
 };
