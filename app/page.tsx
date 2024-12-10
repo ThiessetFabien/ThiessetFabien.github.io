@@ -75,28 +75,35 @@ const HomePage: React.FC = () => {
                 </CardDescription>
               )}
             </CardHeader>
-            <CardContent className='max-w-prose text-base font-light leading-relaxed'>
-              {CardProps.experiences &&
-                CardProps.experiences.length > 0 &&
-                !CardProps.technologies && (
-                  <CardExperiences experiences={CardProps.experiences} />
+            {!CardProps.imageSrc && !CardProps.map && (
+              <CardContent className='max-w-prose text-base font-light leading-relaxed'>
+                {CardProps.experiences &&
+                  CardProps.experiences.length > 0 &&
+                  !CardProps.technologies && (
+                    <CardExperiences experiences={CardProps.experiences} />
+                  )}
+                {CardProps.technologies &&
+                  CardProps.technologies.length > 0 && (
+                    <>
+                      <SkillsCard
+                        top3Technologies={CardProps.top3Technologies}
+                      />
+                      <TechnologiesCarousel
+                        technologies={CardProps.technologies}
+                      />
+                    </>
+                  )}
+                {CardProps.recommandations &&
+                  CardProps.recommandations.length > 0 && (
+                    <RecommandationsCarousel
+                      recommandations={CardProps.recommandations}
+                    />
+                  )}
+                {CardProps.projects && CardProps.projects.length > 0 && (
+                  <CardProjects projects={CardProps.projects} />
                 )}
-              {CardProps.technologies && CardProps.technologies.length > 0 && (
-                <>
-                  <SkillsCard top3Technologies={CardProps.top3Technologies} />
-                  <TechnologiesCarousel technologies={CardProps.technologies} />
-                </>
-              )}
-              {CardProps.recommandations &&
-                CardProps.recommandations.length > 0 && (
-                  <RecommandationsCarousel
-                    recommandations={CardProps.recommandations}
-                  />
-                )}
-              {CardProps.projects && CardProps.projects.length > 0 && (
-                <CardProjects projects={CardProps.projects} />
-              )}
-            </CardContent>
+              </CardContent>
+            )}
             {((CardProps.cta1 && CardProps.href1) ||
               (CardProps.cta2 && CardProps.href2)) &&
               !CardProps.imageSrc && (

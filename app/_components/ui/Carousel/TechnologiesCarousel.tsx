@@ -37,7 +37,7 @@ export const TechnologiesCarousel: React.FC<Technologies> = ({
         className
       )}
     >
-      <div className='relative mb-2 flex h-10 w-10 justify-center'>
+      <div className='relative mb-2 flex h-8 w-8 justify-center'>
         <Image
           src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
           alt={tech.name}

@@ -25,7 +25,7 @@ export const SkillsCard: React.FC<{
     <>
       <div className='mb-4 flex justify-center gap-4 md:mb-6 md:gap-6'>
         {top3Technologies.map((tech, index) => (
-          <div key={index} className='flex flex-row'>
+          <div key={index} className='flex w-1/3 flex-row'>
             <div className='flex flex-col'>
               <Image
                 src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
@@ -50,7 +50,7 @@ export const SkillsCard: React.FC<{
         ))}
       </div>
       <CardDescription className='pb-4 md:pb-6'>
-        <p>And i currently use...</p>
+        <p className='text-base'>And i currently use...</p>
       </CardDescription>
     </>
   );
