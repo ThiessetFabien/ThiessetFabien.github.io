@@ -40,7 +40,7 @@ export const CardExperiences: React.FC<ExperiencesProps> = ({
 }) => {
   const isFinished = (date: string) => {
     return date.includes('present')
-      ? 'font-bold'
+      ? 'font-semibold'
       : 'line-through text-muted-foreground';
   };
 

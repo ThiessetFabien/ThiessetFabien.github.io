@@ -10,18 +10,27 @@
   },
   {
     "title": "Skills",
-    "technologies": [
+    "top3Technologies": [
       {
-        "name": "TypeScript",
-        "slug": "typescript/typescript-original"
+        "name": "TailwindCSS",
+        "description": "I create beautiful application in seconds using TailwindCSS.",
+        "slug": "tailwindcss/tailwindcss-original"
       },
       {
         "name": "React.js",
+        "description": "I also Next.js as a backend and frontend framework.",
         "slug": "react/react-original"
       },
       {
         "name": "Node.js",
+        "description": "I use Node.js and Express.js for secure server-side development.",
         "slug": "nodejs/nodejs-original"
+      }
+    ],
+    "technologies": [
+      {
+        "name": "TypeScript",
+        "slug": "typescript/typescript-original"
       },
       {
         "name": "Express.js",
@@ -50,10 +59,6 @@
       {
         "name": "SASS",
         "slug": "sass/sass-original"
-      },
-      {
-        "name": "TailwindCSS",
-        "slug": "tailwindcss/tailwindcss-original"
       }
     ],
     "description": "I ❤️ working on..."
