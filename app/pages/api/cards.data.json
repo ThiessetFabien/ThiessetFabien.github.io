@@ -9,7 +9,7 @@
     "href1": "tel:+33610920974"
   },
   {
-    "title": "I ❤️ Technologies",
+    "title": "Skills",
     "technologies": [
       {
         "name": "TypeScript",
@@ -56,7 +56,7 @@
         "slug": "tailwindcss/tailwindcss-original"
       }
     ],
-    "description": "Currently using"
+    "description": "I ❤️ working on..."
   },
   {
     "title": "One year of experience",
@@ -65,7 +65,7 @@
     "href1": "CV.pdf",
     "downloadActive1": false,
     "icon2": "Download",
-    "cta2": "Download my resume",
+    "cta2": "",
     "href2": "CV.pdf",
     "downloadActive2": true,
     "experiences": [
