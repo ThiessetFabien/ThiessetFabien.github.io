@@ -33,11 +33,11 @@ export const TechnologiesCarousel: React.FC<Technologies> = ({
     <div
       key={index}
       className={cn(
-        'mx-2 flex max-w-full flex-shrink-0 flex-col items-center justify-center p-2 md:mx-4 md:p-4',
+        'mx-2 flex max-w-full flex-shrink-0 flex-col items-center justify-center p-2',
         className
       )}
     >
-      <div className='relative mb-2 flex h-16 w-16 justify-center md:h-24 md:w-24'>
+      <div className='relative mb-2 flex h-16 w-16 justify-center'>
         <Image
           src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
           alt={tech.name}
@@ -54,7 +54,11 @@ export const TechnologiesCarousel: React.FC<Technologies> = ({
     </div>
   ));
 
-  return <GenericCarousel items={items} className={className} delay={500} />;
+  return (
+    <>
+      <GenericCarousel items={items} className={className} delay={500} />
+    </>
+  );
 };
 
 export default TechnologiesCarousel;

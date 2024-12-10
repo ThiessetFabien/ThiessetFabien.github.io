@@ -2,6 +2,7 @@
 import React from 'react';
 import ActionButton from './ActionButton';
 import CardProps from '@/types/CardProps';
+import { cn } from '@/lib/utils';
 
 /**
  * @file CallToAction.tsx
@@ -35,10 +36,11 @@ export const CallToAction: React.FC<CardProps> = ({
   icon2,
   href2,
   downloadActive2,
+  className,
 }) => {
   return (
-    <div className='flex h-auto w-full flex-col items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0'>
-      {cta1 && href1 && (
+    <div className={cn(className)}>
+      {(cta1 && href1) || (icon1 && href1) ? (
         <ActionButton
           cta={cta1}
           icon={icon1}
@@ -46,8 +48,8 @@ export const CallToAction: React.FC<CardProps> = ({
           downloadActive={downloadActive1}
           variant='default'
         />
-      )}
-      {cta2 && href2 && (
+      ) : null}
+      {(cta2 && href2) || (icon2 && href2) ? (
         <ActionButton
           cta={cta2}
           icon={icon2}
@@ -55,7 +57,7 @@ export const CallToAction: React.FC<CardProps> = ({
           downloadActive={downloadActive2}
           variant='outline'
         />
-      )}
+      ) : null}
     </div>
   );
 };

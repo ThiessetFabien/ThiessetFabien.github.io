@@ -7,8 +7,8 @@ import '@/styles/reset.css';
 import { Poppins } from '@/fonts/Poppins';
 import { OrpheusPro } from '@/fonts/OrpheusPro';
 import '@/styles/globals.css';
-import { Header } from '@/components/layout/Header/Header';
-import { Footer } from '@/components/layout/Footer/Footer';
+import { Header } from '@/components/layout/Header/HeaderLayout';
+import { Footer } from '@/components/layout/Footer/FooterLayout';
 
 export default function RootLayout({
   children,
