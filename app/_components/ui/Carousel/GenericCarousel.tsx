@@ -53,20 +53,14 @@ export const GenericCarousel: React.FC<{
 
   const arrowButtonStyle =
     'touch-manipulation cursor-pointer rounded-full appearance-none h-4 w-4 text-primary';
-    'touch-manipulation cursor-pointer rounded-full appearance-none h-4 w-4 text-primary';
 
   return (
     <section
-      className={cn('container overflow-hidden', className)}
       className={cn('container overflow-hidden', className)}
       ref={emblaRef}
     >
       <div className='flex'>
         {items.map((item, index) => (
-          <div
-            key={index}
-            className='mx-2 flex flex-col items-center rounded-xl border p-2 shadow'
-          >
           <div
             key={index}
             className='mx-2 flex flex-col items-center rounded-xl border p-2 shadow'
@@ -94,7 +88,6 @@ export const GenericCarousel: React.FC<{
               key={index}
               onClick={() => onDotButtonClick(index)}
               isSelected={selectedIndex === index}
-              className='m-0 flex h-4 w-4 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 no-underline'
               className='m-0 flex h-4 w-4 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 no-underline'
             />
           ))}
