@@ -67,7 +67,11 @@ export const DotButton: React.FC<PropType> = ({
       type='button'
       {...restProps}
     >
-      {isSelected ? <CircleDot /> : <Dot />}
+      {isSelected ? (
+        <Dot className='text-primary' />
+      ) : (
+        <Dot className='text-border' />
+      )}
       {children}
     </Button>
   );
