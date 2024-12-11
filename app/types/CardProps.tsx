@@ -52,6 +52,7 @@ export default interface CardProps {
   top3Technologies?: Top3Technologies[];
   technologies?: Technologies[];
   recommandations?: Recommandations[];
+  colSpan?: string;
 
   content?: React.ReactNode;
   className?: string;

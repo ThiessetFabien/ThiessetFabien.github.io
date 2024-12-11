@@ -8,6 +8,7 @@ import { usePrevNextButtons } from './ArrowButtonsCarousel';
 import { useDotButton } from './DotButtonCarousel';
 import { NextButton, PrevButton } from './ArrowButtonsCarousel';
 import { DotButton } from './DotButtonCarousel';
+import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
  * @file GenericCarousel.tsx
@@ -88,7 +89,10 @@ export const GenericCarousel: React.FC<{
               key={index}
               onClick={() => onDotButtonClick(index)}
               isSelected={selectedIndex === index}
-              className='m-0 flex h-4 w-4 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 no-underline'
+              className={cn(
+                sizeIcon,
+                'm-0 flex cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 no-underline'
+              )}
             />
           ))}
         </div>

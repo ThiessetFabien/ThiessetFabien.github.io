@@ -3,9 +3,10 @@
 import React from 'react';
 import Image from 'next/image';
 import GenericCarousel from './GenericCarousel';
-import { Technologies } from '@/types/TechnologiesProps';
+import technologies from '@/types/CardProps';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { cn } from '@/lib/utils';
+import { cnParagraph } from '@/styles/fontStyles';
 
 /**
  * @file TechCarousel.tsx
@@ -21,7 +22,7 @@ import { cn } from '@/lib/utils';
  * @example
  * <TechCarousel technologies={technologies} className="custom-class" />
  */
-export const TechnologiesCarousel: React.FC<Technologies> = ({
+export const TechnologiesCarousel: React.FC<technologies> = ({
   technologies,
   className,
 }) => {
@@ -48,9 +49,7 @@ export const TechnologiesCarousel: React.FC<Technologies> = ({
           priority
         />
       </div>
-      <p className='mt-2 text-center text-xs font-medium text-muted-foreground md:text-sm'>
-        {tech.name}
-      </p>
+      <p className={cn(cnParagraph, 'mt-2 text-center')}>{tech.name}</p>
     </div>
   ));
 

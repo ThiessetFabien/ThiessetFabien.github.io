@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
 import { Button } from '@/lib/components/ui/button';
-import { Dot, CircleDot } from 'lucide-react';
+import { Dot } from 'lucide-react';
 
 type UseDotButtonType = {
   selectedIndex: number;

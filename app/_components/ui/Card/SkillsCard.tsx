@@ -1,13 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import {
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from '@/lib/components/ui/card';
+import { CardTitle, CardDescription } from '@/lib/components/ui/card';
 import { Separator } from '@/lib/components/ui/separator';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { Top3Technologies } from '@/types/CardProps';
+import { cn } from '@/lib/utils';
+import { Top3Technologies } from '@/types/Top3TechnologiesProps';
+import { cnTitle2, cnParagraph, cnDescription } from '@/styles/fontStyles';
 /**
  * @file SkillsCard.tsx
  * @description This file exports a skills card component.
@@ -19,15 +17,24 @@ import { Top3Technologies } from '@/types/CardProps';
  * @returns {JSX.Element} The rendered SkillsCard component.
  */
 export const SkillsCard: React.FC<{
-  Top3Technologies;
+  top3Technologies: Top3Technologies[];
 }> = ({ top3Technologies }) => {
   return (
     <>
-      <div className='mb-4 flex justify-center gap-4 md:mb-6 md:block md:gap-6'>
+      <div
+        className={cn(
+          'flex justify-center',
+          'mb-4 gap-4 md:mb-6 md:gap-6 lg:block'
+        )}
+      >
         {top3Technologies.map((tech, index) => (
           <div
             key={index}
-            className='flex w-1/3 flex-row gap-4 md:w-full md:flex-col'
+            className={cn(
+              'flex w-1/3 flex-row gap-4',
+              'md:w-full',
+              'lg:flex-col'
+            )}
           >
             <div className='flex flex-col'>
               <Image
@@ -39,12 +46,8 @@ export const SkillsCard: React.FC<{
                 className='mb-4'
                 priority
               />
-              <CardTitle className='font-caption text-base font-semibold leading-tight tracking-tight md:text-xl lg:text-xl'>
-                {tech.name}
-              </CardTitle>
-              <p className='max-w-prose text-sm font-light leading-relaxed text-muted-foreground'>
-                {tech.description}
-              </p>
+              <CardTitle className={cnTitle2}>{tech.name}</CardTitle>
+              <p className={cnParagraph}>{tech.description}</p>
             </div>
             {index < top3Technologies.length - 1 && (
               <Separator className='h-full w-[1px]' />
@@ -53,7 +56,7 @@ export const SkillsCard: React.FC<{
         ))}
       </div>
       <CardDescription className='pb-4 md:pb-6'>
-        <p className='text-base'>And i currently use...</p>
+        <p className={cnDescription}>And i currently use...</p>
       </CardDescription>
     </>
   );

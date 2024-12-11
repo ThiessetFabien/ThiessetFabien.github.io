@@ -3,7 +3,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { MapContainer, TileLayer, Circle } from 'react-leaflet';
-import LocationEventsMap from '../../../hooks/LocationEventsMap';
+import LocationEventsMap from '@/hooks/LocationEventsMap';
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
 import {
   francePosition,
