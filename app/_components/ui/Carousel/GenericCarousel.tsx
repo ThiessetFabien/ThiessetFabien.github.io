@@ -52,25 +52,25 @@ export const GenericCarousel: React.FC<{
   }, [emblaApi]);
 
   const arrowButtonStyle =
-    'm-auto flex h-5 w-5 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 no-underline';
+    'touch-manipulation cursor-pointer rounded-full appearance-none h-4 w-4 text-primary';
 
   return (
     <section
-      className={cn(
-        'container mx-auto overflow-hidden rounded-xl border shadow',
-        className
-      )}
+      className={cn('container overflow-hidden', className)}
       ref={emblaRef}
     >
       <div className='flex'>
         {items.map((item, index) => (
-          <div key={index} className='flex flex-col items-center p-2'>
+          <div
+            key={index}
+            className='mx-2 flex flex-col items-center rounded-xl border p-2 shadow'
+          >
             {item}
           </div>
         ))}
       </div>
       <div className='flex justify-between'>
-        <div className='flex items-center gap-4 p-4 md:p-6'>
+        <div className='flex items-center space-x-4 px-4 pt-4 md:space-x-2 md:px-2 md:pt-2'>
           <PrevButton
             onClick={onPrevButtonClick}
             disabled={prevBtnDisabled}
@@ -82,13 +82,13 @@ export const GenericCarousel: React.FC<{
             className={arrowButtonStyle}
           />
         </div>
-        <div className='flex items-center justify-center space-x-2 p-4 md:p-6'>
+        <div className='flex items-center justify-center space-x-4 px-4 pt-4 md:space-x-2 md:px-2 md:pt-2'>
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
               onClick={() => onDotButtonClick(index)}
               isSelected={selectedIndex === index}
-              className='m-0 flex h-5 w-5 cursor-pointer touch-manipulation appearance-none items-center justify-center gap-4 rounded-full border-0 bg-transparent p-0 no-underline'
+              className='m-0 flex h-4 w-4 cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 no-underline'
             />
           ))}
         </div>

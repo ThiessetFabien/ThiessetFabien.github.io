@@ -89,6 +89,7 @@ const HomePage: React.FC = () => {
                         top3Technologies={CardProps.top3Technologies}
                       />
                       <TechnologiesCarousel
+                        className='min-w-20'
                         technologies={CardProps.technologies}
                       />
                     </>

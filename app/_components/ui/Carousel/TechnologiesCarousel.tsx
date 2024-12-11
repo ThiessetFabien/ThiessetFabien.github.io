@@ -33,7 +33,7 @@ export const TechnologiesCarousel: React.FC<Technologies> = ({
     <div
       key={index}
       className={cn(
-        'mx-2 flex max-w-full flex-shrink-0 flex-col items-center justify-center p-2',
+        'flex flex-shrink-0 flex-col items-center justify-center',
         className
       )}
     >
@@ -54,11 +54,7 @@ export const TechnologiesCarousel: React.FC<Technologies> = ({
     </div>
   ));
 
-  return (
-    <>
-      <GenericCarousel items={items} className={className} delay={500} />
-    </>
-  );
+  return <GenericCarousel items={items} className={className} delay={1000} />;
 };
 
 export default TechnologiesCarousel;
