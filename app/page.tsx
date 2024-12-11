@@ -15,12 +15,21 @@ import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
 import { RecommandationsCarousel } from '@/ui/Carousel/RecommandationsCarousel';
 import { Map } from '@/ui/Map/Map';
-import { CardExperiences } from '@/ui/Card/CardExperiences';
-import { CardProjects } from '@/ui/Card/CardProjects';
+import { CardExperiences } from '@/components/ui/Card/ExperiencesCard';
+import { CardProjects } from '@/components/ui/Card/ProjectsCard';
 import { SkillsCard } from '@/ui/Card/SkillsCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
+import { cnBorder } from '@/styles/borderStyles';
+import { cnFlexCol } from '@/styles/flexStyles';
+import {
+  cnMarginLeft,
+  cnMarginTop,
+  cnSpaceY,
+  cnGap,
+} from '@/styles/boxModelStyles';
+import CardProps from './types/CardProps.jsx';
 
 /**
  * @file page.tsx
@@ -33,14 +42,14 @@ import { cnTitle1, cnDescription } from '@/styles/fontStyles';
  */
 
 const HomePage: React.FC = () => {
-  const gridConfig = useCardGrid(CardData);
+  const gridConfig = useCardGrid(CardData as CardProps[]);
 
   return (
     <main
       className={cn(
+        cnGap,
         'container relative z-0',
-        'mx-auto grid grid-cols-1 gap-4',
-        'md:gap-6',
+        'mx-auto grid grid-cols-1',
         'lg:grid-cols-4'
       )}
     >
@@ -55,11 +64,9 @@ const HomePage: React.FC = () => {
                   width={205}
                   height={316}
                   priority
-                  className='max-w-1/3 rounded-xl'
+                  className={cn(cnBorder, 'max-w-1/3')}
                 />
-                <div
-                  className={cn('ml-4 flex flex-col justify-center', 'md:ml-6')}
-                >
+                <div className={cn(cnFlexCol, cnMarginLeft, 'justify-center')}>
                   <CardTitle className={cnTitle1}>
                     <h2>{card.title}</h2>
                   </CardTitle>
@@ -67,7 +74,7 @@ const HomePage: React.FC = () => {
                     <p>{card.description}</p>
                   </CardDescription>
                   <CallToAction
-                    className='mt-4 h-auto space-y-4 md:mt-6 md:space-x-4'
+                    className={cn(cnSpaceY, cnMarginTop, 'h-auto')}
                     cta1={card.cta1}
                     icon1={card.icon1}
                     href1={card.href1}
@@ -93,15 +100,17 @@ const HomePage: React.FC = () => {
                 !card.technologies && (
                   <CardExperiences experiences={card.experiences} />
                 )}
-              {card.technologies && card.technologies.length > 0 && (
-                <>
-                  <SkillsCard top3Technologies={card.top3Technologies} />
-                  <TechnologiesCarousel
-                    className='min-w-20'
-                    technologies={card.technologies}
-                  />
-                </>
-              )}
+              {card.top3Technologies &&
+                card.technologies &&
+                card.technologies.length > 0 && (
+                  <>
+                    <SkillsCard top3Technologies={card.top3Technologies} />
+                    <TechnologiesCarousel
+                      className='min-w-20'
+                      technologies={card.technologies}
+                    />
+                  </>
+                )}
               {card.recommandations && card.recommandations.length > 0 && (
                 <RecommandationsCarousel
                   recommandations={card.recommandations}
@@ -116,7 +125,7 @@ const HomePage: React.FC = () => {
             !card.imageSrc && (
               <CardFooter>
                 <CallToAction
-                  className='flex h-auto w-full gap-4 md:gap-6'
+                  className={cn(cnGap, 'flex h-auto w-full')}
                   cta1={card.cta1}
                   icon1={card.icon1}
                   href1={card.href1}

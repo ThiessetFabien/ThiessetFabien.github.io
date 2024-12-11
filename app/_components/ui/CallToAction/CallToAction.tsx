@@ -42,19 +42,19 @@ export const CallToAction: React.FC<CardProps> = ({
     <div className={cn(className)}>
       {(cta1 && href1) || (icon1 && href1) ? (
         <ActionButton
-          cta={cta1}
-          icon={icon1}
+          cta={cta1 || ''}
+          icon={icon1 || ''}
           href={href1}
-          downloadActive={downloadActive1}
+          downloadActive={downloadActive1 || false}
           variant='default'
         />
       ) : null}
       {(cta2 && href2) || (icon2 && href2) ? (
         <ActionButton
-          cta={cta2}
-          icon={icon2}
+          cta={cta2 || ''}
+          icon={icon2 || ''}
           href={href2}
-          downloadActive={downloadActive2}
+          downloadActive={downloadActive2 || false}
           variant='outline'
         />
       ) : null}
