@@ -2,9 +2,13 @@ import { cn } from '@/lib/utils';
 
 export const cnMarginPadding = cn('p-4 md:p-6');
 
+export const cnSmallMarginLeft = cn('ml-2 md:ml-4');
+
 export const cnMarginLeft = cn('ml-4 md:ml-6');
 
 export const cnMarginTop = cn('mt-4 md:mt-6');
+
+export const cnMarginBottom = cn('mb-4 md:mb-6');
 
 export const cnSpaceY = cn('space-y-4 md:space-y-6');
 
