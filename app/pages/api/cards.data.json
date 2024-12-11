@@ -2,7 +2,7 @@
   {
     "title": "Human, creative, and innovative developer.",
     "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional.",
-    "imageSrc": "/photo.webp",
+    "imageSrc": "photo.webp",
     "imageAlt": "Picture of Fabien",
     "icon1": "PhoneOutgoing",
     "cta1": "Hire an expert",
@@ -78,22 +78,22 @@
           },
           {
             "title": "React & I++ Specializations",
-            "company": "O'Clock - Replay",
+            "company": "O'Clock Replay",
             "date": "jul 2023 - present"
           },
           {
             "title": "Full-Stack Web developer and Scrum Master",
-            "company": "O'Clock - School",
+            "company": "O'Clock School",
             "date": "may - jun 2024"
           },
           {
             "title": "Data API Sepcialization",
-            "company": "O'Clock - School",
+            "company": "O'Clock School",
             "date": "apr 2024"
           },
           {
             "title": "Full-Stack JavaScript Web Developer Learner",
-            "company": "O'Clock - School",
+            "company": "O'Clock School",
             "date": "dec 2023 - jun 2024"
           },
           {
@@ -116,7 +116,7 @@
           {
             "title": "Daily Life Referent",
             "company": "Helene Borel Medicalized Home Raimbeaucourt",
-            "date": "2018 - 2024"
+            "date": "2023 - 2024"
           },
           {
             "title": "Humanitude Coordinator",
@@ -155,7 +155,7 @@
       {
         "title": "Casalink - Single Page Application",
         "organization": "Apotheosis O'Clock School",
-        "imageSrc": "/casalink.webp",
+        "imageSrc": "casalink.webp",
         "imageAlt": "Calendar of Casalink application",
         "demo": "www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
@@ -172,7 +172,7 @@
       {
         "title": "Casalink - Secure server",
         "organization": "Apotheosis O'Clock School",
-        "imageSrc": "/casalink-documentation.webp",
+        "imageSrc": "casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
         "github": "github.com/ThiessetFabien/Casalink-Backend",

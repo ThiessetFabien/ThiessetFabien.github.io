@@ -31,7 +31,9 @@ export default function RootLayout({
         className={cn(
           Poppins.variable,
           OrpheusPro.variable,
-          'h-100% container mx-auto w-full max-w-5xl bg-background p-4 font-sans text-foreground md:p-6'
+          'h-100% container mx-auto w-full max-w-5xl',
+          'p-4 md:p-6',
+          'bg-background font-sans text-foreground'
         )}
       >
         <ThemeProvider
@@ -41,12 +43,18 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header
-            className={
-              'sticky top-0 z-50 mb-4 bg-background p-4 md:mb-6 md:p-6'
-            }
+            className={cn(
+              'sticky top-0 z-50 bg-background',
+              'mb-4 p-4 md:mb-6 md:p-6'
+            )}
           />
           {children}
-          <Footer className='mt-4 flex justify-center p-4 text-center md:mt-6 md:p-6' />
+          <Footer
+            className={cn(
+              'mt-4 flex justify-center p-4 md:mt-6 md:p-6',
+              'text-center'
+            )}
+          />
         </ThemeProvider>
       </body>
     </html>

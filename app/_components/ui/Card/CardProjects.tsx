@@ -57,7 +57,7 @@ export const CardProjects: React.FC<ProjectsProps> = ({
                 className='flex items-center'
               >
                 <CardImage
-                  imageSrc={project.imageSrc}
+                  imageSrc={`/${project.imageSrc}`}
                   imageAlt={project.imageAlt || ''}
                   width={590}
                   height={332}
