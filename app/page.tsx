@@ -12,7 +12,7 @@ import {
 import CardData from '@api/cards.data.json';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { RecommandationsCarousel } from '@/ui/Carousel/RecommandationsCarousel';
-import { Map } from '@/ui/Map/Map';
+import { Map } from '@/components/ui/Card/MapCard';
 import { CardExperiences } from '@/components/ui/Card/ExperiencesCard';
 import { CardProjects } from '@/components/ui/Card/ProjectsCard';
 import { SkillsCard } from '@/ui/Card/SkillsCard';
@@ -97,7 +97,7 @@ const HomePage: React.FC = (): JSX.Element => {
           )}
           {((card.cta1 && card.href1) || (card.cta2 && card.href2)) &&
             !card.imageSrc && (
-              <CardFooter>
+              <CardFooter className={cnPadding}>
                 <CallToAction
                   className={cn(cnGap, 'flex h-auto w-full')}
                   cta1={card.cta1}

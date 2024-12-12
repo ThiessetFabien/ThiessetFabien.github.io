@@ -77,7 +77,7 @@ export const SkillsCard: React.FC<CardProps> = ({
       </div>
       <Separator className='h-[1px] w-full' />
       <CardDescription>
-        <p className={cnDescription}>And i currently use...</p>
+        <p className={cnDescription}>🚀 And i currently use...</p>
       </CardDescription>
       <TechnologiesCarousel technologies={technologies} />
     </div>

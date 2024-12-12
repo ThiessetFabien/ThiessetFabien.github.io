@@ -13,17 +13,17 @@ const useCardGrid = (cards: CardProps[]) => {
         case !!card.technologies:
           colSpan = 'lg:col-span-3 lg:row-span-2';
           break;
-        case !!card.map:
-          colSpan = 'lg:col-span-2 lg:row-span-auto';
-          break;
         case !!card.experiences:
           colSpan = 'lg:col-span-5 lg:row-span-1';
           break;
         case !!card.projects:
-          colSpan = 'lg:col-span-4 lg:row-span-1';
+          colSpan = 'lg:col-span-8 lg:row-span-1';
           break;
         case !!card.recommandations:
-          colSpan = 'lg:col-span-4 lg:row-span-auto';
+          colSpan = 'lg:col-span-5 lg:row-span-2';
+          break;
+        case !!card.map:
+          colSpan = 'lg:col-span-3 lg:row-span-1';
           break;
 
         default:

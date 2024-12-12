@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { cnSmallText } from '@/styles/fontStyles';
+import { cnLightTextMuted, cnSmallText } from '@/styles/fontStyles';
 import { useWhiteFilter } from '@/styles/filterStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import { sizeMiddleIcon } from '@/styles/sizeStyles';
@@ -42,7 +42,8 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
             cnFlexFullCenter,
             'flex-shrink-0',
             'h-auto',
-            'min-w-8 xs:min-w-16'
+            'min-h-12 xs:min-h-16',
+            'min-w-12 xs:min-w-16'
           )}
         >
           <div className={cn(cnFlexFullCenter, 'relative')}>
@@ -60,7 +61,8 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
             className={cn(
               cnSmallText,
               cnHiddenXs,
-              'text-center font-light text-muted-foreground'
+              cnLightTextMuted,
+              'text-center'
             )}
           >
             {tech.name}

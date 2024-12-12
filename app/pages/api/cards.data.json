@@ -1,6 +1,6 @@
 [
   {
-    "title": "Human, creative, and innovative developer.",
+    "title": "👋🏼 Human, creative, and innovative developer. ",
     "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional.",
     "imageSrc": "photo.webp",
     "imageAlt": "Picture of Fabien",
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "title": "One year of experience",
+    "title": "👨🏼‍💻 One year of experience",
     "icon1": "Eye",
     "cta1": "CV 2024",
     "href1": "CV.pdf",
@@ -141,20 +141,27 @@
     ]
   },
   {
-    "title": "Latest projects",
+    "title": "🎯 Latest projects",
     "description": "I'm here to help your application a success.",
     "projects": [
       {
         "title": "This portfolio",
-        "organization": "Welcome on my universe",
+        "organization": "Welcome on my multiverse",
         "imageSrc": "",
         "imageAlt": "",
         "website": "/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
-        "tags": ["TypeScript", "React.js", "Next.js", "Tailwind CSS"]
+        "tags": [
+          "Front-end",
+          "TypeScript",
+          "React.js",
+          "Next.js",
+          "Tailwind CSS",
+          "Shadcn/ui"
+        ]
       },
       {
-        "title": "Casalink - Single Page Application",
+        "title": "Casalink - Family planning",
         "organization": "Apotheosis O'Clock School",
         "imageSrc": "casalink.webp",
         "imageAlt": "Calendar of Casalink application",
@@ -167,11 +174,12 @@
           "React.js",
           "Redux.js",
           "SASS",
-          "Axios"
+          "Axios",
+          "JWT"
         ]
       },
       {
-        "title": "Casalink - Secure server",
+        "title": "Casalink API - Secure server",
         "organization": "Apotheosis O'Clock School",
         "imageSrc": "casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
@@ -183,17 +191,14 @@
           "Express.js",
           "Mocha/Chai",
           "PostgreSQL",
+          "Sqitch",
           "Swagger"
         ]
       }
     ]
   },
   {
-    "title": "Available for Mobile, Vehicle, and Remote in France",
-    "map": true
-  },
-  {
-    "title": "Recommandations",
+    "title": "🗨️ Recommandations",
     "recommandations": [
       {
         "name": "Dupoirier Christophe",
@@ -336,5 +341,9 @@
         "phone": ""
       }
     ]
+  },
+  {
+    "title": "Available for Mobile, Vehicle, and Remote in France",
+    "map": true
   }
 ]
