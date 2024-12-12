@@ -8,6 +8,7 @@ import { CircleArrowLeft, CircleArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/lib/components/ui/button';
 import { EmblaCarouselType } from 'embla-carousel';
+import { sizeIcon } from '@/styles/sizeStyles';
 
 type UsePrevNextButtonsType = {
   prevBtnDisabled: boolean;
@@ -58,8 +59,8 @@ export const PrevButton: React.FC<PropType> = (props, ClassName) => {
   const { children, ...restProps } = props;
 
   return (
-    <Button variant='ghost' size='icon' {...restProps}>
-      <CircleArrowLeft className={ClassName} />
+    <Button className={cn(ClassName)} variant='link' size='icon' {...restProps}>
+      <CircleArrowLeft className={sizeIcon} />
       {children}
     </Button>
   );
@@ -69,8 +70,8 @@ export const NextButton: React.FC<PropType> = (props, ClassName) => {
   const { children, ...restProps } = props;
 
   return (
-    <Button variant='ghost' size='icon' {...restProps}>
-      <CircleArrowRight className={ClassName} />
+    <Button className={cn(ClassName)} variant='link' size='icon' {...restProps}>
+      <CircleArrowRight className={sizeIcon} />
       {children}
     </Button>
   );

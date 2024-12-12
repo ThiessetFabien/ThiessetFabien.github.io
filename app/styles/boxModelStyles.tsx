@@ -32,5 +32,6 @@ export const cnGap = cn('gap-2 sm:gap-4 md:gap-6 lg:gap-8');
 
 export const cnButton = cn('md:h-9 md:px-4 md:py-2 lg:h-10 lg:px-8');
 
-export const arrowButtonStyle =
-  'touch-manipulation cursor-pointer rounded-full ';
+export const manipulationStyle = cn(
+  'touch-manipulation cursor-pointer appearance-none '
+);

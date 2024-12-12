@@ -7,7 +7,6 @@ import { baseUrl } from '@/utils/constants/baseUrl';
 import { cnSmallText } from '@/styles/fontStyles';
 import { useWhiteFilter } from '@/styles/filterStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
-import { cnMarginBottom } from '@/styles/boxModelStyles';
 import { sizeMiddleIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import GenericCarousel from './GenericCarousel';
@@ -36,9 +35,15 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
     technologies.map((tech, index) => (
       <div
         key={index}
-        className={cn(cnFlexCol, cnFlexFullCenter, 'flex-shrink-0', className)}
+        className={cn(
+          cnFlexCol,
+          cnFlexFullCenter,
+          'flex-shrink-0',
+          'h-auto',
+          'min-w-8 xs:min-w-16'
+        )}
       >
-        <div className={cn(cnMarginBottom, cnFlexFullCenter, 'relative')}>
+        <div className={cn(cnFlexFullCenter, 'relative')}>
           <Image
             src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
             alt={tech.name}

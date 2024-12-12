@@ -8,15 +8,12 @@ import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 import { useDotButton } from './Buttons/DotButtonCarousel';
 import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
 import { DotButton } from './Buttons/DotButtonCarousel';
-import { sizeIcon } from '@/styles/sizeStyles';
 import {
-  arrowButtonStyle,
-  cnMarginBottom,
-  cnMarginY,
+  manipulationStyle,
   cnSmallMarginX,
   cnSmallPadding,
-  cnSpaceX,
   cnSpaceY,
+  cnSpaceX,
 } from '@/styles/boxModelStyles';
 import {
   cnFlexCol,
@@ -25,6 +22,8 @@ import {
   cnFlexCenterY,
 } from '@/styles/flexStyles';
 import { cnBorder } from '@/styles/borderStyles';
+import { cnHiddenXs } from '@/styles/hideItemStyles';
+import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
  * @file GenericCarousel.tsx
@@ -70,7 +69,7 @@ export const GenericCarousel: React.FC<{
 
   return (
     <section
-      className={cn('container overflow-hidden', cnSpaceY, className)}
+      className={cn('container h-full overflow-hidden', cnSpaceY, className)}
       ref={emblaRef}
     >
       <div className={cn('flex')}>
@@ -95,23 +94,24 @@ export const GenericCarousel: React.FC<{
           <PrevButton
             onClick={onPrevButtonClick}
             disabled={prevBtnDisabled}
-            className={cn(arrowButtonStyle, sizeIcon, 'text-primary')}
+            className={cn(manipulationStyle, sizeIcon, 'text-primary')}
           />
           <NextButton
             onClick={onNextButtonClick}
             disabled={nextBtnDisabled}
-            className={cn(arrowButtonStyle, sizeIcon, 'text-primary')}
+            className={cn(manipulationStyle, sizeIcon, 'text-primary')}
           />
         </div>
-        <div className={cnFlexFullCenter}>
+        <div className={cn(cnFlexFullCenter, cnHiddenXs)}>
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
               onClick={() => onDotButtonClick(index)}
               isSelected={selectedIndex === index}
               className={cn(
+                manipulationStyle,
                 sizeIcon,
-                'm-0 flex cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 no-underline'
+                'm-0 rounded-full border-0 p-0'
               )}
             />
           ))}
