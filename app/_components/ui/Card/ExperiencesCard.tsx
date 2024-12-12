@@ -22,7 +22,6 @@ import { cnBorder } from '@/styles/borderStyles';
 import { lineThroughItem } from '@/styles/lineThroughStyles';
 import {
   cnDescription,
-  cnParagraph,
   cnTitle2,
   cnSmallText,
   cnLightTextMuted,
@@ -34,7 +33,6 @@ import {
   cnSpaceY,
   cnSmallSpaceY,
   cnSpaceX,
-  cnPaddingX,
 } from '@/styles/boxModelStyles';
 import { sizeIcon } from '@/styles/sizeStyles';
 import { cnBadgeRight } from '@/styles/badgeStyles';

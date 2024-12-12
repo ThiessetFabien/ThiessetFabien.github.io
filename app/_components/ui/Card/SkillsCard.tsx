@@ -5,7 +5,7 @@ import { Separator } from '@/lib/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { cnTitle2, cnParagraph, cnDescription } from '@/styles/fontStyles';
-import { cnGap, cnMarginBottom, cnSpaceY } from '@/styles/boxModelStyles';
+import { cnGap, cnSpaceY } from '@/styles/boxModelStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
 import { sizeBigIcon } from '@/styles/sizeStyles';
