@@ -9,7 +9,6 @@ import {
   CardFooter,
   CardDescription,
 } from '@/lib/components/ui/card';
-import Image from 'next/image';
 import CardData from '@api/cards.data.json';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { RecommandationsCarousel } from '@/ui/Carousel/RecommandationsCarousel';
@@ -17,18 +16,11 @@ import { Map } from '@/ui/Map/Map';
 import { CardExperiences } from '@/components/ui/Card/ExperiencesCard';
 import { CardProjects } from '@/components/ui/Card/ProjectsCard';
 import { SkillsCard } from '@/ui/Card/SkillsCard';
+import PresentationCard from '@/ui/Card/PresentationCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
-import { cnBorder } from '@/styles/borderStyles';
-import { cnHiddenXs } from '@/styles/hideItemStyles';
-import { cnFlexCol } from '@/styles/flexStyles';
-import {
-  cnPadding,
-  cnMarginTop,
-  cnSpaceY,
-  cnGap,
-} from '@/styles/boxModelStyles';
+import { cnPadding, cnGap } from '@/styles/boxModelStyles';
 import type CardProps from './types/CardProps';
 
 /**
@@ -57,33 +49,16 @@ const HomePage: React.FC = (): JSX.Element => {
         <Card key={index} className={cn('w-full', cnGap, card.colSpan)}>
           <CardHeader className={cn(cnPadding, 'space-y-0')}>
             {card.imageSrc && !card.map && (
-              <div className={cn(cnGap, 'grid grid-cols-3')}>
-                <div className='col-span-1'>
-                  <Image
-                    src={`/images/${card.imageSrc}`}
-                    alt={card.imageAlt || ''}
-                    width={205}
-                    height={316}
-                    priority
-                    className={cn(cnBorder, 'h-auto w-auto')}
-                  />
-                </div>
-                <div className={cn(cnFlexCol, 'col-span-2 justify-center')}>
-                  <CardTitle className={cnTitle1}>
-                    <h2>{card.title}</h2>
-                  </CardTitle>
-                  <CardDescription className={cn(cnDescription, cnHiddenXs)}>
-                    <p>{card.description}</p>
-                  </CardDescription>
-                  <CallToAction
-                    className={cn(cnSpaceY, cnMarginTop, 'h-auto')}
-                    cta1={card.cta1}
-                    icon1={card.icon1}
-                    href1={card.href1}
-                    downloadActive1={card.downloadActive1}
-                  />
-                </div>
-              </div>
+              <PresentationCard
+                title={card.title}
+                description={card.description}
+                imageSrc={card.imageSrc}
+                imageAlt={card.imageAlt}
+                cta1={card.cta1}
+                icon1={card.icon1}
+                href1={card.href1}
+                downloadActive1={card.downloadActive1}
+              />
             )}
             {!card.imageSrc && card.map && <Map />}
             <CardTitle className={cnTitle1}>
