@@ -32,43 +32,42 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
 }) => {
   const items =
     technologies &&
-    technologies.map((tech, index) => (
-      <div
-        key={index}
-        className={cn(
-          cnFlexCol,
-          cnFlexFullCenter,
-          'flex-shrink-0',
-          'h-auto',
-          'min-w-8 xs:min-w-16'
-        )}
-      >
-        <div className={cn(cnFlexFullCenter, 'relative')}>
-          <Image
-            src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
-            alt={tech.name}
-            width={50}
-            height={50}
-            objectFit='contain'
-            className={cn(
-              useWhiteFilter(tech.slug),
-              sizeMiddleIcon,
-              'object-cover'
-            )}
-            priority
-          />
-        </div>
-        <p
+    technologies.map((tech, index) => {
+      const whiteFilterClass = useWhiteFilter(tech.slug);
+      return (
+        <div
+          key={index}
           className={cn(
-            cnSmallText,
-            cnHiddenXs,
-            'text-center font-light text-muted-foreground'
+            cnFlexCol,
+            cnFlexFullCenter,
+            'flex-shrink-0',
+            'h-auto',
+            'min-w-8 xs:min-w-16'
           )}
         >
-          {tech.name}
-        </p>
-      </div>
-    ));
+          <div className={cn(cnFlexFullCenter, 'relative')}>
+            <Image
+              src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+              alt={tech.name}
+              width={50}
+              height={50}
+              objectFit='contain'
+              className={cn(whiteFilterClass, sizeMiddleIcon, 'object-cover')}
+              priority
+            />
+          </div>
+          <p
+            className={cn(
+              cnSmallText,
+              cnHiddenXs,
+              'text-center font-light text-muted-foreground'
+            )}
+          >
+            {tech.name}
+          </p>
+        </div>
+      );
+    });
 
   return <GenericCarousel items={items} className={className} delay={500} />;
 };
