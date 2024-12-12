@@ -4,11 +4,27 @@ import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import { cn } from '@/lib/utils';
-import { usePrevNextButtons } from './ArrowButtonsCarousel';
-import { useDotButton } from './DotButtonCarousel';
-import { NextButton, PrevButton } from './ArrowButtonsCarousel';
-import { DotButton } from './DotButtonCarousel';
+import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
+import { useDotButton } from './Buttons/DotButtonCarousel';
+import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
+import { DotButton } from './Buttons/DotButtonCarousel';
 import { sizeIcon } from '@/styles/sizeStyles';
+import {
+  arrowButtonStyle,
+  cnMarginBottom,
+  cnMarginY,
+  cnSmallMarginX,
+  cnSmallPadding,
+  cnSpaceX,
+  cnSpaceY,
+} from '@/styles/boxModelStyles';
+import {
+  cnFlexCol,
+  cnFlexFullCenter,
+  cnFlexBetweenX,
+  cnFlexCenterY,
+} from '@/styles/flexStyles';
+import { cnBorder } from '@/styles/borderStyles';
 
 /**
  * @file GenericCarousel.tsx
@@ -27,7 +43,7 @@ import { sizeIcon } from '@/styles/sizeStyles';
  */
 
 export const GenericCarousel: React.FC<{
-  items: React.ReactNode[];
+  items?: React.ReactNode[];
   className?: string;
   delay: number;
 }> = ({ items, className, delay }) => {
@@ -52,38 +68,42 @@ export const GenericCarousel: React.FC<{
     return;
   }, [emblaApi]);
 
-  const arrowButtonStyle =
-    'touch-manipulation cursor-pointer rounded-full appearance-none h-4 w-4 text-primary';
-
   return (
     <section
-      className={cn('container overflow-hidden', className)}
+      className={cn('container overflow-hidden', cnSpaceY, className)}
       ref={emblaRef}
     >
-      <div className='flex'>
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className='mx-2 flex flex-col items-center rounded-xl border p-2 shadow'
-          >
-            {item}
-          </div>
-        ))}
+      <div className={cn('flex')}>
+        {items &&
+          items.map((item, index) => (
+            <div
+              key={index}
+              className={cn(
+                cnFlexCol,
+                cnSmallPadding,
+                cnFlexFullCenter,
+                cnBorder,
+                cnSmallMarginX
+              )}
+            >
+              {item}
+            </div>
+          ))}
       </div>
-      <div className='flex justify-between pt-4'>
-        <div className='flex items-center space-x-4'>
+      <div className={cn(cnFlexBetweenX, 'h-full')}>
+        <div className={cn(cnFlexCenterY, cnSpaceX)}>
           <PrevButton
             onClick={onPrevButtonClick}
             disabled={prevBtnDisabled}
-            className={arrowButtonStyle}
+            className={cn(arrowButtonStyle, sizeIcon, 'text-primary')}
           />
           <NextButton
             onClick={onNextButtonClick}
             disabled={nextBtnDisabled}
-            className={arrowButtonStyle}
+            className={cn(arrowButtonStyle, sizeIcon, 'text-primary')}
           />
         </div>
-        <div className='flex items-center justify-center'>
+        <div className={cnFlexFullCenter}>
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}

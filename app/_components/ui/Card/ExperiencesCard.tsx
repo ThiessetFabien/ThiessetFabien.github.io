@@ -20,16 +20,25 @@ import {
 import { hideItem, cnHidden } from '@/styles/hideItemStyles';
 import { cnBorder } from '@/styles/borderStyles';
 import { lineThroughItem } from '@/styles/lineThroughStyles';
-import { cnDescription, cnParagraph, cnTitle2 } from '@/styles/fontStyles';
-import { cnFlex, cnFlexCol } from '@/styles/flexStyles';
 import {
-  cnMarginPadding,
+  cnDescription,
+  cnParagraph,
+  cnTitle2,
+  cnSmallText,
+  cnLightTextMuted,
+  cnBoldTextMuted,
+} from '@/styles/fontStyles';
+import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
+import {
+  cnPadding,
   cnSpaceY,
   cnSmallSpaceY,
+  cnSpaceX,
+  cnPaddingX,
 } from '@/styles/boxModelStyles';
 import { sizeIcon } from '@/styles/sizeStyles';
 import { cnBadgeRight } from '@/styles/badgeStyles';
-import CardProps from '@/types/CardProps';
+import type CardProps from '@/types/CardProps';
 
 /**
  * @file CardProjects.tsx
@@ -58,15 +67,18 @@ export const CardExperiences: React.FC<CardProps> = ({
         className={cn(
           'w-full',
           cnBorder,
-          'md:[18rem] h-56 sm:h-64',
-          cnMarginPadding
+          'h-56 sm:h-64 md:h-[18rem]',
+          cnPadding
         )}
       >
         {experiences &&
           experiences.map((experience, expIndex) => (
             <div key={expIndex}>
               {experience.developer.map((developer, devIndex) => (
-                <div key={devIndex} className={cn(cnFlex, cnSmallSpaceY)}>
+                <div
+                  key={devIndex}
+                  className={cn(cnFlexBetweenX, cnSmallSpaceY)}
+                >
                   <CardTitle
                     className={cn(
                       className,
@@ -81,9 +93,9 @@ export const CardExperiences: React.FC<CardProps> = ({
                       variant='outline'
                       className={cn(
                         className,
-                        cnParagraph,
                         cnBadgeRight,
-                        'text-xs font-bold',
+                        cnSmallText,
+                        cnBoldTextMuted,
                         hideItem(developer.company)
                       )}
                     >
@@ -101,9 +113,9 @@ export const CardExperiences: React.FC<CardProps> = ({
                       variant='outline'
                       className={cn(
                         className,
-                        cnParagraph,
                         cnBadgeRight,
-                        'text-xs'
+                        cnSmallText,
+                        cnLightTextMuted
                       )}
                     >
                       {developer.date}
@@ -120,26 +132,29 @@ export const CardExperiences: React.FC<CardProps> = ({
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
-        className={cn('w-full', 'space-y-2')}
+        className={cn('w-full', cnSpaceY)}
       >
-        <div className={cn(cnFlex)}>
+        <div className={cn(cnFlexBetweenX, cnSpaceX, 'items-start')}>
           {' '}
-          <p className={cn(cnDescription, 'text-muted-foreground')}>
+          <p className={cn(cnDescription, cnLightTextMuted)}>
             I have over 6 years of professional experience in project
             coordination and Humanitude label.
           </p>
           <CollapsibleTrigger asChild>
-            <Button variant='secondary' size='sm'>
-              {isOpen ? (
+            {isOpen ? (
+              <Button variant='default' size='sm'>
                 <ChevronsDownUp className={sizeIcon} />
-              ) : (
+                <span className='sr-only'>Toggle</span>
+              </Button>
+            ) : (
+              <Button variant='secondary' size='sm'>
                 <ChevronsUpDown className={sizeIcon} />
-              )}
-              <span className='sr-only'>Toggle</span>
-            </Button>
+                <span className='sr-only'>Toggle</span>
+              </Button>
+            )}
           </CollapsibleTrigger>
         </div>
-        <CollapsibleContent className='space-y-2'>
+        <CollapsibleContent className={cnSpaceY}>
           <div className={cn(cnBorder, 'px-4 py-2 text-sm')}>
             {experiences &&
               experiences.map((experience, expIndex) => (
@@ -148,7 +163,7 @@ export const CardExperiences: React.FC<CardProps> = ({
                     (projectCoordinator, projectCooIndex) => (
                       <div
                         key={projectCooIndex}
-                        className={cn(cnFlex, 'space-x-3')}
+                        className={cn(cnFlexBetweenX, cnSpaceY)}
                       >
                         <CardTitle
                           className={cn(
@@ -164,9 +179,9 @@ export const CardExperiences: React.FC<CardProps> = ({
                             variant='outline'
                             className={cn(
                               className,
-                              cnParagraph,
+                              cnSmallText,
                               cnBadgeRight,
-                              'text-xs font-bold',
+                              cnBoldTextMuted,
                               hideItem(projectCoordinator.company)
                             )}
                           >
@@ -184,9 +199,9 @@ export const CardExperiences: React.FC<CardProps> = ({
                             variant='outline'
                             className={cn(
                               className,
-                              cnParagraph,
+                              cnSmallText,
                               cnBadgeRight,
-                              'text-xs'
+                              cnLightTextMuted
                             )}
                           >
                             {projectCoordinator.date}
@@ -206,16 +221,16 @@ export const CardExperiences: React.FC<CardProps> = ({
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
-        className={cn('w-full', 'space-y-2')}
+        className={cn('w-full', cnSpaceY)}
       >
-        <div className={cn(cnFlex, 'space-x-4')}>
-          <p className={cn(cnDescription, 'text-muted-foreground')}>
+        <div className={cn(cnFlexBetweenX, cnSpaceX)}>
+          <p className={cn(cnDescription, cnLightTextMuted)}>
             Additionally, I have more than 15 years in paramedical support for
             individuals with disabilities.
           </p>
         </div>
-        <CollapsibleContent className='space-y-2'>
-          <div className={cn(cnBorder, 'px-4 py-2 text-sm shadow-sm')}>
+        <CollapsibleContent className={cnSpaceY}>
+          <div className={cn(cnBorder, cnSmallText, cnPaddingX)}>
             {experiences &&
               experiences.map((experience, expIndex) => (
                 <div key={expIndex}>
@@ -223,7 +238,7 @@ export const CardExperiences: React.FC<CardProps> = ({
                     (nurseAssistant, projectCooIndex) => (
                       <div
                         key={projectCooIndex}
-                        className={cn(cnFlex, 'space-x-3')}
+                        className={cn(cnFlexBetweenX, cnSpaceX)}
                       >
                         <CardTitle
                           className={cn(
@@ -239,9 +254,9 @@ export const CardExperiences: React.FC<CardProps> = ({
                             variant='outline'
                             className={cn(
                               className,
-                              cnParagraph,
+                              cnSmallText,
                               cnBadgeRight,
-                              'text-xs font-bold',
+                              cnBoldTextMuted,
                               hideItem(nurseAssistant.company)
                             )}
                           >
@@ -259,9 +274,9 @@ export const CardExperiences: React.FC<CardProps> = ({
                             variant='outline'
                             className={cn(
                               className,
-                              cnParagraph,
+                              cnSmallText,
                               cnBadgeRight,
-                              'text-xs'
+                              cnLightTextMuted
                             )}
                           >
                             {nurseAssistant.date}

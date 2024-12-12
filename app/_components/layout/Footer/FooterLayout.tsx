@@ -2,6 +2,8 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import dynamicYear from '@/utils/dynamicYear';
+import { cnSmallText } from '@/styles/fontStyles';
+import CardProps from '@/types/CardProps.jsx';
 
 /**
  * @file Footer.tsx
@@ -17,15 +19,21 @@ import dynamicYear from '@/utils/dynamicYear';
  * <Footer />
  */
 
-export const Footer: React.FC<{ className?: string }> = ({ className }) => {
+export const Footer: React.FC<CardProps> = ({ className }) => {
   return (
     <footer className={cn(className)}>
-      <p className='text-xs font-light text-muted-foreground'>
+      <p className={cn(cnSmallText, 'font-light text-muted-foreground')}>
         &copy; {dynamicYear} Fabien Thiesset - All rights reserved.
         <br />
         Fonts made from
-        <a href='http://www.onlinewebfonts.com'>Web Fonts</a> is licensed by CC
-        BY 4.0
+        <a
+          href='http://www.onlinewebfonts.com'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Web Fonts
+        </a>{' '}
+        is licensed by CC BY 4.0
       </p>
     </footer>
   );

@@ -12,7 +12,6 @@ import {
 import Image from 'next/image';
 import CardData from '@api/cards.data.json';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
-import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
 import { RecommandationsCarousel } from '@/ui/Carousel/RecommandationsCarousel';
 import { Map } from '@/ui/Map/Map';
 import { CardExperiences } from '@/components/ui/Card/ExperiencesCard';
@@ -22,14 +21,15 @@ import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
 import { cnBorder } from '@/styles/borderStyles';
+import { cnHiddenXs } from '@/styles/hideItemStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import {
-  cnMarginLeft,
+  cnPadding,
   cnMarginTop,
   cnSpaceY,
   cnGap,
 } from '@/styles/boxModelStyles';
-import CardProps from './types/CardProps.jsx';
+import type CardProps from './types/CardProps';
 
 /**
  * @file page.tsx
@@ -41,7 +41,7 @@ import CardProps from './types/CardProps.jsx';
  * @returns {JSX.Element} The rendered component.
  */
 
-const HomePage: React.FC = () => {
+const HomePage: React.FC = (): JSX.Element => {
   const gridConfig = useCardGrid(CardData as CardProps[]);
 
   return (
@@ -54,23 +54,25 @@ const HomePage: React.FC = () => {
       )}
     >
       {gridConfig.map((card, index: number) => (
-        <Card key={index} className={cn('h-full w-full', card.colSpan)}>
-          <CardHeader className='space-y-0'>
+        <Card key={index} className={cn('h-full w-full', cnGap, card.colSpan)}>
+          <CardHeader className={cn(cnPadding, 'space-y-0')}>
             {card.imageSrc && !card.map && (
-              <div className='flex'>
-                <Image
-                  src={`/images/${card.imageSrc}`}
-                  alt={card.imageAlt || ''}
-                  width={205}
-                  height={316}
-                  priority
-                  className={cn(cnBorder, 'max-w-1/3')}
-                />
-                <div className={cn(cnFlexCol, cnMarginLeft, 'justify-center')}>
+              <div className={cn(cnGap, 'grid grid-cols-3')}>
+                <div className='col-span-1'>
+                  <Image
+                    src={`/images/${card.imageSrc}`}
+                    alt={card.imageAlt || ''}
+                    width={205}
+                    height={316}
+                    priority
+                    className={cn(cnBorder, 'h-auto w-auto')}
+                  />
+                </div>
+                <div className={cn(cnFlexCol, 'col-span-2 justify-center')}>
                   <CardTitle className={cnTitle1}>
                     <h2>{card.title}</h2>
                   </CardTitle>
-                  <CardDescription className={cnDescription}>
+                  <CardDescription className={cn(cnDescription, cnHiddenXs)}>
                     <p>{card.description}</p>
                   </CardDescription>
                   <CallToAction
@@ -94,7 +96,7 @@ const HomePage: React.FC = () => {
             )}
           </CardHeader>
           {!card.imageSrc && !card.map && (
-            <CardContent>
+            <CardContent className={cnPadding}>
               {card.experiences &&
                 card.experiences.length > 0 &&
                 !card.technologies && (
@@ -103,13 +105,10 @@ const HomePage: React.FC = () => {
               {card.top3Technologies &&
                 card.technologies &&
                 card.technologies.length > 0 && (
-                  <>
-                    <SkillsCard top3Technologies={card.top3Technologies} />
-                    <TechnologiesCarousel
-                      className='min-w-20'
-                      technologies={card.technologies}
-                    />
-                  </>
+                  <SkillsCard
+                    top3Technologies={card.top3Technologies}
+                    technologies={card.technologies}
+                  />
                 )}
               {card.recommandations && card.recommandations.length > 0 && (
                 <RecommandationsCarousel

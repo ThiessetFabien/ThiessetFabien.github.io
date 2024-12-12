@@ -2,11 +2,16 @@
 
 import React from 'react';
 import Image from 'next/image';
-import GenericCarousel from './GenericCarousel';
-import technologies from '@/types/CardProps';
-import { baseUrl } from '@/utils/constants/baseUrl';
 import { cn } from '@/lib/utils';
-import { cnParagraph } from '@/styles/fontStyles';
+import { baseUrl } from '@/utils/constants/baseUrl';
+import { cnSmallText } from '@/styles/fontStyles';
+import { useWhiteFilter } from '@/styles/filterStyles';
+import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
+import { cnMarginBottom } from '@/styles/boxModelStyles';
+import { sizeMiddleIcon } from '@/styles/sizeStyles';
+import { cnHiddenXs } from '@/styles/hideItemStyles';
+import GenericCarousel from './GenericCarousel';
+import type CardProps from '@/types/CardProps';
 
 /**
  * @file TechCarousel.tsx
@@ -22,38 +27,45 @@ import { cnParagraph } from '@/styles/fontStyles';
  * @example
  * <TechCarousel technologies={technologies} className="custom-class" />
  */
-export const TechnologiesCarousel: React.FC<technologies> = ({
+export const TechnologiesCarousel: React.FC<CardProps> = ({
   technologies,
   className,
 }) => {
-  const useWhiteFilter = (item: string) => {
-    return item.includes('express') ? 'filter-white' : '';
-  };
-
-  const items = technologies.map((tech, index) => (
-    <div
-      key={index}
-      className={cn(
-        'flex flex-shrink-0 flex-col items-center justify-center',
-        className
-      )}
-    >
-      <div className='relative mb-2 flex h-8 w-8 justify-center'>
-        <Image
-          src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
-          alt={tech.name}
-          width={50}
-          height={50}
-          objectFit='contain'
-          className={cn(useWhiteFilter(tech.slug))}
-          priority
-        />
+  const items =
+    technologies &&
+    technologies.map((tech, index) => (
+      <div
+        key={index}
+        className={cn(cnFlexCol, cnFlexFullCenter, 'flex-shrink-0', className)}
+      >
+        <div className={cn(cnMarginBottom, cnFlexFullCenter, 'relative')}>
+          <Image
+            src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+            alt={tech.name}
+            width={50}
+            height={50}
+            objectFit='contain'
+            className={cn(
+              useWhiteFilter(tech.slug),
+              sizeMiddleIcon,
+              'object-cover'
+            )}
+            priority
+          />
+        </div>
+        <p
+          className={cn(
+            cnSmallText,
+            cnHiddenXs,
+            'text-center font-light text-muted-foreground'
+          )}
+        >
+          {tech.name}
+        </p>
       </div>
-      <p className={cn(cnParagraph, 'mt-2 text-center')}>{tech.name}</p>
-    </div>
-  ));
+    ));
 
-  return <GenericCarousel items={items} className={className} delay={1000} />;
+  return <GenericCarousel items={items} className={className} delay={500} />;
 };
 
 export default TechnologiesCarousel;

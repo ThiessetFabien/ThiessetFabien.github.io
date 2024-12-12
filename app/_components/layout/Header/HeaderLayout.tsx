@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
-import { cnFlex } from '@/styles/flexStyles';
+import { cnFlexBetweenX } from '@/styles/flexStyles';
 import { cnTitle1 } from '@/styles/fontStyles';
 
 /**
@@ -21,7 +21,7 @@ import { cnTitle1 } from '@/styles/fontStyles';
  */
 export const Header: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <header className={cn(cnFlex, 'align-center h-full', className)}>
+    <header className={cn(cnFlexBetweenX, 'h-full', className)}>
       <Link
         href='/'
         className={cn(cnTitle1, 'pointer-events-auto text-center')}

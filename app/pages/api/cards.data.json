@@ -10,16 +10,17 @@
   },
   {
     "title": "I ❤️ working on...",
+    "description": "I'm a full-stack developer with a passion for creating beautiful and functional applications. I specialize in building web applications using modern technologies.",
     "top3Technologies": [
-      {
-        "name": "Tailwind",
-        "description": "I create beautiful application in seconds using Tailwind CSS.",
-        "slug": "tailwindcss/tailwindcss-original"
-      },
       {
         "name": "React.js",
         "description": "I also Next.js as a backend and frontend framework.",
         "slug": "react/react-original"
+      },
+      {
+        "name": "Tailwind",
+        "description": "I create beautiful application in seconds using Tailwind CSS.",
+        "slug": "tailwindcss/tailwindcss-original"
       },
       {
         "name": "Node.js",

@@ -33,3 +33,13 @@ export const cnParagraph = cn(
   'md:text-base',
   'lg:text-lg'
 );
+
+export const cnSmallText = cn(
+  'text-xs lg:text-sm',
+  'max-w-prose',
+  'leading-relaxed '
+);
+
+export const cnBoldTextMuted = cn('text-muted-foreground', 'font-semibold');
+
+export const cnLightTextMuted = cn('text-muted-foreground', 'font-light');
