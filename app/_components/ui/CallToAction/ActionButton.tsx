@@ -1,35 +1,35 @@
 import React from 'react';
 import { Button } from '@/lib/components/ui/button';
+import { cn } from '@/lib/utils';
 import { dynamicDownload } from '@/utils/dynamicDownload';
 import { IconLoader } from '@/hooks/IconLoader';
+import { cnFlexCenterY } from '@/styles/flexStyles';
+import { cnSmallText } from '@/styles/fontStyles';
+import { cnButton } from '@/styles/boxModelStyles';
+import type { ActionButton } from '@/types/ActionButtonProps';
 
 /**
  * @file ActionButton.tsx
- * @description This file exports a reusable button component for call-to-action buttons.
- */
-
-/**
- * ActionButton component props.
- * @typedef {Object} ActionButtonProps
- * @property {string} cta - The text for the call-to-action button.
- * @property {string} icon - The icon for the call-to-action button.
- * @property {string} href - The href for the call-to-action button.
- * @property {boolean} downloadActive - Whether the call-to-action button should trigger a download.
- * @property {string} variant - The variant of the button (default or outline).
+ * @description This file exports a reusable button component.
  */
 
 /**
  * ActionButton component.
- * @param {ActionButtonProps} props - The props for the component.
- * @returns {JSX.Element} The rendered ActionButton component.
+ * @param {ActionButton} props - The props for the component.
+ * @param {string} props.href - The URL that the button links to.
+ * @param {string} props.icon - The icon to display in the button.
+ * @param {string} props.text - The text to display in the button.
+ * @param {boolean} props.download - Whether the button should trigger a download.
+ * @returns {JSX.Element} The rendered component.
  */
-const ActionButton: React.FC<{
-  cta: string;
-  icon: string;
-  href: string;
-  downloadActive: boolean;
-  variant: 'default' | 'outline';
-}> = ({ cta, icon, href, downloadActive, variant }) => {
+
+const ActionButton: React.FC<ActionButton> = ({
+  cta,
+  icon,
+  href,
+  downloadActive,
+  variant,
+}: ActionButton): JSX.Element => {
   return (
     <div className='w-auto'>
       <a
@@ -40,7 +40,7 @@ const ActionButton: React.FC<{
       >
         <Button
           variant={variant}
-          className='flex items-center justify-center text-center text-xs md:h-9 md:px-4 md:py-2 lg:h-10 lg:px-8 lg:text-sm'
+          className={cn(cnFlexCenterY, cnSmallText, cnButton)}
         >
           {IconLoader(icon ?? '')}
           {(cta ?? '').toLocaleUpperCase()}

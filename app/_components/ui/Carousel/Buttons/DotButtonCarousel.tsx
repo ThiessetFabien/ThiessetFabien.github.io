@@ -55,13 +55,13 @@ type PropType = ComponentPropsWithRef<'button'> & { isSelected: boolean };
 
 export const DotButton: React.FC<PropType> = ({
   isSelected,
-  ClassName,
+  className,
   children,
   ...restProps
 }) => {
   return (
     <Button
-      className={ClassName}
+      className={className}
       variant='ghost'
       size='icon'
       type='button'

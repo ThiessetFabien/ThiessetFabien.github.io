@@ -2,10 +2,16 @@ import React from 'react';
 import Image from 'next/image';
 import { CardTitle, CardDescription } from '@/lib/components/ui/card';
 import { Separator } from '@/lib/components/ui/separator';
-import { baseUrl } from '@/utils/constants/baseUrl';
 import { cn } from '@/lib/utils';
-import { Top3Technologies } from '@/types/Top3TechnologieProps';
+import { baseUrl } from '@/utils/constants/baseUrl';
 import { cnTitle2, cnParagraph, cnDescription } from '@/styles/fontStyles';
+import { cnGap, cnSpaceY } from '@/styles/boxModelStyles';
+import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
+import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
+import { sizeBigIcon } from '@/styles/sizeStyles';
+import { cnHiddenXs } from '@/styles/hideItemStyles';
+import type CardProps from '@/types/CardProps';
+
 /**
  * @file SkillsCard.tsx
  * @description This file exports a skills card component.
@@ -16,49 +22,52 @@ import { cnTitle2, cnParagraph, cnDescription } from '@/styles/fontStyles';
  * @param {CardProps} props - The props for the component.
  * @returns {JSX.Element} The rendered SkillsCard component.
  */
-export const SkillsCard: React.FC<{
-  top3Technologies: Top3Technologies[];
-}> = ({ top3Technologies }) => {
+export const SkillsCard: React.FC<CardProps> = ({
+  top3Technologies,
+  technologies,
+}: CardProps): JSX.Element => {
   return (
-    <>
-      <div
-        className={cn(
-          'flex justify-center',
-          'mb-4 gap-4 md:mb-6 md:gap-6 lg:block'
-        )}
-      >
-        {top3Technologies.map((tech, index) => (
-          <div
-            key={index}
-            className={cn(
-              'flex w-1/3 flex-row gap-4',
-              'md:w-full',
-              'lg:flex-col'
-            )}
-          >
-            <div className='flex flex-col'>
-              <Image
-                src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
-                alt={tech.name}
-                width={50}
-                height={50}
-                objectFit='contain'
-                className='mb-4'
-                priority
-              />
-              <CardTitle className={cnTitle2}>{tech.name}</CardTitle>
-              <p className={cnParagraph}>{tech.description}</p>
+    <div className={cnSpaceY}>
+      <div className={cn(cnGap, cnFlexFullCenter, 'grid grid-cols-3')}>
+        {top3Technologies &&
+          top3Technologies.map((tech, index) => (
+            <div
+              key={index}
+              className={cn(cnFlexCol, 'h-full w-full', 'items-start')}
+            >
+              <div
+                className={cn(
+                  cnSpaceY,
+                  cnGap,
+                  'col-span-1 h-full w-full',
+                  index < top3Technologies.length - 1 ? 'border-r' : ''
+                )}
+              >
+                <Image
+                  src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+                  alt={tech.name}
+                  width={50}
+                  height={50}
+                  objectFit='contain'
+                  priority
+                  className={sizeBigIcon}
+                />
+                <div>
+                  <CardTitle className={cnTitle2}>{tech.name}</CardTitle>
+                  <p className={cn(cnParagraph, cnHiddenXs)}>
+                    {tech.description}
+                  </p>
+                </div>
+              </div>
             </div>
-            {index < top3Technologies.length - 1 && (
-              <Separator className='h-full w-[1px]' />
-            )}
-          </div>
-        ))}
+          ))}
       </div>
-      <CardDescription className='pb-4 md:pb-6'>
+      <Separator className='h-[1px] w-full' />
+      <CardDescription>
         <p className={cnDescription}>And i currently use...</p>
       </CardDescription>
-    </>
+      <TechnologiesCarousel className='min-w-20' technologies={technologies} />
+    </div>
   );
 };
 
