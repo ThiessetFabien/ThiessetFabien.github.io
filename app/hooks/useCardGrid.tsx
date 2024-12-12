@@ -27,7 +27,7 @@ const useCardGrid = (cards: CardProps[]) => {
           break;
 
         default:
-          colSpan;
+          colSpan = '';
           break;
       }
       return {

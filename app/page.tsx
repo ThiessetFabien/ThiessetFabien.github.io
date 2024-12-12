@@ -28,7 +28,6 @@ import {
   cnMarginTop,
   cnSpaceY,
   cnGap,
-  cnSpaceX,
 } from '@/styles/boxModelStyles';
 import type CardProps from './types/CardProps';
 
