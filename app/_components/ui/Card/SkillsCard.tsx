@@ -5,7 +5,7 @@ import { Separator } from '@/lib/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { cnTitle2, cnParagraph, cnDescription } from '@/styles/fontStyles';
-import { cnGap, cnSpaceY } from '@/styles/boxModelStyles';
+import { cnGap, cnMarginBottom, cnSpaceY } from '@/styles/boxModelStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
 import { sizeBigIcon } from '@/styles/sizeStyles';
@@ -28,19 +28,32 @@ export const SkillsCard: React.FC<CardProps> = ({
 }: CardProps): JSX.Element => {
   return (
     <div className={cnSpaceY}>
-      <div className={cn(cnGap, cnFlexFullCenter, 'grid grid-cols-3')}>
+      <div
+        className={cn(
+          cnGap,
+          cnFlexFullCenter,
+          'grid grid-cols-3 lg:grid-cols-2 lg:grid-rows-2'
+        )}
+      >
         {top3Technologies &&
           top3Technologies.map((tech, index) => (
             <div
               key={index}
-              className={cn(cnFlexCol, 'h-full w-full', 'items-start')}
+              className={cn(
+                cnFlexCol,
+                'h-full w-full',
+                'items-start',
+                index === 0 ? 'lg:col-span-2 lg:border-b' : 'lg:col-span-1'
+              )}
             >
               <div
                 className={cn(
                   cnSpaceY,
                   cnGap,
-                  'col-span-1 h-full w-full',
-                  index < top3Technologies.length - 1 ? 'border-r' : ''
+                  'h-full w-full',
+                  index < top3Technologies.length - 1
+                    ? 'border-r lg:border-r-0'
+                    : ''
                 )}
               >
                 <Image

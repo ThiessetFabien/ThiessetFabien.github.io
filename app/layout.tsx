@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='fr' className={'h-full'}>
+    <html lang='fr' dir='ltr' className={'h-full w-full'}>
       <Head>
         <title>{`${metadata.title}`}</title>
         <meta name='description' content={`${metadata.description}`} />
@@ -35,7 +35,7 @@ export default function RootLayout({
           OrpheusPro.variable,
           cnPadding,
           cnSpaceY,
-          'h-100% container mx-auto w-full max-w-5xl',
+          'h-100% container mx-auto w-full max-w-6xl',
           'bg-background font-sans text-foreground'
         )}
       >

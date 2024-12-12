@@ -4,16 +4,14 @@ export const cnTitle1 = cn(
   'font-caption font-bold leading-tight tracking-tight',
   'text-base',
   'sm:text-lg',
-  'md:text-xl',
-  'lg:text-2xl'
+  'md:text-xl'
 );
 
 export const cnTitle2 = cn(
   'font-caption font-semibold leading-tight tracking-tight',
   'text-sm',
   'sm:text-base',
-  'md:text-lg',
-  'lg:text-xl'
+  'md:text-lg'
 );
 
 export const cnDescription = cn(
@@ -21,8 +19,7 @@ export const cnDescription = cn(
   'font-light leading-relaxed',
   'text-sm',
   'sm:text-base',
-  'md:text-lg',
-  'lg:text-xl'
+  'md:text-lg'
 );
 
 export const cnParagraph = cn(
@@ -30,8 +27,7 @@ export const cnParagraph = cn(
   'font-light leading-relaxed text-muted-foreground',
   'text-xs',
   'sm:text-sm',
-  'md:text-base',
-  'lg:text-lg'
+  'md:text-base'
 );
 
 export const cnSmallText = cn('text-xs lg:text-sm', 'leading-relaxed ');
