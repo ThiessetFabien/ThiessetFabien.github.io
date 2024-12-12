@@ -8,13 +8,17 @@ export const cnPaddingX = cn('px-2 sm:px-4 md:px-6 ');
 
 export const cnSmallMarginX = cn('mx-1 sm:mx-2 md:mx-4 ');
 
+export const cnMarginX = cn('mx-1 xs:mx-2 sm:mx-4 md:mx-6 ');
+
 export const cnMargin = cn('m-1 xs:m-2 sm:m-4 md:m-6 ');
 
 export const cnMarginY = cn('my-1 xs:my-2 sm:my-4 md:my-6 ');
 
-export const cnSmallMarginLeft = cn('xs:ml-1 sm:ml-2 md:ml-4 ');
+export const cnSmallMarginLeft = cn('ml-2 md:ml-4 ');
 
 export const cnMarginLeft = cn('ml-1 xs:ml-2 sm:ml-4 md:ml-6 ');
+
+export const cnSmallMarginRight = cn('xs:mr-1 sm:mr-2 md:mr-4 ');
 
 export const cnMarginRight = cn('mr-1 xs:mr-2 sm:mr-4 md:mr-6 ');
 

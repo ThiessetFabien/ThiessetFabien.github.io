@@ -10,10 +10,10 @@ import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
 import { DotButton } from './Buttons/DotButtonCarousel';
 import {
   manipulationStyle,
-  cnSmallMarginX,
   cnSmallPadding,
   cnSpaceY,
   cnSpaceX,
+  cnMarginX,
 } from '@/styles/boxModelStyles';
 import {
   cnFlexCol,
@@ -82,7 +82,7 @@ export const GenericCarousel: React.FC<{
                 cnSmallPadding,
                 cnFlexFullCenter,
                 cnBorder,
-                cnSmallMarginX
+                cnMarginX
               )}
             >
               {item}

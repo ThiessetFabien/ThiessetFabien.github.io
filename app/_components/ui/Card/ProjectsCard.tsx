@@ -11,15 +11,19 @@ import {
   Card,
 } from '@/lib/components/ui/card';
 import { Badge } from '@/lib/components/ui/badge';
-import { ScrollArea } from '@/lib/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 
 import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import CardProps from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
-import { cnFlex } from '@/styles/flexStyles';
-import { cnMarginBottom, cnSmallMarginLeft } from '@/styles/boxModelStyles';
+import { cnFlexBetweenX, cnFlexCenterY } from '@/styles/flexStyles';
+import {
+  cnGap,
+  cnMarginBottom,
+  cnPadding,
+  cnSmallMarginLeft,
+} from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
 import { sizeIcon } from '@/styles/sizeStyles';
 
@@ -40,14 +44,29 @@ import { sizeIcon } from '@/styles/sizeStyles';
 
 export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
   return (
-    <ScrollArea className={cn(className)}>
+    <div
+      className={cn(
+        className,
+        cnGap,
+        'h-full',
+        'grid md:auto-rows-auto md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1'
+      )}
+    >
       {projects &&
         projects.map((project, projectIndex) => (
           <Card
             key={projectIndex}
-            className={cn(cnBorder, dynamicMarginBottom(projectIndex))}
+            className={cn(
+              cnBorder,
+              cnGap,
+              dynamicMarginBottom(projectIndex),
+              'h-full w-full',
+              projectIndex === 0
+                ? 'md:col-span-2 lg:col-span-1'
+                : 'md:col-span-1'
+            )}
           >
-            <CardHeader>
+            <CardHeader className={cnPadding}>
               {project.imageSrc && project.imageAlt && (
                 <a
                   href={`${baseUrl}${project.website}`}
@@ -65,13 +84,13 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
                   />
                 </a>
               )}
-              <div className={cnFlex}>
-                <CardTitle className={cn(cnTitle2, 'flex items-center')}>
+              <div className={cnFlexBetweenX}>
+                <CardTitle className={cn(cnTitle2, cnFlexCenterY)}>
                   <a
                     href={`${baseUrl}${project.website}`}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='flex items-center'
+                    className={cnFlexCenterY}
                   >
                     {project.title}
                     <ExternalLink className={cn(sizeIcon, cnSmallMarginLeft)} />
@@ -100,19 +119,15 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
                 {project.organization}
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className={cnPadding}>
               {project.tags.map((tag, tagIndex) => (
-                <Badge
-                  key={tagIndex}
-                  variant='secondary'
-                  className='mr-2 md:mr-4'
-                >
+                <Badge key={tagIndex} variant='outline'>
                   {tag.toString()}
                 </Badge>
               ))}
             </CardContent>
           </Card>
         ))}
-    </ScrollArea>
+    </div>
   );
 };

@@ -39,6 +39,7 @@ const ActionButton: React.FC<ActionButton> = ({
         {...dynamicDownload(downloadActive)}
       >
         <Button
+          size='sm'
           variant={variant}
           className={cn(cnFlexCenterY, cnSmallText, cnButton)}
         >
