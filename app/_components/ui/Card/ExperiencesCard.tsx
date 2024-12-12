@@ -154,75 +154,71 @@ export const CardExperiences: React.FC<CardProps> = ({
             )}
           </CollapsibleTrigger>
         </div>
-        <CollapsibleContent className={cnSpaceY}>
-          <div className={cn(cnBorder, 'px-4 py-2 text-sm')}>
-            {experiences &&
-              experiences.map((experience, expIndex) => (
-                <div key={expIndex}>
-                  {experience.projectCoordinator.map(
-                    (projectCoordinator, projectCooIndex) => (
-                      <div
-                        key={projectCooIndex}
-                        className={cn(cnFlexBetweenX, cnSpaceY)}
+        <CollapsibleContent
+          className={cn(cnSpaceY, cnBorder, cnSmallText, cnPadding)}
+        >
+          {experiences &&
+            experiences.map((experience, expIndex) => (
+              <div key={expIndex}>
+                {experience.projectCoordinator.map(
+                  (projectCoordinator, projectCooIndex) => (
+                    <div
+                      key={projectCooIndex}
+                      className={cn(cnFlexBetweenX, cnSmallSpaceY)}
+                    >
+                      <CardTitle
+                        className={cn(
+                          className,
+                          cnTitle2,
+                          lineThroughItem(projectCoordinator.date)
+                        )}
                       >
-                        <CardTitle
+                        {projectCoordinator.title}
+                      </CardTitle>
+                      <div className={cnFlexCol}>
+                        <Badge
+                          variant='outline'
                           className={cn(
                             className,
-                            cnTitle2,
-                            lineThroughItem(projectCoordinator.date)
+                            cnSmallText,
+                            cnBadgeRight,
+                            cnBoldTextMuted,
+                            hideItem(projectCoordinator.company)
                           )}
                         >
-                          {projectCoordinator.title}
-                        </CardTitle>
-                        <div className={cnFlexCol}>
-                          <Badge
-                            variant='outline'
+                          {projectCoordinator.company}
+                          <MapPin
                             className={cn(
-                              className,
-                              cnSmallText,
-                              cnBadgeRight,
-                              cnBoldTextMuted,
+                              'ml-1',
+                              cnHidden,
+                              sizeIcon,
                               hideItem(projectCoordinator.company)
                             )}
-                          >
-                            {projectCoordinator.company}
-                            <MapPin
-                              className={cn(
-                                'ml-1',
-                                cnHidden,
-                                sizeIcon,
-                                hideItem(projectCoordinator.company)
-                              )}
-                            />
-                          </Badge>
-                          <Badge
-                            variant='outline'
-                            className={cn(
-                              className,
-                              cnSmallText,
-                              cnBadgeRight,
-                              cnLightTextMuted
-                            )}
-                          >
-                            {projectCoordinator.date}
-                            <CalendarClock
-                              className={cn('ml-1', sizeIcon, cnHidden)}
-                            />
-                          </Badge>
-                        </div>
+                          />
+                        </Badge>
+                        <Badge
+                          variant='outline'
+                          className={cn(
+                            className,
+                            cnSmallText,
+                            cnBadgeRight,
+                            cnLightTextMuted
+                          )}
+                        >
+                          {projectCoordinator.date}
+                          <CalendarClock
+                            className={cn('ml-1', sizeIcon, cnHidden)}
+                          />
+                        </Badge>
                       </div>
-                    )
-                  )}
-                </div>
-              ))}
-          </div>
+                    </div>
+                  )
+                )}
+              </div>
+            ))}
         </CollapsibleContent>
       </Collapsible>{' '}
-      <Collapsible
-        open={isOpen}
-        onOpenChange={setIsOpen}
-        className={cn('w-full', cnSpaceY)}
-      >
+      <Collapsible open={isOpen} onOpenChange={setIsOpen} className={cnSpaceY}>
         <div className={cn(cnFlexBetweenX, cnSpaceX)}>
           <p className={cn(cnDescription, cnLightTextMuted)}>
             Additionally, I have more than 15 years in paramedical support for
@@ -230,15 +226,15 @@ export const CardExperiences: React.FC<CardProps> = ({
           </p>
         </div>
         <CollapsibleContent className={cnSpaceY}>
-          <div className={cn(cnBorder, cnSmallText, cnPaddingX)}>
+          <div className={cn(cnBorder, cnSmallText, cnPadding)}>
             {experiences &&
               experiences.map((experience, expIndex) => (
                 <div key={expIndex}>
                   {experience.nurseAssistant.map(
-                    (nurseAssistant, projectCooIndex) => (
+                    (nurseAssistant, nurseAssistantIndex) => (
                       <div
-                        key={projectCooIndex}
-                        className={cn(cnFlexBetweenX, cnSpaceX)}
+                        key={nurseAssistantIndex}
+                        className={cn(cnFlexBetweenX, cnSmallSpaceY)}
                       >
                         <CardTitle
                           className={cn(
@@ -249,7 +245,7 @@ export const CardExperiences: React.FC<CardProps> = ({
                         >
                           {nurseAssistant.title}
                         </CardTitle>
-                        <div className='flex flex-col'>
+                        <div className={cnFlexCol}>
                           <Badge
                             variant='outline'
                             className={cn(

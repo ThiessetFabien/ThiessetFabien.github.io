@@ -1,12 +1,7 @@
 import { cn } from '@/lib/utils';
 
-export const sizeIcon = cn(
-  'h-2 w-auto',
-  'xs:h-3',
-  'sm:h-4',
-  'mb:h-5',
-  'lg:h-6'
-);
+export const sizeIcon = cn('w-auto', 'xs:h-3', 'sm:h-4', 'mb:h-5', 'lg:h-6');
+
 export const sizeMiddleIcon = cn(
   'h-4 w-auto',
   'xs:h-6',

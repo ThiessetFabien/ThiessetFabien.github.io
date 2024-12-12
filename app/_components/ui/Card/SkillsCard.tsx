@@ -66,7 +66,7 @@ export const SkillsCard: React.FC<CardProps> = ({
       <CardDescription>
         <p className={cnDescription}>And i currently use...</p>
       </CardDescription>
-      <TechnologiesCarousel className='min-w-20' technologies={technologies} />
+      <TechnologiesCarousel technologies={technologies} />
     </div>
   );
 };

@@ -5,8 +5,10 @@ import React, {
   useState,
 } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
-import { Button } from '@/lib/components/ui/button';
 import { Dot } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/lib/components/ui/button';
+import { sizeIcon } from '@/styles/sizeStyles';
 
 type UseDotButtonType = {
   selectedIndex: number;
@@ -62,15 +64,15 @@ export const DotButton: React.FC<PropType> = ({
   return (
     <Button
       className={className}
-      variant='ghost'
+      variant='link'
       size='icon'
       type='button'
       {...restProps}
     >
       {isSelected ? (
-        <Dot className='text-primary' />
+        <Dot className={cn(sizeIcon, 'text-primary')} />
       ) : (
-        <Dot className='text-border' />
+        <Dot className={cn(sizeIcon, 'text-border')} />
       )}
       {children}
     </Button>

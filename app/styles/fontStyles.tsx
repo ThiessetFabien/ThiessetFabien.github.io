@@ -34,11 +34,7 @@ export const cnParagraph = cn(
   'lg:text-lg'
 );
 
-export const cnSmallText = cn(
-  'text-xs lg:text-sm',
-  'max-w-prose',
-  'leading-relaxed '
-);
+export const cnSmallText = cn('text-xs lg:text-sm', 'leading-relaxed ');
 
 export const cnBoldTextMuted = cn('text-muted-foreground', 'font-semibold');
 
