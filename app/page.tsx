@@ -28,6 +28,7 @@ import {
   cnMarginTop,
   cnSpaceY,
   cnGap,
+  cnSpaceX,
 } from '@/styles/boxModelStyles';
 import type CardProps from './types/CardProps';
 
@@ -50,11 +51,11 @@ const HomePage: React.FC = (): JSX.Element => {
         cnGap,
         'container relative z-0',
         'mx-auto grid grid-cols-1',
-        'lg:grid-cols-4'
+        'lg:auto-rows-auto lg:grid-cols-8'
       )}
     >
       {gridConfig.map((card, index: number) => (
-        <Card key={index} className={cn('h-full w-full', cnGap, card.colSpan)}>
+        <Card key={index} className={cn('w-full', cnGap, card.colSpan)}>
           <CardHeader className={cn(cnPadding, 'space-y-0')}>
             {card.imageSrc && !card.map && (
               <div className={cn(cnGap, 'grid grid-cols-3')}>
