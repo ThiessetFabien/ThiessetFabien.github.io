@@ -1,3 +1,5 @@
+import { Tags } from './TagsProps';
+
 /**
  * @file ProjectsProps.tsx
  * @description This file exports interfaces that represent a project and its associated tags.
@@ -28,7 +30,7 @@
  *   className: 'my-project',
  * };
  */
-export interface Projects {
+export interface Project {
   title: string;
   organization: string;
   imageSrc: string;
@@ -37,17 +39,4 @@ export interface Projects {
   website: string;
   github: string;
   tags: Tags[];
-  className?: string;
-}
-
-/**
- * Tags interface.
- * @typedef {Object} Tags
- * @property {string} tag - The name of the tag.
- * @example
- * const tag: Tags = { tag: 'JavaScript' };
- */
-
-export interface Tags {
-  tag: string;
 }

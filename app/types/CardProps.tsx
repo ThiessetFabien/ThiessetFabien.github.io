@@ -1,8 +1,8 @@
-import { Technologies } from './TechnologiesProps';
+import { Technologie } from './TechnologieProps';
 import { Experiences } from './ExperiencesProps';
-import { Projects } from './ProjectsProps';
-import { Recommandations } from './RecommandationsProps';
-import { Top3Technologies } from './Top3TechnologiesProps';
+import { Project } from './ProjectProps';
+import { Recommandation } from './RecommandationProps';
+import { Top3Technologie } from './Top3TechnologieProps';
 /**
  * @file CardProps.tsx
  * @description This file contains the type definition for the props used in various card components.
@@ -33,27 +33,35 @@ import { Top3Technologies } from './Top3TechnologiesProps';
  */
 
 export default interface CardProps {
-  imageSrc?: string;
-  imageAlt?: string;
   title?: string;
   description?: string;
+
+  imageSrc?: string;
+  imageAlt?: string;
+
+  map?: boolean;
+
   cta1?: string;
   icon1?: string;
   href1?: string;
   downloadActive1?: boolean;
+
   cta2?: string;
   icon2?: string;
   href2?: string;
   downloadActive2?: boolean;
-  map?: boolean;
+
   experiences?: Experiences[];
-  otherExperiences?: Experiences[];
-  projects?: Projects[];
-  top3Technologies?: Top3Technologies[];
-  technologies?: Technologies[];
-  recommandations?: Recommandations[];
-  colSpan?: string;
+
+  projects?: Project[];
+
+  top3Technologies?: Top3Technologie[];
+  technologies?: Technologie[];
+
+  recommandations?: Recommandation[];
 
   content?: React.ReactNode;
+
   className?: string;
+  colSpan?: string;
 }

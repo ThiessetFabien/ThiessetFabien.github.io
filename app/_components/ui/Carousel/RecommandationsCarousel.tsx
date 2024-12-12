@@ -7,11 +7,11 @@ import {
   AvatarImage,
 } from '@/lib/components/ui/avatar';
 import { Mail, PhoneOutgoing } from 'lucide-react';
-import { Recommandations } from '@/types/RecommandationsProps';
 import GenericCarousel from './GenericCarousel';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
+import CardProps from '@/types/CardProps';
 
 /**
  * @file RecommandationsCarousel.tsx
@@ -27,13 +27,13 @@ import { cn } from '@/lib/utils';
  * @example
  * <RecommandationsCarousel recommandations={recommandations} className="custom-class" />
  */
-export const RecommandationsCarousel: React.FC<{
-  recommandations: Recommandations[];
-  className?: string;
-}> = ({ recommandations, className }) => {
-  const shuffledRecommandations = recommandations.sort(
-    () => Math.random() - 0.5
-  );
+export const RecommandationsCarousel: React.FC<CardProps> = ({
+  recommandations,
+  className,
+}) => {
+  const shuffledRecommandations = recommandations
+    ? recommandations.sort(() => Math.random() - 0.5)
+    : [];
 
   const items = shuffledRecommandations.map((recommandation, index) => (
     <div key={index} className='mx-4 h-auto w-auto py-4'>
