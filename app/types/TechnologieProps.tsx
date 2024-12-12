@@ -11,7 +11,7 @@
  * @example
  * const tech: Technologies = { name: 'React.js', slug: 'react/react-original' };
  */
-export interface Technologies {
+export interface Technologie {
   name: string;
   slug: string;
   className?: string;

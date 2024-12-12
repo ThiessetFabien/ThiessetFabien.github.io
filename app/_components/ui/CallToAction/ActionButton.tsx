@@ -32,7 +32,12 @@ const ActionButton: React.FC<{
 }> = ({ cta, icon, href, downloadActive, variant }) => {
   return (
     <div className='w-auto'>
-      <a href={`/${href}`} {...dynamicDownload(downloadActive)}>
+      <a
+        href={`/${href}`}
+        target='_blank'
+        rel='noopener noreferrer'
+        {...dynamicDownload(downloadActive)}
+      >
         <Button
           variant={variant}
           className='flex items-center justify-center text-center text-xs md:h-9 md:px-4 md:py-2 lg:h-10 lg:px-8 lg:text-sm'

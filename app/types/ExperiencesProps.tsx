@@ -1,3 +1,4 @@
+import { Experience } from './ExperienceProps';
 /**
  * @file ExperiencesProps.tsx
  * @description This file exports interfaces that represent different types of experiences.
@@ -21,20 +22,4 @@ export interface Experiences {
   developer: Experience[];
   projectCoordinator: Experience[];
   nurseAssistant: Experience[];
-  classNames?: string;
-}
-
-/**
- * Experience interface.
- * @typedef {Object} Experience
- * @property {string} title - The title of the position.
- * @property {string} company - The company where the position was held.
- * @property {string} date - The date range of the position.
- * @example
- * const experience: Experience = { title: 'Developer', company: 'Company A', date: '2020 - Present' };
- */
-export interface Experience {
-  title: string;
-  company: string;
-  date: string;
 }

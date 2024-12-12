@@ -4,7 +4,7 @@ import { CardTitle, CardDescription } from '@/lib/components/ui/card';
 import { Separator } from '@/lib/components/ui/separator';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { cn } from '@/lib/utils';
-import { Top3Technologies } from '@/types/Top3TechnologiesProps';
+import { Top3Technologies } from '@/types/Top3TechnologieProps';
 import { cnTitle2, cnParagraph, cnDescription } from '@/styles/fontStyles';
 /**
  * @file SkillsCard.tsx
