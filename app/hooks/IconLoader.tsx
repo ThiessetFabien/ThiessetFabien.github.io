@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-
 /**
  * @file IconLoader.tsx
  * @description This file exports a component that dynamically loads and renders an icon from the lucide-react library.
  */
+
+import React, { useEffect, useState } from 'react';
 
 /**
  * IconLoader component.

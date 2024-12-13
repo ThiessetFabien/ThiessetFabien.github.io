@@ -3,5 +3,5 @@ export interface ActionButton {
   icon: string;
   href: string;
   downloadActive: boolean;
-  variant: 'default' | 'outline';
+  variant: 'default' | 'secondary' | 'destructive' | 'outline';
 }

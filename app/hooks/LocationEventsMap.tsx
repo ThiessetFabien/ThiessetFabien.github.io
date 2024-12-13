@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { useMap } from 'react-leaflet';
 import { LocationEvents } from '@/types/LocationEventsProps';
 
@@ -25,4 +26,6 @@ const LocationEventsMap: React.FC<LocationEvents> = ({ position }) => {
   return null;
 };
 
-export default LocationEventsMap;
+export default dynamic(() => Promise.resolve(LocationEventsMap), {
+  ssr: false,
+});

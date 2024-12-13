@@ -19,6 +19,10 @@ const PresentationCard: React.FC<CardProps> = ({
   icon1,
   href1,
   downloadActive1,
+  cta2,
+  icon2,
+  href2,
+  downloadActive2,
 }) => {
   return (
     <div className={cn(cnGap, 'grid grid-cols-3')}>
@@ -40,11 +44,15 @@ const PresentationCard: React.FC<CardProps> = ({
           <p>{description}</p>
         </CardDescription>
         <CallToAction
-          className={cn(cnSpaceY, cnMarginTop, 'h-auto')}
+          className={cn(cnSpaceY, cnMarginTop, 'h-auto w-auto')}
           cta1={cta1}
           icon1={icon1}
           href1={href1}
           downloadActive1={downloadActive1}
+          icon2={icon2}
+          cta2={cta2}
+          href2={href2}
+          downloadActive2={downloadActive2}
         />
       </div>
     </div>

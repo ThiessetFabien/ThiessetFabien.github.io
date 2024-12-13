@@ -39,12 +39,12 @@ export const CallToAction: React.FC<CardProps> = ({
   className,
 }) => {
   return (
-    <div className={cn(className)}>
+    <div className={className}>
       {(cta1 && href1) || (icon1 && href1) ? (
         <ActionButton
           cta={cta1 || ''}
           icon={icon1 || ''}
-          href={href1}
+          href={href1 || ''}
           downloadActive={downloadActive1 || false}
           variant='default'
         />
@@ -53,7 +53,7 @@ export const CallToAction: React.FC<CardProps> = ({
         <ActionButton
           cta={cta2 || ''}
           icon={icon2 || ''}
-          href={href2}
+          href={href2 || ''}
           downloadActive={downloadActive2 || false}
           variant='outline'
         />

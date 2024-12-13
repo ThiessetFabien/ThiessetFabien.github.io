@@ -8,19 +8,19 @@ const useCardGrid = (cards: CardProps[]) => {
 
       switch (true) {
         case !!card.imageSrc:
-          colSpan = 'lg:col-span-7 lg:row-span-1';
+          colSpan = 'lg:col-span-8 lg:row-span-1';
           break;
         case !!card.technologies:
           colSpan = 'lg:col-span-4 lg:row-span-2';
           break;
         case !!card.experiences:
-          colSpan = 'lg:col-span-7 lg:row-span-1';
+          colSpan = 'lg:col-span-8 lg:row-span-1';
           break;
         case !!card.projects:
-          colSpan = 'lg:col-span-4 lg:row-span-1';
+          colSpan = 'lg:col-span-6 lg:row-span-3';
           break;
-        case !!card.recommandations:
-          colSpan = 'lg:col-span-7 lg:row-span-1';
+        case !!card.testimonials:
+          colSpan = 'lg:col-span-6 lg:row-span-1';
           break;
         case !!card.map:
           colSpan = 'lg:col-span-3 lg:row-span-1';

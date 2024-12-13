@@ -1,12 +1,13 @@
 import { Technologie } from './TechnologieProps';
-import { Experiences } from './ExperiencesProps';
-import { Project } from './ProjectProps';
-import { Recommandation } from './RecommandationProps';
-import { Top3Technologie } from './Top3TechnologieProps';
 /**
  * @file CardProps.tsx
  * @description This file contains the type definition for the props used in various card components.
  */
+
+import { Experiences } from './ExperiencesProps';
+import { Project } from './ProjectProps';
+import { Testimonial } from './TestimonialProps';
+import { Top3Technologie } from './Top3TechnologieProps';
 
 /**
  * CardProps type.
@@ -58,7 +59,7 @@ export default interface CardProps {
   top3Technologies?: Top3Technologie[];
   technologies?: Technologie[];
 
-  recommandations?: Recommandation[];
+  testimonials?: Testimonial[];
 
   content?: React.ReactNode;
 
