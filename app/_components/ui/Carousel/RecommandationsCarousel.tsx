@@ -18,7 +18,6 @@ import {
   cnSmallText,
 } from '@/styles/fontStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { sizeIcon } from '@/styles/sizeStyles';
 import { cnSpaceY } from '@/styles/boxModelStyles';
 
 /**

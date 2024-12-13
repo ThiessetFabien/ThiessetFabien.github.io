@@ -42,7 +42,7 @@ const HomePage: React.FC = (): JSX.Element => {
         cnGap,
         'container relative z-0',
         'mx-auto grid grid-cols-1',
-        'lg:auto-rows-auto lg:grid-cols-8'
+        'lg:auto-rows-auto lg:grid-cols-12'
       )}
     >
       {gridConfig.map((card, index: number) => (
