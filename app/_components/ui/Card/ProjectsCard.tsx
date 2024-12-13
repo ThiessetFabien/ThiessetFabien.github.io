@@ -24,7 +24,7 @@ import {
   cnPadding,
   cnSmallMarginLeft,
 } from '@/styles/boxModelStyles';
-import { cnParagraph, cnSmallText, cnTitle2 } from '@/styles/fontStyles';
+import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
 import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
@@ -49,7 +49,7 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
         className,
         cnGap,
         'h-full',
-        'grid sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1'
+        'grid sm:auto-rows-auto sm:grid-cols-2'
       )}
     >
       {projects &&
@@ -61,9 +61,7 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
               cnGap,
               dynamicMarginBottom(projectIndex),
               'h-full w-full',
-              projectIndex === 0
-                ? 'sm:col-span-2 lg:col-span-1'
-                : 'sm:col-span-1'
+              projectIndex === 0 ? 'sm:col-span-2' : 'sm:col-span-1'
             )}
           >
             <CardHeader className={cnPadding}>

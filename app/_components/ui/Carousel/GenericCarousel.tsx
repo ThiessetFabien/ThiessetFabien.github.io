@@ -24,7 +24,6 @@ import {
 } from '@/styles/flexStyles';
 import { cnBorder } from '@/styles/borderStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
-import { dir } from 'console';
 
 /**
  * @file GenericCarousel.tsx
@@ -47,9 +46,10 @@ export const GenericCarousel: React.FC<{
   className?: string;
   delay: number;
 }> = ({ items, className, delay }) => {
-  const isRecommandation = items && items.length > 0 && 'slug' in items;
-  const plugins = isRecommandation ? AutoScroll : AutoPlay;
-  const direction = isRecommandation ? 'rtl' : 'ltr';
+  const isTop3Technologies =
+    items && items.length > 0 && 'top3Technologies' in items;
+  const plugins = isTop3Technologies ? AutoScroll : AutoPlay;
+  const direction = isTop3Technologies ? 'rtl' : 'ltr';
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start', dragFree: true },
@@ -88,7 +88,7 @@ export const GenericCarousel: React.FC<{
                 'flex-none',
                 'max-w-full',
                 cnFlexCol,
-                isRecommandation ? cnSmallPadding : cnPadding,
+                isTop3Technologies ? cnSmallPadding : cnPadding,
                 cnFlexFullCenter,
                 cnBorder,
                 cnSmallMarginX

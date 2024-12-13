@@ -73,14 +73,9 @@
       {
         "developer": [
           {
-            "title": "Freelancer",
-            "company": "My company SP.",
-            "date": "dec 2024 - present"
-          },
-          {
             "title": "React & I++ Specializations",
             "company": "O'Clock Replay",
-            "date": "jul 2023 - present"
+            "date": "sep 2023 - present"
           },
           {
             "title": "Full-Stack Web developer and Scrum Master",
@@ -316,5 +311,20 @@
   {
     "title": "Available for Mobile, Vehicle, and Remote in France",
     "map": true
+  },
+  {
+    "title": "🟢 And now?",
+    "description": "I'm ready to help you with your project. Let's talk about it!",
+    "content": "I search a job as a Front-end or Back-end Developer in a company that values human and technical skills. I am also open to an apprenticeship opportunities (application developer or AI expert)."
+  },
+  {
+    "title": "📞 Contact me",
+    "description": "Let's talk about your project.",
+    "icon1": "PhoneOutgoing",
+    "cta1": "Hire an expert",
+    "href1": "tel:+33610920974",
+    "icon2": "Mail",
+    "cta2": "Send an email",
+    "href2": "me@mail.com"
   }
 ]
