@@ -11,6 +11,7 @@ import { sizeMiddleIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import GenericCarousel from './GenericCarousel';
 import type CardProps from '@/types/CardProps';
+import { cnSmallPadding } from '@/styles/boxModelStyles';
 
 /**
  * @file TechCarousel.tsx
@@ -40,8 +41,9 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
           className={cn(
             cnFlexCol,
             cnFlexFullCenter,
+            cnSmallPadding,
             'flex-shrink-0',
-            'h-auto',
+            'h-auto min-w-fit',
             'xs:min-h-auto min-h-12',
             'xs:min-w-auto min-w-12'
           )}
@@ -71,7 +73,7 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
       );
     });
 
-  return <GenericCarousel items={items} className={className} delay={500} />;
+  return <GenericCarousel items={items} className={className} />;
 };
 
 export default TechnologiesCarousel;

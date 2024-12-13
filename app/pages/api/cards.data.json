@@ -309,13 +309,13 @@
     ]
   },
   {
-    "title": "Available for Mobile, Vehicle, and Remote in France",
-    "map": true
-  },
-  {
     "title": "🟢 And now?",
     "description": "I'm ready to help you with your project. Let's talk about it!",
     "content": "I search a job as a Front-end or Back-end Developer in a company that values human and technical skills. I am also open to an apprenticeship opportunities (application developer or AI expert)."
+  },
+  {
+    "title": "Available for Mobile, Vehicle, and Remote in France",
+    "map": true
   },
   {
     "title": "📞 Contact me",

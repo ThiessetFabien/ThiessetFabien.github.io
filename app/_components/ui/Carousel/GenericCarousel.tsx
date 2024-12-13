@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import AutoPlay from 'embla-carousel-autoplay';
+import type { EmblaOptionsType } from 'embla-carousel';
+import type { Recommandation } from '@/types/RecommandationProps';
 import { cn } from '@/lib/utils';
 import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 import { useDotButton } from './Buttons/DotButtonCarousel';
@@ -44,16 +46,22 @@ import { cnHiddenXs } from '@/styles/hideItemStyles';
 export const GenericCarousel: React.FC<{
   items?: React.ReactNode[];
   className?: string;
-  delay: number;
+  options?: EmblaOptionsType;
+  delay?: number;
 }> = ({ items, className, delay }) => {
-  const isTop3Technologies =
-    items && items.length > 0 && 'top3Technologies' in items;
-  const plugins = isTop3Technologies ? AutoScroll : AutoPlay;
-  const direction = isTop3Technologies ? 'rtl' : 'ltr';
+  const autoplayPlugin = [AutoPlay({ delay, stopOnInteraction: false })];
+  const autoscrollPlugin = [AutoScroll({ stopOnInteraction: false })];
+
+  const plugin = () => {
+    if (delay !== undefined) {
+      return autoplayPlugin;
+    }
+    return autoscrollPlugin;
+  };
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start', dragFree: true },
-    [plugins({ options: { delay }, stopOnInteraction: false })]
+    plugin()
   );
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -76,7 +84,6 @@ export const GenericCarousel: React.FC<{
     <section
       className={cn('container h-full overflow-hidden', cnSpaceY)}
       ref={emblaRef}
-      dir={direction}
     >
       <div className='flex'>
         {items &&
@@ -87,8 +94,6 @@ export const GenericCarousel: React.FC<{
                 className,
                 'flex-none',
                 'max-w-full',
-                cnFlexCol,
-                isTop3Technologies ? cnSmallPadding : cnPadding,
                 cnFlexFullCenter,
                 cnBorder,
                 cnSmallMarginX
