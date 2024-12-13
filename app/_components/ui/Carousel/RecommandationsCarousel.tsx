@@ -18,7 +18,8 @@ import {
   cnSmallText,
 } from '@/styles/fontStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnSpaceY } from '@/styles/boxModelStyles';
+import { cnPadding, cnSpaceY } from '@/styles/boxModelStyles';
+import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
  * @file RecommandationsCarousel.tsx
@@ -43,12 +44,12 @@ export const RecommandationsCarousel: React.FC<CardProps> = ({
     : [];
 
   const items = shuffledRecommandations.map((recommandation, index) => (
-    <div key={index} className={cn(cnSpaceY, 'mx-4 h-auto min-w-full')}>
+    <div key={index} className={cn(cnSpaceY, cnPadding, 'h-auto min-w-full')}>
       <p className={cnParagraph}>&quot;{recommandation.content}&quot;</p>
       <div className='lex-shrink-0 flex items-center'>
         <a href={`${baseUrl}${recommandation.linkedin}`}>
           <div className='relative left-0 top-0'>
-            <Avatar>
+            <Avatar className='h-12 w-12'>
               <AvatarImage
                 src={`${baseUrl}${recommandation.imageSrc}`}
                 alt={recommandation.name}
@@ -61,10 +62,11 @@ export const RecommandationsCarousel: React.FC<CardProps> = ({
               variant='default'
               className={cn(
                 'absolute bottom-0 right-0 z-auto',
-                'max-h-1/4 max-w-1/4 h-1/4 w-1/4'
+                'h-2/5 w-2/5',
+                'p-1'
               )}
             >
-              <Linkedin size={1} />
+              <Linkedin size={14} className='rounded-full font-bold' />
             </Button>
           </div>
         </a>
@@ -78,7 +80,7 @@ export const RecommandationsCarousel: React.FC<CardProps> = ({
     </div>
   ));
 
-  return <GenericCarousel items={items} className={className} delay={2000} />;
+  return <GenericCarousel items={items} className={className} delay={7000} />;
 };
 
 export default RecommandationsCarousel;
