@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
-import { LocationEventsMap } from '@/types/LocationEventsProps';
+import { LocationEvents } from '@/types/LocationEventsProps';
 
 /**
  * @file LocationEvents.tsx
@@ -13,11 +13,11 @@ import { LocationEventsMap } from '@/types/LocationEventsProps';
  * @returns {null} The component does not render anything.
  */
 
-const LocationEventsMap: React.FC<LocationEventsMap> = ({ position }) => {
+const LocationEventsMap: React.FC<LocationEvents> = ({ position }) => {
   const map = useMap();
 
   useEffect(() => {
-    map.flyTo(position, 10, {
+    map.flyTo(position, 9, {
       duration: 1,
     });
   }, [map, position]);

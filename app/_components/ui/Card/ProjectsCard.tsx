@@ -24,7 +24,7 @@ import {
   cnPadding,
   cnSmallMarginLeft,
 } from '@/styles/boxModelStyles';
-import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
+import { cnParagraph, cnSmallText, cnTitle2 } from '@/styles/fontStyles';
 import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
@@ -49,7 +49,7 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
         className,
         cnGap,
         'h-full',
-        'grid md:auto-rows-auto md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1'
+        'grid sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1'
       )}
     >
       {projects &&
@@ -62,8 +62,8 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
               dynamicMarginBottom(projectIndex),
               'h-full w-full',
               projectIndex === 0
-                ? 'md:col-span-2 lg:col-span-1'
-                : 'md:col-span-1'
+                ? 'sm:col-span-2 lg:col-span-1'
+                : 'sm:col-span-1'
             )}
           >
             <CardHeader className={cnPadding}>
@@ -121,8 +121,14 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
             </CardHeader>
             <CardContent className={cnPadding}>
               {project.tags.map((tag, tagIndex) => (
-                <Badge key={tagIndex} variant='outline'>
-                  {tag.toString()}
+                <Badge
+                  key={tagIndex}
+                  variant={tagIndex > 0 ? 'outline' : 'default'}
+                  className='mr-1'
+                >
+                  <p
+                    className={tagIndex !== 0 ? 'font-light' : ''}
+                  >{`${tag}`}</p>
                 </Badge>
               ))}
             </CardContent>

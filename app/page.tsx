@@ -22,6 +22,7 @@ import useCardGrid from '@/hooks/useCardGrid';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
 import { cnPadding, cnGap } from '@/styles/boxModelStyles';
 import type CardProps from './types/CardProps';
+import { cnFlexCenterY } from './styles/flexStyles';
 
 /**
  * @file page.tsx

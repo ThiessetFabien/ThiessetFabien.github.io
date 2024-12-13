@@ -7,7 +7,15 @@ import '@/styles/reset.css';
 import { Poppins } from '@/fonts/Poppins';
 import { OrpheusPro } from '@/fonts/OrpheusPro';
 import '@/styles/globals.css';
-import { cnPadding, cnSpaceY } from '@/styles/boxModelStyles';
+import {
+  cnMarginBottom,
+  cnMarginTop,
+  cnMarginX,
+  cnMarginY,
+  cnPadding,
+  cnPaddingX,
+  cnSpaceY,
+} from '@/styles/boxModelStyles';
 import { cnFlexFullCenter } from '@/styles/flexStyles';
 import { Header } from '@/components/layout/Header/HeaderLayout';
 import { Footer } from '@/components/layout/Footer/FooterLayout';
@@ -34,7 +42,7 @@ export default function RootLayout({
           Poppins.variable,
           OrpheusPro.variable,
           cnPadding,
-          cnSpaceY,
+          'container',
           'h-100% container mx-auto w-full max-w-6xl',
           'bg-background font-sans text-foreground'
         )}
@@ -46,10 +54,22 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header
-            className={cn('sticky top-0 z-50', 'bg-background', cnPadding)}
+            className={cn(
+              'sticky top-0 z-50',
+              'bg-background',
+              cnPadding,
+              cnMarginBottom
+            )}
           />
           {children}
-          <Footer className={cn(cnFlexFullCenter, cnPadding, 'text-center')} />
+          <Footer
+            className={cn(
+              cnFlexFullCenter,
+              cnPadding,
+              cnMarginTop,
+              'text-center'
+            )}
+          />
         </ThemeProvider>
       </body>
     </html>

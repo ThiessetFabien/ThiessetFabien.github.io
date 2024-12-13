@@ -32,9 +32,9 @@ export const Map: React.FC = () => {
     <div ref={ref}>
       <MapContainer
         center={francePosition}
-        zoom={6}
+        zoom={4}
         scrollWheelZoom={false}
-        className='mb-4 h-[41.6rem] w-full rounded-xl'
+        className='mb-4 min-h-[286px] min-w-[286px] rounded-xl'
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
