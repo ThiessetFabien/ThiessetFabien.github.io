@@ -5,7 +5,6 @@ import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import AutoPlay from 'embla-carousel-autoplay';
 import type { EmblaOptionsType } from 'embla-carousel';
-import type { Recommandation } from '@/types/RecommandationProps';
 import { cn } from '@/lib/utils';
 import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 import { useDotButton } from './Buttons/DotButtonCarousel';
@@ -13,13 +12,10 @@ import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
 import { DotButton } from './Buttons/DotButtonCarousel';
 import {
   manipulationStyle,
-  cnSmallPadding,
   cnSpaceY,
   cnSmallMarginX,
-  cnPadding,
 } from '@/styles/boxModelStyles';
 import {
-  cnFlexCol,
   cnFlexFullCenter,
   cnFlexBetweenX,
   cnFlexCenterY,

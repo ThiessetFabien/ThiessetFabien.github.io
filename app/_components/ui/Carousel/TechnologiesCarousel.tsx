@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { cnLightTextMuted, cnSmallText } from '@/styles/fontStyles';
-import { useWhiteFilter } from '@/styles/filterStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import { sizeMiddleIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
@@ -34,7 +33,6 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
   const items =
     technologies &&
     technologies.map((tech, index) => {
-      const whiteFilterClass = useWhiteFilter(tech.slug);
       return (
         <div
           key={index}
@@ -55,7 +53,11 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
               width={50}
               height={50}
               objectFit='contain'
-              className={cn(whiteFilterClass, sizeMiddleIcon, 'object-cover')}
+              className={cn(
+                tech.slug.includes('express') ? 'filter-white' : '',
+                sizeMiddleIcon,
+                'object-cover'
+              )}
               priority
             />
           </div>

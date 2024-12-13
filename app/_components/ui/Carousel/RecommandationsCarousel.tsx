@@ -19,7 +19,6 @@ import {
 } from '@/styles/fontStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnPadding, cnSpaceY } from '@/styles/boxModelStyles';
-import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
  * @file RecommandationsCarousel.tsx
