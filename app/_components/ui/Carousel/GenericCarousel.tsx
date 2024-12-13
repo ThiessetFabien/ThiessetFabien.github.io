@@ -14,6 +14,7 @@ import {
   cnSpaceY,
   cnSpaceX,
   cnMarginX,
+  cnSmallMarginX,
 } from '@/styles/boxModelStyles';
 import {
   cnFlexCol,
@@ -48,7 +49,7 @@ export const GenericCarousel: React.FC<{
 }> = ({ items, className, delay }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start', dragFree: true },
-    [AutoScroll({ delay, stopOnInteraction: false })]
+    [AutoScroll({ options: { delay }, stopOnInteraction: false })]
   );
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -82,27 +83,27 @@ export const GenericCarousel: React.FC<{
                 cnSmallPadding,
                 cnFlexFullCenter,
                 cnBorder,
-                cnMarginX
+                cnSmallMarginX
               )}
             >
               {item}
             </div>
           ))}
       </div>
-      <div className={cn(cnFlexBetweenX, 'h-full')}>
-        <div className={cn(cnFlexCenterY, cnSpaceX)}>
+      <div className={cn(cnFlexBetweenX, cnHiddenXs, 'h-full')}>
+        <div className={cn(cnFlexCenterY)}>
           <PrevButton
             onClick={onPrevButtonClick}
             disabled={prevBtnDisabled}
-            className={cn(manipulationStyle, sizeIcon, 'text-primary')}
+            className={cn(manipulationStyle, 'text-primary')}
           />
           <NextButton
             onClick={onNextButtonClick}
             disabled={nextBtnDisabled}
-            className={cn(manipulationStyle, sizeIcon, 'text-primary')}
+            className={cn(manipulationStyle, 'text-primary')}
           />
         </div>
-        <div className={cn(cnFlexFullCenter, cnHiddenXs)}>
+        <div className={cn(cnFlexFullCenter)}>
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
@@ -110,8 +111,7 @@ export const GenericCarousel: React.FC<{
               isSelected={selectedIndex === index}
               className={cn(
                 manipulationStyle,
-                sizeIcon,
-                'm-0 rounded-full border-0 p-0'
+                'm-0 w-auto rounded-full border-0 p-0'
               )}
             />
           ))}

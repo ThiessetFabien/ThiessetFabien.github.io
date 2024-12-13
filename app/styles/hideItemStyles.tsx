@@ -6,4 +6,4 @@ export const hideItem = (item: string) => {
 
 export const cnHidden = cn('hidden sm:block');
 
-export const cnHiddenXs = cn('xs:block hidden');
+export const cnHiddenXs = cn('xs:flex hidden');

@@ -191,8 +191,7 @@
           "Express.js",
           "Mocha/Chai",
           "PostgreSQL",
-          "Sqitch",
-          "Swagger"
+          "Sqitch"
         ]
       }
     ]

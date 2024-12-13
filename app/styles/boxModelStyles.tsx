@@ -6,7 +6,7 @@ export const cnPadding = cn('p-2 sm:p-4 md:p-6 ');
 
 export const cnPaddingX = cn('px-2 sm:px-4 md:px-6 ');
 
-export const cnSmallMarginX = cn('mx-1 sm:mx-2 md:mx-4 ');
+export const cnSmallMarginX = cn('mx-1 sm:mx-2 ');
 
 export const cnMarginX = cn('mx-1 xs:mx-2 sm:mx-4 md:mx-6 ');
 
