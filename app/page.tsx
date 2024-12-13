@@ -22,7 +22,6 @@ import useCardGrid from '@/hooks/useCardGrid';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
 import { cnPadding, cnGap } from '@/styles/boxModelStyles';
 import type CardProps from './types/CardProps';
-import { cnFlexCenterY } from './styles/flexStyles';
 
 /**
  * @file page.tsx
@@ -47,7 +46,7 @@ const HomePage: React.FC = (): JSX.Element => {
       )}
     >
       {gridConfig.map((card, index: number) => (
-        <Card key={index} className={cn('w-full', cnGap, card.colSpan)}>
+        <Card key={index} className={cn('h-full w-full', cnGap, card.colSpan)}>
           <CardHeader className={cn(cnPadding, 'space-y-0')}>
             {card.imageSrc && !card.map && (
               <PresentationCard
@@ -100,7 +99,7 @@ const HomePage: React.FC = (): JSX.Element => {
             !card.imageSrc && (
               <CardFooter className={cnPadding}>
                 <CallToAction
-                  className={cn(cnGap, 'flex h-auto w-full')}
+                  className={cn(cnGap, 'flex h-full w-full')}
                   cta1={card.cta1}
                   icon1={card.icon1}
                   href1={card.href1}

@@ -20,10 +20,10 @@ const useCardGrid = (cards: CardProps[]) => {
           colSpan = 'lg:col-span-8 lg:row-span-1';
           break;
         case !!card.recommandations:
-          colSpan = 'lg:col-span-5 lg:row-span-2';
+          colSpan = 'lg:col-span-4 lg:row-span-1';
           break;
         case !!card.map:
-          colSpan = 'lg:col-span-3 lg:row-span-1';
+          colSpan = 'lg:col-span-2 lg:row-span-1';
           break;
 
         default:

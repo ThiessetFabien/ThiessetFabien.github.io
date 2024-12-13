@@ -10,11 +10,7 @@ import '@/styles/globals.css';
 import {
   cnMarginBottom,
   cnMarginTop,
-  cnMarginX,
-  cnMarginY,
   cnPadding,
-  cnPaddingX,
-  cnSpaceY,
 } from '@/styles/boxModelStyles';
 import { cnFlexFullCenter } from '@/styles/flexStyles';
 import { Header } from '@/components/layout/Header/HeaderLayout';
