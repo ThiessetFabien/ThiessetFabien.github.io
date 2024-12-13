@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
+import AutoPlay from 'embla-carousel-autoplay';
 import { cn } from '@/lib/utils';
 import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 import { useDotButton } from './Buttons/DotButtonCarousel';
@@ -12,9 +13,8 @@ import {
   manipulationStyle,
   cnSmallPadding,
   cnSpaceY,
-  cnSpaceX,
-  cnMarginX,
   cnSmallMarginX,
+  cnPadding,
 } from '@/styles/boxModelStyles';
 import {
   cnFlexCol,
@@ -24,7 +24,7 @@ import {
 } from '@/styles/flexStyles';
 import { cnBorder } from '@/styles/borderStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
-import { sizeIcon } from '@/styles/sizeStyles';
+import { dir } from 'console';
 
 /**
  * @file GenericCarousel.tsx
@@ -47,9 +47,13 @@ export const GenericCarousel: React.FC<{
   className?: string;
   delay: number;
 }> = ({ items, className, delay }) => {
+  const isRecommandation = items && items.length > 0 && 'slug' in items;
+  const plugins = isRecommandation ? AutoScroll : AutoPlay;
+  const direction = isRecommandation ? 'rtl' : 'ltr';
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start', dragFree: true },
-    [AutoScroll({ options: { delay }, stopOnInteraction: false })]
+    [plugins({ options: { delay }, stopOnInteraction: false })]
   );
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -70,17 +74,21 @@ export const GenericCarousel: React.FC<{
 
   return (
     <section
-      className={cn('container h-full overflow-hidden', cnSpaceY, className)}
+      className={cn('container h-full overflow-hidden', cnSpaceY)}
       ref={emblaRef}
+      dir={direction}
     >
-      <div className={cn('flex')}>
+      <div className='flex'>
         {items &&
           items.map((item, index) => (
             <div
               key={index}
               className={cn(
+                className,
+                'flex-none',
+                'max-w-full',
                 cnFlexCol,
-                cnSmallPadding,
+                isRecommandation ? cnSmallPadding : cnPadding,
                 cnFlexFullCenter,
                 cnBorder,
                 cnSmallMarginX

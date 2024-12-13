@@ -10,6 +10,8 @@ import {
   myPosition,
   radius,
 } from '@/utils/constants/positions';
+import { cnMarginBottom } from '@/styles/boxModelStyles';
+import { cn } from '@/lib/utils';
 
 /**
  * @file Map.tsx
@@ -29,12 +31,12 @@ export const Map: React.FC = () => {
   });
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className='container overflow-hidden'>
       <MapContainer
         center={francePosition}
         zoom={4}
         scrollWheelZoom={false}
-        className='mb-4 min-h-[286px] min-w-[286px] rounded-xl'
+        className={cn(cnMarginBottom, 'min-h-[20rem] w-auto rounded-xl')}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -42,8 +42,8 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
             cnFlexFullCenter,
             'flex-shrink-0',
             'h-auto',
-            'xs:min-h-auto min-w-20',
-            'xs:min-w-auto min-w-20'
+            'xs:min-h-auto min-h-12',
+            'xs:min-w-auto min-w-12'
           )}
         >
           <div className={cn(cnFlexFullCenter, 'relative')}>

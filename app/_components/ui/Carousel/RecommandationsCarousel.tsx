@@ -6,12 +6,20 @@ import {
   AvatarFallback,
   AvatarImage,
 } from '@/lib/components/ui/avatar';
-import { Mail, PhoneOutgoing } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import GenericCarousel from './GenericCarousel';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 import CardProps from '@/types/CardProps';
+import {
+  cnLightTextMuted,
+  cnParagraph,
+  cnSmallText,
+} from '@/styles/fontStyles';
+import { cnFlexCol } from '@/styles/flexStyles';
+import { sizeIcon } from '@/styles/sizeStyles';
+import { cnSpaceY } from '@/styles/boxModelStyles';
 
 /**
  * @file RecommandationsCarousel.tsx
@@ -36,59 +44,42 @@ export const RecommandationsCarousel: React.FC<CardProps> = ({
     : [];
 
   const items = shuffledRecommandations.map((recommandation, index) => (
-    <div key={index} className='mx-4 h-auto w-auto py-4'>
-      <p
-        className={cn(
-          'max-w-prose text-base font-light leading-relaxed',
-          className
-        )}
-      >
-        &quot;{recommandation.content}&quot;
-      </p>
-      <div className='mt-4 flex items-center'>
-        <Avatar>
-          <AvatarImage
-            src={`${baseUrl}${recommandation.imageSrc}`}
-            alt={recommandation.name}
-          />
-          <AvatarFallback className='text-xs'>
-            {recommandation.name}
-          </AvatarFallback>
-        </Avatar>
-        <div className='ml-4 flex flex-col'>
-          <a href={`${baseUrl}${recommandation.linkedin}`}>
-            <p className='max-w-prose text-xs font-bold leading-relaxed'>
-              {recommandation.name}
-            </p>
-            <p className='max-w-prose text-xs font-light leading-relaxed'>
-              {recommandation.context}
-            </p>
-            <p className='max-w-prose text-xs font-light leading-relaxed'>
-              {recommandation.date}
-            </p>
-          </a>
-        </div>
-        <div className='ml-4'>
-          {recommandation.mail && (
-            <a href={`mailto:${recommandation.mail}`}>
-              <Button variant='secondary'>
-                <Mail size={12} />
-              </Button>
-            </a>
-          )}
-          {recommandation.phone && (
-            <a href={`tel:${recommandation.phone}`}>
-              <Button variant='secondary'>
-                <PhoneOutgoing size={12} />
-              </Button>
-            </a>
-          )}
+    <div key={index} className={cn(cnSpaceY, 'mx-4 h-auto min-w-full')}>
+      <p className={cnParagraph}>&quot;{recommandation.content}&quot;</p>
+      <div className='lex-shrink-0 flex items-center'>
+        <a href={`${baseUrl}${recommandation.linkedin}`}>
+          <div className='relative left-0 top-0'>
+            <Avatar>
+              <AvatarImage
+                src={`${baseUrl}${recommandation.imageSrc}`}
+                alt={recommandation.name}
+              />
+              <AvatarFallback className={cnSmallText}>
+                {recommandation.name}
+              </AvatarFallback>
+            </Avatar>
+            <Button
+              variant='default'
+              className={cn(
+                'absolute bottom-0 right-0 z-auto',
+                'max-h-1/4 max-w-1/4 h-1/4 w-1/4'
+              )}
+            >
+              <Linkedin size={1} />
+            </Button>
+          </div>
+        </a>
+        <div className={cn(cnFlexCol, 'ml-4')}>
+          <p className={cnSmallText}>{recommandation.name}</p>
+          <p className={cn(cnSmallText, cnLightTextMuted)}>
+            {recommandation.context}
+          </p>
         </div>
       </div>
     </div>
   ));
 
-  return <GenericCarousel items={items} className={className} delay={1000} />;
+  return <GenericCarousel items={items} className={className} delay={2000} />;
 };
 
 export default RecommandationsCarousel;
