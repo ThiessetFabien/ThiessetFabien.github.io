@@ -11,12 +11,13 @@ import {
 } from '@/lib/components/ui/card';
 import CardData from '@api/cards.data.json';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
-import { RecommandationsCarousel } from '@/ui/Carousel/RecommandationsCarousel';
+import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialCarousel';
 import { Map } from '@/components/ui/Card/MapCard';
 import { CardExperiences } from '@/components/ui/Card/ExperiencesCard';
 import { CardProjects } from '@/components/ui/Card/ProjectsCard';
 import { SkillsCard } from '@/ui/Card/SkillsCard';
 import PresentationCard from '@/ui/Card/PresentationCard';
+import { NowCard } from '@/ui/Card/NowCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
@@ -42,7 +43,7 @@ const HomePage: React.FC = (): JSX.Element => {
         cnGap,
         'container relative z-0',
         'mx-auto grid grid-cols-1',
-        'lg:auto-rows-auto lg:grid-cols-11'
+        'lg:auto-rows-auto lg:grid-cols-12'
       )}
     >
       {gridConfig.map((card, index: number) => (
@@ -85,14 +86,13 @@ const HomePage: React.FC = (): JSX.Element => {
                     technologies={card.technologies}
                   />
                 )}
-              {card.recommandations && card.recommandations.length > 0 && (
-                <RecommandationsCarousel
-                  recommandations={card.recommandations}
-                />
+              {card.testimonials && card.testimonials.length > 0 && (
+                <TestimonialsCarousel testimonials={card.testimonials} />
               )}
               {card.projects && card.projects.length > 0 && (
                 <CardProjects projects={card.projects} />
               )}
+              <NowCard content={card.content} />
             </CardContent>
           )}
           {((card.cta1 && card.href1) || (card.cta2 && card.href2)) &&

@@ -6,7 +6,12 @@
     "imageAlt": "Picture of Fabien",
     "icon1": "PhoneOutgoing",
     "cta1": "Hire an expert",
-    "href1": "tel:+33610920974"
+    "href1": "tel:+33610920974",
+    "downloadActive1": false,
+    "icon2": "ArrowBigDown",
+    "cta2": "Learn more",
+    "href2": "#",
+    "downloadActive2": false
   },
   {
     "title": "I ❤️ working on...",
@@ -57,7 +62,9 @@
         "name": "SASS",
         "slug": "sass/sass-original"
       }
-    ]
+    ],
+    "cta1": "let's talk about it on Discord.",
+    "href1": "discord.gg/vij157164"
   },
   {
     "title": "👨🏼‍💻 One year of experience",
@@ -192,8 +199,8 @@
     ]
   },
   {
-    "title": "🗨️ Recommandations",
-    "recommandations": [
+    "title": "🗨️ Testimonials",
+    "testimonials": [
       {
         "name": "Dupoirier Christophe",
         "context": "Product Leader at Renault & Professional Jury Member",
@@ -309,7 +316,7 @@
     ]
   },
   {
-    "title": "🟢 And now?",
+    "title": "🟢 And now ?",
     "description": "I'm ready to help you with your project. Let's talk about it!",
     "content": "I search a job as a Front-end or Back-end Developer in a company that values human and technical skills. I am also open to an apprenticeship opportunities (application developer or AI expert)."
   },

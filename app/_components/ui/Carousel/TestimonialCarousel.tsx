@@ -21,40 +21,40 @@ import { cnFlexCol } from '@/styles/flexStyles';
 import { cnPadding, cnSpaceY } from '@/styles/boxModelStyles';
 
 /**
- * @file RecommandationsCarousel.tsx
- * @description This file exports a component that renders a carousel of recommandations.
+ * @file TestimonialsCarousel.tsx
+ * @description This file exports a component that renders a carousel of testimonials.
  */
 
 /**
- * RecommandationsCarousel component.
+ * TestimonialsCarousel component.
  * @param {Object} props - The props for the component.
- * @param {Recommandations[]} props.recommandations - An array of recommandations to be displayed.
+ * @param {Testimonials[]} props.testimonials - An array of testimonials to be displayed.
  * @param {string} props.className - Additional class names to apply to the component.
- * @returns {JSX.Element} The rendered RecommandationsCarousel component.
+ * @returns {JSX.Element} The rendered TestimonialsCarousel component.
  * @example
- * <RecommandationsCarousel recommandations={recommandations} className="custom-class" />
+ * <TestimonialsCarousel testimonials={testimonials} className="custom-class" />
  */
-export const RecommandationsCarousel: React.FC<CardProps> = ({
-  recommandations,
+export const TestimonialsCarousel: React.FC<CardProps> = ({
+  testimonials,
   className,
 }) => {
-  const shuffledRecommandations = recommandations
-    ? recommandations.sort(() => Math.random() - 0.5)
+  const shuffledTestimonial = testimonials
+    ? testimonials.sort(() => Math.random() - 0.5)
     : [];
 
-  const items = shuffledRecommandations.map((recommandation, index) => (
+  const items = shuffledTestimonial.map((testimonial, index) => (
     <div key={index} className={cn(cnSpaceY, cnPadding, 'h-auto min-w-full')}>
-      <p className={cnParagraph}>&quot;{recommandation.content}&quot;</p>
+      <p className={cnParagraph}>&quot;{testimonial.content}&quot;</p>
       <div className='lex-shrink-0 flex items-center'>
-        <a href={`${baseUrl}${recommandation.linkedin}`}>
+        <a href={`${baseUrl}${testimonial.linkedin}`}>
           <div className='relative left-0 top-0'>
             <Avatar className='h-12 w-12'>
               <AvatarImage
-                src={`${baseUrl}${recommandation.imageSrc}`}
-                alt={recommandation.name}
+                src={`${baseUrl}${testimonial.imageSrc}`}
+                alt={testimonial.name}
               />
               <AvatarFallback className={cnSmallText}>
-                {recommandation.name}
+                {testimonial.name}
               </AvatarFallback>
             </Avatar>
             <Button
@@ -70,9 +70,9 @@ export const RecommandationsCarousel: React.FC<CardProps> = ({
           </div>
         </a>
         <div className={cn(cnFlexCol, 'ml-4')}>
-          <p className={cnSmallText}>{recommandation.name}</p>
+          <p className={cnSmallText}>{testimonial.name}</p>
           <p className={cn(cnSmallText, cnLightTextMuted)}>
-            {recommandation.context}
+            {testimonial.context}
           </p>
         </div>
       </div>
@@ -82,4 +82,4 @@ export const RecommandationsCarousel: React.FC<CardProps> = ({
   return <GenericCarousel items={items} className={className} delay={7000} />;
 };
 
-export default RecommandationsCarousel;
+export default TestimonialsCarousel;
