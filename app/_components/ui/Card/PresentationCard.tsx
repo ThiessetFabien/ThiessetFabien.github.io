@@ -9,6 +9,7 @@ import { cnSpaceY, cnMarginTop } from '@/styles/boxModelStyles';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type CardProps from '@/types/CardProps';
+import { CardHeader } from '@/lib/components/ui/card';
 
 const PresentationCard: React.FC<CardProps> = ({
   title,
@@ -25,7 +26,7 @@ const PresentationCard: React.FC<CardProps> = ({
   downloadActive2,
 }) => {
   return (
-    <div className={cn(cnGap, 'grid grid-cols-3')}>
+    <CardHeader className={cn(cnGap, 'grid grid-cols-3')}>
       <div className='col-span-1'>
         <Image
           src={`/images/${imageSrc}`}
@@ -55,7 +56,7 @@ const PresentationCard: React.FC<CardProps> = ({
           downloadActive2={downloadActive2}
         />
       </div>
-    </div>
+    </CardHeader>
   );
 };
 

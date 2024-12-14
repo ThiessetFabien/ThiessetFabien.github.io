@@ -20,13 +20,15 @@ import { cnTitle1 } from '@/styles/fontStyles';
  * <Header className="custom-class" />
  */
 export const Header: React.FC<{ className?: string }> = ({ className }) => {
+  const titleUppercased = 'Fab.dev'.toUpperCase();
+
   return (
     <header className={cn(cnFlexBetweenX, 'h-full', className)}>
       <Link
         href='/'
         className={cn(cnTitle1, 'pointer-events-auto text-center')}
       >
-        FT
+        <h1>{titleUppercased}</h1>
       </Link>
       <ToggleDarkMode />
     </header>
