@@ -5,7 +5,7 @@ import { metadata } from './metadata';
 import { cn } from '@/lib/utils';
 import '@/styles/reset.css';
 import { Poppins } from '@/fonts/Poppins';
-import { OrpheusPro } from '@/fonts/OrpheusPro';
+import { Expletus_Sans } from './fonts/ExpletusSans';
 import '@/styles/globals.css';
 import {
   cnMarginBottom,
@@ -15,7 +15,6 @@ import {
 import { cnFlexFullCenter } from '@/styles/flexStyles';
 import { Header } from '@/components/layout/Header/HeaderLayout';
 import { Footer } from '@/components/layout/Footer/FooterLayout';
-import { Expletus_Sans } from './fonts/ExpletusSans';
 
 export default function RootLayout({
   children,

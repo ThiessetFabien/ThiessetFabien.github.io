@@ -1,14 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-  CardDescription,
-} from '@/lib/components/ui/card';
+import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
 import CardData from '@api/cards.data.json';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialCarousel';
@@ -21,10 +14,8 @@ import { HeaderCard } from '@/ui/Card/HeaderCard';
 import { NowCard } from '@/ui/Card/NowCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
-import { cnTitle1, cnDescription } from '@/styles/fontStyles';
 import { cnPadding, cnGap } from '@/styles/boxModelStyles';
 import type CardProps from './types/CardProps';
-import Head from 'next/head.js';
 
 /**
  * @file page.tsx
