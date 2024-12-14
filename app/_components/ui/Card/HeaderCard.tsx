@@ -14,7 +14,7 @@ export const HeaderCard: React.FC<CardProps> = ({ title, description }) => {
       <CardTitle className={cnTitle1}>
         <h2>{title}</h2>
       </CardTitle>
-      <CardDescription className={cnDescription} />
+      <CardDescription className={cnDescription}>{description}</CardDescription>
     </CardHeader>
   );
 };
