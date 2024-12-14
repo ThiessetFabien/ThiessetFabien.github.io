@@ -15,6 +15,7 @@ import {
 import { cnFlexFullCenter } from '@/styles/flexStyles';
 import { Header } from '@/components/layout/Header/HeaderLayout';
 import { Footer } from '@/components/layout/Footer/FooterLayout';
+import { Expletus_Sans } from './fonts/ExpletusSans';
 
 export default function RootLayout({
   children,
@@ -36,7 +37,7 @@ export default function RootLayout({
       <body
         className={cn(
           Poppins.variable,
-          OrpheusPro.variable,
+          Expletus_Sans.variable,
           cnPadding,
           'container',
           'h-100% container mx-auto w-full max-w-6xl',
