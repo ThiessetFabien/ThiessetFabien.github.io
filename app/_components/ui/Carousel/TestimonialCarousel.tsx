@@ -44,7 +44,6 @@ export const TestimonialsCarousel: React.FC<CardProps> = ({
 
   const items = shuffledTestimonial.map((testimonial, index) => (
     <div key={index} className={cn(cnSpaceY, cnPadding, 'h-auto min-w-full')}>
-      <p className={cnParagraph}>&quot;{testimonial.content}&quot;</p>
       <div className='lex-shrink-0 flex items-center'>
         <a href={`${baseUrl}${testimonial.linkedin}`}>
           <div className='relative left-0 top-0'>
@@ -76,6 +75,7 @@ export const TestimonialsCarousel: React.FC<CardProps> = ({
           </p>
         </div>
       </div>
+      <p className={cnParagraph}>&quot;{testimonial.content}&quot;</p>
     </div>
   ));
 

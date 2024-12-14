@@ -41,7 +41,7 @@ const ActionButton: React.FC<ActionButton> = ({
         <Button
           size='sm'
           variant={variant}
-          className={cn(cnFlexCenterY, cnSmallText, cnButton)}
+          className={cn(cnFlexCenterY, cnButton)}
         >
           {IconLoader(icon ?? '')}
           {(cta ?? '').toLocaleUpperCase()}
