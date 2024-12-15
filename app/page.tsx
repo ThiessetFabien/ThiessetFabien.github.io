@@ -51,6 +51,10 @@ const HomePage: React.FC = (): JSX.Element => {
               icon1={card.icon1}
               href1={card.href1}
               downloadActive1={card.downloadActive1}
+              cta2={card.cta2}
+              icon2={card.icon2}
+              href2={card.href2}
+              downloadActive2={card.downloadActive2}
             />
           )}
           {!card.imageSrc && card.map && (

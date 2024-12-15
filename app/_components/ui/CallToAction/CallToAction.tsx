@@ -1,13 +1,13 @@
+/**
+ * @file CallToAction.tsx
+ * @description This component renders call-to-action buttons with dynamic icons.
+ */
+
 'use client';
 import React from 'react';
 import ActionButton from './ActionButton';
 import CardProps from '@/types/CardProps';
 import { cn } from '@/lib/utils';
-
-/**
- * @file CallToAction.tsx
- * @description This component renders call-to-action buttons with dynamic icons.
- */
 
 /**
  * CallToAction component props.
@@ -55,7 +55,7 @@ export const CallToAction: React.FC<CardProps> = ({
           icon={icon2 || ''}
           href={href2 || ''}
           downloadActive={downloadActive2 || false}
-          variant='outline'
+          variant='link'
         />
       ) : null}
     </div>
