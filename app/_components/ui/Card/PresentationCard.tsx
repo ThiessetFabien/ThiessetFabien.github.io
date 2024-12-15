@@ -2,14 +2,16 @@ import Image from 'next/image';
 import { CardTitle, CardDescription } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
 import { cnBorder } from '@/styles/borderStyles';
-import { cnFlexCol } from '@/styles/flexStyles';
+import { cnFlexCenterY, cnFlexCol } from '@/styles/flexStyles';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
-import { cnGap } from '@/styles/boxModelStyles';
+import { cnGap, cnPadding, cnSpaceX } from '@/styles/boxModelStyles';
 import { cnSpaceY, cnMarginTop } from '@/styles/boxModelStyles';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type CardProps from '@/types/CardProps';
 import { CardHeader } from '@/lib/components/ui/card';
+import useIsXS from '@/styles/useMediaQuery';
+import { use } from 'react';
 
 const PresentationCard: React.FC<CardProps> = ({
   title,
@@ -25,8 +27,10 @@ const PresentationCard: React.FC<CardProps> = ({
   href2,
   downloadActive2,
 }) => {
+  const isXs = useIsXS();
+
   return (
-    <CardHeader className={cn(cnGap, 'grid grid-cols-3')}>
+    <CardHeader className={cn(cnGap, cnPadding, 'grid grid-cols-3')}>
       <div className='col-span-1'>
         <Image
           src={`/images/${imageSrc}`}
@@ -45,15 +49,20 @@ const PresentationCard: React.FC<CardProps> = ({
           <p>{description}</p>
         </CardDescription>
         <CallToAction
-          className={cn(cnSpaceY, cnMarginTop, 'h-auto w-auto')}
+          className={cn(
+            cnSpaceX,
+            cnMarginTop,
+            'w-auto',
+            'xs: items-center xs:flex'
+          )}
           cta1={cta1}
           icon1={icon1}
           href1={href1}
           downloadActive1={downloadActive1}
-          icon2={icon2}
-          cta2={cta2}
-          href2={href2}
-          downloadActive2={downloadActive2}
+          icon2={isXs ? undefined : icon2}
+          cta2={isXs ? undefined : cta2}
+          href2={isXs ? undefined : href2}
+          downloadActive2={isXs ? undefined : downloadActive2}
         />
       </div>
     </CardHeader>
