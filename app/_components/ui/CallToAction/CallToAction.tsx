@@ -7,7 +7,6 @@
 import React from 'react';
 import ActionButton from './ActionButton';
 import CardProps from '@/types/CardProps';
-import { cn } from '@/lib/utils';
 
 /**
  * CallToAction component props.

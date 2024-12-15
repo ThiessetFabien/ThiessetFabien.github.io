@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import { dynamicDownload } from '@/utils/dynamicDownload';
 import { IconLoader } from '@/hooks/IconLoader';
 import { cnFlexCenterY } from '@/styles/flexStyles';
-import { cnSmallText } from '@/styles/fontStyles';
 import { cnButton } from '@/styles/boxModelStyles';
 import type { ActionButton } from '@/types/ActionButtonProps';
 
