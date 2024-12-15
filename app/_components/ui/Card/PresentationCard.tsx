@@ -2,16 +2,15 @@ import Image from 'next/image';
 import { CardTitle, CardDescription } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
 import { cnBorder } from '@/styles/borderStyles';
-import { cnFlexCenterY, cnFlexCol } from '@/styles/flexStyles';
+import { cnFlexCol } from '@/styles/flexStyles';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
 import { cnGap, cnPadding, cnSpaceX } from '@/styles/boxModelStyles';
-import { cnSpaceY, cnMarginTop } from '@/styles/boxModelStyles';
+import { cnMarginTop } from '@/styles/boxModelStyles';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type CardProps from '@/types/CardProps';
 import { CardHeader } from '@/lib/components/ui/card';
 import useIsXS from '@/styles/useMediaQuery';
-import { use } from 'react';
 
 const PresentationCard: React.FC<CardProps> = ({
   title,
