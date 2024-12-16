@@ -20,9 +20,13 @@ import { cnBorder } from '@/styles/borderStyles';
 import { cnFlexBetweenX, cnFlexCenterY } from '@/styles/flexStyles';
 import {
   cnGap,
+  cnMargin,
   cnMarginBottom,
   cnPadding,
+  cnSmallGap,
   cnSmallMarginLeft,
+  cnSpaceX,
+  cnSpaceY,
 } from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
 import { sizeIcon } from '@/styles/sizeStyles';
@@ -117,12 +121,11 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
                 {project.organization}
               </CardDescription>
             </CardHeader>
-            <CardContent className={cnPadding}>
+            <CardContent className={cn('flex flex-wrap', cnSmallGap)}>
               {project.tags.map((tag, tagIndex) => (
                 <Badge
                   key={tagIndex}
                   variant={tagIndex > 0 ? 'outline' : 'default'}
-                  className='mr-1'
                 >
                   <p
                     className={tagIndex !== 0 ? 'font-light' : ''}
