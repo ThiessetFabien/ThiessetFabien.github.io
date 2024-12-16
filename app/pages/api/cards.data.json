@@ -154,12 +154,11 @@
         "website": "/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
         "tags": [
-          "Front-end",
+          "Front-end/SSR",
           "TypeScript",
-          "React.js",
           "Next.js",
-          "Tailwind CSS",
-          "Shadcn/ui"
+          "React.js",
+          "Tailwind"
         ]
       },
       {
@@ -170,15 +169,7 @@
         "demo": "www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
         "github": "github.com/ThiessetFabien/Casalink-Frontend",
-        "tags": [
-          "Front-end",
-          "TypeScript",
-          "React.js",
-          "Redux.js",
-          "SASS",
-          "Axios",
-          "JWT"
-        ]
+        "tags": ["Front-end/SPA", "TypeScript", "React/Redux", "SASS", "JWT"]
       },
       {
         "title": "Casalink API - Secure server",
@@ -188,12 +179,11 @@
         "website": "casalink-back.vercel.app/api-docs/",
         "github": "github.com/ThiessetFabien/Casalink-Backend",
         "tags": [
-          "Back-end",
-          "Node.js",
+          "Back-end/API RESTful",
           "Express.js",
           "Mocha/Chai",
           "PostgreSQL",
-          "Sqitch"
+          "JWT"
         ]
       }
     ]
