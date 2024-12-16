@@ -27,7 +27,7 @@ import {
   cnLightTextMuted,
   cnBoldTextMuted,
 } from '@/styles/fontStyles';
-import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
+import { cnFlexBetweenX, cnFlexCenterY, cnFlexCol } from '@/styles/flexStyles';
 import {
   cnPadding,
   cnSpaceY,
@@ -37,6 +37,7 @@ import {
 import { sizeIcon } from '@/styles/sizeStyles';
 import { cnBadgeRight } from '@/styles/badgeStyles';
 import type CardProps from '@/types/CardProps';
+import { Dot } from 'lucide-react';
 
 /**
  * @file CardProjects.tsx
@@ -65,7 +66,7 @@ export const CardExperiences: React.FC<CardProps> = ({
         className={cn(
           'w-full',
           cnBorder,
-          'xxs:h-[12.3rem] h-56 xs:h-40 sm:h-52 md:h-60',
+          'h-56 xxs:h-[12.3rem] xs:h-40 sm:h-52 md:h-60',
           cnPadding
         )}
       >
@@ -80,10 +81,13 @@ export const CardExperiences: React.FC<CardProps> = ({
                   <CardTitle
                     className={cn(
                       className,
+                      cnFlexCenterY,
                       cnTitle2,
                       lineThroughItem(developer.date)
                     )}
                   >
+                    <Dot className='text-primary' size={28} />
+
                     {developer.title}
                   </CardTitle>
                   <div className={cn(cnFlexCol, cnSmallSpaceY)}>
@@ -167,10 +171,13 @@ export const CardExperiences: React.FC<CardProps> = ({
                       <CardTitle
                         className={cn(
                           className,
+                          cnFlexCenterY,
                           cnTitle2,
                           lineThroughItem(projectCoordinator.date)
                         )}
                       >
+                        <Dot className='text-primary' size={28} />
+
                         {projectCoordinator.title}
                       </CardTitle>
                       <div className={cnFlexCol}>
@@ -237,10 +244,12 @@ export const CardExperiences: React.FC<CardProps> = ({
                         <CardTitle
                           className={cn(
                             className,
+                            cnFlexCenterY,
                             cnTitle2,
                             lineThroughItem(nurseAssistant.date)
                           )}
                         >
+                          <Dot className='text-primary' size={28} />
                           {nurseAssistant.title}
                         </CardTitle>
                         <div className={cnFlexCol}>
