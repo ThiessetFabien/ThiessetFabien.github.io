@@ -32,6 +32,8 @@ export const cnSmallSpaceY = cn('sm:space-y-1 md:space-y-2 ');
 
 export const cnSpaceX = cn('space-x-2 sm:space-x-4 md:space-x-6 ');
 
+export const cnSmallGap = cn('gap-1 sm:gap-2 md:gap-4 ');
+
 export const cnGap = cn('gap-2 sm:gap-4 md:gap-6 ');
 
 export const cnButton = cn('md:h-9 md:px-4 md:py-2 lg:h-10 lg:px-8');
