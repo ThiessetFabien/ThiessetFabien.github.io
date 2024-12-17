@@ -1,5 +1,9 @@
 import Image from 'next/image';
-import { CardTitle, CardDescription } from '@/lib/components/ui/card';
+import {
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
 import { cnBorder } from '@/styles/borderStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
@@ -15,6 +19,7 @@ import useIsXS from '@/styles/useMediaQuery';
 const PresentationCard: React.FC<CardProps> = ({
   title,
   description,
+  content,
   imageSrc,
   imageAlt,
   cta1,

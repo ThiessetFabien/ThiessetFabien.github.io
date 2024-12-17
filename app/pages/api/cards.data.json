@@ -1,15 +1,15 @@
 [
   {
-    "title": "👋🏼 Human, creative, and innovative developer. ",
-    "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional.",
+    "title": "Developer & Coffee Enthusiast",
+    "description": "Being a Full-Stack Developer is my primary focus. Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional. If you want to learn more about working with me, take a look through my website.",
     "imageSrc": "photo.webp",
     "imageAlt": "Picture of Fabien",
-    "icon1": "PhoneOutgoing",
-    "cta1": "Hire an expert",
-    "href1": "tel:+33610920974",
+    "icon1": "ArrowBigDown",
+    "cta1": "Learn more",
+    "href1": "#",
     "downloadActive1": false,
-    "icon2": "ArrowBigDown",
-    "cta2": "Learn more",
+    "icon2": "Play",
+    "cta2": "Watch video (Soon)",
     "href2": "#",
     "downloadActive2": false
   },
@@ -67,15 +67,8 @@
     "href1": "discord.gg/vij157164"
   },
   {
-    "title": "👨🏼‍💻 One year of experience",
-    "icon1": "Eye",
-    "cta1": "CV 2024",
-    "href1": "CV.pdf",
-    "downloadActive1": false,
-    "icon2": "Download",
-    "cta2": "",
-    "href2": "CV.pdf",
-    "downloadActive2": true,
+    "title": "Where i've worked",
+    "description": "I have a diverse background in web development, project coordination, and support for individuals with disabilities. I am a self-taught developer with a passion for creating beautiful and functional applications.",
     "experiences": [
       {
         "developer": [
@@ -85,7 +78,7 @@
             "date": "sep 2023 - present"
           },
           {
-            "title": "Full-Stack Web developer and Scrum Master",
+            "title": "Full-Stack Web Developer & Scrum Master",
             "company": "O'Clock School",
             "date": "may - jun 2024"
           },
@@ -118,12 +111,12 @@
         "projectCoordinator": [
           {
             "title": "Daily Life Referent",
-            "company": "Helene Borel Raimbeaucourt",
+            "company": "Helene Borel Center",
             "date": "2023 - 2024"
           },
           {
             "title": "Humanitude Coordinator",
-            "company": "Helene Borel Raimbeaucourt",
+            "company": "Helene Borel Center",
             "date": "2018 - 2023"
           }
         ],
