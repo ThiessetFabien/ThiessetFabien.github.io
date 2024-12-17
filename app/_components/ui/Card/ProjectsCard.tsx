@@ -53,7 +53,7 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
         className,
         cnGap,
         'h-full',
-        'grid sm:auto-rows-auto sm:grid-cols-2'
+        'grid sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-1'
       )}
     >
       {projects &&
@@ -65,27 +65,12 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
               cnGap,
               dynamicMarginBottom(projectIndex),
               'h-full w-full',
-              projectIndex === 0 ? 'sm:col-span-2' : 'sm:col-span-1'
+              projectIndex === 0
+                ? 'sm:col-span-2 lg:col-span-1'
+                : 'sm:col-span-1'
             )}
           >
             <CardHeader className={cnPadding}>
-              {project.imageSrc && project.imageAlt && (
-                <a
-                  href={`${baseUrl}${project.website}`}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='flex items-center'
-                >
-                  <Image
-                    src={`/images/${project.imageSrc}`}
-                    alt={project.imageAlt || ''}
-                    width={590}
-                    height={332}
-                    priority
-                    className={cn(cnMarginBottom, 'h-auto w-full')}
-                  />
-                </a>
-              )}
               <div className={cnFlexBetweenX}>
                 <CardTitle className={cn(cnTitle2, cnFlexCenterY)}>
                   <a
@@ -121,17 +106,40 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
                 {project.organization}
               </CardDescription>
             </CardHeader>
-            <CardContent className={cn('flex flex-wrap', cnSmallGap)}>
+            <CardContent
+              className={cn(
+                'flex flex-wrap',
+                cnSmallGap,
+                'font-semibold',
+                'w-auto'
+              )}
+            >
               {project.tags.map((tag, tagIndex) => (
                 <Badge
                   key={tagIndex}
                   variant={tagIndex > 0 ? 'outline' : 'default'}
                 >
-                  <p
-                    className={tagIndex !== 0 ? 'font-light' : ''}
-                  >{`${tag}`}</p>
+                  <p>{`${tag}`}</p>
                 </Badge>
               ))}
+              {project.imageSrc && project.imageAlt && (
+                <div className={cn(cnMarginBottom, 'h-auto w-full')}>
+                  <a
+                    href={`${baseUrl}${project.website}`}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className={cn(cnMargin, cnFlexCenterY)}
+                  >
+                    <Image
+                      src={`/images/${project.imageSrc}`}
+                      alt={project.imageAlt || ''}
+                      width={590}
+                      height={332}
+                      priority
+                    />
+                  </a>
+                </div>
+              )}
             </CardContent>
           </Card>
         ))}
