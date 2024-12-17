@@ -20,7 +20,7 @@ import { cnTitle1 } from '@/styles/fontStyles';
  * <Header className="custom-class" />
  */
 export const Header: React.FC<{ className?: string }> = ({ className }) => {
-  const titleUppercased = 'Fab.dev'.toUpperCase();
+  const titleUppercased = 'fab.dev'.toUpperCase();
 
   return (
     <header className={cn(cnFlexBetweenX, 'h-full', className)}>
