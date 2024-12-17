@@ -1,43 +1,30 @@
 'use client';
 
 import React from 'react';
-import {
-  MapPin,
-  CalendarClock,
-  ChevronsUpDown,
-  ChevronsDownUp,
-} from 'lucide-react';
 import { CardTitle } from '@/lib/components/ui/card';
 import { Badge } from '@/lib/components/ui/badge';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';
-import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/lib/components/ui/collapsible';
-import { hideItem, cnHidden } from '@/styles/hideItemStyles';
+import { hideItem } from '@/styles/hideItemStyles';
 import { cnBorder } from '@/styles/borderStyles';
 import { lineThroughItem } from '@/styles/lineThroughStyles';
-import {
-  cnDescription,
-  cnTitle2,
-  cnSmallText,
-  cnLightTextMuted,
-  cnBoldTextMuted,
-} from '@/styles/fontStyles';
-import { cnFlexBetweenX, cnFlexCenterY, cnFlexCol } from '@/styles/flexStyles';
+import { cnTitle2, cnSmallText, cnLightTextMuted } from '@/styles/fontStyles';
+import { cnFlexCol } from '@/styles/flexStyles';
 import {
   cnPadding,
   cnSpaceY,
   cnSmallSpaceY,
-  cnSpaceX,
+  cnMarginRight,
 } from '@/styles/boxModelStyles';
-import { sizeIcon } from '@/styles/sizeStyles';
-import { cnBadgeRight } from '@/styles/badgeStyles';
-import type CardProps from '@/types/CardProps';
 import { Dot } from 'lucide-react';
+import {
+  Accordion,
+  AccordionTrigger,
+  AccordionItem,
+  AccordionContent,
+} from '@/lib/components/ui/accordion';
+import type CardProps from '@/types/CardProps';
+import type { Experience } from '@/types/ExperienceProps';
 
 /**
  * @file CardProjects.tsx
@@ -54,11 +41,39 @@ import { Dot } from 'lucide-react';
  * <CardProjects projects={projects} className="custom-class" />
  */
 
-export const CardExperiences: React.FC<CardProps> = ({
-  experiences,
-  className,
-}) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+export const CardExperiences: React.FC<CardProps> = ({ experiences }) => {
+  const ExperiencesRender: React.FC<Experience> = ({
+    title,
+    company,
+    date,
+  }) => {
+    return (
+      <div className={cnSmallSpaceY}>
+        <CardTitle className={cn(cnTitle2, lineThroughItem(date))}>
+          <div className={'flex'}>
+            <Dot
+              className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
+              size={28}
+            />
+            <div className={cnFlexCol}>
+              <h3>
+                {title}
+                <span className={cn('text-primary', hideItem(company))}>
+                  &nbsp;@ {company}
+                </span>
+              </h3>
+              <Badge
+                variant='outline'
+                className={cn('border-0 p-0', cnSmallText, cnLightTextMuted)}
+              >
+                {date}
+              </Badge>
+            </div>
+          </div>
+        </CardTitle>
+      </div>
+    );
+  };
 
   return (
     <div className={cnSpaceY}>
@@ -66,7 +81,7 @@ export const CardExperiences: React.FC<CardProps> = ({
         className={cn(
           'w-full',
           cnBorder,
-          'h-56 xxs:h-[12.3rem] xs:h-40 sm:h-52 md:h-60',
+          'sm:h-42 h-48 xxs:h-40 xs:h-40 md:h-48',
           cnPadding
         )}
       >
@@ -74,228 +89,65 @@ export const CardExperiences: React.FC<CardProps> = ({
           experiences.map((experience, expIndex) => (
             <div key={expIndex}>
               {experience.developer.map((developer, devIndex) => (
-                <div
+                <ExperiencesRender
                   key={devIndex}
-                  className={cn(cnFlexBetweenX, cnSmallSpaceY)}
-                >
-                  <CardTitle
-                    className={cn(
-                      className,
-                      cnFlexCenterY,
-                      cnTitle2,
-                      lineThroughItem(developer.date)
-                    )}
-                  >
-                    <Dot className='text-primary' size={28} />
-
-                    {developer.title}
-                  </CardTitle>
-                  <div className={cn(cnFlexCol, cnSmallSpaceY)}>
-                    <Badge
-                      variant='outline'
-                      className={cn(
-                        className,
-                        cnBadgeRight,
-                        cnSmallText,
-                        cnBoldTextMuted,
-                        hideItem(developer.company)
-                      )}
-                    >
-                      {developer.company}
-                      <MapPin
-                        className={cn(
-                          'ml-1',
-                          cnHidden,
-                          sizeIcon,
-                          hideItem(developer.company)
-                        )}
-                      />
-                    </Badge>
-                    <Badge
-                      variant='outline'
-                      className={cn(
-                        className,
-                        cnBadgeRight,
-                        cnSmallText,
-                        cnLightTextMuted
-                      )}
-                    >
-                      {developer.date}
-                      <CalendarClock
-                        className={cn('ml-1', sizeIcon, cnHidden)}
-                      />
-                    </Badge>
-                  </div>
-                </div>
+                  title={developer.title}
+                  company={developer.company}
+                  date={developer.date}
+                />
               ))}
             </div>
           ))}
       </ScrollArea>
-      <Collapsible
-        open={isOpen}
-        onOpenChange={setIsOpen}
-        className={cn('w-full', cnSpaceY)}
-      >
-        <div className={cn(cnFlexBetweenX, cnSpaceX, 'items-start')}>
-          {' '}
-          <p className={cn(cnDescription, cnLightTextMuted)}>
-            I have over 6 years of professional experience in project
-            coordination and Humanitude label.
-          </p>
-          <CollapsibleTrigger asChild>
-            {isOpen ? (
-              <Button variant='default' size='sm'>
-                <ChevronsDownUp className={sizeIcon} />
-                <span className='sr-only'>Toggle</span>
-              </Button>
-            ) : (
-              <Button variant='secondary' size='sm'>
-                <ChevronsUpDown className={sizeIcon} />
-                <span className='sr-only'>Toggle</span>
-              </Button>
-            )}
-          </CollapsibleTrigger>
-        </div>
-        <CollapsibleContent
-          className={cn(cnSpaceY, cnBorder, cnSmallText, cnPadding)}
-        >
-          {experiences &&
-            experiences.map((experience, expIndex) => (
-              <div key={expIndex}>
-                {experience.projectCoordinator.map(
-                  (projectCoordinator, projectCooIndex) => (
-                    <div
-                      key={projectCooIndex}
-                      className={cn(cnFlexBetweenX, cnSmallSpaceY)}
-                    >
-                      <CardTitle
-                        className={cn(
-                          className,
-                          cnFlexCenterY,
-                          cnTitle2,
-                          lineThroughItem(projectCoordinator.date)
-                        )}
-                      >
-                        <Dot className='text-primary' size={28} />
-
-                        {projectCoordinator.title}
-                      </CardTitle>
-                      <div className={cnFlexCol}>
-                        <Badge
-                          variant='outline'
-                          className={cn(
-                            className,
-                            cnSmallText,
-                            cnBadgeRight,
-                            cnBoldTextMuted,
-                            hideItem(projectCoordinator.company)
-                          )}
-                        >
-                          {projectCoordinator.company}
-                          <MapPin
-                            className={cn(
-                              'ml-1',
-                              cnHidden,
-                              sizeIcon,
-                              hideItem(projectCoordinator.company)
-                            )}
-                          />
-                        </Badge>
-                        <Badge
-                          variant='outline'
-                          className={cn(
-                            className,
-                            cnSmallText,
-                            cnBadgeRight,
-                            cnLightTextMuted
-                          )}
-                        >
-                          {projectCoordinator.date}
-                          <CalendarClock
-                            className={cn('ml-1', sizeIcon, cnHidden)}
-                          />
-                        </Badge>
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
-            ))}
-        </CollapsibleContent>
-      </Collapsible>{' '}
-      <Collapsible open={isOpen} onOpenChange={setIsOpen} className={cnSpaceY}>
-        <div className={cn(cnFlexBetweenX, cnSpaceX)}>
-          <p className={cn(cnDescription, cnLightTextMuted)}>
-            Additionally, I have more than 15 years in paramedical support for
-            individuals with disabilities.
-          </p>
-        </div>
-        <CollapsibleContent className={cnSpaceY}>
-          <div className={cn(cnBorder, cnSmallText, cnPadding)}>
+      <Accordion type='single' collapsible className='w-full'>
+        <AccordionItem value='item-1'>
+          <AccordionTrigger>
+            During 6 years, i coordinated the establishment projects and the
+            first label of well-being in metropolitan France for a medicalized
+            home.
+          </AccordionTrigger>
+          <AccordionContent>
             {experiences &&
               experiences.map((experience, expIndex) => (
                 <div key={expIndex}>
-                  {experience.nurseAssistant.map(
-                    (nurseAssistant, nurseAssistantIndex) => (
-                      <div
-                        key={nurseAssistantIndex}
-                        className={cn(cnFlexBetweenX, cnSmallSpaceY)}
-                      >
-                        <CardTitle
-                          className={cn(
-                            className,
-                            cnFlexCenterY,
-                            cnTitle2,
-                            lineThroughItem(nurseAssistant.date)
-                          )}
-                        >
-                          <Dot className='text-primary' size={28} />
-                          {nurseAssistant.title}
-                        </CardTitle>
-                        <div className={cnFlexCol}>
-                          <Badge
-                            variant='outline'
-                            className={cn(
-                              className,
-                              cnSmallText,
-                              cnBadgeRight,
-                              cnBoldTextMuted,
-                              hideItem(nurseAssistant.company)
-                            )}
-                          >
-                            {nurseAssistant.company}
-                            <MapPin
-                              className={cn(
-                                'ml-1',
-                                cnHidden,
-                                sizeIcon,
-                                hideItem(nurseAssistant.company)
-                              )}
-                            />
-                          </Badge>
-                          <Badge
-                            variant='outline'
-                            className={cn(
-                              className,
-                              cnSmallText,
-                              cnBadgeRight,
-                              cnLightTextMuted
-                            )}
-                          >
-                            {nurseAssistant.date}
-                            <CalendarClock
-                              className={cn('ml-1', sizeIcon, cnHidden)}
-                            />
-                          </Badge>
-                        </div>
-                      </div>
+                  {experience.projectCoordinator.map(
+                    (projectCoordinator, cooIndex) => (
+                      <ExperiencesRender
+                        key={cooIndex}
+                        title={projectCoordinator.title}
+                        company={projectCoordinator.company}
+                        date={projectCoordinator.date}
+                      />
                     )
                   )}
                 </div>
               ))}
-          </div>
-        </CollapsibleContent>
-      </Collapsible>{' '}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      <Accordion type='single' collapsible className='w-full'>
+        <AccordionItem value='item-1'>
+          <AccordionTrigger>
+            For 15 years, I have been committed to supporting people with
+            disabilities.{' '}
+          </AccordionTrigger>
+          <AccordionContent>
+            {experiences &&
+              experiences.map((experience, expIndex) => (
+                <div key={expIndex}>
+                  {experience.nurseAssistant.map((nurseAssistant, cooIndex) => (
+                    <ExperiencesRender
+                      key={cooIndex}
+                      title={nurseAssistant.title}
+                      company={nurseAssistant.company}
+                      date={nurseAssistant.date}
+                    />
+                  ))}
+                </div>
+              ))}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 };
