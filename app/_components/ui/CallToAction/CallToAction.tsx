@@ -54,7 +54,7 @@ export const CallToAction: React.FC<CardProps> = ({
           icon={icon2 || ''}
           href={href2 || ''}
           downloadActive={downloadActive2 || false}
-          variant='link'
+          variant='outline'
         />
       ) : null}
     </div>

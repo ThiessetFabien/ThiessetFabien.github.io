@@ -64,7 +64,10 @@ export const TestimonialsCarousel: React.FC<CardProps> = ({
                 'p-1'
               )}
             >
-              <Linkedin size={14} className='rounded-full font-bold' />
+              <Linkedin
+                size={14}
+                className={cn('rounded-full', 'font-bold text-background')}
+              />
             </Button>
           </div>
         </a>

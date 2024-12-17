@@ -23,7 +23,7 @@
         "slug": "react/react-original"
       },
       {
-        "name": "Tailwind",
+        "name": "Tailwind CSS",
         "description": "I create beautiful application in seconds using Tailwind CSS.",
         "slug": "tailwindcss/tailwindcss-original"
       },
@@ -39,7 +39,7 @@
         "slug": "typescript/typescript-original"
       },
       {
-        "name": "Express.js",
+        "name": "Express",
         "slug": "express/express-original"
       },
       {
@@ -51,7 +51,7 @@
         "slug": "mongodb/mongodb-original"
       },
       {
-        "name": "Next.js",
+        "name": "Next",
         "slug": "nextjs/nextjs-original"
       },
       {
@@ -153,13 +153,7 @@
         "imageAlt": "",
         "website": "/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
-        "tags": [
-          "Front-end/SSR",
-          "TypeScript",
-          "Next.js",
-          "React.js",
-          "Tailwind"
-        ]
+        "tags": ["Front-end/SSR", "TypeScript", "Next", "React", "Tailwind"]
       },
       {
         "title": "Casalink - Family planning",
@@ -180,7 +174,8 @@
         "github": "github.com/ThiessetFabien/Casalink-Backend",
         "tags": [
           "Back-end/API RESTful",
-          "Express.js",
+          "JavaScript",
+          "Express",
           "Mocha/Chai",
           "PostgreSQL",
           "JWT"
