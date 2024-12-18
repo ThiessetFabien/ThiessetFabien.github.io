@@ -4,13 +4,13 @@ import React from 'react';
 import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
 import CardData from '@api/cards.data.json';
 import { CallToAction } from '@/ui/CallToAction/CallToAction';
-import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialCarousel';
+import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialsCarousel';
 import { Map } from '@/components/ui/Card/MapCard';
 import { CardExperiences } from '@/components/ui/Card/ExperiencesCard';
 import { CardProjects } from '@/components/ui/Card/ProjectsCard';
 import { SkillsCard } from '@/ui/Card/SkillsCard';
 import PresentationCard from '@/ui/Card/PresentationCard';
-import { HeaderCard } from '@/ui/Card/HeaderCard';
+import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { NowCard } from '@/ui/Card/NowCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
@@ -31,16 +31,9 @@ const HomePage: React.FC = (): JSX.Element => {
   const gridConfig = useCardGrid(CardData as CardProps[]);
 
   return (
-    <main
-      className={cn(
-        cnGap,
-        'container relative z-0',
-        'mx-auto grid grid-cols-1',
-        'lg:auto-rows-auto lg:grid-cols-12'
-      )}
-    >
+    <>
       {gridConfig.map((card, index: number) => (
-        <Card key={index} className={cn('h-full w-full', cnGap, card.colSpan)}>
+        <Card key={index} className={cn('h-full w-full', card.colSpan)}>
           {card.imageSrc && !card.map && (
             <PresentationCard
               title={card.title}
@@ -60,14 +53,6 @@ const HomePage: React.FC = (): JSX.Element => {
           {!card.imageSrc && card.map && (
             <Map title={card.title} description={card.description} />
           )}
-          {/* <CardTitle className={cnTitle1}>
-              {!card.imageSrc && card.title}
-            </CardTitle>
-            {!card.imageSrc && card.description && (
-              <CardDescription className={cnDescription}>
-                {card.description}
-              </CardDescription>
-            )} */}
           {!card.imageSrc && !card.map && (
             <>
               <HeaderCard title={card.title} description={card.description} />
@@ -95,25 +80,24 @@ const HomePage: React.FC = (): JSX.Element => {
               </CardContent>
             </>
           )}
-          {((card.cta1 && card.href1) || (card.cta2 && card.href2)) &&
-            !card.imageSrc && (
-              <CardFooter className={cnPadding}>
-                <CallToAction
-                  className={cn(cnGap, 'flex h-full w-full')}
-                  cta1={card.cta1}
-                  icon1={card.icon1}
-                  href1={card.href1}
-                  downloadActive1={card.downloadActive1}
-                  cta2={card.cta2}
-                  icon2={card.icon2}
-                  href2={card.href2}
-                  downloadActive2={card.downloadActive2}
-                />
-              </CardFooter>
-            )}
+          {((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
+            <CardFooter className={cnPadding}>
+              <CallToAction
+                className={cn(cnGap, 'flex h-full w-full')}
+                cta1={card.cta1}
+                icon1={card.icon1}
+                href1={card.href1}
+                downloadActive1={card.downloadActive1}
+                cta2={card.cta2}
+                icon2={card.icon2}
+                href2={card.href2}
+                downloadActive2={card.downloadActive2}
+              />
+            </CardFooter>
+          )}
         </Card>
       ))}
-    </main>
+    </>
   );
 };
 

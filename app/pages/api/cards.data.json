@@ -133,7 +133,15 @@
           }
         ]
       }
-    ]
+    ],
+    "icon1": "PhoneOutgoing",
+    "cta1": "Do you have a project?",
+    "href1": "#",
+    "downloadActive1": false,
+    "icon2": "Mail",
+    "cta2": "Send an email",
+    "href2": "mailto:thiessetfabienpro@gmail.com",
+    "downloadActive2": false
   },
   {
     "title": "🎯 Latest projects",

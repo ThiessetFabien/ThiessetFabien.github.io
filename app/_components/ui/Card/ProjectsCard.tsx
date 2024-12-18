@@ -25,8 +25,6 @@ import {
   cnPadding,
   cnSmallGap,
   cnSmallMarginLeft,
-  cnSpaceX,
-  cnSpaceY,
 } from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
 import { sizeIcon } from '@/styles/sizeStyles';

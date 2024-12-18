@@ -16,7 +16,7 @@ import {
 } from '@/utils/constants/positions';
 import { cnMarginBottom } from '@/styles/boxModelStyles';
 import { cn } from '@/lib/utils';
-import { HeaderCard } from '@/ui/Card/HeaderCard';
+import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { CardContent } from '@/lib/components/ui/card';
 import CardProps from '@/types/CardProps';
 
