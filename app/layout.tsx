@@ -12,6 +12,7 @@ import {
   cnMarginTop,
   cnPadding,
 } from '@/styles/boxModelStyles';
+import { cnGap } from '@/styles/boxModelStyles';
 import { cnFlexFullCenter } from '@/styles/flexStyles';
 import { Header } from '@/components/layout/Header/HeaderLayout';
 import { Footer } from '@/components/layout/Footer/FooterLayout';
@@ -37,7 +38,6 @@ export default function RootLayout({
         className={cn(
           Poppins.variable,
           Expletus_Sans.variable,
-          cnPadding,
           'container',
           'h-100% container mx-auto w-full max-w-6xl',
           'bg-background font-sans text-foreground'
@@ -57,7 +57,17 @@ export default function RootLayout({
               cnMarginBottom
             )}
           />
-          {children}
+          <main
+            className={cn(
+              cnGap,
+              cnPadding,
+              'container relative z-0',
+              'mx-auto w-full',
+              'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
+            )}
+          >
+            {children}
+          </main>
           <Footer
             className={cn(
               cnFlexFullCenter,
