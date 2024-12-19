@@ -52,6 +52,11 @@ export default interface CardProps {
   href2?: string;
   downloadActive2?: boolean;
 
+  cta3?: string;
+  icon3?: string;
+  href3?: string;
+  downloadActive3?: boolean;
+
   experiences?: Experiences[];
 
   projects?: Project[];

@@ -3,7 +3,7 @@
 import React from 'react';
 import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
 import CardData from '@api/cards.data.json';
-import { CallToAction } from '@/ui/CallToAction/CallToAction';
+import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
 import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialsCarousel';
 import { Map } from '@/components/ui/Card/MapCard';
 import { CardExperiences } from '@/components/ui/Card/ExperiencesCard';
@@ -76,13 +76,15 @@ const HomePage: React.FC = (): JSX.Element => {
                 {card.projects && card.projects.length > 0 && (
                   <CardProjects projects={card.projects} />
                 )}
-                <NowCard content={card.content} />
+                {card.achievements && card.achievements.length > 0 && (
+                  <NowCard content={card.content} />
+                )}
               </CardContent>
             </>
           )}
           {((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
             <CardFooter className={cnPadding}>
-              <CallToAction
+              <FooterCard
                 className={cn(cnGap, 'flex h-full w-full')}
                 cta1={card.cta1}
                 icon1={card.icon1}
@@ -92,6 +94,10 @@ const HomePage: React.FC = (): JSX.Element => {
                 icon2={card.icon2}
                 href2={card.href2}
                 downloadActive2={card.downloadActive2}
+                cta3={card.cta3}
+                icon3={card.icon3}
+                href3={card.href3}
+                downloadActive3={card.downloadActive3}
               />
             </CardFooter>
           )}

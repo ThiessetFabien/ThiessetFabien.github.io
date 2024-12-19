@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='fr' dir='ltr' className={'h-full w-full'}>
+    <html lang='fr' dir='ltr' className={'h-[62.5%] w-full'}>
       <Head>
         <title>{`${metadata.title}`}</title>
         <meta name='description' content={`${metadata.description}`} />
@@ -39,7 +39,7 @@ export default function RootLayout({
           Poppins.variable,
           Expletus_Sans.variable,
           'container',
-          'h-100% container mx-auto w-full max-w-6xl',
+          'h-100% container mx-auto min-w-full',
           'bg-background font-sans text-foreground'
         )}
       >
@@ -62,7 +62,7 @@ export default function RootLayout({
               cnGap,
               cnPadding,
               'container relative z-0',
-              'mx-auto w-full',
+              'mx-auto max-w-6xl',
               'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
             )}
           >
@@ -73,7 +73,8 @@ export default function RootLayout({
               cnFlexFullCenter,
               cnPadding,
               cnMarginTop,
-              'text-center'
+              'text-center',
+              'min-w-full'
             )}
           />
         </ThemeProvider>

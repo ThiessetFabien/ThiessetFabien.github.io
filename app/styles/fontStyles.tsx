@@ -1,5 +1,12 @@
 import { cn } from '@/lib/utils';
 
+export const cnSiteTitle = cn(
+  'font-caption font-bold leading-tight tracking-tight',
+  'text-lg',
+  'sm:text-xl',
+  'md:text-2xl'
+);
+
 export const cnTitle1 = cn(
   'font-caption font-bold leading-tight tracking-tight',
   'text-base',

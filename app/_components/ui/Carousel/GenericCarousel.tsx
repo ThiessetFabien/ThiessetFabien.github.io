@@ -99,7 +99,14 @@ export const GenericCarousel: React.FC<{
             </div>
           ))}
       </div>
-      <div className={cn(cnFlexBetweenX, cnHiddenXs, 'h-full')}>
+      <div
+        className={cn(
+          cnFlexBetweenX,
+          cnHiddenXs,
+          'h-full',
+          plugin() === autoscrollPlugin ? 'hidden' : ''
+        )}
+      >
         <div className={cn(cnFlexCenterY)}>
           <PrevButton
             onClick={onPrevButtonClick}
