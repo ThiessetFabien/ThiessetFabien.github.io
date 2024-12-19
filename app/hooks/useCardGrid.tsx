@@ -22,6 +22,9 @@ const useCardGrid = (cards: CardProps[]) => {
         case !!card.testimonials:
           colSpan = 'lg:col-span-6 lg:row-span-1';
           break;
+        case !!card.achievements:
+          colSpan = 'lg:col-span-6 lg:row-span-1';
+          break;
         case !!card.map:
           colSpan = 'lg:col-span-3 lg:row-span-1';
           break;

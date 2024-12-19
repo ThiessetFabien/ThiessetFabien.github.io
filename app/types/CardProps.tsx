@@ -1,4 +1,5 @@
 import { Technologie } from './TechnologieProps';
+import { Achievement } from './AchievementProps';
 /**
  * @file CardProps.tsx
  * @description This file contains the type definition for the props used in various card components.
@@ -65,6 +66,8 @@ export default interface CardProps {
   technologies?: Technologie[];
 
   testimonials?: Testimonial[];
+
+  achievements?: Achievement[];
 
   content?: React.ReactNode;
 

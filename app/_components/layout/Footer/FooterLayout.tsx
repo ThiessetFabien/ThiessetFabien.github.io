@@ -5,7 +5,7 @@ import dynamicYear from '@/utils/dynamicYear';
 import { cnLightTextMuted, cnSmallText } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
 import CardProps from '@/types/CardProps';
-import { ScrollToTop } from '@/hooks/ScrollToTop';
+import { scrollToTop } from '@/hooks/ScrollToTop';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
 import { Button } from '@/lib/components/ui/button';
 import { MoveUp } from 'lucide-react';
@@ -33,7 +33,7 @@ export const Footer: React.FC<CardProps> = ({ className }) => {
           <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
             &copy; {dynamicYear} Built by Fabien Thiesset - All rights reserved.
           </p>
-          <Button variant='ghost' onClick={ScrollToTop}>
+          <Button variant='ghost' onClick={scrollToTop}>
             <MoveUp />
           </Button>
         </div>
