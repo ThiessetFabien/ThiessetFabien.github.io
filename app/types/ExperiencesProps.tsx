@@ -1,4 +1,5 @@
 import { Experience } from './ExperienceProps';
+import { OtherExperience } from './OtherExperienceProps';
 /**
  * @file ExperiencesProps.tsx
  * @description This file exports interfaces that represent different types of experiences.
@@ -20,6 +21,6 @@ import { Experience } from './ExperienceProps';
  */
 export interface Experiences {
   developer: Experience[];
-  projectCoordinator: Experience[];
-  nurseAssistant: Experience[];
+  projectCoordinator: OtherExperience[];
+  nurseAssistant: OtherExperience[];
 }

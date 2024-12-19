@@ -48,11 +48,6 @@ module.exports = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
-      borderRadius: {
-        lg: '`var(--radius)`',
-        md: '`calc(var(--radius) - 2px)`',
-        sm: 'calc(var(--radius) - 4px)',
-      },
       filter: {
         white:
           'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',

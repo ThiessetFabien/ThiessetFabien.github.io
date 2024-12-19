@@ -3,9 +3,9 @@ import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 import { dynamicDownload } from '@/utils/dynamicDownload';
 import { IconLoader } from '@/hooks/IconLoader';
-import { cnFlexCenterY } from '@/styles/flexStyles';
-import { cnButton } from '@/styles/boxModelStyles';
+import { cnButton, cnButtonIcon } from '@/styles/buttonStyles';
 import type { ActionButton } from '@/types/ActionButtonProps';
+import { cnSmallText } from '@/styles/fontStyles';
 
 /**
  * @file ActionButton.tsx
@@ -30,23 +30,20 @@ const ActionButton: React.FC<ActionButton> = ({
   variant,
 }: ActionButton): JSX.Element => {
   return (
-    <div className='w-auto'>
-      <a
-        href={`/${href}`}
-        target='_blank'
-        rel='noopener noreferrer'
-        {...dynamicDownload(downloadActive)}
+    <a
+      href={`/${href}`}
+      target='_blank'
+      rel='noopener noreferrer'
+      {...dynamicDownload(downloadActive || false)}
+    >
+      <Button
+        variant={variant}
+        className={cn(!!cta ? cnButton : cnButtonIcon, cnSmallText)}
       >
-        <Button
-          size='sm'
-          variant={variant}
-          className={cn(cnFlexCenterY, cnButton)}
-        >
-          {IconLoader(icon ?? '')}
-          {(cta ?? '').toLocaleUpperCase()}
-        </Button>
-      </a>
-    </div>
+        {IconLoader(icon ?? '')}
+        {(cta ?? '').toLocaleUpperCase()}
+      </Button>
+    </a>
   );
 };
 

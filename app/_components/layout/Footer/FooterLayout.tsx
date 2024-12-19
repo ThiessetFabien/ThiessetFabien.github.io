@@ -3,7 +3,12 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import dynamicYear from '@/utils/dynamicYear';
 import { cnLightTextMuted, cnSmallText } from '@/styles/fontStyles';
-import CardProps from '@/types/CardProps.jsx';
+import { cnPaddingX } from '@/styles/boxModelStyles';
+import CardProps from '@/types/CardProps';
+import { ScrollToTop } from '@/hooks/ScrollToTop';
+import { cnFlexBetweenX } from '@/styles/flexStyles';
+import { Button } from '@/lib/components/ui/button';
+import { MoveUp } from 'lucide-react';
 
 /**
  * @file Footer.tsx
@@ -21,10 +26,18 @@ import CardProps from '@/types/CardProps.jsx';
 
 export const Footer: React.FC<CardProps> = ({ className }) => {
   return (
-    <footer className={cn(className)}>
-      <p className={cn(cnSmallText, cnLightTextMuted)}>
-        &copy; {dynamicYear} Fabien Thiesset - All rights reserved.
-      </p>
+    <footer className={cn('h-full', className)}>
+      <div className={cn('min-w-full')}>
+        <div className={cn('max-w-6xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
+          <p>fab.dev</p>
+          <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
+            &copy; {dynamicYear} Built by Fabien Thiesset - All rights reserved.
+          </p>
+          <Button variant='ghost' onClick={ScrollToTop}>
+            <MoveUp />
+          </Button>
+        </div>
+      </div>
     </footer>
   );
 };

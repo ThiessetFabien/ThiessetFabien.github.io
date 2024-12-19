@@ -8,7 +8,7 @@
  * const experience: Experience = { title: 'Developer', company: 'Company A', date: '2020 - Present' };
  */
 export interface Experience {
-  title: string;
-  company: string;
-  date: string;
+  title?: string;
+  company?: string;
+  date?: string;
 }

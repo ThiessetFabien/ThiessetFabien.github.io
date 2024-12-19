@@ -1,21 +1,23 @@
 [
   {
     "title": "Developer & Coffee Enthusiast",
-    "description": "Being a Full-Stack Developer is my primary focus. Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional. If you want to learn more about working with me, take a look through my website.",
+    "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional. If you want to learn more about working with me, take a look through my website.",
     "imageSrc": "photo.webp",
     "imageAlt": "Picture of Fabien",
-    "icon1": "ArrowBigDown",
-    "cta1": "Learn more",
-    "href1": "#",
+    "icon1": "Mail",
+    "cta1": "Hire an expert",
+    "href1": "mailto:thiessetfabienpro@gmail.com",
     "downloadActive1": false,
-    "icon2": "Play",
-    "cta2": "Watch video (Soon)",
-    "href2": "#",
-    "downloadActive2": false
+    "icon2": "Linkedin",
+    "href2": "www.linkedin.com/in/fabien-thiesset/",
+    "downloadActive2": false,
+    "icon3": "PhoneOutgoing",
+    "href3": "tel:+33610920974",
+    "downloadActive3": false
   },
   {
     "title": "I ❤️ working on...",
-    "description": "I'm a full-stack developer with a passion for creating beautiful and functional applications. I specialize in building web applications using modern technologies.",
+    "description": "Being a Full-Stack Developer is my primary focus. I specialize in building web applications using modern technologies.",
     "top3Technologies": [
       {
         "name": "React.js",
@@ -63,8 +65,10 @@
         "slug": "sass/sass-original"
       }
     ],
-    "cta1": "let's talk about it on Discord.",
-    "href1": "discord.gg/vij157164"
+    "cta1": "View on GitHub",
+    "icon1": "Github",
+    "href1": "github.com/ThiessetFabien",
+    "downloadActive1": false
   },
   {
     "title": "Where i've worked",
@@ -108,35 +112,41 @@
             "date": "avr 2023 - dec 2023"
           }
         ],
-        "projectCoordinator": [
-          {
-            "title": "Daily Life Referent",
-            "company": "Helene Borel Center",
-            "date": "2023 - 2024"
-          },
-          {
-            "title": "Humanitude Coordinator",
-            "company": "Helene Borel Center",
-            "date": "2018 - 2023"
-          }
-        ],
-        "nurseAssistant": [
-          {
-            "title": "Nurse Assistant",
-            "company": "Udapei59 MAS Thumeries",
-            "date": "2024 - present"
-          },
-          {
-            "title": "Nurse Assistant",
-            "company": "Helene Borel Center",
-            "date": "2009 - 2024"
-          }
-        ]
+        "projectCoordinator": {
+          "content": "I was responsible for coordinating the daily life of residents with disabilities. I was also responsible for the implementation of the Humanitude method, which aims to improve the quality of life of residents and the well-being of caregivers.",
+          "items": [
+            {
+              "title": "Daily Life Referent",
+              "company": "Helene Borel Center",
+              "date": "2023 - 2024"
+            },
+            {
+              "title": "Humanitude Coordinator",
+              "company": "Helene Borel Center",
+              "date": "2018 - 2023"
+            }
+          ]
+        },
+        "nurseAssistant": {
+          "content": "For 15 years, I have been committed to supporting people with disabilities.",
+          "items": [
+            {
+              "title": "Nurse Assistant",
+              "company": "Udapei59 MAS Thumeries",
+              "date": "2024 - present"
+            },
+            {
+              "title": "Nurse Assistant",
+              "company": "Helene Borel Center",
+              "date": "2009 - 2024"
+            }
+          ]
+        }
       }
     ],
     "icon1": "PhoneOutgoing",
     "cta1": "Do you have a project?",
-    "href1": "#",
+    "href1": "tel:+33610920974",
     "downloadActive1": false,
     "icon2": "Mail",
     "cta2": "Send an email",
@@ -144,8 +154,8 @@
     "downloadActive2": false
   },
   {
-    "title": "🎯 Latest projects",
-    "description": "I'm here to help your application a success.",
+    "title": "Some Things I've Built",
+    "description": "Below you'll find a collection of some of my most recent JavaScript projects that showcase the type of clients i work directly with. ",
     "projects": [
       {
         "title": "This portfolio",
@@ -154,7 +164,16 @@
         "imageAlt": "",
         "website": "/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
-        "tags": ["Front-end/SSR", "TypeScript", "Next", "React", "Tailwind"]
+        "tags": ["TypeScript", "Next", "React", "Tailwind"]
+      },
+      {
+        "title": "Casalink API - Secure server",
+        "organization": "Apotheosis O'Clock School",
+        "imageSrc": "casalink-documentation.webp",
+        "imageAlt": "Casalink documentation",
+        "website": "casalink-back.vercel.app/api-docs/",
+        "github": "github.com/ThiessetFabien/Casalink-Backend",
+        "tags": ["Node", "Express", "Mocha/Chai", "PostgreSQL", "JWT"]
       },
       {
         "title": "Casalink - Family planning",
@@ -164,28 +183,20 @@
         "demo": "www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
         "github": "github.com/ThiessetFabien/Casalink-Frontend",
-        "tags": ["Front-end/SPA", "TypeScript", "React/Redux", "SASS", "JWT"]
-      },
-      {
-        "title": "Casalink API - Secure server",
-        "organization": "Apotheosis O'Clock School",
-        "imageSrc": "casalink-documentation.webp",
-        "imageAlt": "Casalink documentation",
-        "website": "casalink-back.vercel.app/api-docs/",
-        "github": "github.com/ThiessetFabien/Casalink-Backend",
-        "tags": [
-          "Back-end/API RESTful",
-          "JavaScript",
-          "Express",
-          "Mocha/Chai",
-          "PostgreSQL",
-          "JWT"
-        ]
+        "tags": ["TypeScript", "React", "Redux", "SASS", "JWT"]
       }
-    ]
+    ],
+    "cta1": "What to you see more?",
+    "icon1": "Github",
+    "href1": "github.com/ThiessetFabien",
+    "downloadActive1": false,
+    "cta2": "View all",
+    "href2": "github.com/ThiessetFabien",
+    "downloadActive2": false
   },
   {
-    "title": "🗨️ Testimonials",
+    "title": "Success Stories",
+    "description": "I've had the pleasure of working with some amazing people and companies. Here's what they have to say about my work.",
     "testimonials": [
       {
         "name": "Dupoirier Christophe",
@@ -302,8 +313,15 @@
     ]
   },
   {
-    "title": "🟢 And now ?",
-    "description": "I'm ready to help you with your project. Let's talk about it!",
+    "title": "Achievements & Goals",
+    "description": "Things i have acheived and what i am looking for.",
+    "achievements": [
+      {
+        "icon": "Trophy",
+        "title": "First medicalized reception center labeled Humanitude in mainland France.",
+        "date": "dec 2019"
+      }
+    ],
     "content": "I search a job as a Front-end or Back-end Developer in a company that values human and technical skills. I am also open to an apprenticeship opportunities (application developer or AI expert)."
   },
   {

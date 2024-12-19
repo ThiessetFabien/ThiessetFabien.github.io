@@ -5,11 +5,13 @@
 
 'use client';
 import React from 'react';
-import ActionButton from './ActionButton';
+import ActionButton from '../../CallToAction/ActionButton';
 import CardProps from '@/types/CardProps';
+import { cn } from '@/lib/utils';
+import { cnGap } from '@/styles/boxModelStyles';
 
 /**
- * CallToAction component props.
+ * FooterCard component props.
  * @typedef {Object} CardProps
  * @property {string} cta1 - The text for the first call-to-action button.
  * @property {string} icon1 - The icon for the first call-to-action button.
@@ -22,11 +24,11 @@ import CardProps from '@/types/CardProps';
  */
 
 /**
- * CallToAction component.
+ * FooterCard component.
  * @param {CardProps} props - The props for the component.
  * @returns {JSX.Element} The rendered component.
  */
-export const CallToAction: React.FC<CardProps> = ({
+export const FooterCard: React.FC<CardProps> = ({
   cta1,
   icon1,
   href1,
@@ -35,10 +37,13 @@ export const CallToAction: React.FC<CardProps> = ({
   icon2,
   href2,
   downloadActive2,
-  className,
+  cta3,
+  icon3,
+  href3,
+  downloadActive3,
 }) => {
   return (
-    <div className={className}>
+    <div className={cn('flex flex-wrap', cnGap)}>
       {(cta1 && href1) || (icon1 && href1) ? (
         <ActionButton
           cta={cta1 || ''}
@@ -57,8 +62,17 @@ export const CallToAction: React.FC<CardProps> = ({
           variant='outline'
         />
       ) : null}
+      {(cta3 && href3) || (icon3 && href3) ? (
+        <ActionButton
+          cta={cta3 || ''}
+          icon={icon3 || ''}
+          href={href3 || ''}
+          downloadActive={downloadActive3 || false}
+          variant='outline'
+        />
+      ) : null}
     </div>
   );
 };
 
-export default CallToAction;
+export default FooterCard;

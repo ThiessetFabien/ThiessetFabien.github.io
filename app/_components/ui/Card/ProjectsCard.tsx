@@ -2,11 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Code, ExternalLink, SquarePlay } from 'lucide-react';
 import {
   CardTitle,
   CardDescription,
-  CardContent,
+  CardFooter,
   CardHeader,
   Card,
 } from '@/lib/components/ui/card';
@@ -18,16 +17,9 @@ import { baseUrl } from '@/utils/constants/baseUrl';
 import CardProps from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
 import { cnFlexBetweenX, cnFlexCenterY } from '@/styles/flexStyles';
-import {
-  cnGap,
-  cnMargin,
-  cnMarginBottom,
-  cnPadding,
-  cnSmallGap,
-  cnSmallMarginLeft,
-} from '@/styles/boxModelStyles';
+import { cnGap, cnMarginBottom, cnPadding } from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
-import { sizeIcon } from '@/styles/sizeStyles';
+import ActionButton from '../CallToAction/ActionButton';
 
 /**
  * @file CardProjects.tsx
@@ -59,74 +51,24 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
           <Card
             key={projectIndex}
             className={cn(
+              'container',
               cnBorder,
               cnGap,
               dynamicMarginBottom(projectIndex),
-              'h-full w-full',
+              'h-auto w-full',
               projectIndex === 0
                 ? 'sm:col-span-2 lg:col-span-1'
                 : 'sm:col-span-1'
             )}
           >
             <CardHeader className={cnPadding}>
-              <div className={cnFlexBetweenX}>
-                <CardTitle className={cn(cnTitle2, cnFlexCenterY)}>
+              {project.imageSrc && project.imageAlt && (
+                <div className={cn(cnMarginBottom, 'h-full w-full')}>
                   <a
                     href={`${baseUrl}${project.website}`}
                     target='_blank'
                     rel='noopener noreferrer'
                     className={cnFlexCenterY}
-                  >
-                    {project.title}
-                    <ExternalLink className={cn(sizeIcon, cnSmallMarginLeft)} />
-                  </a>
-                  {project.demo && (
-                    <a
-                      href={`${baseUrl}${project.demo}`}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className={cnSmallMarginLeft}
-                    >
-                      <SquarePlay className={sizeIcon} />
-                    </a>
-                  )}
-                  <a
-                    href={`${baseUrl}${project.github}`}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className={cnSmallMarginLeft}
-                  >
-                    <Code className={sizeIcon} />
-                  </a>
-                </CardTitle>
-              </div>
-              <CardDescription className={cnParagraph}>
-                {project.organization}
-              </CardDescription>
-            </CardHeader>
-            <CardContent
-              className={cn(
-                'flex flex-wrap',
-                cnSmallGap,
-                'font-semibold',
-                'w-auto'
-              )}
-            >
-              {project.tags.map((tag, tagIndex) => (
-                <Badge
-                  key={tagIndex}
-                  variant={tagIndex > 0 ? 'outline' : 'default'}
-                >
-                  <p>{`${tag}`}</p>
-                </Badge>
-              ))}
-              {project.imageSrc && project.imageAlt && (
-                <div className={cn(cnMarginBottom, 'h-auto w-full')}>
-                  <a
-                    href={`${baseUrl}${project.website}`}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className={cn(cnMargin, cnFlexCenterY)}
                   >
                     <Image
                       src={`/images/${project.imageSrc}`}
@@ -138,7 +80,58 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
                   </a>
                 </div>
               )}
-            </CardContent>
+              <div className={cnFlexBetweenX}>
+                <CardTitle className={cn(cnTitle2, cnFlexBetweenX)}>
+                  <a
+                    href={`${baseUrl}${project.website}`}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className={cnFlexCenterY}
+                  >
+                    <h3>{project.title}</h3>
+                  </a>
+                  <div>
+                    <ActionButton
+                      icon='Github'
+                      href={`${baseUrl}${project.github}`}
+                      downloadActive={false}
+                      variant='ghost'
+                      size='icon'
+                    />
+                    {project.demo && (
+                      <ActionButton
+                        icon='SquarePlay'
+                        href={`${baseUrl}${project.demo}`}
+                        downloadActive={false}
+                        variant='ghost'
+                        size='icon'
+                      />
+                    )}
+                    <ActionButton
+                      icon='ExternalLink'
+                      href={`${baseUrl}${project.website}`}
+                      downloadActive={false}
+                      variant='ghost'
+                      size='icon'
+                    />
+                  </div>
+                </CardTitle>
+              </div>
+              <CardDescription className={cnParagraph}>
+                {project.organization}
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className={cn('flex flex-wrap', 'h-auto')}>
+              {project.tags.map((tag, tagIndex) => (
+                <Badge
+                  key={tagIndex}
+                  variant='outline'
+                  className='border-0 font-light'
+                >
+                  <p>{`${tag}`}</p>
+                </Badge>
+              ))}
+            </CardFooter>
           </Card>
         ))}
     </div>
