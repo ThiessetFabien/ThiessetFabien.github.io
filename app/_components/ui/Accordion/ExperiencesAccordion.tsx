@@ -3,7 +3,8 @@ import {
   AccordionContent,
 } from '@/lib/components/ui/accordion';
 import { ExperiencesList } from '@/ui/List/ExperiencesList';
-import { Experience } from '@/types/ExperienceProps.jsx';
+import { Experience } from '@/types/ExperienceProps';
+import { cnParagraph } from '@/styles/fontStyles';
 
 export const ExperiencesAccordion: React.FC<{
   experience: Experience[];
@@ -11,7 +12,7 @@ export const ExperiencesAccordion: React.FC<{
 }> = ({ experience, content }) => {
   return (
     <>
-      <AccordionTrigger>{content}</AccordionTrigger>
+      <AccordionTrigger className={cnParagraph}>{content}</AccordionTrigger>
       <AccordionContent>
         {experience.map((item: Experience, index: number) => (
           <ExperiencesList

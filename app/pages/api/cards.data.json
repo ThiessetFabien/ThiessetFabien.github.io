@@ -313,16 +313,20 @@
     ]
   },
   {
-    "title": "Achievements & Goals",
-    "description": "Things i have acheived and what i am looking for.",
+    "title": "Things i have acheived and what i am looking for.",
     "achievements": [
       {
         "icon": "Trophy",
-        "title": "First medicalized reception center labeled Humanitude in mainland France.",
+        "title": "RNCP37674 - Level 5 - Web and Mobile Developer",
+        "date": "juil 2024"
+      },
+      {
+        "icon": "Trophy",
+        "title": "First medicalized reception center labeled Humanitude in mainland France",
         "date": "dec 2019"
       }
     ],
-    "content": "I search a job as a Front-end or Back-end Developer in a company that values human and technical skills. I am also open to an apprenticeship opportunities (application developer or AI expert)."
+    "content": "I am seeking a position as a Front-end or Back-end Developer in a company that values both human and technical skills. I am also open to apprenticeship opportunities in application development or as an AI expert."
   },
   {
     "title": "Available for Mobile, Vehicle",

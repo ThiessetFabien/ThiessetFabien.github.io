@@ -77,7 +77,10 @@ const HomePage: React.FC = (): JSX.Element => {
                   <CardProjects projects={card.projects} />
                 )}
                 {card.achievements && card.achievements.length > 0 && (
-                  <NowCard content={card.content} />
+                  <NowCard
+                    achievements={card.achievements}
+                    content={card.content}
+                  />
                 )}
               </CardContent>
             </>
