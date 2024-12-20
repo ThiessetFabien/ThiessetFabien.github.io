@@ -26,7 +26,7 @@ const PresentationCard: React.FC<CardProps> = ({
           width={205}
           height={316}
           priority
-          className={'h-auto w-auto'}
+          className={'h-auto w-auto rounded-lg'}
         />
       </div>
       <div className={cn(cnFlexCol, 'col-span-2 justify-center')}>

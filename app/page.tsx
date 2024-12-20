@@ -16,6 +16,7 @@ import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
 import { cnPadding, cnGap } from '@/styles/boxModelStyles';
 import type CardProps from './types/CardProps';
+import { MailCard } from '@/ui/Card/MailCard';
 
 /**
  * @file page.tsx
@@ -33,7 +34,11 @@ const HomePage: React.FC = (): JSX.Element => {
   return (
     <>
       {gridConfig.map((card, index: number) => (
-        <Card key={index} className={cn('h-full w-full', card.colSpan)}>
+        <Card
+          key={index}
+          id={`card-${index}`}
+          className={cn('h-full w-full', card.colSpan)}
+        >
           {card.imageSrc && !card.map && (
             <PresentationCard
               title={card.title}
@@ -64,10 +69,12 @@ const HomePage: React.FC = (): JSX.Element => {
                   )}
                 {card.top3Technologies &&
                   card.technologies &&
-                  card.technologies.length > 0 && (
+                  card.technologies.length > 0 &&
+                  card.quote && (
                     <SkillsCard
                       top3Technologies={card.top3Technologies}
                       technologies={card.technologies}
+                      quote={card.quote}
                     />
                   )}
                 {card.testimonials && card.testimonials.length > 0 && (
@@ -80,8 +87,10 @@ const HomePage: React.FC = (): JSX.Element => {
                   <NowCard
                     achievements={card.achievements}
                     content={card.content}
+                    funFact={card.funFact}
                   />
                 )}
+                {card.mailto && <MailCard mailto={card.mailto} />}
               </CardContent>
             </>
           )}

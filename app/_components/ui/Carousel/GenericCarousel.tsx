@@ -14,11 +14,7 @@ import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 import { useDotButton } from './Buttons/DotButtonCarousel';
 import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
 import { DotButton } from './Buttons/DotButtonCarousel';
-import {
-  manipulationStyle,
-  cnSpaceY,
-  cnSmallMarginX,
-} from '@/styles/boxModelStyles';
+import { manipulationStyle, cnSmallMarginX } from '@/styles/boxModelStyles';
 import {
   cnFlexFullCenter,
   cnFlexBetweenX,
@@ -76,10 +72,7 @@ export const GenericCarousel: React.FC<{
   }, [emblaApi]);
 
   return (
-    <section
-      className={cn('container h-auto overflow-hidden', cnSpaceY)}
-      ref={emblaRef}
-    >
+    <section className={cn('container h-auto overflow-hidden')} ref={emblaRef}>
       <div className='flex'>
         {items &&
           items.map((item, index) => (

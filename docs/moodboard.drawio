@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.1 Chrome/128.0.6613.186 Electron/32.2.6 Safari/537.36" version="25.0.1">
   <diagram name="1024px" id="r4w308YbEvkMzNiu2m8_">
-    <mxGraphModel dx="3290" dy="2027" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3290" dy="1983" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -403,7 +403,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="nVuMvxlts2d36XC-SCX--109" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Turn icons to horizontal on hover&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="-950" y="1455" width="210" height="100" as="geometry" />
+          <mxGeometry x="-980" y="1455" width="210" height="100" as="geometry" />
         </mxCell>
         <mxCell id="nVuMvxlts2d36XC-SCX--156" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="nVuMvxlts2d36XC-SCX--111" target="0UnEJUBiLQPWp4kJaasF-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -541,6 +541,12 @@
         </mxCell>
         <mxCell id="nVuMvxlts2d36XC-SCX--158" value="experience" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-560" y="665.31" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uc0_qIlyxiZ63crN2tXj-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc0_qIlyxiZ63crN2tXj-2" target="0UnEJUBiLQPWp4kJaasF-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uc0_qIlyxiZ63crN2tXj-2" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Turn icons to horizontal on hover&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-660" y="870" width="420" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -50,9 +50,9 @@ export const Map: React.FC<CardProps> = ({ title, description }) => {
           <Circle
             center={myPosition}
             radius={radius}
-            color='blue'
-            fillColor='blue'
-            fillOpacity={0.2}
+            color='purple'
+            fillColor='purple'
+            fillOpacity={0.3}
           />
         </MapContainer>
       </CardContent>
