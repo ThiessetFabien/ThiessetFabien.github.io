@@ -1,3 +1,7 @@
+/**
+ * @file GenericCarousel.tsx
+ * @description This file exports a generic carousel component that can be used for different types of carousels.
+ */
 'use client';
 
 import React, { useEffect } from 'react';
@@ -22,11 +26,6 @@ import {
 } from '@/styles/flexStyles';
 import { cnBorder } from '@/styles/borderStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
-
-/**
- * @file GenericCarousel.tsx
- * @description This file exports a generic carousel component that can be used for different types of carousels.
- */
 
 /**
  * GenericCarousel component.
@@ -78,7 +77,7 @@ export const GenericCarousel: React.FC<{
 
   return (
     <section
-      className={cn('container h-full overflow-hidden', cnSpaceY)}
+      className={cn('container h-auto overflow-hidden', cnSpaceY)}
       ref={emblaRef}
     >
       <div className='flex'>
@@ -104,10 +103,10 @@ export const GenericCarousel: React.FC<{
           cnFlexBetweenX,
           cnHiddenXs,
           'h-full',
-          plugin() === autoscrollPlugin ? 'hidden' : ''
+          delay !== undefined ? '' : 'hidden'
         )}
       >
-        <div className={cn(cnFlexCenterY)}>
+        <div className={cn(cnFlexCenterY, delay !== undefined ? '' : 'hidden')}>
           <PrevButton
             onClick={onPrevButtonClick}
             disabled={prevBtnDisabled}
@@ -119,7 +118,9 @@ export const GenericCarousel: React.FC<{
             className={cn(manipulationStyle, 'text-primary')}
           />
         </div>
-        <div className={cn(cnFlexFullCenter)}>
+        <div
+          className={cn(cnFlexFullCenter, delay !== undefined ? '' : 'hidden')}
+        >
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}

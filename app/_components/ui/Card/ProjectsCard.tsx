@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import {
   CardTitle,
@@ -20,6 +20,7 @@ import { cnFlexBetweenX, cnFlexCenterY } from '@/styles/flexStyles';
 import { cnGap, cnMarginBottom, cnPadding } from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
 import ActionButton from '../CallToAction/ActionButton';
+import useIntersectionObserver from '@/hooks/IntersectionObserver';
 
 /**
  * @file CardProjects.tsx
@@ -62,14 +63,14 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
             )}
           >
             <CardHeader className={cnPadding}>
-              {project.imageSrc && project.imageAlt && (
-                <div className={cn(cnMarginBottom, 'h-full w-full')}>
-                  <a
-                    href={`${baseUrl}${project.website}`}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className={cnFlexCenterY}
-                  >
+              <div className={cn(cnMarginBottom, 'h-full w-full')}>
+                <a
+                  href={`${baseUrl}${project.website}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={cnFlexCenterY}
+                >
+                  {project.imageSrc && project.imageAlt && (
                     <Image
                       src={`/images/${project.imageSrc}`}
                       alt={project.imageAlt || ''}
@@ -77,9 +78,22 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
                       height={332}
                       priority
                     />
-                  </a>
-                </div>
-              )}
+                  )}
+                  {!project.imageSrc &&
+                    !project.imageAlt &&
+                    project.videoSrc &&
+                    project.videoAlt && (
+                      <video
+                        src={`${baseUrl}${project.videoSrc}`}
+                        alt={project.videoAlt || ''}
+                        controls={false}
+                        autoPlay={true}
+                        loop={true}
+                        muted
+                      />
+                    )}
+                </a>
+              </div>
               <div className={cnFlexBetweenX}>
                 <CardTitle className={cn(cnTitle2, cnFlexBetweenX)}>
                   <a

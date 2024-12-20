@@ -42,45 +42,47 @@ export const TestimonialsCarousel: React.FC<CardProps> = ({
     ? testimonials.sort(() => Math.random() - 0.5)
     : [];
 
-  const items = shuffledTestimonial.map((testimonial, index) => (
-    <div key={index} className={cn(cnSpaceY, cnPadding, 'h-auto min-w-full')}>
-      <div className='lex-shrink-0 flex items-center'>
-        <a href={`${baseUrl}${testimonial.linkedin}`}>
-          <div className='relative left-0 top-0'>
-            <Avatar className='h-12 w-12'>
-              <AvatarImage
-                src={`${baseUrl}${testimonial.imageSrc}`}
-                alt={testimonial.name}
-              />
-              <AvatarFallback className={cnSmallText}>
-                {testimonial.name}
-              </AvatarFallback>
-            </Avatar>
-            <Button
-              variant='default'
-              className={cn(
-                'absolute bottom-0 right-0 z-auto',
-                'h-2/5 w-2/5',
-                'p-1'
-              )}
-            >
-              <Linkedin
-                size={14}
-                className={cn('rounded-full', 'font-bold text-background')}
-              />
-            </Button>
+  const items =
+    testimonials &&
+    testimonials.map((testimonial, index) => (
+      <div key={index} className={cn(cnSpaceY, cnPadding, 'h-auto min-w-full')}>
+        <div className='lex-shrink-0 flex items-center'>
+          <a href={`${baseUrl}${testimonial.linkedin}`}>
+            <div className='relative left-0 top-0'>
+              <Avatar className='h-12 w-12'>
+                <AvatarImage
+                  src={`${baseUrl}${testimonial.imageSrc}`}
+                  alt={testimonial.name}
+                />
+                <AvatarFallback className={cnSmallText}>
+                  {testimonial.name}
+                </AvatarFallback>
+              </Avatar>
+              <Button
+                variant='default'
+                className={cn(
+                  'absolute bottom-0 right-0 z-auto',
+                  'h-2/5 w-2/5',
+                  'p-1'
+                )}
+              >
+                <Linkedin
+                  size={14}
+                  className={cn('rounded-full', 'font-bold text-background')}
+                />
+              </Button>
+            </div>
+          </a>
+          <div className={cn(cnFlexCol, 'ml-4')}>
+            <p className={cnSmallText}>{testimonial.name}</p>
+            <p className={cn(cnSmallText, cnLightTextMuted)}>
+              {testimonial.context}
+            </p>
           </div>
-        </a>
-        <div className={cn(cnFlexCol, 'ml-4')}>
-          <p className={cnSmallText}>{testimonial.name}</p>
-          <p className={cn(cnSmallText, cnLightTextMuted)}>
-            {testimonial.context}
-          </p>
         </div>
+        <p className={cnParagraph}>&quot;{testimonial.content}&quot;</p>
       </div>
-      <p className={cnParagraph}>&quot;{testimonial.content}&quot;</p>
-    </div>
-  ));
+    ));
 
   return <GenericCarousel items={items} className={className} delay={7000} />;
 };
