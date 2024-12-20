@@ -16,8 +16,8 @@
     "downloadActive3": false
   },
   {
-    "title": "I ❤️ working on...",
-    "description": "Being a Full-Stack Developer is my primary focus. I specialize in building web applications using modern technologies.",
+    "title": "Being a Full-Stack Developer is my primary focus",
+    "description": " I specialize in building web applications using modern technologies.",
     "top3Technologies": [
       {
         "name": "React.js",
@@ -65,6 +65,10 @@
         "slug": "sass/sass-original"
       }
     ],
+    "quote": {
+      "author": "Les Brown",
+      "text": "Shoot for the moon. Even if you miss, you'll land among the stars."
+    },
     "cta1": "View on GitHub",
     "icon1": "Github",
     "href1": "https://github.com/ThiessetFabien?tab=repositories",
@@ -161,9 +165,7 @@
         "title": "This portfolio",
         "organization": "Welcome on my multiverse",
         "imageSrc": "",
-        "imageAlt": "",
-        "videoSrc": "videocdn.cdnpk.net/videos/8e9b0e80-9c40-570a-9ecd-bdddac0f1508/horizontal/previews/clear/large.mp4?token=exp=1734693407~hmac=f88dc6f334f835ada058d26e269be233fd59e061eaef47a71f9ceec820bb183d",
-        "videoAlt": "Video of work in progress",
+        "imageAlt": "Under construction",
         "website": "/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
         "tags": ["TypeScript", "Next", "React", "Tailwind"]
@@ -171,7 +173,7 @@
       {
         "title": "Casalink API - Secure server",
         "organization": "Apotheosis O'Clock School",
-        "imageSrc": "casalink-documentation.webp",
+        "imageSrc": "images/casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
         "github": "github.com/ThiessetFabien/Casalink-Backend",
@@ -180,8 +182,9 @@
       {
         "title": "Casalink - Family planning",
         "organization": "Apotheosis O'Clock School",
-        "imageSrc": "casalink.webp",
+        "imageSrc": "images/casalink.webp",
         "imageAlt": "Calendar of Casalink application",
+        "videoSrc": "",
         "demo": "www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
         "github": "github.com/ThiessetFabien/Casalink-Frontend",
@@ -189,13 +192,30 @@
       }
     ],
     "cta1": "What to you see more?",
-    "icon1": "Github",
+    "icon1": "Eye",
     "href1": "github.com/ThiessetFabien?tab=repositories",
     "downloadActive1": false
   },
   {
-    "title": "Success Stories",
-    "description": "I've had the pleasure of working with some amazing people and companies. Here's what they have to say about my work.",
+    "title": "Things i have acheived and what i am looking for",
+    "achievements": [
+      {
+        "icon": "Trophy",
+        "title": "RNCP37674 - Level 5 - Web and Mobile Developer",
+        "date": "juil 2024"
+      },
+      {
+        "icon": "Trophy",
+        "title": "First medicalized reception center labeled Humanitude in mainland France",
+        "date": "dec 2019"
+      }
+    ],
+    "content": "I am seeking a position as a Front-end or Back-end Developer in a company that values both human and technical skills. I am also open to apprenticeship opportunities in application development or as an AI expert.",
+    "funFact": "I love drinking a good coffee while coding. I am a fan of the Shonen genre, and I am currently watching the anime One Piece, Dragon Ball Daima, and Bleach."
+  },
+  {
+    "title": "I've had the pleasure of working with some amazing people and companies",
+    "description": "Here's what they have to say about my work.",
     "testimonials": [
       {
         "name": "Dupoirier Christophe",
@@ -312,33 +332,12 @@
     ]
   },
   {
-    "title": "Things i have acheived and what i am looking for",
-    "achievements": [
-      {
-        "icon": "Trophy",
-        "title": "RNCP37674 - Level 5 - Web and Mobile Developer",
-        "date": "juil 2024"
-      },
-      {
-        "icon": "Trophy",
-        "title": "First medicalized reception center labeled Humanitude in mainland France",
-        "date": "dec 2019"
-      }
-    ],
-    "content": "I am seeking a position as a Front-end or Back-end Developer in a company that values both human and technical skills. I am also open to apprenticeship opportunities in application development or as an AI expert."
+    "title": "Let's talk about your project",
+    "mailto": "thiessetfabienpro@gmail.com"
   },
   {
     "title": "Available for Mobile, Vehicle",
+    "description": "I am available for work in the Lille area and for remote work.",
     "map": true
-  },
-  {
-    "title": "📞 Contact me",
-    "description": "Let's talk about your project.",
-    "icon1": "PhoneOutgoing",
-    "cta1": "Hire an expert",
-    "href1": "tel:+33610920974",
-    "icon2": "Mail",
-    "cta2": "Send a mail",
-    "href2": "me@mail.com"
   }
 ]

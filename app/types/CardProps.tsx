@@ -1,10 +1,10 @@
-import { Technologie } from './TechnologieProps';
-import { Achievement } from './AchievementProps';
 /**
  * @file CardProps.tsx
  * @description This file contains the type definition for the props used in various card components.
  */
-
+import { Technologie } from './TechnologieProps';
+import { Achievement } from './AchievementProps';
+import { Quote } from './QuoteProps';
 import { Experiences } from './ExperiencesProps';
 import { Project } from './ProjectProps';
 import { Testimonial } from './TestimonialProps';
@@ -64,12 +64,16 @@ export default interface CardProps {
 
   top3Technologies?: Top3Technologie[];
   technologies?: Technologie[];
+  quote?: Quote;
 
   testimonials?: Testimonial[];
 
   achievements?: Achievement[];
 
   content?: React.ReactNode;
+  funFact?: string;
+
+  mailto?: string;
 
   className?: string;
   colSpan?: string;

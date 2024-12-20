@@ -29,7 +29,8 @@
       "@/types/*": ["types/*"],
       "@/styles/*": ["styles/*"],
       "@/utils/*": ["utils/*"],
-      "@/hooks/*": ["hooks/*"]
+      "@/hooks/*": ["hooks/*"],
+      "@/schemas/*": ["schemas/*"]
     },
     "target": "ES2017"
   },

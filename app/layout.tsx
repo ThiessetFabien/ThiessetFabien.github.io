@@ -62,7 +62,7 @@ export default function RootLayout({
               cnGap,
               cnPadding,
               'container relative z-0',
-              'mx-auto max-w-6xl',
+              'mx-auto max-w-7xl',
               'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
             )}
           >

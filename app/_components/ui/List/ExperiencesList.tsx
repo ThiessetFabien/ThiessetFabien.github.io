@@ -18,7 +18,7 @@ export const ExperiencesList: React.FC<Experience> = ({
 }) => {
   return (
     <>
-      <ul className={cn(cnSmallSpaceY, lineThroughItem(date))}>
+      <ul className={cn(cnSmallSpaceY, lineThroughItem(date), 'w-full')}>
         <li className={'flex'}>
           <Dot
             className={cn(cnMarginRight, 'shrink-0', 'text-primary')}

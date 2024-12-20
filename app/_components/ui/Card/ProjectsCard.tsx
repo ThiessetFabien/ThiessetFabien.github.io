@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import {
   CardTitle,
@@ -16,11 +16,14 @@ import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import CardProps from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
-import { cnFlexBetweenX, cnFlexCenterY } from '@/styles/flexStyles';
+import {
+  cnFlexBetweenX,
+  cnFlexCenterY,
+  cnFlexFullCenter,
+} from '@/styles/flexStyles';
 import { cnGap, cnMarginBottom, cnPadding } from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
 import ActionButton from '../CallToAction/ActionButton';
-import useIntersectionObserver from '@/hooks/IntersectionObserver';
 
 /**
  * @file CardProjects.tsx
@@ -44,7 +47,7 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
         className,
         cnGap,
         'h-full',
-        'grid sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-1'
+        'grid sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3'
       )}
     >
       {projects &&
@@ -56,14 +59,14 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
               cnBorder,
               cnGap,
               dynamicMarginBottom(projectIndex),
-              'h-auto w-full',
+              'h-full w-full',
               projectIndex === 0
                 ? 'sm:col-span-2 lg:col-span-1'
                 : 'sm:col-span-1'
             )}
           >
             <CardHeader className={cnPadding}>
-              <div className={cn(cnMarginBottom, 'h-full w-full')}>
+              <div className={cn(cnMarginBottom, cnFlexFullCenter, 'w-full')}>
                 <a
                   href={`${baseUrl}${project.website}`}
                   target='_blank'
@@ -72,20 +75,19 @@ export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
                 >
                   {project.imageSrc && project.imageAlt && (
                     <Image
-                      src={`/images/${project.imageSrc}`}
+                      src={`/${project.imageSrc}`}
                       alt={project.imageAlt || ''}
                       width={590}
                       height={332}
                       priority
+                      className='h-auto min-w-full'
                     />
                   )}
                   {!project.imageSrc &&
                     !project.imageAlt &&
-                    project.videoSrc &&
-                    project.videoAlt && (
+                    project.videoSrc && (
                       <video
                         src={`${baseUrl}${project.videoSrc}`}
-                        alt={project.videoAlt || ''}
                         controls={false}
                         autoPlay={true}
                         loop={true}

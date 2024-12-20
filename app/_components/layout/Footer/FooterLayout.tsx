@@ -28,7 +28,7 @@ export const Footer: React.FC<CardProps> = ({ className }) => {
   return (
     <footer className={cn('h-full', className)}>
       <div className={cn('min-w-full')}>
-        <div className={cn('max-w-6xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
+        <div className={cn('max-w-7xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
           <p>fab.dev</p>
           <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
             &copy; {dynamicYear} Built by Fabien Thiesset - All rights reserved.

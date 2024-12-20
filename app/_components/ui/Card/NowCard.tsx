@@ -9,11 +9,15 @@ import { Badge } from '@/lib/components/ui/badge';
 import { cnSmallText, cnLightTextMuted } from '@/styles/fontStyles';
 import { CardContent } from '@/lib/components/ui/card';
 
-export const NowCard: React.FC<CardProps> = ({ achievements, content }) => {
+export const NowCard: React.FC<CardProps> = ({
+  achievements,
+  content,
+  funFact,
+}) => {
   return (
     <div className={cnSmallSpaceY}>
       <CardContent>
-        <ul>
+        <ul className={cnSmallSpaceY}>
           {achievements &&
             achievements.map((achievement, index) => (
               <li key={index} className={cn(cnGap, 'flex')}>
@@ -37,9 +41,11 @@ export const NowCard: React.FC<CardProps> = ({ achievements, content }) => {
             ))}
         </ul>
       </CardContent>
-      <CardContent>
+      <CardContent className={cnSmallSpaceY}>
         <h3 className={cnTitle2}>And now ?</h3>
         <p className={cnParagraph}>{content}</p>
+        <h3 className={cnTitle2}>Fun fact</h3>
+        <p className={cnParagraph}>{funFact}</p>
       </CardContent>
     </div>
   );

@@ -35,6 +35,7 @@ export interface Project {
   organization: string;
   imageSrc: string;
   imageAlt: string;
+  videoSrc?: string;
   demo?: string;
   website: string;
   github: string;

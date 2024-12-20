@@ -25,7 +25,7 @@ export const Header: React.FC<{ className?: string }> = ({ className }) => {
 
   return (
     <header className={cn('h-full', 'border-b', className)}>
-      <div className={cn('mx-auto max-w-6xl', cnPaddingX, cnFlexBetweenX)}>
+      <div className={cn('mx-auto max-w-7xl', cnPaddingX, cnFlexBetweenX)}>
         <Link
           href='/'
           className={cn(cnSiteTitle, 'pointer-events-auto text-center')}
