@@ -21,7 +21,7 @@
     "top3Technologies": [
       {
         "name": "React.js",
-        "description": "I also Next.js as a backend and frontend framework.",
+        "description": "I use React.js to create beautiful and functional user interfaces.  I also Next.js as a backend and frontend framework.",
         "slug": "react/react-original"
       },
       {
@@ -67,7 +67,7 @@
     ],
     "cta1": "View on GitHub",
     "icon1": "Github",
-    "href1": "github.com/ThiessetFabien",
+    "href1": "https://github.com/ThiessetFabien?tab=repositories",
     "downloadActive1": false
   },
   {
@@ -162,6 +162,8 @@
         "organization": "Welcome on my multiverse",
         "imageSrc": "",
         "imageAlt": "",
+        "videoSrc": "videocdn.cdnpk.net/videos/8e9b0e80-9c40-570a-9ecd-bdddac0f1508/horizontal/previews/clear/large.mp4?token=exp=1734693407~hmac=f88dc6f334f835ada058d26e269be233fd59e061eaef47a71f9ceec820bb183d",
+        "videoAlt": "Video of work in progress",
         "website": "/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
         "tags": ["TypeScript", "Next", "React", "Tailwind"]
@@ -188,12 +190,8 @@
     ],
     "cta1": "What to you see more?",
     "icon1": "Github",
-    "href1": "github.com/ThiessetFabien",
-    "downloadActive1": false,
-    "cta2": "View all",
-    "icon2": "Eye     ",
-    "href2": "github.com/ThiessetFabien",
-    "downloadActive2": false
+    "href1": "github.com/ThiessetFabien?tab=repositories",
+    "downloadActive1": false
   },
   {
     "title": "Success Stories",
@@ -314,7 +312,7 @@
     ]
   },
   {
-    "title": "Things i have acheived and what i am looking for.",
+    "title": "Things i have acheived and what i am looking for",
     "achievements": [
       {
         "icon": "Trophy",

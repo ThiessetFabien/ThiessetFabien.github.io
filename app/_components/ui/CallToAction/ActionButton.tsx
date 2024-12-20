@@ -31,7 +31,7 @@ const ActionButton: React.FC<ActionButton> = ({
 }: ActionButton): JSX.Element => {
   return (
     <a
-      href={`/${href}`}
+      href={`http://${href}`}
       target='_blank'
       rel='noopener noreferrer'
       {...dynamicDownload(downloadActive || false)}
