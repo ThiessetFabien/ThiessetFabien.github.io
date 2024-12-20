@@ -14,22 +14,27 @@ export const NowCard: React.FC<CardProps> = ({ achievements, content }) => {
     <div className={cnSmallSpaceY}>
       <CardContent>
         <ul>
-          {achievements.map((achievement, index) => (
-            <li key={index} className={cn(cnGap, 'flex')}>
-              <div className='flex-shrink-0 text-primary'>
-                {IconLoader(achievement.icon || '')}
-              </div>
-              <div className={cnFlexCol}>
-                <h3 className={cnTitle2}>{achievement.title}</h3>
-                <Badge
-                  variant='outline'
-                  className={cn('border-0 p-0', cnSmallText, cnLightTextMuted)}
-                >
-                  {achievement.date}
-                </Badge>
-              </div>
-            </li>
-          ))}
+          {achievements &&
+            achievements.map((achievement, index) => (
+              <li key={index} className={cn(cnGap, 'flex')}>
+                <div className='flex-shrink-0 text-primary'>
+                  {IconLoader(achievement.icon || '')}
+                </div>
+                <div className={cnFlexCol}>
+                  <h3 className={cnTitle2}>{achievement.title}</h3>
+                  <Badge
+                    variant='outline'
+                    className={cn(
+                      'border-0 p-0',
+                      cnSmallText,
+                      cnLightTextMuted
+                    )}
+                  >
+                    {achievement.date}
+                  </Badge>
+                </div>
+              </li>
+            ))}
         </ul>
       </CardContent>
       <CardContent>
