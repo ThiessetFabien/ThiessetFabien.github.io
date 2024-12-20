@@ -9,7 +9,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "dotenv -e .env.development -- next dev",
     "build": "prettier --check . && next build",
     "build:local": "prettier --write . && next build",
     "start": "next start",
@@ -58,6 +58,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "dotenv-cli": "^7.4.4",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.15",
     "eslint-config-prettier": "^9.1.0",

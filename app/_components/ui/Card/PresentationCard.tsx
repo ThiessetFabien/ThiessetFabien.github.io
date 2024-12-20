@@ -5,7 +5,6 @@ import {
   CardHeader,
 } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
-import { cnBorder } from '@/styles/borderStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
 import { cnGap, cnPadding } from '@/styles/boxModelStyles';

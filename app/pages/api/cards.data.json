@@ -149,7 +149,7 @@
     "href1": "tel:+33610920974",
     "downloadActive1": false,
     "icon2": "Mail",
-    "cta2": "Send an email",
+    "cta2": "Send a mail",
     "href2": "mailto:thiessetfabienpro@gmail.com",
     "downloadActive2": false
   },
@@ -191,6 +191,7 @@
     "href1": "github.com/ThiessetFabien",
     "downloadActive1": false,
     "cta2": "View all",
+    "icon2": "Eye     ",
     "href2": "github.com/ThiessetFabien",
     "downloadActive2": false
   },
@@ -339,7 +340,7 @@
     "cta1": "Hire an expert",
     "href1": "tel:+33610920974",
     "icon2": "Mail",
-    "cta2": "Send an email",
+    "cta2": "Send a mail",
     "href2": "me@mail.com"
   }
 ]
