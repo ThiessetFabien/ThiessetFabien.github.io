@@ -41,9 +41,10 @@ export const FooterCard: React.FC<CardProps> = ({
   icon3,
   href3,
   downloadActive3,
+  className,
 }) => {
   return (
-    <div className={cn('flex flex-wrap', cnGap)}>
+    <div className={cn('flex flex-wrap', cnGap, className)}>
       {(cta1 && href1) || (icon1 && href1) ? (
         <ActionButton
           cta={cta1 || ''}
