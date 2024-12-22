@@ -56,6 +56,10 @@ const HomePage: React.FC = (): JSX.Element => {
               icon2={card.icon2}
               href2={card.href2}
               downloadActive2={card.downloadActive2}
+              cta3={card.cta3}
+              icon3={card.icon3}
+              href3={card.href3}
+              downloadActive3={card.downloadActive3}
             />
           )}
           {!card.imageSrc && card.map && (
@@ -98,25 +102,26 @@ const HomePage: React.FC = (): JSX.Element => {
               </CardContent>
             </>
           )}
-          {((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
-            <CardFooter className={cnPadding}>
-              <FooterCard
-                className={cn(cnGap, 'flex h-full w-full')}
-                cta1={card.cta1}
-                icon1={card.icon1}
-                href1={card.href1}
-                downloadActive1={card.downloadActive1}
-                cta2={card.cta2}
-                icon2={card.icon2}
-                href2={card.href2}
-                downloadActive2={card.downloadActive2}
-                cta3={card.cta3}
-                icon3={card.icon3}
-                href3={card.href3}
-                downloadActive3={card.downloadActive3}
-              />
-            </CardFooter>
-          )}
+          {!card.imageSrc &&
+            ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
+              <CardFooter className={cnPadding}>
+                <FooterCard
+                  className={cn(cnGap, 'flex h-full w-full')}
+                  cta1={card.cta1}
+                  icon1={card.icon1}
+                  href1={card.href1}
+                  downloadActive1={card.downloadActive1}
+                  cta2={card.cta2}
+                  icon2={card.icon2}
+                  href2={card.href2}
+                  downloadActive2={card.downloadActive2}
+                  cta3={card.cta3}
+                  icon3={card.icon3}
+                  href3={card.href3}
+                  downloadActive3={card.downloadActive3}
+                />
+              </CardFooter>
+            )}
         </Card>
       ))}
     </>

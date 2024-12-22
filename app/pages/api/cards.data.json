@@ -42,7 +42,7 @@
   },
   {
     "title": "Where i've worked",
-    "description": "I have a diverse background in web development, project coordination, and support for individuals with disabilities. I am a self-taught developer with a passion for creating beautiful and functional applications.",
+    "description": "I've a background in web development, project coordination, and support for individuals with disabilities. I've a passion for creating beautiful and functional applications.",
     "experiences": [
       {
         "developer": [
@@ -197,6 +197,7 @@
   },
   {
     "title": "Things i have acheived",
+    "description": "I have achieved a number of things in my career, including the following:",
     "achievements": [
       {
         "icon": "Trophy",

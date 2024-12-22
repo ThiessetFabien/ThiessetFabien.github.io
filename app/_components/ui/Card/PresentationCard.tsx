@@ -7,15 +7,28 @@ import {
 import { cn } from '@/lib/utils';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
-import { cnGap, cnPadding } from '@/styles/boxModelStyles';
+import { cnGap, cnMarginTop, cnPadding } from '@/styles/boxModelStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type CardProps from '@/types/CardProps';
+import FooterCard from './LayoutCard/FooterCard';
 
 const PresentationCard: React.FC<CardProps> = ({
   title,
   description,
   imageSrc,
   imageAlt,
+  cta1,
+  icon1,
+  href1,
+  downloadActive1,
+  cta2,
+  icon2,
+  href2,
+  downloadActive2,
+  cta3,
+  icon3,
+  href3,
+  downloadActive3,
 }) => {
   return (
     <CardHeader className={cn(cnGap, cnPadding, 'grid grid-cols-3')}>
@@ -36,6 +49,21 @@ const PresentationCard: React.FC<CardProps> = ({
         <CardDescription className={cn(cnDescription, cnHiddenXs)}>
           <p>{description}</p>
         </CardDescription>
+        <FooterCard
+          cta1={cta1}
+          icon1={icon1}
+          href1={href1}
+          downloadActive1={downloadActive1}
+          cta2={cta2}
+          icon2={icon2}
+          href2={href2}
+          downloadActive2={downloadActive2}
+          cta3={cta3}
+          icon3={icon3}
+          href3={href3}
+          downloadActive3={downloadActive3}
+          className={cnMarginTop}
+        />
       </div>
     </CardHeader>
   );
