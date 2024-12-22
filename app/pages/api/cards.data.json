@@ -35,40 +35,6 @@
         "slug": "nodejs/nodejs-original"
       }
     ],
-    "technologies": [
-      {
-        "name": "TypeScript",
-        "slug": "typescript/typescript-original"
-      },
-      {
-        "name": "Express",
-        "slug": "express/express-original"
-      },
-      {
-        "name": "PostgreSQL",
-        "slug": "postgresql/postgresql-original"
-      },
-      {
-        "name": "MongoDB",
-        "slug": "mongodb/mongodb-original"
-      },
-      {
-        "name": "Next",
-        "slug": "nextjs/nextjs-original"
-      },
-      {
-        "name": "Jest",
-        "slug": "jest/jest-plain"
-      },
-      {
-        "name": "SASS",
-        "slug": "sass/sass-original"
-      }
-    ],
-    "quote": {
-      "author": "Les Brown",
-      "text": "Shoot for the moon. Even if you miss, you'll land among the stars."
-    },
     "cta1": "View on GitHub",
     "icon1": "Github",
     "href1": "https://github.com/ThiessetFabien?tab=repositories",
@@ -158,6 +124,39 @@
     "downloadActive2": false
   },
   {
+    "title": "And i currently work with",
+    "technologies": [
+      {
+        "name": "TypeScript",
+        "slug": "typescript/typescript-original"
+      },
+      {
+        "name": "Express",
+        "slug": "express/express-original"
+      },
+      {
+        "name": "PostgreSQL",
+        "slug": "postgresql/postgresql-original"
+      },
+      {
+        "name": "MongoDB",
+        "slug": "mongodb/mongodb-original"
+      },
+      {
+        "name": "Next",
+        "slug": "nextjs/nextjs-original"
+      },
+      {
+        "name": "Jest",
+        "slug": "jest/jest-plain"
+      },
+      {
+        "name": "SASS",
+        "slug": "sass/sass-original"
+      }
+    ]
+  },
+  {
     "title": "Some Things I've Built",
     "description": "Below you'll find a collection of some of my most recent JavaScript projects that showcase the type of clients i work directly with. ",
     "projects": [
@@ -197,7 +196,7 @@
     "downloadActive1": false
   },
   {
-    "title": "Things i have acheived and what i am looking for",
+    "title": "Things i have acheived",
     "achievements": [
       {
         "icon": "Trophy",
@@ -209,9 +208,7 @@
         "title": "First medicalized reception center labeled Humanitude in mainland France",
         "date": "dec 2019"
       }
-    ],
-    "content": "I am seeking a position as a Front-end or Back-end Developer in a company that values both human and technical skills. I am also open to apprenticeship opportunities in application development or as an AI expert.",
-    "funFact": "I love drinking a good coffee while coding. I am a fan of the Shonen genre, and I am currently watching the anime One Piece, Dragon Ball Daima, and Bleach."
+    ]
   },
   {
     "title": "I've had the pleasure of working with some amazing people and companies",
@@ -332,6 +329,14 @@
     ]
   },
   {
+    "title": "What i am looking for",
+    "content": "I am seeking a position as a Front-end or Back-end Developer in a company that values both human and technical skills. I am also open to apprenticeship opportunities in application development or as an AI expert."
+  },
+  {
+    "title": "Fun facts",
+    "content": "I love drinking a good coffee while coding. I am a fan of the Shonen genre, and I am currently watching the anime One Piece, Dragon Ball Daima, and Bleach."
+  },
+  {
     "title": "Let's talk about your project",
     "mailto": "thiessetfabienpro@gmail.com"
   },
@@ -339,5 +344,12 @@
     "title": "Available for Mobile, Vehicle",
     "description": "I am available for work in the Lille area and for remote work.",
     "map": true
+  },
+  {
+    "title": "My favorite quote",
+    "quote": {
+      "author": "Les Brown",
+      "text": "Shoot for the moon. Even if you miss, you'll land among the stars."
+    }
   }
 ]

@@ -11,12 +11,15 @@ import { CardProjects } from '@/components/ui/Card/ProjectsCard';
 import { SkillsCard } from '@/ui/Card/SkillsCard';
 import PresentationCard from '@/ui/Card/PresentationCard';
 import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
-import { NowCard } from '@/ui/Card/NowCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
 import { cnPadding, cnGap } from '@/styles/boxModelStyles';
 import type CardProps from './types/CardProps';
 import { MailCard } from '@/ui/Card/MailCard';
+import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
+import { QuoteCard } from './_components/ui/Card/Quote';
+import { AchievementsCard } from '@/ui/Card/AchievementsCard';
+import { cnParagraph } from '@/styles/fontStyles';
 
 /**
  * @file page.tsx
@@ -67,16 +70,12 @@ const HomePage: React.FC = (): JSX.Element => {
                   !card.technologies && (
                     <CardExperiences experiences={card.experiences} />
                   )}
-                {card.top3Technologies &&
-                  card.technologies &&
-                  card.technologies.length > 0 &&
-                  card.quote && (
-                    <SkillsCard
-                      top3Technologies={card.top3Technologies}
-                      technologies={card.technologies}
-                      quote={card.quote}
-                    />
-                  )}
+                {card.top3Technologies && (
+                  <SkillsCard top3Technologies={card.top3Technologies} />
+                )}
+                {card.technologies && card.technologies.length > 0 && (
+                  <OtherSkillsCard technologies={card.technologies} />
+                )}
                 {card.testimonials && card.testimonials.length > 0 && (
                   <TestimonialsCarousel testimonials={card.testimonials} />
                 )}
@@ -84,13 +83,18 @@ const HomePage: React.FC = (): JSX.Element => {
                   <CardProjects projects={card.projects} />
                 )}
                 {card.achievements && card.achievements.length > 0 && (
-                  <NowCard
-                    achievements={card.achievements}
-                    content={card.content}
-                    funFact={card.funFact}
-                  />
+                  <AchievementsCard achievements={card.achievements} />
                 )}
                 {card.mailto && <MailCard mailto={card.mailto} />}
+                {card.quote && <QuoteCard quote={card.quote} />}
+                {!card.experiences &&
+                  !card.top3Technologies &&
+                  !card.technologies &&
+                  !card.testimonials &&
+                  !card.projects &&
+                  !card.achievements &&
+                  !card.mailto &&
+                  !card.quote && <p className={cnParagraph}>{card.content}</p>}
               </CardContent>
             </>
           )}

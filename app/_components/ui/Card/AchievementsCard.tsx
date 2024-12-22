@@ -1,4 +1,3 @@
-import { cnParagraph } from '@/styles/fontStyles';
 import CardProps from '@/types/CardProps';
 import { IconLoader } from '@/hooks/IconLoader';
 import { cn } from '@/lib/utils';
@@ -9,11 +8,7 @@ import { Badge } from '@/lib/components/ui/badge';
 import { cnSmallText, cnLightTextMuted } from '@/styles/fontStyles';
 import { CardContent } from '@/lib/components/ui/card';
 
-export const NowCard: React.FC<CardProps> = ({
-  achievements,
-  content,
-  funFact,
-}) => {
+export const AchievementsCard: React.FC<CardProps> = ({ achievements }) => {
   return (
     <div className={cnSmallSpaceY}>
       <CardContent>
@@ -40,12 +35,6 @@ export const NowCard: React.FC<CardProps> = ({
               </li>
             ))}
         </ul>
-      </CardContent>
-      <CardContent className={cnSmallSpaceY}>
-        <h3 className={cnTitle2}>And now ?</h3>
-        <p className={cnParagraph}>{content}</p>
-        <h3 className={cnTitle2}>Fun fact</h3>
-        <p className={cnParagraph}>{funFact}</p>
       </CardContent>
     </div>
   );
