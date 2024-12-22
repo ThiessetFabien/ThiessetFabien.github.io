@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
-import { cnSiteTitle } from '@/styles/fontStyles';
+import { cnTitle2 } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
 
 /**
@@ -28,7 +28,7 @@ export const Header: React.FC<{ className?: string }> = ({ className }) => {
       <div className={cn('mx-auto max-w-7xl', cnPaddingX, cnFlexBetweenX)}>
         <Link
           href='/'
-          className={cn(cnSiteTitle, 'pointer-events-auto text-center')}
+          className={cn(cnTitle2, 'pointer-events-auto text-center')}
         >
           <h1>{titleUppercased}</h1>
         </Link>

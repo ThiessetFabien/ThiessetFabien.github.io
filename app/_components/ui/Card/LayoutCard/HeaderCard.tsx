@@ -1,7 +1,7 @@
 import type CardProps from '@/types/CardProps';
 import { cn } from '@/lib/utils';
 import { cnPadding } from '@/styles/boxModelStyles';
-import { cnTitle1, cnDescription } from '@/styles/fontStyles';
+import { cnDescription, cnTitle2 } from '@/styles/fontStyles';
 import {
   CardTitle,
   CardDescription,
@@ -11,7 +11,7 @@ import {
 export const HeaderCard: React.FC<CardProps> = ({ title, description }) => {
   return (
     <CardHeader className={cn(cnPadding, 'space-y-0')}>
-      <CardTitle className={cnTitle1}>
+      <CardTitle className={cnTitle2}>
         <h2>{title}</h2>
       </CardTitle>
       <CardDescription className={cnDescription}>{description}</CardDescription>

@@ -1,20 +1,20 @@
 import { cn } from '@/lib/utils';
 
-export const cnSiteTitle = cn(
+export const cnTitle1 = cn(
   'font-caption font-bold leading-tight tracking-tight',
-  'text-lg',
-  'sm:text-xl',
-  'md:text-2xl'
+  'text-xl',
+  'sm:text-2xl',
+  'md:text-3xl'
 );
 
-export const cnTitle1 = cn(
+export const cnTitle2 = cn(
   'font-caption font-bold leading-tight tracking-tight',
   'text-base',
   'sm:text-lg',
   'md:text-xl'
 );
 
-export const cnTitle2 = cn(
+export const cnTitle3 = cn(
   'font-caption leading-tight tracking-tight',
   'text-sm',
   'sm:text-base',

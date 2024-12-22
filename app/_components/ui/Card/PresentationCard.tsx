@@ -8,9 +8,17 @@ import { cn } from '@/lib/utils';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnTitle1, cnDescription } from '@/styles/fontStyles';
 import { cnGap, cnMarginTop, cnPadding } from '@/styles/boxModelStyles';
-import { cnHiddenXs } from '@/styles/hideItemStyles';
+import { cnHiddenSm, cnHiddenXs } from '@/styles/hideItemStyles';
 import type CardProps from '@/types/CardProps';
 import FooterCard from './LayoutCard/FooterCard';
+import {
+  useIsMd,
+  useIsLg,
+  useIsXl,
+  useIsXs,
+  useIsXxs,
+} from '@/hooks/useMediaQuery';
+import { getImageSrc } from '@/hooks/getImageSrc';
 
 const PresentationCard: React.FC<CardProps> = ({
   title,
@@ -30,19 +38,28 @@ const PresentationCard: React.FC<CardProps> = ({
   href3,
   downloadActive3,
 }) => {
+  const isXxs = useIsXxs();
+  const isXs = useIsXs();
+  const isMd = useIsMd();
+  const isLg = useIsLg();
+  const isXl = useIsXl();
+
   return (
-    <CardHeader className={cn(cnGap, cnPadding, 'grid grid-cols-3')}>
-      <div className='col-span-1'>
+    <CardHeader className={cn(cnGap, cnPadding, 'flex flex-row space-y-0')}>
+      <div className='h-full w-auto flex-shrink-0'>
         <Image
-          src={`/images/${imageSrc}`}
+          src={getImageSrc(imageSrc || '', isXxs, isXs, isMd, isLg, isXl)}
           alt={imageAlt || ''}
-          width={205}
-          height={316}
+          height={310}
+          width={201}
           priority
-          className={'h-auto w-auto rounded-lg'}
+          className={cn(
+            'block w-auto rounded-lg',
+            'xs:min-h-[292px] sm:min-h-[14.5rem] md:min-h-[16.75rem] lg:min-h-[19.375rem] xl:min-h-[13.25rem]'
+          )}
         />
       </div>
-      <div className={cn(cnFlexCol, 'col-span-2 justify-center')}>
+      <div className={cn(cnFlexCol, 'justify-center')}>
         <CardTitle className={cnTitle1}>
           <h2>{title}</h2>
         </CardTitle>
