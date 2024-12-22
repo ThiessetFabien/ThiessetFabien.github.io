@@ -1,17 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import { CardTitle } from '@/lib/components/ui/card';
-import { Separator } from '@/lib/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { cnTitle2, cnParagraph, cnLightTextMuted } from '@/styles/fontStyles';
-import { cnGap, cnPaddingX, cnSpaceY } from '@/styles/boxModelStyles';
+import { cnTitle2, cnParagraph } from '@/styles/fontStyles';
+import { cnGap, cnSpaceY } from '@/styles/boxModelStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
-import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
-import { sizeBigIcon, sizeIcon } from '@/styles/sizeStyles';
+import { sizeBigIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type CardProps from '@/types/CardProps';
-import { Quote } from 'lucide-react';
 
 /**
  * @file SkillsCard.tsx
@@ -25,8 +22,6 @@ import { Quote } from 'lucide-react';
  */
 export const SkillsCard: React.FC<CardProps> = ({
   top3Technologies,
-  technologies,
-  quote,
 }: CardProps): JSX.Element => {
   return (
     <div className={cnSpaceY}>
@@ -76,22 +71,6 @@ export const SkillsCard: React.FC<CardProps> = ({
               </div>
             </div>
           ))}
-      </div>
-      <Separator className='h-[1px] w-full' />
-      <p className={cnParagraph}>And i currently use...</p>
-      <TechnologiesCarousel technologies={technologies} />
-      <Separator className='h-[1px] w-full' />
-      <div className={cn(cnLightTextMuted, 'flex')}>
-        <div className='self-start'>
-          <Quote className={cn(sizeIcon)} />
-        </div>
-        <p className={cn(cnParagraph, cnPaddingX)}>
-          {quote && quote.text} <br />
-          <em className={'block text-right italic'}>{quote && quote.author}</em>
-        </p>
-        <div className='self-end'>
-          <Quote className={cn(sizeIcon, 'rotate-180')} />
-        </div>
       </div>
     </div>
   );

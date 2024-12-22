@@ -8,10 +8,10 @@ export const createStringSchema = (
   z
     .string()
     .min(min, {
-      message: `This field must contain at least ${min} characters`,
+      message: `This ${fieldName} must contain at least ${min} characters`,
     })
     .max(max, {
-      message: `This field must contain at most ${max} characters`,
+      message: `This ${fieldName} must contain at most ${max} characters`,
     });
 
 export const formSchema = z.object({

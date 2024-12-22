@@ -61,7 +61,7 @@ export const MailCard: React.FC<CardProps> = ({ mailto }) => {
           name='name'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Your name</FormLabel>
+              <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input placeholder='John Doe' {...field} required />
               </FormControl>
@@ -74,9 +74,9 @@ export const MailCard: React.FC<CardProps> = ({ mailto }) => {
           name='mail'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Your mail</FormLabel>
+              <FormLabel>Mail</FormLabel>
               <FormControl>
-                <Input placeholder='me@mail.com' {...field} required />
+                <Input placeholder='you@mail.com' {...field} required />
               </FormControl>
               <FormMessage />
             </FormItem>
