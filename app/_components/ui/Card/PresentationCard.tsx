@@ -6,7 +6,7 @@ import {
 } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnTitle1, cnDescription } from '@/styles/fontStyles';
+import { cnTitle1, cnBigDescription } from '@/styles/fontStyles';
 import { cnGap, cnMarginTop, cnPadding } from '@/styles/boxModelStyles';
 import { cnHiddenSm, cnHiddenXs } from '@/styles/hideItemStyles';
 import type CardProps from '@/types/CardProps';
@@ -52,6 +52,7 @@ const PresentationCard: React.FC<CardProps> = ({
           alt={imageAlt || ''}
           height={310}
           width={201}
+          objectFit='contain'
           priority
           className={cn(
             'block w-auto rounded-lg',
@@ -63,7 +64,7 @@ const PresentationCard: React.FC<CardProps> = ({
         <CardTitle className={cnTitle1}>
           <h2>{title}</h2>
         </CardTitle>
-        <CardDescription className={cn(cnDescription, cnHiddenXs)}>
+        <CardDescription className={cn(cnBigDescription, cnHiddenXs)}>
           <p>{description}</p>
         </CardDescription>
         <FooterCard

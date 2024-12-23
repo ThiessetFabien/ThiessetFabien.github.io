@@ -3,7 +3,7 @@ import { IconLoader } from '@/hooks/IconLoader';
 import { cn } from '@/lib/utils';
 import { cnSmallSpaceY, cnGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnTitle2 } from '@/styles/fontStyles';
+import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
 import { Badge } from '@/lib/components/ui/badge';
 import { cnSmallText, cnLightTextMuted } from '@/styles/fontStyles';
 import { CardContent } from '@/lib/components/ui/card';
@@ -20,7 +20,7 @@ export const AchievementsCard: React.FC<CardProps> = ({ achievements }) => {
                   {IconLoader(achievement.icon || '')}
                 </div>
                 <div className={cnFlexCol}>
-                  <h3 className={cnTitle2}>{achievement.title}</h3>
+                  <h3 className={cnParagraph}>{achievement.title}</h3>
                   <Badge
                     variant='outline'
                     className={cn(

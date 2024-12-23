@@ -67,7 +67,11 @@ const HomePage: React.FC = (): JSX.Element => {
           )}
           {!card.imageSrc && !card.map && (
             <>
-              <HeaderCard title={card.title} description={card.description} />
+              <HeaderCard
+                title={card.title}
+                description={card.description}
+                index={index}
+              />
               <CardContent className={cnPadding}>
                 {card.experiences &&
                   card.experiences.length > 0 &&

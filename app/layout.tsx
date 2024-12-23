@@ -50,12 +50,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header
-            className={cn(
-              'sticky top-0 z-50',
-              'bg-background',
-              cnPadding,
-              cnMarginBottom
-            )}
+            className={cn('sticky top-0 z-50', 'bg-background', cnPadding)}
           />
           <main
             className={cn(

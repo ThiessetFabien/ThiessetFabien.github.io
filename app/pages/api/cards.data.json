@@ -42,7 +42,7 @@
   },
   {
     "title": "Where i've worked",
-    "description": "I've a background in web development, project coordination, and support for individuals with disabilities. I've a passion for creating beautiful and functional applications.",
+    "description": "I've a passion for creating beautiful and functional apps with a diverse background in web development, project coordination, and supporting individuals with disabilities.",
     "experiences": [
       {
         "developer": [
@@ -83,7 +83,7 @@
           }
         ],
         "projectCoordinator": {
-          "content": "I was responsible for coordinating the daily life of residents with disabilities. I was also responsible for the implementation of the Humanitude method, which aims to improve the quality of life of residents and the well-being of caregivers.",
+          "content": "I was responsible for coordinating the daily life of residents with disabilities, for the implementation of the Humanitude method, which aims to improve the quality of life of residents and the well-being of caregivers.",
           "items": [
             {
               "title": "Daily Life Referent",
@@ -203,6 +203,11 @@
         "icon": "Trophy",
         "title": "RNCP37674 - Level 5 - Web and Mobile Developer",
         "date": "juil 2024"
+      },
+      {
+        "icon": "Trophy",
+        "title": "Funding with the Project of Transition Pro Hauts-de-France",
+        "date": "sept 2023"
       },
       {
         "icon": "Trophy",
@@ -330,7 +335,7 @@
     ]
   },
   {
-    "title": "What i am looking for",
+    "title": "I am eager to put my skills to use and deepen my knowledge in these areas",
     "content": "I am seeking a position as a Front-end or Back-end Developer in a company that values both human and technical skills. I am also open to apprenticeship opportunities in application development or as an AI expert."
   },
   {

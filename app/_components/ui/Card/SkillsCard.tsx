@@ -3,12 +3,25 @@ import Image from 'next/image';
 import { CardTitle } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { cnTitle2, cnParagraph } from '@/styles/fontStyles';
-import { cnGap, cnSpaceY } from '@/styles/boxModelStyles';
-import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
+import { cnTitle3, cnParagraph } from '@/styles/fontStyles';
+import {
+  cnGap,
+  cnMargin,
+  cnSmallMarginX,
+  cnSmallSpaceX,
+  cnSmallSpaceY,
+  cnSpaceY,
+} from '@/styles/boxModelStyles';
+import {
+  cnFlexBetweenX,
+  cnFlexCenterY,
+  cnFlexCol,
+  cnFlexFullCenter,
+} from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type CardProps from '@/types/CardProps';
+import { Separator } from '@/lib/components/ui/separator';
 
 /**
  * @file SkillsCard.tsx
@@ -24,54 +37,53 @@ export const SkillsCard: React.FC<CardProps> = ({
   top3Technologies,
 }: CardProps): JSX.Element => {
   return (
-    <div className={cnSpaceY}>
-      <div
-        className={cn(
-          cnGap,
-          cnFlexFullCenter,
-          'grid grid-cols-3 lg:grid-cols-2 lg:grid-rows-2'
-        )}
-      >
-        {top3Technologies &&
-          top3Technologies.map((tech, index) => (
+    <div className='flex w-full flex-row space-x-2'>
+      {top3Technologies &&
+        top3Technologies.map((tech, index) => (
+          <>
+            {index > 0 && (
+              <Separator
+                decorative
+                orientation={'vertical'}
+                className='flex-none'
+              />
+            )}
             <div
               key={index}
               className={cn(
-                cnFlexCol,
-                'h-full w-full',
-                'items-start',
-                index === 0 ? 'lg:col-span-2 lg:border-b' : 'lg:col-span-1'
+                'flex flex-row',
+                cnFlexBetweenX,
+                'w-[(calc(100% - 9px) / 3)] h-full'
+                // index === 0 ? 'lg:col-span-2 lg:border-b' : 'lg:col-span-1'
               )}
             >
               <div
                 className={cn(
-                  cnSpaceY,
-                  cnGap,
-                  'h-full w-full',
-                  index < top3Technologies.length - 1
-                    ? 'border-r lg:border-r-0'
-                    : ''
+                  cnFlexCol,
+                  cnSmallSpaceY,
+                  'h-full',
+                  'items-start justify-start'
                 )}
               >
                 <Image
                   src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
                   alt={tech.name}
-                  width={50}
-                  height={50}
+                  width={56}
+                  height={56}
                   objectFit='contain'
                   priority
-                  className={sizeBigIcon}
+                  className={cn(sizeBigIcon, 'block')}
                 />
-                <div>
-                  <CardTitle className={cnTitle2}>{tech.name}</CardTitle>
-                  <p className={cn(cnParagraph, cnHiddenXs)}>
+                <p>
+                  {tech.name}
+                  <span className={cn(cnParagraph, cnHiddenXs)}>
                     {tech.description}
-                  </p>
-                </div>
+                  </span>
+                </p>
               </div>
             </div>
-          ))}
-      </div>
+          </>
+        ))}
     </div>
   );
 };

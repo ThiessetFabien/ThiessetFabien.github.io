@@ -6,14 +6,16 @@ import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import { Experience } from '@/types/ExperienceProps';
 import { cnParagraph } from '@/styles/fontStyles';
 import { cn } from '@/lib/utils';
+import { cnSpaceX } from '@/styles/boxModelStyles';
 
 export const ExperiencesAccordion: React.FC<{
   experience: Experience[];
   content: string;
-}> = ({ experience, content }) => {
+  className?: string;
+}> = ({ experience, content, className }) => {
   return (
-    <>
-      <AccordionTrigger className={cn(cnParagraph, 'min-w-full')}>
+    <div className={className}>
+      <AccordionTrigger className={cn(cnParagraph, cnSpaceX, 'min-w-full')}>
         {content}
       </AccordionTrigger>
       <AccordionContent>
@@ -26,6 +28,6 @@ export const ExperiencesAccordion: React.FC<{
           />
         ))}
       </AccordionContent>
-    </>
+    </div>
   );
 };
