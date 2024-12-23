@@ -8,7 +8,7 @@ import { Quote } from './QuoteProps';
 import { Experiences } from './ExperiencesProps';
 import { Project } from './ProjectProps';
 import { Testimonial } from './TestimonialProps';
-import { Top3Technologie } from './Top3TechnologieProps';
+import { TopTechnologie } from './Top3TechnologieProps';
 
 /**
  * CardProps type.
@@ -58,11 +58,16 @@ export default interface CardProps {
   href3?: string;
   downloadActive3?: boolean;
 
+  cta4?: string;
+  icon4?: string;
+  href4?: string;
+  downloadActive4?: boolean;
+
   experiences?: Experiences[];
 
   projects?: Project[];
 
-  top3Technologies?: Top3Technologie[];
+  topTechnologies?: TopTechnologie[];
   technologies?: Technologie[];
   quote?: Quote;
 

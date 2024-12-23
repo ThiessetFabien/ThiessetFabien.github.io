@@ -15,9 +15,9 @@ export const cnTitle2 = cn(
 
 export const cnTitle3 = cn(
   'font-caption leading-tight tracking-tight',
-  'text-sm',
-  'sm:text-base',
-  'md:text-lg'
+  'text-xs',
+  'sm:text-sm',
+  'md:text-base'
 );
 
 export const cnBigDescription = cn(
@@ -37,11 +37,9 @@ export const cnDescription = cn(
 );
 
 export const cnParagraph = cn(
-  // 'w-full max-w-prose',
-  'font-light leading-relaxed text-sm'
-  // 'text-xs',
-  // 'sm:text-sm',
-  // 'md:text-base'
+  'max-w-prose',
+  'font-light leading-relaxed',
+  'text-xs'
 );
 
 export const cnSmallText = cn('text-xs lg:text-sm', 'leading-relaxed ');

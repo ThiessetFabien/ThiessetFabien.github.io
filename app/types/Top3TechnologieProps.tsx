@@ -1,4 +1,4 @@
-export interface Top3Technologie {
+export interface TopTechnologie {
   name: string;
   description: string;
   slug: string;

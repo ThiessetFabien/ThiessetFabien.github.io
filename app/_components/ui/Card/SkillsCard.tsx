@@ -1,32 +1,18 @@
-import React from 'react';
-import Image from 'next/image';
-import { CardTitle } from '@/lib/components/ui/card';
-import { cn } from '@/lib/utils';
-import { baseUrl } from '@/utils/constants/baseUrl';
-import { cnTitle3, cnParagraph } from '@/styles/fontStyles';
-import {
-  cnGap,
-  cnMargin,
-  cnSmallMarginX,
-  cnSmallSpaceX,
-  cnSmallSpaceY,
-  cnSpaceY,
-} from '@/styles/boxModelStyles';
-import {
-  cnFlexBetweenX,
-  cnFlexCenterY,
-  cnFlexCol,
-  cnFlexFullCenter,
-} from '@/styles/flexStyles';
-import { sizeBigIcon } from '@/styles/sizeStyles';
-import { cnHiddenXs } from '@/styles/hideItemStyles';
-import type CardProps from '@/types/CardProps';
-import { Separator } from '@/lib/components/ui/separator';
-
 /**
  * @file SkillsCard.tsx
  * @description This file exports a skills card component.
  */
+
+import React from 'react';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import { baseUrl } from '@/utils/constants/baseUrl';
+import { cnParagraph, cnTitle3 } from '@/styles/fontStyles';
+import { cnGap, cnSmallGap, cnSpaceX } from '@/styles/boxModelStyles';
+import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
+import { sizeBigIcon } from '@/styles/sizeStyles';
+import { cnHiddenXs } from '@/styles/hideItemStyles';
+import type CardProps from '@/types/CardProps';
 
 /**
  * SkillsCard component.
@@ -34,55 +20,56 @@ import { Separator } from '@/lib/components/ui/separator';
  * @returns {JSX.Element} The rendered SkillsCard component.
  */
 export const SkillsCard: React.FC<CardProps> = ({
-  top3Technologies,
+  topTechnologies,
 }: CardProps): JSX.Element => {
   return (
-    <div className='flex w-full flex-row space-x-2'>
-      {top3Technologies &&
-        top3Technologies.map((tech, index) => (
-          <>
-            {index > 0 && (
-              <Separator
-                decorative
-                orientation={'vertical'}
-                className='flex-none'
-              />
+    <div
+      className={cn(
+        'flex w-full flex-row flex-wrap',
+        'container overflow-hidden',
+        cnSmallGap
+      )}
+    >
+      {topTechnologies &&
+        topTechnologies.map((tech, index) => (
+          <div
+            key={index}
+            className={cn(
+              'flex items-center',
+              'h-1/4 w-[calc((100%-1.5rem)/4)] md:w-[calc((100%-3rem)/4)] lg:w-[calc((100%-1rem)/2)]'
             )}
+          >
             <div
-              key={index}
               className={cn(
-                'flex flex-row',
-                cnFlexBetweenX,
-                'w-[(calc(100% - 9px) / 3)] h-full'
-                // index === 0 ? 'lg:col-span-2 lg:border-b' : 'lg:col-span-1'
+                cnFlexCol,
+                cnGap,
+                'h-full',
+                'items-start justify-start'
               )}
             >
-              <div
-                className={cn(
-                  cnFlexCol,
-                  cnSmallSpaceY,
-                  'h-full',
-                  'items-start justify-start'
-                )}
-              >
-                <Image
-                  src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
-                  alt={tech.name}
-                  width={56}
-                  height={56}
-                  objectFit='contain'
-                  priority
-                  className={cn(sizeBigIcon, 'block')}
-                />
-                <p>
-                  {tech.name}
-                  <span className={cn(cnParagraph, cnHiddenXs)}>
-                    {tech.description}
-                  </span>
-                </p>
-              </div>
+              <Image
+                src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+                alt={tech.name}
+                width={42}
+                height={42}
+                objectFit='contain'
+                priority
+                className={cn(sizeBigIcon, 'block')}
+              />
+              <p className={cn(cnTitle3)}>
+                {tech.name}
+                <span
+                  className={cn(
+                    cnParagraph,
+                    'text-muted-foreground',
+                    cnHiddenXs
+                  )}
+                >
+                  {tech.description}
+                </span>
+              </p>
             </div>
-          </>
+          </div>
         ))}
     </div>
   );
