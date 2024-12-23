@@ -10,7 +10,7 @@ const useCardGrid = (cards: CardProps[]) => {
         case !!card.imageSrc:
           colSpan = 'lg:col-span-8 lg:row-span-1';
           break;
-        case !!card.top3Technologies:
+        case !!card.topTechnologies:
           colSpan = 'lg:col-span-4 lg:row-span-2';
           break;
         case !!card.technologies:

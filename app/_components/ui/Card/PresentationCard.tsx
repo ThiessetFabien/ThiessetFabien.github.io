@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnTitle1, cnBigDescription } from '@/styles/fontStyles';
 import { cnGap, cnMarginTop, cnPadding } from '@/styles/boxModelStyles';
-import { cnHiddenSm, cnHiddenXs } from '@/styles/hideItemStyles';
+import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type CardProps from '@/types/CardProps';
 import FooterCard from './LayoutCard/FooterCard';
 import {
@@ -37,6 +37,10 @@ const PresentationCard: React.FC<CardProps> = ({
   icon3,
   href3,
   downloadActive3,
+  cta4,
+  icon4,
+  href4,
+  downloadActive4,
 }) => {
   const isXxs = useIsXxs();
   const isXs = useIsXs();
@@ -80,6 +84,10 @@ const PresentationCard: React.FC<CardProps> = ({
           icon3={icon3}
           href3={href3}
           downloadActive3={downloadActive3}
+          cta4={cta4}
+          icon4={icon4}
+          href4={href4}
+          downloadActive4={downloadActive4}
           className={cnMarginTop}
         />
       </div>

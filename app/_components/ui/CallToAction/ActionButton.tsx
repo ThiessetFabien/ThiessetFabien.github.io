@@ -6,6 +6,7 @@ import { IconLoader } from '@/hooks/IconLoader';
 import { cnButton, cnButtonIcon } from '@/styles/buttonStyles';
 import type { ActionButton } from '@/types/ActionButtonProps';
 import { cnSmallText } from '@/styles/fontStyles';
+import { baseUrl } from '@/utils/constants/baseUrl';
 
 /**
  * @file ActionButton.tsx
@@ -31,7 +32,7 @@ const ActionButton: React.FC<ActionButton> = ({
 }: ActionButton): JSX.Element => {
   return (
     <a
-      href={`http://${href}`}
+      href={`${baseUrl}${href}`}
       target='_blank'
       rel='noopener noreferrer'
       {...dynamicDownload(downloadActive || false)}

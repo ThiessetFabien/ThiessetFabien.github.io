@@ -41,6 +41,10 @@ export const FooterCard: React.FC<CardProps> = ({
   icon3,
   href3,
   downloadActive3,
+  cta4,
+  icon4,
+  href4,
+  downloadActive4,
   className,
 }) => {
   return (
@@ -50,7 +54,7 @@ export const FooterCard: React.FC<CardProps> = ({
           cta={cta1 || ''}
           icon={icon1 || ''}
           href={href1 || ''}
-          downloadActive={downloadActive1 || false}
+          downloadActive={downloadActive1 || undefined}
           variant='default'
         />
       ) : null}
@@ -59,7 +63,7 @@ export const FooterCard: React.FC<CardProps> = ({
           cta={cta2 || ''}
           icon={icon2 || ''}
           href={href2 || ''}
-          downloadActive={downloadActive2 || false}
+          downloadActive={downloadActive2 || undefined}
           variant='outline'
         />
       ) : null}
@@ -68,7 +72,16 @@ export const FooterCard: React.FC<CardProps> = ({
           cta={cta3 || ''}
           icon={icon3 || ''}
           href={href3 || ''}
-          downloadActive={downloadActive3 || false}
+          downloadActive={downloadActive3 || undefined}
+          variant='outline'
+        />
+      ) : null}
+      {(cta4 && href4) || (icon4 && href4) ? (
+        <ActionButton
+          cta={cta4 || ''}
+          icon={icon4 || ''}
+          href={href4 || ''}
+          downloadActive={downloadActive4 || undefined}
           variant='outline'
         />
       ) : null}

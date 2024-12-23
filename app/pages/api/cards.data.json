@@ -4,21 +4,24 @@
     "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional. If you want to learn more about working with me, take a look through my website.",
     "imageSrc": "photo",
     "imageAlt": "Picture of Fabien",
-    "icon1": "Mail",
-    "cta1": "Hire an expert",
-    "href1": "mailto:thiessetfabienpro@gmail.com",
+    "icon1": "ArrowBigDownDash",
+    "cta1": "Learn more",
+    "href1": "#card-2",
     "downloadActive1": false,
     "icon2": "Linkedin",
     "href2": "www.linkedin.com/in/fabien-thiesset/",
     "downloadActive2": false,
-    "icon3": "PhoneOutgoing",
-    "href3": "tel:+33610920974",
-    "downloadActive3": false
+    "icon3": "Mail",
+    "href3": "mailto:mailto:thiessetfabienpro@gmail.com",
+    "downloadActive3": false,
+    "icon4": "PhoneOutgoing",
+    "href4": "tel:+33610920974",
+    "downloadActive4": false
   },
   {
     "title": "Being a Full-Stack Developer is my primary focus",
     "description": " I specialize in building web applications using modern technologies.",
-    "top3Technologies": [
+    "topTechnologies": [
       {
         "name": "React.js",
         "description": "I use React.js to create beautiful and functional user interfaces.  I also Next.js as a backend and frontend framework.",
@@ -33,6 +36,11 @@
         "name": "Node.js",
         "description": "I use Node.js and Express.js for secure and robuste server-side development.",
         "slug": "nodejs/nodejs-original"
+      },
+      {
+        "name": "SQL & NoSQL",
+        "description": "I use PostgreSQL and additionally, MongoDB for secure and robust database management.",
+        "slug": "postgresql/postgresql-original"
       }
     ],
     "cta1": "View on GitHub",
@@ -133,10 +141,6 @@
       {
         "name": "Express",
         "slug": "express/express-original"
-      },
-      {
-        "name": "PostgreSQL",
-        "slug": "postgresql/postgresql-original"
       },
       {
         "name": "MongoDB",

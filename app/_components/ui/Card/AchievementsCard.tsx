@@ -3,7 +3,7 @@ import { IconLoader } from '@/hooks/IconLoader';
 import { cn } from '@/lib/utils';
 import { cnSmallSpaceY, cnGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
+import { cnParagraph } from '@/styles/fontStyles';
 import { Badge } from '@/lib/components/ui/badge';
 import { cnSmallText, cnLightTextMuted } from '@/styles/fontStyles';
 import { CardContent } from '@/lib/components/ui/card';

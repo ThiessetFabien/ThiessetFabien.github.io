@@ -37,11 +37,7 @@ const HomePage: React.FC = (): JSX.Element => {
   return (
     <>
       {gridConfig.map((card, index: number) => (
-        <Card
-          key={index}
-          id={`card-${index}`}
-          className={cn('h-full w-full', card.colSpan)}
-        >
+        <Card key={index} className={cn('h-full w-full', card.colSpan)}>
           {card.imageSrc && !card.map && (
             <PresentationCard
               title={card.title}
@@ -60,6 +56,10 @@ const HomePage: React.FC = (): JSX.Element => {
               icon3={card.icon3}
               href3={card.href3}
               downloadActive3={card.downloadActive3}
+              cta4={card.cta4}
+              icon4={card.icon4}
+              href4={card.href4}
+              downloadActive4={card.downloadActive4}
             />
           )}
           {!card.imageSrc && card.map && (
@@ -78,8 +78,8 @@ const HomePage: React.FC = (): JSX.Element => {
                   !card.technologies && (
                     <CardExperiences experiences={card.experiences} />
                   )}
-                {card.top3Technologies && (
-                  <SkillsCard top3Technologies={card.top3Technologies} />
+                {card.topTechnologies && (
+                  <SkillsCard topTechnologies={card.topTechnologies} />
                 )}
                 {card.technologies && card.technologies.length > 0 && (
                   <OtherSkillsCard technologies={card.technologies} />

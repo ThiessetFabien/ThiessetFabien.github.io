@@ -12,7 +12,7 @@ import { cnPaddingY } from '@/styles/boxModelStyles';
 import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
 import { ExperiencesAccordion } from '@/ui/Accordion/ExperiencesAccordion';
 import { ExperiencesList } from '@/ui/List/ExperiencesList';
-import type CardProps from '@/types/CardProps.jsx';
+import type CardProps from '@/types/CardProps';
 
 /**
  * CardProjects component.
