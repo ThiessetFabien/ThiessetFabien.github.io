@@ -24,7 +24,7 @@
     "topTechnologies": [
       {
         "name": "React.js",
-        "description": "I use React.js to create beautiful and functional user interfaces.  I also Next.js as a backend and frontend framework.",
+        "description": "I use React.js and Next.js to create beautiful and functional user interfaces.",
         "slug": "react/react-original"
       },
       {
@@ -39,7 +39,7 @@
       },
       {
         "name": "SQL & NoSQL",
-        "description": "I use PostgreSQL and additionally, MongoDB for secure and robust database management.",
+        "description": "I manage secure and robust database using PostgreSQL and MongoDB.",
         "slug": "postgresql/postgresql-original"
       }
     ],

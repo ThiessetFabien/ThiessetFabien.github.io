@@ -129,11 +129,6 @@
   padding: 0;
 }
 
-/* Optional: Set base font size for html element */
-/* html {
-  font-size: 62.5%;
-} */
-
 /* Dark mode filter for white elements */
 .dark .filter-white {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%)

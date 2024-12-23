@@ -34,7 +34,12 @@ export const CardExperiences: React.FC<CardProps> = ({ experiences }) => {
               className={cn(
                 'w-full',
                 cnBorder,
-                'sm:h-42 h-48 xxs:h-40 xs:h-40 md:h-48',
+                'h-56',
+                'xxs:h-[12.5rem]',
+                'xs:h-40',
+                'sm:h-42',
+                'md:h-48',
+                'lg:h-40',
                 cnPaddingY
               )}
             >
