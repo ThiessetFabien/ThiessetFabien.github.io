@@ -8,7 +8,7 @@ import React from 'react';
 import ActionButton from '../../CallToAction/ActionButton';
 import CardProps from '@/types/CardProps';
 import { cn } from '@/lib/utils';
-import { cnGap } from '@/styles/boxModelStyles';
+import { cnSmallGap } from '@/styles/boxModelStyles';
 
 /**
  * FooterCard component props.
@@ -48,7 +48,7 @@ export const FooterCard: React.FC<CardProps> = ({
   className,
 }) => {
   return (
-    <div className={cn('flex flex-wrap', cnGap, className)}>
+    <div className={cn('flex flex-wrap', cnSmallGap, className)}>
       {(cta1 && href1) || (icon1 && href1) ? (
         <ActionButton
           cta={cta1 || ''}

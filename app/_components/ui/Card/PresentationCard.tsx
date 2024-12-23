@@ -50,17 +50,20 @@ const PresentationCard: React.FC<CardProps> = ({
 
   return (
     <CardHeader className={cn(cnGap, cnPadding, 'flex flex-row space-y-0')}>
-      <div className='h-full w-auto flex-shrink-0'>
+      <div className='flex h-full w-auto flex-shrink-0 self-end'>
         <Image
           src={getImageSrc(imageSrc || '', isXxs, isXs, isMd, isLg, isXl)}
           alt={imageAlt || ''}
           height={310}
           width={201}
-          objectFit='contain'
           priority
           className={cn(
-            'block w-auto rounded-lg',
-            'xs:min-h-[292px] sm:min-h-[14.5rem] md:min-h-[16.75rem] lg:min-h-[19.375rem] xl:min-h-[13.25rem]'
+            'w-auto rounded-lg',
+            'xs:min-h-[18.25rem]',
+            'sm:min-h-[14.5rem]',
+            'md:min-h-[16.75rem]',
+            'lg:min-h-[19rem]',
+            'xl:min-h-[15.5rem]'
           )}
         />
       </div>
