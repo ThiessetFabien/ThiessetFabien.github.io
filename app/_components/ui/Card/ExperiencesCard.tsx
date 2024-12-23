@@ -1,19 +1,18 @@
+/**
+ * @file CardProjects.tsx
+ * @description This file exports a component that renders a list of project cards.
+ */
 'use client';
 
 import React from 'react';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { cnBorder } from '@/styles/borderStyles';
-import { cnPadding } from '@/styles/boxModelStyles';
+import { cnPaddingY } from '@/styles/boxModelStyles';
 import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
 import { ExperiencesAccordion } from '@/ui/Accordion/ExperiencesAccordion';
 import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type CardProps from '@/types/CardProps.jsx';
-
-/**
- * @file CardProjects.tsx
- * @description This file exports a component that renders a list of project cards.
- */
 
 /**
  * CardProjects component.
@@ -36,7 +35,7 @@ export const CardExperiences: React.FC<CardProps> = ({ experiences }) => {
                 'w-full',
                 cnBorder,
                 'sm:h-42 h-48 xxs:h-40 xs:h-40 md:h-48',
-                cnPadding
+                cnPaddingY
               )}
             >
               {experience.developer.map((developer, developerIndex) => (
@@ -51,6 +50,7 @@ export const CardExperiences: React.FC<CardProps> = ({ experiences }) => {
             <Accordion type='single' collapsible className='w-full'>
               <AccordionItem value={`projectCoordinator-${index}`}>
                 <ExperiencesAccordion
+                  className='border border-background'
                   content={experience.projectCoordinator?.content}
                   experience={experience.projectCoordinator.items}
                 />
