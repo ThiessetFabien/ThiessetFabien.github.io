@@ -54,7 +54,7 @@ const PresentationCard: React.FC<CardProps> = ({
         <Image
           src={getImageSrc(imageSrc || '', isXxs, isXs, isMd, isLg, isXl)}
           alt={imageAlt || ''}
-          height={310}
+          height={232}
           width={201}
           priority
           className={cn(
@@ -62,7 +62,7 @@ const PresentationCard: React.FC<CardProps> = ({
             'xs:min-h-[18.25rem]',
             'sm:min-h-[14.5rem]',
             'md:min-h-[16.75rem]',
-            'lg:min-h-[19rem]',
+            // 'lg:min-h-[19rem]',
             'xl:min-h-[15.5rem]'
           )}
         />
