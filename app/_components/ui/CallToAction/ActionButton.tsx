@@ -32,10 +32,10 @@ const ActionButton: React.FC<ActionButton> = ({
 }: ActionButton): JSX.Element => {
   return (
     <a
-      href={`${baseUrl}${href}`}
-      target='_blank'
+      href={href && href.startsWith('#') ? href : `${baseUrl}${href}`}
+      target={href && href.startsWith('#') ? '_self' : '_blank'}
       rel='noopener noreferrer'
-      {...dynamicDownload(downloadActive || false)}
+      {...(downloadActive ? { download: true } : {})}
     >
       <Button
         variant={variant}

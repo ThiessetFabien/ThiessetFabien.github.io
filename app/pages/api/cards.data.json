@@ -6,7 +6,7 @@
     "imageAlt": "Picture of Fabien",
     "icon1": "ArrowBigDownDash",
     "cta1": "Learn more",
-    "href1": "#card-2",
+    "href1": "#card-4",
     "downloadActive1": false,
     "icon2": "Linkedin",
     "href2": "www.linkedin.com/in/fabien-thiesset/",
@@ -24,7 +24,7 @@
     "topTechnologies": [
       {
         "name": "React.js",
-        "description": "I use React.js and Next.js to create beautiful and functional user interfaces.",
+        "description": "I use React.js with this framework Next.js to create beautiful and functional user interfaces.",
         "slug": "react/react-original"
       },
       {

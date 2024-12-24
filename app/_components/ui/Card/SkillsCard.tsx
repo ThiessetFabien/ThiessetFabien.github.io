@@ -44,7 +44,8 @@ export const SkillsCard: React.FC<CardProps> = ({
                 cnFlexCol,
                 cnGap,
                 'h-full',
-                'items-start justify-start'
+                'justify-center',
+                'xs:items-start xs:justify-start'
               )}
             >
               <Image
@@ -62,6 +63,7 @@ export const SkillsCard: React.FC<CardProps> = ({
                   className={cn(
                     cnParagraph,
                     'text-muted-foreground',
+                    'text-center xs:text-left',
                     cnHiddenXs
                   )}
                 >

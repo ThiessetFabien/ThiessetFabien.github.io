@@ -39,7 +39,7 @@ export const CardExperiences: React.FC<CardProps> = ({ experiences }) => {
                 'xs:h-40',
                 'sm:h-42',
                 'md:h-48',
-                'lg:h-40',
+                'lg:h-32',
                 cnPaddingY
               )}
             >
