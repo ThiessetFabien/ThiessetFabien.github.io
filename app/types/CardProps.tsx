@@ -35,6 +35,7 @@ import { TopTechnologie } from './Top3TechnologieProps';
  */
 
 export default interface CardProps {
+  index?: number;
   title?: string;
   description?: string;
 

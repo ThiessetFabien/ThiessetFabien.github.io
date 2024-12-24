@@ -13,7 +13,7 @@ import PresentationCard from '@/ui/Card/PresentationCard';
 import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
-import { cnPadding, cnGap } from '@/styles/boxModelStyles';
+import { cnPadding, cnGap, cnPaddingX } from '@/styles/boxModelStyles';
 import type CardProps from './types/CardProps';
 import { MailCard } from '@/ui/Card/MailCard';
 import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
@@ -72,7 +72,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 description={card.description}
                 index={index}
               />
-              <CardContent className={cnPadding}>
+              <CardContent className={cnPaddingX}>
                 {card.experiences &&
                   card.experiences.length > 0 &&
                   !card.technologies && (
@@ -96,7 +96,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 {card.mailto && <MailCard mailto={card.mailto} />}
                 {card.quote && <QuoteCard quote={card.quote} />}
                 {!card.experiences &&
-                  !card.top3Technologies &&
+                  !card.topTechnologies &&
                   !card.technologies &&
                   !card.testimonials &&
                   !card.projects &&

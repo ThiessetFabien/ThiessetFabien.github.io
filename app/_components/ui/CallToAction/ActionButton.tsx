@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
-import { dynamicDownload } from '@/utils/dynamicDownload';
 import { IconLoader } from '@/hooks/IconLoader';
 import { cnButton, cnButtonIcon } from '@/styles/buttonStyles';
 import type { ActionButton } from '@/types/ActionButtonProps';
