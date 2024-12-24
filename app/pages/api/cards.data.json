@@ -12,7 +12,7 @@
     "href2": "www.linkedin.com/in/fabien-thiesset/",
     "downloadActive2": false,
     "icon3": "Mail",
-    "href3": "mailto:mailto:thiessetfabienpro@gmail.com",
+    "href3": "#card-9",
     "downloadActive3": false,
     "icon4": "PhoneOutgoing",
     "href4": "tel:+33610920974",
@@ -43,10 +43,14 @@
         "slug": "postgresql/postgresql-original"
       }
     ],
-    "cta1": "View on GitHub",
-    "icon1": "Github",
-    "href1": "https://github.com/ThiessetFabien?tab=repositories",
-    "downloadActive1": false
+    "cta1": "Explore my projects",
+    "icon1": "Eye",
+    "href1": "#card-4",
+    "downloadActive1": false,
+    "cta2": "View on GitHub",
+    "icon2": "Github",
+    "href2": "https://github.com/ThiessetFabien?tab=repositories",
+    "downloadActive2": false
   },
   {
     "title": "Where i've worked",
@@ -122,13 +126,12 @@
         }
       }
     ],
-    "icon1": "PhoneOutgoing",
-    "cta1": "Do you have a project?",
-    "href1": "tel:+33610920974",
+    "icon1": "Mail",
+    "cta1": "Send a mail with your project ?",
+    "href1": "#card-9",
     "downloadActive1": false,
-    "icon2": "Mail",
-    "cta2": "Send a mail",
-    "href2": "mailto:thiessetfabienpro@gmail.com",
+    "icon2": "PhoneOutgoing",
+    "href2": "tel:+33610920974",
     "downloadActive2": false
   },
   {

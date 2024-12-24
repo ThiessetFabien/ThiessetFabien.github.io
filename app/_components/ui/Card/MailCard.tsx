@@ -114,7 +114,7 @@ export const MailCard: React.FC<CardProps> = ({ mailto }) => {
               <FormControl>
                 <Textarea
                   placeholder='Tell me a little bit about your project...'
-                  className='resize-none'
+                  className='resize-auto'
                   {...field}
                   required
                 />
