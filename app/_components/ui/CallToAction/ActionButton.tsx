@@ -31,8 +31,16 @@ const ActionButton: React.FC<ActionButton> = ({
 }: ActionButton): JSX.Element => {
   return (
     <a
-      href={href && href.startsWith('#') ? href : `${baseUrl}${href}`}
-      target={href && href.startsWith('#') ? '_self' : '_blank'}
+      href={
+        href && (href.startsWith('#') || href.startsWith('tel:'))
+          ? href
+          : `${baseUrl}${href}`
+      }
+      target={
+        href && (href.startsWith('#') || href.startsWith('tel:'))
+          ? '_self'
+          : '_blank'
+      }
       rel='noopener noreferrer'
       {...(downloadActive ? { download: true } : {})}
     >
