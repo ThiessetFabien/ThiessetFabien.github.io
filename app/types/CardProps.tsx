@@ -34,7 +34,7 @@ import { TopTechnologie } from './Top3TechnologieProps';
  * @property {string} [className] - Additional class names for the card.
  */
 
-export default interface CardProps {
+export type CardProps = {
   index?: number;
   title?: string;
   description?: string;
@@ -83,4 +83,4 @@ export default interface CardProps {
 
   className?: string;
   colSpan?: string;
-}
+};

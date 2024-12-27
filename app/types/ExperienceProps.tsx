@@ -7,8 +7,8 @@
  * @example
  * const experience: Experience = { title: 'Developer', company: 'Company A', date: '2020 - Present' };
  */
-export interface Experience {
+export type Experience = {
   title?: string;
   company?: string;
   date?: string;
-}
+};

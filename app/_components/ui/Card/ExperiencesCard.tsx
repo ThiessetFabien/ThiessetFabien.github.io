@@ -2,8 +2,6 @@
  * @file CardProjects.tsx
  * @description This file exports a component that renders a list of project cards.
  */
-'use client';
-
 import React from 'react';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';
 import { cn } from '@/lib/utils';

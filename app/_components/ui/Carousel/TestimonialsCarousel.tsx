@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import {
   Avatar,
@@ -11,7 +9,7 @@ import GenericCarousel from './GenericCarousel';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
-import CardProps from '@/types/CardProps';
+import { CardProps } from '@/types/CardProps';
 import {
   cnLightTextMuted,
   cnParagraph,

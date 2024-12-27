@@ -2,8 +2,6 @@
  * @file GenericCarousel.tsx
  * @description This file exports a generic carousel component that can be used for different types of carousels.
  */
-'use client';
-
 import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';

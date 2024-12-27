@@ -1,4 +1,4 @@
-export interface ActionButton {
+export type ActionButtonProps = {
   cta?: string;
   icon?: string;
   href?: string;
@@ -12,4 +12,4 @@ export interface ActionButton {
     | 'ghost';
   size?: 'default' | 'sm' | 'lg' | 'icon';
   onClick?: () => void;
-}
+};
