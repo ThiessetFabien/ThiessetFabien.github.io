@@ -2,13 +2,14 @@
  * @file CardProps.tsx
  * @description This file contains the type definition for the props used in various card components.
  */
-import { Technologie } from './TechnologieProps';
-import { Achievement } from './AchievementProps';
-import { Quote } from './QuoteProps';
-import { Experiences } from './ExperiencesProps';
-import { Project } from './ProjectProps';
-import { Testimonial } from './TestimonialProps';
-import { TopTechnologie } from './Top3TechnologieProps';
+import type { Technologie } from './TechnologieProps';
+import type { Achievement } from './AchievementProps';
+import type { Quote } from './QuoteProps';
+import type { Experiences } from './ExperiencesProps';
+import type { Project } from './ProjectProps';
+import type { Testimonial } from './TestimonialProps';
+import type { TopTechnologie } from './Top3TechnologieProps';
+import type { ActionButtonProps } from './ActionButtonProps';
 
 /**
  * CardProps type.
@@ -44,25 +45,25 @@ export type CardProps = {
 
   map?: boolean;
 
-  cta1?: string;
-  icon1?: string;
-  href1?: string;
-  downloadActive1?: boolean;
+  cta1?: ActionButtonProps['cta'];
+  icon1?: ActionButtonProps['icon'];
+  href1?: ActionButtonProps['href'];
+  downloadActive1?: ActionButtonProps['downloadActive'];
 
-  cta2?: string;
-  icon2?: string;
-  href2?: string;
-  downloadActive2?: boolean;
+  cta2?: ActionButtonProps['cta'];
+  icon2?: ActionButtonProps['icon'];
+  href2?: ActionButtonProps['href'];
+  downloadActive2?: ActionButtonProps['downloadActive'];
 
-  cta3?: string;
-  icon3?: string;
-  href3?: string;
-  downloadActive3?: boolean;
+  cta3?: ActionButtonProps['cta'];
+  icon3?: ActionButtonProps['icon'];
+  href3?: ActionButtonProps['href'];
+  downloadActive3?: ActionButtonProps['downloadActive'];
 
-  cta4?: string;
-  icon4?: string;
-  href4?: string;
-  downloadActive4?: boolean;
+  cta4?: ActionButtonProps['cta'];
+  icon4?: ActionButtonProps['icon'];
+  href4?: ActionButtonProps['href'];
+  downloadActive4?: ActionButtonProps['downloadActive'];
 
   experiences?: Experiences[];
 

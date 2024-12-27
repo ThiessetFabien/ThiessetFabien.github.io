@@ -46,7 +46,13 @@ export const FooterCard: React.FC<CardProps & ActionButtonProps> = ({
   downloadActive4,
   className,
 }) => {
-  const renderActionButton = (cta, icon, href, downloadActive, variant) => {
+  const renderActionButton = (
+    cta: ActionButtonProps['cta'],
+    icon: ActionButtonProps['icon'],
+    href: ActionButtonProps['href'],
+    downloadActive: ActionButtonProps['downloadActive'],
+    variant: ActionButtonProps['variant']
+  ) => {
     return (cta && href) || (icon && href) ? (
       <ActionButton
         cta={cta || ''}

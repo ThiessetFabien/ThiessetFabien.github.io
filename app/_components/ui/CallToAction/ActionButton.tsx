@@ -3,7 +3,7 @@ import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 import { IconLoader } from '@/hooks/IconLoader';
 import { cnButton, cnButtonIcon } from '@/styles/buttonStyles';
-import type { ActionButton } from '@/types/ActionButtonProps';
+import type { ActionButtonProps } from '@/types/ActionButtonProps';
 import { cnSmallText } from '@/styles/fontStyles';
 import { baseUrl } from '@/utils/constants/baseUrl';
 
@@ -22,13 +22,13 @@ import { baseUrl } from '@/utils/constants/baseUrl';
  * @returns {JSX.Element} The rendered component.
  */
 
-const ActionButton: React.FC<ActionButton> = ({
+const ActionButton: React.FC<ActionButtonProps> = ({
   cta,
   icon,
   href,
   downloadActive,
   variant,
-}: ActionButton): JSX.Element => {
+}) => {
   return (
     <a
       href={

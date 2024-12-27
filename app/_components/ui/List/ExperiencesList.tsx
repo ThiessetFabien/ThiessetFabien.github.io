@@ -19,7 +19,7 @@ export const ExperiencesList: React.FC<Experience> = ({
   const isMd = useIsMd();
   return (
     <>
-      <ul className={cn(cnSpaceY, lineThroughItem(date), 'w-full')}>
+      <ul className={cn(cnSpaceY, lineThroughItem(date || ''), 'w-full')}>
         <li className={'flex'}>
           <Dot
             className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
@@ -28,7 +28,7 @@ export const ExperiencesList: React.FC<Experience> = ({
           <div className={cn(cnFlexCol, 'md:flex-row')}>
             <h3 className={cn(cnTitle3)}>
               {title}
-              <span className={cn('text-primary', hideItem(company))}>
+              <span className={cn('text-primary', hideItem(company || ''))}>
                 &nbsp;@ {company}
               </span>
             </h3>
