@@ -2,8 +2,6 @@
  * @file Map.tsx
  * @description This component renders a map with a specific position and radius.
  */
-'use client';
-
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { MapContainer, TileLayer, Circle } from 'react-leaflet';

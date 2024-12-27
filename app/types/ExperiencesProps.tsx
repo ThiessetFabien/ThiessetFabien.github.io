@@ -19,8 +19,8 @@ import { OtherExperience } from './OtherExperienceProps';
  *   nurseAssistant: [{ title: 'Assistant', company: 'Company C', date: '2015 - 2018' }]
  * };
  */
-export interface Experiences {
+export type Experiences = {
   developer: Experience[];
   projectCoordinator: OtherExperience[];
   nurseAssistant: OtherExperience[];
-}
+};

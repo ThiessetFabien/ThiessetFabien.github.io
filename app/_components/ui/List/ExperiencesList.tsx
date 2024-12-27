@@ -1,15 +1,9 @@
 import { cnSpaceY } from '@/styles/boxModelStyles';
-import {
-  cnParagraph,
-  cnTitle2,
-  cnTitle2Size,
-  cnTitle3,
-} from '@/styles/fontStyles';
+import { cnParagraph, cnTitle3 } from '@/styles/fontStyles';
 import { hideItem } from '@/styles/hideItemStyles';
 import { lineThroughItem } from '@/styles/lineThroughStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnMarginRight } from '@/styles/boxModelStyles';
-import { cnSmallText, cnLightTextMuted } from '@/styles/fontStyles';
 import { cn } from '@/lib/utils';
 import { Dot } from 'lucide-react';
 import { Badge } from '@/lib/components/ui/badge';

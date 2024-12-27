@@ -2,11 +2,10 @@
  * @file CallToAction.tsx
  * @description This component renders call-to-action buttons with dynamic icons.
  */
-
-'use client';
 import React from 'react';
-import ActionButton from '../../CallToAction/ActionButton';
-import CardProps from '@/types/CardProps';
+import ActionButton from '@/ui/CallToAction/ActionButton';
+import type { CardProps } from '@/types/CardProps';
+import type { ActionButtonProps } from '@/types/ActionButtonProps';
 import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
 
@@ -28,7 +27,7 @@ import { cnSmallGap } from '@/styles/boxModelStyles';
  * @param {CardProps} props - The props for the component.
  * @returns {JSX.Element} The rendered component.
  */
-export const FooterCard: React.FC<CardProps> = ({
+export const FooterCard: React.FC<CardProps & ActionButtonProps> = ({
   cta1,
   icon1,
   href1,
@@ -47,44 +46,24 @@ export const FooterCard: React.FC<CardProps> = ({
   downloadActive4,
   className,
 }) => {
+  const renderActionButton = (cta, icon, href, downloadActive, variant) => {
+    return (cta && href) || (icon && href) ? (
+      <ActionButton
+        cta={cta || ''}
+        icon={icon || ''}
+        href={href || ''}
+        downloadActive={downloadActive || undefined}
+        variant={variant}
+      />
+    ) : null;
+  };
+
   return (
     <div className={cn('flex flex-wrap', cnSmallGap, className)}>
-      {(cta1 && href1) || (icon1 && href1) ? (
-        <ActionButton
-          cta={cta1 || ''}
-          icon={icon1 || ''}
-          href={href1 || ''}
-          downloadActive={downloadActive1 || undefined}
-          variant='default'
-        />
-      ) : null}
-      {(cta2 && href2) || (icon2 && href2) ? (
-        <ActionButton
-          cta={cta2 || ''}
-          icon={icon2 || ''}
-          href={href2 || ''}
-          downloadActive={downloadActive2 || undefined}
-          variant='outline'
-        />
-      ) : null}
-      {(cta3 && href3) || (icon3 && href3) ? (
-        <ActionButton
-          cta={cta3 || ''}
-          icon={icon3 || ''}
-          href={href3 || ''}
-          downloadActive={downloadActive3 || undefined}
-          variant='outline'
-        />
-      ) : null}
-      {(cta4 && href4) || (icon4 && href4) ? (
-        <ActionButton
-          cta={cta4 || ''}
-          icon={icon4 || ''}
-          href={href4 || ''}
-          downloadActive={downloadActive4 || undefined}
-          variant='outline'
-        />
-      ) : null}
+      {renderActionButton(cta1, icon1, href1, downloadActive1, 'default')}
+      {renderActionButton(cta2, icon2, href2, downloadActive2, 'outline')}
+      {renderActionButton(cta3, icon3, href3, downloadActive3, 'outline')}
+      {renderActionButton(cta4, icon4, href4, downloadActive4, 'outline')}
     </div>
   );
 };

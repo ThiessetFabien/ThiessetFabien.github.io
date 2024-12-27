@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
@@ -9,7 +7,7 @@ import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import { sizeMiddleIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import GenericCarousel from './GenericCarousel';
-import type CardProps from '@/types/CardProps';
+import type { CardProps } from '@/types/CardProps';
 import { cnSmallPadding } from '@/styles/boxModelStyles';
 
 /**

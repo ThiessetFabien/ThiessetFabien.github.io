@@ -1,4 +1,3 @@
-'use client';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -13,7 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/lib/components/ui/form';
-import type CardProps from '@/types/CardProps';
+import type { CardProps } from '@/types/CardProps';
 import { toast } from '@/lib/hooks/use-toast';
 import { Textarea } from '@/lib/components/ui/textarea';
 import { cnSpaceY } from '@/styles/boxModelStyles';
@@ -114,7 +113,7 @@ export const MailCard: React.FC<CardProps> = ({ mailto }) => {
               <FormControl>
                 <Textarea
                   placeholder='Tell me a little bit about your project...'
-                  className='resize-auto'
+                  className='h-44 resize-y'
                   {...field}
                   required
                 />

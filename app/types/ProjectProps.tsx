@@ -30,7 +30,7 @@ import { Tags } from './TagsProps';
  *   className: 'my-project',
  * };
  */
-export interface Project {
+export type Project = {
   title: string;
   organization: string;
   imageSrc: string;
@@ -40,4 +40,4 @@ export interface Project {
   website: string;
   github: string;
   tags: Tags[];
-}
+};

@@ -14,7 +14,7 @@ import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
 import { cnPadding, cnGap, cnPaddingX } from '@/styles/boxModelStyles';
-import type CardProps from './types/CardProps';
+import type { CardProps } from './types/CardProps';
 import { MailCard } from '@/ui/Card/MailCard';
 import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
 import { QuoteCard } from './_components/ui/Card/Quote';

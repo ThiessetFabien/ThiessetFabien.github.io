@@ -1,10 +1,9 @@
-'use client';
 import React from 'react';
 import { cn } from '@/lib/utils';
 import dynamicYear from '@/utils/dynamicYear';
 import { cnLightTextMuted, cnSmallText } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
-import CardProps from '@/types/CardProps';
+import type { CardProps } from '@/types/CardProps';
 import { scrollToTop } from '@/hooks/ScrollToTop';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
 import { Button } from '@/lib/components/ui/button';
