@@ -3,7 +3,7 @@ export type ActionButtonProps = {
   icon?: string;
   href?: string;
   downloadActive?: boolean;
-  variant:
+  variant?:
     | 'default'
     | 'secondary'
     | 'destructive'

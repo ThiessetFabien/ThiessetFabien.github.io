@@ -12,7 +12,7 @@ import { cnGap, cnSmallGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
-import type CardProps from '@/types/CardProps';
+import type { CardProps } from '@/types/CardProps';
 
 /**
  * SkillsCard component.

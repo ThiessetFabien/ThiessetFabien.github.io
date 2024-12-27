@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 
 import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import CardProps from '@/types/CardProps';
+import { CardProps } from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
 import {
   cnFlexBetweenX,

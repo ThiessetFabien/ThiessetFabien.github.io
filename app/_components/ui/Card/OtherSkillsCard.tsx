@@ -1,4 +1,4 @@
-import type CardProps from '@/types/CardProps';
+import type { CardProps } from '@/types/CardProps';
 import React from 'react';
 import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
 

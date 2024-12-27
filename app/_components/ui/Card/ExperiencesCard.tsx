@@ -10,7 +10,8 @@ import { cnPaddingY } from '@/styles/boxModelStyles';
 import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
 import { ExperiencesAccordion } from '@/ui/Accordion/ExperiencesAccordion';
 import { ExperiencesList } from '@/ui/List/ExperiencesList';
-import type CardProps from '@/types/CardProps';
+import type { CardProps } from '@/types/CardProps';
+import type { OtherExperience } from '@/types/OtherExperienceProps';
 
 /**
  * CardProjects component.
@@ -22,7 +23,9 @@ import type CardProps from '@/types/CardProps';
  * <CardProjects projects={projects} className="custom-class" />
  */
 
-export const CardExperiences: React.FC<CardProps> = ({ experiences }) => {
+export const CardExperiences: React.FC<CardProps & OtherExperience> = ({
+  experiences,
+}) => {
   return (
     <>
       {experiences &&
@@ -54,7 +57,7 @@ export const CardExperiences: React.FC<CardProps> = ({ experiences }) => {
               <AccordionItem value={`projectCoordinator-${index}`}>
                 <ExperiencesAccordion
                   className='border border-background'
-                  content={experience.projectCoordinator?.content}
+                  content={experience.projectCoordinator.content}
                   experience={experience.projectCoordinator.items}
                 />
               </AccordionItem>
