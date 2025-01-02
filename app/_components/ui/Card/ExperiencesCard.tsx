@@ -11,8 +11,8 @@ import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
 import { ExperiencesAccordion } from '@/ui/Accordion/ExperiencesAccordion';
 import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type { CardProps } from '@/types/CardProps';
-import type { Experiences } from '@/types/ExperiencesProps';
-import type { OtherExperience } from '@/types/OtherExperienceProps';
+import type { ExperiencesProps } from '@/types/ExperiencesProps';
+import type { OtherExperienceProps } from '@/types/OtherExperienceProps';
 
 /**
  * CardProjects component.
@@ -25,7 +25,7 @@ import type { OtherExperience } from '@/types/OtherExperienceProps';
  */
 
 export const CardExperiences: React.FC<
-  CardProps & Experiences & OtherExperience
+  CardProps & ExperiencesProps & OtherExperienceProps
 > = ({ experiences }) => {
   return (
     <>
