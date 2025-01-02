@@ -36,9 +36,9 @@ export const TestimonialsCarousel: React.FC<CardProps> = ({
   testimonials,
   className,
 }) => {
-  const shuffledTestimonial = testimonials
-    ? testimonials.sort(() => Math.random() - 0.5)
-    : [];
+  // const shuffledTestimonial = testimonials
+  //   ? testimonials.sort(() => Math.random() - 0.5)
+  //   : [];
 
   const items =
     testimonials &&
