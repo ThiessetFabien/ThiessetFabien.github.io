@@ -1,5 +1,5 @@
-export type Achievement = {
+export interface AchievementProps {
   icon: string;
   title: string;
   date: string;
-};
+}

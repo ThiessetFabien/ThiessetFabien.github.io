@@ -1,4 +1,4 @@
-import { Tags } from './TagsProps';
+import { TagsProps } from './TagsProps';
 
 /**
  * @file ProjectsProps.tsx
@@ -30,7 +30,7 @@ import { Tags } from './TagsProps';
  *   className: 'my-project',
  * };
  */
-export type Project = {
+export interface ProjectProps {
   title: string;
   organization: string;
   imageSrc: string;
@@ -39,5 +39,5 @@ export type Project = {
   demo?: string;
   website: string;
   github: string;
-  tags: Tags[];
-};
+  tags: TagsProps[];
+}
