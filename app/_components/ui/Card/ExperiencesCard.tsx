@@ -11,6 +11,7 @@ import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
 import { ExperiencesAccordion } from '@/ui/Accordion/ExperiencesAccordion';
 import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type { CardProps } from '@/types/CardProps';
+import type { Experiences } from '@/types/ExperiencesProps';
 import type { OtherExperience } from '@/types/OtherExperienceProps';
 
 /**
@@ -23,9 +24,9 @@ import type { OtherExperience } from '@/types/OtherExperienceProps';
  * <CardProjects projects={projects} className="custom-class" />
  */
 
-export const CardExperiences: React.FC<CardProps & OtherExperience> = ({
-  experiences,
-}) => {
+export const CardExperiences: React.FC<
+  CardProps & Experiences & OtherExperience
+> = ({ experiences }) => {
   return (
     <>
       {experiences &&
@@ -58,13 +59,13 @@ export const CardExperiences: React.FC<CardProps & OtherExperience> = ({
                 <ExperiencesAccordion
                   className='border border-background'
                   content={experience.projectCoordinator.content}
-                  experience={experience.projectCoordinator.items}
+                  experiences={experience.projectCoordinator.items}
                 />
               </AccordionItem>
               <AccordionItem value={`nurseAssistant-${index}`}>
                 <ExperiencesAccordion
                   content={experience.nurseAssistant?.content}
-                  experience={experience.nurseAssistant.items}
+                  experiences={experience.nurseAssistant.items}
                 />
               </AccordionItem>
             </Accordion>

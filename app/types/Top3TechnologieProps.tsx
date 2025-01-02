@@ -1,5 +1,5 @@
-export type TopTechnologie = {
+export interface TopTechnologieProps {
   name: string;
   description: string;
   slug: string;
-};
+}

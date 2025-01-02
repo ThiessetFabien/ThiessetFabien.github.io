@@ -6,6 +6,6 @@
  * const tag: Tags = { tag: 'JavaScript' };
  */
 
-export type Tags = {
+export interface TagsProps {
   tag: string;
-};
+}

@@ -1,6 +1,6 @@
-import type { Experience } from './ExperienceProps';
+import type { ExperienceProps } from './ExperienceProps';
 
-export type OtherExperience = {
+export interface OtherExperienceProps {
   content?: string;
-  items: Experience[];
-};
+  items: ExperienceProps[];
+}

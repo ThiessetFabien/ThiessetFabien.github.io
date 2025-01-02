@@ -2,13 +2,14 @@
  * @file CardProps.tsx
  * @description This file contains the type definition for the props used in various card components.
  */
-import type { Technologie } from './TechnologieProps';
-import type { Achievement } from './AchievementProps';
-import type { Quote } from './QuoteProps';
-import type { Experiences } from './ExperiencesProps';
-import type { Project } from './ProjectProps';
-import type { Testimonial } from './TestimonialProps';
-import type { TopTechnologie } from './Top3TechnologieProps';
+import type { TechnologieProps } from './TechnologieProps';
+import type { AchievementProps } from './AchievementProps';
+import type { QuoteProps } from './QuoteProps';
+import type { ExperiencesProps } from './ExperiencesProps';
+import type { OtherExperienceProps } from './OtherExperienceProps';
+import type { ProjectProps } from './ProjectProps';
+import type { TestimonialProps } from './TestimonialProps';
+import type { TopTechnologieProps } from './Top3TechnologieProps';
 import type { ActionButtonProps } from './ActionButtonProps';
 
 /**
@@ -65,17 +66,18 @@ export type CardProps = {
   href4?: ActionButtonProps['href'];
   downloadActive4?: ActionButtonProps['downloadActive'];
 
-  experiences?: Experiences[];
+  experiences?: ExperiencesProps[];
+  otherExperiences?: OtherExperienceProps[];
 
-  projects?: Project[];
+  projects?: ProjectProps[];
 
-  topTechnologies?: TopTechnologie[];
-  technologies?: Technologie[];
-  quote?: Quote;
+  topTechnologies?: TopTechnologieProps[];
+  technologies?: TechnologieProps[];
+  quote?: QuoteProps;
 
-  testimonials?: Testimonial[];
+  testimonials?: TestimonialProps[];
 
-  achievements?: Achievement[];
+  achievements?: AchievementProps[];
 
   content?: React.ReactNode;
   funFact?: string;

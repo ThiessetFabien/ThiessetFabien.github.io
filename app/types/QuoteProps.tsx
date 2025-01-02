@@ -1,4 +1,4 @@
-export type Quote = {
+export interface QuoteProps {
   text: string;
   author: string;
-};
+}

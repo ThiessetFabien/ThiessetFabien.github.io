@@ -1,4 +1,4 @@
-import CardProps from '@/types/CardProps';
+import type { CardProps } from '@/types/CardProps';
 import { IconLoader } from '@/hooks/IconLoader';
 import { cn } from '@/lib/utils';
 import { cnSmallSpaceY, cnGap } from '@/styles/boxModelStyles';
