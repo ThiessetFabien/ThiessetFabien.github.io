@@ -27,7 +27,7 @@ import { ExperienceProps } from '@/types/ExperienceProps.jsx';
 
 export const CardExperiences: React.FC<{
   experiences: ExperiencesProps[];
-  experience: ExperienceProps[] | OtherExperienceProps['items'];
+  experience?: ExperienceProps[] | OtherExperienceProps['items'];
   content?: OtherExperienceProps['content'];
   className?: CardProps['className'];
 }> = ({ experiences }) => {
