@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import CardProps from '@/types/CardProps';
+import type { CardProps } from '@/types/CardProps';
 
 const useCardGrid = (cards: CardProps[]) => {
   const gridConfig = useMemo(() => {

@@ -13,6 +13,7 @@ import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type { CardProps } from '@/types/CardProps';
 import type { ExperiencesProps } from '@/types/ExperiencesProps';
 import type { OtherExperienceProps } from '@/types/OtherExperienceProps';
+import { ExperienceProps } from '@/types/ExperienceProps.jsx';
 
 /**
  * CardProjects component.
@@ -24,9 +25,12 @@ import type { OtherExperienceProps } from '@/types/OtherExperienceProps';
  * <CardProjects projects={projects} className="custom-class" />
  */
 
-export const CardExperiences: React.FC<
-  CardProps & ExperiencesProps & OtherExperienceProps
-> = ({ experiences }) => {
+export const CardExperiences: React.FC<{
+  experiences: ExperiencesProps[];
+  experience: ExperienceProps[] | OtherExperienceProps['items'];
+  content?: OtherExperienceProps['content'];
+  className?: CardProps['className'];
+}> = ({ experiences }) => {
   return (
     <>
       {experiences &&
@@ -58,14 +62,30 @@ export const CardExperiences: React.FC<
               <AccordionItem value={`projectCoordinator-${index}`}>
                 <ExperiencesAccordion
                   className='border border-background'
-                  content={experience.projectCoordinator.content}
-                  experiences={experience.projectCoordinator.items}
+                  content={
+                    (
+                      experience.projectCoordinator as unknown as OtherExperienceProps
+                    ).content
+                  }
+                  experience={
+                    (
+                      experience.projectCoordinator as unknown as OtherExperienceProps
+                    ).items
+                  }
                 />
               </AccordionItem>
               <AccordionItem value={`nurseAssistant-${index}`}>
                 <ExperiencesAccordion
-                  content={experience.nurseAssistant?.content}
-                  experiences={experience.nurseAssistant.items}
+                  content={
+                    (
+                      experience.nurseAssistant as unknown as OtherExperienceProps
+                    ).content
+                  }
+                  experience={
+                    (
+                      experience.nurseAssistant as unknown as OtherExperienceProps
+                    ).items
+                  }
                 />
               </AccordionItem>
             </Accordion>
