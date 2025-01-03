@@ -11,18 +11,18 @@ import { cn } from '@/lib/utils';
 import { cnSpaceX } from '@/styles/boxModelStyles';
 
 export const ExperiencesAccordion: React.FC<{
-  experiences: ExperienceProps[];
+  experience: ExperienceProps[];
   content?: OtherExperienceProps['content'];
   className?: CardProps['className'];
-}> = ({ experiences, content, className }) => {
+}> = ({ experience, content, className }) => {
   return (
     <div className={className}>
       <AccordionTrigger className={cn(cnParagraph, cnSpaceX, 'min-w-full')}>
         {content}
       </AccordionTrigger>
       <AccordionContent>
-        {experiences &&
-          experiences.map((item, index: number) => (
+        {experience &&
+          experience.map((item, index: number) => (
             <ExperiencesList
               key={index}
               title={item.title}

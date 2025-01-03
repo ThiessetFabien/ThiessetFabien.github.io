@@ -1,4 +1,4 @@
-import CardProps from '@/types/CardProps';
+import type { CardProps } from '@/types/CardProps';
 import React from 'react';
 import { cnParagraph } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';

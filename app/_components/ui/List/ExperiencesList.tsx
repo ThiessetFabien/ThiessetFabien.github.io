@@ -9,9 +9,9 @@ import { Dot } from 'lucide-react';
 import { Badge } from '@/lib/components/ui/badge';
 import { useIsMd } from '@/hooks/useMediaQuery';
 
-import type { Experience } from '@/types/ExperienceProps';
+import type { ExperienceProps } from '@/types/ExperienceProps';
 
-export const ExperiencesList: React.FC<Experience> = ({
+export const ExperiencesList: React.FC<ExperienceProps> = ({
   title,
   company,
   date,
