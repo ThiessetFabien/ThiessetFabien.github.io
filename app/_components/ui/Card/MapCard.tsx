@@ -7,6 +7,9 @@ import dynamic from 'next/dynamic';
 import { MapContainer, TileLayer, Circle } from 'react-leaflet';
 import LocationEventsMap from '@/hooks/LocationEventsMap';
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import {
   francePosition,
   myPosition,
