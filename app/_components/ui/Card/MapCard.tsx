@@ -2,9 +2,9 @@
  * @file Map.tsx
  * @description This component renders a map with a specific position and radius.
  */
-import React from 'react';
-import dynamic from 'next/dynamic';
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Circle } from 'react-leaflet';
+import { Map as MapType } from 'leaflet';
 import LocationEventsMap from '@/hooks/LocationEventsMap';
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
 import 'leaflet/dist/leaflet.css';
@@ -27,25 +27,36 @@ import { CardProps } from '@/types/CardProps';
  */
 
 export const Map: React.FC<CardProps> = ({ title, description }) => {
+  const [isMounted, setIsMounted] = useState(false);
   const [ref, isIntersecting] = useIntersectionObserver({
     root: null,
     rootMargin: '0px',
     threshold: 1.0,
   });
 
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
+
+  if (!isMounted) return <div className='h-full w-full animate-pulse' />;
+
   return (
     <>
       <HeaderCard title={title} description={description} />
       <CardContent ref={ref} className='container overflow-hidden'>
         <MapContainer
+          key={isMounted.toString()}
           center={francePosition}
           zoom={4}
           scrollWheelZoom={false}
           className={cn(cnMarginBottom, 'min-h-[20rem] w-auto rounded-xl')}
+          suppressHydrationWarning={true}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            suppressHydrationWarning={true}
           />
           {isIntersecting && <LocationEventsMap position={myPosition} />}
           <Circle
@@ -54,13 +65,10 @@ export const Map: React.FC<CardProps> = ({ title, description }) => {
             color='purple'
             fillColor='purple'
             fillOpacity={0.3}
+            suppressHydrationWarning={true}
           />
         </MapContainer>
       </CardContent>
     </>
   );
 };
-
-export default dynamic(() => Promise.resolve(Map), {
-  ssr: false,
-});

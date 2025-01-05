@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import dynamicYear from '@/utils/dynamicYear';
+import { DynamicYear } from '@/utils/dynamicYear';
 import { cnLightTextMuted, cnSmallText } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
 import type { CardProps } from '@/types/CardProps';
@@ -31,8 +31,12 @@ export const Footer: React.FC<CardProps> = ({ className }) => {
       <div className={cn('min-w-full')}>
         <div className={cn('max-w-7xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
           <p>fab.dev</p>
-          <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
-            &copy; {dynamicYear} Built by Fabien Thiesset - All rights reserved.
+          <p
+            className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}
+            suppressHydrationWarning={true}
+          >
+            &copy; <DynamicYear /> Built by Fabien Thiesset - All rights
+            reserved.
           </p>
           <Button variant='ghost' onClick={scrollToTop}>
             <MoveUp />
