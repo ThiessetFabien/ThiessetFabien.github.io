@@ -3,10 +3,19 @@
  * @description This file exports the current year dynamically.
  */
 
+import { useEffect, useState } from 'react';
+
 /**
  * Get the current year.
  * @returns {number} The current year.
  */
-const year = new Date().getFullYear();
+export const DynamicYear = () => {
+  const [year, setYear] = useState<number | null>(null);
 
-export default year;
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
+  if (year === null) return null;
+  return <span>{year}</span>;
+};

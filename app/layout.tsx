@@ -1,4 +1,5 @@
 'use client';
+
 import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
 import { metadata } from './metadata';
@@ -21,12 +22,16 @@ export default function RootLayout({
   return (
     <html lang='fr' dir='ltr' className={'h-[62.5%] w-full'}>
       <Head>
-        <title>{`${metadata.title}`}</title>
-        <meta name='description' content={`${metadata.description}`} />
-        <meta name='keywords' content={`${metadata.keywords}`} />
+        <title>{metadata.title}</title>
+        <meta name='description' content={metadata.description} />
+        <meta name='keywords' content={metadata.keywords} />
         <meta
           name='author'
-          content={`${Array.isArray(metadata.authors) ? metadata.authors.map((author) => author.name).join(', ') : metadata.authors?.name}`}
+          content={
+            Array.isArray(metadata.authors)
+              ? metadata.authors.map((author) => author.name).join(', ')
+              : metadata.authors?.name
+          }
         />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       </Head>

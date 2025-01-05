@@ -1,6 +1,12 @@
+/**
+ * @file page.tsx
+ * @description This file renders the home page with various sections including cards, maps, and carousels.
+ */
+
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
 import CardData from '@api/cards.data.json';
 import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
@@ -15,16 +21,10 @@ import useCardGrid from '@/hooks/useCardGrid';
 import { cnPadding, cnGap, cnPaddingX } from '@/styles/boxModelStyles';
 import type { CardProps } from './types/CardProps';
 import { MailCard } from '@/ui/Card/MailCard';
-import { Map } from '@/ui/Card/MapCard';
 import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
-import { QuoteCard } from './_components/ui/Card/Quote';
+import { QuoteCard } from '@/ui/Card/QuoteCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
 import { cnParagraph } from '@/styles/fontStyles';
-
-/**
- * @file page.tsx
- * @description This file renders the home page with various sections including cards, maps, and carousels.
- */
 
 /**
  * HomePage component.
@@ -32,7 +32,22 @@ import { cnParagraph } from '@/styles/fontStyles';
  */
 
 const HomePage: React.FC = (): JSX.Element => {
+  const Map = useMemo(
+    () =>
+      dynamic(() => import('@/ui/Card/MapCard'), {
+        loading: () => <p>Loading map ...</p>,
+        ssr: false,
+      }),
+    []
+  );
+
   const gridConfig = useCardGrid(CardData as CardProps[]);
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <>
@@ -62,7 +77,7 @@ const HomePage: React.FC = (): JSX.Element => {
               downloadActive4={card.downloadActive4}
             />
           )}
-          {!card.imageSrc && card.map && (
+          {!card.imageSrc && card.map && isClient && (
             <Map title={card.title} description={card.description} />
           )}
           {!card.imageSrc && !card.map && (
