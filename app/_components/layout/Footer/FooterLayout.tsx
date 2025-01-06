@@ -25,16 +25,13 @@ import { MoveUp } from 'lucide-react';
  * <Footer />
  */
 
-export const Footer: React.FC<CardProps> = ({ className }) => {
+export const Footer: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <footer className={cn('h-full', className)}>
       <div className={cn('min-w-full')}>
         <div className={cn('max-w-7xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
           <p>fab.dev</p>
-          <p
-            className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}
-            suppressHydrationWarning={true}
-          >
+          <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
             &copy; 2024 - {year} Built by Fabien Thiesset - All rights reserved.
           </p>
           <Button variant='ghost' onClick={scrollToTop}>

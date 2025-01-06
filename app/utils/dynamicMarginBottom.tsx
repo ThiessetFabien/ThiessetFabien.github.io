@@ -13,6 +13,6 @@ import { cnMarginBottom } from '@/styles/boxModelStyles';
  * const marginClass = dynamicMarginBottom(1); // 'mb-4'
  * const marginClass = dynamicMarginBottom(3); // 'mb-0'
  */
-export const dynamicMarginBottom = (index: number): string => {
+export const dynamicMarginBottom = (index: number) => {
   return index < 2 ? cnMarginBottom : 'mb-0';
 };

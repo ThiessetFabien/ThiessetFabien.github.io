@@ -10,4 +10,4 @@
  * const fullUrl = `${baseUrl}example.com`;
  */
 
-export const baseUrl = 'https://';
+export const baseUrl: string = 'https://';

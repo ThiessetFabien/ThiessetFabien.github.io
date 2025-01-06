@@ -7,7 +7,9 @@ import { Quote } from 'lucide-react';
 import { sizeIcon } from '@/styles/sizeStyles';
 import { cn } from '@/lib/utils';
 
-export const QuoteCard: React.FC<CardProps> = ({ quote }) => {
+export const QuoteCard: React.FC<{ quote: CardProps['quote'] }> = ({
+  quote,
+}) => {
   return (
     <div className={cn(cnLightTextMuted, 'flex')}>
       <div className='self-start'>

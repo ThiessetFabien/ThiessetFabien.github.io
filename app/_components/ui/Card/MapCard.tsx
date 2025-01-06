@@ -26,7 +26,9 @@ export const Map: React.FC = () => {
     threshold: 1.0,
   });
 
-  const LocationEventsMap: React.FC<LocationEventsProps> = ({ position }) => {
+  const LocationEventsMap: React.FC<{
+    position: LocationEventsProps['position'];
+  }> = ({ position }) => {
     const map = useMap();
 
     useEffect(() => {

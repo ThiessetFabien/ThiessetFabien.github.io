@@ -19,13 +19,13 @@ import type { CardProps } from '@/types/CardProps';
  * @param {CardProps} props - The props for the component.
  * @returns {JSX.Element} The rendered SkillsCard component.
  */
-export const SkillsCard: React.FC<CardProps> = ({
-  topTechnologies,
-}: CardProps): JSX.Element => {
+export const SkillsCard: React.FC<{
+  topTechnologies: CardProps['topTechnologies'];
+}> = ({ topTechnologies }: CardProps): JSX.Element => {
   return (
     <div
       className={cn(
-        'flex w-full flex-row flex-wrap',
+        'flex min-w-full flex-row flex-wrap',
         'container overflow-hidden',
         cnSmallGap
       )}
@@ -35,8 +35,8 @@ export const SkillsCard: React.FC<CardProps> = ({
           <div
             key={index}
             className={cn(
-              'flex items-center',
-              'h-1/4 w-[calc((100%-1.5rem)/4)] md:w-[calc((100%-3rem)/4)] lg:w-[calc((100%-1rem)/2)]'
+              'flex flex-auto items-center',
+              'h-1/4 max-w-[calc((100%-1.5rem)/4)] md:max-w-[calc((100%-3rem)/4)] lg:max-w-[calc((100%-1rem)/2)]'
             )}
           >
             <div
