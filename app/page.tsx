@@ -5,10 +5,9 @@
 
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
-import dynamic from 'next/dynamic';
+import React from 'react';
 import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
-import CardData from '@api/cards.data.json';
+import fetchData from '@api/data.json';
 import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
 import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialsCarousel';
 import { CardExperiences } from '@/components/ui/Card/ExperiencesCard';
@@ -19,35 +18,27 @@ import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
 import { cnPadding, cnGap, cnPaddingX } from '@/styles/boxModelStyles';
-import type { CardProps } from './types/CardProps';
 import { MailCard } from '@/ui/Card/MailCard';
 import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
 import { QuoteCard } from '@/ui/Card/QuoteCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
 import { cnParagraph } from '@/styles/fontStyles';
 
+import dynamic from 'next/dynamic';
+import type { CardProps } from './types/CardProps';
+
 /**
  * HomePage component.
  * @returns {JSX.Element} The rendered component.
  */
 
+const LazyMap = dynamic(() => import('@/ui/Card/MapCard'), {
+  ssr: false,
+  loading: () => <p>Loading map...</p>,
+});
+
 const HomePage: React.FC = (): JSX.Element => {
-  const Map = useMemo(
-    () =>
-      dynamic(() => import('@/ui/Card/MapCard'), {
-        loading: () => <p>Loading map ...</p>,
-        ssr: false,
-      }),
-    []
-  );
-
-  const gridConfig = useCardGrid(CardData as CardProps[]);
-
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const gridConfig = useCardGrid(fetchData as CardProps[]);
 
   return (
     <>
@@ -77,17 +68,16 @@ const HomePage: React.FC = (): JSX.Element => {
               downloadActive4={card.downloadActive4}
             />
           )}
-          {!card.imageSrc && card.map && isClient && (
-            <Map title={card.title} description={card.description} />
-          )}
-          {!card.imageSrc && !card.map && (
+          {!card.imageSrc && (
             <>
               <HeaderCard
                 title={card.title}
                 description={card.description}
                 index={index}
               />
-              <CardContent className={cnPaddingX}>
+              <CardContent
+                className={cn(cnPaddingX, 'container overflow-hidden')}
+              >
                 {card.experiences &&
                   card.experiences.length > 0 &&
                   !card.technologies && (
@@ -109,6 +99,7 @@ const HomePage: React.FC = (): JSX.Element => {
                   <AchievementsCard achievements={card.achievements} />
                 )}
                 {card.mailto && <MailCard mailto={card.mailto} />}
+                {card.map && <LazyMap />}
                 {card.quote && <QuoteCard quote={card.quote} />}
                 {!card.experiences &&
                   !card.topTechnologies &&

@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang='fr' dir='ltr' className={'h-[62.5%] w-full'}>
       <Head>
-        <title>{metadata.title}</title>
-        <meta name='description' content={metadata.description} />
-        <meta name='keywords' content={metadata.keywords} />
+        <title>{metadata.title?.toString()}</title>
+        <meta name='description' content={metadata.description?.toString()} />
+        <meta name='keywords' content={metadata.keywords?.toString()} />
         <meta
           name='author'
           content={
