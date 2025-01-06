@@ -38,7 +38,10 @@ import ActionButton from '../CallToAction/ActionButton';
  * <CardProjects projects={projects} className="custom-class" />
  */
 
-export const CardProjects: React.FC<CardProps> = ({ projects, className }) => {
+export const CardProjects: React.FC<{
+  projects: CardProps['projects'];
+  className?: string;
+}> = ({ projects, className }) => {
   return (
     <div
       className={cn(

@@ -32,10 +32,10 @@ import { cnPadding, cnSpaceY } from '@/styles/boxModelStyles';
  * @example
  * <TestimonialsCarousel testimonials={testimonials} className="custom-class" />
  */
-export const TestimonialsCarousel: React.FC<CardProps> = ({
-  testimonials,
-  className,
-}) => {
+export const TestimonialsCarousel: React.FC<{
+  testimonials: CardProps['testimonials'];
+  className?: string;
+}> = ({ testimonials, className }) => {
   // const shuffledTestimonial = testimonials
   //   ? testimonials.sort(() => Math.random() - 0.5)
   //   : [];

@@ -21,6 +21,9 @@ export const getImageSrc = (
     case isXs:
       suffix = '-xs';
       break;
+    case isXxs:
+      suffix = '-xxs';
+      break;
     default:
       suffix = '';
       break;

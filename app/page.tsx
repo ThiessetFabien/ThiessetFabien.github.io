@@ -23,7 +23,7 @@ import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
 import { QuoteCard } from '@/ui/Card/QuoteCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
 import { cnParagraph } from '@/styles/fontStyles';
-
+import { useIsClient } from './hooks/useIsClient';
 import dynamic from 'next/dynamic';
 import type { CardProps } from './types/CardProps';
 
@@ -39,6 +39,7 @@ const LazyMap = dynamic(() => import('@/ui/Card/MapCard'), {
 
 const HomePage: React.FC = (): JSX.Element => {
   const gridConfig = useCardGrid(fetchData as CardProps[]);
+  const isClient = useIsClient();
 
   return (
     <>
@@ -76,7 +77,10 @@ const HomePage: React.FC = (): JSX.Element => {
                 index={index}
               />
               <CardContent
-                className={cn(cnPaddingX, 'container overflow-hidden')}
+                className={cn(
+                  cnPaddingX,
+                  'container min-w-full overflow-hidden'
+                )}
               >
                 {card.experiences &&
                   card.experiences.length > 0 &&
@@ -99,7 +103,7 @@ const HomePage: React.FC = (): JSX.Element => {
                   <AchievementsCard achievements={card.achievements} />
                 )}
                 {card.mailto && <MailCard mailto={card.mailto} />}
-                {card.map && <LazyMap />}
+                {isClient && card.map && <LazyMap />}
                 {card.quote && <QuoteCard quote={card.quote} />}
                 {!card.experiences &&
                   !card.topTechnologies &&

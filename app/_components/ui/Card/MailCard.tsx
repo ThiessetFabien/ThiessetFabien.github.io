@@ -26,7 +26,9 @@ import {
 
 type FormSchema = z.infer<typeof formSchema>;
 
-export const MailCard: React.FC<CardProps> = ({ mailto }) => {
+export const MailCard: React.FC<{ mailto: CardProps['mailto'] }> = ({
+  mailto,
+}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

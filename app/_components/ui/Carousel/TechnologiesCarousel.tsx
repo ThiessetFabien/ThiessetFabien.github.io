@@ -24,10 +24,10 @@ import { cnSmallPadding } from '@/styles/boxModelStyles';
  * @example
  * <TechCarousel technologies={technologies} className="custom-class" />
  */
-export const TechnologiesCarousel: React.FC<CardProps> = ({
-  technologies,
-  className,
-}) => {
+export const TechnologiesCarousel: React.FC<{
+  technologies: CardProps['technologies'];
+  className?: string;
+}> = ({ technologies, className }) => {
   const items =
     technologies &&
     technologies.map((tech, index) => {

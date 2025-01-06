@@ -11,11 +11,11 @@ import { useIsMd } from '@/hooks/useMediaQuery';
 
 import type { ExperienceProps } from '@/types/ExperienceProps';
 
-export const ExperiencesList: React.FC<ExperienceProps> = ({
-  title,
-  company,
-  date,
-}) => {
+export const ExperiencesList: React.FC<{
+  title: ExperienceProps['title'];
+  company: ExperienceProps['company'];
+  date: ExperienceProps['date'];
+}> = ({ title, company, date }) => {
   const isMd = useIsMd();
   return (
     <>

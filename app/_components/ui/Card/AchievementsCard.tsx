@@ -8,7 +8,9 @@ import { Badge } from '@/lib/components/ui/badge';
 import { cnSmallText, cnLightTextMuted } from '@/styles/fontStyles';
 import { CardContent } from '@/lib/components/ui/card';
 
-export const AchievementsCard: React.FC<CardProps> = ({ achievements }) => {
+export const AchievementsCard: React.FC<{
+  achievements: CardProps['achievements'];
+}> = ({ achievements }) => {
   return (
     <div className={cnSmallSpaceY}>
       <CardContent>

@@ -20,7 +20,28 @@ import {
 } from '@/hooks/useMediaQuery';
 import { getImageSrc } from '@/hooks/getImageSrc';
 
-const PresentationCard: React.FC<CardProps> = ({
+const PresentationCard: React.FC<{
+  title: CardProps['title'];
+  description: CardProps['description'];
+  imageSrc: CardProps['imageSrc'];
+  imageAlt: CardProps['imageAlt'];
+  cta1: CardProps['cta1'];
+  icon1: CardProps['icon1'];
+  href1: CardProps['href1'];
+  downloadActive1: CardProps['downloadActive1'];
+  cta2: CardProps['cta2'];
+  icon2: CardProps['icon2'];
+  href2: CardProps['href2'];
+  downloadActive2: CardProps['downloadActive2'];
+  cta3: CardProps['cta3'];
+  icon3: CardProps['icon3'];
+  href3: CardProps['href3'];
+  downloadActive3: CardProps['downloadActive3'];
+  cta4: CardProps['cta4'];
+  icon4: CardProps['icon4'];
+  href4: CardProps['href4'];
+  downloadActive4: CardProps['downloadActive4'];
+}> = ({
   title,
   description,
   imageSrc,
