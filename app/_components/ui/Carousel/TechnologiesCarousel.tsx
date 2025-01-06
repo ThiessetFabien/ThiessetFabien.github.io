@@ -50,7 +50,6 @@ export const TechnologiesCarousel: React.FC<CardProps> = ({
               alt={tech.name}
               width={50}
               height={50}
-              objectFit='contain'
               className={cn(
                 tech.slug.includes('express') ? 'filter-white' : '',
                 sizeMiddleIcon,

@@ -53,7 +53,6 @@ export const SkillsCard: React.FC<CardProps> = ({
                 alt={tech.name}
                 width={42}
                 height={42}
-                objectFit='contain'
                 priority
                 className={cn(sizeBigIcon, 'block')}
               />
