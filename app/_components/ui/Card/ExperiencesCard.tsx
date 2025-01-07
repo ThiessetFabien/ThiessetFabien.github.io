@@ -5,15 +5,12 @@
 import React from 'react';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
-import { cnBorder } from '@/styles/borderStyles';
-import { cnPaddingY } from '@/styles/boxModelStyles';
 import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
 import { ExperiencesAccordion } from '@/ui/Accordion/ExperiencesAccordion';
 import { ExperiencesList } from '@/ui/List/ExperiencesList';
-import type { CardProps } from '@/types/CardProps';
 import type { ExperiencesProps } from '@/types/ExperiencesProps';
 import type { OtherExperienceProps } from '@/types/OtherExperienceProps';
-import { ExperienceProps } from '@/types/ExperienceProps.jsx';
+import type { ExperienceProps } from '@/types/ExperienceProps';
 
 /**
  * CardProjects component.
@@ -39,14 +36,10 @@ export const CardExperiences: React.FC<{
             <ScrollArea
               className={cn(
                 'w-full',
-                cnBorder,
-                'h-56',
-                'xxs:h-[12.5rem]',
-                'xs:h-40',
-                'sm:h-42',
-                'md:h-48',
-                'lg:h-32',
-                cnPaddingY
+                'overflow-hidden',
+                'h-[8.75rem]',
+                'xxs:h-[6.75rem]',
+                'md:h-[5.25rem]'
               )}
             >
               {experience.developer.map((developer, developerIndex) => (
@@ -61,7 +54,6 @@ export const CardExperiences: React.FC<{
             <Accordion type='single' collapsible className='w-full'>
               <AccordionItem value={`projectCoordinator-${index}`}>
                 <ExperiencesAccordion
-                  className='border border-background'
                   content={
                     (
                       experience.projectCoordinator as unknown as OtherExperienceProps
@@ -94,5 +86,3 @@ export const CardExperiences: React.FC<{
     </>
   );
 };
-
-export default CardExperiences;

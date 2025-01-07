@@ -17,7 +17,7 @@ import PresentationCard from '@/ui/Card/PresentationCard';
 import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
-import { cnPadding, cnGap, cnPaddingX } from '@/styles/boxModelStyles';
+import { cnPaddingBottom, cnGap, cnPaddingX } from '@/styles/boxModelStyles';
 import { MailCard } from '@/ui/Card/MailCard';
 import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
 import { QuoteCard } from '@/ui/Card/QuoteCard';
@@ -26,6 +26,7 @@ import { cnParagraph } from '@/styles/fontStyles';
 import { useIsClient } from './hooks/useIsClient';
 import dynamic from 'next/dynamic';
 import type { CardProps } from './types/CardProps';
+import { cnFlexCol } from './styles/flexStyles';
 
 /**
  * HomePage component.
@@ -44,7 +45,11 @@ const HomePage: React.FC = (): JSX.Element => {
   return (
     <>
       {gridConfig.map((card, index: number) => (
-        <Card key={index} className={cn('h-full w-full', card.colSpan)}>
+        <Card
+          key={index}
+          id={`card-${index}`}
+          className={cn('h-full w-full', cnFlexCol, card.colSpan)}
+        >
           {card.imageSrc && !card.map && (
             <PresentationCard
               title={card.title}
@@ -67,6 +72,10 @@ const HomePage: React.FC = (): JSX.Element => {
               icon4={card.icon4}
               href4={card.href4}
               downloadActive4={card.downloadActive4}
+              cta5={card.cta5}
+              icon5={card.icon5}
+              href5={card.href5}
+              downloadActive5={card.downloadActive5}
             />
           )}
           {!card.imageSrc && (
@@ -78,7 +87,7 @@ const HomePage: React.FC = (): JSX.Element => {
               />
               <CardContent
                 className={cn(
-                  cnPaddingX,
+                  !card.testimonials ? cnPaddingX : 'px-0',
                   'container min-w-full overflow-hidden'
                 )}
               >
@@ -118,7 +127,7 @@ const HomePage: React.FC = (): JSX.Element => {
           )}
           {!card.imageSrc &&
             ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
-              <CardFooter className={cnPadding}>
+              <CardFooter className={cn(cnPaddingX, cnPaddingBottom)}>
                 <FooterCard
                   className={cn(cnGap, 'flex h-full w-full')}
                   cta1={card.cta1}

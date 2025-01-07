@@ -50,14 +50,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header
-            className={cn('sticky top-0 z-50', 'bg-background', cnPadding)}
-          />
+          <Header className={cnPadding} />
           <main
             className={cn(
               cnGap,
               cnPadding,
-              'container relative z-0',
               'mx-auto max-w-7xl',
               'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
             )}

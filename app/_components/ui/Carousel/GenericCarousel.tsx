@@ -12,13 +12,12 @@ import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 import { useDotButton } from './Buttons/DotButtonCarousel';
 import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
 import { DotButton } from './Buttons/DotButtonCarousel';
-import { manipulationStyle, cnSmallMarginX } from '@/styles/boxModelStyles';
+import { manipulationStyle, cnPaddingX } from '@/styles/boxModelStyles';
 import {
   cnFlexFullCenter,
   cnFlexBetweenX,
   cnFlexCenterY,
 } from '@/styles/flexStyles';
-import { cnBorder } from '@/styles/borderStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 
 /**
@@ -70,7 +69,7 @@ export const GenericCarousel: React.FC<{
   }, [emblaApi]);
 
   return (
-    <section className={cn('container h-auto overflow-hidden')} ref={emblaRef}>
+    <section className={cn('container h-auto')} ref={emblaRef}>
       <div className='flex'>
         {items &&
           items.map((item, index) => (
@@ -79,10 +78,8 @@ export const GenericCarousel: React.FC<{
               className={cn(
                 className,
                 'flex-none',
-                'max-w-full',
-                cnFlexFullCenter,
-                cnBorder,
-                cnSmallMarginX
+                delay !== undefined ? 'w-full' : 'max-w-full',
+                cnFlexFullCenter
               )}
             >
               {item}
@@ -92,6 +89,7 @@ export const GenericCarousel: React.FC<{
       <div
         className={cn(
           cnFlexBetweenX,
+          cnPaddingX,
           cnHiddenXs,
           'h-full',
           delay !== undefined ? '' : 'hidden'

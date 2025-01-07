@@ -8,23 +8,26 @@
     "cta1": "Learn more",
     "href1": "#card-4",
     "downloadActive1": false,
-    "icon2": "Linkedin",
-    "href2": "www.linkedin.com/in/fabien-thiesset/",
+    "icon2": "Github",
+    "href2": "github.com/ThiessetFabien?tab=repositories",
     "downloadActive2": false,
-    "icon3": "Mail",
-    "href3": "#card-9",
+    "icon3": "Linkedin",
+    "href3": "www.linkedin.com/in/fabien-thiesset/",
     "downloadActive3": false,
-    "icon4": "PhoneOutgoing",
-    "href4": "tel:+33610920974",
-    "downloadActive4": false
+    "icon4": "Mail",
+    "href4": "#card-9",
+    "downloadActive4": false,
+    "icon5": "PhoneOutgoing",
+    "href5": "tel:+33610920974",
+    "downloadActive5": false
   },
   {
-    "title": "Being a Full-Stack Developer is my primary focus",
+    "title": "Being a Full-Stack Developer is my focus",
     "description": " I specialize in building web applications using modern technologies.",
     "topTechnologies": [
       {
         "name": "React.js",
-        "description": "I use React.js with this framework Next.js to create beautiful and functional user interfaces.",
+        "description": "I use Next.js the framework of React to create beautiful and functional user interfaces.",
         "slug": "react/react-original"
       },
       {
@@ -47,9 +50,9 @@
     "icon1": "Eye",
     "href1": "#card-4",
     "downloadActive1": false,
-    "cta2": "View on GitHub",
+    "cta2": "View all of my work",
     "icon2": "Github",
-    "href2": "https://github.com/ThiessetFabien?tab=repositories",
+    "href2": "github.com/ThiessetFabien?tab=repositories",
     "downloadActive2": false
   },
   {
@@ -61,7 +64,7 @@
           {
             "title": "React & I++ Specializations",
             "company": "O'Clock Replay",
-            "date": "sep 2023 - present"
+            "date": "sep 2023 - dec 2024"
           },
           {
             "title": "Full-Stack Web Developer & Scrum Master",
@@ -82,11 +85,6 @@
             "title": "Front-end Developer Intern",
             "company": "Chimenbou SP.",
             "date": "jul 2023"
-          },
-          {
-            "title": "Professional Transition Project",
-            "company": "",
-            "date": "may 2023 - sep 2023"
           },
           {
             "title": "Self-training Front-end",
@@ -110,7 +108,7 @@
           ]
         },
         "nurseAssistant": {
-          "content": "For 15 years, I have been committed to supporting people with disabilities.",
+          "content": "I am committed to supporting people with disabilities.",
           "items": [
             {
               "title": "Nurse Assistant",
@@ -127,12 +125,15 @@
       }
     ],
     "icon1": "Mail",
-    "cta1": "Send a mail with your project ?",
+    "cta1": "Send a mail of your project ?",
     "href1": "#card-9",
     "downloadActive1": false,
-    "icon2": "PhoneOutgoing",
-    "href2": "tel:+33610920974",
-    "downloadActive2": false
+    "icon2": "Linkedin",
+    "href2": "www.linkedin.com/in/fabien-thiesset/",
+    "downloadActive2": false,
+    "icon3": "PhoneOutgoing",
+    "href3": "tel:+33610920974",
+    "downloadActive3": false
   },
   {
     "title": "And i currently work with",
@@ -168,17 +169,17 @@
     "description": "Below you'll find a collection of some of my most recent JavaScript projects that showcase the type of clients i work directly with. ",
     "projects": [
       {
-        "title": "This portfolio",
-        "organization": "Welcome on my multiverse",
-        "imageSrc": "",
-        "imageAlt": "Under construction",
+        "title": "Portfolio SSR",
+        "organization": "Showcase site of my work, highlighting my projects and skills in web development and design.",
+        "videoSrc": "videos/852421-sd_640_360_30fps.mp4",
+        "videoAlt": "Under construction",
         "website": "/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
         "tags": ["TypeScript", "Next", "React", "Tailwind"]
       },
       {
-        "title": "Casalink API - Secure server",
-        "organization": "Apotheosis O'Clock School",
+        "title": "Casalink API RESTful",
+        "organization": "Secure and documented server of the family planning application for managing daily tasks and events.",
         "imageSrc": "images/casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
@@ -186,8 +187,8 @@
         "tags": ["Node", "Express", "Mocha/Chai", "PostgreSQL", "JWT"]
       },
       {
-        "title": "Casalink - Family planning",
-        "organization": "Apotheosis O'Clock School",
+        "title": "Casalink SPA",
+        "organization": "Family planning application for managing daily tasks and events, helping families stay organized.",
         "imageSrc": "images/casalink.webp",
         "imageAlt": "Calendar of Casalink application",
         "videoSrc": "",
@@ -197,10 +198,14 @@
         "tags": ["TypeScript", "React", "Redux", "SASS", "JWT"]
       }
     ],
-    "cta1": "What to you see more?",
-    "icon1": "Eye",
-    "href1": "github.com/ThiessetFabien?tab=repositories",
-    "downloadActive1": false
+    "icon1": "Mail",
+    "cta1": "Send a mail of your project ?",
+    "href1": "#card-9",
+    "downloadActive1": false,
+    "cta2": "Explore more of my work",
+    "icon2": "Github",
+    "href2": "github.com/ThiessetFabien?tab=repositories",
+    "downloadActive2": false
   },
   {
     "title": "Things i have acheived",
@@ -224,7 +229,7 @@
     ]
   },
   {
-    "title": "I've had the pleasure of working with some amazing people and companies",
+    "title": "I've working with some amazing people",
     "description": "Here's what they have to say about my work.",
     "testimonials": [
       {
@@ -342,12 +347,12 @@
     ]
   },
   {
-    "title": "I am eager to put my skills to use and deepen my knowledge in these areas",
-    "content": "I am seeking a position as a Front-end or Back-end Developer in a company that values both human and technical skills. I am also open to apprenticeship opportunities in application development or as an AI expert."
+    "title": "Eager to apply my skills and learn more",
+    "content": "I am seeking a company that values both human and technical skills. I am also open to apprenticeship opportunities in application development or as an AI expert."
   },
   {
     "title": "Fun facts",
-    "content": "I love drinking a good coffee while coding. I am a fan of the Shonen genre, and I am currently watching the anime One Piece, Dragon Ball Daima, and Bleach."
+    "content": "I love drinking a good coffee while coding. I am a fan of the Shonen genre, and I am currently watching One Piece, Bleach, Dan da dan and others."
   },
   {
     "title": "Let's talk about your project",

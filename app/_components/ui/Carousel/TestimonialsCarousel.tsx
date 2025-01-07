@@ -16,7 +16,7 @@ import {
   cnSmallText,
 } from '@/styles/fontStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnPadding, cnSpaceY } from '@/styles/boxModelStyles';
+import { cnPadding, cnPaddingX, cnSpaceY } from '@/styles/boxModelStyles';
 
 /**
  * @file TestimonialsCarousel.tsx
@@ -43,8 +43,11 @@ export const TestimonialsCarousel: React.FC<{
   const items =
     testimonials &&
     testimonials.map((testimonial, index) => (
-      <div key={index} className={cn(cnSpaceY, cnPadding, 'h-auto min-w-full')}>
-        <div className='lex-shrink-0 flex items-center'>
+      <div
+        key={index}
+        className={cn(cnSpaceY, cnPaddingX, 'h-100% w-full overflow-hidden')}
+      >
+        <div className='flex flex-shrink-0 items-center'>
           <a href={`${baseUrl}${testimonial.linkedin}`}>
             <div className='relative left-0 top-0'>
               <Avatar className='h-12 w-12'>
@@ -78,7 +81,9 @@ export const TestimonialsCarousel: React.FC<{
             </p>
           </div>
         </div>
-        <p className={cnParagraph}>&quot;{testimonial.content}&quot;</p>
+        <p className={cn(cnParagraph, 'max-w-full')}>
+          &quot;{testimonial.content}&quot;
+        </p>
       </div>
     ));
 
