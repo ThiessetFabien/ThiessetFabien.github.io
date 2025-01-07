@@ -66,6 +66,11 @@ export type CardProps = {
   href4?: ActionButtonProps['href'];
   downloadActive4?: ActionButtonProps['downloadActive'];
 
+  cta5?: ActionButtonProps['cta'];
+  icon5?: ActionButtonProps['icon'];
+  href5?: ActionButtonProps['href'];
+  downloadActive5?: ActionButtonProps['downloadActive'];
+
   experiences?: ExperiencesProps[];
   otherExperiences?: OtherExperienceProps[];
 

@@ -16,7 +16,6 @@ export const HeaderCard: React.FC<{
   return (
     <CardHeader className={cn(cnPadding)}>
       <CardTitle
-        id={`card-${index}`}
         className={cn(cnTitle2, index === 2 || index === 4 ? cnTitle2Size : '')}
       >
         {title}

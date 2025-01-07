@@ -9,7 +9,6 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
 import 'leaflet-defaulticon-compatibility';
 import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
-import { cnMarginBottom } from '@/styles/boxModelStyles';
 import { cn } from '@/lib/utils';
 import { useIsClient } from '@/hooks/useIsClient';
 import type { LocationEventsProps } from '@/types/LocationEventsProps';
@@ -53,7 +52,7 @@ export const Map: React.FC = () => {
           center={francePosition}
           zoom={4}
           scrollWheelZoom={false}
-          className={cn(cnMarginBottom, 'min-h-[20rem] w-full rounded-xl')}
+          className={cn('h-full min-h-[20rem] w-full rounded-xl')}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

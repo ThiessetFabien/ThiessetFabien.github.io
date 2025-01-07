@@ -41,6 +41,10 @@ const PresentationCard: React.FC<{
   icon4: CardProps['icon4'];
   href4: CardProps['href4'];
   downloadActive4: CardProps['downloadActive4'];
+  cta5: CardProps['cta5'];
+  icon5: CardProps['icon5'];
+  href5: CardProps['href5'];
+  downloadActive5: CardProps['downloadActive5'];
 }> = ({
   title,
   description,
@@ -62,6 +66,10 @@ const PresentationCard: React.FC<{
   icon4,
   href4,
   downloadActive4,
+  cta5,
+  icon5,
+  href5,
+  downloadActive5,
 }) => {
   const isXxs = useIsXxs();
   const isXs = useIsXs();
@@ -79,16 +87,16 @@ const PresentationCard: React.FC<{
           width={201}
           priority
           className={cn(
-            'w-auto rounded-lg',
-            'xs:min-h-[18.25rem]',
-            'sm:min-h-[14.5rem]',
-            'md:min-h-[16.75rem]',
+            'h-full w-auto rounded-lg'
+            // 'xs:min-h-[18.25rem]',
+            // 'sm:min-h-[14.5rem]',
+            // 'md:min-h-[16.75rem]',
             // 'lg:min-h-[19rem]',
-            'xl:min-h-[15.5rem]'
+            // 'xl:min-h-[15.5rem]'
           )}
         />
       </div>
-      <div className={cn(cnFlexCol, 'justify-center')}>
+      <div className={cn(cnFlexCol, 'flex-1 justify-center')}>
         <CardTitle className={cnTitle1}>
           <h2>{title}</h2>
         </CardTitle>
@@ -112,6 +120,10 @@ const PresentationCard: React.FC<{
           icon4={icon4}
           href4={href4}
           downloadActive4={downloadActive4}
+          cta5={cta5}
+          icon5={icon5}
+          href5={href5}
+          downloadActive5={downloadActive5}
           className={cnMarginTop}
         />
       </div>

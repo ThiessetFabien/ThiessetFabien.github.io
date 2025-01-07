@@ -10,6 +10,8 @@ export const cnPaddingX = cn('px-4 md:px-6 ');
 
 export const cnPaddingY = cn('py-4 md:py-6 ');
 
+export const cnPaddingBottom = cn('pb-4 md:pb-6 ');
+
 export const cnSmallMarginX = cn('mx-2 md:mx-4');
 
 export const cnMarginX = cn('mx-2 sm:mx-4 md:mx-6 ');

@@ -44,6 +44,10 @@ export const FooterCard: React.FC<{
   icon4?: CardProps['icon4'];
   href4?: CardProps['href4'];
   downloadActive4?: CardProps['downloadActive4'];
+  cta5?: CardProps['cta5'];
+  icon5?: CardProps['icon5'];
+  href5?: CardProps['href5'];
+  downloadActive5?: CardProps['downloadActive5'];
   className?: string;
 }> = ({
   cta1,
@@ -62,6 +66,10 @@ export const FooterCard: React.FC<{
   icon4,
   href4,
   downloadActive4,
+  cta5,
+  icon5,
+  href5,
+  downloadActive5,
   className,
 }) => {
   const renderActionButton = (
@@ -88,6 +96,7 @@ export const FooterCard: React.FC<{
       {renderActionButton(cta2, icon2, href2, downloadActive2, 'outline')}
       {renderActionButton(cta3, icon3, href3, downloadActive3, 'outline')}
       {renderActionButton(cta4, icon4, href4, downloadActive4, 'outline')}
+      {renderActionButton(cta5, icon5, href5, downloadActive5, 'outline')}
     </div>
   );
 };

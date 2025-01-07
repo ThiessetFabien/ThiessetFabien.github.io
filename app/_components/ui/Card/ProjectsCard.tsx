@@ -19,7 +19,12 @@ import {
   cnFlexCenterY,
   cnFlexFullCenter,
 } from '@/styles/flexStyles';
-import { cnGap, cnMarginBottom, cnPadding } from '@/styles/boxModelStyles';
+import {
+  cnGap,
+  cnMarginBottom,
+  cnPadding,
+  cnSmallPaddingX,
+} from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
 import ActionButton from '../CallToAction/ActionButton';
 
@@ -62,7 +67,7 @@ export const CardProjects: React.FC<{
               dynamicMarginBottom(projectIndex),
               'h-full w-full',
               projectIndex === 0
-                ? 'sm:col-span-2 lg:col-span-1'
+                ? 'sm:col-span-2 sm:min-w-full lg:col-span-1'
                 : 'sm:col-span-1'
             )}
           >
@@ -81,18 +86,19 @@ export const CardProjects: React.FC<{
                       width={590}
                       height={332}
                       priority
-                      className='h-auto min-w-full'
+                      className='h-auto min-w-full rounded-lg'
                     />
                   )}
                   {!project.imageSrc &&
                     !project.imageAlt &&
                     project.videoSrc && (
                       <video
-                        src={`${baseUrl}${project.videoSrc}`}
+                        src={`/${project.videoSrc}`}
                         controls={false}
                         autoPlay={true}
                         loop={true}
                         muted
+                        className='rounded-lg'
                       />
                     )}
                 </a>
@@ -138,7 +144,9 @@ export const CardProjects: React.FC<{
                 {project.organization}
               </CardDescription>
             </CardHeader>
-            <CardFooter className={cn('flex flex-wrap', 'h-auto')}>
+            <CardFooter
+              className={cn('flex flex-wrap', 'h-auto p-0', cnSmallPaddingX)}
+            >
               {project.tags.map((tag, tagIndex) => (
                 <Badge
                   key={tagIndex}
