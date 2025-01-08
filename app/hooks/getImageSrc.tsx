@@ -29,5 +29,6 @@ export const getImageSrc = (
       break;
   }
 
-  return `/images/${source}${suffix}.webp`;
+  return `/images/${source}-xl.webp`;
+  // return `/images/${source}${suffix}.webp`;
 };

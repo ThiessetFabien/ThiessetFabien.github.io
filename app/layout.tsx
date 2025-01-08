@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='fr' dir='ltr' className={'h-[62.5%] w-full'}>
+    <html lang='fr' dir='ltr' className={'w-full'}>
       <Head>
         <title>{metadata.title?.toString()}</title>
         <meta name='description' content={metadata.description?.toString()} />
@@ -65,7 +65,6 @@ export default function RootLayout({
             className={cn(
               cnFlexFullCenter,
               cnPadding,
-              cnMarginTop,
               'text-center',
               'min-w-full'
             )}

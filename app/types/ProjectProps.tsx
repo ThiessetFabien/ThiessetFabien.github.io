@@ -36,6 +36,7 @@ export interface ProjectProps {
   imageSrc: string;
   imageAlt: string;
   videoSrc?: string;
+  file?: string;
   demo?: string;
   website: string;
   github: string;

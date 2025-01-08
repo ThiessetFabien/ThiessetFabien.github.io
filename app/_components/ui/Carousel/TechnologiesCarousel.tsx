@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { cnLightTextMuted, cnSmallText } from '@/styles/fontStyles';
+import { cnLightTextMuted, cnParagraph } from '@/styles/fontStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import { sizeMiddleIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
@@ -26,7 +26,7 @@ import { cnSmallPadding } from '@/styles/boxModelStyles';
  */
 export const TechnologiesCarousel: React.FC<{
   technologies: CardProps['technologies'];
-  className?: string;
+  className: string;
 }> = ({ technologies, className }) => {
   const items =
     technologies &&
@@ -35,16 +35,14 @@ export const TechnologiesCarousel: React.FC<{
         <div
           key={index}
           className={cn(
-            cnFlexCol,
             cnFlexFullCenter,
-            cnSmallPadding,
             'flex-shrink-0',
             'h-auto min-w-fit',
             'xs:min-h-auto min-h-12',
             'xs:min-w-auto min-w-12'
           )}
         >
-          <div className={cn(cnFlexFullCenter, 'relative')}>
+          <div className={cn(cnFlexFullCenter)}>
             <Image
               src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
               alt={tech.name}
@@ -60,8 +58,9 @@ export const TechnologiesCarousel: React.FC<{
           </div>
           <p
             className={cn(
-              cnSmallText,
+              cnParagraph,
               cnLightTextMuted,
+              cnSmallPadding,
               cnHiddenXs,
               'text-center'
             )}

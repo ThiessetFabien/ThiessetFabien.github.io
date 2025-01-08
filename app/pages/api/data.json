@@ -2,24 +2,20 @@
   {
     "title": "Ethical Web Developer & Coffee Enthusiast",
     "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional. If you want to learn more about working with me, take a look through my website.",
-    "imageSrc": "photo",
+    "imageSrc": "/images/photo.png",
     "imageAlt": "Picture of Fabien",
     "icon1": "ArrowBigDownDash",
-    "cta1": "Learn more",
+    "cta1": "Get started",
     "href1": "#card-4",
     "downloadActive1": false,
-    "icon2": "Github",
-    "href2": "github.com/ThiessetFabien?tab=repositories",
+    "cta2": "Build connections",
+    "icon2": "Linkedin",
+    "href2": "www.linkedin.com/in/fabien-thiesset/",
     "downloadActive2": false,
-    "icon3": "Linkedin",
-    "href3": "www.linkedin.com/in/fabien-thiesset/",
-    "downloadActive3": false,
-    "icon4": "Mail",
-    "href4": "#card-9",
-    "downloadActive4": false,
-    "icon5": "PhoneOutgoing",
-    "href5": "tel:+33610920974",
-    "downloadActive5": false
+    "cta3": "Request more info",
+    "icon3": "Mail",
+    "href3": "#card-9",
+    "downloadActive3": false
   },
   {
     "title": "Being a Full-Stack Developer is my focus",
@@ -50,9 +46,9 @@
     "icon1": "Eye",
     "href1": "#card-4",
     "downloadActive1": false,
-    "cta2": "View all of my work",
+    "cta2": "Want to see more ? View all",
     "icon2": "Github",
-    "href2": "github.com/ThiessetFabien?tab=repositories",
+    "href2": "www.github.com/ThiessetFabien?tab=repositories",
     "downloadActive2": false
   },
   {
@@ -125,15 +121,16 @@
       }
     ],
     "icon1": "Mail",
-    "cta1": "Send a mail of your project ?",
+    "cta1": "Looking for talent ? I'm your developer",
     "href1": "#card-9",
     "downloadActive1": false,
-    "icon2": "Linkedin",
-    "href2": "www.linkedin.com/in/fabien-thiesset/",
+    "cta2": "View my resume",
+    "icon2": "Eye",
+    "href2": "documents/CV.pdf",
     "downloadActive2": false,
-    "icon3": "PhoneOutgoing",
-    "href3": "tel:+33610920974",
-    "downloadActive3": false
+    "icon3": "Download",
+    "href3": "documents/CV.pdf",
+    "downloadActive3": true
   },
   {
     "title": "And i currently work with",
@@ -166,50 +163,174 @@
   },
   {
     "title": "Some Things I've Built",
-    "description": "Below you'll find a collection of some of my most recent JavaScript projects that showcase the type of clients i work directly with. ",
+    "description": "Below you'll find a collection of some of my most recent JavaScript projects that showcase the type of clients i work directly with.",
     "projects": [
       {
-        "title": "Portfolio SSR",
-        "organization": "Showcase site of my work, highlighting my projects and skills in web development and design.",
+        "title": "Portfolio / SSR",
+        "organization": "Showcase site of my work, highlighting my projects and skills in web development.",
         "videoSrc": "videos/852421-sd_640_360_30fps.mp4",
-        "videoAlt": "Under construction",
         "website": "/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
-        "tags": ["TypeScript", "Next", "React", "Tailwind"]
+        "tags": ["TypeScript", "React/Next", "Tailwind"]
       },
       {
-        "title": "Casalink API RESTful",
-        "organization": "Secure and documented server of the family planning application for managing daily tasks and events.",
+        "title": "Casalink / SPA",
+        "organization": "Family planning application for managing daily tasks and events with delagated for children.",
+        "videoSrc": "https://drive.google.com/file/d/1rtGwkq-UJ_v_4Swh015RrrfrP_6l30nN/preview?usp=sharing&t=248",
+        "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
+        "file": "documents/CDC-Casalink.pdf",
+        "github": "github.com/ThiessetFabien/Casalink-Frontend",
+        "tags": ["TypeScript", "React/Redux", "SASS"]
+      },
+      {
+        "title": "Casalink / API RESTful",
+        "organization": "Secure server for Casalink, managing the data tested and authenticated with JWT",
         "imageSrc": "images/casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
+        "file": "documents/CDC-Casalink.pdf",
         "github": "github.com/ThiessetFabien/Casalink-Backend",
-        "tags": ["Node", "Express", "Mocha/Chai", "PostgreSQL", "JWT"]
-      },
-      {
-        "title": "Casalink SPA",
-        "organization": "Family planning application for managing daily tasks and events, helping families stay organized.",
-        "imageSrc": "images/casalink.webp",
-        "imageAlt": "Calendar of Casalink application",
-        "videoSrc": "",
-        "demo": "www.linkedin.com/posts/fabien-thiesset_pour-les-curieux-voici-notre-d%C3%A9mo-lapplication-activity-7207125619480924162-8dIk?utm_source=share&utm_medium=member_desktop",
-        "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
-        "github": "github.com/ThiessetFabien/Casalink-Frontend",
-        "tags": ["TypeScript", "React", "Redux", "SASS", "JWT"]
+        "tags": ["Node/Express", "Mocha", "PostgreSQL"]
       }
     ],
     "icon1": "Mail",
-    "cta1": "Send a mail of your project ?",
+    "cta1": "Hiring a developer ? I'm your guy",
     "href1": "#card-9",
     "downloadActive1": false,
-    "cta2": "Explore more of my work",
-    "icon2": "Github",
-    "href2": "github.com/ThiessetFabien?tab=repositories",
-    "downloadActive2": false
+    "cta2": "Let's network",
+    "icon2": "Linkedin",
+    "href2": "www.linkedin.com/in/fabien-thiesset/",
+    "downloadActive2": false,
+    "cta3": "Open to project collaborations",
+    "icon3": "Github",
+    "href3": "github.com/ThiessetFabien?tab=repositories",
+    "downloadActive3": false
+  },
+  {
+    "title": "I've working with some amazing people",
+    "description": "Here's what they have to say about my work.",
+    "testimonials": [
+      {
+        "name": "Dupoirier Christophe",
+        "context": "Professional Jury Member & Product Leader - Renault",
+        "content": "I had the opportunity to evaluate Fabien during his thesis defense in July 2024 as a professional jury member, and I can confirm that his level of technical knowledge and the quality of his intellectual approach to project design make him a serious candidate for a Full Stack Developer position.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1608645411974?e=1738800000&v=beta&t=Y8vLw6TqrTB63zwvwFp4OdpJIcwkqVWCCKfOv5ObJHE",
+        "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/"
+      },
+      {
+        "name": "Dupoirier Christophe",
+        "context": "Professional Jury Member & Product Leader - Renault",
+        "content": "Fabien's career change has been perfectly successful as he previously worked as a Nursing Assistant in a medical environment. This demonstrates his unwavering commitment and true professional attitude.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1608645411974?e=1738800000&v=beta&t=Y8vLw6TqrTB63zwvwFp4OdpJIcwkqVWCCKfOv5ObJHE",
+        "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/"
+      },
+      {
+        "name": "Nicolas Zanforlini",
+        "context": "Professional Jury Member & Lead Developer - Freelance",
+        "content": "I had the opportunity to evaluate his skills during his diploma examination. He is a motivated, competent, and curious young man, and he is an asset to any team with good communication skills. I highly recommend him.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQG9eTvW6wRapQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1639988026836?e=1738800000&v=beta&t=wsWJ0VTfaoITJqppbU0HxROTFyy4zj41thC0NdyVcmI",
+        "linkedin": "www.linkedin.com/in/nicolas-zanforlini-5a06b518b/"
+      },
+      {
+        "name": "Benoît Schiex",
+        "context": "Trainer & Developer - O'Clock School",
+        "content": "Having followed Fabien during his training, I noted his qualities of rigor and commitment, which allowed him to achieve an excellent level in web application design and development by the end of his course.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1544974008188?e=1738800000&v=beta&t=1nrb9xzBImgKHykf9Hsw6KyBxU8T40ydc5wsEhIpyG8",
+        "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
+      },
+      {
+        "name": "Benoît Schiex",
+        "context": "Trainer and Developer - O'Clock School",
+        "content": "The projects carried out demonstrated an understanding of the needs, with technical responses that were always of high quality both in terms of choices and implementation. His curiosity and rigor were the foundation of his successful training.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1544974008188?e=1738800000&v=beta&t=1nrb9xzBImgKHykf9Hsw6KyBxU8T40ydc5wsEhIpyG8",
+        "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
+      },
+      {
+        "name": "Adrien Delcroix",
+        "context": "Pedagogical Advisor - O'Clock School",
+        "content": "I had the opportunity to follow Fabien during his web development training, and he stood out for his seriousness and motivation. Always positive and diligent, he successfully met every challenge, working autonomously while being comfortable in a team.",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1709198087943?e=1738800000&v=beta&t=a2hpP6w93q4M2schEjpJSBlrWYi5dQrqP-u6gcMnyWA",
+        "linkedin": "www.linkedin.com/in/adrien-delcroix/"
+      },
+      {
+        "name": "Adrien Delcroix",
+        "context": "Pedagogical Advisor - O'Clock School",
+        "content": "Fabien also demonstrated a great ability to overcome technical difficulties, always seeking effective solutions. His team spirit and involvement were essential during collaborative projects.",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1709198087943?e=1738800000&v=beta&t=a2hpP6w93q4M2schEjpJSBlrWYi5dQrqP-u6gcMnyWA",
+        "linkedin": "www.linkedin.com/in/adrien-delcroix/"
+      },
+      {
+        "name": "Alexis Vignot",
+        "context": "Collaborator & Colleague - O'Clock School",
+        "content": "I had the pleasure of working with Fabien Thiesset on the Casalink project, and I can only praise his skills and professionalism as a full-stack developer. Fabien demonstrated mastery of both front-end and back-end technologies, which was crucial to the success of our project.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1624568924087?e=1738800000&v=beta&t=y1ClVamyeHHACp-x56-wS9fAONngK2aAkQ-Aiu8rFLM",
+        "linkedin": "www.linkedin.com/in/alexis-vignot/"
+      },
+      {
+        "name": "Alexis Vignot",
+        "context": "Collaborator & Colleague - O'Clock School",
+        "content": "His methodical approach and ability to solve complex problems have helped overcome many technical challenges. Additionally, Fabien is an excellent communicator, always ready to share his knowledge and collaborate effectively with the team.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1624568924087?e=1738800000&v=beta&t=y1ClVamyeHHACp-x56-wS9fAONngK2aAkQ-Aiu8rFLM",
+        "linkedin": "www.linkedin.com/in/alexis-vignot/"
+      },
+      {
+        "name": "Alexis Vignot",
+        "context": "Collaborator & Colleague - O'Clock School",
+        "content": "I highly recommend Fabien for any future opportunities. His passion for development and commitment to excellence make him a valuable asset for any project.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1624568924087?e=1738800000&v=beta&t=y1ClVamyeHHACp-x56-wS9fAONngK2aAkQ-Aiu8rFLM",
+        "linkedin": "www.linkedin.com/in/alexis-vignot/"
+      },
+      {
+        "name": "Emilie Suray",
+        "context": "Quality & Risk Management Officer - Helene Borel Center",
+        "content": "Fabien has shown a great ability to reinvent himself by transitioning from the role of coordinator to that of a developer. I had the opportunity to work with him, and his seriousness, rigor, and interpersonal skills make him a valuable collaborator.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1738800000&v=beta&t=ramanEZ0t_PF2f8oiQL1W2ZGSHZzElSuUUYgPtg-sTY",
+        "linkedin": "www.linkedin.com/in/emilie-s-065196130/"
+      },
+      {
+        "name": "Emilie Suray",
+        "context": "Quality & Risk Management Officer - Helene Borel Center",
+        "content": "His career change demonstrates his motivation and ability to learn quickly. Fabien brings a human touch to his projects, which, combined with his new technical expertise, is an undeniable asset to any team.",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1738800000&v=beta&t=ramanEZ0t_PF2f8oiQL1W2ZGSHZzElSuUUYgPtg-sTY",
+        "linkedin": "www.linkedin.com/in/emilie-s-065196130/"
+      },
+      {
+        "name": "Sylvette Depreux",
+        "context": "Head of the IT Department - Helene Borel Center",
+        "content": "As the head of the IT department, I worked with Fabien, who was the IT referent for his healthcare facility. Fabien acted as the liaison between the needs expressed by the users in the facility and the IT department. He communicated requests for improvements, software updates, and necessary equipment. Fabien also generated statistics from the information system data.",
+        "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+        "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
+      },
+      {
+        "name": "Sylvette Depreux",
+        "context": "Head of the IT Department - Helene Borel Center",
+        "content": "Fabien was a dedicated collaborator, capable of bridging the gap between the IT department and the facility where he worked. The collaboration was effective, improving the quality of service provided to users. Fabien is a calm collaborator, capable of taking a step back and suggesting solutions.",
+        "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+        "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
+      },
+      {
+        "name": "Anthony Goguillon",
+        "context": "IT technician - Helene Borel Center",
+        "content": "I have had the pleasure of working with Fabien on various IT-related issues multiple times. Fabien is excellent at expressing the needs of other users and translating them in a simple and effective manner, which allows for quicker resolutions.",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1712083084075?e=1739404800&v=beta&t=YX6vsqovbQ8cmSaO8r2QGHE1bva7lN5KyFqMMMcC97E",
+        "linkedin": "www.linkedin.com/in/anthony-goguillon-a0464565/"
+      },
+      {
+        "name": "Anthony Goguillon",
+        "context": "IT technician - Helene Borel Center",
+        "content": "What we also appreciate about Fabien is his enthusiasm for technology, a true passion that enables him to be a source of proposals. Not to mention his interpersonal skills, his rigor, his willingness to make things progress, and of course, his good humor.",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1712083084075?e=1739404800&v=beta&t=YX6vsqovbQ8cmSaO8r2QGHE1bva7lN5KyFqMMMcC97E",
+        "linkedin": "www.linkedin.com/in/anthony-goguillon-a0464565/"
+      }
+    ]
+  },
+  {
+    "title": "Eager to apply my skills and learn more",
+    "content": "I am seeking a company that values both human and technical skills. I am also open to apprenticeship opportunities."
   },
   {
     "title": "Things i have acheived",
-    "description": "I have achieved a number of things in my career, including the following:",
+    "description": "I have achieved a number of things in my career",
     "achievements": [
       {
         "icon": "Trophy",
@@ -223,140 +344,14 @@
       },
       {
         "icon": "Trophy",
-        "title": "First medicalized reception center labeled Humanitude in mainland France",
+        "title": "First medicalized reception center labeled Humanitude in mainland France, and the 3rd establishment in France (including overseas territories)",
         "date": "dec 2019"
       }
     ]
   },
   {
-    "title": "I've working with some amazing people",
-    "description": "Here's what they have to say about my work.",
-    "testimonials": [
-      {
-        "name": "Dupoirier Christophe",
-        "context": "Product Leader at Renault & Professional Jury Member",
-        "content": "I had the opportunity to evaluate Fabien during his thesis defense in July 2024 as a professional jury member, and I can confirm that his level of technical knowledge and the quality of his intellectual approach to project design make him a serious candidate for a Full Stack Developer position.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1608645411974?e=1738800000&v=beta&t=Y8vLw6TqrTB63zwvwFp4OdpJIcwkqVWCCKfOv5ObJHE",
-        "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/"
-      },
-      {
-        "name": "Dupoirier Christophe",
-        "context": "Product Leader at Renault & Professional Jury Member",
-        "content": "Fabien's career change has been perfectly successful as he previously worked as a Nursing Assistant in a medical environment. This demonstrates his unwavering commitment and true professional attitude.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1608645411974?e=1738800000&v=beta&t=Y8vLw6TqrTB63zwvwFp4OdpJIcwkqVWCCKfOv5ObJHE",
-        "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/"
-      },
-      {
-        "name": "Nicolas Zanforlini",
-        "context": "Lead Developer Freelance & Professional Jury Member",
-        "content": "I had the opportunity to evaluate his skills during his diploma examination. He is a motivated, competent, and curious young man, and he is an asset to any team with good communication skills. I highly recommend him.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQG9eTvW6wRapQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1639988026836?e=1738800000&v=beta&t=wsWJ0VTfaoITJqppbU0HxROTFyy4zj41thC0NdyVcmI",
-        "linkedin": "www.linkedin.com/in/nicolas-zanforlini-5a06b518b/"
-      },
-      {
-        "name": "Benoît Schiex",
-        "context": "Trainer & Developer at O'Clock School",
-        "content": "Having followed Fabien during his training, I noted his qualities of rigor and commitment, which allowed him to achieve an excellent level in web application design and development by the end of his course.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1544974008188?e=1738800000&v=beta&t=1nrb9xzBImgKHykf9Hsw6KyBxU8T40ydc5wsEhIpyG8",
-        "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
-      },
-      {
-        "name": "Benoît Schiex",
-        "context": "Trainer and Developer at O'Clock School",
-        "content": "The projects carried out demonstrated an understanding of the needs, with technical responses that were always of high quality both in terms of choices and implementation. His curiosity and rigor were the foundation of his successful training.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1544974008188?e=1738800000&v=beta&t=1nrb9xzBImgKHykf9Hsw6KyBxU8T40ydc5wsEhIpyG8",
-        "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
-      },
-      {
-        "name": "Adrien Delcroix",
-        "context": "Pedagogical Advisor at O'Clock School",
-        "content": "I had the opportunity to follow Fabien during his web development training, and he stood out for his seriousness and motivation. Always positive and diligent, he successfully met every challenge, working autonomously while being comfortable in a team.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1709198087943?e=1738800000&v=beta&t=a2hpP6w93q4M2schEjpJSBlrWYi5dQrqP-u6gcMnyWA",
-        "linkedin": "www.linkedin.com/in/adrien-delcroix/"
-      },
-      {
-        "name": "Adrien Delcroix",
-        "context": "Pedagogical Advisor at O'Clock School",
-        "content": "Fabien also demonstrated a great ability to overcome technical difficulties, always seeking effective solutions. His team spirit and involvement were essential during collaborative projects.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1709198087943?e=1738800000&v=beta&t=a2hpP6w93q4M2schEjpJSBlrWYi5dQrqP-u6gcMnyWA",
-        "linkedin": "www.linkedin.com/in/adrien-delcroix/"
-      },
-      {
-        "name": "Alexis Vignot",
-        "context": "Collaborator & Colleague at O'Clock School",
-        "content": "I had the pleasure of working with Fabien Thiesset on the Casalink project, and I can only praise his skills and professionalism as a full-stack developer. Fabien demonstrated mastery of both front-end and back-end technologies, which was crucial to the success of our project.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1624568924087?e=1738800000&v=beta&t=y1ClVamyeHHACp-x56-wS9fAONngK2aAkQ-Aiu8rFLM",
-        "linkedin": "www.linkedin.com/in/alexis-vignot/"
-      },
-      {
-        "name": "Alexis Vignot",
-        "context": "Collaborator & Colleague at O'Clock School",
-        "content": "His methodical approach and ability to solve complex problems have helped overcome many technical challenges. Additionally, Fabien is an excellent communicator, always ready to share his knowledge and collaborate effectively with the team.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1624568924087?e=1738800000&v=beta&t=y1ClVamyeHHACp-x56-wS9fAONngK2aAkQ-Aiu8rFLM",
-        "linkedin": "www.linkedin.com/in/alexis-vignot/"
-      },
-      {
-        "name": "Alexis Vignot",
-        "context": "Collaborator & Colleague at O'Clock School",
-        "content": "I highly recommend Fabien for any future opportunities. His passion for development and commitment to excellence make him a valuable asset for any project.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1624568924087?e=1738800000&v=beta&t=y1ClVamyeHHACp-x56-wS9fAONngK2aAkQ-Aiu8rFLM",
-        "linkedin": "www.linkedin.com/in/alexis-vignot/"
-      },
-      {
-        "name": "Emilie Suray",
-        "context": "Quality & Risk Management Officer at Helene Borel Center",
-        "content": "Fabien has shown a great ability to reinvent himself by transitioning from the role of coordinator to that of a developer. I had the opportunity to work with him, and his seriousness, rigor, and interpersonal skills make him a valuable collaborator.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1738800000&v=beta&t=ramanEZ0t_PF2f8oiQL1W2ZGSHZzElSuUUYgPtg-sTY",
-        "linkedin": "www.linkedin.com/in/emilie-s-065196130/"
-      },
-      {
-        "name": "Emilie Suray",
-        "context": "Quality & Risk Management Officer at Helene Borel Center",
-        "content": "His career change demonstrates his motivation and ability to learn quickly. Fabien brings a human touch to his projects, which, combined with his new technical expertise, is an undeniable asset to any team.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1738800000&v=beta&t=ramanEZ0t_PF2f8oiQL1W2ZGSHZzElSuUUYgPtg-sTY",
-        "linkedin": "www.linkedin.com/in/emilie-s-065196130/"
-      },
-      {
-        "name": "Sylvette Depreux",
-        "context": "Head of the IT Department at Helene Borel Center",
-        "content": "As the head of the IT department, I worked with Fabien, who was the IT referent for his healthcare facility. Fabien acted as the liaison between the needs expressed by the users in the facility and the IT department. He communicated requests for improvements, software updates, and necessary equipment. Fabien also generated statistics from the information system data.",
-        "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-        "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
-      },
-      {
-        "name": "Sylvette Depreux",
-        "context": "Head of the IT Department at Helene Borel Center",
-        "content": "Fabien was a dedicated collaborator, capable of bridging the gap between the IT department and the facility where he worked. The collaboration was effective, improving the quality of service provided to users. Fabien is a calm collaborator, capable of taking a step back and suggesting solutions.",
-        "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-        "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
-      },
-      {
-        "name": "Anthony Goguillon",
-        "context": "IT technician at Helene Borel Center",
-        "content": "I have had the pleasure of working with Fabien on various IT-related issues multiple times. Fabien is excellent at expressing the needs of other users and translating them in a simple and effective manner, which allows for quicker resolutions.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1712083084075?e=1739404800&v=beta&t=YX6vsqovbQ8cmSaO8r2QGHE1bva7lN5KyFqMMMcC97E",
-        "linkedin": "www.linkedin.com/in/anthony-goguillon-a0464565/"
-      },
-      {
-        "name": "Anthony Goguillon",
-        "context": "IT technician at Helene Borel Center",
-        "content": "What we also appreciate about Fabien is his enthusiasm for technology, a true passion that enables him to be a source of proposals. Not to mention his interpersonal skills, his rigor, his willingness to make things progress, and of course, his good humor.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1712083084075?e=1739404800&v=beta&t=YX6vsqovbQ8cmSaO8r2QGHE1bva7lN5KyFqMMMcC97E",
-        "linkedin": "www.linkedin.com/in/anthony-goguillon-a0464565/"
-      }
-    ]
-  },
-  {
-    "title": "Eager to apply my skills and learn more",
-    "content": "I am seeking a company that values both human and technical skills. I am also open to apprenticeship opportunities in application development or as an AI expert."
-  },
-  {
     "title": "Fun facts",
     "content": "I love drinking a good coffee while coding. I am a fan of the Shonen genre, and I am currently watching One Piece, Bleach, Dan da dan and others."
-  },
-  {
-    "title": "Let's talk about your project",
-    "mailto": "thiessetfabienpro@gmail.com"
   },
   {
     "title": "Available for Mobile, Vehicle",
@@ -364,10 +359,17 @@
     "map": true
   },
   {
-    "title": "My favorite quote",
-    "quote": {
-      "author": "Les Brown",
-      "text": "Shoot for the moon. Even if you miss, you'll land among the stars."
-    }
+    "title": "Let's talk about your project",
+    "description": "Passion is energy. Feel the power that comes from focusing on what excites you. (Oprah Winfrey)",
+    "mailto": "thiessetfabienpro@gmail.com",
+    "cta1": "Submit your inquiry",
+    "icon1": "Send",
+    "cta2": "Curious ? Let's talk",
+    "icon2": "PhoneOutgoing",
+    "href2": "tel:+33610920974",
+    "downloadActive2": false,
+    "cta3": "Reach out",
+    "icon3": "Linkedin",
+    "href3": "www.linkedin.com/in/fabien-thiesset/"
   }
 ]

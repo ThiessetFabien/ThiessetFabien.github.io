@@ -17,7 +17,7 @@ import PresentationCard from '@/ui/Card/PresentationCard';
 import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
-import { cnPaddingBottom, cnGap, cnPaddingX } from '@/styles/boxModelStyles';
+import { cnPaddingBottom, cnPaddingX } from '@/styles/boxModelStyles';
 import { MailCard } from '@/ui/Card/MailCard';
 import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
 import { QuoteCard } from '@/ui/Card/QuoteCard';
@@ -88,7 +88,7 @@ const HomePage: React.FC = (): JSX.Element => {
               <CardContent
                 className={cn(
                   !card.testimonials ? cnPaddingX : 'px-0',
-                  'container min-w-full overflow-hidden'
+                  'container min-w-full flex-1 overflow-hidden'
                 )}
               >
                 {card.experiences &&
@@ -111,9 +111,24 @@ const HomePage: React.FC = (): JSX.Element => {
                 {card.achievements && card.achievements.length > 0 && (
                   <AchievementsCard achievements={card.achievements} />
                 )}
-                {card.mailto && <MailCard mailto={card.mailto} />}
+                {card.mailto && (
+                  <MailCard
+                    mailto={card.mailto}
+                    cta1={card.cta1}
+                    icon1={card.icon1}
+                    href1={card.href1}
+                    downloadActive1={card.downloadActive1}
+                    cta2={card.cta2}
+                    icon2={card.icon2}
+                    href2={card.href2}
+                    downloadActive2={card.downloadActive2}
+                    cta3={card.cta3}
+                    icon3={card.icon3}
+                    href3={card.href3}
+                    downloadActive3={card.downloadActive3}
+                  />
+                )}
                 {isClient && card.map && <LazyMap />}
-                {card.quote && <QuoteCard quote={card.quote} />}
                 {!card.experiences &&
                   !card.topTechnologies &&
                   !card.technologies &&
@@ -126,10 +141,11 @@ const HomePage: React.FC = (): JSX.Element => {
             </>
           )}
           {!card.imageSrc &&
+            !card.mailto &&
             ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
               <CardFooter className={cn(cnPaddingX, cnPaddingBottom)}>
                 <FooterCard
-                  className={cn(cnGap, 'flex h-full w-full')}
+                  className={cn('flex h-full w-full')}
                   cta1={card.cta1}
                   icon1={card.icon1}
                   href1={card.href1}

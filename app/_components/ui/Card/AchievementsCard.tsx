@@ -5,7 +5,7 @@ import { cnSmallSpaceY, cnSpaceY, cnGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnParagraph } from '@/styles/fontStyles';
 import { Badge } from '@/lib/components/ui/badge';
-import { cnSmallText, cnLightTextMuted } from '@/styles/fontStyles';
+import { cnLightTextMuted } from '@/styles/fontStyles';
 
 export const AchievementsCard: React.FC<{
   achievements: CardProps['achievements'];
@@ -23,7 +23,7 @@ export const AchievementsCard: React.FC<{
                 <h3 className={cnParagraph}>{achievement.title}</h3>
                 <Badge
                   variant='outline'
-                  className={cn('border-0 p-0', cnSmallText, cnLightTextMuted)}
+                  className={cn('border-0 p-0', cnParagraph, cnLightTextMuted)}
                 >
                   {achievement.date}
                 </Badge>

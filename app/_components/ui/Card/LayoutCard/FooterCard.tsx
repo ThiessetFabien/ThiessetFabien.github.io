@@ -3,11 +3,13 @@
  * @description This component renders call-to-action buttons with dynamic icons.
  */
 import React from 'react';
-import ActionButton from '@/ui/CallToAction/ActionButton';
+import { ActionButton } from '@/ui/CallToAction/ActionButton';
 import type { CardProps } from '@/types/CardProps';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
 import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
+import { Button } from '@/lib/components/ui/button';
+import { IconLoader } from '@/hooks/IconLoader';
 
 /**
  * FooterCard component props.
@@ -28,6 +30,7 @@ import { cnSmallGap } from '@/styles/boxModelStyles';
  * @returns {JSX.Element} The rendered component.
  */
 export const FooterCard: React.FC<{
+  mailto?: CardProps['mailto'];
   cta1?: CardProps['cta1'];
   icon1?: CardProps['icon1'];
   href1?: CardProps['href1'];
@@ -50,6 +53,7 @@ export const FooterCard: React.FC<{
   downloadActive5?: CardProps['downloadActive5'];
   className?: string;
 }> = ({
+  mailto,
   cta1,
   icon1,
   href1,
@@ -77,9 +81,10 @@ export const FooterCard: React.FC<{
     icon: ActionButtonProps['icon'],
     href: ActionButtonProps['href'],
     downloadActive: ActionButtonProps['downloadActive'],
-    variant: ActionButtonProps['variant']
+    variant: ActionButtonProps['variant'],
+    mailto?: CardProps['mailto']
   ) => {
-    return (cta && href) || (icon && href) ? (
+    return (!mailto && cta && href) || (!mailto && icon && href) ? (
       <ActionButton
         cta={cta || ''}
         icon={icon || ''}
@@ -87,12 +92,24 @@ export const FooterCard: React.FC<{
         downloadActive={downloadActive || undefined}
         variant={variant}
       />
+    ) : mailto && cta && icon ? (
+      <Button variant={variant} type='submit'>
+        {IconLoader(icon ?? '')}
+        {cta.toUpperCase()}
+      </Button>
     ) : null;
   };
 
   return (
     <div className={cn('flex flex-wrap', cnSmallGap, className)}>
-      {renderActionButton(cta1, icon1, href1, downloadActive1, 'default')}
+      {renderActionButton(
+        cta1,
+        icon1,
+        href1,
+        downloadActive1,
+        'default',
+        mailto
+      )}
       {renderActionButton(cta2, icon2, href2, downloadActive2, 'outline')}
       {renderActionButton(cta3, icon3, href3, downloadActive3, 'outline')}
       {renderActionButton(cta4, icon4, href4, downloadActive4, 'outline')}
