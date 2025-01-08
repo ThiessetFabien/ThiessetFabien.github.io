@@ -14,7 +14,7 @@ import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { CardProps } from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
-import { cnFlexBetweenX, cnFlexCenterY, cnFlexCol } from '@/styles/flexStyles';
+import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
 import { cnGap, cnPadding } from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
 import { ActionButton } from '../CallToAction/ActionButton';

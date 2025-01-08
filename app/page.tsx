@@ -20,7 +20,6 @@ import useCardGrid from '@/hooks/useCardGrid';
 import { cnPaddingBottom, cnPaddingX } from '@/styles/boxModelStyles';
 import { MailCard } from '@/ui/Card/MailCard';
 import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
-import { QuoteCard } from '@/ui/Card/QuoteCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
 import { cnParagraph } from '@/styles/fontStyles';
 import { useIsClient } from './hooks/useIsClient';

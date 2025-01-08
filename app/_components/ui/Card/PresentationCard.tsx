@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import {
   CardTitle,
   CardDescription,
@@ -11,13 +10,6 @@ import { cnGap, cnMarginTop, cnPadding } from '@/styles/boxModelStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type { CardProps } from '@/types/CardProps';
 import FooterCard from './LayoutCard/FooterCard';
-import {
-  useIsMd,
-  useIsLg,
-  useIsXl,
-  useIsXs,
-  useIsXxs,
-} from '@/hooks/useMediaQuery';
 import {
   Avatar,
   AvatarImage,
@@ -75,12 +67,6 @@ const PresentationCard: React.FC<{
   href5,
   downloadActive5,
 }) => {
-  const isXxs = useIsXxs();
-  const isXs = useIsXs();
-  const isMd = useIsMd();
-  const isLg = useIsLg();
-  const isXl = useIsXl();
-
   return (
     <CardHeader className={cn(cnGap, cnPadding, 'w-full space-y-0')}>
       <CardTitle className={cn('flex w-full flex-row', cnGap, cnTitle1)}>

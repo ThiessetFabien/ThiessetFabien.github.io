@@ -8,7 +8,7 @@ import '@/styles/reset.css';
 import { Poppins } from '@/fonts/Poppins';
 import { Expletus_Sans } from './fonts/ExpletusSans';
 import '@/styles/globals.css';
-import { cnMarginTop, cnPadding } from '@/styles/boxModelStyles';
+import { cnPadding } from '@/styles/boxModelStyles';
 import { cnGap } from '@/styles/boxModelStyles';
 import { cnFlexFullCenter } from '@/styles/flexStyles';
 import { Header } from '@/components/layout/Header/HeaderLayout';
