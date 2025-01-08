@@ -1,4 +1,5 @@
 export interface ActionButtonProps {
+  mailto?: string;
   cta?: string;
   icon?: string;
   href?: string;

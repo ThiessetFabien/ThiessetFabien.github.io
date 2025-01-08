@@ -29,17 +29,16 @@ export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
   className,
 }) => {
   return (
-    <footer className={cn('h-full', className)}>
-      <div className={cn('min-w-full')}>
-        <div className={cn('max-w-7xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
-          <p>fab.dev</p>
-          <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
-            &copy; {year} Built by Fabien Thiesset &bull; All rights reserved.
-          </p>
-          <Button variant='ghost' onClick={scrollToTop}>
-            <MoveUp />
-          </Button>
-        </div>
+    <footer className={cn('h-full min-w-full', className)}>
+      <div className={cn('max-w-7xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
+        <p>fab.dev</p>
+        <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
+          &copy; {year} &bull; Built by Fabien Thiesset &bull; All rights
+          reserved.
+        </p>
+        <Button variant='ghost' onClick={scrollToTop}>
+          <MoveUp />
+        </Button>
       </div>
     </footer>
   );

@@ -22,17 +22,21 @@ import { baseUrl } from '@/utils/constants/baseUrl';
  * @returns {JSX.Element} The rendered component.
  */
 
-const ActionButton: React.FC<ActionButtonProps> = ({
+export const ActionButton: React.FC<ActionButtonProps> = ({
   cta,
   icon,
   href,
   downloadActive,
   variant,
+  mailto,
 }) => {
   return (
     <a
       href={
-        href && (href.startsWith('#') || href.startsWith('tel:'))
+        href &&
+        (href.startsWith('#') ||
+          href.startsWith('tel:') ||
+          href.startsWith('documents/'))
           ? href
           : `${baseUrl}${href}`
       }
@@ -54,5 +58,3 @@ const ActionButton: React.FC<ActionButtonProps> = ({
     </a>
   );
 };
-
-export default ActionButton;

@@ -14,19 +14,10 @@ import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { CardProps } from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
-import {
-  cnFlexBetweenX,
-  cnFlexCenterY,
-  cnFlexFullCenter,
-} from '@/styles/flexStyles';
-import {
-  cnGap,
-  cnMarginBottom,
-  cnPadding,
-  cnSmallPaddingX,
-} from '@/styles/boxModelStyles';
+import { cnFlexBetweenX, cnFlexCenterY, cnFlexCol } from '@/styles/flexStyles';
+import { cnGap, cnPadding } from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
-import ActionButton from '../CallToAction/ActionButton';
+import { ActionButton } from '../CallToAction/ActionButton';
 
 /**
  * @file CardProjects.tsx
@@ -62,96 +53,86 @@ export const CardProjects: React.FC<{
             key={projectIndex}
             className={cn(
               'container',
+              cnFlexCol,
               cnBorder,
-              cnGap,
               dynamicMarginBottom(projectIndex),
-              'h-full w-full',
-              projectIndex === 0
-                ? 'sm:col-span-2 sm:min-w-full lg:col-span-1'
-                : 'sm:col-span-1'
+              'col-span-1 h-full w-full min-w-full'
             )}
           >
-            <CardHeader className={cnPadding}>
-              <div className={cn(cnMarginBottom, cnFlexFullCenter, 'w-full')}>
-                <a
-                  href={`${baseUrl}${project.website}`}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className={cnFlexCenterY}
+            {project.imageSrc && project.imageAlt && (
+              <Image
+                src={`/${project.imageSrc}`}
+                alt={project.imageAlt || ''}
+                width={590}
+                height={315}
+                priority
+                className='h-1/2 min-w-full rounded-t-lg object-cover'
+              />
+            )}
+            {!project.imageSrc &&
+              !project.imageAlt &&
+              project.videoSrc &&
+              !project.videoSrc.startsWith('https') && (
+                <video
+                  controls={false}
+                  autoPlay={true}
+                  loop={true}
+                  muted
+                  className='h-1/2 min-w-full rounded-t-lg object-cover'
                 >
-                  {project.imageSrc && project.imageAlt && (
-                    <Image
-                      src={`/${project.imageSrc}`}
-                      alt={project.imageAlt || ''}
-                      width={590}
-                      height={332}
-                      priority
-                      className='h-auto min-w-full rounded-lg'
+                  <source src={project.videoSrc} type='video/mp4' />
+                </video>
+              )}
+            {!project.imageSrc &&
+              !project.imageAlt &&
+              project.videoSrc &&
+              project.videoSrc.startsWith('https') && (
+                <iframe
+                  src={project.videoSrc}
+                  allow='autoplay'
+                  className='h-1/2 w-full rounded-t-lg object-cover'
+                />
+              )}
+
+            <CardHeader className={cn(cnPadding, 'flex-1')}>
+              <CardTitle className={cn(cnTitle2, cnFlexBetweenX)}>
+                <ActionButton
+                  cta={project.title}
+                  icon='ExternalLink'
+                  href={`${baseUrl}${project.website}`}
+                  downloadActive={false}
+                  variant='link'
+                  size='icon'
+                />
+                <div>
+                  {project.file && (
+                    <ActionButton
+                      icon='FileText'
+                      href={`${project.file}`}
+                      downloadActive={false}
+                      variant='ghost'
+                      size='icon'
                     />
                   )}
-                  {!project.imageSrc &&
-                    !project.imageAlt &&
-                    project.videoSrc && (
-                      <video
-                        src={`/${project.videoSrc}`}
-                        controls={false}
-                        autoPlay={true}
-                        loop={true}
-                        muted
-                        className='rounded-lg'
-                      />
-                    )}
-                </a>
-              </div>
-              <div className={cnFlexBetweenX}>
-                <CardTitle className={cn(cnTitle2, cnFlexBetweenX)}>
-                  <a
-                    href={`${baseUrl}${project.website}`}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className={cnFlexCenterY}
-                  >
-                    <h3>{project.title}</h3>
-                  </a>
-                  <div>
-                    <ActionButton
-                      icon='Github'
-                      href={`${baseUrl}${project.github}`}
-                      downloadActive={false}
-                      variant='ghost'
-                      size='icon'
-                    />
-                    {project.demo && (
-                      <ActionButton
-                        icon='SquarePlay'
-                        href={`${baseUrl}${project.demo}`}
-                        downloadActive={false}
-                        variant='ghost'
-                        size='icon'
-                      />
-                    )}
-                    <ActionButton
-                      icon='ExternalLink'
-                      href={`${baseUrl}${project.website}`}
-                      downloadActive={false}
-                      variant='ghost'
-                      size='icon'
-                    />
-                  </div>
-                </CardTitle>
-              </div>
+                  <ActionButton
+                    icon='Github'
+                    href={`${baseUrl}${project.github}`}
+                    downloadActive={false}
+                    variant='ghost'
+                    size='icon'
+                  />
+                </div>
+              </CardTitle>
               <CardDescription className={cnParagraph}>
                 {project.organization}
               </CardDescription>
             </CardHeader>
-            <CardFooter
-              className={cn('flex flex-wrap', 'h-auto p-0', cnSmallPaddingX)}
-            >
+            <CardFooter className={cn(cnFlexBetweenX, 'h-auto flex-wrap')}>
               {project.tags.map((tag, tagIndex) => (
                 <Badge
                   key={tagIndex}
                   variant='outline'
-                  className='border-0 font-light'
+                  className={'m-1 rounded-full font-light'}
                 >
                   <p>{`${tag}`}</p>
                 </Badge>

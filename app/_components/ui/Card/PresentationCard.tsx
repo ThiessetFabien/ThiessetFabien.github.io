@@ -6,7 +6,7 @@ import {
 } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnTitle1, cnBigDescription } from '@/styles/fontStyles';
+import { cnTitle1, cnBigDescription, cnSmallText } from '@/styles/fontStyles';
 import { cnGap, cnMarginTop, cnPadding } from '@/styles/boxModelStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type { CardProps } from '@/types/CardProps';
@@ -18,7 +18,11 @@ import {
   useIsXs,
   useIsXxs,
 } from '@/hooks/useMediaQuery';
-import { getImageSrc } from '@/hooks/getImageSrc';
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+} from '@/lib/components/ui/avatar';
 
 const PresentationCard: React.FC<{
   title: CardProps['title'];
@@ -78,55 +82,46 @@ const PresentationCard: React.FC<{
   const isXl = useIsXl();
 
   return (
-    <CardHeader className={cn(cnGap, cnPadding, 'flex flex-row space-y-0')}>
-      <div className='flex h-full w-auto flex-shrink-0 self-end'>
-        <Image
-          src={getImageSrc(imageSrc || '', isXxs, isXs, isMd, isLg, isXl)}
-          alt={imageAlt || ''}
-          height={232}
-          width={201}
-          priority
-          className={cn(
-            'h-full w-auto rounded-lg'
-            // 'xs:min-h-[18.25rem]',
-            // 'sm:min-h-[14.5rem]',
-            // 'md:min-h-[16.75rem]',
-            // 'lg:min-h-[19rem]',
-            // 'xl:min-h-[15.5rem]'
-          )}
-        />
-      </div>
-      <div className={cn(cnFlexCol, 'flex-1 justify-center')}>
-        <CardTitle className={cnTitle1}>
+    <CardHeader className={cn(cnGap, cnPadding, 'w-full space-y-0')}>
+      <CardTitle className={cn('flex w-full flex-row', cnGap, cnTitle1)}>
+        <Avatar className={cn('h-64 w-64')}>
+          <AvatarImage
+            src={imageSrc || ''}
+            alt={imageAlt || ''}
+            className={'rounded-full bg-primary'}
+          />
+          <AvatarFallback className={cnSmallText}>Profile photo</AvatarFallback>
+        </Avatar>
+        <div className={cn(cnFlexCol, 'justify-center')}>
           <h2>{title}</h2>
-        </CardTitle>
-        <CardDescription className={cn(cnBigDescription, cnHiddenXs)}>
-          <p>{description}</p>
-        </CardDescription>
-        <FooterCard
-          cta1={cta1}
-          icon1={icon1}
-          href1={href1}
-          downloadActive1={downloadActive1}
-          cta2={cta2}
-          icon2={icon2}
-          href2={href2}
-          downloadActive2={downloadActive2}
-          cta3={cta3}
-          icon3={icon3}
-          href3={href3}
-          downloadActive3={downloadActive3}
-          cta4={cta4}
-          icon4={icon4}
-          href4={href4}
-          downloadActive4={downloadActive4}
-          cta5={cta5}
-          icon5={icon5}
-          href5={href5}
-          downloadActive5={downloadActive5}
-          className={cnMarginTop}
-        />
-      </div>
+          <CardDescription className={cn(cnBigDescription, cnHiddenXs)}>
+            <p>{description}</p>
+          </CardDescription>
+        </div>
+      </CardTitle>
+      <FooterCard
+        cta1={cta1}
+        icon1={icon1}
+        href1={href1}
+        downloadActive1={downloadActive1}
+        cta2={cta2}
+        icon2={icon2}
+        href2={href2}
+        downloadActive2={downloadActive2}
+        cta3={cta3}
+        icon3={icon3}
+        href3={href3}
+        downloadActive3={downloadActive3}
+        cta4={cta4}
+        icon4={icon4}
+        href4={href4}
+        downloadActive4={downloadActive4}
+        cta5={cta5}
+        icon5={icon5}
+        href5={href5}
+        downloadActive5={downloadActive5}
+        className={cnMarginTop}
+      />
     </CardHeader>
   );
 };
