@@ -28,7 +28,6 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   href,
   downloadActive,
   variant,
-  mailto,
 }) => {
   return (
     <a

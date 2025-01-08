@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { cnLightTextMuted, cnParagraph } from '@/styles/fontStyles';
-import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
+import { cnFlexFullCenter } from '@/styles/flexStyles';
 import { sizeMiddleIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import GenericCarousel from './GenericCarousel';
