@@ -16,7 +16,7 @@ import { CardProps } from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
 import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
 import { cnGap, cnPadding } from '@/styles/boxModelStyles';
-import { cnParagraph, cnTitle2 } from '@/styles/fontStyles';
+import { cnParagraph, cnTitle2, cnTitle3 } from '@/styles/fontStyles';
 import { ActionButton } from '../CallToAction/ActionButton';
 
 /**
@@ -52,7 +52,6 @@ export const CardProjects: React.FC<{
           <Card
             key={projectIndex}
             className={cn(
-              'container',
               cnFlexCol,
               cnBorder,
               dynamicMarginBottom(projectIndex),
@@ -96,21 +95,22 @@ export const CardProjects: React.FC<{
 
             <CardHeader className={cn(cnPadding, 'flex-1')}>
               <CardTitle className={cn(cnTitle2, cnFlexBetweenX)}>
-                <ActionButton
-                  cta={project.title}
-                  icon='ExternalLink'
+                <a
                   href={`${baseUrl}${project.website}`}
-                  downloadActive={false}
-                  variant='link'
-                  size='icon'
-                />
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <h3 className={cn('hover:underline', cnTitle3)}>
+                    {project.title}
+                  </h3>
+                </a>
                 <div>
                   {project.file && (
                     <ActionButton
                       icon='FileText'
                       href={`${project.file}`}
                       downloadActive={false}
-                      variant='ghost'
+                      variant='link'
                       size='icon'
                     />
                   )}
@@ -118,7 +118,14 @@ export const CardProjects: React.FC<{
                     icon='Github'
                     href={`${baseUrl}${project.github}`}
                     downloadActive={false}
-                    variant='ghost'
+                    variant='link'
+                    size='icon'
+                  />
+                  <ActionButton
+                    icon='ExternalLink'
+                    href={`${baseUrl}${project.website}`}
+                    downloadActive={false}
+                    variant='link'
                     size='icon'
                   />
                 </div>
