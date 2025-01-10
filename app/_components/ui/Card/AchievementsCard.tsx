@@ -12,7 +12,7 @@ export const AchievementsCard: React.FC<{
 }> = ({ achievements }) => {
   return (
     <div className={cnSmallSpaceY}>
-      <ul className={cnSpaceY}>
+      <ul className={cnSmallSpaceY}>
         {achievements &&
           achievements.map((achievement, index) => (
             <li key={index} className={cn(cnGap, 'flex')}>

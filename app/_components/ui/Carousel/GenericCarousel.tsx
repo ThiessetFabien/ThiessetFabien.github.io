@@ -69,7 +69,7 @@ export const GenericCarousel: React.FC<{
   }, [emblaApi]);
 
   return (
-    <section className={cn('container h-auto')} ref={emblaRef}>
+    <div className={cn('container h-auto')} ref={emblaRef}>
       <div className='flex'>
         {items &&
           items.map((item, index) => (
@@ -123,7 +123,7 @@ export const GenericCarousel: React.FC<{
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

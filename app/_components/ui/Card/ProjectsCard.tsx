@@ -94,15 +94,17 @@ export const CardProjects: React.FC<{
               )}
 
             <CardHeader className={cn(cnPadding, 'flex-1')}>
-              <CardTitle className={cn(cnTitle2, cnFlexBetweenX)}>
+              <CardTitle
+                className={cn(cnTitle2, cnFlexBetweenX, 'max-h-[4.5rem]')}
+              >
                 <a
                   href={`${baseUrl}${project.website}`}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  <h3 className={cn('hover:underline', cnTitle3)}>
+                  <p className={cn('hover:underline', cnTitle3)}>
                     {project.title}
-                  </h3>
+                  </p>
                 </a>
                 <div>
                   {project.file && (

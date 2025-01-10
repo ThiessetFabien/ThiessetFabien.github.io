@@ -163,7 +163,7 @@
   },
   {
     "title": "Some Things I've Built",
-    "description": "Below you'll find a collection of some of my most recent JavaScript projects that showcase the type of clients i work directly with.",
+    "description": "Here is a collection of my recent JavaScript projects, showcasing the type of clients I collaborate with and the solutions I provide.",
     "projects": [
       {
         "title": "Portfolio / SSR",
@@ -207,8 +207,7 @@
     "downloadActive3": false
   },
   {
-    "title": "I've working with some amazing people",
-    "description": "Here's what they have to say about my work.",
+    "title": "Here's what they have to say about my work.",
     "testimonials": [
       {
         "name": "Dupoirier Christophe",
@@ -297,7 +296,7 @@
       {
         "name": "Sylvette Depreux",
         "context": "Head of the IT Department - Helene Borel Center",
-        "content": "As the head of the IT department, I worked with Fabien, who was the IT referent for his healthcare facility. Fabien acted as the liaison between the needs expressed by the users in the facility and the IT department. He communicated requests for improvements, software updates, and necessary equipment. Fabien also generated statistics from the information system data.",
+        "content": "I worked with Fabien, who was the IT referent for his healthcare facility. Fabien acted as the liaison between the needs expressed by the users in the facility and the IT department. He communicated requests for improvements, software updates, and necessary equipment. Fabien also generated statistics from the information system data.",
         "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
         "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
       },
@@ -339,12 +338,12 @@
       },
       {
         "icon": "Trophy",
-        "title": "Funding with the Project of Transition Pro Hauts-de-France",
+        "title": "Funding Agreement - Project of Transition Pro Hauts-de-France",
         "date": "sept 2023"
       },
       {
         "icon": "Trophy",
-        "title": "First medicalized reception center labeled Humanitude in mainland France, and the 3rd establishment in France (including overseas territories)",
+        "title": "Obtained Humanitude Label for first medicalized  center in mainland France, and the 3rd establishment in France (including overseas territories)",
         "date": "dec 2019"
       }
     ]

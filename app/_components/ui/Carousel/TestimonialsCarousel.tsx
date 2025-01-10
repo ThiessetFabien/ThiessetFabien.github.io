@@ -16,7 +16,7 @@ import {
   cnSmallText,
 } from '@/styles/fontStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnPaddingX, cnSpaceY } from '@/styles/boxModelStyles';
+import { cnPaddingX, cnSmallSpaceY, cnSpaceY } from '@/styles/boxModelStyles';
 
 /**
  * @file TestimonialsCarousel.tsx
@@ -45,7 +45,7 @@ export const TestimonialsCarousel: React.FC<{
     testimonials.map((testimonial, index) => (
       <div
         key={index}
-        className={cn(cnSpaceY, cnPaddingX, 'h-100% w-full overflow-hidden')}
+        className={cn(cnSmallSpaceY, cnPaddingX, 'h-100% w-full')}
       >
         <div className='flex flex-shrink-0 items-center'>
           <a href={`${baseUrl}${testimonial.linkedin}`}>
