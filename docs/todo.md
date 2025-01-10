@@ -57,13 +57,12 @@
 - [x] Identité de l'expéditeur (nom, prénom, email)
 - [x] Message
 - [x] Envoi du message
-- [ ] Message de confirmation
-- [ ] Message d'erreur
-  - [ ] Nom
+- [x] Message d'erreur
+  - [x] Nom
   - [x] Mail
-- [ ] Message de succès
+- [x] Message de succès
 - [x] Envoi du message par email
-- [ ] Proposition de contact par téléphone
+- [x] Proposition de contact par téléphone
 
 **Liens réseaux sociaux**
 
