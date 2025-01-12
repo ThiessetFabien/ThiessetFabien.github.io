@@ -1,6 +1,6 @@
 [
   {
-    "title": "Ethical Web Developer & Coffee Enthusiast",
+    "title": "Ethical Web Developer",
     "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional. If you want to learn more about working with me, take a look through my website.",
     "imageSrc": "/images/photo.png",
     "imageAlt": "Picture of Fabien",
@@ -18,7 +18,7 @@
     "downloadActive3": false
   },
   {
-    "title": "Being a Full-Stack Developer is my focus",
+    "title": "Being Full-Stack is my focus",
     "description": " I specialize in building web applications using modern technologies.",
     "topTechnologies": [
       {
@@ -42,11 +42,11 @@
         "slug": "postgresql/postgresql-original"
       }
     ],
-    "cta1": "Explore my projects",
+    "cta1": "My works",
     "icon1": "Eye",
     "href1": "#card-4",
     "downloadActive1": false,
-    "cta2": "Want to see more ? View all",
+    "cta2": "See more",
     "icon2": "Github",
     "href2": "www.github.com/ThiessetFabien?tab=repositories",
     "downloadActive2": false
@@ -121,7 +121,7 @@
       }
     ],
     "icon1": "Mail",
-    "cta1": "Looking for talent ? I'm your developer",
+    "cta1": "Need my talents?",
     "href1": "#card-9",
     "downloadActive1": false,
     "cta2": "View my resume",
@@ -194,20 +194,20 @@
       }
     ],
     "icon1": "Mail",
-    "cta1": "Hiring a developer ? I'm your guy",
+    "cta1": "Hire me!",
     "href1": "#card-9",
     "downloadActive1": false,
     "cta2": "Let's network",
     "icon2": "Linkedin",
     "href2": "www.linkedin.com/in/fabien-thiesset/",
     "downloadActive2": false,
-    "cta3": "Open to project collaborations",
+    "cta3": "Collaboration open",
     "icon3": "Github",
     "href3": "github.com/ThiessetFabien?tab=repositories",
     "downloadActive3": false
   },
   {
-    "title": "Here's what they have to say about my work.",
+    "title": "What they say about my work?",
     "testimonials": [
       {
         "name": "Dupoirier Christophe",
@@ -324,7 +324,7 @@
     ]
   },
   {
-    "title": "Eager to apply my skills and learn more",
+    "title": "Eager to apply and learn more",
     "content": "I am seeking a company that values both human and technical skills. I am also open to apprenticeship opportunities."
   },
   {
@@ -349,8 +349,8 @@
     ]
   },
   {
-    "title": "I love drinking a good coffee while develop.",
-    "content": "I am a fan of the Shonen genre. After a good day of work, i reward myself by watching One Piece, Bleach, Dan da dan and others."
+    "title": "Savoring coffee while coding",
+    "content": "As a fan of Shonen anime, I enjoy sipping coffee while I work and rewarding myself with recent shows like Demon Slayer and My Hero Academia after a productive day."
   },
   {
     "title": "Available for Mobile, Vehicle",
@@ -361,9 +361,9 @@
     "title": "Let's talk about your project",
     "description": "Passion is energy. Feel the power that comes from focusing on what excites you. (Oprah Winfrey)",
     "mailto": "thiessetfabienpro@gmail.com",
-    "cta1": "Submit your inquiry",
+    "cta1": "Inquire now",
     "icon1": "Send",
-    "cta2": "Curious ? Let's talk",
+    "cta2": "Let's chat",
     "icon2": "PhoneOutgoing",
     "href2": "tel:+33610920974",
     "downloadActive2": false,
