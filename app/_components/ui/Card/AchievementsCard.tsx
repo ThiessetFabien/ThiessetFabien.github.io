@@ -1,7 +1,7 @@
 import type { CardProps } from '@/types/CardProps';
 import { IconLoader } from '@/hooks/IconLoader';
 import { cn } from '@/lib/utils';
-import { cnSmallSpaceY, cnSpaceY, cnGap } from '@/styles/boxModelStyles';
+import { cnSmallSpaceY, cnGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnParagraph } from '@/styles/fontStyles';
 import { Badge } from '@/lib/components/ui/badge';

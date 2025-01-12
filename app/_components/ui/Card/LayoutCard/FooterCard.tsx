@@ -2,16 +2,13 @@
  * @file CallToAction.tsx
  * @description This component renders call-to-action buttons with dynamic icons.
  */
-import React, { use } from 'react';
+import React from 'react';
 import { ActionButton } from '@/ui/CallToAction/ActionButton';
 import type { CardProps } from '@/types/CardProps';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
 import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
-import { Button } from '@/lib/components/ui/button';
-import { IconLoader } from '@/hooks/IconLoader';
 import { useIsXs } from '@/hooks/useMediaQuery';
-import { cnParagraph } from '@/styles/fontStyles';
 
 /**
  * FooterCard component props.
@@ -97,9 +94,9 @@ export const FooterCard: React.FC<{
       />
     ) : null;
   };
+  const isXs = useIsXs();
 
   function hideCta(cta: string | undefined): string | undefined {
-    const isXs = useIsXs();
     return !isXs ? cta : '';
   }
 

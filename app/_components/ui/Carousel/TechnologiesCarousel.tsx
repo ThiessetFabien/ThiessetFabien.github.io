@@ -5,7 +5,6 @@ import { baseUrl } from '@/utils/constants/baseUrl';
 import { cnLightTextMuted, cnParagraph } from '@/styles/fontStyles';
 import { cnFlexFullCenter } from '@/styles/flexStyles';
 import { sizeMiddleIcon } from '@/styles/sizeStyles';
-import { cnHiddenXs } from '@/styles/hideItemStyles';
 import GenericCarousel from './GenericCarousel';
 import type { CardProps } from '@/types/CardProps';
 import { cnSmallPadding } from '@/styles/boxModelStyles';
