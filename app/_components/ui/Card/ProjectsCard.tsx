@@ -136,7 +136,9 @@ export const CardProjects: React.FC<{
                 {project.organization}
               </CardDescription>
             </CardHeader>
-            <CardFooter className={cn(cnFlexBetweenX, 'h-auto flex-wrap')}>
+            <CardFooter
+              className={cn(cnFlexBetweenX, cnPadding, 'h-auto flex-wrap')}
+            >
               {project.tags.map((tag, tagIndex) => (
                 <Badge
                   key={tagIndex}
