@@ -70,14 +70,18 @@ const PresentationCard: React.FC<{
   return (
     <CardHeader className={cn(cnGap, cnPadding, 'w-full space-y-0')}>
       <CardTitle className={cn('flex w-full flex-row', cnGap, cnTitle1)}>
-        <Avatar className={cn('h-auto w-1/4')}>
-          <AvatarImage
-            src={imageSrc || ''}
-            alt={imageAlt || ''}
-            className={'rounded-full bg-primary'}
-          />
-          <AvatarFallback className={cnSmallText}>Profile photo</AvatarFallback>
-        </Avatar>
+        <div>
+          <Avatar className={cn('max-h-1/3 h-auto w-auto')}>
+            <AvatarImage
+              src={imageSrc || ''}
+              alt={imageAlt || ''}
+              className={'rounded-full bg-primary'}
+            />
+            <AvatarFallback className={cnSmallText}>
+              Profile photo
+            </AvatarFallback>
+          </Avatar>
+        </div>
         <div className={cn(cnFlexCol, 'justify-center')}>
           <h2>{title}</h2>
           <CardDescription className={cn(cnBigDescription, cnHiddenXs)}>
