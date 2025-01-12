@@ -87,14 +87,14 @@ export const FooterCard: React.FC<{
         variant={variant}
       />
     ) : mailto && cta && icon ? (
-      <Button
+      <ActionButton
+        icon={icon || ''}
+        href={mailto || ''}
+        cta={cta || ''}
+        downloadActive={downloadActive || undefined}
         variant={variant}
-        className={cn(cnParagraph, 'font-medium')}
         type='submit'
-      >
-        {IconLoader(icon ?? '')}
-        {cta.toUpperCase()}
-      </Button>
+      />
     ) : null;
   };
 

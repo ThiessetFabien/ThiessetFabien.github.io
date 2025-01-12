@@ -61,7 +61,6 @@ export const TechnologiesCarousel: React.FC<{
               cnParagraph,
               cnLightTextMuted,
               cnSmallPadding,
-              cnHiddenXs,
               'text-center'
             )}
           >

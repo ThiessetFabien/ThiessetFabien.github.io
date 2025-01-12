@@ -28,6 +28,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   href,
   downloadActive,
   variant,
+  type,
 }) => {
   return (
     <a
@@ -49,6 +50,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
     >
       <Button
         variant={variant}
+        type={type}
         className={cn(!!cta ? cnButton : cnButtonIcon, cnSmallText)}
       >
         {IconLoader(icon ?? '')}
