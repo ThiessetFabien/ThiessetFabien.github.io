@@ -4,7 +4,6 @@
  */
 import type { TechnologieProps } from './TechnologieProps';
 import type { AchievementProps } from './AchievementProps';
-import type { QuoteProps } from './QuoteProps';
 import type { ExperiencesProps } from './ExperiencesProps';
 import type { OtherExperienceProps } from './OtherExperienceProps';
 import type { ProjectProps } from './ProjectProps';
@@ -78,7 +77,6 @@ export type CardProps = {
 
   topTechnologies?: TopTechnologieProps[];
   technologies?: TechnologieProps[];
-  quote?: QuoteProps;
 
   testimonials?: TestimonialProps[];
 
@@ -89,6 +87,6 @@ export type CardProps = {
 
   mailto?: string;
 
-  className?: string;
+  className: string;
   colSpan?: string;
 };

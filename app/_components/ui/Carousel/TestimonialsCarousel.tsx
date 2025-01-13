@@ -34,7 +34,7 @@ import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
  */
 export const TestimonialsCarousel: React.FC<{
   testimonials: CardProps['testimonials'];
-  className?: string;
+  className?: CardProps['className'];
 }> = ({ testimonials, className }) => {
   // const shuffledTestimonial = testimonials
   //   ? testimonials.sort(() => Math.random() - 0.5)
@@ -43,10 +43,7 @@ export const TestimonialsCarousel: React.FC<{
   const items =
     testimonials &&
     testimonials.map((testimonial, index) => (
-      <div
-        key={index}
-        className={cn(cnSmallSpaceY, cnPaddingX, 'h-100% w-full')}
-      >
+      <div key={index} className={className}>
         <div className='flex flex-shrink-0 items-center'>
           <a href={`${baseUrl}${testimonial.linkedin}`}>
             <div className='relative left-0 top-0'>
@@ -87,7 +84,7 @@ export const TestimonialsCarousel: React.FC<{
       </div>
     ));
 
-  return <GenericCarousel items={items} className={className} delay={7000} />;
+  return <GenericCarousel items={items} delay={7000} />;
 };
 
 export default TestimonialsCarousel;

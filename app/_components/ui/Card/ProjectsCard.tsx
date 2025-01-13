@@ -15,7 +15,12 @@ import { baseUrl } from '@/utils/constants/baseUrl';
 import { CardProps } from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
 import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
-import { cnGap, cnPadding } from '@/styles/boxModelStyles';
+import {
+  cnGap,
+  cnPadding,
+  cnPaddingBottom,
+  cnPaddingX,
+} from '@/styles/boxModelStyles';
 import { cnParagraph, cnTitle2, cnTitle3 } from '@/styles/fontStyles';
 import { ActionButton } from '../CallToAction/ActionButton';
 
@@ -34,19 +39,12 @@ import { ActionButton } from '../CallToAction/ActionButton';
  * <CardProjects projects={projects} className="custom-class" />
  */
 
-export const CardProjects: React.FC<{
+export const ProjectsCard: React.FC<{
   projects: CardProps['projects'];
-  className?: string;
+  className?: CardProps['className'];
 }> = ({ projects, className }) => {
   return (
-    <div
-      className={cn(
-        className,
-        cnGap,
-        'h-full',
-        'grid sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3'
-      )}
-    >
+    <div className={className}>
       {projects &&
         projects.map((project, projectIndex) => (
           <Card
@@ -137,7 +135,12 @@ export const CardProjects: React.FC<{
               </CardDescription>
             </CardHeader>
             <CardFooter
-              className={cn(cnFlexBetweenX, cnPadding, 'h-auto flex-wrap')}
+              className={cn(
+                cnFlexBetweenX,
+                cnPaddingX,
+                cnPaddingBottom,
+                'h-auto flex-wrap'
+              )}
             >
               {project.tags.map((tag, tagIndex) => (
                 <Badge

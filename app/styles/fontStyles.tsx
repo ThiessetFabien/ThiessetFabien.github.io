@@ -38,7 +38,8 @@ export const cnDescription = cn(
 
 export const cnParagraph = cn(
   'max-w-prose',
-  'font-light leading-relaxed',
+  'font-light',
+  // 'leading-relaxed',
   'text-xs'
 );
 

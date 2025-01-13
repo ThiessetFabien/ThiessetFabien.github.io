@@ -11,10 +11,11 @@ import {
 export const HeaderCard: React.FC<{
   title: CardProps['title'];
   description: CardProps['description'];
+  className: CardProps['className'];
   index: number;
-}> = ({ title, description, index }) => {
+}> = ({ title, description, className, index }) => {
   return (
-    <CardHeader className={cn(cnPadding)}>
+    <CardHeader className={className}>
       <CardTitle
         className={cn(cnTitle2, index === 2 || index === 4 ? cnTitle2Size : '')}
       >

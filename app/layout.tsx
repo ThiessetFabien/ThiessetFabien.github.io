@@ -50,7 +50,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header className={cnPadding} />
+          <Header className={cn('h-full', 'border-b', cnPadding)} />
           <main
             className={cn(
               cnGap,
@@ -66,7 +66,7 @@ export default function RootLayout({
               cnFlexFullCenter,
               cnPadding,
               'text-center',
-              'min-w-full'
+              'h-full min-w-full'
             )}
           />
         </ThemeProvider>

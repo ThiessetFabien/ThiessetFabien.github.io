@@ -31,16 +31,7 @@ export const TechnologiesCarousel: React.FC<{
     technologies &&
     technologies.map((tech, index) => {
       return (
-        <div
-          key={index}
-          className={cn(
-            cnFlexFullCenter,
-            'flex-shrink-0',
-            'h-auto min-w-fit',
-            'xs:min-h-auto min-h-12',
-            'xs:min-w-auto min-w-12'
-          )}
-        >
+        <div key={index} className={className}>
           <div className={cn(cnFlexFullCenter)}>
             <Image
               src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
@@ -69,7 +60,7 @@ export const TechnologiesCarousel: React.FC<{
       );
     });
 
-  return <GenericCarousel items={items} className={className} />;
+  return <GenericCarousel items={items} />;
 };
 
 export default TechnologiesCarousel;

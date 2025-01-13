@@ -8,8 +8,7 @@ import { cnPaddingX } from '@/styles/boxModelStyles';
 import type { CardProps } from '@/types/CardProps';
 import { scrollToTop } from '@/hooks/ScrollToTop';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
-import { Button } from '@/lib/components/ui/button';
-import { MoveUp } from 'lucide-react';
+import { ActionButton } from '@/ui/CallToAction/ActionButton';
 
 /**
  * @file Footer.tsx
@@ -29,16 +28,14 @@ export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
   className,
 }) => {
   return (
-    <footer className={cn('h-full min-w-full', className)}>
+    <footer className={className}>
       <div className={cn('max-w-7xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
         <p>fab.dev</p>
         <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
           &copy; {year} &bull; Built by Fabien Thiesset &bull; All rights
           reserved.
         </p>
-        <Button variant='ghost' onClick={scrollToTop}>
-          <MoveUp />
-        </Button>
+        <ActionButton icon='MoveUp' variant='ghost' onClick={scrollToTop} />
       </div>
     </footer>
   );
