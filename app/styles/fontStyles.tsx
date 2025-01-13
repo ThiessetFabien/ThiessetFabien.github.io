@@ -28,7 +28,7 @@ export const cnBigDescription = cn(
   'md:text-lg'
 );
 
-export const cnDescription = cn('max-w-prose', 'font-light leading-relaxed');
+export const cnDescription = cn('font-light leading-relaxed');
 
 export const cnParagraph = cn(
   'max-w-prose',

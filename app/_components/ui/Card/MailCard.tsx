@@ -89,7 +89,67 @@ export const MailCard: React.FC<{
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={className}>
-        <div className={cn(cnGap, 'grid grid-cols-1 md:grid-cols-4')}>
+        <div
+          className={cn(
+            cnGap,
+            'grid auto-rows-auto grid-cols-1 grid-rows-1 md:grid-cols-4'
+          )}
+        >
+          <FormField
+            control={form.control}
+            name='type'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className={cn('min-w-full', cnParagraph)}>
+                  Type of mail...
+                </FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue
+                        className={cn(
+                          'min-w-full',
+                          'paragraph-placeholder',
+                          cnParagraph
+                        )}
+                        placeholder='Select a type of email to display'
+                      />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent className={cn('min-w-full', cnParagraph)}>
+                    <SelectItem
+                      className={cn('min-w-full', cnParagraph)}
+                      value='offer'
+                    >
+                      offer
+                    </SelectItem>
+                    <SelectItem
+                      className={cn('min-w-full', cnParagraph)}
+                      value='collaboration'
+                    >
+                      collaboration
+                    </SelectItem>
+                    <SelectItem
+                      className={cn('min-w-full', cnParagraph)}
+                      value='question'
+                    >
+                      question
+                    </SelectItem>
+                    <SelectItem
+                      className={cn('min-w-full', cnParagraph)}
+                      value='other'
+                    >
+                      other
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name='name'
@@ -162,67 +222,12 @@ export const MailCard: React.FC<{
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name='type'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className={cn('min-w-full', cnParagraph)}>
-                  Type of mail...
-                </FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue
-                        className={cn(
-                          'min-w-full',
-                          'paragraph-placeholder',
-                          cnParagraph
-                        )}
-                        placeholder='Select a type of email to display'
-                      />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent className={cn('min-w-full', cnParagraph)}>
-                    <SelectItem
-                      className={cn('min-w-full', cnParagraph)}
-                      value='offer'
-                    >
-                      offer
-                    </SelectItem>
-                    <SelectItem
-                      className={cn('min-w-full', cnParagraph)}
-                      value='collaboration'
-                    >
-                      collaboration
-                    </SelectItem>
-                    <SelectItem
-                      className={cn('min-w-full', cnParagraph)}
-                      value='question'
-                    >
-                      question
-                    </SelectItem>
-                    <SelectItem
-                      className={cn('min-w-full', cnParagraph)}
-                      value='other'
-                    >
-                      other
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
         </div>
         <FormField
           control={form.control}
           name='message'
           render={({ field }) => (
-            <FormItem>
+            <FormItem className='grid-cols-1 grid-rows-1 md:grid-cols-4'>
               <FormLabel className={cn('min-w-full', cnParagraph)}>
                 Your message :
               </FormLabel>
@@ -231,7 +236,7 @@ export const MailCard: React.FC<{
                   placeholder='Tell me a little bit about your project...'
                   className={cn(
                     cnParagraph,
-                    'h-44 min-w-full resize-y',
+                    'h-36 min-w-full resize-y',
                     'paragraph-placeholder'
                   )}
                   {...field}
@@ -256,7 +261,9 @@ export const MailCard: React.FC<{
           icon3={icon3}
           href3={href3}
           downloadActive3={downloadActive3}
-          className={cnMarginTop}
+          className={
+            (cn(cnMarginTop), 'grid-cols-1 grid-rows-1 md:grid-cols-4')
+          }
         />
       </form>
     </Form>

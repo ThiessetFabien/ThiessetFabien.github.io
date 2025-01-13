@@ -29,33 +29,40 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   downloadActive,
   variant,
   type,
+  onClick,
 }) => {
-  return (
-    <a
-      href={
-        href &&
-        (href.startsWith('#') ||
-          href.startsWith('tel:') ||
-          href.startsWith('documents/'))
-          ? href
-          : `${baseUrl}${href}`
-      }
-      target={
-        href && (href.startsWith('#') || href.startsWith('tel:'))
-          ? '_self'
-          : '_blank'
-      }
-      rel='noopener noreferrer'
-      {...(downloadActive ? { download: true } : {})}
+  const buttonContent = (
+    <Button
+      onClick={onClick}
+      variant={variant}
+      type={type}
+      className={cn(!!cta ? cnButton : cnButtonIcon, cnSmallText)}
     >
-      <Button
-        variant={variant}
-        type={type}
-        className={cn(!!cta ? cnButton : cnButtonIcon, cnSmallText)}
-      >
-        {IconLoader(icon ?? '')}
-        {(cta ?? '').toLocaleUpperCase()}
-      </Button>
-    </a>
+      {IconLoader(icon ?? '')}
+      {(cta ?? '').toLocaleUpperCase()}
+    </Button>
   );
+
+  if (href) {
+    return (
+      <a
+        href={
+          href.startsWith('#') ||
+          href.startsWith('tel:') ||
+          href.startsWith('documents/')
+            ? href
+            : `${baseUrl}${href}`
+        }
+        target={
+          href.startsWith('#') || href.startsWith('tel:') ? '_self' : '_blank'
+        }
+        rel='noopener noreferrer'
+        {...(downloadActive ? { download: true } : {})}
+      >
+        {buttonContent}
+      </a>
+    );
+  }
+
+  return buttonContent;
 };
