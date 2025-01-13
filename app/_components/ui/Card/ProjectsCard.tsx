@@ -16,7 +16,6 @@ import { CardProps } from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
 import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
 import {
-  cnGap,
   cnPadding,
   cnPaddingBottom,
   cnPaddingX,

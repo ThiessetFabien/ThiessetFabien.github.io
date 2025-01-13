@@ -14,7 +14,7 @@ import {
 import type { CardProps } from '@/types/CardProps';
 import { toast } from '@/lib/hooks/use-toast';
 import { Textarea } from '@/lib/components/ui/textarea';
-import { cnGap, cnSpaceY } from '@/styles/boxModelStyles';
+import { cnGap } from '@/styles/boxModelStyles';
 import {
   Select,
   SelectTrigger,

@@ -28,18 +28,12 @@ export const cnBigDescription = cn(
   'md:text-lg'
 );
 
-export const cnDescription = cn(
-  // 'w-full max-w-prose',
-  'font-light leading-relaxed'
-  // 'text-sm',
-  // 'sm:text-base',
-  // 'md:text-lg'
-);
+export const cnDescription = cn('max-w-prose', 'font-light leading-relaxed');
 
 export const cnParagraph = cn(
   'max-w-prose',
   'font-light',
-  // 'leading-relaxed',
+  'leading-relaxed',
   'text-xs'
 );
 

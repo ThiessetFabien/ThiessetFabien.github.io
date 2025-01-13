@@ -1,6 +1,5 @@
 import type { CardProps } from '@/types/CardProps';
 import { cn } from '@/lib/utils';
-import { cnPadding } from '@/styles/boxModelStyles';
 import { cnDescription, cnTitle2, cnTitle2Size } from '@/styles/fontStyles';
 import {
   CardTitle,

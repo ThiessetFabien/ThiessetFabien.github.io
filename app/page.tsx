@@ -17,12 +17,7 @@ import PresentationCard from '@/ui/Card/PresentationCard';
 import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
-import {
-  cnMarginX,
-  cnPaddingBottom,
-  cnPaddingX,
-  cnSpaceY,
-} from '@/styles/boxModelStyles';
+import { cnPaddingBottom, cnPaddingX, cnSpaceY } from '@/styles/boxModelStyles';
 import { MailCard } from '@/ui/Card/MailCard';
 import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
