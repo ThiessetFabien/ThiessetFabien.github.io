@@ -30,7 +30,7 @@ export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
   return (
     <footer className={className}>
       <div className={cn('max-w-7xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
-        <p>fab.dev</p>
+        <p>fab.craft</p>
         <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
           &copy; {year} &bull; Built by Fabien Thiesset &bull; All rights
           reserved.
