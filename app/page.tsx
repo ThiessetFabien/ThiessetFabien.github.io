@@ -1,117 +1,208 @@
-'use client';
-
-import React from 'react';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-  CardDescription,
-} from '@/lib/components/ui/card';
-import CardData from '@api/cards.data.json';
-import { CallToAction } from '@/ui/CallToAction/CallToAction';
-import { TechnologiesCarousel } from '@/ui/Carousel/TechnologiesCarousel';
-import { RecommandationsCarousel } from '@/ui/Carousel/RecommandationsCarousel';
-import { Section } from '@/components/ui/Section/Section';
-import { Map } from '@/ui/Map/Map';
-import { CardImage } from '@/ui/Card/CardImage';
-import { CardExperiences } from '@/ui/Card/CardExperiences';
-import { CardProjects } from '@/ui/Card/CardProjects';
-
 /**
  * @file page.tsx
  * @description This file renders the home page with various sections including cards, maps, and carousels.
  */
+
+'use client';
+
+import React from 'react';
+import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
+import fetchData from '@api/data.json';
+import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
+import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialsCarousel';
+import { ExperiencesCard } from '@/components/ui/Card/ExperiencesCard';
+import { ProjectsCard } from '@/components/ui/Card/ProjectsCard';
+import { SkillsCard } from '@/ui/Card/SkillsCard';
+import PresentationCard from '@/ui/Card/PresentationCard';
+import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
+import { cn } from '@/lib/utils';
+import useCardGrid from '@/hooks/useCardGrid';
+import { cnPaddingBottom, cnPaddingX, cnSpaceY } from '@/styles/boxModelStyles';
+import { MailCard } from '@/ui/Card/MailCard';
+import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
+import { AchievementsCard } from '@/ui/Card/AchievementsCard';
+import { cnParagraph } from '@/styles/fontStyles';
+import { useIsClient } from './hooks/useIsClient';
+import dynamic from 'next/dynamic';
+import type { CardProps } from './types/CardProps';
+import { cnFlexCol, cnFlexFullCenter } from './styles/flexStyles';
+import {
+  cnGap,
+  cnPadding,
+  cnSmallGap,
+  cnSmallSpaceY,
+} from './styles/boxModelStyles';
 
 /**
  * HomePage component.
  * @returns {JSX.Element} The rendered component.
  */
 
-const HomePage: React.FC = () => {
+const LazyMap = dynamic(() => import('@/ui/Card/MapCard'), {
+  ssr: false,
+  loading: () => <p>Loading map...</p>,
+});
+
+const HomePage: React.FC = (): JSX.Element => {
+  const gridConfig = useCardGrid(fetchData as CardProps[]);
+  const isClient = useIsClient();
+
   return (
-    <main>
-      {CardData.map((cardProps, index: number) => (
-        <Section key={index}>
-          <Card>
-            <CardHeader>
-              {cardProps.imageSrc && !cardProps.map && (
-                <CardImage
-                  imageSrc={cardProps.imageSrc}
-                  imageAlt={cardProps.imageAlt || ''}
-                  width={590}
-                  height={100}
-                  className='h-auto w-full'
-                />
-              )}
-              {!cardProps.imageSrc && cardProps.map && <Map />}
-              {cardProps.title && (
-                <>
-                  <CardTitle className='font-caption text-2xl leading-tight tracking-tight'>
-                    {cardProps.title}
-                  </CardTitle>
-                  {cardProps.description && (
-                    <CardDescription className='text-base font-light leading-relaxed'>
-                      {cardProps.description}
-                    </CardDescription>
+    <>
+      {gridConfig.map((card, index: number) => (
+        <Card
+          key={index}
+          id={`card-${index}`}
+          className={cn('h-full w-full', cnFlexCol, card.colSpan)}
+        >
+          {card.imageSrc && !card.map && (
+            <PresentationCard
+              title={card.title}
+              description={card.description}
+              imageSrc={card.imageSrc}
+              imageAlt={card.imageAlt}
+              cta1={card.cta1}
+              icon1={card.icon1}
+              href1={card.href1}
+              downloadActive1={card.downloadActive1}
+              cta2={card.cta2}
+              icon2={card.icon2}
+              href2={card.href2}
+              downloadActive2={card.downloadActive2}
+              cta3={card.cta3}
+              icon3={card.icon3}
+              href3={card.href3}
+              downloadActive3={card.downloadActive3}
+              cta4={card.cta4}
+              icon4={card.icon4}
+              href4={card.href4}
+              downloadActive4={card.downloadActive4}
+              cta5={card.cta5}
+              icon5={card.icon5}
+              href5={card.href5}
+              downloadActive5={card.downloadActive5}
+              className={cn(cnGap, cnPadding, 'w-full space-y-0')}
+            />
+          )}
+          {!card.imageSrc && (
+            <>
+              <HeaderCard
+                title={card.title}
+                description={card.description}
+                index={index}
+                className={cnPadding}
+              />
+              <CardContent
+                className={cn(
+                  !card.testimonials ? cnPaddingX : 'px-0',
+                  'container min-w-full flex-1 overflow-hidden'
+                )}
+              >
+                {card.experiences &&
+                  card.experiences.length > 0 &&
+                  !card.technologies && (
+                    <ExperiencesCard
+                      experiences={card.experiences}
+                      className=''
+                    />
                   )}
-                </>
-              )}
-            </CardHeader>
-            {cardProps.experiences &&
-              cardProps.experiences.length > 0 &&
-              !cardProps.technologies && (
-                <CardContent>
-                  <CardExperiences
-                    className='max-w-prose text-base font-light leading-relaxed'
-                    experiences={cardProps.experiences}
+                {card.topTechnologies && (
+                  <SkillsCard
+                    topTechnologies={card.topTechnologies}
+                    className={cn(
+                      'flex min-w-full flex-row flex-wrap',
+                      'container overflow-hidden',
+                      cnSmallGap
+                    )}
                   />
-                </CardContent>
-              )}
-            {cardProps.technologies && cardProps.technologies.length > 0 && (
-              <CardContent>
-                <TechnologiesCarousel
-                  className='w-full text-base font-light leading-relaxed'
-                  technologies={cardProps.technologies}
+                )}
+                {card.technologies && card.technologies.length > 0 && (
+                  <OtherSkillsCard
+                    technologies={card.technologies}
+                    className={cn(
+                      cnFlexFullCenter,
+                      'flex-shrink-0',
+                      'h-auto min-w-fit',
+                      'xs:min-h-auto min-h-12',
+                      'xs:min-w-auto min-w-12'
+                    )}
+                  />
+                )}
+                {card.testimonials && card.testimonials.length > 0 && (
+                  <TestimonialsCarousel
+                    testimonials={card.testimonials}
+                    className={cn(cnSmallSpaceY, cnPaddingX, 'h-100% w-full')}
+                  />
+                )}
+                {card.projects && card.projects.length > 0 && (
+                  <ProjectsCard
+                    projects={card.projects}
+                    className={cn(
+                      cnGap,
+                      'h-full',
+                      'grid sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3'
+                    )}
+                  />
+                )}
+                {card.achievements && card.achievements.length > 0 && (
+                  <AchievementsCard
+                    achievements={card.achievements}
+                    className={cnSmallSpaceY}
+                  />
+                )}
+                {card.mailto && (
+                  <MailCard
+                    mailto={card.mailto}
+                    cta1={card.cta1}
+                    icon1={card.icon1}
+                    href1={card.href1}
+                    downloadActive1={card.downloadActive1}
+                    cta2={card.cta2}
+                    icon2={card.icon2}
+                    href2={card.href2}
+                    downloadActive2={card.downloadActive2}
+                    cta3={card.cta3}
+                    icon3={card.icon3}
+                    href3={card.href3}
+                    downloadActive3={card.downloadActive3}
+                    className={cnSpaceY}
+                  />
+                )}
+                {isClient && card.map && <LazyMap />}
+                {!card.experiences &&
+                  !card.topTechnologies &&
+                  !card.technologies &&
+                  !card.testimonials &&
+                  !card.projects &&
+                  !card.achievements &&
+                  !card.mailto && <p className={cnParagraph}>{card.content}</p>}
+              </CardContent>
+            </>
+          )}
+          {!card.imageSrc &&
+            !card.mailto &&
+            ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
+              <CardFooter className={cn(cnPaddingX, cnPaddingBottom)}>
+                <FooterCard
+                  className={'flex h-full w-full'}
+                  cta1={card.cta1}
+                  icon1={card.icon1}
+                  href1={card.href1}
+                  downloadActive1={card.downloadActive1}
+                  cta2={card.cta2}
+                  icon2={card.icon2}
+                  href2={card.href2}
+                  downloadActive2={card.downloadActive2}
+                  cta3={card.cta3}
+                  icon3={card.icon3}
+                  href3={card.href3}
+                  downloadActive3={card.downloadActive3}
                 />
-              </CardContent>
+              </CardFooter>
             )}
-            {cardProps.recommandations &&
-              cardProps.recommandations.length > 0 && (
-                <CardContent>
-                  <RecommandationsCarousel
-                    className='w-full text-base font-light leading-relaxed'
-                    recommandations={cardProps.recommandations}
-                  />
-                </CardContent>
-              )}
-            {cardProps.projects && cardProps.projects.length > 0 && (
-              <CardContent>
-                <CardProjects projects={cardProps.projects} />
-              </CardContent>
-            )}
-            {cardProps.cta1 &&
-              cardProps.href1 &&
-              cardProps.cta2 &&
-              cardProps.href2 && (
-                <CardFooter>
-                  <CallToAction
-                    cta1={cardProps.cta1}
-                    icon1={cardProps.icon1}
-                    href1={cardProps.href1}
-                    downloadActive1={cardProps.downloadActive1}
-                    cta2={cardProps.cta2}
-                    icon2={cardProps.icon2}
-                    href2={cardProps.href2}
-                    downloadActive2={cardProps.downloadActive2}
-                  />
-                </CardFooter>
-              )}
-          </Card>
-        </Section>
+        </Card>
       ))}
-    </main>
+    </>
   );
 };
 

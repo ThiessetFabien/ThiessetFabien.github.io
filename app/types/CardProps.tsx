@@ -1,12 +1,15 @@
-import { Technologies } from './TechnologiesProps';
-import { Experiences } from './ExperiencesProps';
-import { Projects } from './ProjectsProps';
-import { Recommandations } from './RecommandationsProps';
-
 /**
  * @file CardProps.tsx
  * @description This file contains the type definition for the props used in various card components.
  */
+import type { TechnologieProps } from './TechnologieProps';
+import type { AchievementProps } from './AchievementProps';
+import type { ExperiencesProps } from './ExperiencesProps';
+import type { OtherExperienceProps } from './OtherExperienceProps';
+import type { ProjectProps } from './ProjectProps';
+import type { TestimonialProps } from './TestimonialProps';
+import type { TopTechnologieProps } from './Top3TechnologieProps';
+import type { ActionButtonProps } from './ActionButtonProps';
 
 /**
  * CardProps type.
@@ -32,26 +35,58 @@ import { Recommandations } from './RecommandationsProps';
  * @property {string} [className] - Additional class names for the card.
  */
 
-export default interface CardProps {
-  imageSrc?: string;
-  imageAlt?: string;
+export type CardProps = {
+  index?: number;
   title?: string;
   description?: string;
-  cta1?: string;
-  icon1?: string;
-  href1?: string;
-  downloadActive1: boolean;
-  cta2?: string;
-  icon2?: string;
-  href2?: string;
-  downloadActive2: boolean;
+
+  imageSrc?: string;
+  imageAlt?: string;
+
   map?: boolean;
-  experiences?: Experiences[];
-  otherExperiences?: Experiences[];
-  projects?: Projects[];
-  technologies?: Technologies[];
-  recommandations?: Recommandations[];
+
+  cta1?: ActionButtonProps['cta'];
+  icon1?: ActionButtonProps['icon'];
+  href1?: ActionButtonProps['href'];
+  downloadActive1?: ActionButtonProps['downloadActive'];
+
+  cta2?: ActionButtonProps['cta'];
+  icon2?: ActionButtonProps['icon'];
+  href2?: ActionButtonProps['href'];
+  downloadActive2?: ActionButtonProps['downloadActive'];
+
+  cta3?: ActionButtonProps['cta'];
+  icon3?: ActionButtonProps['icon'];
+  href3?: ActionButtonProps['href'];
+  downloadActive3?: ActionButtonProps['downloadActive'];
+
+  cta4?: ActionButtonProps['cta'];
+  icon4?: ActionButtonProps['icon'];
+  href4?: ActionButtonProps['href'];
+  downloadActive4?: ActionButtonProps['downloadActive'];
+
+  cta5?: ActionButtonProps['cta'];
+  icon5?: ActionButtonProps['icon'];
+  href5?: ActionButtonProps['href'];
+  downloadActive5?: ActionButtonProps['downloadActive'];
+
+  experiences?: ExperiencesProps[];
+  otherExperiences?: OtherExperienceProps[];
+
+  projects?: ProjectProps[];
+
+  topTechnologies?: TopTechnologieProps[];
+  technologies?: TechnologieProps[];
+
+  testimonials?: TestimonialProps[];
+
+  achievements?: AchievementProps[];
 
   content?: React.ReactNode;
-  className?: string;
-}
+  funFact?: string;
+
+  mailto?: string;
+
+  className: string;
+  colSpan?: string;
+};

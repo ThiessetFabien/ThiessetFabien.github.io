@@ -11,7 +11,7 @@
  * @example
  * const props: LocationEvents = { position: [50.381645, 3.053234] };
  */
-export interface LocationEvents {
+export interface LocationEventsProps {
   position: [number, number];
   ref?: React.RefObject<HTMLDivElement>;
 }
