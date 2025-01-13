@@ -11,6 +11,7 @@ import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type { ExperiencesProps } from '@/types/ExperiencesProps';
 import type { OtherExperienceProps } from '@/types/OtherExperienceProps';
 import type { ExperienceProps } from '@/types/ExperienceProps';
+import { CardProps } from '@/types/CardProps.jsx';
 
 /**
  * CardProjects component.
@@ -22,14 +23,14 @@ import type { ExperienceProps } from '@/types/ExperienceProps';
  * <CardProjects projects={projects} className="custom-class" />
  */
 
-export const CardExperiences: React.FC<{
+export const ExperiencesCard: React.FC<{
   experiences: ExperiencesProps[];
   experience?: ExperienceProps[] | OtherExperienceProps['items'];
   content?: OtherExperienceProps['content'];
-  className?: string;
-}> = ({ experiences }) => {
+  className: CardProps['className'];
+}> = ({ experiences, className }) => {
   return (
-    <>
+    <div className={className}>
       {experiences &&
         experiences.map((experience, index) => (
           <div key={index}>
@@ -83,6 +84,6 @@ export const CardExperiences: React.FC<{
             </Accordion>
           </div>
         ))}
-    </>
+    </div>
   );
 };

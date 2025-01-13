@@ -22,7 +22,7 @@ export const Header: React.FC<{ className?: string }> = ({ className }) => {
   const titleUppercased = 'fab.dev'.toUpperCase();
 
   return (
-    <header className={cn('h-full', 'border-b', className)}>
+    <header className={className}>
       <div className={cn('mx-auto max-w-7xl', cnPaddingX, cnFlexBetweenX)}>
         <Link
           href='/'

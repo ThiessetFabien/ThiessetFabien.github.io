@@ -19,6 +19,7 @@ import {
   cnFlexCenterY,
 } from '@/styles/flexStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
+import { CardProps } from '@/types/CardProps.jsx';
 
 /**
  * GenericCarousel component.
@@ -33,10 +34,9 @@ import { cnHiddenXs } from '@/styles/hideItemStyles';
 
 export const GenericCarousel: React.FC<{
   items?: React.ReactNode[];
-  className?: string;
   options?: EmblaOptionsType;
   delay?: number;
-}> = ({ items, className, delay }) => {
+}> = ({ items, delay }) => {
   const autoplayPlugin = [AutoPlay({ delay, stopOnInteraction: false })];
   const autoscrollPlugin = [AutoScroll({ stopOnInteraction: false })];
 
@@ -69,14 +69,13 @@ export const GenericCarousel: React.FC<{
   }, [emblaApi]);
 
   return (
-    <div className={cn('container h-auto')} ref={emblaRef}>
+    <div ref={emblaRef}>
       <div className='flex'>
         {items &&
           items.map((item, index) => (
             <div
               key={index}
               className={cn(
-                className,
                 'flex-none',
                 delay !== undefined ? 'w-full' : 'max-w-full',
                 cnFlexFullCenter

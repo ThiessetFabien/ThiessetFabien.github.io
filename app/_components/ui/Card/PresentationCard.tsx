@@ -41,6 +41,7 @@ const PresentationCard: React.FC<{
   icon5: CardProps['icon5'];
   href5: CardProps['href5'];
   downloadActive5: CardProps['downloadActive5'];
+  className: CardProps['className'];
 }> = ({
   title,
   description,
@@ -66,9 +67,10 @@ const PresentationCard: React.FC<{
   icon5,
   href5,
   downloadActive5,
+  className,
 }) => {
   return (
-    <CardHeader className={cn(cnGap, cnPadding, 'w-full space-y-0')}>
+    <CardHeader className={className}>
       <CardTitle className={cn('flex w-full flex-row', cnGap, cnTitle1)}>
         <div>
           <Avatar className={cn('max-h-1/3 h-auto w-auto')}>

@@ -332,18 +332,18 @@
     "description": "I have achieved a number of things in my career",
     "achievements": [
       {
-        "icon": "Trophy",
-        "title": "RNCP37674 - Level 5 - Web and Mobile Developer",
-        "date": "juil 2024"
+        "icon": "GraduationCap",
+        "title": "RNCP37674 - Level 5 - Web and Mobile Developer - O'Clock School during a training leave",
+        "date": "dec 2023 - juil 2024"
       },
       {
-        "icon": "Trophy",
-        "title": "Funding Agreement - Project of Transition Pro Hauts-de-France",
+        "icon": "ReceiptEuro",
+        "title": "Funding Agreement - Transition Pro Hauts-de-France",
         "date": "sept 2023"
       },
       {
-        "icon": "Trophy",
-        "title": "Obtained Humanitude Label for first medicalized  center in mainland France, and the 3rd establishment in France (including overseas territories)",
+        "icon": "Accessibility",
+        "title": "Humanitude Label for first medicalized  center in mainland France, and the 3rd establishment in France (including overseas territories)",
         "date": "dec 2019"
       }
     ]
@@ -363,7 +363,7 @@
     "mailto": "thiessetfabienpro@gmail.com",
     "cta1": "Inquire now",
     "icon1": "Send",
-    "cta2": "Let's chat",
+    "cta2": "Ring today",
     "icon2": "PhoneOutgoing",
     "href2": "tel:+33610920974",
     "downloadActive2": false,

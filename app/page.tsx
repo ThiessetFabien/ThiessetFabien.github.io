@@ -10,14 +10,19 @@ import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
 import fetchData from '@api/data.json';
 import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
 import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialsCarousel';
-import { CardExperiences } from '@/components/ui/Card/ExperiencesCard';
-import { CardProjects } from '@/components/ui/Card/ProjectsCard';
+import { ExperiencesCard } from '@/components/ui/Card/ExperiencesCard';
+import { ProjectsCard } from '@/components/ui/Card/ProjectsCard';
 import { SkillsCard } from '@/ui/Card/SkillsCard';
 import PresentationCard from '@/ui/Card/PresentationCard';
 import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
-import { cnPaddingBottom, cnPaddingX } from '@/styles/boxModelStyles';
+import {
+  cnMarginX,
+  cnPaddingBottom,
+  cnPaddingX,
+  cnSpaceY,
+} from '@/styles/boxModelStyles';
 import { MailCard } from '@/ui/Card/MailCard';
 import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
@@ -25,7 +30,13 @@ import { cnParagraph } from '@/styles/fontStyles';
 import { useIsClient } from './hooks/useIsClient';
 import dynamic from 'next/dynamic';
 import type { CardProps } from './types/CardProps';
-import { cnFlexCol } from './styles/flexStyles';
+import { cnFlexCol, cnFlexFullCenter } from './styles/flexStyles';
+import {
+  cnGap,
+  cnPadding,
+  cnSmallGap,
+  cnSmallSpaceY,
+} from './styles/boxModelStyles';
 
 /**
  * HomePage component.
@@ -75,6 +86,7 @@ const HomePage: React.FC = (): JSX.Element => {
               icon5={card.icon5}
               href5={card.href5}
               downloadActive5={card.downloadActive5}
+              className={cn(cnGap, cnPadding, 'w-full space-y-0')}
             />
           )}
           {!card.imageSrc && (
@@ -83,6 +95,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 title={card.title}
                 description={card.description}
                 index={index}
+                className={cnPadding}
               />
               <CardContent
                 className={cn(
@@ -93,22 +106,54 @@ const HomePage: React.FC = (): JSX.Element => {
                 {card.experiences &&
                   card.experiences.length > 0 &&
                   !card.technologies && (
-                    <CardExperiences experiences={card.experiences} />
+                    <ExperiencesCard
+                      experiences={card.experiences}
+                      className=''
+                    />
                   )}
                 {card.topTechnologies && (
-                  <SkillsCard topTechnologies={card.topTechnologies} />
+                  <SkillsCard
+                    topTechnologies={card.topTechnologies}
+                    className={cn(
+                      'flex min-w-full flex-row flex-wrap',
+                      'container overflow-hidden',
+                      cnSmallGap
+                    )}
+                  />
                 )}
                 {card.technologies && card.technologies.length > 0 && (
-                  <OtherSkillsCard technologies={card.technologies} />
+                  <OtherSkillsCard
+                    technologies={card.technologies}
+                    className={cn(
+                      cnFlexFullCenter,
+                      'flex-shrink-0',
+                      'h-auto min-w-fit',
+                      'xs:min-h-auto min-h-12',
+                      'xs:min-w-auto min-w-12'
+                    )}
+                  />
                 )}
                 {card.testimonials && card.testimonials.length > 0 && (
-                  <TestimonialsCarousel testimonials={card.testimonials} />
+                  <TestimonialsCarousel
+                    testimonials={card.testimonials}
+                    className={cn(cnSmallSpaceY, cnPaddingX, 'h-100% w-full')}
+                  />
                 )}
                 {card.projects && card.projects.length > 0 && (
-                  <CardProjects projects={card.projects} />
+                  <ProjectsCard
+                    projects={card.projects}
+                    className={cn(
+                      cnGap,
+                      'h-full',
+                      'grid sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3'
+                    )}
+                  />
                 )}
                 {card.achievements && card.achievements.length > 0 && (
-                  <AchievementsCard achievements={card.achievements} />
+                  <AchievementsCard
+                    achievements={card.achievements}
+                    className={cnSmallSpaceY}
+                  />
                 )}
                 {card.mailto && (
                   <MailCard
@@ -125,6 +170,7 @@ const HomePage: React.FC = (): JSX.Element => {
                     icon3={card.icon3}
                     href3={card.href3}
                     downloadActive3={card.downloadActive3}
+                    className={cnSpaceY}
                   />
                 )}
                 {isClient && card.map && <LazyMap />}
@@ -134,8 +180,7 @@ const HomePage: React.FC = (): JSX.Element => {
                   !card.testimonials &&
                   !card.projects &&
                   !card.achievements &&
-                  !card.mailto &&
-                  !card.quote && <p className={cnParagraph}>{card.content}</p>}
+                  !card.mailto && <p className={cnParagraph}>{card.content}</p>}
               </CardContent>
             </>
           )}
@@ -144,7 +189,7 @@ const HomePage: React.FC = (): JSX.Element => {
             ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
               <CardFooter className={cn(cnPaddingX, cnPaddingBottom)}>
                 <FooterCard
-                  className={cn('flex h-full w-full')}
+                  className={'flex h-full w-full'}
                   cta1={card.cta1}
                   icon1={card.icon1}
                   href1={card.href1}

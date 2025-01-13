@@ -43,6 +43,7 @@ export const MailCard: React.FC<{
   icon3: CardProps['icon3'];
   href3: CardProps['href3'];
   downloadActive3: CardProps['downloadActive3'];
+  className: CardProps['className'];
 }> = ({
   mailto,
   cta1,
@@ -57,6 +58,7 @@ export const MailCard: React.FC<{
   icon3,
   href3,
   downloadActive3,
+  className,
 }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -86,7 +88,7 @@ export const MailCard: React.FC<{
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className={cnSpaceY}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={className}>
         <div className={cn(cnGap, 'grid grid-cols-1 md:grid-cols-4')}>
           <FormField
             control={form.control}

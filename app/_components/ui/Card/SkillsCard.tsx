@@ -21,15 +21,10 @@ import type { CardProps } from '@/types/CardProps';
  */
 export const SkillsCard: React.FC<{
   topTechnologies: CardProps['topTechnologies'];
-}> = ({ topTechnologies }: CardProps): JSX.Element => {
+  className: CardProps['className'];
+}> = ({ topTechnologies, className }: CardProps): JSX.Element => {
   return (
-    <div
-      className={cn(
-        'flex min-w-full flex-row flex-wrap',
-        'container overflow-hidden',
-        cnSmallGap
-      )}
-    >
+    <div className={className}>
       {topTechnologies &&
         topTechnologies.map((tech, index) => (
           <div
