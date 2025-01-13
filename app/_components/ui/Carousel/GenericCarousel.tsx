@@ -19,7 +19,6 @@ import {
   cnFlexCenterY,
 } from '@/styles/flexStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
-import { CardProps } from '@/types/CardProps.jsx';
 
 /**
  * GenericCarousel component.

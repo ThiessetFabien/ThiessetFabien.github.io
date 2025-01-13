@@ -6,7 +6,7 @@ import {
 import { cn } from '@/lib/utils';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnTitle1, cnBigDescription, cnSmallText } from '@/styles/fontStyles';
-import { cnGap, cnMarginTop, cnPadding } from '@/styles/boxModelStyles';
+import { cnGap, cnMarginTop } from '@/styles/boxModelStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type { CardProps } from '@/types/CardProps';
 import FooterCard from './LayoutCard/FooterCard';

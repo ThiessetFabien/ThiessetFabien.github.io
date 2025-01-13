@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import { cnParagraph, cnTitle3 } from '@/styles/fontStyles';
-import { cnGap, cnSmallGap } from '@/styles/boxModelStyles';
+import { cnGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';

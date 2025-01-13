@@ -16,7 +16,6 @@ import {
   cnSmallText,
 } from '@/styles/fontStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
 
 /**
  * @file TestimonialsCarousel.tsx
