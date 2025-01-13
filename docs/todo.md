@@ -42,28 +42,29 @@
 
 **Carte recommandations**
 
-- [ ] Titre
-- [ ] Liste de recommandations
-- [ ] Auteur de la recommandation
-- [ ] Contenu de la recommandation
-- [ ] Slider de recommandations
-- [ ] Image de l'auteur
-- [ ] liens de contact (email, linkedin, téléphone)
+- [x] Titre
+- [x] Liste de recommandations
+- [x] Auteur de la recommandation
+- [x] Contenu de la recommandation
+- [x] Slider de recommandations
+- [x] Avatar de l'auteur
+- [x] LinkedIn de l'auteur
 
 **Carte contact**
 
-- [ ] Titre
-- [ ] Formulaire
-- [ ] Identité de l'expéditeur (nom, prénom, email)
-- [ ] Message
-- [ ] Envoi du message
-- [ ] Message de confirmation
-- [ ] Message d'erreur
-- [ ] Message de succès
-- [ ] Envoi du message par email
-- [ ] Proposition de contact par téléphone
+- [x] Titre
+- [x] Formulaire
+- [x] Identité de l'expéditeur (nom, prénom, email)
+- [x] Message
+- [x] Envoi du message
+- [x] Message d'erreur
+  - [x] Nom
+  - [x] Mail
+- [x] Message de succès
+- [x] Envoi du message par email
+- [x] Proposition de contact par téléphone
 
 **Liens réseaux sociaux**
 
-- [ ] Github
-- [ ] Linkedin
+- [x] Github
+- [x] Linkedin

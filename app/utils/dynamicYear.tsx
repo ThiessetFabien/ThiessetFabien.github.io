@@ -7,6 +7,4 @@
  * Get the current year.
  * @returns {number} The current year.
  */
-const year = new Date().getFullYear();
-
-export default year;
+export const year: number = new Date().getFullYear();

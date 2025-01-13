@@ -1,11 +1,13 @@
-'use client';
-
 import React from 'react';
 import Image from 'next/image';
-import GenericCarousel from './GenericCarousel';
-import { Technologies } from '@/types/TechnologiesProps';
-import { baseUrl } from '@/utils/constants/baseUrl';
 import { cn } from '@/lib/utils';
+import { baseUrl } from '@/utils/constants/baseUrl';
+import { cnLightTextMuted, cnParagraph } from '@/styles/fontStyles';
+import { cnFlexFullCenter } from '@/styles/flexStyles';
+import { sizeMiddleIcon } from '@/styles/sizeStyles';
+import GenericCarousel from './GenericCarousel';
+import type { CardProps } from '@/types/CardProps';
+import { cnSmallPadding } from '@/styles/boxModelStyles';
 
 /**
  * @file TechCarousel.tsx
@@ -21,32 +23,44 @@ import { cn } from '@/lib/utils';
  * @example
  * <TechCarousel technologies={technologies} className="custom-class" />
  */
-export const TechnologiesCarousel: React.FC<Technologies> = ({
-  technologies,
-  className,
-}) => {
-  const useWhiteFilter = (item: string) => {
-    return item.includes('express') ? 'filter-white' : '';
-  };
+export const TechnologiesCarousel: React.FC<{
+  technologies: CardProps['technologies'];
+  className: string;
+}> = ({ technologies, className }) => {
+  const items =
+    technologies &&
+    technologies.map((tech, index) => {
+      return (
+        <div key={index} className={className}>
+          <div className={cn(cnFlexFullCenter)}>
+            <Image
+              src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+              alt={tech.name}
+              width={50}
+              height={50}
+              className={cn(
+                tech.slug.includes('express') ? 'filter-white' : '',
+                sizeMiddleIcon,
+                'object-cover'
+              )}
+              priority
+            />
+          </div>
+          <p
+            className={cn(
+              cnParagraph,
+              cnLightTextMuted,
+              cnSmallPadding,
+              'text-center'
+            )}
+          >
+            {tech.name}
+          </p>
+        </div>
+      );
+    });
 
-  const items = technologies.map((tech, index) => (
-    <div key={index} className='mx-4 flex flex-col items-center p-4'>
-      <div className='relative mb-2 h-24 w-24'>
-        <Image
-          src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
-          alt={tech.name}
-          width={100}
-          height={100}
-          objectFit='contain'
-          className={cn('h-full w-auto', useWhiteFilter(tech.slug))}
-          priority
-        />
-      </div>
-      <p className='text-center text-sm font-light'>{tech.name}</p>
-    </div>
-  ));
-
-  return <GenericCarousel items={items} className={className} delay={500} />;
+  return <GenericCarousel items={items} />;
 };
 
 export default TechnologiesCarousel;
