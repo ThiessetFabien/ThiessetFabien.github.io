@@ -21,7 +21,6 @@ export const cnTitle3 = cn(
 );
 
 export const cnBigDescription = cn(
-  // 'w-full max-w-prose',
   'font-light leading-relaxed',
   'text-sm',
   'sm:text-base',
@@ -30,12 +29,7 @@ export const cnBigDescription = cn(
 
 export const cnDescription = cn('font-light leading-relaxed');
 
-export const cnParagraph = cn(
-  'max-w-prose',
-  'font-light',
-  'leading-relaxed',
-  'text-xs'
-);
+export const cnParagraph = cn('font-light', 'leading-relaxed', 'text-xs');
 
 export const cnSmallText = cn('text-xs lg:text-sm', 'leading-relaxed ');
 
