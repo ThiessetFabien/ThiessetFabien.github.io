@@ -29,7 +29,8 @@ export const Header: React.FC<{ className?: string }> = ({ className }) => {
           className={cn(
             cnTitle2,
             cnTitle2Size,
-            'pointer-events-auto text-center'
+            'pointer-events-auto text-center',
+            'hover:underline'
           )}
         >
           <h1>{titleUppercased}</h1>

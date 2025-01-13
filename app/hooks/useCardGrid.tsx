@@ -34,9 +34,6 @@ const useCardGrid = (cards: CardProps[]) => {
         case !!card.mailto:
           colSpan = 'lg:col-span-8 lg:row-span-2';
           break;
-        case !!card.quote:
-          colSpan = 'lg:col-span-12 lg:row-span-1';
-          break;
         default:
           colSpan = 'lg:col-span-4 lg:row-span-1';
           break;
