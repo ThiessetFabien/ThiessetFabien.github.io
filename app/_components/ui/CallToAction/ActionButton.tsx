@@ -3,9 +3,10 @@ import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 import { IconLoader } from '@/hooks/IconLoader';
 import { cnButton, cnButtonIcon } from '@/styles/buttonStyles';
-import type { ActionButtonProps } from '@/types/ActionButtonProps';
+import { capitalizeFirstLetterOfEachWord } from '@/styles/fontStyles';
 import { cnSmallText } from '@/styles/fontStyles';
 import { baseUrl } from '@/utils/constants/baseUrl';
+import type { ActionButtonProps } from '@/types/ActionButtonProps';
 
 /**
  * @file ActionButton.tsx
@@ -39,7 +40,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
       className={cn(!!cta ? cnButton : cnButtonIcon, cnSmallText)}
     >
       {IconLoader(icon ?? '')}
-      {(cta ?? '').toLocaleUpperCase()}
+      {(cta && capitalizeFirstLetterOfEachWord(cta)) ?? ''}
     </Button>
   );
 

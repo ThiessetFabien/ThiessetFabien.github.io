@@ -1,58 +1,53 @@
 [
   {
-    "title": "Ethical Web Developer",
-    "description": "Let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional. If you want to learn more about working with me, take a look through my website.",
-    "imageSrc": "/images/photo.png",
-    "imageAlt": "Picture of Fabien",
+    "title": "ethical web developer",
+    "description": "let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional. if you want to learn more about working with me, take a look through my website.",
+    "imageSrc": "/images/profile.webp",
+    "imageAlt": "profile picture",
     "icon1": "ArrowBigDownDash",
-    "cta1": "Get started",
+    "cta1": "get started",
     "href1": "#card-4",
-    "downloadActive1": false,
-    "cta2": "Build connections",
+    "cta2": "link up",
     "icon2": "Linkedin",
     "href2": "www.linkedin.com/in/fabien-thiesset/",
-    "downloadActive2": false,
-    "cta3": "Request more info",
+    "cta3": "inquire here",
     "icon3": "Mail",
-    "href3": "#card-9",
-    "downloadActive3": false
+    "href3": "#card-9"
   },
   {
-    "title": "Being Full-Stack is my focus",
-    "description": " I specialize in building web applications using modern technologies.",
+    "title": "being full-stack is my focus",
+    "description": "i specialize in building web applications using modern technologies.",
     "topTechnologies": [
       {
-        "name": "React.js",
-        "description": "I use Next.js the framework of React to create beautiful and functional user interfaces.",
+        "name": "react.js",
+        "description": "i utilize the next.js framework to craft beautiful and functional user interfaces.",
         "slug": "react/react-original"
       },
       {
-        "name": "Tailwind CSS",
-        "description": "I create beautiful application in seconds using Tailwind CSS.",
+        "name": "tailwind css",
+        "description": "i design attractive application swiftly.",
         "slug": "tailwindcss/tailwindcss-original"
       },
       {
-        "name": "Node.js",
-        "description": "I use Node.js and Express.js for secure and robuste server-side development.",
+        "name": "node.js",
+        "description": "with nest.js, i develop secure and resilient server-side applications.",
         "slug": "nodejs/nodejs-original"
       },
       {
-        "name": "SQL & NoSQL",
-        "description": "I manage secure and robust database using PostgreSQL and MongoDB.",
+        "name": "sql & nosql",
+        "description": "Leveraging postgresql and mongodb, I ensure secure and reliable database management.",
         "slug": "postgresql/postgresql-original"
       }
     ],
     "cta1": "My works",
     "icon1": "Eye",
     "href1": "#card-4",
-    "downloadActive1": false,
     "cta2": "See more",
     "icon2": "Github",
-    "href2": "www.github.com/ThiessetFabien?tab=repositories",
-    "downloadActive2": false
+    "href2": "www.github.com/ThiessetFabien?tab=repositories"
   },
   {
-    "title": "Where i've worked",
+    "title": "where i've worked",
     "description": "I've a passion for creating beautiful and functional apps with a diverse background in web development, project coordination, and supporting individuals with disabilities.",
     "experiences": [
       {
@@ -121,19 +116,17 @@
       }
     ],
     "icon1": "Mail",
-    "cta1": "Need my talents?",
+    "cta1": "need my talents?",
     "href1": "#card-9",
-    "downloadActive1": false,
-    "cta2": "View my resume",
+    "cta2": "view my resume",
     "icon2": "Eye",
     "href2": "documents/CV.pdf",
-    "downloadActive2": false,
     "icon3": "Download",
     "href3": "documents/CV.pdf",
     "downloadActive3": true
   },
   {
-    "title": "And i currently work with",
+    "title": "and i currently work with",
     "technologies": [
       {
         "name": "TypeScript",
@@ -162,8 +155,8 @@
     ]
   },
   {
-    "title": "Some Things I've Built",
-    "description": "Here is a collection of my recent JavaScript projects, showcasing the type of clients I collaborate with and the solutions I provide.",
+    "title": "some things i've built",
+    "description": "here is a collection of my recent JavaScript projects, showcasing the type of clients i collaborate with and the solutions i provide.",
     "projects": [
       {
         "title": "Portfolio / SSR",
@@ -196,15 +189,12 @@
     "icon1": "Mail",
     "cta1": "Hire me!",
     "href1": "#card-9",
-    "downloadActive1": false,
     "cta2": "Let's network",
     "icon2": "Linkedin",
     "href2": "www.linkedin.com/in/fabien-thiesset/",
-    "downloadActive2": false,
     "cta3": "Collaboration open",
     "icon3": "Github",
-    "href3": "github.com/ThiessetFabien?tab=repositories",
-    "downloadActive3": false
+    "href3": "github.com/ThiessetFabien?tab=repositories"
   },
   {
     "title": "What they say about my work?",
@@ -380,7 +370,6 @@
     "cta2": "Ring today",
     "icon2": "PhoneOutgoing",
     "href2": "tel:+33610920974",
-    "downloadActive2": false,
     "cta3": "Reach out",
     "icon3": "Linkedin",
     "href3": "www.linkedin.com/in/fabien-thiesset/"

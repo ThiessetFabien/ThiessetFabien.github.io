@@ -36,3 +36,13 @@ export const cnSmallText = cn('text-xs lg:text-sm', 'leading-relaxed ');
 export const cnBoldTextMuted = cn('text-muted-foreground', 'font-semibold');
 
 export const cnLightTextMuted = cn('text-muted-foreground', 'font-light');
+
+export const capitalizeFirstLetterOfEachWord = (str: string) => {
+  return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
+export const capitalizeFirstLetterOfPhrase = (str: string) => {
+  return str.replace(/(?:^|[.!?]\s+)(\w)/g, (match, char) =>
+    match.replace(char, char.toUpperCase())
+  );
+};
