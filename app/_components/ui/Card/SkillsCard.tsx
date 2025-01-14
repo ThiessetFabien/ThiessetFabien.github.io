@@ -7,7 +7,11 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { cnParagraph, cnTitle3 } from '@/styles/fontStyles';
+import {
+  cnParagraph,
+  cnTitle3,
+  capitalizeFirstLetterOfPhrase,
+} from '@/styles/fontStyles';
 import { cnGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';
@@ -49,10 +53,17 @@ export const SkillsCard: React.FC<{
                 width={42}
                 height={42}
                 priority
-                className={cn(sizeBigIcon, 'block')}
+                className={cn(
+                  sizeBigIcon,
+                  'block',
+                  tech.slug.startsWith('react') ? 'animate-rotate' : '',
+                  tech.slug.startsWith('tailwindcss') ? 'animate-pulse' : '',
+                  tech.slug.startsWith('nodejs') ? 'animate-bounce' : '',
+                  tech.slug.startsWith('postgresql') ? 'animate-blink' : ''
+                )}
               />
               <p className={cn(cnTitle3)}>
-                {tech.name}
+                {tech.name.toUpperCase()}
                 <span
                   className={cn(
                     cnParagraph,
@@ -61,7 +72,8 @@ export const SkillsCard: React.FC<{
                     cnHiddenXs
                   )}
                 >
-                  {tech.description}
+                  {tech.description &&
+                    capitalizeFirstLetterOfPhrase(tech.description)}
                 </span>
               </p>
             </div>

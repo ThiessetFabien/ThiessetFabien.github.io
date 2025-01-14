@@ -19,7 +19,7 @@ import { cnPaddingX } from '@/styles/boxModelStyles';
  * <Header className="custom-class" />
  */
 export const Header: React.FC<{ className?: string }> = ({ className }) => {
-  const titleUppercased = 'fab.craft'.toUpperCase();
+  const titleUppercased = 'fabuilds'.toUpperCase();
 
   return (
     <header className={className}>

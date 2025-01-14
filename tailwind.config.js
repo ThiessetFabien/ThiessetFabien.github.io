@@ -1,3 +1,5 @@
+const { transform } = require('typescript');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class', 'class'],
@@ -56,6 +58,12 @@ module.exports = {
         caption: ['var(--font-caption)'],
         sans: ['var(--font-poppins-sans)'],
       },
+      spacing: {
+        '15px': '15px',
+      },
+      translateY: {
+        '-15px': '-15px',
+      },
       keyframes: {
         'accordion-down': {
           from: {
@@ -73,10 +81,46 @@ module.exports = {
             height: '0',
           },
         },
+        rotate: {
+          from: {
+            transform: 'rotate(0deg)',
+          },
+          to: {
+            transform: 'rotate(360deg)',
+          },
+        },
+        pulse: {
+          '0%, 100%': {
+            transform: 'scale(1)',
+          },
+          '50%': {
+            transform: 'scale(1.1)',
+          },
+        },
+        bounce: {
+          '0%, 100%': {
+            transform: 'translateY(0)',
+          },
+          '50%': {
+            transform: 'translateY(5px)',
+          },
+        },
+        blink: {
+          '0%, 100%': {
+            opacity: '1',
+          },
+          '50%': {
+            opacity: '0.75',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        rotate: 'rotate 30s linear infinite',
+        pulse: 'pulse 1s infinite',
+        bounce: 'bounce 1s infinite',
+        blink: 'blink 1s linear infinite',
       },
     },
   },

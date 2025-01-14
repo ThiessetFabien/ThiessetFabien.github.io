@@ -5,7 +5,13 @@ import {
 } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnTitle1, cnBigDescription, cnSmallText } from '@/styles/fontStyles';
+import {
+  cnTitle1,
+  cnBigDescription,
+  cnSmallText,
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+} from '@/styles/fontStyles';
 import { cnGap, cnMarginTop } from '@/styles/boxModelStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type { CardProps } from '@/types/CardProps';
@@ -72,22 +78,23 @@ const PresentationCard: React.FC<{
   return (
     <CardHeader className={className}>
       <CardTitle className={cn('flex w-full flex-row', cnGap, cnTitle1)}>
-        <div>
-          <Avatar className={cn('max-h-1/3 h-auto w-auto')}>
+        <div className='relative rounded-full border-2 border-primary bg-background'>
+          <Avatar
+            className={cn('max-h-1/3 relative -top-4 h-auto w-auto scale-110')}
+          >
             <AvatarImage
               src={imageSrc || ''}
               alt={imageAlt || ''}
-              className={'rounded-full bg-primary'}
+              className={'h-auto'}
+              loading='eager'
             />
-            <AvatarFallback className={cnSmallText}>
-              Profile photo
-            </AvatarFallback>
+            <AvatarFallback className={cn(cnSmallText)}>Profile</AvatarFallback>
           </Avatar>
         </div>
         <div className={cn(cnFlexCol, 'justify-center')}>
-          <h2>{title}</h2>
-          <CardDescription className={cn(cnBigDescription, cnHiddenXs)}>
-            <p>{description}</p>
+          <h2>{title && capitalizeFirstLetterOfEachWord(title)}</h2>
+          <CardDescription className={cn(cnBigDescription)}>
+            <p>{description && capitalizeFirstLetterOfPhrase(description)}</p>
           </CardDescription>
         </div>
       </CardTitle>
@@ -104,14 +111,6 @@ const PresentationCard: React.FC<{
         icon3={icon3}
         href3={href3}
         downloadActive3={downloadActive3}
-        cta4={cta4}
-        icon4={icon4}
-        href4={href4}
-        downloadActive4={downloadActive4}
-        cta5={cta5}
-        icon5={icon5}
-        href5={href5}
-        downloadActive5={downloadActive5}
         className={cnMarginTop}
       />
     </CardHeader>
