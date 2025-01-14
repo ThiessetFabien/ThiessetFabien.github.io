@@ -65,35 +65,39 @@ const PresentationCard: React.FC<{
   icon3,
   href3,
   downloadActive3,
-  cta4,
-  icon4,
-  href4,
-  downloadActive4,
-  cta5,
-  icon5,
-  href5,
-  downloadActive5,
   className,
 }) => {
   return (
     <CardHeader className={className}>
-      <CardTitle className={cn('flex w-full flex-row', cnGap, cnTitle1)}>
-        <div className='relative rounded-full border-2 border-primary bg-background'>
-          <Avatar
-            className={cn('max-h-1/3 relative -top-4 h-auto w-auto scale-110')}
-          >
-            <AvatarImage
-              src={imageSrc || ''}
-              alt={imageAlt || ''}
-              className={'h-auto'}
-              loading='eager'
-            />
-            <AvatarFallback className={cn(cnSmallText)}>Profile</AvatarFallback>
-          </Avatar>
+      <CardTitle
+        className={cn(
+          'grid w-full auto-rows-auto grid-cols-3',
+          cnGap,
+          cnTitle1
+        )}
+      >
+        <div className='max-h-1/3 relative z-50 col-span-1 rounded-full border-2 border-primary bg-background'>
+          <div className='max-h-1/3 relative col-span-1 rounded-full border-2 border-primary bg-background'>
+            <Avatar
+              className={cn(
+                'max-h-auto relative -top-2 h-auto w-auto flex-shrink-0 scale-110'
+              )}
+            >
+              <AvatarImage
+                src={imageSrc || ''}
+                alt={imageAlt || ''}
+                className={'h-auto rounded-b-full'}
+                loading='eager'
+              />
+              <AvatarFallback className={cn(cnSmallText)}>
+                Profile
+              </AvatarFallback>
+            </Avatar>
+          </div>
         </div>
-        <div className={cn(cnFlexCol, 'justify-center')}>
+        <div className={cn(cnFlexCol, 'col-span-2 justify-center')}>
           <h2>{title && capitalizeFirstLetterOfEachWord(title)}</h2>
-          <CardDescription className={cn(cnBigDescription)}>
+          <CardDescription className={cn(cnBigDescription, cnHiddenXs)}>
             <p>{description && capitalizeFirstLetterOfPhrase(description)}</p>
           </CardDescription>
         </div>
@@ -111,7 +115,7 @@ const PresentationCard: React.FC<{
         icon3={icon3}
         href3={href3}
         downloadActive3={downloadActive3}
-        className={cnMarginTop}
+        className={cn(cnMarginTop, 'col-span-3')}
       />
     </CardHeader>
   );
