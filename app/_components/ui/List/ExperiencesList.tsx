@@ -1,5 +1,10 @@
 import { cnSpaceY } from '@/styles/boxModelStyles';
-import { cnParagraph, cnTitle3 } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  cnParagraph,
+  cnTitle3,
+} from '@/styles/fontStyles';
 import { hideItem } from '@/styles/hideItemStyles';
 import { lineThroughItem } from '@/styles/lineThroughStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
@@ -27,16 +32,18 @@ export const ExperiencesList: React.FC<{
           />
           <div className={cn(cnFlexCol, 'md:flex-row')}>
             <h3 className={cn(cnTitle3)}>
-              {title}
+              {title && capitalizeFirstLetterOfEachWord(title)}
               <span className={cn('text-primary', hideItem(company || ''))}>
-                &nbsp;@ {company}
+                &nbsp;@ {company && capitalizeFirstLetterOfEachWord(company)}
               </span>
             </h3>
             <Badge
               variant='outline'
               className={cn('border-0 p-0', cnParagraph)}
             >
-              {isMd ? `\u00A0${date}` : date}
+              {isMd
+                ? `\u00A0${date && capitalizeFirstLetterOfEachWord(date)}`
+                : date && capitalizeFirstLetterOfEachWord(date)}
             </Badge>
           </div>
         </li>

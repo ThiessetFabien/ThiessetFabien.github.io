@@ -48,67 +48,67 @@
   },
   {
     "title": "where i've worked",
-    "description": "I've a passion for creating beautiful and functional apps with a diverse background in web development, project coordination, and supporting individuals with disabilities.",
+    "description": "i've a passion for creating beautiful and functional apps with a diverse background in web development, project coordination, and supporting individuals with disabilities.",
     "experiences": [
       {
         "developer": [
           {
-            "title": "React & I++ Specializations",
-            "company": "O'Clock Replay",
+            "title": "react & i++ specializations",
+            "company": "o'clock replay",
             "date": "sep 2023 - dec 2024"
           },
           {
-            "title": "Full-Stack Web Developer & Scrum Master",
-            "company": "O'Clock School",
+            "title": "full-stack web developer & scrum master",
+            "company": "o'clock school",
             "date": "may - jun 2024"
           },
           {
-            "title": "Data API Sepcialization",
-            "company": "O'Clock School",
+            "title": "data api specialization",
+            "company": "o'clock school",
             "date": "apr 2024"
           },
           {
-            "title": "Full-Stack JavaScript Web Developer Learner",
-            "company": "O'Clock School",
+            "title": "full-stack javaScript web developer learner",
+            "company": "o'Clock school",
             "date": "dec 2023 - jun 2024"
           },
           {
-            "title": "Front-end Developer Intern",
-            "company": "Chimenbou SP.",
+            "title": "front-end developer intern",
+            "company": "chimenbou sp.",
             "date": "jul 2023"
           },
           {
-            "title": "Self-training Front-end",
-            "company": "Grafikart Cursus",
+            "title": "self-training front-end",
+            "company": "grafikart cursus",
             "date": "avr 2023 - dec 2023"
           }
         ],
         "projectCoordinator": {
-          "content": "I was responsible for coordinating the daily life of residents with disabilities, for the implementation of the Humanitude method, which aims to improve the quality of life of residents and the well-being of caregivers.",
+          "content": "i was responsible for coordinating the daily life of residents with disabilities, for the implementation of the humanitude method, which aims to improve the quality of life of residents and the well-being of caregivers.",
           "items": [
             {
-              "title": "Daily Life Referent",
-              "company": "Helene Borel Center",
+              "title": "daily life referent",
+              "company": "helene borel center",
               "date": "2023 - 2024"
             },
             {
-              "title": "Humanitude Coordinator",
-              "company": "Helene Borel Center",
+              "title": "humanitude coordinator",
+              "company": "helene borel center",
               "date": "2018 - 2023"
             }
           ]
         },
         "nurseAssistant": {
-          "content": "I am committed to supporting people with disabilities.",
+          "content": "i am committed to supporting people with disabilities.",
           "items": [
             {
-              "title": "Nurse Assistant",
-              "company": "Udapei59 MAS Thumeries",
+              "title": "nurse assistant",
+              "company": "udapei59 mas thumeries",
               "date": "2024 - present"
             },
             {
-              "title": "Nurse Assistant",
-              "company": "Helene Borel Center",
+              "title": "nurse assistant",
+              "company": "helene borel center",
               "date": "2009 - 2024"
             }
           ]
