@@ -21,29 +21,28 @@
     "topTechnologies": [
       {
         "name": "react.js",
-        "description": "i utilize the next.js framework to craft beautiful and functional user interfaces.",
+        "description": "with next.js, i craft functional user interfaces.",
         "slug": "react/react-original"
       },
       {
         "name": "tailwind css",
-        "description": "i design attractive application swiftly.",
+        "description": "i design attractive and responsive application swiftly.",
         "slug": "tailwindcss/tailwindcss-original"
       },
       {
         "name": "node.js",
-        "description": "with nest.js, i develop secure and resilient server-side applications.",
+        "description": "I develop secure and resilient server-side applications with express.js.",
         "slug": "nodejs/nodejs-original"
       },
       {
         "name": "sql & nosql",
-        "description": "Leveraging postgresql and mongodb, I ensure secure and reliable database management.",
+        "description": "I ensure secure database with postgresql and mongodb.",
         "slug": "postgresql/postgresql-original"
       }
     ],
-    "cta1": "My works",
+    "cta1": "view my works",
     "icon1": "Eye",
     "href1": "#card-4",
-    "cta2": "See more",
     "icon2": "Github",
     "href2": "www.github.com/ThiessetFabien?tab=repositories"
   },
