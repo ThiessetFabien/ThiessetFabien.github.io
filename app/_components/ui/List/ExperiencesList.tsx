@@ -2,12 +2,13 @@ import { cnSpaceY } from '@/styles/boxModelStyles';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
+  cnBoldTextMuted,
   cnParagraph,
   cnTitle3,
 } from '@/styles/fontStyles';
 import { hideItem } from '@/styles/hideItemStyles';
 import { lineThroughItem } from '@/styles/lineThroughStyles';
-import { cnFlexCol } from '@/styles/flexStyles';
+import { cnFlexCenterY, cnFlexCol } from '@/styles/flexStyles';
 import { cnMarginRight } from '@/styles/boxModelStyles';
 import { cn } from '@/lib/utils';
 import { Dot } from 'lucide-react';
@@ -23,31 +24,22 @@ export const ExperiencesList: React.FC<{
 }> = ({ title, company, date }) => {
   const isMd = useIsMd();
   return (
-    <>
-      <ul className={cn(cnSpaceY, lineThroughItem(date || ''), 'w-full')}>
-        <li className={'flex'}>
-          <Dot
-            className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
-            size={28}
-          />
-          <div className={cn(cnFlexCol, 'md:flex-row')}>
-            <h3 className={cn(cnTitle3)}>
-              {title && capitalizeFirstLetterOfEachWord(title)}
-              <span className={cn('text-primary', hideItem(company || ''))}>
-                &nbsp;@ {company && capitalizeFirstLetterOfEachWord(company)}
-              </span>
-            </h3>
-            <Badge
-              variant='outline'
-              className={cn('border-0 p-0', cnParagraph)}
-            >
-              {isMd
-                ? `\u00A0${date && capitalizeFirstLetterOfEachWord(date)}`
-                : date && capitalizeFirstLetterOfEachWord(date)}
-            </Badge>
-          </div>
-        </li>
-      </ul>
-    </>
+    <ul className={'w-full'}>
+      <li className={'flex'}>
+        <Dot
+          className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
+          size={28}
+        />
+        <div className={cnFlexCol}>
+          <h3 className={cn(cnTitle3, lineThroughItem(date || ''))}>
+            {title && capitalizeFirstLetterOfEachWord(title)}
+            <span className={cn('inline-block', 'text-primary')}>
+              &nbsp;@ {company && capitalizeFirstLetterOfEachWord(company)}
+            </span>
+          </h3>
+          <p className={cn(cnParagraph)}>{date}</p>
+        </div>
+      </li>
+    </ul>
   );
 };

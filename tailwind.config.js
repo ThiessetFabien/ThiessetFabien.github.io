@@ -102,7 +102,7 @@ module.exports = {
             transform: 'translateY(0)',
           },
           '50%': {
-            transform: 'translateY(5px)',
+            transform: 'translateY(-3px)',
           },
         },
         blink: {
@@ -110,14 +110,14 @@ module.exports = {
             opacity: '1',
           },
           '50%': {
-            opacity: '0.75',
+            opacity: '0.5',
           },
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        rotate: 'rotate 30s linear infinite',
+        rotate: 'rotate 9s linear infinite',
         pulse: 'pulse 1s infinite',
         bounce: 'bounce 1s infinite',
         blink: 'blink 1s linear infinite',
