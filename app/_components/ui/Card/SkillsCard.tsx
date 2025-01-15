@@ -12,7 +12,7 @@ import {
   cnTitle3,
   capitalizeFirstLetterOfPhrase,
 } from '@/styles/fontStyles';
-import { cnGap } from '@/styles/boxModelStyles';
+import { cnGap, cnSmallGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
@@ -41,10 +41,10 @@ export const SkillsCard: React.FC<{
             <div
               className={cn(
                 cnFlexCol,
-                cnGap,
+                cnSmallGap,
                 'h-full',
                 'justify-center',
-                'xs:items-start xs:justify-start'
+                'items-start justify-start'
               )}
             >
               <Image
@@ -62,20 +62,19 @@ export const SkillsCard: React.FC<{
                   tech.slug.startsWith('postgresql') ? 'animate-blink' : ''
                 )}
               />
-              <p className={cn(cnTitle3)}>
-                {tech.name.toUpperCase()}
-                <span
+              <div>
+                <p className={cn(cnTitle3)}>{tech.name.toUpperCase()}</p>
+                <p
                   className={cn(
                     cnParagraph,
-                    'text-muted-foreground',
                     'text-center xs:text-left',
                     cnHiddenXs
                   )}
                 >
                   {tech.description &&
                     capitalizeFirstLetterOfPhrase(tech.description)}
-                </span>
-              </p>
+                </p>
+              </div>
             </div>
           </div>
         ))}
