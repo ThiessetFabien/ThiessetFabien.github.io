@@ -62,8 +62,8 @@ export const SkillsCard: React.FC<{
                   tech.slug.startsWith('postgresql') ? 'animate-blink' : ''
                 )}
               />
-              <div className='relative top-1.5 mb-1.5'>
-                <p className={cn(cnTitle3)}>{tech.name.toUpperCase()}</p>
+              <div className={cn('relative top-1.5 mb-1.5')}>
+                <h3 className={cn(cnTitle3)}>{tech.name.toUpperCase()}</h3>
                 <p
                   className={cn(
                     cnParagraph,
