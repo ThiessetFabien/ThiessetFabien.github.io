@@ -6,7 +6,10 @@ import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type { CardProps } from '@/types/CardProps';
 import type { ExperienceProps } from '@/types/ExperienceProps';
 import type { OtherExperienceProps } from '@/types/OtherExperienceProps';
-import { cnParagraph } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfPhrase,
+  cnParagraph,
+} from '@/styles/fontStyles';
 import { cn } from '@/lib/utils';
 import { cnSpaceX } from '@/styles/boxModelStyles';
 
@@ -18,7 +21,7 @@ export const ExperiencesAccordion: React.FC<{
   return (
     <div className={className}>
       <AccordionTrigger className={cn(cnParagraph, cnSpaceX, 'min-w-full')}>
-        {content}
+        {content && capitalizeFirstLetterOfPhrase(content)}
       </AccordionTrigger>
       <AccordionContent>
         {experience &&
