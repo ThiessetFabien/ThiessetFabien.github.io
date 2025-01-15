@@ -55,14 +55,14 @@ export const SkillsCard: React.FC<{
                 priority
                 className={cn(
                   sizeBigIcon,
-                  'block',
+                  'relative top-1.5',
                   tech.slug.startsWith('react') ? 'animate-rotate' : '',
                   tech.slug.startsWith('tailwindcss') ? 'animate-pulse' : '',
                   tech.slug.startsWith('nodejs') ? 'animate-bounce' : '',
                   tech.slug.startsWith('postgresql') ? 'animate-blink' : ''
                 )}
               />
-              <div>
+              <div className='relative top-1.5 mb-1.5'>
                 <p className={cn(cnTitle3)}>{tech.name.toUpperCase()}</p>
                 <p
                   className={cn(

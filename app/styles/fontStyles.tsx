@@ -14,7 +14,7 @@ export const cnTitle2 = cn(
 );
 
 export const cnTitle3 = cn(
-  'font-caption leading-tight tracking-tight',
+  'font-caption',
   'text-xs',
   'sm:text-sm',
   'md:text-base'

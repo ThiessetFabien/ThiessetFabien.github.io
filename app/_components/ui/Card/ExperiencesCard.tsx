@@ -11,7 +11,8 @@ import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type { ExperiencesProps } from '@/types/ExperiencesProps';
 import type { OtherExperienceProps } from '@/types/OtherExperienceProps';
 import type { ExperienceProps } from '@/types/ExperienceProps';
-import { CardProps } from '@/types/CardProps.jsx';
+import type { CardProps } from '@/types/CardProps';
+import { cnBorder } from '@/styles/borderStyles';
 
 /**
  * CardProjects component.
@@ -36,11 +37,11 @@ export const ExperiencesCard: React.FC<{
           <div key={index}>
             <ScrollArea
               className={cn(
+                cnBorder,
                 'w-full',
-                'overflow-hidden',
-                'h-[8.75rem]',
-                'xxs:h-[6.75rem]',
-                'md:h-[5.25rem]'
+                'h-[8.25rem]',
+                'xxs:h-[6.25rem]',
+                'md:h-[7.875rem]'
               )}
             >
               {experience.developer.map((developer, developerIndex) => (
