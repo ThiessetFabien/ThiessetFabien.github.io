@@ -20,12 +20,7 @@ export const cnTitle3 = cn(
   'md:text-base'
 );
 
-export const cnBigDescription = cn(
-  'font-light leading-relaxed',
-  'text-sm',
-  'sm:text-base',
-  'md:text-lg'
-);
+export const cnBigDescription = cn('text-sm', 'sm:text-base', 'md:text-lg');
 
 export const cnDescription = cn('font-light leading-relaxed');
 

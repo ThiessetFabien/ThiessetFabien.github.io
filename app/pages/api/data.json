@@ -1,7 +1,8 @@
 [
   {
     "title": "ethical web developer",
-    "description": "let's be honest and work together for an accessible and humane world. You need a website that is stunning and truly functional. if you want to learn more about working with me, take a look through my website.",
+    "description": "let's be honest and work together for an accessible and humane world.",
+    "content": "You need a website that is stunning and truly functional. if you want to learn more about working with me, take a look through my website.",
     "imageSrc": "/images/profile.webp",
     "imageAlt": "profile picture",
     "icon1": "ArrowBigDownDash",

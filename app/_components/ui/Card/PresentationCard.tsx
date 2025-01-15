@@ -2,18 +2,27 @@ import {
   CardTitle,
   CardDescription,
   CardHeader,
+  CardContent,
 } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
-import { cnFlexCol } from '@/styles/flexStyles';
+import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import {
   cnTitle1,
   cnBigDescription,
   cnSmallText,
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
+  cnLightTextMuted,
+  cnParagraph,
 } from '@/styles/fontStyles';
-import { cnGap, cnMarginTop } from '@/styles/boxModelStyles';
-import { cnHiddenXs } from '@/styles/hideItemStyles';
+import {
+  cnGap,
+  cnMarginTop,
+  cnSmallGap,
+  cnSmallSpaceY,
+  cnSpaceY,
+} from '@/styles/boxModelStyles';
+import { cnHiddenSm, cnHiddenXs, cnHiddenXxs } from '@/styles/hideItemStyles';
 import type { CardProps } from '@/types/CardProps';
 import FooterCard from './LayoutCard/FooterCard';
 import {
@@ -25,6 +34,7 @@ import {
 const PresentationCard: React.FC<{
   title: CardProps['title'];
   description: CardProps['description'];
+  content: CardProps['content'];
   imageSrc: CardProps['imageSrc'];
   imageAlt: CardProps['imageAlt'];
   cta1: CardProps['cta1'];
@@ -51,6 +61,7 @@ const PresentationCard: React.FC<{
 }> = ({
   title,
   description,
+  content,
   imageSrc,
   imageAlt,
   cta1,
@@ -69,39 +80,110 @@ const PresentationCard: React.FC<{
 }) => {
   return (
     <CardHeader className={className}>
-      <CardTitle
-        className={cn(
-          'grid w-full auto-rows-auto grid-cols-3',
-          cnGap,
-          cnTitle1
-        )}
-      >
-        <div className='max-h-1/3 relative z-50 col-span-1 rounded-full border-2 border-primary bg-background'>
-          <div className='max-h-1/3 relative col-span-1 rounded-full border-2 border-primary bg-background'>
-            <Avatar
+      <CardTitle className={cn('relative flex h-auto w-full', cnGap)}>
+        <div
+          className={cn(
+            cnFlexFullCenter,
+            'h-full w-auto',
+            'relative z-30',
+            'max-h-[92px] min-h-[92px] min-w-[92px] max-w-[92px]',
+            'sm:max-h-[132px] sm:min-h-[132px] sm:min-w-[132px] sm:max-w-[132px]',
+            'md:max-h-[124px] md:min-h-[124px] md:min-w-[124px] md:max-w-[124px]',
+            'rounded-full border-2 border-primary'
+          )}
+        >
+          <div
+            className={cn(
+              'h-full w-auto',
+              'relative z-50',
+              'max-h-[92px] min-h-[92px] min-w-[92px] max-w-[92px]',
+              'sm:max-h-[132px] sm:min-h-[132px] sm:min-w-[132px] sm:max-w-[132px]',
+              'md:max-h-[124px] md:min-h-[124px] md:min-w-[124px] md:max-w-[124px]',
+              'rounded-full border-b-4 border-primary'
+            )}
+          />
+          <Avatar
+            className={cn(
+              'absolute z-0 h-auto',
+              'scale-105 sm:scale-110',
+              '-top-2 md:-top-2.5',
+              'max-h-[92px] min-h-[92px] min-w-[92px] max-w-[92px]',
+              'sm:max-h-[132px] sm:min-h-[132px] sm:min-w-[132px] sm:max-w-[132px]',
+              'md:max-h-[124px] md:min-h-[124px] md:min-w-[124px] md:max-w-[124px]'
+            )}
+          >
+            <AvatarImage
+              src={imageSrc || ''}
+              alt={imageAlt || ''}
               className={cn(
-                'max-h-auto relative -top-2 h-auto w-auto flex-shrink-0 scale-110'
+                'relative h-auto w-auto rounded-full',
+                'sm:-translate-y-0.5',
+                'max-h-[92px] min-h-[92px] min-w-[92px] max-w-[92px]',
+                'sm:max-h-[132px] sm:min-h-[132px] sm:min-w-[132px] sm:max-w-[132px]',
+                'md:max-h-[124px] md:min-h-[124px] md:min-w-[124px] md:max-w-[124px]'
+              )}
+              loading='eager'
+            />
+            <AvatarFallback
+              className={cn(
+                cnSmallText,
+                'relative h-auto w-auto rounded-full',
+                'sm:-translate-y-0.5',
+                'max-h-[92px] min-h-[92px] min-w-[92px] max-w-[92px]',
+                'sm:max-h-[132px] sm:min-h-[132px] sm:min-w-[132px] sm:max-w-[132px]',
+                'md:max-h-[124px] md:min-h-[124px] md:min-w-[124px] md:max-w-[124px]'
               )}
             >
-              <AvatarImage
-                src={imageSrc || ''}
-                alt={imageAlt || ''}
-                className={'h-auto rounded-b-full'}
-                loading='eager'
-              />
-              <AvatarFallback className={cn(cnSmallText)}>
-                Profile
-              </AvatarFallback>
-            </Avatar>
-          </div>
+              Profile
+            </AvatarFallback>
+          </Avatar>
         </div>
-        <div className={cn(cnFlexCol, 'col-span-2 justify-center')}>
-          <h2>{title && capitalizeFirstLetterOfEachWord(title)}</h2>
-          <CardDescription className={cn(cnBigDescription, cnHiddenXs)}>
-            <p>{description && capitalizeFirstLetterOfPhrase(description)}</p>
+        <div className={cn(cnFlexCol, 'justify-center')}>
+          <h2 className={cnTitle1}>
+            {title && capitalizeFirstLetterOfEachWord(title)}
+          </h2>
+          <CardDescription
+            className={cn(
+              cnFlexCol,
+              cnSmallGap,
+              cnBigDescription,
+              cnLightTextMuted,
+              cnHiddenXxs,
+              'max-w-prose'
+            )}
+          >
+            {description && capitalizeFirstLetterOfPhrase(description)}
+            <p
+              className={cn(
+                cnParagraph,
+                cnHiddenSm,
+                'text-foreground',
+                'max-w-prose'
+              )}
+            >
+              {typeof content === 'string' &&
+                capitalizeFirstLetterOfPhrase(content)}
+            </p>
           </CardDescription>
         </div>
       </CardTitle>
+      <CardContent
+        className={cn(
+          cnSmallSpaceY,
+          'xxs:space-y-0',
+          'p-0',
+          'sm:hidden',
+          'max-w-prose'
+        )}
+      >
+        <p className={cn(cnBigDescription, cnLightTextMuted, 'xxs:hidden')}>
+          {description && capitalizeFirstLetterOfPhrase(description)}
+        </p>
+        <p className={cn(cnParagraph)}>
+          {typeof content === 'string' &&
+            capitalizeFirstLetterOfPhrase(content)}
+        </p>
+      </CardContent>
       <FooterCard
         cta1={cta1}
         icon1={icon1}
@@ -115,7 +197,7 @@ const PresentationCard: React.FC<{
         icon3={icon3}
         href3={href3}
         downloadActive3={downloadActive3}
-        className={cn(cnMarginTop, 'col-span-3')}
+        className={cn(cnMarginTop)}
       />
     </CardHeader>
   );
