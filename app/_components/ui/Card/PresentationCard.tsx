@@ -20,9 +20,8 @@ import {
   cnMarginTop,
   cnSmallGap,
   cnSmallSpaceY,
-  cnSpaceY,
 } from '@/styles/boxModelStyles';
-import { cnHiddenSm, cnHiddenXs, cnHiddenXxs } from '@/styles/hideItemStyles';
+import { cnHiddenSm, cnHiddenXxs } from '@/styles/hideItemStyles';
 import type { CardProps } from '@/types/CardProps';
 import FooterCard from './LayoutCard/FooterCard';
 import {
