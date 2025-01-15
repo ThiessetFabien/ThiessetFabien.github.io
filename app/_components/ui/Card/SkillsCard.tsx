@@ -12,7 +12,7 @@ import {
   cnTitle3,
   capitalizeFirstLetterOfPhrase,
 } from '@/styles/fontStyles';
-import { cnGap, cnSmallGap } from '@/styles/boxModelStyles';
+import { cnSmallGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
