@@ -3,6 +3,7 @@ import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   cnBoldTextMuted,
+  cnLightTextMuted,
   cnParagraph,
   cnTitle3,
 } from '@/styles/fontStyles';
@@ -30,14 +31,20 @@ export const ExperiencesList: React.FC<{
           className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
           size={28}
         />
-        <div className={cnFlexCol}>
-          <h3 className={cn(cnTitle3, lineThroughItem(date || ''))}>
+        <div className={cn(cnFlexCol)}>
+          <h3
+            className={cn(
+              cnTitle3,
+              'xs:flex xs:flex-row',
+              lineThroughItem(date || '')
+            )}
+          >
             {title && capitalizeFirstLetterOfEachWord(title)}
-            <span className={cn('inline-block', 'text-primary')}>
+            <span className={cn('block xs:flex', 'text-primary')}>
               &nbsp;@ {company && capitalizeFirstLetterOfEachWord(company)}
             </span>
           </h3>
-          <p className={cn(cnParagraph)}>{date}</p>
+          <p className={cn(cnParagraph, cnLightTextMuted)}>{date}</p>
         </div>
       </li>
     </ul>
