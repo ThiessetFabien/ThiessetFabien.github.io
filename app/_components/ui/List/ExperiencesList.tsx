@@ -1,13 +1,14 @@
-import { cnSpaceY } from '@/styles/boxModelStyles';
-import { cnParagraph, cnTitle3 } from '@/styles/fontStyles';
-import { hideItem } from '@/styles/hideItemStyles';
+import {
+  capitalizeFirstLetterOfEachWord,
+  cnLightTextMuted,
+  cnParagraph,
+  cnTitle3,
+} from '@/styles/fontStyles';
 import { lineThroughItem } from '@/styles/lineThroughStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnMarginRight } from '@/styles/boxModelStyles';
 import { cn } from '@/lib/utils';
 import { Dot } from 'lucide-react';
-import { Badge } from '@/lib/components/ui/badge';
-import { useIsMd } from '@/hooks/useMediaQuery';
 
 import type { ExperienceProps } from '@/types/ExperienceProps';
 
@@ -16,31 +17,29 @@ export const ExperiencesList: React.FC<{
   company: ExperienceProps['company'];
   date: ExperienceProps['date'];
 }> = ({ title, company, date }) => {
-  const isMd = useIsMd();
   return (
-    <>
-      <ul className={cn(cnSpaceY, lineThroughItem(date || ''), 'w-full')}>
-        <li className={'flex'}>
-          <Dot
-            className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
-            size={28}
-          />
-          <div className={cn(cnFlexCol, 'md:flex-row')}>
-            <h3 className={cn(cnTitle3)}>
-              {title}
-              <span className={cn('text-primary', hideItem(company || ''))}>
-                &nbsp;@ {company}
-              </span>
-            </h3>
-            <Badge
-              variant='outline'
-              className={cn('border-0 p-0', cnParagraph)}
-            >
-              {isMd ? `\u00A0${date}` : date}
-            </Badge>
-          </div>
-        </li>
-      </ul>
-    </>
+    <ul className={'w-full'}>
+      <li className={'flex'}>
+        <Dot
+          className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
+          size={28}
+        />
+        <div className={cn(cnFlexCol)}>
+          <h3
+            className={cn(
+              cnTitle3,
+              'xs:flex xs:flex-row',
+              lineThroughItem(date || '')
+            )}
+          >
+            {title && capitalizeFirstLetterOfEachWord(title)}
+            <span className={cn('block xs:flex', 'text-primary')}>
+              &nbsp;@ {company && capitalizeFirstLetterOfEachWord(company)}
+            </span>
+          </h3>
+          <p className={cn(cnParagraph, cnLightTextMuted)}>{date}</p>
+        </div>
+      </li>
+    </ul>
   );
 };

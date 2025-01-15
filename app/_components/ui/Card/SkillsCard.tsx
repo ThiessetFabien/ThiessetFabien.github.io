@@ -7,8 +7,12 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { cnParagraph, cnTitle3 } from '@/styles/fontStyles';
-import { cnGap } from '@/styles/boxModelStyles';
+import {
+  cnParagraph,
+  cnTitle3,
+  capitalizeFirstLetterOfPhrase,
+} from '@/styles/fontStyles';
+import { cnSmallGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
@@ -37,10 +41,10 @@ export const SkillsCard: React.FC<{
             <div
               className={cn(
                 cnFlexCol,
-                cnGap,
+                cnSmallGap,
                 'h-full',
                 'justify-center',
-                'xs:items-start xs:justify-start'
+                'items-start justify-start'
               )}
             >
               <Image
@@ -49,21 +53,28 @@ export const SkillsCard: React.FC<{
                 width={42}
                 height={42}
                 priority
-                className={cn(sizeBigIcon, 'block')}
+                className={cn(
+                  sizeBigIcon,
+                  'relative top-1.5',
+                  tech.slug.startsWith('react') ? 'animate-rotate' : '',
+                  tech.slug.startsWith('tailwindcss') ? 'animate-pulse' : '',
+                  tech.slug.startsWith('nodejs') ? 'animate-bounce' : '',
+                  tech.slug.startsWith('postgresql') ? 'animate-blink' : ''
+                )}
               />
-              <p className={cn(cnTitle3)}>
-                {tech.name}
-                <span
+              <div className={cn('relative top-1.5 mb-1.5')}>
+                <h3 className={cn(cnTitle3)}>{tech.name.toUpperCase()}</h3>
+                <p
                   className={cn(
                     cnParagraph,
-                    'text-muted-foreground',
                     'text-center xs:text-left',
                     cnHiddenXs
                   )}
                 >
-                  {tech.description}
-                </span>
-              </p>
+                  {tech.description &&
+                    capitalizeFirstLetterOfPhrase(tech.description)}
+                </p>
+              </div>
             </div>
           </div>
         ))}

@@ -59,6 +59,7 @@ const HomePage: React.FC = (): JSX.Element => {
             <PresentationCard
               title={card.title}
               description={card.description}
+              content={card.content}
               imageSrc={card.imageSrc}
               imageAlt={card.imageAlt}
               cta1={card.cta1}
