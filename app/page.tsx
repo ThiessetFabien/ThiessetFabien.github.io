@@ -20,7 +20,10 @@ import useCardGrid from '@/hooks/useCardGrid';
 import { cnPaddingBottom, cnPaddingX, cnSpaceY } from '@/styles/boxModelStyles';
 import { MailCard } from '@/ui/Card/MailCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
-import { cnParagraph } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfPhrase,
+  cnParagraph,
+} from '@/styles/fontStyles';
 import { useIsClient } from './hooks/useIsClient';
 import dynamic from 'next/dynamic';
 import type { CardProps } from './types/CardProps';
@@ -162,7 +165,12 @@ const HomePage: React.FC = (): JSX.Element => {
                   !card.testimonials &&
                   !card.projects &&
                   !card.achievements &&
-                  !card.mailto && <p className={cnParagraph}>{card.content}</p>}
+                  !card.mailto && (
+                    <p className={cnParagraph}>
+                      {typeof card.content === 'string' &&
+                        capitalizeFirstLetterOfPhrase(card.content)}
+                    </p>
+                  )}
               </CardContent>
             </>
           )}
