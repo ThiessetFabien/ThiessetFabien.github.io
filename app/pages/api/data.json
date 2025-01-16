@@ -132,11 +132,12 @@
       }
     ],
     "icon1": "Mail",
-    "cta1": "need my talents?",
+    "cta1": "engage talent",
     "href1": "#card-9",
-    "cta2": "view my resume",
+    "cta2": "see more",
     "icon2": "Eye",
     "href2": "documents/CV.pdf",
+    "cta3": "resume",
     "icon3": "Download",
     "href3": "documents/CV.pdf",
     "downloadActive3": true
@@ -362,7 +363,7 @@
   },
   {
     "title": "let's talk about your project",
-    "description": "passion is energy. feel the power that comes from focusing on what excites you. (oprah winfrey)",
+    "description": "passion is energy. feel the power that comes from focusing on what excites you (oprah winfrey).",
     "mailto": "thiessetfabienpro@gmail.com",
     "cta1": "inquire now",
     "icon1": "Send",

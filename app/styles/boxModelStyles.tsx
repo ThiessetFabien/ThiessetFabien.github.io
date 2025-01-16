@@ -24,7 +24,7 @@ export const cnSmallMarginLeft = cn('ml-2 md:ml-4');
 
 export const cnMarginLeft = cn('ml-2 sm:ml-4 md:ml-6');
 
-export const cnSmallMarginRight = cn('sm:mr-2 md:mr-4');
+export const cnSmallMarginRight = cn('mr-2 md:mr-4');
 
 export const cnMarginRight = cn('mr-2 sm:mr-4 md:mr-6');
 
