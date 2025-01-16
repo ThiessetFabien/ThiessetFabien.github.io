@@ -8,7 +8,7 @@ import type { CardProps } from '@/types/CardProps';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
 import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
-import { useIsXs } from '@/hooks/useMediaQuery';
+import { useIsXs } from '@/hooks/useMediaQueries';
 
 /**
  * FooterCard component props.
