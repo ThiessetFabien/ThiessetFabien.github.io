@@ -1,5 +1,5 @@
 import type { ExperienceProps } from './ExperienceProps';
-import type { OtherExperienceProps } from './OtherExperienceProps';
+import type { OtherExperienceProps } from './OtherExperiencesProps';
 /**
  * @file ExperiencesProps.tsx
  * @description This file exports interfaces that represent different types of experiences.

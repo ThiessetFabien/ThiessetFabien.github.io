@@ -11,12 +11,21 @@ import {
   cnParagraph,
   cnTitle3,
   capitalizeFirstLetterOfPhrase,
+  cnDescription,
+  cnLightTextMuted,
 } from '@/styles/fontStyles';
-import { cnSmallGap } from '@/styles/boxModelStyles';
-import { cnFlexCol } from '@/styles/flexStyles';
+import {
+  cnMarginTop,
+  cnSmallGap,
+  cnSmallMarginRight,
+  cnSmallPaddingX,
+} from '@/styles/boxModelStyles';
+import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
+import TechnologiesCarousel from '@/ui/Carousel/TechnologiesCarousel';
 import type { CardProps } from '@/types/CardProps';
+import { CardDescription } from '@/lib/components/ui/card';
 
 /**
  * SkillsCard component.
@@ -25,8 +34,24 @@ import type { CardProps } from '@/types/CardProps';
  */
 export const SkillsCard: React.FC<{
   topTechnologies: CardProps['topTechnologies'];
+  technologies?: CardProps['technologies'];
+  content?: CardProps['content'];
   className: CardProps['className'];
-}> = ({ topTechnologies, className }: CardProps): JSX.Element => {
+}> = ({
+  topTechnologies,
+  technologies,
+  content,
+  className,
+}: CardProps): JSX.Element => {
+  const mergeTechnologies = [
+    ...(technologies || []),
+    ...(technologies || []),
+    ...(technologies || []),
+    ...(technologies || []),
+    ...(technologies || []),
+    ...(technologies || []),
+  ];
+
   return (
     <div className={className}>
       {topTechnologies &&
@@ -35,7 +60,7 @@ export const SkillsCard: React.FC<{
             key={index}
             className={cn(
               'flex flex-auto items-center',
-              'h-1/4 max-w-[calc((100%-1.5rem)/4)] md:max-w-[calc((100%-3rem)/4)] lg:max-w-[calc((100%-1rem)/2)]'
+              'h-1/4 max-w-[calc((100%-3rem)/4)] md:max-w-[calc((100%-4.5rem)/4)] lg:max-w-[calc((100%-1.5rem)/2)]'
             )}
           >
             <div
@@ -78,6 +103,30 @@ export const SkillsCard: React.FC<{
             </div>
           </div>
         ))}
+      <CardDescription
+        className={cn(
+          cnDescription,
+          cnLightTextMuted,
+          'w-full',
+          'relative top-1.5 mb-1.5'
+        )}
+      >
+        {content && typeof content === 'string'
+          ? capitalizeFirstLetterOfPhrase(content)
+          : ''}
+        <TechnologiesCarousel
+          technologies={mergeTechnologies}
+          className={cn(
+            cnFlexFullCenter,
+            cnMarginTop,
+            cnSmallPaddingX,
+            cnSmallGap,
+            cnSmallMarginRight,
+            'w-[calc(100vw-1.5rem)/3]',
+            'flex-shrink-0 overflow-hidden rounded-full'
+          )}
+        />
+      </CardDescription>
     </div>
   );
 };

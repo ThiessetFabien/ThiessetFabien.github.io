@@ -5,7 +5,7 @@ import {
 import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type { CardProps } from '@/types/CardProps';
 import type { ExperienceProps } from '@/types/ExperienceProps';
-import type { OtherExperienceProps } from '@/types/OtherExperienceProps';
+import type { OtherExperienceProps } from '@/types/OtherExperiencesProps';
 import {
   capitalizeFirstLetterOfPhrase,
   cnParagraph,

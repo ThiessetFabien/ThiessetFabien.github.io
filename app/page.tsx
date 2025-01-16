@@ -19,19 +19,13 @@ import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
 import { cnPaddingBottom, cnPaddingX, cnSpaceY } from '@/styles/boxModelStyles';
 import { MailCard } from '@/ui/Card/MailCard';
-import { OtherSkillsCard } from '@/ui/Card/OtherSkillsCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
 import { cnParagraph } from '@/styles/fontStyles';
 import { useIsClient } from './hooks/useIsClient';
 import dynamic from 'next/dynamic';
 import type { CardProps } from './types/CardProps';
-import { cnFlexCol, cnFlexFullCenter } from './styles/flexStyles';
-import {
-  cnGap,
-  cnPadding,
-  cnSmallGap,
-  cnSmallSpaceY,
-} from './styles/boxModelStyles';
+import { cnFlexCol } from './styles/flexStyles';
+import { cnGap, cnPadding, cnSmallSpaceY } from './styles/boxModelStyles';
 
 /**
  * HomePage component.
@@ -107,28 +101,20 @@ const HomePage: React.FC = (): JSX.Element => {
                       className=''
                     />
                   )}
-                {card.topTechnologies && (
-                  <SkillsCard
-                    topTechnologies={card.topTechnologies}
-                    className={cn(
-                      'flex min-w-full flex-row flex-wrap',
-                      'container overflow-hidden',
-                      cnSmallGap
-                    )}
-                  />
-                )}
-                {card.technologies && card.technologies.length > 0 && (
-                  <OtherSkillsCard
-                    technologies={card.technologies}
-                    className={cn(
-                      cnFlexFullCenter,
-                      'flex-shrink-0',
-                      'h-auto min-w-fit',
-                      'xs:min-h-auto min-h-12',
-                      'xs:min-w-auto min-w-12'
-                    )}
-                  />
-                )}
+                {card.topTechnologies &&
+                  card.technologies &&
+                  card.technologies.length > 0 && (
+                    <SkillsCard
+                      topTechnologies={card.topTechnologies}
+                      technologies={card.technologies}
+                      content={card.content}
+                      className={cn(
+                        'flex min-w-full flex-row flex-wrap',
+                        'container overflow-hidden',
+                        cnGap
+                      )}
+                    />
+                  )}
                 {card.testimonials && card.testimonials.length > 0 && (
                   <TestimonialsCarousel
                     testimonials={card.testimonials}
@@ -141,7 +127,7 @@ const HomePage: React.FC = (): JSX.Element => {
                     className={cn(
                       cnGap,
                       'h-full',
-                      'grid sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3'
+                      'grid xs:auto-rows-auto xs:grid-cols-2 lg:grid-cols-4'
                     )}
                   />
                 )}

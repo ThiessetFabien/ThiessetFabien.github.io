@@ -33,6 +33,7 @@ import { TagsProps } from './TagsProps';
 export interface ProjectProps {
   title: string;
   organization: string;
+  description: string;
   imageSrc: string;
   imageAlt: string;
   videoSrc?: string;
