@@ -69,32 +69,26 @@ export const FooterCard: React.FC<{
 }) => {
   const renderActionButton = (
     icon: ActionButtonProps['icon'],
-    href: ActionButtonProps['href'],
+    href?: ActionButtonProps['href'],
     cta?: ActionButtonProps['cta'],
     downloadActive?: ActionButtonProps['downloadActive'],
     variant?: ActionButtonProps['variant'],
     mailto?: CardProps['mailto']
   ) => {
-    return (!mailto && cta && href) || (!mailto && icon && href) ? (
-      <ActionButton
-        icon={icon || ''}
-        href={href || ''}
-        cta={cta || ''}
-        downloadActive={downloadActive || undefined}
-        variant={variant}
-        className={className}
-      />
-    ) : mailto && cta && icon ? (
-      <ActionButton
-        icon={icon || ''}
-        href={mailto || ''}
-        cta={cta || ''}
-        downloadActive={downloadActive || undefined}
-        variant={variant}
-        type='submit'
-        className={className}
-      />
-    ) : null;
+    return (
+      icon &&
+      (href || mailto) && (
+        <ActionButton
+          icon={icon || ''}
+          href={mailto ? mailto : href || ''}
+          cta={cta || ''}
+          downloadActive={downloadActive || undefined}
+          variant={variant}
+          type={mailto ? 'submit' : 'button'}
+          className={className}
+        />
+      )
+    );
   };
   const isXs = useIsXs();
 
