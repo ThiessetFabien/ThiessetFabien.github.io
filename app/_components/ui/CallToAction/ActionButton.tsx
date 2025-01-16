@@ -7,6 +7,7 @@ import { capitalizeFirstLetterOfEachWord } from '@/styles/fontStyles';
 import { cnSmallText } from '@/styles/fontStyles';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
+import type { CardProps } from '@/types/CardProps';
 
 /**
  * @file ActionButton.tsx
@@ -23,7 +24,7 @@ import type { ActionButtonProps } from '@/types/ActionButtonProps';
  * @returns {JSX.Element} The rendered component.
  */
 
-export const ActionButton: React.FC<ActionButtonProps> = ({
+export const ActionButton: React.FC<ActionButtonProps & CardProps> = ({
   cta,
   icon,
   href,
@@ -31,13 +32,14 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   variant,
   type,
   onClick,
+  className,
 }) => {
   const buttonContent = (
     <Button
       onClick={onClick}
       variant={variant}
       type={type}
-      className={cn(!!cta ? cnButton : cnButtonIcon, cnSmallText)}
+      className={cn(className, cnSmallText)}
     >
       {IconLoader(icon ?? '')}
       {(cta && capitalizeFirstLetterOfEachWord(cta)) ?? ''}
