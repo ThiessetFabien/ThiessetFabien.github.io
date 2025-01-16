@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import {
   CardTitle,
@@ -6,6 +6,7 @@ import {
   CardFooter,
   CardHeader,
   Card,
+  CardContent,
 } from '@/lib/components/ui/card';
 import { Badge } from '@/lib/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -20,7 +21,12 @@ import {
   cnPaddingBottom,
   cnPaddingX,
 } from '@/styles/boxModelStyles';
-import { cnParagraph, cnTitle2, cnTitle3 } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  cnLightTextMuted,
+  cnParagraph,
+} from '@/styles/fontStyles';
 import { ActionButton } from '../CallToAction/ActionButton';
 
 /**
@@ -40,8 +46,18 @@ import { ActionButton } from '../CallToAction/ActionButton';
 
 export const ProjectsCard: React.FC<{
   projects: CardProps['projects'];
-  className?: CardProps['className'];
+  className: CardProps['className'];
 }> = ({ projects, className }) => {
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    projects?.forEach((project, index) => {
+      if (videoRefs.current[index] !== null && project.title === 'casalink') {
+        videoRefs.current[index]!.currentTime = 246;
+      }
+    });
+  }, [projects]);
+
   return (
     <div className={className}>
       {projects &&
@@ -62,76 +78,70 @@ export const ProjectsCard: React.FC<{
                 width={590}
                 height={315}
                 priority
-                className='h-1/2 min-w-full rounded-t-lg object-cover'
+                className='min-h-1/2 min-w-full rounded-t-lg object-cover'
               />
             )}
-            {!project.imageSrc &&
-              !project.imageAlt &&
-              project.videoSrc &&
-              !project.videoSrc.startsWith('https') && (
-                <video
-                  controls={false}
-                  autoPlay={true}
-                  loop={true}
-                  muted
-                  className='h-1/2 min-w-full rounded-t-lg object-cover'
-                >
-                  <source src={project.videoSrc} type='video/mp4' />
-                </video>
-              )}
-            {!project.imageSrc &&
-              !project.imageAlt &&
-              project.videoSrc &&
-              project.videoSrc.startsWith('https') && (
-                <iframe
-                  src={project.videoSrc}
-                  allow='autoplay'
-                  className='h-1/2 w-full rounded-t-lg object-cover'
-                />
-              )}
-
+            {!project.imageSrc && !project.imageAlt && project.videoSrc && (
+              <video
+                ref={
+                  project.title === 'casalink'
+                    ? (el) => {
+                        videoRefs.current[projectIndex] = el;
+                      }
+                    : null
+                }
+                controls={project.title === 'casalink' ? true : false}
+                controlsList='nodownload'
+                autoPlay={project.title === 'casalink' ? false : true}
+                width={590}
+                height={315}
+                loop={project.title === 'casalink' ? false : true}
+                muted={project.title === 'casalink' ? false : true}
+                className='min-h-1/2 h-auto min-w-full rounded-t-lg object-cover'
+              >
+                <source src={`videos/${project.videoSrc}`} type='video/mp4' />
+              </video>
+            )}
             <CardHeader className={cn(cnPadding, 'flex-1')}>
               <CardTitle
-                className={cn(cnTitle2, cnFlexBetweenX, 'max-h-[4.5rem]')}
+                className={cn(cnFlexBetweenX, 'text-primary', 'max-h-[4.5rem]')}
               >
-                <a
-                  href={`${baseUrl}${project.website}`}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <p className={cn('hover:underline', cnTitle3)}>
-                    {project.title}
-                  </p>
-                </a>
+                <ActionButton
+                  cta={project.title.toUpperCase()}
+                  icon='ExternalLink'
+                  href={
+                    project.website
+                      ? `${baseUrl}${project.website}`
+                      : `${baseUrl}${project.github}`
+                  }
+                  variant='link'
+                  className={'px-0'}
+                />
                 <div>
                   {project.file && (
                     <ActionButton
                       icon='FileText'
                       href={`${project.file}`}
-                      downloadActive={false}
                       variant='link'
-                      size='icon'
+                      className={'px-1'}
                     />
                   )}
-                  <ActionButton
-                    icon='Github'
-                    href={`${baseUrl}${project.github}`}
-                    downloadActive={false}
-                    variant='link'
-                    size='icon'
-                  />
-                  <ActionButton
-                    icon='ExternalLink'
-                    href={`${baseUrl}${project.website}`}
-                    downloadActive={false}
-                    variant='link'
-                    size='icon'
-                  />
+                  {project.github && (
+                    <ActionButton
+                      icon='Github'
+                      href={`${project.github}`}
+                      variant='link'
+                      className={'px-0'}
+                    />
+                  )}
                 </div>
               </CardTitle>
-              <CardDescription className={cnParagraph}>
-                {project.organization}
+              <CardDescription className={cnLightTextMuted}>
+                {capitalizeFirstLetterOfEachWord(project.organization)}
               </CardDescription>
+              <CardContent className={cn(cnParagraph, 'p-0')}>
+                {capitalizeFirstLetterOfPhrase(project.description)}
+              </CardContent>
             </CardHeader>
             <CardFooter
               className={cn(
@@ -145,9 +155,9 @@ export const ProjectsCard: React.FC<{
                 <Badge
                   key={tagIndex}
                   variant='outline'
-                  className={'m-1 rounded-full font-light'}
+                  className={'rounded-full font-light'}
                 >
-                  <p>{`${tag}`}</p>
+                  <p>{capitalizeFirstLetterOfEachWord(`${tag}`)}</p>
                 </Badge>
               ))}
             </CardFooter>

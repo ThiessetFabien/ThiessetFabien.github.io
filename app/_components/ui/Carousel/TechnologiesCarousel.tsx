@@ -2,12 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { cnLightTextMuted, cnParagraph } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfPhrase,
+  cnParagraph,
+} from '@/styles/fontStyles';
 import { cnFlexFullCenter } from '@/styles/flexStyles';
-import { sizeMiddleIcon } from '@/styles/sizeStyles';
+import { sizeIcon } from '@/styles/sizeStyles';
 import GenericCarousel from './GenericCarousel';
 import type { CardProps } from '@/types/CardProps';
-import { cnSmallPadding } from '@/styles/boxModelStyles';
+import { Badge } from '@/lib/components/ui/badge';
 
 /**
  * @file TechCarousel.tsx
@@ -31,32 +34,21 @@ export const TechnologiesCarousel: React.FC<{
     technologies &&
     technologies.map((tech, index) => {
       return (
-        <div key={index} className={className}>
+        <Badge key={index} variant='outline' className={cn(className)}>
           <div className={cn(cnFlexFullCenter)}>
             <Image
               src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
               alt={tech.name}
               width={50}
               height={50}
-              className={cn(
-                tech.slug.includes('express') ? 'filter-white' : '',
-                sizeMiddleIcon,
-                'object-cover'
-              )}
+              className={cn(sizeIcon)}
               priority
             />
           </div>
-          <p
-            className={cn(
-              cnParagraph,
-              cnLightTextMuted,
-              cnSmallPadding,
-              'text-center'
-            )}
-          >
-            {tech.name}
+          <p className={cn(cnParagraph, 'text-center')}>
+            {capitalizeFirstLetterOfPhrase(tech.name)}
           </p>
-        </div>
+        </Badge>
       );
     });
 
