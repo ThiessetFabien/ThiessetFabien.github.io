@@ -6,6 +6,10 @@ const nextconfig: NextConfig = {
     PORT: process.env.PORT || '3000',
   },
   reactStrictMode: false,
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextconfig;

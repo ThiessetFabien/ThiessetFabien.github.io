@@ -11,6 +11,8 @@ import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CardProps } from '@/types/CardProps';
 import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
   cnLightTextMuted,
   cnParagraph,
   cnSmallText,
@@ -49,10 +51,10 @@ export const TestimonialsCarousel: React.FC<{
               <Avatar className='h-12 w-12'>
                 <AvatarImage
                   src={`${baseUrl}${testimonial.imageSrc}`}
-                  alt={testimonial.name}
+                  alt={capitalizeFirstLetterOfEachWord(testimonial.name)}
                 />
                 <AvatarFallback className={cnSmallText}>
-                  {testimonial.name}
+                  {capitalizeFirstLetterOfEachWord(testimonial.name)}
                 </AvatarFallback>
               </Avatar>
               <Button
@@ -71,14 +73,17 @@ export const TestimonialsCarousel: React.FC<{
             </div>
           </a>
           <div className={cn(cnFlexCol, 'ml-4')}>
-            <p className={cnSmallText}>{testimonial.name}</p>
+            <p className={cnSmallText}>
+              {capitalizeFirstLetterOfEachWord(testimonial.name)}
+            </p>
             <p className={cn(cnSmallText, cnLightTextMuted)}>
-              {testimonial.context}
+              {capitalizeFirstLetterOfEachWord(testimonial.context)}
             </p>
           </div>
         </div>
         <p className={cn(cnParagraph, 'max-w-full')}>
-          &quot;{testimonial.content}&quot;
+          &quot;&nbsp;{capitalizeFirstLetterOfPhrase(testimonial.content)}
+          &nbsp;&quot;
         </p>
       </div>
     ));

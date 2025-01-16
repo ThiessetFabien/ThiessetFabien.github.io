@@ -43,14 +43,9 @@ export const SkillsCard: React.FC<{
   content,
   className,
 }: CardProps): JSX.Element => {
-  const mergeTechnologies = [
-    ...(technologies || []),
-    ...(technologies || []),
-    ...(technologies || []),
-    ...(technologies || []),
-    ...(technologies || []),
-    ...(technologies || []),
-  ];
+  const mergeTechnologies = Array(6)
+    .fill(technologies || [])
+    .flat();
 
   return (
     <div className={className}>
