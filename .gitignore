@@ -61,3 +61,6 @@ dist
 *.sw?
 
 .husky
+
+# Local Netlify folder
+.netlify
