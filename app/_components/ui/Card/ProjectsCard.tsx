@@ -1,4 +1,4 @@
-import React, { use, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import {
   CardTitle,
@@ -26,8 +26,6 @@ import {
   capitalizeFirstLetterOfPhrase,
   cnLightTextMuted,
   cnParagraph,
-  cnTitle2,
-  cnTitle3,
 } from '@/styles/fontStyles';
 import { ActionButton } from '../CallToAction/ActionButton';
 

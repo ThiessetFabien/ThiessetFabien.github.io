@@ -24,13 +24,8 @@ import { cnParagraph } from '@/styles/fontStyles';
 import { useIsClient } from './hooks/useIsClient';
 import dynamic from 'next/dynamic';
 import type { CardProps } from './types/CardProps';
-import { cnFlexCol, cnFlexFullCenter } from './styles/flexStyles';
-import {
-  cnGap,
-  cnPadding,
-  cnSmallGap,
-  cnSmallSpaceY,
-} from './styles/boxModelStyles';
+import { cnFlexCol } from './styles/flexStyles';
+import { cnGap, cnPadding, cnSmallSpaceY } from './styles/boxModelStyles';
 
 /**
  * HomePage component.

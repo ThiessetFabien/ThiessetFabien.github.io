@@ -36,7 +36,12 @@ export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
           &copy; {year} &bull; Built by Fabien Thiesset &bull; All rights
           reserved.
         </p>
-        <ActionButton icon='MoveUp' variant='ghost' onClick={scrollToTop} />
+        <ActionButton
+          icon='MoveUp'
+          variant='ghost'
+          onClick={scrollToTop}
+          className=''
+        />
       </div>
     </footer>
   );

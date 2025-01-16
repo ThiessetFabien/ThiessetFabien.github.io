@@ -50,7 +50,7 @@ export const FooterCard: React.FC<{
   icon5?: CardProps['icon5'];
   href5?: CardProps['href5'];
   downloadActive5?: CardProps['downloadActive5'];
-  className?: string;
+  className: string;
 }> = ({
   mailto,
   cta1,
@@ -82,6 +82,7 @@ export const FooterCard: React.FC<{
         cta={cta || ''}
         downloadActive={downloadActive || undefined}
         variant={variant}
+        className={className}
       />
     ) : mailto && cta && icon ? (
       <ActionButton
@@ -91,6 +92,7 @@ export const FooterCard: React.FC<{
         downloadActive={downloadActive || undefined}
         variant={variant}
         type='submit'
+        className={className}
       />
     ) : null;
   };
