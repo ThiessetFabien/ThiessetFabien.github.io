@@ -7,7 +7,7 @@
     "imageAlt": "profile picture",
     "icon1": "ArrowBigDownDash",
     "cta1": "get started",
-    "href1": "#card-4",
+    "href1": "#card-3",
     "cta2": "link up",
     "icon2": "Linkedin",
     "href2": "www.linkedin.com/in/fabien-thiesset/",
@@ -40,9 +40,25 @@
         "slug": "postgresql/postgresql-original"
       }
     ],
+    "content": "and i currently work with",
+    "technologies": [
+      {
+        "name": "typeScript",
+        "slug": "typescript/typescript-original"
+      },
+      {
+        "name": "jest",
+        "slug": "jest/jest-plain"
+      },
+      {
+        "name": "sass",
+        "slug": "sass/sass-original"
+      }
+    ],
     "cta1": "view my works",
     "icon1": "Eye",
-    "href1": "#card-4",
+    "href1": "#card-3",
+    "cta2": "See more",
     "icon2": "Github",
     "href2": "www.github.com/ThiessetFabien?tab=repositories"
   },
@@ -126,78 +142,61 @@
     "downloadActive3": true
   },
   {
-    "title": "and i currently work with",
-    "technologies": [
-      {
-        "name": "TypeScript",
-        "slug": "typescript/typescript-original"
-      },
-      {
-        "name": "Express",
-        "slug": "express/express-original"
-      },
-      {
-        "name": "MongoDB",
-        "slug": "mongodb/mongodb-original"
-      },
-      {
-        "name": "Next",
-        "slug": "nextjs/nextjs-original"
-      },
-      {
-        "name": "Jest",
-        "slug": "jest/jest-plain"
-      },
-      {
-        "name": "SASS",
-        "slug": "sass/sass-original"
-      }
-    ]
-  },
-  {
     "title": "some things i've built",
-    "description": "here is a collection of my recent JavaScript projects, showcasing the type of clients i collaborate with and the solutions i provide.",
+    "description": "here is a collection of my recent javaScript projects, showcasing the type of clients i collaborate with and the solutions i provide.",
     "projects": [
       {
-        "title": "Portfolio / SSR",
-        "organization": "Showcase site of my work, highlighting my projects and skills in web development.",
-        "videoSrc": "videos/852421-sd_640_360_30fps.mp4",
-        "website": "/",
+        "title": "portfolio",
+        "organization": "server side rendering",
+        "description": "showcase site of my work, highlighting my projects and skills in web development.",
+        "videoSrc": "852421-sd_640_360_30fps.mp4",
+        "website": "fabuilds.netlify.app/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
-        "tags": ["TypeScript", "React/Next", "Tailwind"]
+        "tags": ["typescript", "next", "tailwind css"]
       },
       {
-        "title": "Casalink / SPA",
-        "organization": "Family planning application for managing daily tasks and events with delagated for children.",
-        "videoSrc": "https://drive.google.com/file/d/1rtGwkq-UJ_v_4Swh015RrrfrP_6l30nN/preview?usp=sharing&t=248",
+        "title": "casalink",
+        "organization": "single page app",
+        "description": "family planning application for managing daily tasks and events with delagated for children.",
+        "videoSrc": "casalink.mp4",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
         "file": "documents/CDC-Casalink.pdf",
         "github": "github.com/ThiessetFabien/Casalink-Frontend",
-        "tags": ["TypeScript", "React/Redux", "SASS"]
+        "tags": ["typescript", "react.js", "sass"]
       },
       {
-        "title": "Casalink / API RESTful",
-        "organization": "Secure server for Casalink, managing the data tested and authenticated with JWT",
+        "title": "casalink api",
+        "organization": "api restful",
+        "description": "secure server for casalink app, managing the data tested and authenticated with jwt.",
         "imageSrc": "images/casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
         "file": "documents/CDC-Casalink.pdf",
         "github": "github.com/ThiessetFabien/Casalink-Backend",
-        "tags": ["Node/Express", "Mocha", "PostgreSQL"]
+        "tags": ["express.js", "postgresql", "jwt"]
+      },
+      {
+        "title": "mailnager api",
+        "organization": "api",
+        "description": "server for managing mails and tracking job applications, created for a friend and fellow alumni",
+        "imageSrc": "images/mailnager.webp",
+        "imageAlt": "Casalink documentation",
+        "github": "github.com/ThiessetFabien/MailNagerAPI",
+        "tags": ["typescript", "nest", "mongodb"]
       }
     ],
     "icon1": "Mail",
-    "cta1": "Hire me!",
+    "cta1": "hire me!",
     "href1": "#card-9",
-    "cta2": "Let's network",
+    "cta2": "let's network",
     "icon2": "Linkedin",
     "href2": "www.linkedin.com/in/fabien-thiesset/",
-    "cta3": "Collaboration open",
+    "cta3": "work together",
     "icon3": "Github",
     "href3": "github.com/ThiessetFabien?tab=repositories"
   },
   {
-    "title": "What they say about my work?",
+    "title": "what they say about my work?",
     "testimonials": [
       {
         "name": "Dupoirier Christophe",
