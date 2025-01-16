@@ -12,6 +12,7 @@
     "dev": "dotenv -e .env.development.local -- next dev",
     "build": "prettier --check . && next build",
     "build:local": "prettier --write . && next build",
+    "prod": "netlify deploy --prod",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write --ignore-path .gitignore .",
