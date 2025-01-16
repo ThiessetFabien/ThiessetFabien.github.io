@@ -12,7 +12,11 @@ import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 import { useDotButton } from './Buttons/DotButtonCarousel';
 import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
 import { DotButton } from './Buttons/DotButtonCarousel';
-import { manipulationStyle, cnPaddingX } from '@/styles/boxModelStyles';
+import {
+  manipulationStyle,
+  cnPaddingX,
+  cnSmallMarginRight,
+} from '@/styles/boxModelStyles';
 import {
   cnFlexFullCenter,
   cnFlexBetweenX,
@@ -97,12 +101,12 @@ export const GenericCarousel: React.FC<{
           <PrevButton
             onClick={onPrevButtonClick}
             disabled={prevBtnDisabled}
-            className={cn(manipulationStyle, 'text-primary')}
+            className={cn(manipulationStyle, cnSmallMarginRight, 'px-0')}
           />
           <NextButton
             onClick={onNextButtonClick}
             disabled={nextBtnDisabled}
-            className={cn(manipulationStyle, 'text-primary')}
+            className={cn(manipulationStyle, 'px-0')}
           />
         </div>
         <div
