@@ -3,12 +3,14 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { year } from '@/utils/dynamicYear';
-import { cnLightTextMuted, cnSmallText } from '@/styles/fontStyles';
+import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
 import { scrollToTop } from '@/hooks/ScrollToTop';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
-import { ActionButton } from '@/ui/CallToAction/ActionButton';
+import { Button } from '@/lib/components/ui/button';
+import { ChevronsUp } from 'lucide-react';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
+import { useIsXs } from '@/hooks/useMediaQueries';
 import type { CardProps } from '@/types/CardProps';
 
 /**
@@ -28,20 +30,29 @@ import type { CardProps } from '@/types/CardProps';
 export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
   className,
 }) => {
+  const isXs = useIsXs();
+
   return (
     <footer className={className}>
-      <div className={cn('max-w-7xl', 'mx-auto', cnPaddingX, cnFlexBetweenX)}>
-        <p className={cnHiddenXs}>fabuilds</p>
-        <p className={cn(cnSmallText, cnLightTextMuted, cnPaddingX)}>
-          &copy; {year} &bull; Built by Fabien Thiesset &bull; All rights
-          reserved.
+      <div
+        className={cn(
+          'max-w-7xl',
+          'mx-auto',
+          cnPaddingX,
+          cnFlexBetweenX,
+          cnLightTextMuted
+        )}
+      >
+        <h3 className={cnTitle3}>fabuilds</h3>
+        <p className={cn(cnSmallText, cnPaddingX, 'flex')}>
+          &copy;&nbsp;{year}&nbsp;&bull; Built by Fabien Thiesset.{' '}
+          <span className={cnHiddenXs}>&nbsp;&bull;&nbsp;</span>
+          {isXs ? <br /> : ''}
+          All rights reserved.
         </p>
-        <ActionButton
-          icon='MoveUp'
-          variant='ghost'
-          onClick={scrollToTop}
-          className=''
-        />
+        <Button size='icon' variant='ghost' onClick={scrollToTop}>
+          <ChevronsUp />
+        </Button>
       </div>
     </footer>
   );
