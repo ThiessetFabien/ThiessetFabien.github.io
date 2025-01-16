@@ -3,7 +3,11 @@ import { IconLoader } from '@/hooks/IconLoader';
 import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnParagraph } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  cnParagraph,
+} from '@/styles/fontStyles';
 import { Badge } from '@/lib/components/ui/badge';
 import { cnLightTextMuted } from '@/styles/fontStyles';
 
@@ -21,7 +25,7 @@ export const AchievementsCard: React.FC<{
             </div>
             <div className={cnFlexCol}>
               <h3 className={cn(cnParagraph, 'min-w-full')}>
-                {achievement.title}
+                {capitalizeFirstLetterOfEachWord(achievement.title)}
               </h3>
               <Badge
                 variant='outline'
@@ -32,7 +36,7 @@ export const AchievementsCard: React.FC<{
                   cnLightTextMuted
                 )}
               >
-                {achievement.date}
+                {capitalizeFirstLetterOfPhrase(achievement.date)}
               </Badge>
             </div>
           </li>
