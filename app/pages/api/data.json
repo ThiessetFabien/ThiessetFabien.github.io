@@ -299,7 +299,7 @@
       {
         "name": "sylvette depreux",
         "context": "head of the it department - helene borel center",
-        "content": "he communicated requests for improvements, software updates, and necessary equipment. fabien also generated statistics from the information system data. fabien was a dedicated collaborator, capable of bridging the gap between the IT department and the facility where he worked.",
+        "content": "he communicated requests for improvements, software updates, and necessary equipment. fabien also generated statistics from the information system data. fabien was a dedicated collaborator, capable of bridging the gap between the it department and the facility where he worked.",
         "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
         "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
       },
@@ -331,45 +331,45 @@
     "content": "seeking a company that values human and technical skills. open to apprenticeship opportunities."
   },
   {
-    "title": "Things i have acheived",
-    "description": "I have achieved a number of things in my career",
+    "title": "things i have acheived",
+    "description": "i have achieved a number of things in my career",
     "achievements": [
       {
         "icon": "GraduationCap",
-        "title": "RNCP37674 - Level 5 - Web and Mobile Developer - O'Clock School during a training leave",
+        "title": "rncp37674 - level 5 - web and mobile developer - o'clock school during a training leave",
         "date": "dec 2023 - juil 2024"
       },
       {
         "icon": "ReceiptEuro",
-        "title": "Funding Agreement - Transition Pro Hauts-de-France",
+        "title": "funding agreement with transition pro hauts-de-france",
         "date": "sept 2023"
       },
       {
         "icon": "Accessibility",
-        "title": "Humanitude Label for first medicalized  center in mainland France, and the 3rd establishment in France (including overseas territories)",
+        "title": "humanitude label for first medicalized  center in mainland france, and the 3rd establishment in france (including overseas territories)",
         "date": "dec 2019"
       }
     ]
   },
   {
-    "title": "Savoring coffee while coding",
-    "content": "As a Shonen anime fan, I enjoy coffee while working and reward myself with Demon Slayer and My Hero Academia."
+    "title": "savoring coffee while coding",
+    "content": "as a Shonen anime fan, i enjoy coffee while working and reward myself with demon slayer and my hero academia."
   },
   {
-    "title": "Available for Mobile, Vehicle",
-    "description": "I am available for work in the Lille area and for remote work.",
+    "title": "available for mobile, vehicle",
+    "description": "i am available for work in the Lille area and for remote work.",
     "map": true
   },
   {
-    "title": "Let's talk about your project",
-    "description": "Passion is energy. Feel the power that comes from focusing on what excites you. (Oprah Winfrey)",
+    "title": "let's talk about your project",
+    "description": "passion is energy. feel the power that comes from focusing on what excites you. (oprah winfrey)",
     "mailto": "thiessetfabienpro@gmail.com",
-    "cta1": "Inquire now",
+    "cta1": "inquire now",
     "icon1": "Send",
-    "cta2": "Ring today",
+    "cta2": "ring today",
     "icon2": "PhoneOutgoing",
     "href2": "tel:+33610920974",
-    "cta3": "Reach out",
+    "cta3": "reach out",
     "icon3": "Linkedin",
     "href3": "www.linkedin.com/in/fabien-thiesset/"
   }
