@@ -44,7 +44,7 @@ export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
         )}
       >
         <h3 className={cnTitle3}>fabuilds</h3>
-        <p className={cn(cnSmallText, cnPaddingX, 'flex')}>
+        <p className={cn(cnSmallText, 'flex')}>
           &copy;&nbsp;{year}&nbsp;&bull; Built by Fabien Thiesset.{' '}
           <span className={cnHiddenXs}>&nbsp;&bull;&nbsp;</span>
           {isXs ? <br /> : ''}
