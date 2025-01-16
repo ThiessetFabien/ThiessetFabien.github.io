@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import {
   capitalizeFirstLetterOfPhrase,
-  cnLightTextMuted,
   cnParagraph,
 } from '@/styles/fontStyles';
-import { cnFlexBetweenX, cnFlexFullCenter } from '@/styles/flexStyles';
-import { sizeIcon, sizeMiddleIcon } from '@/styles/sizeStyles';
+import { cnFlexFullCenter } from '@/styles/flexStyles';
+import { sizeIcon } from '@/styles/sizeStyles';
 import GenericCarousel from './GenericCarousel';
 import type { CardProps } from '@/types/CardProps';
-import { cnSmallGap, cnSmallPadding } from '@/styles/boxModelStyles';
 import { Badge } from '@/lib/components/ui/badge';
-import { number } from 'zod';
 
 /**
  * @file TechCarousel.tsx

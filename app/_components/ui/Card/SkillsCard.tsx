@@ -13,17 +13,11 @@ import {
   capitalizeFirstLetterOfPhrase,
   cnDescription,
   cnLightTextMuted,
-  cnTitle2,
-  cnBigDescription,
 } from '@/styles/fontStyles';
 import {
   cnMarginTop,
-  cnMarginY,
-  cnPadding,
   cnSmallGap,
-  cnSmallMarginLeft,
   cnSmallMarginRight,
-  cnSmallMarginX,
   cnSmallPaddingX,
 } from '@/styles/boxModelStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';

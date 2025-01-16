@@ -9,7 +9,7 @@ import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
 import { ExperiencesAccordion } from '@/ui/Accordion/ExperiencesAccordion';
 import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type { ExperiencesProps } from '@/types/ExperiencesProps';
-import type { OtherExperienceProps } from '@/types/OtherExperienceProps';
+import type { OtherExperienceProps } from '@/types/OtherExperiencesProps';
 import type { ExperienceProps } from '@/types/ExperienceProps';
 import type { CardProps } from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';

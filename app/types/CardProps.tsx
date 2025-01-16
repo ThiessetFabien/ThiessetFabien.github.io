@@ -5,7 +5,7 @@
 import type { TechnologieProps } from './TechnologieProps';
 import type { AchievementProps } from './AchievementProps';
 import type { ExperiencesProps } from './ExperiencesProps';
-import type { OtherExperienceProps } from './OtherExperienceProps';
+import type { OtherExperienceProps } from './OtherExperiencesProps';
 import type { ProjectProps } from './ProjectProps';
 import type { TestimonialProps } from './TestimonialProps';
 import type { TopTechnologieProps } from './Top3TechnologieProps';
