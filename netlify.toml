@@ -29,4 +29,4 @@ status = 200
   [context.main]
 
 [[plugins]]
-  package = "@opennextjs/netlify"
+  package = "@netlify/plugin-nextjs"
