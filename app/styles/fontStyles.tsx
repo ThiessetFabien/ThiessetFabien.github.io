@@ -67,6 +67,9 @@ export const formatSpecialWords = (string: string) => {
     'demon slayer': 'Demon Slayer',
     'my hero academia': 'My Hero Academia',
     humanitude: 'Humanitude',
+    'sp.': 'SP.',
+    mas: 'MAS',
+    area: 'Area',
   };
 
   let formattedString = string;
