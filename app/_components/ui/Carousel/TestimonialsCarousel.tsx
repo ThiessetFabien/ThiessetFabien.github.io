@@ -78,7 +78,9 @@ export const TestimonialsCarousel: React.FC<{
               {capitalizeFirstLetterOfEachWord(testimonial.name)}
             </p>
             <p className={cn(cnSmallText, cnLightTextMuted)}>
-              {capitalizeFirstLetterOfEachWord(testimonial.context)}
+              {capitalizeFirstLetterOfEachWord(
+                formatSpecialWords(testimonial.context)
+              )}
             </p>
           </div>
         </div>

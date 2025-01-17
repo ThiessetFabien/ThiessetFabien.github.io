@@ -1,5 +1,6 @@
 import {
   capitalizeFirstLetterOfEachWord,
+  formatSpecialWords,
   cnLightTextMuted,
   cnParagraph,
   cnTitle3,
@@ -34,10 +35,14 @@ export const ExperiencesList: React.FC<{
           >
             {title && capitalizeFirstLetterOfEachWord(title)}
             <span className={cn('block xs:flex', 'text-primary')}>
-              &nbsp;@ {company && capitalizeFirstLetterOfEachWord(company)}
+              &nbsp;@{' '}
+              {company &&
+                capitalizeFirstLetterOfEachWord(formatSpecialWords(company))}
             </span>
           </h3>
-          <p className={cn(cnParagraph, cnLightTextMuted)}>{date}</p>
+          <p className={cn(cnParagraph, cnLightTextMuted)}>
+            {capitalizeFirstLetterOfEachWord(date)}
+          </p>
         </div>
       </li>
     </ul>
