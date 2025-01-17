@@ -41,7 +41,7 @@ export const ExperiencesList: React.FC<{
             </span>
           </h3>
           <p className={cn(cnParagraph, cnLightTextMuted)}>
-            {capitalizeFirstLetterOfEachWord(date)}
+            {date && capitalizeFirstLetterOfEachWord(date)}
           </p>
         </div>
       </li>
