@@ -25,7 +25,7 @@ export const HeaderCard: React.FC<{
       <CardTitle
         className={cn(
           cnTitle2,
-          index === 2 || index === 4 || index === 5 || index === 10
+          index === 2 || index === 3 || index === 4 || index === 9
             ? cnTitle2Size
             : ''
         )}
