@@ -22,6 +22,7 @@ import { MailCard } from '@/ui/Card/MailCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
 import {
   capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
   cnParagraph,
 } from '@/styles/fontStyles';
 import { useIsClient } from './hooks/useIsClient';
@@ -168,7 +169,9 @@ const HomePage: React.FC = (): JSX.Element => {
                   !card.mailto && (
                     <p className={cnParagraph}>
                       {typeof card.content === 'string' &&
-                        capitalizeFirstLetterOfPhrase(card.content)}
+                        capitalizeFirstLetterOfPhrase(
+                          formatSpecialWords(card.content)
+                        )}
                     </p>
                   )}
               </CardContent>

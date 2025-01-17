@@ -6,6 +6,7 @@ import {
   cnTitle2Size,
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
 } from '@/styles/fontStyles';
 import {
   CardTitle,
@@ -32,7 +33,8 @@ export const HeaderCard: React.FC<{
         {title && capitalizeFirstLetterOfEachWord(title)}
       </CardTitle>
       <CardDescription className={cnDescription}>
-        {description && capitalizeFirstLetterOfPhrase(description)}
+        {description &&
+          capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
       </CardDescription>
     </CardHeader>
   );
