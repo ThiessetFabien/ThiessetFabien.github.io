@@ -24,6 +24,7 @@ import {
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
   cnLightTextMuted,
   cnParagraph,
 } from '@/styles/fontStyles';
@@ -107,7 +108,7 @@ export const ProjectsCard: React.FC<{
                 className={cn(cnFlexBetweenX, 'text-primary', 'max-h-[4.5rem]')}
               >
                 <ActionButton
-                  cta={project.title.toUpperCase()}
+                  cta={capitalizeFirstLetterOfPhrase(project.title)}
                   icon='ExternalLink'
                   href={
                     project.website
@@ -137,10 +138,14 @@ export const ProjectsCard: React.FC<{
                 </div>
               </CardTitle>
               <CardDescription className={cnLightTextMuted}>
-                {capitalizeFirstLetterOfEachWord(project.organization)}
+                {capitalizeFirstLetterOfEachWord(
+                  formatSpecialWords(project.organization)
+                )}
               </CardDescription>
               <CardContent className={cn(cnParagraph, 'p-0')}>
-                {capitalizeFirstLetterOfPhrase(project.description)}
+                {capitalizeFirstLetterOfPhrase(
+                  formatSpecialWords(project.description)
+                )}
               </CardContent>
             </CardHeader>
             <CardFooter
@@ -157,7 +162,11 @@ export const ProjectsCard: React.FC<{
                   variant='outline'
                   className={'rounded-full font-light'}
                 >
-                  <p>{capitalizeFirstLetterOfEachWord(`${tag}`)}</p>
+                  <p>
+                    {capitalizeFirstLetterOfEachWord(
+                      formatSpecialWords(`${tag}`)
+                    )}
+                  </p>
                 </Badge>
               ))}
             </CardFooter>

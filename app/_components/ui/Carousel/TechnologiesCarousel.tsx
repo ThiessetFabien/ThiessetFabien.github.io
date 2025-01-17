@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import {
   capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
   cnParagraph,
 } from '@/styles/fontStyles';
 import { cnFlexFullCenter } from '@/styles/flexStyles';
@@ -46,7 +47,7 @@ export const TechnologiesCarousel: React.FC<{
             />
           </div>
           <p className={cn(cnParagraph, 'text-center')}>
-            {capitalizeFirstLetterOfPhrase(tech.name)}
+            {capitalizeFirstLetterOfPhrase(formatSpecialWords(tech.name))}
           </p>
         </Badge>
       );

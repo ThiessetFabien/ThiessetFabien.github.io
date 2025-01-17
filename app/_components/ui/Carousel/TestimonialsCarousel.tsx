@@ -13,6 +13,7 @@ import { CardProps } from '@/types/CardProps';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
   cnLightTextMuted,
   cnParagraph,
   cnSmallText,
@@ -82,7 +83,10 @@ export const TestimonialsCarousel: React.FC<{
           </div>
         </div>
         <p className={cn(cnParagraph, 'max-w-full')}>
-          &quot;&nbsp;{capitalizeFirstLetterOfPhrase(testimonial.content)}
+          &quot;&nbsp;
+          {capitalizeFirstLetterOfPhrase(
+            formatSpecialWords(testimonial.content)
+          )}
           &nbsp;&quot;
         </p>
       </div>
