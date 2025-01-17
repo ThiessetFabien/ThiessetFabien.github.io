@@ -11,6 +11,7 @@ import {
   cnParagraph,
   cnTitle3,
   capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
   cnDescription,
   cnLightTextMuted,
 } from '@/styles/fontStyles';
@@ -83,7 +84,9 @@ export const SkillsCard: React.FC<{
                 )}
               />
               <div className={cn('relative top-1.5 mb-1.5')}>
-                <h3 className={cn(cnTitle3)}>{tech.name.toUpperCase()}</h3>
+                <h3 className={cn(cnTitle3)}>
+                  {formatSpecialWords(tech.name)}
+                </h3>
                 <p
                   className={cn(
                     cnParagraph,
@@ -92,7 +95,9 @@ export const SkillsCard: React.FC<{
                   )}
                 >
                   {tech.description &&
-                    capitalizeFirstLetterOfPhrase(tech.description)}
+                    capitalizeFirstLetterOfPhrase(
+                      formatSpecialWords(tech.description)
+                    )}
                 </p>
               </div>
             </div>
