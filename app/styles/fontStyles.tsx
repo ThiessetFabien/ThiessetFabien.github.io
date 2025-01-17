@@ -66,6 +66,7 @@ export const formatSpecialWords = (string: string) => {
     typescript: 'TypeScript',
     'demon slayer': 'Demon Slayer',
     'my hero academia': 'My Hero Academia',
+    humanitude: 'Humanitude',
   };
 
   let formattedString = string;
