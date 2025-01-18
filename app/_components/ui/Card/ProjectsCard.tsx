@@ -29,6 +29,7 @@ import {
   cnParagraph,
 } from '@/styles/fontStyles';
 import { ActionButton } from '../CallToAction/ActionButton';
+import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
  * @file CardProjects.tsx
@@ -114,7 +115,7 @@ export const ProjectsCard: React.FC<{
                     project.website ? `${project.website}` : `${project.github}`
                   }
                   variant='link'
-                  className={'px-0'}
+                  className={'px-0 hover:text-primary-foreground'}
                 />
                 <div>
                   {project.file && (
@@ -122,7 +123,10 @@ export const ProjectsCard: React.FC<{
                       icon='FileText'
                       href={`${project.file}`}
                       variant='link'
-                      className={'px-1'}
+                      className={cn(
+                        sizeIcon,
+                        'mr-1 border-0 px-0 hover:text-primary-foreground'
+                      )}
                     />
                   )}
                   {project.github && (
@@ -130,7 +134,10 @@ export const ProjectsCard: React.FC<{
                       icon='Github'
                       href={`${project.github}`}
                       variant='link'
-                      className={'px-0'}
+                      className={cn(
+                        sizeIcon,
+                        'mr-1 border-0 px-0 hover:text-primary-foreground'
+                      )}
                     />
                   )}
                 </div>
