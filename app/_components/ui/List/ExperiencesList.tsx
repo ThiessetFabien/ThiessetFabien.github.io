@@ -5,7 +5,6 @@ import {
   cnParagraph,
   cnTitle3,
 } from '@/styles/fontStyles';
-import { lineThroughItem } from '@/styles/lineThroughStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnMarginRight } from '@/styles/boxModelStyles';
 import { cn } from '@/lib/utils';
@@ -26,13 +25,7 @@ export const ExperiencesList: React.FC<{
           size={28}
         />
         <div className={cn(cnFlexCol)}>
-          <h3
-            className={cn(
-              cnTitle3,
-              'xs:flex xs:flex-row',
-              lineThroughItem(date || '')
-            )}
-          >
+          <h3 className={cn(cnTitle3, 'xs:flex xs:flex-row')}>
             {title && capitalizeFirstLetterOfEachWord(title)}
             <span className={cn('block xs:flex', 'text-primary')}>
               &nbsp;@{' '}
