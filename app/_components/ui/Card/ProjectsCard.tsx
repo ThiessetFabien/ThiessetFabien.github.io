@@ -111,9 +111,7 @@ export const ProjectsCard: React.FC<{
                   cta={capitalizeFirstLetterOfPhrase(project.title)}
                   icon='ExternalLink'
                   href={
-                    project.website
-                      ? `${baseUrl}${project.website}`
-                      : `${baseUrl}${project.github}`
+                    project.website ? `${project.website}` : `${project.github}`
                   }
                   variant='link'
                   className={'px-0'}
