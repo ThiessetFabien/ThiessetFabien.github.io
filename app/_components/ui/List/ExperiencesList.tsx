@@ -26,13 +26,7 @@ export const ExperiencesList: React.FC<{
           size={28}
         />
         <div className={cn(cnFlexCol)}>
-          <h3
-            className={cn(
-              cnTitle3,
-              'xs:flex xs:flex-row',
-              lineThroughItem(date || '')
-            )}
-          >
+          <h3 className={cn(cnTitle3, 'xs:flex xs:flex-row')}>
             {title && capitalizeFirstLetterOfEachWord(title)}
             <span className={cn('block xs:flex', 'text-primary')}>
               &nbsp;@{' '}
