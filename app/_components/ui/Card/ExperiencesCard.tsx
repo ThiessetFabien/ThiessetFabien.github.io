@@ -36,6 +36,7 @@ export const ExperiencesCard: React.FC<{
         experiences.map((experience, index) => (
           <div key={index}>
             <ScrollArea
+              type='always'
               className={cn(
                 cnBorder,
                 'w-full',
