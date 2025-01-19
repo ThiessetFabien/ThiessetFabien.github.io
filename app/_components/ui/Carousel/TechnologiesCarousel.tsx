@@ -53,7 +53,14 @@ export const TechnologiesCarousel: React.FC<{
       );
     });
 
-  return <GenericCarousel items={items} />;
+  return (
+    <GenericCarousel
+      items={items}
+      fastRotate={true}
+      arrowButtons={false}
+      dotButtons={false}
+    />
+  );
 };
 
 export default TechnologiesCarousel;

@@ -42,59 +42,63 @@ export const TestimonialsCarousel: React.FC<{
   //   ? testimonials.sort(() => Math.random() - 0.5)
   //   : [];
 
-  const items =
-    testimonials &&
-    testimonials.map((testimonial, index) => (
-      <div key={index} className={className}>
-        <div className='flex flex-shrink-0 items-center'>
-          <a href={`${baseUrl}${testimonial.linkedin}`}>
-            <div className='relative left-0 top-0'>
-              <Avatar className='h-12 w-12'>
-                <AvatarImage
-                  src={`${baseUrl}${testimonial.imageSrc}`}
-                  alt={capitalizeFirstLetterOfEachWord(testimonial.name)}
-                />
-                <AvatarFallback className={cnSmallText}>
-                  {capitalizeFirstLetterOfEachWord(testimonial.name)}
-                </AvatarFallback>
-              </Avatar>
-              <Button
-                variant='default'
-                className={cn(
-                  'absolute bottom-0 right-0 z-auto',
-                  'h-2/5 w-2/5',
-                  'p-1'
-                )}
-              >
-                <Linkedin
-                  size={14}
-                  className={cn('rounded-full', 'font-bold text-background')}
-                />
-              </Button>
-            </div>
-          </a>
-          <div className={cn(cnFlexCol, 'ml-4')}>
-            <p className={cnSmallText}>
-              {capitalizeFirstLetterOfEachWord(testimonial.name)}
-            </p>
-            <p className={cn(cnSmallText, cnLightTextMuted)}>
-              {capitalizeFirstLetterOfEachWord(
-                formatSpecialWords(testimonial.context)
+  const items = testimonials?.map((testimonial, index) => (
+    <div key={index} className={className}>
+      <div className='flex flex-shrink-0 items-center'>
+        <a href={`${baseUrl}${testimonial.linkedin}`}>
+          <div className='relative left-0 top-0'>
+            <Avatar className='h-12 w-12'>
+              <AvatarImage
+                src={`${baseUrl}${testimonial.imageSrc}`}
+                alt={capitalizeFirstLetterOfEachWord(testimonial.name)}
+              />
+              <AvatarFallback className={cnSmallText}>
+                {capitalizeFirstLetterOfEachWord(testimonial.name)}
+              </AvatarFallback>
+            </Avatar>
+            <Button
+              variant='default'
+              className={cn(
+                'absolute bottom-0 right-0 z-auto',
+                'h-2/5 w-2/5',
+                'p-1'
               )}
-            </p>
+            >
+              <Linkedin
+                size={14}
+                className={cn('rounded-full', 'font-bold text-background')}
+              />
+            </Button>
           </div>
+        </a>
+        <div className={cn(cnFlexCol, 'ml-4')}>
+          <p className={cnSmallText}>
+            {capitalizeFirstLetterOfEachWord(testimonial.name)}
+          </p>
+          <p className={cn(cnSmallText, cnLightTextMuted)}>
+            {capitalizeFirstLetterOfEachWord(
+              formatSpecialWords(testimonial.context)
+            )}
+          </p>
         </div>
-        <p className={cn(cnParagraph, 'max-w-full')}>
-          &quot;&nbsp;
-          {capitalizeFirstLetterOfPhrase(
-            formatSpecialWords(testimonial.content)
-          )}
-          &nbsp;&quot;
-        </p>
       </div>
-    ));
+      <p className={cn(cnParagraph, 'max-w-full')}>
+        &quot;&nbsp;
+        {capitalizeFirstLetterOfPhrase(formatSpecialWords(testimonial.content))}
+        &nbsp;&quot;
+      </p>
+    </div>
+  ));
 
-  return <GenericCarousel items={items} delay={7000} />;
+  return (
+    <GenericCarousel
+      items={items}
+      delay={7000}
+      fastRotate={false}
+      arrowButtons={true}
+      dotButtons={true}
+    />
+  );
 };
 
 export default TestimonialsCarousel;

@@ -12,7 +12,6 @@ import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
 import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialsCarousel';
 import { ExperiencesCard } from '@/components/ui/Card/ExperiencesCard';
 import { ProjectsCard } from '@/components/ui/Card/ProjectsCard';
-import { SkillsCard } from '@/ui/Card/SkillsCard';
 import PresentationCard from '@/ui/Card/PresentationCard';
 import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
@@ -39,6 +38,11 @@ import { cnGap, cnPadding, cnSmallSpaceY } from './styles/boxModelStyles';
 const LazyMap = dynamic(() => import('@/ui/Card/MapCard'), {
   ssr: false,
   loading: () => <p>Loading map...</p>,
+});
+
+const LazySkillsCard = dynamic(() => import('@/ui/Card/SkillsCard'), {
+  ssr: false,
+  loading: () => <p>Loading skills...</p>,
 });
 
 const HomePage: React.FC = (): JSX.Element => {
@@ -105,10 +109,11 @@ const HomePage: React.FC = (): JSX.Element => {
                       className=''
                     />
                   )}
-                {card.topTechnologies &&
+                {isClient &&
+                  card.topTechnologies &&
                   card.technologies &&
                   card.technologies.length > 0 && (
-                    <SkillsCard
+                    <LazySkillsCard
                       topTechnologies={card.topTechnologies}
                       technologies={card.technologies}
                       content={card.content}
