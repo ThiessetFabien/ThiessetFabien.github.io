@@ -2,9 +2,8 @@
  * @file GenericCarousel.tsx
  * @description This file exports a generic carousel component that can be used for different types of carousels.
  */
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import AutoScroll from 'embla-carousel-auto-scroll';
 import AutoPlay from 'embla-carousel-autoplay';
 import type { EmblaOptionsType } from 'embla-carousel';
 import { cn } from '@/lib/utils';
@@ -23,6 +22,8 @@ import {
   cnFlexCenterY,
 } from '@/styles/flexStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
+import { useIsClient } from '@/hooks/useIsClient';
+import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
 
 /**
  * GenericCarousel component.
@@ -35,24 +36,20 @@ import { cnHiddenXs } from '@/styles/hideItemStyles';
  * <GenericCarousel items={items} className="custom-class" delay={5000} />
  */
 
-export const GenericCarousel: React.FC<{
-  items?: React.ReactNode[];
-  options?: EmblaOptionsType;
-  delay?: number;
-}> = ({ items, delay }) => {
-  const autoplayPlugin = [AutoPlay({ delay, stopOnInteraction: false })];
-  const autoscrollPlugin = [AutoScroll({ stopOnInteraction: false })];
-
-  const plugin = () => {
-    if (delay !== undefined) {
-      return autoplayPlugin;
-    }
-    return autoscrollPlugin;
-  };
+export const GenericCarousel: React.FC<GenericCarouselProps> = ({
+  items,
+  delay,
+  fastRotate,
+  dotButtons,
+  arrowButtons,
+}) => {
+  const autoplay = useRef(
+    AutoPlay({ delay: delay || 100, stopOnInteraction: false })
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start', dragFree: true },
-    plugin()
+    [autoplay.current]
   );
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -65,67 +62,76 @@ export const GenericCarousel: React.FC<{
   } = usePrevNextButtons(emblaApi);
 
   useEffect(() => {
-    if (emblaApi) {
+    if (!emblaApi) return;
+
+    if (!fastRotate) {
       emblaApi.reInit();
+    } else {
+      autoplay.current?.stop();
+
+      const rotateCarousel = () => {
+        emblaApi.scrollTo(0, true); // Go to the initial position
+        setTimeout(() => {
+          for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+              emblaApi.scrollNext(true);
+            }, i * 333); // 3 rotations in 1 second
+          }
+          setTimeout(() => {
+            emblaApi.scrollTo(0, true); // Return to the initial position
+          }, 1000);
+        }, 5000); // Wait for 5 seconds before starting the rotation
+      };
+
+        rotateCarousel();
+        const interval = setInterval(rotateCarousel, delay);
+
+        return () => clearInterval(interval);
+      };
     }
-    return;
-  }, [emblaApi]);
+  }, [emblaApi, delay]);
+
+  const isClient = useIsClient();
 
   return (
-    <div ref={emblaRef}>
-      <div className='flex'>
-        {items &&
-          items.map((item, index) => (
-            <div
-              key={index}
-              className={cn(
-                'flex-none',
-                delay !== undefined ? 'w-full' : 'max-w-full',
-                cnFlexFullCenter
-              )}
-            >
+    isClient && (
+      <div ref={emblaRef}>
+        <div className='flex'>
+          {items?.map((item, index) => (
+            <div key={index} className={cn('flex-none', cnFlexFullCenter)}>
               {item}
             </div>
           ))}
-      </div>
-      <div
-        className={cn(
-          cnFlexBetweenX,
-          cnPaddingX,
-          cnHiddenXs,
-          'h-full',
-          delay !== undefined ? '' : 'hidden'
-        )}
-      >
-        <div className={cn(cnFlexCenterY, delay !== undefined ? '' : 'hidden')}>
-          <PrevButton
-            onClick={onPrevButtonClick}
-            disabled={prevBtnDisabled}
-            className={cn(manipulationStyle, cnSmallMarginRight, 'px-0')}
-          />
-          <NextButton
-            onClick={onNextButtonClick}
-            disabled={nextBtnDisabled}
-            className={cn(manipulationStyle, 'px-0')}
-          />
         </div>
-        <div
-          className={cn(cnFlexFullCenter, delay !== undefined ? '' : 'hidden')}
-        >
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              isSelected={selectedIndex === index}
-              className={cn(
-                manipulationStyle,
-                'm-0 w-auto rounded-full border-0 p-0'
-              )}
+        <div className={cn(cnFlexBetweenX, cnPaddingX, cnHiddenXs, 'h-full')}>
+          <div className={cn(cnFlexCenterY, arrowButtons ? 'flex' : 'hidden')}>
+            <PrevButton
+              onClick={onPrevButtonClick}
+              disabled={prevBtnDisabled}
+              className={cn(manipulationStyle, cnSmallMarginRight, 'px-0')}
             />
-          ))}
+            <NextButton
+              onClick={onNextButtonClick}
+              disabled={nextBtnDisabled}
+              className={cn(manipulationStyle, 'px-0')}
+            />
+          </div>
+          <div className={cn(cnFlexFullCenter, dotButtons ? 'flex' : 'hidden')}>
+            {scrollSnaps.map((_, index) => (
+              <DotButton
+                key={index}
+                onClick={() => onDotButtonClick(index)}
+                isSelected={selectedIndex === index}
+                className={cn(
+                  manipulationStyle,
+                  'm-0 w-auto rounded-full border-0 p-0'
+                )}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 
