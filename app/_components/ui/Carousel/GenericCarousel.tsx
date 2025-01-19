@@ -70,24 +70,26 @@ export const GenericCarousel: React.FC<GenericCarouselProps> = ({
       autoplay.current?.stop();
 
       const rotateCarousel = () => {
-        emblaApi.scrollTo(0, true); // Go to the initial position
+        setTimeout(() => {
+          autoplay.current?.stop();
+          emblaApi.scrollTo(0, true); // Return to the initial position
+        }, 7000);
         setTimeout(() => {
           for (let i = 0; i < 3; i++) {
-            setTimeout(() => {
-              emblaApi.scrollNext(true);
-            }, i * 333); // 3 rotations in 1 second
+            setTimeout(
+              () => {
+                autoplay.current?.play(); // Start the autoplay
+              },
+              i * (1000 / 3)
+            ); // 3 rotations in 1 second
           }
-          setTimeout(() => {
-            emblaApi.scrollTo(0, true); // Return to the initial position
-          }, 1000);
-        }, 5000); // Wait for 5 seconds before starting the rotation
+        }, 1000); // Wait for 5 seconds before starting the rotation
       };
 
-        rotateCarousel();
-        const interval = setInterval(rotateCarousel, delay);
+      rotateCarousel();
+      const interval = setInterval(rotateCarousel, 1000); // Repeat the process every 11 seconds (5s stop + 1s rotation + 5s stop)
 
-        return () => clearInterval(interval);
-      };
+      return () => clearInterval(interval);
     }
   }, [emblaApi, delay]);
 
@@ -95,7 +97,7 @@ export const GenericCarousel: React.FC<GenericCarouselProps> = ({
 
   return (
     isClient && (
-      <div ref={emblaRef}>
+      <div ref={emblaRef} className='h-full w-full'>
         <div className='flex'>
           {items?.map((item, index) => (
             <div key={index} className={cn('flex-none', cnFlexFullCenter)}>
