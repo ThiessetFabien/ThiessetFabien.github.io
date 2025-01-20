@@ -71,23 +71,24 @@ export const GenericCarousel: React.FC<GenericCarouselProps> = ({
 
       const rotateCarousel = () => {
         setTimeout(() => {
-          autoplay.current?.stop();
-          emblaApi.scrollTo(0, true); // Return to the initial position
+          autoplay.current?.play();
+          emblaApi.scrollTo(0, true);
         }, 7000);
         setTimeout(() => {
           for (let i = 0; i < 3; i++) {
             setTimeout(
               () => {
-                autoplay.current?.play(); // Start the autoplay
+                autoplay.current?.stop();
+                emblaApi.scrollTo(0, true);
               },
               i * (1000 / 3)
-            ); // 3 rotations in 1 second
+            );
           }
-        }, 1000); // Wait for 5 seconds before starting the rotation
+        }, 1000);
       };
 
       rotateCarousel();
-      const interval = setInterval(rotateCarousel, 1000); // Repeat the process every 11 seconds (5s stop + 1s rotation + 5s stop)
+      const interval = setInterval(rotateCarousel, 8000);
 
       return () => clearInterval(interval);
     }
