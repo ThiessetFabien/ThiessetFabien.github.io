@@ -7,19 +7,13 @@ import {
   formatSpecialWords,
   cnParagraph,
 } from '@/styles/fontStyles';
-import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
-import { sizeIcon, sizeMiddleIcon } from '@/styles/sizeStyles';
+import { cnFlexFullCenter } from '@/styles/flexStyles';
+import { sizeIcon } from '@/styles/sizeStyles';
 import GenericCarousel from './GenericCarousel';
 import type { CardProps } from '@/types/CardProps';
 import { Badge } from '@/lib/components/ui/badge';
-import {
-  cnMarginTop,
-  cnSmallGap,
-  cnSmallMarginRight,
-  cnSmallPaddingX,
-} from '@/styles/boxModelStyles';
-import { useWhiteFilter } from '@/styles/filterStyles';
-import { useIsLg, useIsXl, useIsXs } from '@/hooks/useMediaQueries';
+import { cnSmallGap, cnSmallMarginRight } from '@/styles/boxModelStyles';
+import { useIsXl, useIsXs } from '@/hooks/useMediaQueries';
 
 /**
  * @file TechCarousel.tsx
@@ -58,7 +52,10 @@ export const TechnologiesCarousel: React.FC<{
             alt={tech.name}
             width={50}
             height={50}
-            className={cn(sizeIcon, useWhiteFilter(tech.slug))}
+            className={cn(
+              sizeIcon,
+              tech.slug.includes('express') ? 'filter-white' : ''
+            )}
             priority
           />
         </div>

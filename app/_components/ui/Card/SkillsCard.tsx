@@ -15,13 +15,8 @@ import {
   cnDescription,
   cnLightTextMuted,
 } from '@/styles/fontStyles';
-import {
-  cnMarginTop,
-  cnSmallGap,
-  cnSmallMarginRight,
-  cnSmallPaddingX,
-} from '@/styles/boxModelStyles';
-import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
+import { cnSmallGap } from '@/styles/boxModelStyles';
+import { cnFlexCol } from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import TechnologiesCarousel from '@/ui/Carousel/TechnologiesCarousel';

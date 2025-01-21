@@ -88,7 +88,7 @@ export const GenericCarousel: React.FC<
 
       return () => clearInterval(interval);
     }
-  }, [emblaApi, delay]);
+  }, [emblaApi, delay, fastRotate, idStart]);
 
   const isClient = useIsClient();
 
