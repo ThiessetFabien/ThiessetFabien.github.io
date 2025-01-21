@@ -145,26 +145,19 @@ export const GenericCarousel: React.FC<
           </div>
           <div
             className={cn(
-              cnFlexFullCenter,
-              controls === 'dots' || controls === 'both' ? 'flex' : 'hidden'
+              'cnFlexFullCenter',
+              controls === 'arrows' || controls === 'both' ? 'flex' : 'hidden'
             )}
           >
             <PrevButton
               onClick={onPrevButtonClick}
               disabled={prevBtnDisabled}
-              className={cn(
-                manipulationStyle,
-                cnSmallMarginRight,
-                'px-0 hover:text-primary-foreground'
-              )}
+              className={cn(manipulationStyle, cnSmallMarginRight, 'px-0')}
             />
             <NextButton
               onClick={onNextButtonClick}
               disabled={nextBtnDisabled}
-              className={cn(
-                manipulationStyle,
-                'px-0 hover:text-primary-foreground'
-              )}
+              className={cn(manipulationStyle, 'px-0')}
             />
           </div>
         </div>

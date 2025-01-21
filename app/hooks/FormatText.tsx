@@ -36,6 +36,8 @@ export const formatSpecialWords = (string: string) => {
     'sp.': 'SP.',
     mas: 'MAS',
     area: 'Area',
+    rncp: 'RNCP',
+    'nest\\.js': 'Nest.JS',
   };
 
   let formattedString = string;

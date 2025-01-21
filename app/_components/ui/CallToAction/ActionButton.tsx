@@ -30,6 +30,7 @@ export const ActionButton: React.FC<ActionButtonProps & CardProps> = ({
   downloadActive,
   variant,
   type,
+  size,
   onClick,
   className,
 }) => {
@@ -38,6 +39,7 @@ export const ActionButton: React.FC<ActionButtonProps & CardProps> = ({
       onClick={onClick}
       variant={variant}
       type={type}
+      size={size}
       className={cn(className, cnSmallText)}
     >
       {IconLoader(icon ?? '')}

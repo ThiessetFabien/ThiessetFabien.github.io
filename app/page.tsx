@@ -21,7 +21,7 @@ import {
   cnSmallGap,
   cnSpaceY,
 } from '@/styles/boxModelStyles';
-import { MailCard } from '@/ui/Card/MailCard';
+import { MailCard } from '@/components/ui/Card/MailCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
 import { cnParagraph } from '@/styles/fontStyles';
 import {

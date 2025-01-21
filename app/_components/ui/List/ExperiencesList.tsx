@@ -1,10 +1,15 @@
-import { cnLightTextMuted, cnParagraph, cnTitle3 } from '@/styles/fontStyles';
+import {
+  cnLightTextMuted,
+  cnParagraph,
+  cnSmallText,
+  cnTitle3,
+} from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
 } from '@/hooks/FormatText';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnMarginRight } from '@/styles/boxModelStyles';
+import { cnMarginRight, cnMarginX } from '@/styles/boxModelStyles';
 import { cn } from '@/lib/utils';
 import { Dot } from 'lucide-react';
 
@@ -18,10 +23,13 @@ export const ExperiencesList: React.FC<{
   return (
     <ul className={'w-full'}>
       <li className={'flex'}>
-        <Dot
-          className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
-          size={28}
-        />
+        <div
+          className={cn(
+            cnMarginX,
+            'h-2 w-2 translate-y-2 rounded-full bg-accent'
+          )}
+          // className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
+        ></div>
         <div className={cn(cnFlexCol)}>
           <h3 className={cn(cnTitle3, 'xs:flex xs:flex-row')}>
             {title && capitalizeFirstLetterOfEachWord(title)}
@@ -31,7 +39,7 @@ export const ExperiencesList: React.FC<{
                 capitalizeFirstLetterOfEachWord(formatSpecialWords(company))}
             </span>
           </h3>
-          <p className={cn(cnParagraph, cnLightTextMuted)}>
+          <p className={cn(cnSmallText, cnLightTextMuted)}>
             {date && capitalizeFirstLetterOfEachWord(date)}
           </p>
         </div>

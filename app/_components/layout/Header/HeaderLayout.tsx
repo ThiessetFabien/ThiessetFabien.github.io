@@ -18,9 +18,7 @@ import { cnPaddingX } from '@/styles/boxModelStyles';
  * @example
  * <Header className="custom-class" />
  */
-export const Header: React.FC<{ className?: string }> = ({ className }) => {
-  const titleUppercased = 'fabuilds'.toUpperCase();
-
+export const Header: React.FC<{ className: string }> = ({ className }) => {
   return (
     <header className={className}>
       <div className={cn('mx-auto max-w-7xl', cnPaddingX, cnFlexBetweenX)}>
@@ -33,7 +31,10 @@ export const Header: React.FC<{ className?: string }> = ({ className }) => {
             'hover:underline'
           )}
         >
-          <h1>{titleUppercased}</h1>
+          <h1>
+            {'fab'.toUpperCase()}
+            <span className='font-light'>{'uilds'.toUpperCase()}</span>
+          </h1>
         </Link>
         <ToggleDarkMode />
       </div>

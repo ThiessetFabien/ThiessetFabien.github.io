@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Avatar,
   AvatarFallback,
@@ -22,6 +22,7 @@ import {
 } from '@/hooks/FormatText';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
+import { TestimonialProps } from '@/types/TestimonialProps.jsx';
 
 /**
  * @file TestimonialsCarousel.tsx
@@ -40,11 +41,38 @@ import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
 export const TestimonialsCarousel: React.FC<{
   testimonials: CardProps['testimonials'];
 }> = ({ testimonials }) => {
-  // const shuffledTestimonial = testimonials
-  //   ? testimonials.sort(() => Math.random() - 0.5)
-  //   : [];
+  const [shuffledTestimonials, setShuffledTestimonials] = useState<
+    CardProps['testimonials']
+  >([]);
 
-  const items = testimonials?.map((testimonial, index) => (
+  useEffect(() => {
+    const shuffleArray = (array: TestimonialProps[]) => {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    };
+
+    const ensureDifferentAuthors = (array: TestimonialProps[]) => {
+      const result = [];
+      const usedAuthors = new Set();
+
+      for (const item of array) {
+        if (!usedAuthors.has(item.author)) {
+          result.push(item);
+          usedAuthors.add(item.author);
+        }
+      }
+
+      return result;
+    };
+    const shuffled = testimonials ? shuffleArray([...testimonials]) : [];
+    const uniqueAuthorTestimonials = ensureDifferentAuthors(shuffled);
+    setShuffledTestimonials(uniqueAuthorTestimonials);
+  }, [testimonials]);
+
+  const items = shuffledTestimonials?.map((testimonial, index) => (
     <div
       key={index}
       className={cn(cnSmallSpaceY, cnPaddingX, 'h-full min-w-full')}
@@ -55,10 +83,10 @@ export const TestimonialsCarousel: React.FC<{
             <Avatar className='h-12 w-12'>
               <AvatarImage
                 src={`${baseUrl}${testimonial.imageSrc}`}
-                alt={capitalizeFirstLetterOfEachWord(testimonial.name)}
+                alt={capitalizeFirstLetterOfEachWord(testimonial.author)}
               />
-              <AvatarFallback className={cnSmallText}>
-                {capitalizeFirstLetterOfEachWord(testimonial.name)}
+              <AvatarFallback className={cnParagraph}>
+                {capitalizeFirstLetterOfEachWord(testimonial.author)}
               </AvatarFallback>
             </Avatar>
             <Button
@@ -76,13 +104,16 @@ export const TestimonialsCarousel: React.FC<{
             </Button>
           </div>
         </a>
-        <div className={cn(cnFlexCol, 'ml-4')}>
-          <p className={cnSmallText}>
-            {capitalizeFirstLetterOfEachWord(testimonial.name)}
-          </p>
-          <p className={cn(cnSmallText, cnLightTextMuted)}>
+        <div className={cn(cnFlexCol, cnSmallText, cnLightTextMuted, 'ml-4')}>
+          <p>{capitalizeFirstLetterOfEachWord(testimonial.author)}</p>
+          <p>
             {capitalizeFirstLetterOfEachWord(
-              formatSpecialWords(testimonial.context)
+              formatSpecialWords(testimonial.job)
+            )}
+          </p>
+          <p className={cnLightTextMuted}>
+            {capitalizeFirstLetterOfEachWord(
+              formatSpecialWords(testimonial.company)
             )}
           </p>
         </div>
@@ -100,7 +131,7 @@ export const TestimonialsCarousel: React.FC<{
       items={items}
       delay={7000}
       fastRotate={false}
-      controls='both'
+      controls='arrows'
     />
   );
 };
