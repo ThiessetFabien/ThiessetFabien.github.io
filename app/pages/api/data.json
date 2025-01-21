@@ -43,8 +43,20 @@
     "content": "and i currently work with",
     "technologies": [
       {
-        "name": "typeScript",
+        "name": "typescript",
         "slug": "typescript/typescript-original"
+      },
+      {
+        "name": "express.js",
+        "slug": "express/express-original"
+      },
+      {
+        "name": "mongoDB",
+        "slug": "mongodb/mongodb-original"
+      },
+      {
+        "name": "next.js",
+        "slug": "nextjs/nextjs-original"
       },
       {
         "name": "jest",
@@ -183,7 +195,7 @@
         "imageSrc": "images/mailnager.webp",
         "imageAlt": "Casalink documentation",
         "github": "github.com/ThiessetFabien/MailNagerAPI",
-        "tags": ["typescript", "nest", "mongodb"]
+        "tags": ["typescript", "nest.js", "mongodb"]
       }
     ],
     "icon1": "Mail",

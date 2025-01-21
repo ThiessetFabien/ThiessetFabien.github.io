@@ -9,14 +9,18 @@ import React from 'react';
 import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
 import fetchData from '@api/data.json';
 import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
-import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialsCarousel';
 import { ExperiencesCard } from '@/components/ui/Card/ExperiencesCard';
 import { ProjectsCard } from '@/components/ui/Card/ProjectsCard';
-import PresentationCard from '@/ui/Card/PresentationCard';
+import { PresentationCard } from '@/ui/Card/PresentationCard';
 import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
-import { cnPaddingBottom, cnPaddingX, cnSpaceY } from '@/styles/boxModelStyles';
+import {
+  cnPaddingBottom,
+  cnPaddingX,
+  cnSmallGap,
+  cnSpaceY,
+} from '@/styles/boxModelStyles';
 import { MailCard } from '@/ui/Card/MailCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
 import {
@@ -42,8 +46,14 @@ const LazyMap = dynamic(() => import('@/ui/Card/MapCard'), {
 
 const LazySkillsCard = dynamic(() => import('@/ui/Card/SkillsCard'), {
   ssr: false,
-  loading: () => <p>Loading skills...</p>,
 });
+
+const LazyTestimonialsCard = dynamic(
+  () => import('@/ui/Carousel/TestimonialsCarousel'),
+  {
+    ssr: false,
+  }
+);
 
 const HomePage: React.FC = (): JSX.Element => {
   const gridConfig = useCardGrid(fetchData as CardProps[]);
@@ -118,18 +128,17 @@ const HomePage: React.FC = (): JSX.Element => {
                       technologies={card.technologies}
                       content={card.content}
                       className={cn(
-                        'flex min-w-full flex-row flex-wrap',
+                        'flex w-full min-w-full flex-row flex-wrap',
                         'container overflow-hidden',
-                        cnGap
+                        cnSmallGap
                       )}
                     />
                   )}
-                {card.testimonials && card.testimonials.length > 0 && (
-                  <TestimonialsCarousel
-                    testimonials={card.testimonials}
-                    className={cn(cnSmallSpaceY, cnPaddingX, 'h-100% w-full')}
-                  />
-                )}
+                {isClient &&
+                  card.testimonials &&
+                  card.testimonials.length > 0 && (
+                    <LazyTestimonialsCard testimonials={card.testimonials} />
+                  )}
                 {card.projects && card.projects.length > 0 && (
                   <ProjectsCard
                     projects={card.projects}

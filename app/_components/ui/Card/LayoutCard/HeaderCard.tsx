@@ -32,10 +32,11 @@ export const HeaderCard: React.FC<{
       >
         {title && capitalizeFirstLetterOfEachWord(title)}
       </CardTitle>
-      <CardDescription className={cnDescription}>
-        {description &&
-          capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
-      </CardDescription>
+      {description && (
+        <CardDescription className={cnDescription}>
+          {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
+        </CardDescription>
+      )}
     </CardHeader>
   );
 };
