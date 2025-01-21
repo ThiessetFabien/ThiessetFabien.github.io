@@ -5,14 +5,14 @@ import { baseUrl } from '@/utils/constants/baseUrl';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-  cnParagraph,
-} from '@/styles/fontStyles';
+} from '@/hooks/FormatText';
+import { cnParagraph } from '@/styles/fontStyles';
 import { cnFlexFullCenter } from '@/styles/flexStyles';
 import { sizeIcon } from '@/styles/sizeStyles';
 import GenericCarousel from './GenericCarousel';
 import type { CardProps } from '@/types/CardProps';
 import { Badge } from '@/lib/components/ui/badge';
-import { cnSmallGap, cnSmallMarginRight } from '@/styles/boxModelStyles';
+import { cnSmallGap } from '@/styles/boxModelStyles';
 import { useIsXl, useIsXs } from '@/hooks/useMediaQueries';
 
 /**
@@ -38,13 +38,7 @@ export const TechnologiesCarousel: React.FC<{
       <Badge
         key={index}
         variant='outline'
-        className={cn(
-          className,
-          cnSmallGap,
-          cnSmallMarginRight,
-          'border-0 px-0',
-          'w-full'
-        )}
+        className={cn(className, cnSmallGap, 'border-0 px-0', 'w-full')}
       >
         <div className={cnFlexFullCenter}>
           <Image

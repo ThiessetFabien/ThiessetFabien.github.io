@@ -23,11 +23,11 @@ import {
 } from '@/styles/boxModelStyles';
 import { MailCard } from '@/ui/Card/MailCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
+import { cnParagraph } from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-  cnParagraph,
-} from '@/styles/fontStyles';
+} from '@/hooks/FormatText';
 import { useIsClient } from './hooks/useIsClient';
 import dynamic from 'next/dynamic';
 import type { CardProps } from './types/CardProps';

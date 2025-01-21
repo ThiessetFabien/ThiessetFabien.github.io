@@ -1,10 +1,8 @@
+import { cnLightTextMuted, cnParagraph, cnTitle3 } from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
-  cnLightTextMuted,
-  cnParagraph,
-  cnTitle3,
-} from '@/styles/fontStyles';
+} from '@/hooks/FormatText';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnMarginRight } from '@/styles/boxModelStyles';
 import { cn } from '@/lib/utils';

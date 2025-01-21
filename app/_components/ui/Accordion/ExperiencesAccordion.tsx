@@ -6,10 +6,8 @@ import { ExperiencesList } from '@/ui/List/ExperiencesList';
 import type { CardProps } from '@/types/CardProps';
 import type { ExperienceProps } from '@/types/ExperienceProps';
 import type { OtherExperienceProps } from '@/types/OtherExperiencesProps';
-import {
-  capitalizeFirstLetterOfPhrase,
-  cnParagraph,
-} from '@/styles/fontStyles';
+import { cnParagraph } from '@/styles/fontStyles';
+import { capitalizeFirstLetterOfPhrase } from '@/hooks/FormatText';
 import { cn } from '@/lib/utils';
 import { cnSpaceX } from '@/styles/boxModelStyles';
 

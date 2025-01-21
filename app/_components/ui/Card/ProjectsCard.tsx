@@ -20,13 +20,12 @@ import {
   cnPaddingBottom,
   cnPaddingX,
 } from '@/styles/boxModelStyles';
+import { cnLightTextMuted, cnParagraph } from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-  cnLightTextMuted,
-  cnParagraph,
-} from '@/styles/fontStyles';
+} from '@/hooks/FormatText';
 import { ActionButton } from '../CallToAction/ActionButton';
 import { sizeIcon } from '@/styles/sizeStyles';
 
