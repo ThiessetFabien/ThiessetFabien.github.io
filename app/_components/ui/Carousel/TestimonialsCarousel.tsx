@@ -37,8 +37,7 @@ import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
  */
 export const TestimonialsCarousel: React.FC<{
   testimonials: CardProps['testimonials'];
-  className?: CardProps['className'];
-}> = ({ testimonials, className }) => {
+}> = ({ testimonials }) => {
   // const shuffledTestimonial = testimonials
   //   ? testimonials.sort(() => Math.random() - 0.5)
   //   : [];
