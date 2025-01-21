@@ -4,7 +4,7 @@ export interface GenericCarouselProps {
   items?: React.ReactNode[];
   options?: EmblaOptionsType;
   fastRotate: boolean;
-  dotButtons: boolean;
-  arrowButtons: boolean;
+  idStart?: number;
+  controls: 'dots' | 'arrows' | 'both' | 'none';
   delay?: number;
 }

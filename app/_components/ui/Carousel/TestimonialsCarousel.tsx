@@ -19,6 +19,7 @@ import {
   cnSmallText,
 } from '@/styles/fontStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
+import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
 
 /**
  * @file TestimonialsCarousel.tsx
@@ -43,7 +44,10 @@ export const TestimonialsCarousel: React.FC<{
   //   : [];
 
   const items = testimonials?.map((testimonial, index) => (
-    <div key={index} className={className}>
+    <div
+      key={index}
+      className={cn(cnSmallSpaceY, cnPaddingX, 'h-full min-w-full')}
+    >
       <div className='flex flex-shrink-0 items-center'>
         <a href={`${baseUrl}${testimonial.linkedin}`}>
           <div className='relative left-0 top-0'>
@@ -95,8 +99,7 @@ export const TestimonialsCarousel: React.FC<{
       items={items}
       delay={7000}
       fastRotate={false}
-      arrowButtons={true}
-      dotButtons={true}
+      controls='both'
     />
   );
 };

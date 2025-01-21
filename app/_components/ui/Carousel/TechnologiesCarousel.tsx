@@ -7,11 +7,19 @@ import {
   formatSpecialWords,
   cnParagraph,
 } from '@/styles/fontStyles';
-import { cnFlexFullCenter } from '@/styles/flexStyles';
-import { sizeIcon } from '@/styles/sizeStyles';
+import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
+import { sizeIcon, sizeMiddleIcon } from '@/styles/sizeStyles';
 import GenericCarousel from './GenericCarousel';
 import type { CardProps } from '@/types/CardProps';
 import { Badge } from '@/lib/components/ui/badge';
+import {
+  cnMarginTop,
+  cnSmallGap,
+  cnSmallMarginRight,
+  cnSmallPaddingX,
+} from '@/styles/boxModelStyles';
+import { useWhiteFilter } from '@/styles/filterStyles';
+import { useIsLg, useIsXl, useIsXs } from '@/hooks/useMediaQueries';
 
 /**
  * @file TechCarousel.tsx
@@ -29,37 +37,64 @@ import { Badge } from '@/lib/components/ui/badge';
  */
 export const TechnologiesCarousel: React.FC<{
   technologies: CardProps['technologies'];
-  className: string;
+  className: CardProps['className'];
 }> = ({ technologies, className }) => {
-  const items =
-    technologies &&
-    technologies.map((tech, index) => {
-      return (
-        <Badge key={index} variant='outline' className={cn(className)}>
-          <div className={cn(cnFlexFullCenter)}>
-            <Image
-              src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
-              alt={tech.name}
-              width={50}
-              height={50}
-              className={cn(sizeIcon)}
-              priority
-            />
-          </div>
-          <p className={cn(cnParagraph, 'text-center')}>
-            {capitalizeFirstLetterOfPhrase(formatSpecialWords(tech.name))}
-          </p>
-        </Badge>
-      );
-    });
+  const items = technologies?.map((tech, index) => {
+    return (
+      <Badge
+        key={index}
+        variant='outline'
+        className={cn(
+          className,
+          cnSmallGap,
+          cnSmallMarginRight,
+          'border-0 px-0',
+          'w-full'
+        )}
+      >
+        <div className={cnFlexFullCenter}>
+          <Image
+            src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+            alt={tech.name}
+            width={50}
+            height={50}
+            className={cn(sizeIcon, useWhiteFilter(tech.slug))}
+            priority
+          />
+        </div>
+        <p className={cn(cnParagraph, 'text-center')}>
+          {capitalizeFirstLetterOfPhrase(formatSpecialWords(tech.name))}
+        </p>
+      </Badge>
+    );
+  });
+
+  const isXs = useIsXs();
+  const isXl = useIsXl();
 
   return (
-    <GenericCarousel
-      items={items}
-      fastRotate={true}
-      arrowButtons={false}
-      dotButtons={false}
-    />
+    <>
+      <GenericCarousel
+        items={items}
+        fastRotate={true}
+        idStart={0}
+        controls='none'
+      />
+      <GenericCarousel
+        items={items}
+        fastRotate={true}
+        idStart={isXs || isXl ? 3 : 2}
+        controls='none'
+        className='sm:hidden lg:block'
+      />
+      <GenericCarousel
+        items={items}
+        fastRotate={true}
+        idStart={isXs || isXl ? 6 : 4}
+        controls='none'
+        className='xs:hidden sm:hidden lg:block xl:hidden'
+      />
+    </>
   );
 };
 

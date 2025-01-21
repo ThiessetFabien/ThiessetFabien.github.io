@@ -30,7 +30,7 @@ import {
   AvatarFallback,
 } from '@/lib/components/ui/avatar';
 
-const PresentationCard: React.FC<{
+export const PresentationCard: React.FC<{
   title: CardProps['title'];
   description: CardProps['description'];
   content: CardProps['content'];
@@ -201,5 +201,3 @@ const PresentationCard: React.FC<{
     </CardHeader>
   );
 };
-
-export default PresentationCard;
