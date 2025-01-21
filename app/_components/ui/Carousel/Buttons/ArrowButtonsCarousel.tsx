@@ -10,6 +10,7 @@ import { Button } from '@/lib/components/ui/button';
 import { EmblaCarouselType } from 'embla-carousel';
 import { sizeIcon } from '@/styles/sizeStyles';
 import { cnSmallMarginRight } from '@/styles/boxModelStyles';
+import { ActionButton } from '@/ui/CallToAction/ActionButton';
 
 type UsePrevNextButtonsType = {
   prevBtnDisabled: boolean;
@@ -60,14 +61,13 @@ export const PrevButton: React.FC<PropType> = (props, ClassName) => {
   const { children, ...restProps } = props;
 
   return (
-    <Button
-      variant='link'
-      className={cn(ClassName, cnSmallMarginRight, 'px-0')}
+    <ActionButton
+      icon='CircleArrowLeft'
+      variant='outline'
+      size='icon'
+      className={cn(ClassName, 'hover:text-accent-foreground')}
       {...restProps}
-    >
-      <CircleArrowLeft className={sizeIcon} />
-      {children}
-    </Button>
+    />
   );
 };
 
@@ -75,9 +75,12 @@ export const NextButton: React.FC<PropType> = (props, ClassName) => {
   const { children, ...restProps } = props;
 
   return (
-    <Button variant='link' className={cn(ClassName, 'px-0')} {...restProps}>
-      <CircleArrowRight className={sizeIcon} />
-      {children}
-    </Button>
+    <ActionButton
+      icon='CircleArrowRight'
+      variant='outline'
+      size='icon'
+      className={cn(ClassName, 'hover:text-accent-foreground')}
+      {...restProps}
+    />
   );
 };

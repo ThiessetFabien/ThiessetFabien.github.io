@@ -68,9 +68,9 @@ export const DotButton: React.FC<PropType> = ({
       {...restProps}
     >
       {isSelected ? (
-        <Dot className='font-extrabold' />
+        <Dot className='font-extrabold text-primary' />
       ) : (
-        <Dot className={'text-border'} />
+        <Dot className={'text-secondary'} />
       )}
       {children}
     </Button>

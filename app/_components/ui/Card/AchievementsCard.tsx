@@ -3,10 +3,11 @@ import { IconLoader } from '@/hooks/IconLoader';
 import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnParagraph } from '@/styles/fontStyles';
+import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
 } from '@/hooks/FormatText';
 import { Badge } from '@/lib/components/ui/badge';
 import { cnLightTextMuted } from '@/styles/fontStyles';
@@ -24,20 +25,15 @@ export const AchievementsCard: React.FC<{
               {IconLoader(achievement.icon || '')}
             </div>
             <div className={cnFlexCol}>
-              <h3 className={cn(cnParagraph, 'min-w-full')}>
-                {capitalizeFirstLetterOfEachWord(achievement.title)}
-              </h3>
-              <Badge
-                variant='outline'
-                className={cn(
-                  'border-0 p-0',
-                  'min-w-full',
-                  cnParagraph,
-                  cnLightTextMuted
+              <p className={cn(cnParagraph, 'min-w-full')}>
+                {capitalizeFirstLetterOfEachWord(
+                  formatSpecialWords(achievement.title)
                 )}
-              >
-                {capitalizeFirstLetterOfPhrase(achievement.date)}
-              </Badge>
+                <span className={cn(cnSmallText, cnLightTextMuted)}>
+                  &nbsp;&bull;&nbsp;
+                  {capitalizeFirstLetterOfEachWord(achievement.date)}
+                </span>
+              </p>
             </div>
           </li>
         ))}
