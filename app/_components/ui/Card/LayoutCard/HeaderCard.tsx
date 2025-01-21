@@ -1,13 +1,11 @@
 import type { CardProps } from '@/types/CardProps';
 import { cn } from '@/lib/utils';
+import { cnDescription, cnTitle2, cnTitle2Size } from '@/styles/fontStyles';
 import {
-  cnDescription,
-  cnTitle2,
-  cnTitle2Size,
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@/styles/fontStyles';
+} from '@/hooks/FormatText';
 import {
   CardTitle,
   CardDescription,

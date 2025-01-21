@@ -3,11 +3,11 @@ import { IconLoader } from '@/hooks/IconLoader';
 import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
+import { cnParagraph } from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
-  cnParagraph,
-} from '@/styles/fontStyles';
+} from '@/hooks/FormatText';
 import { Badge } from '@/lib/components/ui/badge';
 import { cnLightTextMuted } from '@/styles/fontStyles';
 

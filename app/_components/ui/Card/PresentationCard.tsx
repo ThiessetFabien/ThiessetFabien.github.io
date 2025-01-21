@@ -10,11 +10,13 @@ import {
   cnTitle1,
   cnBigDescription,
   cnSmallText,
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
   cnLightTextMuted,
   cnParagraph,
 } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+} from '@/hooks/FormatText';
 import {
   cnGap,
   cnMarginTop,

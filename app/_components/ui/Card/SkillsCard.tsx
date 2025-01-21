@@ -10,11 +10,13 @@ import { baseUrl } from '@/utils/constants/baseUrl';
 import {
   cnParagraph,
   cnTitle3,
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
   cnDescription,
   cnLightTextMuted,
 } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/hooks/FormatText';
 import { cnSmallGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { sizeBigIcon } from '@/styles/sizeStyles';

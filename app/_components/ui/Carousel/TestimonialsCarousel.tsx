@@ -11,13 +11,15 @@ import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CardProps } from '@/types/CardProps';
 import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
   cnLightTextMuted,
   cnParagraph,
   cnSmallText,
 } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/hooks/FormatText';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
 

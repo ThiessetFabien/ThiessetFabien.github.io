@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 import { IconLoader } from '@/hooks/IconLoader';
-import { capitalizeFirstLetterOfEachWord } from '@/styles/fontStyles';
+import { capitalizeFirstLetterOfEachWord } from '@/hooks/FormatText';
 import { cnSmallText } from '@/styles/fontStyles';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
