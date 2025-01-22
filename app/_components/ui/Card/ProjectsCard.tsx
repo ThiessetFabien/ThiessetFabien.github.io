@@ -19,12 +19,9 @@ import {
   cnPadding,
   cnPaddingBottom,
   cnPaddingX,
-  cnSmallGap,
   cnSmallSpaceX,
-  cnSpaceX,
 } from '@/styles/boxModelStyles';
 import {
-  cnDescription,
   cnLightTextMuted,
   cnParagraph,
   cnSmallText,

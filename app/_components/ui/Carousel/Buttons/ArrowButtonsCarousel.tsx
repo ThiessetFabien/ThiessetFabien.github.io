@@ -7,6 +7,7 @@ import React, {
 import { cn } from '@/lib/utils';
 import { EmblaCarouselType } from 'embla-carousel';
 import { ActionButton } from '@/ui/CallToAction/ActionButton';
+import { ActionButtonProps } from '@/types/ActionButtonProps.jsx';
 
 type UsePrevNextButtonsType = {
   prevBtnDisabled: boolean;
@@ -53,8 +54,11 @@ export const usePrevNextButtons = (
 
 type PropType = ComponentPropsWithRef<'button'>;
 
-export const PrevButton: React.FC<PropType> = (props, ClassName) => {
-  const { children, ...restProps } = props;
+export const PrevButton: React.FC<PropType & ActionButtonProps> = (
+  props,
+  ClassName
+) => {
+  const { ...restProps } = props;
 
   return (
     <ActionButton
@@ -64,12 +68,15 @@ export const PrevButton: React.FC<PropType> = (props, ClassName) => {
       size='icon'
       className={cn(ClassName, 'hover:text-accent-foreground')}
       {...restProps}
-    />
+    ></ActionButton>
   );
 };
 
-export const NextButton: React.FC<PropType> = (props, ClassName) => {
-  const { children, ...restProps } = props;
+export const NextButton: React.FC<PropType & ActionButtonProps> = (
+  props,
+  ClassName
+) => {
+  const { ...restProps } = props;
 
   return (
     <ActionButton

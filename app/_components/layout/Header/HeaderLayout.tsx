@@ -1,10 +1,8 @@
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
 import { cnTitle2, cnTitle2Size } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
-import { ActionButton } from '@/components/ui/CallToAction/ActionButton';
 
 /**
  * @file Header.tsx

@@ -6,10 +6,8 @@ import { cnFlexCol } from '@/styles/flexStyles';
 import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@/hooks/FormatText';
-import { Badge } from '@/lib/components/ui/badge';
 import { cnLightTextMuted } from '@/styles/fontStyles';
 
 export const AchievementsCard: React.FC<{
