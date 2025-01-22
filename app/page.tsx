@@ -105,7 +105,6 @@ const HomePage: React.FC = (): JSX.Element => {
                 index={index}
                 className={cnPadding}
               />
-
               <CardContent
                 className={
                   !card.testimonials

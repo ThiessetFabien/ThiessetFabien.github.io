@@ -190,7 +190,7 @@
       {
         "title": "mailnager api",
         "organization": "api",
-        "description": "server for managing mails and tracking job, created for a friend and fellow alumni",
+        "description": "server for managing mails and tracking job, created for a friend and fellow alumni.",
         "imageSrc": "images/mailnager.webp",
         "imageAlt": "Casalink documentation",
         "github": "github.com/ThiessetFabien/MailNagerAPI",
@@ -376,7 +376,7 @@
       },
       {
         "icon": "Accessibility",
-        "title": "humanitude label for first medicalized  center in mainland france, and the 3rd establishment in france (including overseas territories)",
+        "title": "humanitude label for first medicalized center in mainland, and the third establishment in france (including overseas territories)",
         "date": "dec 2019"
       }
     ]

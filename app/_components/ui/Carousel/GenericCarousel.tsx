@@ -99,22 +99,21 @@ export const GenericCarousel: React.FC<
         className={cn(className, 'min-h-full min-w-full max-w-full')}
       >
         <div className='flex'>
-          {items &&
-            items?.map((item, index) => (
-              <div
-                key={index}
-                className={cn(
-                  'max-w-fit flex-none',
-                  'min-w-[calc(100%/2)]',
-                  'xs:min-w-[calc(100%/3)]',
-                  'sm:min-w-[calc(100%/6)]',
-                  'lg:min-w-[calc(100%/2)]',
-                  'xl:min-w-[calc(100%/3)]'
-                )}
-              >
-                {item}
-              </div>
-            ))}
+          {items?.map((item, index) => (
+            <div
+              key={index}
+              className={cn(
+                'max-w-fit flex-none',
+                'min-w-[calc(100%/2)]',
+                'xs:min-w-[calc(100%/3)]',
+                'sm:min-w-[calc(100%/6)]',
+                'lg:min-w-[calc(100%/2)]',
+                'xl:min-w-[calc(100%/3)]'
+              )}
+            >
+              {item}
+            </div>
+          ))}
         </div>
         <div
           className={cn(
@@ -146,7 +145,7 @@ export const GenericCarousel: React.FC<
           </div>
           <div
             className={cn(
-              'cnFlexFullCenter',
+              cnFlexFullCenter,
               controls === 'arrows' || controls === 'both' ? 'flex' : 'hidden'
             )}
           >
