@@ -7,12 +7,10 @@ import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
 import { scrollToTop } from '@/hooks/ScrollToTop';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
-import { Button } from '@/lib/components/ui/button';
 import { ChevronsUp } from 'lucide-react';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import { useIsXs } from '@/hooks/useMediaQueries';
 import type { CardProps } from '@/types/CardProps';
-import { ActionButton } from '@/components/ui/CallToAction/ActionButton';
 import { Toggle } from '@/lib/components/ui/toggle';
 
 /**

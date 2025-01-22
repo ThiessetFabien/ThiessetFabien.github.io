@@ -1,13 +1,11 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from '@/lib/components/ui/avatar';
-import { Linkedin } from 'lucide-react';
 import GenericCarousel from './GenericCarousel';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CardProps } from '@/types/CardProps';
 import {
@@ -43,7 +41,6 @@ export const TestimonialsCarousel: React.FC<{
   testimonials: CardProps['testimonials'];
 }> = ({ testimonials }) => {
   const [shuffled, setShuffled] = useState<CardProps['testimonials']>([]);
-  const [previousAuthor, setPreviousAuthor] = useState<string>('');
 
   useEffect(() => {
     const shuffleSlides = (testimonials: TestimonialProps[]) => {

@@ -1,17 +1,11 @@
-import {
-  cnLightTextMuted,
-  cnParagraph,
-  cnSmallText,
-  cnTitle3,
-} from '@/styles/fontStyles';
+import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
 } from '@/hooks/FormatText';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnMarginRight, cnMarginX } from '@/styles/boxModelStyles';
+import { cnMarginX } from '@/styles/boxModelStyles';
 import { cn } from '@/lib/utils';
-import { Dot } from 'lucide-react';
 
 import type { ExperienceProps } from '@/types/ExperienceProps';
 

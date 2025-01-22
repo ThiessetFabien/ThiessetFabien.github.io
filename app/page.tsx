@@ -65,7 +65,7 @@ const HomePage: React.FC = (): JSX.Element => {
         <Card
           key={index}
           id={`card-${index}`}
-          className={cn('h-full w-full', cnFlexCol, card.colSpan)}
+          className={cn('flex h-full w-full', cnFlexCol, card.colSpan)}
         >
           {card.imageSrc && !card.map && (
             <PresentationCard
@@ -105,6 +105,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 index={index}
                 className={cnPadding}
               />
+
               <CardContent
                 className={
                   !card.testimonials
