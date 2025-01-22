@@ -170,7 +170,7 @@
       {
         "title": "casalink",
         "organization": "single page app",
-        "description": "family planning application for managing daily tasks and events with delagated for children.",
+        "description": "family planning application for managing tasks and events with delagated for children.",
         "videoSrc": "casalink.mp4",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
         "file": "documents/CDC-Casalink.pdf",
@@ -184,14 +184,13 @@
         "imageSrc": "images/casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
-        "file": "documents/CDC-Casalink.pdf",
         "github": "github.com/ThiessetFabien/Casalink-Backend",
         "tags": ["express.js", "postgresql", "jwt"]
       },
       {
         "title": "mailnager api",
         "organization": "api",
-        "description": "server for managing mails and tracking job applications, created for a friend and fellow alumni",
+        "description": "server for managing mails and tracking job, created for a friend and fellow alumni",
         "imageSrc": "images/mailnager.webp",
         "imageAlt": "Casalink documentation",
         "github": "github.com/ThiessetFabien/MailNagerAPI",
@@ -359,7 +358,7 @@
   },
   {
     "title": "eager to apply and learn more",
-    "description": "seeking a company that values human and technical skills. open to apprenticeship opportunities."
+    "content": "seeking a company that values human and technical skills. open to apprenticeship opportunities."
   },
   {
     "title": "things i have acheived",
@@ -384,7 +383,7 @@
   },
   {
     "title": "savoring coffee while coding",
-    "description": "as a shonen anime fan, i enjoy coffee while working and reward myself with demon slayer and my hero academia."
+    "content": "as a shonen anime fan, i enjoy coffee while working and reward myself with demon slayer and my hero academia."
   },
   {
     "title": "available for mobile, vehicle",

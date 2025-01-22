@@ -12,6 +12,8 @@ import { ChevronsUp } from 'lucide-react';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import { useIsXs } from '@/hooks/useMediaQueries';
 import type { CardProps } from '@/types/CardProps';
+import { ActionButton } from '@/components/ui/CallToAction/ActionButton';
+import { Toggle } from '@/lib/components/ui/toggle';
 
 /**
  * @file Footer.tsx
@@ -52,9 +54,10 @@ export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
           {isXs ? <br /> : ''}
           All rights reserved.
         </p>
-        <Button size='icon' variant='ghost' onClick={scrollToTop}>
+        <Toggle variant='outline' size='sm' onClick={scrollToTop}>
           <ChevronsUp />
-        </Button>
+          <span className='sr-only'>Scroll to top</span>
+        </Toggle>
       </div>
     </footer>
   );

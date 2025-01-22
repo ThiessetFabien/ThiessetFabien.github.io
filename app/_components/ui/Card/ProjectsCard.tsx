@@ -36,7 +36,6 @@ import {
   formatSpecialWords,
 } from '@/hooks/FormatText';
 import { ActionButton } from '../CallToAction/ActionButton';
-import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
  * @file CardProjects.tsx

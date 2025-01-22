@@ -97,7 +97,7 @@ const HomePage: React.FC = (): JSX.Element => {
               className={cn(cnGap, cnPadding, 'w-full space-y-0')}
             />
           )}
-          {!card.imageSrc && (
+          {!card.imageSrc ? (
             <>
               <HeaderCard
                 title={card.title}
@@ -105,14 +105,16 @@ const HomePage: React.FC = (): JSX.Element => {
                 index={index}
                 className={cnPadding}
               />
+
               <CardContent
-                className={cn(
-                  !card.testimonials ? cnPaddingX : 'px-0',
-                  'container min-w-full flex-1 overflow-hidden'
-                )}
+                className={
+                  !card.testimonials
+                    ? cnPaddingX
+                    : 'container min-w-full flex-1 overflow-hidden p-0'
+                }
               >
                 {card.experiences &&
-                  card.experiences.length > 0 &&
+                  card.experiences?.length > 0 &&
                   !card.technologies && (
                     <ExperiencesCard
                       experiences={card.experiences}
@@ -190,6 +192,8 @@ const HomePage: React.FC = (): JSX.Element => {
                   )}
               </CardContent>
             </>
+          ) : (
+            <CardContent className='hidden' />
           )}
           {!card.imageSrc &&
             !card.mailto &&

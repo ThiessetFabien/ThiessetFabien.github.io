@@ -118,11 +118,12 @@ export const GenericCarousel: React.FC<
         </div>
         <div
           className={cn(
-            cnFlexBetweenX,
+            cnFlexCenterY,
+            controls === 'both' ? 'justify-between' : 'justify-end',
             cnPaddingX,
             cnHiddenXs,
-            'h-full',
-            controls === 'none' ? 'invisible' : 'flex'
+            'h-full w-full',
+            controls === 'none' ? 'hidden' : 'flex'
           )}
         >
           <div
