@@ -53,12 +53,17 @@ export const ActionButton: React.FC<ActionButtonProps & CardProps> = ({
         href={
           href.startsWith('#') ||
           href.startsWith('tel:') ||
-          href.startsWith('documents/')
+          href.startsWith('documents/') ||
+          href.startsWith('/')
             ? href
             : `${baseUrl}${href}`
         }
         target={
-          href.startsWith('#') || href.startsWith('tel:') ? '_self' : '_blank'
+          href.startsWith('#') ||
+          href.startsWith('tel:') ||
+          href.startsWith('/')
+            ? '_self'
+            : '_blank'
         }
         rel='noopener noreferrer'
         {...(downloadActive ? { download: true } : {})}

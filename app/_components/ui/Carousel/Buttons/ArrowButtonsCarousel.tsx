@@ -4,12 +4,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { CircleArrowLeft, CircleArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Button } from '@/lib/components/ui/button';
 import { EmblaCarouselType } from 'embla-carousel';
-import { sizeIcon } from '@/styles/sizeStyles';
-import { cnSmallMarginRight } from '@/styles/boxModelStyles';
 import { ActionButton } from '@/ui/CallToAction/ActionButton';
 
 type UsePrevNextButtonsType = {
@@ -63,6 +59,7 @@ export const PrevButton: React.FC<PropType> = (props, ClassName) => {
   return (
     <ActionButton
       icon='CircleArrowLeft'
+      type='button'
       variant='outline'
       size='icon'
       className={cn(ClassName, 'hover:text-accent-foreground')}
@@ -77,6 +74,7 @@ export const NextButton: React.FC<PropType> = (props, ClassName) => {
   return (
     <ActionButton
       icon='CircleArrowRight'
+      type='button'
       variant='outline'
       size='icon'
       className={cn(ClassName, 'hover:text-accent-foreground')}

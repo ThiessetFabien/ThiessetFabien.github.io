@@ -39,7 +39,7 @@ export default function RootLayout({
         className={cn(
           Poppins.variable,
           Expletus_Sans.variable,
-          'container',
+          'container relative z-0',
           'h-100% container mx-auto min-w-full',
           'bg-background font-sans text-foreground'
         )}
@@ -50,7 +50,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header className={cn('h-full', 'border-b', cnPadding)} />
+          <Header className={cn('h-full', cnPadding)} />
           <main
             className={cn(
               cnGap,

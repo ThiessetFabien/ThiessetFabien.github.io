@@ -4,6 +4,7 @@ import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
 import { cnTitle2, cnTitle2Size } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
+import { ActionButton } from '@/components/ui/CallToAction/ActionButton';
 
 /**
  * @file Header.tsx
@@ -22,20 +23,18 @@ export const Header: React.FC<{ className: string }> = ({ className }) => {
   return (
     <header className={className}>
       <div className={cn('mx-auto max-w-7xl', cnPaddingX, cnFlexBetweenX)}>
-        <Link
+        <ActionButton
+          variant='link'
           href='/'
+          cta={'fabuilds'.toUpperCase()}
           className={cn(
             cnTitle2,
             cnTitle2Size,
-            'pointer-events-auto text-center',
-            'hover:underline'
+            'pointer-events-auto p-0 text-center'
           )}
         >
-          <h1>
-            {'fab'.toUpperCase()}
-            <span className='font-light'>{'uilds'.toUpperCase()}</span>
-          </h1>
-        </Link>
+          {}
+        </ActionButton>
         <ToggleDarkMode />
       </div>
     </header>
