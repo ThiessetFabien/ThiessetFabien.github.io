@@ -1,13 +1,11 @@
 import type { CardProps } from '@/types/CardProps';
 import { cn } from '@/lib/utils';
+import { cnDescription, cnTitle2, cnTitle2Size } from '@/styles/fontStyles';
 import {
-  cnDescription,
-  cnTitle2,
-  cnTitle2Size,
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@/styles/fontStyles';
+} from '@/hooks/FormatText';
 import {
   CardTitle,
   CardDescription,
@@ -32,10 +30,11 @@ export const HeaderCard: React.FC<{
       >
         {title && capitalizeFirstLetterOfEachWord(title)}
       </CardTitle>
-      <CardDescription className={cnDescription}>
-        {description &&
-          capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
-      </CardDescription>
+      {description && (
+        <CardDescription className={cnDescription}>
+          {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
+        </CardDescription>
+      )}
     </CardHeader>
   );
 };

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
@@ -18,23 +17,14 @@ import { cnPaddingX } from '@/styles/boxModelStyles';
  * @example
  * <Header className="custom-class" />
  */
-export const Header: React.FC<{ className?: string }> = ({ className }) => {
-  const titleUppercased = 'fabuilds'.toUpperCase();
-
+export const Header: React.FC<{ className: string }> = ({ className }) => {
   return (
     <header className={className}>
       <div className={cn('mx-auto max-w-7xl', cnPaddingX, cnFlexBetweenX)}>
-        <Link
-          href='/'
-          className={cn(
-            cnTitle2,
-            cnTitle2Size,
-            'pointer-events-auto text-center',
-            'hover:underline'
-          )}
-        >
-          <h1>{titleUppercased}</h1>
-        </Link>
+        <h2 className={cn(cnTitle2, cnTitle2Size, 'text-center')}>
+          {'fab'.toUpperCase()}
+          <span className='font-light'>{'uilds'.toUpperCase()}</span>
+        </h2>
         <ToggleDarkMode />
       </div>
     </header>

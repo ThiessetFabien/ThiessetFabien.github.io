@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { Toggle } from '@/lib/components/ui/toggle';
 import { cn } from '@/lib/utils';
-import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
  * @file ToggleDarkMode.tsx
@@ -45,14 +44,12 @@ export function ToggleDarkMode() {
       {resolvedTheme === 'dark' ? (
         <Moon
           className={cn(
-            sizeIcon,
             'rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0'
           )}
         />
       ) : (
         <Sun
           className={cn(
-            sizeIcon,
             'absolute rotate-90 scale-100 transition-all dark:rotate-0 dark:scale-0'
           )}
         />

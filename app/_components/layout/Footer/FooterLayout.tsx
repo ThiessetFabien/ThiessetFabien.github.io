@@ -7,11 +7,11 @@ import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
 import { scrollToTop } from '@/hooks/ScrollToTop';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
-import { Button } from '@/lib/components/ui/button';
 import { ChevronsUp } from 'lucide-react';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import { useIsXs } from '@/hooks/useMediaQueries';
 import type { CardProps } from '@/types/CardProps';
+import { Toggle } from '@/lib/components/ui/toggle';
 
 /**
  * @file Footer.tsx
@@ -43,16 +43,19 @@ export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
           cnLightTextMuted
         )}
       >
-        <h3 className={cnTitle3}>fabuilds</h3>
+        <h3 className={cnTitle3}>
+          fab<span className='font-light'>uilds</span>
+        </h3>
         <p className={cn(cnSmallText, 'flex')}>
           &copy;&nbsp;{year}&nbsp;&bull; Built by Fabien Thiesset.{' '}
           <span className={cnHiddenXs}>&nbsp;&bull;&nbsp;</span>
           {isXs ? <br /> : ''}
           All rights reserved.
         </p>
-        <Button size='icon' variant='ghost' onClick={scrollToTop}>
+        <Toggle variant='outline' size='sm' onClick={scrollToTop}>
           <ChevronsUp />
-        </Button>
+          <span className='sr-only'>Scroll to top</span>
+        </Toggle>
       </div>
     </footer>
   );

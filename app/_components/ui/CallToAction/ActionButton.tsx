@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 import { IconLoader } from '@/hooks/IconLoader';
-import { capitalizeFirstLetterOfEachWord } from '@/styles/fontStyles';
+import { capitalizeFirstLetterOfEachWord } from '@/hooks/FormatText';
 import { cnSmallText } from '@/styles/fontStyles';
 import { baseUrl } from '@/utils/constants/baseUrl';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
@@ -30,6 +30,7 @@ export const ActionButton: React.FC<ActionButtonProps & CardProps> = ({
   downloadActive,
   variant,
   type,
+  size,
   onClick,
   className,
 }) => {
@@ -38,6 +39,7 @@ export const ActionButton: React.FC<ActionButtonProps & CardProps> = ({
       onClick={onClick}
       variant={variant}
       type={type}
+      size={size}
       className={cn(className, cnSmallText)}
     >
       {IconLoader(icon ?? '')}
@@ -51,12 +53,17 @@ export const ActionButton: React.FC<ActionButtonProps & CardProps> = ({
         href={
           href.startsWith('#') ||
           href.startsWith('tel:') ||
-          href.startsWith('documents/')
+          href.startsWith('documents/') ||
+          href.startsWith('/')
             ? href
             : `${baseUrl}${href}`
         }
         target={
-          href.startsWith('#') || href.startsWith('tel:') ? '_self' : '_blank'
+          href.startsWith('#') ||
+          href.startsWith('tel:') ||
+          href.startsWith('/')
+            ? '_self'
+            : '_blank'
         }
         rel='noopener noreferrer'
         {...(downloadActive ? { download: true } : {})}
