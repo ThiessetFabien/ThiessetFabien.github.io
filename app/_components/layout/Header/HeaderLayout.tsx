@@ -23,18 +23,10 @@ export const Header: React.FC<{ className: string }> = ({ className }) => {
   return (
     <header className={className}>
       <div className={cn('mx-auto max-w-7xl', cnPaddingX, cnFlexBetweenX)}>
-        <ActionButton
-          variant='link'
-          href='/'
-          cta={'fabuilds'.toUpperCase()}
-          className={cn(
-            cnTitle2,
-            cnTitle2Size,
-            'pointer-events-auto p-0 text-center'
-          )}
-        >
-          {}
-        </ActionButton>
+        <h2 className={cn(cnTitle2, cnTitle2Size, 'text-center')}>
+          {'fab'.toUpperCase()}
+          <span className='font-light'>{'uilds'.toUpperCase()}</span>
+        </h2>
         <ToggleDarkMode />
       </div>
     </header>

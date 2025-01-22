@@ -148,7 +148,6 @@ export const PresentationCard: React.FC<{
               cnFlexCol,
               cnSmallGap,
               cnBigDescription,
-              cnLightTextMuted,
               cnHiddenXxs,
               'max-w-prose'
             )}

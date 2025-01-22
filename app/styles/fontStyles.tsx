@@ -20,11 +20,16 @@ export const cnTitle3 = cn(
   'md:text-base'
 );
 
-export const cnBigDescription = cn('text-sm', 'sm:text-base', 'md:text-lg');
+export const cnBigDescription = cn(
+  'font-normal',
+  'text-sm',
+  'sm:text-base',
+  'md:text-lg'
+);
 
-export const cnDescription = cn('font-light');
+export const cnDescription = cn('font-normal');
 
-export const cnParagraph = cn('font-light', 'text-xs lg:text-sm');
+export const cnParagraph = cn('font-normal', 'text-xs lg:text-sm');
 
 export const cnSmallText = cn('text-xs');
 
