@@ -19,16 +19,20 @@ import {
   cnPadding,
   cnPaddingBottom,
   cnPaddingX,
+  cnSmallSpaceX,
 } from '@/styles/boxModelStyles';
+import {
+  cnLightTextMuted,
+  cnParagraph,
+  cnSmallText,
+  cnTitle3,
+} from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-  cnLightTextMuted,
-  cnParagraph,
-} from '@/styles/fontStyles';
+} from '@/hooks/FormatText';
 import { ActionButton } from '../CallToAction/ActionButton';
-import { sizeIcon } from '@/styles/sizeStyles';
 
 /**
  * @file CardProjects.tsx
@@ -104,39 +108,34 @@ export const ProjectsCard: React.FC<{
               </video>
             )}
             <CardHeader className={cn(cnPadding, 'flex-1')}>
-              <CardTitle
-                className={cn(cnFlexBetweenX, 'text-primary', 'max-h-[4.5rem]')}
-              >
+              <CardTitle className={cnFlexBetweenX}>
                 <ActionButton
-                  cta={capitalizeFirstLetterOfPhrase(project.title)}
-                  icon='ExternalLink'
+                  cta={capitalizeFirstLetterOfPhrase(
+                    project.title
+                  ).toUpperCase()}
                   href={
                     project.website ? `${project.website}` : `${project.github}`
                   }
                   variant='link'
-                  className={'px-0 hover:text-primary-foreground'}
+                  className={cn(cnTitle3, 'text-bold p-0')}
                 />
-                <div>
-                  {project.file && (
-                    <ActionButton
-                      icon='FileText'
-                      href={`${project.file}`}
-                      variant='link'
-                      className={cn(
-                        sizeIcon,
-                        'mr-1 border-0 px-0 hover:text-primary-foreground'
-                      )}
-                    />
-                  )}
+                <div className={cnSmallSpaceX}>
                   {project.github && (
                     <ActionButton
                       icon='Github'
                       href={`${project.github}`}
-                      variant='link'
-                      className={cn(
-                        sizeIcon,
-                        'mr-1 border-0 px-0 hover:text-primary-foreground'
-                      )}
+                      variant='default'
+                      size='icon'
+                      className={cnSmallText}
+                    />
+                  )}
+                  {project.file && (
+                    <ActionButton
+                      icon='FileText'
+                      href={`${project.file}`}
+                      variant='secondary'
+                      size='icon'
+                      className={cnSmallText}
                     />
                   )}
                 </div>
@@ -164,7 +163,7 @@ export const ProjectsCard: React.FC<{
                 <Badge
                   key={tagIndex}
                   variant='outline'
-                  className={'rounded-full font-light'}
+                  className={cn('rounded-full border-0 p-0', cnLightTextMuted)}
                 >
                   <p>
                     {capitalizeFirstLetterOfEachWord(

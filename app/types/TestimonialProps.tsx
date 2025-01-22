@@ -1,6 +1,7 @@
 export interface TestimonialProps {
-  name: string;
-  context: string;
+  author: string;
+  job: string;
+  company: string;
   content: string;
   imageSrc: string;
   linkedin: string;

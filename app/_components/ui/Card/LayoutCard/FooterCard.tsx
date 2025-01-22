@@ -111,7 +111,7 @@ export const FooterCard: React.FC<{
         href2,
         hideCta(cta2),
         downloadActive2,
-        'outline'
+        'secondary'
       )}
       {renderActionButton(
         icon3,

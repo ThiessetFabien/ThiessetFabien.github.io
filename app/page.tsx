@@ -9,22 +9,25 @@ import React from 'react';
 import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
 import fetchData from '@api/data.json';
 import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
-import { TestimonialsCarousel } from '@/components/ui/Carousel/TestimonialsCarousel';
 import { ExperiencesCard } from '@/components/ui/Card/ExperiencesCard';
 import { ProjectsCard } from '@/components/ui/Card/ProjectsCard';
-import { SkillsCard } from '@/ui/Card/SkillsCard';
-import PresentationCard from '@/ui/Card/PresentationCard';
+import { PresentationCard } from '@/ui/Card/PresentationCard';
 import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
 import { cn } from '@/lib/utils';
 import useCardGrid from '@/hooks/useCardGrid';
-import { cnPaddingBottom, cnPaddingX, cnSpaceY } from '@/styles/boxModelStyles';
-import { MailCard } from '@/ui/Card/MailCard';
+import {
+  cnPaddingBottom,
+  cnPaddingX,
+  cnSmallGap,
+  cnSpaceY,
+} from '@/styles/boxModelStyles';
+import { MailCard } from '@/components/ui/Card/MailCard';
 import { AchievementsCard } from '@/ui/Card/AchievementsCard';
+import { cnParagraph } from '@/styles/fontStyles';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-  cnParagraph,
-} from '@/styles/fontStyles';
+} from '@/hooks/FormatText';
 import { useIsClient } from './hooks/useIsClient';
 import dynamic from 'next/dynamic';
 import type { CardProps } from './types/CardProps';
@@ -41,6 +44,17 @@ const LazyMap = dynamic(() => import('@/ui/Card/MapCard'), {
   loading: () => <p>Loading map...</p>,
 });
 
+const LazySkillsCard = dynamic(() => import('@/ui/Card/SkillsCard'), {
+  ssr: false,
+});
+
+const LazyTestimonialsCard = dynamic(
+  () => import('@/ui/Carousel/TestimonialsCarousel'),
+  {
+    ssr: false,
+  }
+);
+
 const HomePage: React.FC = (): JSX.Element => {
   const gridConfig = useCardGrid(fetchData as CardProps[]);
   const isClient = useIsClient();
@@ -51,7 +65,7 @@ const HomePage: React.FC = (): JSX.Element => {
         <Card
           key={index}
           id={`card-${index}`}
-          className={cn('h-full w-full', cnFlexCol, card.colSpan)}
+          className={cn('flex h-full w-full', cnFlexCol, card.colSpan)}
         >
           {card.imageSrc && !card.map && (
             <PresentationCard
@@ -83,7 +97,7 @@ const HomePage: React.FC = (): JSX.Element => {
               className={cn(cnGap, cnPadding, 'w-full space-y-0')}
             />
           )}
-          {!card.imageSrc && (
+          {!card.imageSrc ? (
             <>
               <HeaderCard
                 title={card.title}
@@ -91,40 +105,42 @@ const HomePage: React.FC = (): JSX.Element => {
                 index={index}
                 className={cnPadding}
               />
+
               <CardContent
-                className={cn(
-                  !card.testimonials ? cnPaddingX : 'px-0',
-                  'container min-w-full flex-1 overflow-hidden'
-                )}
+                className={
+                  !card.testimonials
+                    ? cnPaddingX
+                    : 'container min-w-full flex-1 overflow-hidden p-0'
+                }
               >
                 {card.experiences &&
-                  card.experiences.length > 0 &&
+                  card.experiences?.length > 0 &&
                   !card.technologies && (
                     <ExperiencesCard
                       experiences={card.experiences}
                       className=''
                     />
                   )}
-                {card.topTechnologies &&
+                {isClient &&
+                  card.topTechnologies &&
                   card.technologies &&
                   card.technologies.length > 0 && (
-                    <SkillsCard
+                    <LazySkillsCard
                       topTechnologies={card.topTechnologies}
                       technologies={card.technologies}
                       content={card.content}
                       className={cn(
-                        'flex min-w-full flex-row flex-wrap',
+                        'flex w-full min-w-full flex-row flex-wrap',
                         'container overflow-hidden',
-                        cnGap
+                        cnSmallGap
                       )}
                     />
                   )}
-                {card.testimonials && card.testimonials.length > 0 && (
-                  <TestimonialsCarousel
-                    testimonials={card.testimonials}
-                    className={cn(cnSmallSpaceY, cnPaddingX, 'h-100% w-full')}
-                  />
-                )}
+                {isClient &&
+                  card.testimonials &&
+                  card.testimonials.length > 0 && (
+                    <LazyTestimonialsCard testimonials={card.testimonials} />
+                  )}
                 {card.projects && card.projects.length > 0 && (
                   <ProjectsCard
                     projects={card.projects}
@@ -176,6 +192,8 @@ const HomePage: React.FC = (): JSX.Element => {
                   )}
               </CardContent>
             </>
+          ) : (
+            <CardContent className='hidden' />
           )}
           {!card.imageSrc &&
             !card.mailto &&

@@ -10,11 +10,13 @@ import {
   cnTitle1,
   cnBigDescription,
   cnSmallText,
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
   cnLightTextMuted,
   cnParagraph,
 } from '@/styles/fontStyles';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+} from '@/hooks/FormatText';
 import {
   cnGap,
   cnMarginTop,
@@ -30,7 +32,7 @@ import {
   AvatarFallback,
 } from '@/lib/components/ui/avatar';
 
-const PresentationCard: React.FC<{
+export const PresentationCard: React.FC<{
   title: CardProps['title'];
   description: CardProps['description'];
   content: CardProps['content'];
@@ -146,7 +148,6 @@ const PresentationCard: React.FC<{
               cnFlexCol,
               cnSmallGap,
               cnBigDescription,
-              cnLightTextMuted,
               cnHiddenXxs,
               'max-w-prose'
             )}
@@ -201,5 +202,3 @@ const PresentationCard: React.FC<{
     </CardHeader>
   );
 };
-
-export default PresentationCard;

@@ -62,8 +62,8 @@ export const Map: React.FC = () => {
           <Circle
             center={position}
             radius={radius}
-            color='purple'
-            fillColor='purple'
+            color='green'
+            fillColor='green'
             fillOpacity={0.3}
           />
         </MapContainer>

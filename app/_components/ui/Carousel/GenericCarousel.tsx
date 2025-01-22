@@ -2,11 +2,9 @@
  * @file GenericCarousel.tsx
  * @description This file exports a generic carousel component that can be used for different types of carousels.
  */
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import AutoScroll from 'embla-carousel-auto-scroll';
 import AutoPlay from 'embla-carousel-autoplay';
-import type { EmblaOptionsType } from 'embla-carousel';
 import { cn } from '@/lib/utils';
 import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 import { useDotButton } from './Buttons/DotButtonCarousel';
@@ -17,12 +15,11 @@ import {
   cnPaddingX,
   cnSmallMarginRight,
 } from '@/styles/boxModelStyles';
-import {
-  cnFlexFullCenter,
-  cnFlexBetweenX,
-  cnFlexCenterY,
-} from '@/styles/flexStyles';
+import { cnFlexFullCenter, cnFlexCenterY } from '@/styles/flexStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
+import { useIsClient } from '@/hooks/useIsClient';
+import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
+import { CardProps } from '@/types/CardProps.jsx';
 
 /**
  * GenericCarousel component.
@@ -35,24 +32,16 @@ import { cnHiddenXs } from '@/styles/hideItemStyles';
  * <GenericCarousel items={items} className="custom-class" delay={5000} />
  */
 
-export const GenericCarousel: React.FC<{
-  items?: React.ReactNode[];
-  options?: EmblaOptionsType;
-  delay?: number;
-}> = ({ items, delay }) => {
-  const autoplayPlugin = [AutoPlay({ delay, stopOnInteraction: false })];
-  const autoscrollPlugin = [AutoScroll({ stopOnInteraction: false })];
-
-  const plugin = () => {
-    if (delay !== undefined) {
-      return autoplayPlugin;
-    }
-    return autoscrollPlugin;
-  };
+export const GenericCarousel: React.FC<
+  GenericCarouselProps & { className?: CardProps['className'] }
+> = ({ items, delay, fastRotate, idStart, controls, className }) => {
+  const autoplay = useRef(
+    AutoPlay({ delay: delay || 100, stopOnInteraction: false })
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start', dragFree: true },
-    plugin()
+    [autoplay.current]
   );
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -65,67 +54,111 @@ export const GenericCarousel: React.FC<{
   } = usePrevNextButtons(emblaApi);
 
   useEffect(() => {
-    if (emblaApi) {
+    if (!emblaApi) return;
+
+    if (!fastRotate) {
       emblaApi.reInit();
+    } else {
+      autoplay.current?.stop();
+
+      const rotateCarousel = () => {
+        setTimeout(() => {
+          autoplay.current?.play();
+          emblaApi.scrollTo(idStart || 0, true);
+        }, 7000);
+        setTimeout(() => {
+          for (let i = 0; i < 3; i++) {
+            setTimeout(
+              () => {
+                autoplay.current?.stop();
+                emblaApi.scrollTo(idStart || 0, true);
+              },
+              i * (600 / 3)
+            );
+          }
+        }, 600);
+      };
+
+      rotateCarousel();
+      const interval = setInterval(rotateCarousel, 8000);
+
+      return () => clearInterval(interval);
     }
-    return;
-  }, [emblaApi]);
+  }, [emblaApi, delay, fastRotate, idStart]);
+
+  const isClient = useIsClient();
 
   return (
-    <div ref={emblaRef}>
-      <div className='flex'>
-        {items &&
-          items.map((item, index) => (
+    isClient && (
+      <div
+        ref={emblaRef}
+        className={cn(className, 'min-h-full min-w-full max-w-full')}
+      >
+        <div className='flex'>
+          {items?.map((item, index) => (
             <div
               key={index}
               className={cn(
-                'flex-none',
-                delay !== undefined ? 'w-full' : 'max-w-full',
-                cnFlexFullCenter
+                'max-w-fit flex-none',
+                'min-w-[calc(100%/2)]',
+                'xs:min-w-[calc(100%/3)]',
+                'sm:min-w-[calc(100%/6)]',
+                'lg:min-w-[calc(100%/2)]',
+                'xl:min-w-[calc(100%/3)]'
               )}
             >
               {item}
             </div>
           ))}
-      </div>
-      <div
-        className={cn(
-          cnFlexBetweenX,
-          cnPaddingX,
-          cnHiddenXs,
-          'h-full',
-          delay !== undefined ? '' : 'hidden'
-        )}
-      >
-        <div className={cn(cnFlexCenterY, delay !== undefined ? '' : 'hidden')}>
-          <PrevButton
-            onClick={onPrevButtonClick}
-            disabled={prevBtnDisabled}
-            className={cn(manipulationStyle, cnSmallMarginRight, 'px-0')}
-          />
-          <NextButton
-            onClick={onNextButtonClick}
-            disabled={nextBtnDisabled}
-            className={cn(manipulationStyle, 'px-0')}
-          />
         </div>
         <div
-          className={cn(cnFlexFullCenter, delay !== undefined ? '' : 'hidden')}
+          className={cn(
+            cnFlexCenterY,
+            controls === 'both' ? 'justify-between' : 'justify-end',
+            cnPaddingX,
+            cnHiddenXs,
+            'h-full w-full',
+            controls === 'none' ? 'hidden' : 'flex'
+          )}
         >
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              isSelected={selectedIndex === index}
-              className={cn(
-                manipulationStyle,
-                'm-0 w-auto rounded-full border-0 p-0'
-              )}
+          <div
+            className={cn(
+              cnFlexCenterY,
+              controls === 'dots' || controls === 'both' ? 'flex' : 'hidden'
+            )}
+          >
+            {scrollSnaps?.map((_, index) => (
+              <DotButton
+                key={index}
+                onClick={() => onDotButtonClick(index)}
+                isSelected={selectedIndex === index}
+                className={cn(
+                  manipulationStyle,
+                  'm-0 w-auto rounded-full border-0 p-0'
+                )}
+              />
+            ))}
+          </div>
+          <div
+            className={cn(
+              cnFlexFullCenter,
+              controls === 'arrows' || controls === 'both' ? 'flex' : 'hidden'
+            )}
+          >
+            <PrevButton
+              onClick={onPrevButtonClick}
+              disabled={prevBtnDisabled}
+              className={cn(manipulationStyle, cnSmallMarginRight, 'px-0')}
             />
-          ))}
+            <NextButton
+              onClick={onNextButtonClick}
+              disabled={nextBtnDisabled}
+              className={cn(manipulationStyle, 'px-0')}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 
