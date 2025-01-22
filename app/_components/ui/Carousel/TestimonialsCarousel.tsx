@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import {
   Avatar,
   AvatarFallback,
@@ -44,6 +44,12 @@ export const TestimonialsCarousel: React.FC<{
   const [shuffledTestimonials, setShuffledTestimonials] = useState<
     CardProps['testimonials']
   >([]);
+  const [availableTestimonials, setAvailableTestimonials] = useState<
+    CardProps['testimonials']
+  >([]);
+  const [currentSlideTestimonials, setCurrentSlideTestimonials] = useState<
+    CardProps['testimonials']
+  >([]);
 
   useEffect(() => {
     const shuffleArray = (array: TestimonialProps[]) => {
@@ -70,9 +76,36 @@ export const TestimonialsCarousel: React.FC<{
     const shuffled = testimonials ? shuffleArray([...testimonials]) : [];
     const uniqueAuthorTestimonials = ensureDifferentAuthors(shuffled);
     setShuffledTestimonials(uniqueAuthorTestimonials);
+    setAvailableTestimonials(shuffled);
   }, [testimonials]);
 
-  const items = shuffledTestimonials?.map((testimonial, index) => (
+  useEffect(() => {
+    const getNextSlideTestimonials = () => {
+      const result = [];
+      const usedAuthors = new Set();
+
+      for (const item of availableTestimonials ?? []) {
+        if (!usedAuthors.has(item.author)) {
+          result.push(item);
+          usedAuthors.add(item.author);
+        }
+      }
+
+      const remainingTestimonials = (availableTestimonials ?? []).filter(
+        (item) => !usedAuthors.has(item.author)
+      );
+
+      setAvailableTestimonials([...remainingTestimonials, ...result]);
+
+      return result;
+    };
+
+    if (availableTestimonials && availableTestimonials.length > 0) {
+      setCurrentSlideTestimonials(getNextSlideTestimonials());
+    }
+  }, [availableTestimonials]);
+
+  const items = (currentSlideTestimonials ?? []).map((testimonial, index) => (
     <div
       key={index}
       className={cn(cnSmallSpaceY, cnPaddingX, 'h-full min-w-full')}
