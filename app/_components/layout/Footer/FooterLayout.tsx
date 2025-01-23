@@ -6,10 +6,9 @@ import { year } from '@/utils/dynamicYear';
 import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
 import { cnPaddingX } from '@/styles/boxModelStyles';
 import { scrollToTop } from '@/hooks/ScrollToTop';
-import { cnFlexBetweenX } from '@/styles/flexStyles';
+import { cnFlexBetweenX, cnFlexFullCenter } from '@/styles/flexStyles';
 import { ChevronsUp } from 'lucide-react';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
-import { useIsXs } from '@/hooks/useMediaQueries';
 import type { CardProps } from '@/types/CardProps';
 import { Toggle } from '@/lib/components/ui/toggle';
 
@@ -30,8 +29,6 @@ import { Toggle } from '@/lib/components/ui/toggle';
 export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
   className,
 }) => {
-  const isXs = useIsXs();
-
   return (
     <footer className={className}>
       <div
@@ -46,11 +43,10 @@ export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
         <h3 className={cnTitle3}>
           fab<span className='font-light'>uilds</span>
         </h3>
-        <p className={cn(cnSmallText, 'flex')}>
+        <p className={cn('w-full flex-wrap', cnSmallText, cnFlexFullCenter)}>
           &copy;&nbsp;{year}&nbsp;&bull; Built by Fabien Thiesset.{' '}
-          <span className={cnHiddenXs}>&nbsp;&bull;&nbsp;</span>
-          {isXs ? <br /> : ''}
-          All rights reserved.
+          <span className={cn('inline', cnHiddenXs)}>&nbsp;&bull;</span>
+          <span className='inline'>&nbsp;All rights reserved.</span>
         </p>
         <Toggle variant='outline' size='sm' onClick={scrollToTop}>
           <ChevronsUp />

@@ -165,7 +165,7 @@
         "videoSrc": "852421-sd_640_360_30fps.mp4",
         "website": "fabuilds.netlify.app/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
-        "tags": ["typescript", "next.js", "tailwind css"]
+        "tags": ["typescript", "next.js", "tailwind"]
       },
       {
         "title": "casalink",
