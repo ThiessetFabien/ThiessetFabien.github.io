@@ -14,6 +14,7 @@ import {
   manipulationStyle,
   cnPaddingX,
   cnSmallMarginRight,
+  cnPaddingBottom,
 } from '@/styles/boxModelStyles';
 import { cnFlexFullCenter, cnFlexCenterY } from '@/styles/flexStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
@@ -116,6 +117,7 @@ export const GenericCarousel: React.FC<
             cnFlexCenterY,
             controls === 'both' ? 'justify-between' : 'justify-end',
             cnPaddingX,
+            cnPaddingBottom,
             cnHiddenXs,
             'h-full w-full',
             controls === 'none' ? 'hidden' : 'flex'

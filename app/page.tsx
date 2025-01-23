@@ -147,7 +147,7 @@ const HomePage: React.FC = (): JSX.Element => {
                     className={cn(
                       cnGap,
                       'h-full',
-                      'grid xs:auto-rows-auto xs:grid-cols-2 lg:grid-cols-4'
+                      'grid xs:auto-rows-auto sm:grid-cols-2 lg:grid-cols-4'
                     )}
                   />
                 )}

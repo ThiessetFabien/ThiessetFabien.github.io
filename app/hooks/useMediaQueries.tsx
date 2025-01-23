@@ -8,6 +8,10 @@ export const useIsXs = () => {
   return useMediaQuery({ query: '(max-width: 471px)' });
 };
 
+export const useIsSm = () => {
+  return useMediaQuery({ query: '(min-width: 640px)' });
+};
+
 export const useIsMd = () => {
   return useMediaQuery({ query: '(min-width: 768px)' });
 };
