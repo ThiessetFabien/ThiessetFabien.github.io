@@ -43,7 +43,8 @@ export const ExperiencesCard: React.FC<{
                 'h-[10.25rem]',
                 'xxs:h-[6.25rem]',
                 'sm:h-[6.875rem]',
-                'md:h-[7.875rem]'
+                'md:h-[7.875rem]',
+                'bg-accent-foreground'
               )}
             >
               {experience.developer.map((developer, developerIndex) => (
