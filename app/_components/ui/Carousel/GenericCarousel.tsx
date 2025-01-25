@@ -17,7 +17,6 @@ import {
   cnPaddingBottom,
 } from '@/styles/boxModelStyles';
 import { cnFlexFullCenter, cnFlexCenterY } from '@/styles/flexStyles';
-import { cnHiddenXs } from '@/styles/hideItemStyles';
 import { useIsClient } from '@/hooks/useIsClient';
 import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
 import { CardProps } from '@/types/CardProps.jsx';
@@ -118,15 +117,14 @@ export const GenericCarousel: React.FC<
             controls === 'both' ? 'justify-between' : 'justify-end',
             cnPaddingX,
             cnPaddingBottom,
-            cnHiddenXs,
             'h-full w-full',
-            controls === 'none' ? 'hidden' : 'flex'
+            controls === 'none' ? 'hidden' : ''
           )}
         >
           <div
             className={cn(
               cnFlexCenterY,
-              controls === 'dots' || controls === 'both' ? 'flex' : 'hidden'
+              controls === 'dots' || controls === 'both' ? '' : 'hidden'
             )}
           >
             {scrollSnaps?.map((_, index) => (
@@ -136,7 +134,7 @@ export const GenericCarousel: React.FC<
                 isSelected={selectedIndex === index}
                 className={cn(
                   manipulationStyle,
-                  'm-0 w-auto rounded-full border-0 p-0'
+                  'm-0 h-2 w-auto rounded-full border-0 p-0'
                 )}
               />
             ))}
@@ -144,7 +142,7 @@ export const GenericCarousel: React.FC<
           <div
             className={cn(
               cnFlexFullCenter,
-              controls === 'arrows' || controls === 'both' ? 'flex' : 'hidden'
+              controls === 'arrows' || controls === 'both' ? '' : 'hidden'
             )}
           >
             <PrevButton
