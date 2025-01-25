@@ -2,7 +2,7 @@
  * @file GenericCarousel.tsx
  * @description This file exports a generic carousel component that can be used for different types of carousels.
  */
-import React, { useEffect, useRef } from 'react';
+import React, { use, useEffect, useRef, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoPlay from 'embla-carousel-autoplay';
 import { cn } from '@/lib/utils';
@@ -19,7 +19,9 @@ import {
 import { cnFlexFullCenter, cnFlexCenterY } from '@/styles/flexStyles';
 import { useIsClient } from '@/hooks/useIsClient';
 import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
-import { CardProps } from '@/types/CardProps.jsx';
+import type { CardProps } from '@/types/CardProps';
+import { Toggle } from '@/lib/components/ui/toggle';
+import { Pause, PauseCircle, Play, PlayCircle } from 'lucide-react';
 
 /**
  * GenericCarousel component.
@@ -34,7 +36,7 @@ import { CardProps } from '@/types/CardProps.jsx';
 
 export const GenericCarousel: React.FC<
   GenericCarouselProps & { className?: CardProps['className'] }
-> = ({ items, delay, fastRotate, idStart, controls, className }) => {
+> = ({ items, delay, className }) => {
   const autoplay = useRef(
     AutoPlay({ delay: delay || 100, stopOnInteraction: false })
   );
@@ -53,38 +55,19 @@ export const GenericCarousel: React.FC<
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
+  const [isPlaying, setIsPlaying] = useState(true);
+
   useEffect(() => {
     if (!emblaApi) return;
 
-    if (!fastRotate) {
-      emblaApi.reInit();
+    if (isPlaying) {
+      autoplay.current.play();
     } else {
-      autoplay.current?.stop();
-
-      const rotateCarousel = () => {
-        setTimeout(() => {
-          autoplay.current?.play();
-          emblaApi.scrollTo(idStart || 0, true);
-        }, 7000);
-        setTimeout(() => {
-          for (let i = 0; i < 3; i++) {
-            setTimeout(
-              () => {
-                autoplay.current?.stop();
-                emblaApi.scrollTo(idStart || 0, true);
-              },
-              i * (600 / 3)
-            );
-          }
-        }, 600);
-      };
-
-      rotateCarousel();
-      const interval = setInterval(rotateCarousel, 8000);
-
-      return () => clearInterval(interval);
+      autoplay.current.stop();
     }
-  }, [emblaApi, delay, fastRotate, idStart]);
+  }, [emblaApi, isPlaying]);
+
+  const handlePlayPause = () => setIsPlaying(!isPlaying);
 
   const isClient = useIsClient();
 
@@ -93,6 +76,8 @@ export const GenericCarousel: React.FC<
       <div
         ref={emblaRef}
         className={cn(className, 'min-h-full min-w-full max-w-full')}
+        aria-roledescription='carousel'
+        aria-label='Testimonials'
       >
         <div className='flex'>
           {items?.map((item, index) => (
@@ -106,6 +91,9 @@ export const GenericCarousel: React.FC<
                 'lg:min-w-[calc(100%/2)]',
                 'xl:min-w-[calc(100%/3)]'
               )}
+              role='group'
+              aria-roledescription='slide'
+              aria-label={`Slide ${index + 1} of ${items.length}`}
             >
               {item}
             </div>
@@ -114,19 +102,31 @@ export const GenericCarousel: React.FC<
         <div
           className={cn(
             cnFlexCenterY,
-            controls === 'both' ? 'justify-between' : 'justify-end',
+            'justify-between',
             cnPaddingX,
             cnPaddingBottom,
-            'h-full w-full',
-            controls === 'none' ? 'hidden' : ''
+            'relative z-0 h-full w-full'
           )}
         >
-          <div
+          <PrevButton
+            onClick={onPrevButtonClick}
+            disabled={prevBtnDisabled}
             className={cn(
-              cnFlexCenterY,
-              controls === 'dots' || controls === 'both' ? '' : 'hidden'
+              manipulationStyle,
+              'absolute bottom-36 left-0 z-50 px-0'
             )}
-          >
+            aria-label='Previous slide'
+          />
+          <NextButton
+            onClick={onNextButtonClick}
+            disabled={nextBtnDisabled}
+            className={cn(
+              manipulationStyle,
+              'absolute bottom-36 right-0 z-50 px-0'
+            )}
+            aria-label='Next slide'
+          />
+          <div className={cn(cnFlexCenterY)}>
             {scrollSnaps?.map((_, index) => (
               <DotButton
                 key={index}
@@ -136,25 +136,33 @@ export const GenericCarousel: React.FC<
                   manipulationStyle,
                   'm-0 h-2 w-auto rounded-full border-0 p-0'
                 )}
+                aria-label={`Go to slide ${index + 1}`}
+                aria-pressed={selectedIndex === index}
               />
             ))}
           </div>
-          <div
-            className={cn(
-              cnFlexFullCenter,
-              controls === 'arrows' || controls === 'both' ? '' : 'hidden'
-            )}
-          >
-            <PrevButton
-              onClick={onPrevButtonClick}
-              disabled={prevBtnDisabled}
-              className={cn(manipulationStyle, cnSmallMarginRight, 'px-0')}
-            />
-            <NextButton
-              onClick={onNextButtonClick}
-              disabled={nextBtnDisabled}
-              className={cn(manipulationStyle, 'px-0')}
-            />
+          <div className={cn(cnFlexFullCenter)}>
+            <Toggle
+              variant='outline'
+              size='sm'
+              onClick={handlePlayPause}
+              className={cn('relative')}
+              data-state={isPlaying ? 'on' : 'off'}
+              aria-label={isPlaying ? 'Pause autoplay' : 'Play autoplay'}
+            >
+              {isPlaying ? (
+                <Pause
+                  className={cn('scale-100 transition-all dark:scale-0')}
+                />
+              ) : (
+                <Play
+                  className={cn(
+                    'absolute scale-100 transition-all dark:scale-0'
+                  )}
+                />
+              )}
+              <span className='sr-only'>Toggle play pause</span>{' '}
+            </Toggle>
           </div>
         </div>
       </div>

@@ -62,10 +62,10 @@ export const PrevButton: React.FC<PropType & ActionButtonProps> = (
 
   return (
     <ActionButton
-      icon='CircleArrowLeft'
+      icon='ArrowLeft'
       type='button'
       variant='outline'
-      size='icon'
+      size='sm'
       className={cn(ClassName, 'hover:text-accent-foreground')}
       {...restProps}
     ></ActionButton>
@@ -80,10 +80,10 @@ export const NextButton: React.FC<PropType & ActionButtonProps> = (
 
   return (
     <ActionButton
-      icon='CircleArrowRight'
+      icon='ArrowRight'
       type='button'
       variant='outline'
-      size='icon'
+      size='sm'
       className={cn(ClassName, 'hover:text-accent-foreground')}
       {...restProps}
     />
