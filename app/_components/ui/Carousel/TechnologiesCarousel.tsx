@@ -12,7 +12,6 @@ import { sizeIcon } from '@/styles/sizeStyles';
 import GenericCarousel from './GenericCarousel';
 import type { CardProps } from '@/types/CardProps';
 import { Badge } from '@/lib/components/ui/badge';
-import { cnSmallGap } from '@/styles/boxModelStyles';
 import { useIsXl, useIsXs } from '@/hooks/useMediaQueries';
 
 /**
