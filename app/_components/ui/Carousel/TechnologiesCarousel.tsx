@@ -38,7 +38,7 @@ export const TechnologiesCarousel: React.FC<{
       <Badge
         key={index}
         variant='outline'
-        className={cn(className, cnSmallGap, 'border-0 px-0', 'w-full')}
+        className={cn(className, 'gap-1 border-none', 'w-full')}
       >
         <div className={cnFlexFullCenter}>
           <Image

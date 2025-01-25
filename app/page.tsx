@@ -154,7 +154,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 {card.achievements && card.achievements.length > 0 && (
                   <AchievementsCard
                     achievements={card.achievements}
-                    className={cnSmallSpaceY}
+                    className={cnSpaceY}
                   />
                 )}
                 {card.mailto && (
