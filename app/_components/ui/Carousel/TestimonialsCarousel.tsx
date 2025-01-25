@@ -19,7 +19,11 @@ import {
   formatSpecialWords,
 } from '@/hooks/FormatText';
 import { cnFlexCol } from '@/styles/flexStyles';
-import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
+import {
+  cnPaddingX,
+  cnSmallPaddingX,
+  cnSmallSpaceY,
+} from '@/styles/boxModelStyles';
 import type { TestimonialProps } from '@/types/TestimonialProps';
 import { ActionButton } from '../CallToAction/ActionButton';
 
@@ -102,12 +106,14 @@ export const TestimonialsCarousel: React.FC<{
         'min-h-full min-w-full'
       )}
     >
-      <p className={cn(cnParagraph, 'max-w-full rounded px-1')}>
+      <p
+        className={cn(cnParagraph, cnSmallPaddingX, 'max-w-full rounded px-1')}
+      >
         &quot;&nbsp;
         {capitalizeFirstLetterOfPhrase(formatSpecialWords(testimonial.content))}
         &nbsp;&quot;
       </p>
-      <div className='flex flex-shrink-0 items-center'>
+      <div className={cn('flex flex-shrink-0 items-center', cnSmallPaddingX)}>
         <a href={`${baseUrl}${testimonial.linkedin}`}>
           <div className='relative left-0 top-0'>
             <Avatar className='h-12 w-12 border border-primary'>
@@ -151,14 +157,7 @@ export const TestimonialsCarousel: React.FC<{
     </div>
   ));
 
-  return (
-    <GenericCarousel
-      items={items}
-      delay={7000}
-      fastRotate={false}
-      controls='both'
-    />
-  );
+  return <GenericCarousel items={items} delay={7000} />;
 };
 
 export default TestimonialsCarousel;

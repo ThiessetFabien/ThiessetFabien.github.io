@@ -18,12 +18,12 @@ import {
   formatSpecialWords,
 } from '@/hooks/FormatText';
 import { cnSmallGap } from '@/styles/boxModelStyles';
-import { cnFlexCol } from '@/styles/flexStyles';
-import { sizeBigIcon } from '@/styles/sizeStyles';
+import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
+import { sizeBigIcon, sizeIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
-import TechnologiesCarousel from '@/ui/Carousel/TechnologiesCarousel';
 import type { CardProps } from '@/types/CardProps';
 import { CardDescription } from '@/lib/components/ui/card';
+import { Badge } from '@/lib/components/ui/badge';
 
 /**
  * SkillsCard component.
@@ -41,10 +41,6 @@ export const SkillsCard: React.FC<{
   content,
   className,
 }: CardProps): JSX.Element => {
-  const mergeTechnologies = Array(3)
-    .fill(technologies || [])
-    .flat();
-
   return (
     <div className={className}>
       {topTechnologies?.map((tech, index) => (
@@ -111,12 +107,47 @@ export const SkillsCard: React.FC<{
       >
         {content && typeof content === 'string'
           ? capitalizeFirstLetterOfPhrase(content)
-          : ''}
+          : ''}{' '}
       </CardDescription>
-      <TechnologiesCarousel
-        technologies={mergeTechnologies}
-        className='relative top-1.5 mb-1.5'
-      />
+      <div
+        className={cn(
+          'grid w-full auto-rows-auto',
+          'grid-cols-2',
+          'xxs:grid-cols-3',
+          'md:grid-cols-6',
+          'lg:grid-cols-2'
+        )}
+      >
+        {technologies?.map((tech, index) => (
+          <Badge
+            key={index}
+            variant='outline'
+            className={cn(
+              className,
+              'gap-1 border-none',
+              'w-full',
+              'relative top-1.5 mb-1.5'
+            )}
+          >
+            <div className={cnFlexFullCenter}>
+              <Image
+                src={`${baseUrl}cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.slug}.svg`}
+                alt={tech.name}
+                width={50}
+                height={50}
+                className={cn(
+                  sizeIcon,
+                  tech.slug.includes('express') ? 'filter-white' : ''
+                )}
+                priority
+              />
+            </div>
+            <p className={cn(cnParagraph, 'text-center')}>
+              {capitalizeFirstLetterOfPhrase(formatSpecialWords(tech.name))}
+            </p>
+          </Badge>
+        ))}
+      </div>
     </div>
   );
 };
