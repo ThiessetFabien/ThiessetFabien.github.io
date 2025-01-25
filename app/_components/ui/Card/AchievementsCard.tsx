@@ -19,7 +19,12 @@ export const AchievementsCard: React.FC<{
       {achievements &&
         achievements.map((achievement, index) => (
           <li key={index} className={cn(cnSmallGap, 'flex')}>
-            <div className='flex-shrink-0 text-primary'>
+            <div
+              className={cn(
+                'flex-shrink-0',
+                index < 2 ? 'text-primary' : 'text-secondary'
+              )}
+            >
               {IconLoader(achievement.icon || '')}
             </div>
             <div className={cnFlexCol}>

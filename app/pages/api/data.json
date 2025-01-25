@@ -208,6 +208,26 @@
     "href3": "github.com/ThiessetFabien?tab=repositories"
   },
   {
+    "title": "things i have acheived",
+    "achievements": [
+      {
+        "icon": "GraduationCap",
+        "title": "rncp level 5 web and mobile developer - during a training leave",
+        "date": "juil 2024"
+      },
+      {
+        "icon": "ReceiptEuro",
+        "title": "funding agreement with transition pro hauts-de-france",
+        "date": "sept 2023"
+      },
+      {
+        "icon": "Accessibility",
+        "title": "humanitude label for first medicalized center in mainland, and the third establishment in france (including overseas territories)",
+        "date": "dec 2019"
+      }
+    ]
+  },
+  {
     "title": "what they say about my work?",
     "testimonials": [
       {
@@ -359,27 +379,6 @@
   {
     "title": "eager to apply and learn more",
     "content": "seeking a company that values human and technical skills. open to apprenticeship opportunities."
-  },
-  {
-    "title": "things i have acheived",
-    "description": "i have achieved a number of things in my career.",
-    "achievements": [
-      {
-        "icon": "GraduationCap",
-        "title": "rncp level 5 web and mobile developer - during a training leave",
-        "date": "juil 2024"
-      },
-      {
-        "icon": "ReceiptEuro",
-        "title": "funding agreement with transition pro hauts-de-france",
-        "date": "sept 2023"
-      },
-      {
-        "icon": "Accessibility",
-        "title": "humanitude label for first medicalized center in mainland, and the third establishment in france (including overseas territories)",
-        "date": "dec 2019"
-      }
-    ]
   },
   {
     "title": "savoring coffee while coding",

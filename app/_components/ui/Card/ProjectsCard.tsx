@@ -73,7 +73,7 @@ export const ProjectsCard: React.FC<{
               cnFlexCol,
               cnBorder,
               dynamicMarginBottom(projectIndex),
-              'col-span-1 h-full w-full min-w-full bg-accent-foreground'
+              'col-span-1 h-full w-full min-w-full bg-popover'
             )}
           >
             {project.imageSrc && project.imageAlt && (
