@@ -102,7 +102,7 @@ export const TestimonialsCarousel: React.FC<{
         'min-h-full min-w-full'
       )}
     >
-      <p className={cn(cnParagraph, 'max-w-full')}>
+      <p className={cn(cnParagraph, 'max-w-full rounded px-1')}>
         &quot;&nbsp;
         {capitalizeFirstLetterOfPhrase(formatSpecialWords(testimonial.content))}
         &nbsp;&quot;
@@ -110,7 +110,7 @@ export const TestimonialsCarousel: React.FC<{
       <div className='flex flex-shrink-0 items-center'>
         <a href={`${baseUrl}${testimonial.linkedin}`}>
           <div className='relative left-0 top-0'>
-            <Avatar className='h-12 w-12'>
+            <Avatar className='h-12 w-12 border border-primary'>
               <AvatarImage
                 src={`${baseUrl}${testimonial.imageSrc}`}
                 alt={capitalizeFirstLetterOfEachWord(testimonial.author)}
@@ -156,7 +156,7 @@ export const TestimonialsCarousel: React.FC<{
       items={items}
       delay={7000}
       fastRotate={false}
-      controls='arrows'
+      controls='both'
     />
   );
 };

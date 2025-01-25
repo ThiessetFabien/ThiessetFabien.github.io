@@ -108,7 +108,7 @@ export const MailCard: React.FC<{
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger>
+                    <SelectTrigger className='bg-input'>
                       <SelectValue
                         className={cn(
                           'min-w-full',
@@ -165,6 +165,7 @@ export const MailCard: React.FC<{
                     className={cn(
                       'min-w-full',
                       'paragraph-placeholder',
+                      'bg-input',
                       cnParagraph
                     )}
                     required
@@ -189,6 +190,7 @@ export const MailCard: React.FC<{
                     className={cn(
                       'min-w-full',
                       'paragraph-placeholder',
+                      'bg-input',
                       cnParagraph
                     )}
                     required
@@ -213,6 +215,7 @@ export const MailCard: React.FC<{
                     className={cn(
                       'min-w-full',
                       'paragraph-placeholder',
+                      'bg-input',
                       cnParagraph
                     )}
                     required
@@ -236,6 +239,7 @@ export const MailCard: React.FC<{
                   placeholder='Tell me a little bit about your project...'
                   className={cn(
                     cnParagraph,
+                    'bg-input',
                     'h-36 min-w-full resize-y',
                     'paragraph-placeholder'
                   )}

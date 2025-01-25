@@ -12,7 +12,6 @@ import { sizeIcon } from '@/styles/sizeStyles';
 import GenericCarousel from './GenericCarousel';
 import type { CardProps } from '@/types/CardProps';
 import { Badge } from '@/lib/components/ui/badge';
-import { cnSmallGap } from '@/styles/boxModelStyles';
 import { useIsXl, useIsXs } from '@/hooks/useMediaQueries';
 
 /**
@@ -38,7 +37,7 @@ export const TechnologiesCarousel: React.FC<{
       <Badge
         key={index}
         variant='outline'
-        className={cn(className, cnSmallGap, 'border-0 px-0', 'w-full')}
+        className={cn(className, 'gap-1 border-none', 'w-full')}
       >
         <div className={cnFlexFullCenter}>
           <Image
