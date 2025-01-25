@@ -41,10 +41,6 @@ export const SkillsCard: React.FC<{
   content,
   className,
 }: CardProps): JSX.Element => {
-  const mergeTechnologies = Array(3)
-    .fill(technologies || [])
-    .flat();
-
   return (
     <div className={className}>
       {topTechnologies?.map((tech, index) => (

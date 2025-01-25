@@ -2,7 +2,7 @@
  * @file GenericCarousel.tsx
  * @description This file exports a generic carousel component that can be used for different types of carousels.
  */
-import React, { use, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoPlay from 'embla-carousel-autoplay';
 import { cn } from '@/lib/utils';
@@ -13,7 +13,6 @@ import { DotButton } from './Buttons/DotButtonCarousel';
 import {
   manipulationStyle,
   cnPaddingX,
-  cnSmallMarginRight,
   cnPaddingBottom,
 } from '@/styles/boxModelStyles';
 import { cnFlexFullCenter, cnFlexCenterY } from '@/styles/flexStyles';
@@ -21,7 +20,7 @@ import { useIsClient } from '@/hooks/useIsClient';
 import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
 import type { CardProps } from '@/types/CardProps';
 import { Toggle } from '@/lib/components/ui/toggle';
-import { Pause, PauseCircle, Play, PlayCircle } from 'lucide-react';
+import { Pause, Play } from 'lucide-react';
 
 /**
  * GenericCarousel component.
