@@ -5,7 +5,6 @@ import React, {
   useState,
 } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
-import { Dot } from 'lucide-react';
 import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 

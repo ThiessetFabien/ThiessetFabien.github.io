@@ -17,7 +17,6 @@ import {
   cnPaddingBottom,
 } from '@/styles/boxModelStyles';
 import { cnFlexFullCenter, cnFlexCenterY } from '@/styles/flexStyles';
-import { cnHiddenXs } from '@/styles/hideItemStyles';
 import { useIsClient } from '@/hooks/useIsClient';
 import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
 import { CardProps } from '@/types/CardProps.jsx';
