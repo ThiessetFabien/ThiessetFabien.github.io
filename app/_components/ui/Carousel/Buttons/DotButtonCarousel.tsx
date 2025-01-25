@@ -63,7 +63,7 @@ export const DotButton: React.FC<PropType> = ({
     <Button className={className} variant='link' type='button' {...restProps}>
       <span
         className={cn(
-          'mr-1 h-2 w-2 translate-y-2.5 rounded-full',
+          'mr-1 h-2 w-2 translate-y-3 rounded-full',
           isSelected ? 'bg-ring' : 'bg-muted'
         )}
       />
