@@ -25,6 +25,7 @@ import {
   cnSmallSpaceY,
   cnSmallPaddingX,
   cnSmallMarginX,
+  cnSmallGap,
 } from '@/styles/boxModelStyles';
 import {
   cnFlexFullCenter,
@@ -56,6 +57,7 @@ export const GenericCarousel: React.FC<
 > = ({ items, delay, className }) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   const autoplay = useRef(
     AutoPlay({ delay: delay || 100, stopOnInteraction: false })
@@ -69,7 +71,11 @@ export const GenericCarousel: React.FC<
   const onScroll = useCallback((emblaApi: EmblaCarouselType) => {
     const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
     setScrollProgress(progress * 100);
+    setCurrentSlide(emblaApi.selectedScrollSnap());
   }, []);
+
+  const totalItems = items?.length || 0;
+  const progressValue = (currentSlide / (totalItems - 1)) * 100;
 
   const {
     prevBtnDisabled,
@@ -106,7 +112,7 @@ export const GenericCarousel: React.FC<
         ref={emblaRef}
         className={cn(
           className,
-          'min-h-full min-w-full max-w-full',
+          'min-h-full min-w-full max-w-full flex-auto',
           cnSmallSpaceY
         )}
         aria-roledescription='carousel'
@@ -140,6 +146,7 @@ export const GenericCarousel: React.FC<
             cnPaddingX,
             cnPaddingBottom,
             'justify-between',
+            cnSmallGap,
             'h-full w-full'
           )}
         >
@@ -158,24 +165,18 @@ export const GenericCarousel: React.FC<
             />
           </div>
           <Progress
-            value={scrollProgress}
-            className={cn(cnSmallMarginX, 'flex-0')}
-            aria-valuenow={scrollProgress}
+            value={progressValue}
+            className={'max-w-full'}
+            aria-valuenow={progressValue}
             aria-valuemin={0}
             aria-valuemax={100}
           />
-          <div
-            className={cn(
-              cnSmallSpaceX,
-              cnFlexFullCenter,
-              'flex-none flex-shrink-0'
-            )}
-          >
-            <SelectedSnapDisplay
-              selectedSnap={selectedSnap}
-              snapCount={snapCount}
-              className='flex-none'
-            />
+          <SelectedSnapDisplay
+            selectedSnap={selectedSnap}
+            snapCount={snapCount}
+            className='flex-1'
+          />
+          <div className={cn(cnSmallSpaceX, cnFlexFullCenter)}>
             <Toggle
               variant='outline'
               size='sm'

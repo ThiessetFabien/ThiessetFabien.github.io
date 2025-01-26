@@ -45,8 +45,14 @@ export const SelectedSnapDisplay: React.FC<
   const { selectedSnap, snapCount, className } = props;
 
   return (
-    <div className={cn(className, cnSmallText)}>
+    <p
+      className={cn(
+        className,
+        cnSmallText,
+        'h-full min-w-10 text-center font-light'
+      )}
+    >
       {selectedSnap + 1} / {snapCount}
-    </div>
+    </p>
   );
 };
