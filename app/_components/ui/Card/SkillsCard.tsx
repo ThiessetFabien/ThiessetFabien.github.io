@@ -107,7 +107,7 @@ export const SkillsCard: React.FC<{
       >
         {content && typeof content === 'string'
           ? capitalizeFirstLetterOfPhrase(content)
-          : ''}{' '}
+          : ''}
       </CardDescription>
       <div
         className={cn(
