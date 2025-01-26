@@ -26,6 +26,7 @@ import {
 } from '@/styles/boxModelStyles';
 import type { TestimonialProps } from '@/types/TestimonialProps';
 import { ActionButton } from '../CallToAction/ActionButton';
+import { shuffleArray } from '@/hooks/ShuffleArray';
 
 /**
  * @file TestimonialsCarousel.tsx
@@ -47,14 +48,6 @@ export const TestimonialsCarousel: React.FC<{
   const [shuffled, setShuffled] = useState<CardProps['testimonials']>([]);
 
   useEffect(() => {
-    const shuffleSlides = (testimonials: TestimonialProps[]) => {
-      for (let i = testimonials.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [testimonials[i], testimonials[j]] = [testimonials[j], testimonials[i]];
-      }
-      return testimonials;
-    };
-
     const ensureDifferentContentAndAuthor = (
       testimonials: TestimonialProps[]
     ) => {
@@ -90,8 +83,10 @@ export const TestimonialsCarousel: React.FC<{
       return result;
     };
 
-    const shuffled = testimonials ? shuffleSlides([...testimonials]) : [];
-    const uniqueContentAndAuthor = ensureDifferentContentAndAuthor(shuffled);
+    const shuffled = testimonials ? shuffleArray([...testimonials]) : [];
+    const uniqueContentAndAuthor = ensureDifferentContentAndAuthor(
+      shuffled ?? []
+    );
     setShuffled(uniqueContentAndAuthor);
   }, [testimonials]);
 
@@ -106,14 +101,12 @@ export const TestimonialsCarousel: React.FC<{
         'min-h-full min-w-full'
       )}
     >
-      <p
-        className={cn(cnParagraph, cnSmallPaddingX, 'max-w-full rounded px-1')}
-      >
+      <p className={cn(cnParagraph, 'max-w-full rounded px-1')}>
         &quot;&nbsp;
         {capitalizeFirstLetterOfPhrase(formatSpecialWords(testimonial.content))}
         &nbsp;&quot;
       </p>
-      <div className={cn('flex flex-shrink-0 items-center', cnSmallPaddingX)}>
+      <div className={cn('flex flex-shrink-0 items-center')}>
         <a href={`${baseUrl}${testimonial.linkedin}`}>
           <div className='relative left-0 top-0'>
             <Avatar className='h-12 w-12 border border-primary'>
@@ -127,7 +120,6 @@ export const TestimonialsCarousel: React.FC<{
             </Avatar>
             <ActionButton
               icon='Linkedin'
-              variant='secondary'
               className={cn(
                 'absolute bottom-0 right-0 z-auto',
                 'h-2/5 w-2/5',

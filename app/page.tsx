@@ -33,6 +33,7 @@ import dynamic from 'next/dynamic';
 import type { CardProps } from './types/CardProps';
 import { cnFlexCol } from './styles/flexStyles';
 import { cnGap, cnPadding } from './styles/boxModelStyles';
+import SkillsCard from './_components/ui/Card/SkillsCard';
 
 /**
  * HomePage component.
@@ -42,10 +43,6 @@ import { cnGap, cnPadding } from './styles/boxModelStyles';
 const LazyMap = dynamic(() => import('@/ui/Card/MapCard'), {
   ssr: false,
   loading: () => <p>Loading map...</p>,
-});
-
-const LazySkillsCard = dynamic(() => import('@/ui/Card/SkillsCard'), {
-  ssr: false,
 });
 
 const LazyTestimonialsCard = dynamic(
@@ -105,13 +102,13 @@ const HomePage: React.FC = (): JSX.Element => {
                 index={index}
                 className={cnPadding}
               />
-
               <CardContent
-                className={
+                className={cn(
+                  'flex-auto',
                   !card.testimonials
                     ? cnPaddingX
-                    : 'container min-w-full flex-1 overflow-hidden p-0'
-                }
+                    : 'container h-full min-w-full flex-1 overflow-hidden p-0'
+                )}
               >
                 {card.experiences &&
                   card.experiences?.length > 0 &&
@@ -125,7 +122,7 @@ const HomePage: React.FC = (): JSX.Element => {
                   card.topTechnologies &&
                   card.technologies &&
                   card.technologies.length > 0 && (
-                    <LazySkillsCard
+                    <SkillsCard
                       topTechnologies={card.topTechnologies}
                       technologies={card.technologies}
                       content={card.content}
@@ -200,7 +197,7 @@ const HomePage: React.FC = (): JSX.Element => {
             ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
               <CardFooter className={cn(cnPaddingX, cnPaddingBottom)}>
                 <FooterCard
-                  className={'flex h-full w-full'}
+                  className={'flex w-full'}
                   cta1={card.cta1}
                   icon1={card.icon1}
                   href1={card.href1}

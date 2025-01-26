@@ -65,7 +65,7 @@ export const PrevButton: React.FC<PropType & ActionButtonProps> = (
       icon='ArrowLeft'
       type='button'
       variant='outline'
-      size='sm'
+      size='icon'
       className={cn(ClassName, 'hover:text-accent-foreground')}
       {...restProps}
     ></ActionButton>
@@ -83,7 +83,7 @@ export const NextButton: React.FC<PropType & ActionButtonProps> = (
       icon='ArrowRight'
       type='button'
       variant='outline'
-      size='sm'
+      size='icon'
       className={cn(ClassName, 'hover:text-accent-foreground')}
       {...restProps}
     />

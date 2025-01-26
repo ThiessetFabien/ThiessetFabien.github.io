@@ -2,25 +2,44 @@
  * @file GenericCarousel.tsx
  * @description This file exports a generic carousel component that can be used for different types of carousels.
  */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { use, useCallback, useEffect, useRef, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoPlay from 'embla-carousel-autoplay';
 import { cn } from '@/lib/utils';
 import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 import { useDotButton } from './Buttons/DotButtonCarousel';
 import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
+import {
+  SelectedSnapDisplay,
+  useSelectedSnapDisplay,
+} from '@/ui/Carousel/Buttons/SelectedSnapDisplay';
 import { DotButton } from './Buttons/DotButtonCarousel';
 import {
   manipulationStyle,
   cnPaddingX,
   cnPaddingBottom,
+  cnMarginLeft,
+  cnGap,
+  cnSmallSpaceX,
+  cnSpaceY,
+  cnSmallSpaceY,
+  cnSmallPaddingX,
+  cnSmallMarginX,
+  cnSmallGap,
 } from '@/styles/boxModelStyles';
-import { cnFlexFullCenter, cnFlexCenterY } from '@/styles/flexStyles';
+import {
+  cnFlexFullCenter,
+  cnFlexCenterY,
+  cnFlexCol,
+} from '@/styles/flexStyles';
 import { useIsClient } from '@/hooks/useIsClient';
 import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
 import type { CardProps } from '@/types/CardProps';
 import { Toggle } from '@/lib/components/ui/toggle';
 import { Pause, Play } from 'lucide-react';
+import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
+import { EmblaCarouselType } from 'embla-carousel';
+import { Progress } from '@/lib/components/ui/progress';
 
 /**
  * GenericCarousel component.
@@ -36,6 +55,10 @@ import { Pause, Play } from 'lucide-react';
 export const GenericCarousel: React.FC<
   GenericCarouselProps & { className?: CardProps['className'] }
 > = ({ items, delay, className }) => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+
   const autoplay = useRef(
     AutoPlay({ delay: delay || 100, stopOnInteraction: false })
   );
@@ -45,8 +68,15 @@ export const GenericCarousel: React.FC<
     [autoplay.current]
   );
 
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi);
+  const onScroll = useCallback((emblaApi: EmblaCarouselType) => {
+    const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
+    setScrollProgress(progress * 100);
+    setCurrentSlide(emblaApi.selectedScrollSnap());
+  }, []);
+
+  const totalItems = items?.length || 0;
+  const progressValue = (currentSlide / (totalItems - 1)) * 100;
+
   const {
     prevBtnDisabled,
     nextBtnDisabled,
@@ -54,19 +84,25 @@ export const GenericCarousel: React.FC<
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
-  const [isPlaying, setIsPlaying] = useState(true);
-
   useEffect(() => {
     if (!emblaApi) return;
+
+    onScroll(emblaApi);
+    emblaApi
+      .on('reInit', onScroll)
+      .on('scroll', onScroll)
+      .on('slideFocus', onScroll);
 
     if (isPlaying) {
       autoplay.current.play();
     } else {
       autoplay.current.stop();
     }
-  }, [emblaApi, isPlaying]);
+  }, [emblaApi, isPlaying, onScroll]);
 
   const handlePlayPause = () => setIsPlaying(!isPlaying);
+
+  const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
 
   const isClient = useIsClient();
 
@@ -74,7 +110,11 @@ export const GenericCarousel: React.FC<
     isClient && (
       <div
         ref={emblaRef}
-        className={cn(className, 'min-h-full min-w-full max-w-full')}
+        className={cn(
+          className,
+          'min-h-full min-w-full max-w-full flex-auto',
+          cnSmallSpaceY
+        )}
         aria-roledescription='carousel'
         aria-label='Testimonials'
       >
@@ -88,7 +128,9 @@ export const GenericCarousel: React.FC<
                 'xs:min-w-[calc(100%/3)]',
                 'sm:min-w-[calc(100%/6)]',
                 'lg:min-w-[calc(100%/2)]',
-                'xl:min-w-[calc(100%/3)]'
+                'xl:min-w-[calc(100%/3)]',
+                cnFlexCol,
+                'justify-between'
               )}
               role='group'
               aria-roledescription='slide'
@@ -101,51 +143,45 @@ export const GenericCarousel: React.FC<
         <div
           className={cn(
             cnFlexCenterY,
-            'justify-between',
             cnPaddingX,
             cnPaddingBottom,
-            'relative z-0 h-full w-full'
+            'justify-between',
+            cnSmallGap,
+            'h-full w-full'
           )}
         >
-          <PrevButton
-            onClick={onPrevButtonClick}
-            disabled={prevBtnDisabled}
-            className={cn(
-              manipulationStyle,
-              'absolute bottom-36 left-0 z-50 px-0'
-            )}
-            aria-label='Previous slide'
-          />
-          <NextButton
-            onClick={onNextButtonClick}
-            disabled={nextBtnDisabled}
-            className={cn(
-              manipulationStyle,
-              'absolute bottom-36 right-0 z-50 px-0'
-            )}
-            aria-label='Next slide'
-          />
-          <div className={cn(cnFlexCenterY)}>
-            {scrollSnaps?.map((_, index) => (
-              <DotButton
-                key={index}
-                onClick={() => onDotButtonClick(index)}
-                isSelected={selectedIndex === index}
-                className={cn(
-                  manipulationStyle,
-                  'm-0 h-2 w-auto rounded-full border-0 p-0'
-                )}
-                aria-label={`Go to slide ${index + 1}`}
-                aria-pressed={selectedIndex === index}
-              />
-            ))}
+          <div className={cn(cnSmallSpaceX, 'flex-none')}>
+            <PrevButton
+              onClick={onPrevButtonClick}
+              disabled={prevBtnDisabled}
+              className={cn(manipulationStyle, 'px-0')}
+              aria-label='Previous slide'
+            />
+            <NextButton
+              onClick={onNextButtonClick}
+              disabled={nextBtnDisabled}
+              className={cn(manipulationStyle, 'px-0')}
+              aria-label='Next slide'
+            />
           </div>
-          <div className={cn(cnFlexFullCenter)}>
+          <Progress
+            value={progressValue}
+            className={'max-w-full'}
+            aria-valuenow={progressValue}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          />
+          <SelectedSnapDisplay
+            selectedSnap={selectedSnap}
+            snapCount={snapCount}
+            className='flex-1'
+          />
+          <div className={cn(cnSmallSpaceX, cnFlexFullCenter)}>
             <Toggle
               variant='outline'
               size='sm'
               onClick={handlePlayPause}
-              className={cn('relative')}
+              className={cn('relative', 'flex-none')}
               data-state={isPlaying ? 'on' : 'off'}
               aria-label={isPlaying ? 'Pause autoplay' : 'Play autoplay'}
             >
