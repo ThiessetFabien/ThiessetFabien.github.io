@@ -2,29 +2,22 @@
  * @file GenericCarousel.tsx
  * @description This file exports a generic carousel component that can be used for different types of carousels.
  */
-import React, { use, useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoPlay from 'embla-carousel-autoplay';
 import { cn } from '@/lib/utils';
 import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
-import { useDotButton } from './Buttons/DotButtonCarousel';
 import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
 import {
   SelectedSnapDisplay,
   useSelectedSnapDisplay,
 } from '@/ui/Carousel/Buttons/SelectedSnapDisplay';
-import { DotButton } from './Buttons/DotButtonCarousel';
 import {
   manipulationStyle,
   cnPaddingX,
   cnPaddingBottom,
-  cnMarginLeft,
-  cnGap,
   cnSmallSpaceX,
-  cnSpaceY,
   cnSmallSpaceY,
-  cnSmallPaddingX,
-  cnSmallMarginX,
   cnSmallGap,
 } from '@/styles/boxModelStyles';
 import {
@@ -37,7 +30,6 @@ import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
 import type { CardProps } from '@/types/CardProps';
 import { Toggle } from '@/lib/components/ui/toggle';
 import { Pause, Play } from 'lucide-react';
-import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
 import { EmblaCarouselType } from 'embla-carousel';
 import { Progress } from '@/lib/components/ui/progress';
 
@@ -56,7 +48,6 @@ export const GenericCarousel: React.FC<
   GenericCarouselProps & { className?: CardProps['className'] }
 > = ({ items, delay, className }) => {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   const autoplay = useRef(
@@ -69,8 +60,6 @@ export const GenericCarousel: React.FC<
   );
 
   const onScroll = useCallback((emblaApi: EmblaCarouselType) => {
-    const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
-    setScrollProgress(progress * 100);
     setCurrentSlide(emblaApi.selectedScrollSnap());
   }, []);
 

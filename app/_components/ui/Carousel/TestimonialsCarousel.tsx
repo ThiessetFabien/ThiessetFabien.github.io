@@ -19,11 +19,7 @@ import {
   formatSpecialWords,
 } from '@/hooks/FormatText';
 import { cnFlexCol } from '@/styles/flexStyles';
-import {
-  cnPaddingX,
-  cnSmallPaddingX,
-  cnSmallSpaceY,
-} from '@/styles/boxModelStyles';
+import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
 import type { TestimonialProps } from '@/types/TestimonialProps';
 import { ActionButton } from '../CallToAction/ActionButton';
 import { shuffleArray } from '@/hooks/ShuffleArray';
