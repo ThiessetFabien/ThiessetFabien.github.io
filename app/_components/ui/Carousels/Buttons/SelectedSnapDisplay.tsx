@@ -55,7 +55,7 @@ export const SelectedSnapDisplay: React.FC<
       className={cn(
         className,
         cnSmallText,
-        'h-full min-w-10 text-center font-light'
+        'h-full min-w-11 text-center font-light'
       )}
       role='status'
       aria-live='polite'

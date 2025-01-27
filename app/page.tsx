@@ -36,6 +36,7 @@ import SkillsCard from '@/ui/Cards/SkillsCard';
 import fetchData from '@api/data.json';
 
 import { useIsClient } from './hooks/useIsClient';
+import { cnSizeFull } from './styles/sizeStyles';
 
 /**
  * HomePage component.
@@ -64,7 +65,7 @@ const HomePage: React.FC = (): JSX.Element => {
         <Card
           key={index}
           id={`card-${index}`}
-          className={cn('flex h-full w-full', cnFlexCol, card.colSpan)}
+          className={cn(cnSizeFull, cnFlexCol, card.colSpan)}
         >
           {card.imageSrc && !card.map && (
             <PresentationCard

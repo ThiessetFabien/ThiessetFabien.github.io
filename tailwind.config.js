@@ -58,11 +58,10 @@ module.exports = {
         caption: ['var(--font-caption)'],
         sans: ['var(--font-poppins-sans)'],
       },
-      spacing: {
-        '15px': '15px',
-      },
-      translateY: {
-        '-15px': '-15px',
+      backgroundImage: {
+        lightImage: "url('/images/bg-light.webp')",
+        lightImage2: "url('/images/bg-light2.webp')",
+        darkImage: "url('/images/bg-dark.webp')",
       },
       keyframes: {
         'accordion-down': {

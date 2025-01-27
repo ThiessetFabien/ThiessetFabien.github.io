@@ -120,12 +120,11 @@ export const SkillsCard: React.FC<{
         </CardDescription>
         <section
           className={cn(
-            'grid w-full auto-rows-auto',
+            'grid w-full auto-rows-auto gap-x-0.5',
             'grid-cols-2',
             'xxs:grid-cols-3',
             'md:grid-cols-6',
-            'lg:grid-cols-2',
-            cnSmallGap
+            'lg:grid-cols-2'
           )}
         >
           {technologies?.map((tech, index) => (
@@ -134,7 +133,7 @@ export const SkillsCard: React.FC<{
               variant='outline'
               className={cn(
                 className,
-                'gap-1.5',
+                'gap-1',
                 'w-full',
                 'relative top-1.5 mb-1.5'
               )}
