@@ -1,18 +1,20 @@
 'use client';
 
-import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
-import { metadata } from './metadata';
+import { ThemeProvider } from 'next-themes';
+
+import { Footer } from '@/components/layout/Footer/FooterLayout';
+import { Header } from '@/components/layout/Header/HeaderLayout';
+import { Expletus_Sans } from '@/fonts/ExpletusSans';
+import { Poppins } from '@/fonts/Poppins';
 import { cn } from '@/lib/utils';
 import '@/styles/reset.css';
-import { Poppins } from '@/fonts/Poppins';
-import { Expletus_Sans } from './fonts/ExpletusSans';
 import '@/styles/globals.css';
 import { cnPadding } from '@/styles/boxModelStyles';
 import { cnGap } from '@/styles/boxModelStyles';
 import { cnFlexFullCenter } from '@/styles/flexStyles';
-import { Header } from '@/components/layout/Header/HeaderLayout';
-import { Footer } from '@/components/layout/Footer/FooterLayout';
+
+import { metadata } from './metadata';
 
 export default function RootLayout({
   children,

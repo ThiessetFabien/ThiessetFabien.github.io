@@ -13,5 +13,5 @@ export interface ActionButtonProps {
     | 'link'
     | 'ghost';
   size?: 'default' | 'sm' | 'lg' | 'icon';
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
