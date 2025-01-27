@@ -11,7 +11,6 @@ import 'leaflet-defaulticon-compatibility';
 
 import useIntersectionObserver from '@/hooks/IntersectionObserver';
 import { useIsClient } from '@/hooks/useIsClient';
-import { cn } from '@/lib/utils';
 import type { LocationEventsProps } from '@/types/LocationEventsProps';
 
 /**
@@ -53,7 +52,7 @@ export const Map: React.FC = () => {
           center={francePosition}
           zoom={4}
           scrollWheelZoom={false}
-          className={cn('h-full min-h-[20rem] w-full rounded-xl')}
+          className={'h-full min-h-80 w-full rounded-xl'}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
 import type { CardProps } from '@/types/CardProps';
-import { ActionButton } from '@/ui/CallToAction/ActionButton';
+import { ActionButton } from '@/ui/Buttons/ActionButton';
 
 /**
  * FooterCard component props.

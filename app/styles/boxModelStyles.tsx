@@ -44,6 +44,6 @@ export const cnSmallGap = cn('gap-2 md:gap-4');
 
 export const cnGap = cn('gap-4 md:gap-6');
 
-export const manipulationStyle = cn(
+export const cnManipulation = cn(
   'touch-manipulation cursor-pointer appearance-none '
 );

@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-import { ScrollTopToggle } from '@/components/ui/Toggle/ScrollTopToggle';
+import { ScrollTopToggle } from '@/components/ui/Toggles/ScrollTopToggle';
 import { scrollToTop } from '@/hooks/ScrollToTop';
 import { cn } from '@/lib/utils';
 import { cnPaddingX } from '@/styles/boxModelStyles';
 import { cnFlexBetweenX, cnFlexFullCenter } from '@/styles/flexStyles';
 import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
-import { cnHiddenXs } from '@/styles/hideItemStyles';
+import { cnHiddenXsFlex } from '@/styles/hideItemStyles';
 import type { CardProps } from '@/types/CardProps';
 import { year } from '@/utils/dynamicYear';
 
@@ -45,7 +45,7 @@ export const Footer: React.FC<{ className: CardProps['className'] }> = ({
         </h3>
         <p className={cn('w-full flex-wrap', cnSmallText, cnFlexFullCenter)}>
           &copy;&nbsp;{year}&nbsp;&bull; Built by Fabien Thiesset.
-          <span className={cn('inline', cnHiddenXs)}>&nbsp;&bull;</span>
+          <span className={cn('inline', cnHiddenXsFlex)}>&nbsp;&bull;</span>
           <span className='inline'>&nbsp;All rights reserved.</span>
         </p>
         <ScrollTopToggle

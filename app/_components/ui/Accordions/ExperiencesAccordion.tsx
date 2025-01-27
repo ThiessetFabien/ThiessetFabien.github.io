@@ -14,7 +14,7 @@ import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
 import type { CardProps } from '@/types/CardProps';
 import type { ExperienceProps } from '@/types/ExperienceProps';
 import type { OtherExperienceProps } from '@/types/OtherExperiencesProps';
-import { ExperiencesList } from '@/ui/List/ExperiencesList';
+import { ExperiencesList } from '@/ui/Lists/ExperiencesList';
 
 export const ExperiencesAccordion: React.FC<{
   experience: ExperienceProps[];

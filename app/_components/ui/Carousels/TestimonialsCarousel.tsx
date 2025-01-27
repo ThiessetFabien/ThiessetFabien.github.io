@@ -23,7 +23,7 @@ import { CardProps } from '@/types/CardProps';
 import type { TestimonialProps } from '@/types/TestimonialProps';
 import { baseUrl } from '@/utils/constants/baseUrl';
 
-import { ActionButton } from '../CallToAction/ActionButton';
+import { ActionButton } from '../Buttons/ActionButton';
 
 import GenericCarousel from './GenericCarousel';
 
@@ -106,27 +106,27 @@ export const TestimonialsCarousel: React.FC<{
         &nbsp;&quot;
       </p>
       <div className={cn('flex flex-shrink-0 items-center')}>
-        <a href={`${baseUrl}${testimonial.linkedin}`}>
-          <div className='relative left-0 top-0'>
-            <Avatar className='h-12 w-12 border border-primary'>
-              <AvatarImage
-                src={`${baseUrl}${testimonial.imageSrc}`}
-                alt={capitalizeFirstLetterOfEachWord(testimonial.author)}
-              />
-              <AvatarFallback className={cnParagraph}>
-                {capitalizeFirstLetterOfEachWord(testimonial.author)}
-              </AvatarFallback>
-            </Avatar>
-            <ActionButton
-              icon='Linkedin'
-              className={cn(
-                'absolute bottom-0 right-0 z-auto',
-                'h-2/5 w-2/5',
-                'p-1'
-              )}
+        <div className='relative left-0 top-0'>
+          <Avatar className='h-12 w-12 border border-primary'>
+            <AvatarImage
+              src={`${baseUrl}${testimonial.imageSrc}`}
+              alt={capitalizeFirstLetterOfEachWord(testimonial.author)}
             />
-          </div>
-        </a>
+            <AvatarFallback className={cnParagraph}>
+              {capitalizeFirstLetterOfEachWord(testimonial.author)}
+            </AvatarFallback>
+          </Avatar>
+          <ActionButton
+            href={`${testimonial.linkedin}`}
+            variant='outline'
+            icon='Linkedin'
+            className={cn(
+              'absolute bottom-0 right-0 z-auto',
+              'h-2/5 w-2/5',
+              'p-1'
+            )}
+          />
+        </div>
         <div className={cn(cnSmallText, 'ml-4')}>
           <p className={cn(cnFlexCol)}>
             <span className={cn(cnLightTextMuted, 'inline-block')}>

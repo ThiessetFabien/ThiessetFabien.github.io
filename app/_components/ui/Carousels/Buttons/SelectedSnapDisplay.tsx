@@ -1,5 +1,5 @@
 import type { EmblaCarouselType } from 'embla-carousel';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 import { cnSmallText } from '@/styles/fontStyles';
@@ -27,6 +27,11 @@ export const useSelectedSnapDisplay = (
     updateScrollSnapState(emblaApi);
     emblaApi.on('select', updateScrollSnapState);
     emblaApi.on('reInit', updateScrollSnapState);
+
+    return () => {
+      emblaApi.off('select', updateScrollSnapState);
+      emblaApi.off('reInit', updateScrollSnapState);
+    };
   }, [emblaApi, updateScrollSnapState]);
 
   return {
@@ -42,18 +47,22 @@ type PropType = {
 
 export const SelectedSnapDisplay: React.FC<
   PropType & { className: CardProps['className'] }
-> = (props) => {
+> = memo((props) => {
   const { selectedSnap, snapCount, className } = props;
 
   return (
-    <p
+    <div
       className={cn(
         className,
         cnSmallText,
         'h-full min-w-10 text-center font-light'
       )}
+      role='status'
+      aria-live='polite'
     >
-      {selectedSnap + 1} / {snapCount}
-    </p>
+      <span>{`${selectedSnap + 1} of ${snapCount}`}</span>{' '}
+    </div>
   );
-};
+});
+
+SelectedSnapDisplay.displayName = 'SelectedSnapDisplay';

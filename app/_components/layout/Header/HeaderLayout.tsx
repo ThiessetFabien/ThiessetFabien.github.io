@@ -1,9 +1,9 @@
-import { ToggleDarkMode } from '@/components/ui/Toggle/DarkModeToggle';
+import { ToggleDarkMode } from '@/components/ui/Toggles/DarkModeToggle';
 import { cn } from '@/lib/utils';
 import { cnPaddingX } from '@/styles/boxModelStyles';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
 import { cnTitle2, cnTitle2Size } from '@/styles/fontStyles';
-import { CardProps } from '@/types/CardProps.jsx';
+import type { CardProps } from '@/types/CardProps';
 
 /**
  * @file Header.tsx

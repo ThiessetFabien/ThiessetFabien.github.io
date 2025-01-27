@@ -23,10 +23,9 @@ import { toast } from '@/lib/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { formSchema } from '@/schemas/mailSchema';
 import { cnGap } from '@/styles/boxModelStyles';
-import { cnMarginTop } from '@/styles/boxModelStyles';
 import { cnParagraph } from '@/styles/fontStyles';
 import type { CardProps } from '@/types/CardProps';
-import { FooterCard } from '@/ui/Card/LayoutCard/FooterCard';
+import { FooterCard } from '@/ui/Cards/LayoutCards/FooterCard';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -61,13 +60,9 @@ export const MailCard: React.FC<{
   downloadActive3,
   className,
 }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    control,
-    ...form
-  } = useForm<z.infer<typeof formSchema>>({
+  type FormData = z.infer<typeof formSchema>;
+
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
@@ -78,7 +73,13 @@ export const MailCard: React.FC<{
     },
   });
 
-  const onSubmit: SubmitHandler<FormSchema> = (data) => {
+  const {
+    handleSubmit,
+    formState: { errors },
+    register,
+  } = form;
+
+  const onSubmit: SubmitHandler<FormSchema> = (data: FormData) => {
     const mailtoLink = `mailto:${mailto}?subject=${data.type}&body=${data.message}`;
     window.location.href = mailtoLink;
     toast({
@@ -91,23 +92,23 @@ export const MailCard: React.FC<{
         </pre>
       ),
     });
+    console.log(data);
   };
 
   return (
-    <section aria-labelledby='contact'>
-      <Form
-        {...form}
+    <Form {...form} aria-labelledby='contact'>
+      <form
         onSubmit={handleSubmit(onSubmit)}
-        className={cn(className, 'flex flex-1')}
+        className={(cn(className), 'flex flex-grow flex-col')}
       >
         <div
           className={cn(
             cnGap,
-            'grid auto-rows-auto grid-cols-1 grid-rows-1 md:grid-cols-4'
+            'grid auto-rows-auto grid-cols-1 grid-rows-1 items-end md:grid-cols-4'
           )}
         >
           <FormField
-            control={control}
+            control={form.control}
             name='type'
             render={({ field }) => (
               <FormItem>
@@ -223,21 +224,21 @@ export const MailCard: React.FC<{
             </FormControl>
             <FormMessage />
           </FormItem>
-          <FormItem className='col-span-4 auto-rows-auto grid-cols-1 md:grid-cols-4'>
+          <FormItem className='col-span-1 md:col-span-4'>
             <FormLabel
               htmlFor='message'
               className={cn('min-w-full', cnParagraph)}
             >
               Message
             </FormLabel>
-            <FormControl>
+            <FormControl className='flex-grow'>
               <Textarea
                 id='message'
                 placeholder='Tell me a little bit about your project...'
                 className={cn(
                   cnParagraph,
                   'bg-input',
-                  'h-28 min-w-full resize-y',
+                  'h-full min-h-32 max-w-full resize-y xl:min-h-36',
                   'paragraph-placeholder'
                 )}
                 {...register('message')}
@@ -246,24 +247,24 @@ export const MailCard: React.FC<{
             </FormControl>
             <FormMessage>{errors.message?.message}</FormMessage>
           </FormItem>
+          <FooterCard
+            mailto={mailto}
+            cta1={cta1}
+            icon1={icon1}
+            href1={href1}
+            downloadActive1={downloadActive1}
+            cta2={cta2}
+            icon2={icon2}
+            href2={href2}
+            downloadActive2={downloadActive2}
+            cta3={cta3}
+            icon3={icon3}
+            href3={href3}
+            downloadActive3={downloadActive3}
+            className='col-span-1 row-span-1 flex-none md:col-span-4'
+          />
         </div>
-        <FooterCard
-          mailto={mailto}
-          cta1={cta1}
-          icon1={icon1}
-          href1={href1}
-          downloadActive1={downloadActive1}
-          cta2={cta2}
-          icon2={icon2}
-          href2={href2}
-          downloadActive2={downloadActive2}
-          cta3={cta3}
-          icon3={icon3}
-          href3={href3}
-          downloadActive3={downloadActive3}
-          className={cn(cnMarginTop, 'grid-cols-1 grid-rows-1 md:grid-cols-4')}
-        />
-      </Form>
-    </section>
+      </form>
+    </Form>
   );
 };
