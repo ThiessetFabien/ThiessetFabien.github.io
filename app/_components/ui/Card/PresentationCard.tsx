@@ -1,10 +1,25 @@
 import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+} from '@/hooks/FormatText';
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+} from '@/lib/components/ui/avatar';
+import {
   CardTitle,
   CardDescription,
   CardHeader,
   CardContent,
 } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
+import {
+  cnGap,
+  cnMarginTop,
+  cnSmallGap,
+  cnSmallSpaceY,
+} from '@/styles/boxModelStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import {
   cnTitle1,
@@ -13,24 +28,10 @@ import {
   cnLightTextMuted,
   cnParagraph,
 } from '@/styles/fontStyles';
-import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-} from '@/hooks/FormatText';
-import {
-  cnGap,
-  cnMarginTop,
-  cnSmallGap,
-  cnSmallSpaceY,
-} from '@/styles/boxModelStyles';
 import { cnHiddenSm, cnHiddenXxs } from '@/styles/hideItemStyles';
 import type { CardProps } from '@/types/CardProps';
+
 import FooterCard from './LayoutCard/FooterCard';
-import {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-} from '@/lib/components/ui/avatar';
 
 export const PresentationCard: React.FC<{
   title: CardProps['title'];

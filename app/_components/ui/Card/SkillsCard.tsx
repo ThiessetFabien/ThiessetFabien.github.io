@@ -3,27 +3,28 @@
  * @description This file exports a skills card component.
  */
 
-import React from 'react';
 import Image from 'next/image';
+import React from 'react';
+
+import {
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/hooks/FormatText';
+import { Badge } from '@/lib/components/ui/badge';
+import { CardDescription } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
-import { baseUrl } from '@/utils/constants/baseUrl';
+import { cnSmallGap } from '@/styles/boxModelStyles';
+import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import {
   cnParagraph,
   cnTitle3,
   cnDescription,
   cnLightTextMuted,
 } from '@/styles/fontStyles';
-import {
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/hooks/FormatText';
-import { cnSmallGap } from '@/styles/boxModelStyles';
-import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
-import { sizeBigIcon, sizeIcon } from '@/styles/sizeStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
+import { sizeBigIcon, sizeIcon } from '@/styles/sizeStyles';
 import type { CardProps } from '@/types/CardProps';
-import { CardDescription } from '@/lib/components/ui/card';
-import { Badge } from '@/lib/components/ui/badge';
+import { baseUrl } from '@/utils/constants/baseUrl';
 
 /**
  * SkillsCard component.

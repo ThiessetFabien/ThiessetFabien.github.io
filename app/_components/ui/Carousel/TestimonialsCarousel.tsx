@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from '@/lib/components/ui/avatar';
-import GenericCarousel from './GenericCarousel';
-import { baseUrl } from '@/utils/constants/baseUrl';
-import { cn } from '@/lib/utils';
-import { CardProps } from '@/types/CardProps';
-import {
-  cnLightTextMuted,
-  cnParagraph,
-  cnSmallText,
-} from '@/styles/fontStyles';
+
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@/hooks/FormatText';
-import { cnFlexCol } from '@/styles/flexStyles';
-import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
-import type { TestimonialProps } from '@/types/TestimonialProps';
-import { ActionButton } from '../CallToAction/ActionButton';
 import { shuffleArray } from '@/hooks/ShuffleArray';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/lib/components/ui/avatar';
+import { cn } from '@/lib/utils';
+import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
+import { cnFlexCol } from '@/styles/flexStyles';
+import {
+  cnLightTextMuted,
+  cnParagraph,
+  cnSmallText,
+} from '@/styles/fontStyles';
+import { CardProps } from '@/types/CardProps';
+import type { TestimonialProps } from '@/types/TestimonialProps';
+import { baseUrl } from '@/utils/constants/baseUrl';
+
+import { ActionButton } from '../CallToAction/ActionButton';
+
+import GenericCarousel from './GenericCarousel';
 
 /**
  * @file TestimonialsCarousel.tsx

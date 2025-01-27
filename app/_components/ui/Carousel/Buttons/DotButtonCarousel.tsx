@@ -1,10 +1,11 @@
+import { EmblaCarouselType } from 'embla-carousel';
 import React, {
   ComponentPropsWithRef,
   useCallback,
   useEffect,
   useState,
 } from 'react';
-import { EmblaCarouselType } from 'embla-carousel';
+
 import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
 

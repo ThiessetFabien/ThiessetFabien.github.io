@@ -5,35 +5,37 @@
 
 'use client';
 
+import dynamic from 'next/dynamic';
 import React from 'react';
-import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
-import fetchData from '@api/data.json';
-import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
+
 import { ExperiencesCard } from '@/components/ui/Card/ExperiencesCard';
+import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
+import { MailCard } from '@/components/ui/Card/MailCard';
 import { ProjectsCard } from '@/components/ui/Card/ProjectsCard';
-import { PresentationCard } from '@/ui/Card/PresentationCard';
-import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
-import { cn } from '@/lib/utils';
+import {
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/hooks/FormatText';
 import useCardGrid from '@/hooks/useCardGrid';
+import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
+import { cn } from '@/lib/utils';
 import {
   cnPaddingBottom,
   cnPaddingX,
   cnSmallGap,
   cnSpaceY,
 } from '@/styles/boxModelStyles';
-import { MailCard } from '@/components/ui/Card/MailCard';
-import { AchievementsCard } from '@/ui/Card/AchievementsCard';
 import { cnParagraph } from '@/styles/fontStyles';
-import {
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/hooks/FormatText';
-import { useIsClient } from './hooks/useIsClient';
-import dynamic from 'next/dynamic';
-import type { CardProps } from './types/CardProps';
-import { cnFlexCol } from './styles/flexStyles';
-import { cnGap, cnPadding } from './styles/boxModelStyles';
+import { AchievementsCard } from '@/ui/Card/AchievementsCard';
+import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
+import { PresentationCard } from '@/ui/Card/PresentationCard';
+import fetchData from '@api/data.json';
+
 import SkillsCard from './_components/ui/Card/SkillsCard';
+import { useIsClient } from './hooks/useIsClient';
+import { cnGap, cnPadding } from './styles/boxModelStyles';
+import { cnFlexCol } from './styles/flexStyles';
+import type { CardProps } from './types/CardProps';
 
 /**
  * HomePage component.

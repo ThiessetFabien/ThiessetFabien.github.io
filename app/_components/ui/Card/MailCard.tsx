@@ -1,8 +1,7 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@/lib/components/ui/input';
-import { formSchema } from '@/schemas/mailSchema';
+
 import {
   Form,
   FormControl,
@@ -11,10 +10,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/lib/components/ui/form';
-import type { CardProps } from '@/types/CardProps';
-import { toast } from '@/lib/hooks/use-toast';
-import { Textarea } from '@/lib/components/ui/textarea';
-import { cnGap } from '@/styles/boxModelStyles';
+import { Input } from '@/lib/components/ui/input';
 import {
   Select,
   SelectTrigger,
@@ -22,10 +18,15 @@ import {
   SelectContent,
   SelectItem,
 } from '@/lib/components/ui/select';
-import { cnParagraph } from '@/styles/fontStyles';
+import { Textarea } from '@/lib/components/ui/textarea';
+import { toast } from '@/lib/hooks/use-toast';
 import { cn } from '@/lib/utils';
-import { FooterCard } from '@/ui/Card/LayoutCard/FooterCard';
+import { formSchema } from '@/schemas/mailSchema';
+import { cnGap } from '@/styles/boxModelStyles';
 import { cnMarginTop } from '@/styles/boxModelStyles';
+import { cnParagraph } from '@/styles/fontStyles';
+import type { CardProps } from '@/types/CardProps';
+import { FooterCard } from '@/ui/Card/LayoutCard/FooterCard';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -60,13 +61,19 @@ export const MailCard: React.FC<{
   downloadActive3,
   className,
 }) => {
-  const form = useForm<z.infer<typeof formSchema>>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+    ...form
+  } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      mail: '',
+      email: '',
       phone: '',
-      type: 'offer',
+      type: 'Offer',
       message: '',
     },
   });
@@ -87,8 +94,12 @@ export const MailCard: React.FC<{
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className={className}>
+    <section aria-labelledby='contact'>
+      <Form
+        {...form}
+        onSubmit={handleSubmit(onSubmit)}
+        className={cn(className, 'flex flex-1')}
+      >
         <div
           className={cn(
             cnGap,
@@ -96,18 +107,21 @@ export const MailCard: React.FC<{
           )}
         >
           <FormField
-            control={form.control}
+            control={control}
             name='type'
             render={({ field }) => (
               <FormItem>
-                <FormLabel className={cn('min-w-full', cnParagraph)}>
-                  Type of mail...
-                </FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
+                <FormLabel
+                  htmlFor='type'
+                  className={cn('min-w-full', cnParagraph)}
                 >
-                  <FormControl>
+                  Type of email
+                </FormLabel>
+                <FormControl>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
                     <SelectTrigger className='bg-input'>
                       <SelectValue
                         className={cn(
@@ -118,139 +132,121 @@ export const MailCard: React.FC<{
                         placeholder='Select a type of email to display'
                       />
                     </SelectTrigger>
-                  </FormControl>
-                  <SelectContent className={cn('min-w-full', cnParagraph)}>
-                    <SelectItem
-                      className={cn('min-w-full', cnParagraph)}
-                      value='offer'
-                    >
-                      offer
-                    </SelectItem>
-                    <SelectItem
-                      className={cn('min-w-full', cnParagraph)}
-                      value='collaboration'
-                    >
-                      collaboration
-                    </SelectItem>
-                    <SelectItem
-                      className={cn('min-w-full', cnParagraph)}
-                      value='question'
-                    >
-                      question
-                    </SelectItem>
-                    <SelectItem
-                      className={cn('min-w-full', cnParagraph)}
-                      value='other'
-                    >
-                      other
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
+                    <SelectContent className={cn('min-w-full', cnParagraph)}>
+                      <SelectItem
+                        className={cn('min-w-full', cnParagraph)}
+                        value='offer'
+                      >
+                        Offer
+                      </SelectItem>
+                      <SelectItem
+                        className={cn('min-w-full', cnParagraph)}
+                        value='collaboration'
+                      >
+                        Inquiry
+                      </SelectItem>
+                      <SelectItem
+                        className={cn('min-w-full', cnParagraph)}
+                        value='other'
+                      >
+                        Other
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage>{errors.type?.message}</FormMessage>
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name='name'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className={cn('min-w-full', cnParagraph)}>
-                  Name
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='John Doe'
-                    {...field}
-                    className={cn(
-                      'min-w-full',
-                      'paragraph-placeholder',
-                      'bg-input',
-                      cnParagraph
-                    )}
-                    required
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='phone'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className={cn('min-w-full', cnParagraph)}>
-                  Phone
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='0123456789'
-                    {...field}
-                    className={cn(
-                      'min-w-full',
-                      'paragraph-placeholder',
-                      'bg-input',
-                      cnParagraph
-                    )}
-                    required
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />{' '}
-          <FormField
-            control={form.control}
-            name='mail'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className={cn('min-w-full', cnParagraph)}>
-                  Mail
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='your@mail.com'
-                    {...field}
-                    className={cn(
-                      'min-w-full',
-                      'paragraph-placeholder',
-                      'bg-input',
-                      cnParagraph
-                    )}
-                    required
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <FormItem>
+            <FormLabel htmlFor='name' className={cn('min-w-full', cnParagraph)}>
+              Name
+            </FormLabel>
+            <FormControl>
+              <Input
+                id='name'
+                placeholder='John Doe'
+                {...register('name')}
+                className={cn(
+                  'min-w-full',
+                  'paragraph-placeholder',
+                  'bg-input',
+                  cnParagraph
+                )}
+                required
+              />
+            </FormControl>
+            <FormMessage>{errors.name?.message}</FormMessage>
+          </FormItem>
+          <FormItem>
+            <FormLabel
+              htmlFor='phone'
+              className={cn('min-w-full', cnParagraph)}
+            >
+              Phone
+            </FormLabel>
+            <FormControl>
+              <Input
+                id='phone'
+                placeholder='0123456789'
+                {...register('phone')}
+                className={cn(
+                  'min-w-full',
+                  'paragraph-placeholder',
+                  'bg-input',
+                  cnParagraph
+                )}
+                required
+              />
+            </FormControl>
+            <FormMessage>{errors.phone?.message}</FormMessage>
+          </FormItem>
+          <FormItem>
+            <FormLabel
+              htmlFor='email'
+              className={cn('min-w-full', cnParagraph)}
+            >
+              Email
+            </FormLabel>
+            <FormControl>
+              <Input
+                placeholder='your@mail.com'
+                {...register('email')}
+                className={cn(
+                  'min-w-full',
+                  'paragraph-placeholder',
+                  'bg-input',
+                  cnParagraph
+                )}
+                required
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+          <FormItem className='col-span-4 auto-rows-auto grid-cols-1 md:grid-cols-4'>
+            <FormLabel
+              htmlFor='message'
+              className={cn('min-w-full', cnParagraph)}
+            >
+              Message
+            </FormLabel>
+            <FormControl>
+              <Textarea
+                id='message'
+                placeholder='Tell me a little bit about your project...'
+                className={cn(
+                  cnParagraph,
+                  'bg-input',
+                  'h-28 min-w-full resize-y',
+                  'paragraph-placeholder'
+                )}
+                {...register('message')}
+                required
+              />
+            </FormControl>
+            <FormMessage>{errors.message?.message}</FormMessage>
+          </FormItem>
         </div>
-        <FormField
-          control={form.control}
-          name='message'
-          render={({ field }) => (
-            <FormItem className='grid-cols-1 grid-rows-1 md:grid-cols-4'>
-              <FormLabel className={cn('min-w-full', cnParagraph)}>
-                Your message :
-              </FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder='Tell me a little bit about your project...'
-                  className={cn(
-                    cnParagraph,
-                    'bg-input',
-                    'h-36 min-w-full resize-y',
-                    'paragraph-placeholder'
-                  )}
-                  {...field}
-                  required
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FooterCard
           mailto={mailto}
           cta1={cta1}
@@ -265,11 +261,9 @@ export const MailCard: React.FC<{
           icon3={icon3}
           href3={href3}
           downloadActive3={downloadActive3}
-          className={
-            (cn(cnMarginTop), 'grid-cols-1 grid-rows-1 md:grid-cols-4')
-          }
+          className={cn(cnMarginTop, 'grid-cols-1 grid-rows-1 md:grid-cols-4')}
         />
-      </form>
-    </Form>
+      </Form>
+    </section>
   );
 };

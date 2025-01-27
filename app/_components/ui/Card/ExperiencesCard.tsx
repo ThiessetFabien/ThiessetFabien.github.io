@@ -3,16 +3,17 @@
  * @description This file exports a component that renders a list of project cards.
  */
 import React from 'react';
+
+import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
 import { ScrollArea } from '@/lib/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
-import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
-import { ExperiencesAccordion } from '@/ui/Accordion/ExperiencesAccordion';
-import { ExperiencesList } from '@/ui/List/ExperiencesList';
+import { cnBorder } from '@/styles/borderStyles';
+import type { CardProps } from '@/types/CardProps';
+import type { ExperienceProps } from '@/types/ExperienceProps';
 import type { ExperiencesProps } from '@/types/ExperiencesProps';
 import type { OtherExperienceProps } from '@/types/OtherExperiencesProps';
-import type { ExperienceProps } from '@/types/ExperienceProps';
-import type { CardProps } from '@/types/CardProps';
-import { cnBorder } from '@/styles/borderStyles';
+import { ExperiencesAccordion } from '@/ui/Accordion/ExperiencesAccordion';
+import { ExperiencesList } from '@/ui/List/ExperiencesList';
 
 /**
  * CardProjects component.
@@ -31,10 +32,13 @@ export const ExperiencesCard: React.FC<{
   className: CardProps['className'];
 }> = ({ experiences, className }) => {
   return (
-    <div className={className}>
+    <section className={className} aria-labelledby='experiences-heading'>
+      <h2 id='experiences-heading' className='sr-only'>
+        Experiences
+      </h2>
       {experiences &&
         experiences.map((experience, index) => (
-          <div key={index}>
+          <article key={index}>
             <ScrollArea
               type='always'
               className={cn(
@@ -69,6 +73,7 @@ export const ExperiencesCard: React.FC<{
                       experience.projectCoordinator as unknown as OtherExperienceProps
                     ).items
                   }
+                  className=''
                 />
               </AccordionItem>
               <AccordionItem value={`nurseAssistant-${index}`}>
@@ -83,11 +88,12 @@ export const ExperiencesCard: React.FC<{
                       experience.nurseAssistant as unknown as OtherExperienceProps
                     ).items
                   }
+                  className=''
                 />
               </AccordionItem>
             </Accordion>
-          </div>
+          </article>
         ))}
-    </div>
+    </section>
   );
 };

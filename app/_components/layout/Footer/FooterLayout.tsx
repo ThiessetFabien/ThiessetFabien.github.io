@@ -1,16 +1,16 @@
 'use client';
 
 import React from 'react';
-import { cn } from '@/lib/utils';
-import { year } from '@/utils/dynamicYear';
-import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
-import { cnPaddingX } from '@/styles/boxModelStyles';
+
+import { ScrollTopToggle } from '@/components/ui/Toggle/ScrollTopToggle';
 import { scrollToTop } from '@/hooks/ScrollToTop';
+import { cn } from '@/lib/utils';
+import { cnPaddingX } from '@/styles/boxModelStyles';
 import { cnFlexBetweenX, cnFlexFullCenter } from '@/styles/flexStyles';
-import { ChevronsUp } from 'lucide-react';
+import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
 import { cnHiddenXs } from '@/styles/hideItemStyles';
 import type { CardProps } from '@/types/CardProps';
-import { Toggle } from '@/lib/components/ui/toggle';
+import { year } from '@/utils/dynamicYear';
 
 /**
  * @file Footer.tsx
@@ -26,7 +26,7 @@ import { Toggle } from '@/lib/components/ui/toggle';
  * <Footer />
  */
 
-export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
+export const Footer: React.FC<{ className: CardProps['className'] }> = ({
   className,
 }) => {
   return (
@@ -44,14 +44,18 @@ export const Footer: React.FC<{ className?: CardProps['className'] }> = ({
           fab<span className='font-light'>uilds</span>
         </h3>
         <p className={cn('w-full flex-wrap', cnSmallText, cnFlexFullCenter)}>
-          &copy;&nbsp;{year}&nbsp;&bull; Built by Fabien Thiesset.{' '}
+          &copy;&nbsp;{year}&nbsp;&bull; Built by Fabien Thiesset.
           <span className={cn('inline', cnHiddenXs)}>&nbsp;&bull;</span>
           <span className='inline'>&nbsp;All rights reserved.</span>
         </p>
-        <Toggle variant='outline' size='sm' onClick={scrollToTop}>
-          <ChevronsUp />
-          <span className='sr-only'>Scroll to top</span>
-        </Toggle>
+        <ScrollTopToggle
+          type='button'
+          variant='outline'
+          size='sm'
+          onClick={scrollToTop}
+          icon='ChevronsUp'
+          aria-label='Scroll to top'
+        />
       </div>
     </footer>
   );

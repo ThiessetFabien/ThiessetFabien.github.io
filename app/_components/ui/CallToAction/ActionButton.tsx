@@ -1,12 +1,13 @@
 import React from 'react';
+
+import { capitalizeFirstLetterOfEachWord } from '@/hooks/FormatText';
+import { IconLoader } from '@/hooks/IconLoader';
 import { Button } from '@/lib/components/ui/button';
 import { cn } from '@/lib/utils';
-import { IconLoader } from '@/hooks/IconLoader';
-import { capitalizeFirstLetterOfEachWord } from '@/hooks/FormatText';
-import { cnSmallText } from '@/styles/fontStyles';
-import { baseUrl } from '@/utils/constants/baseUrl';
+import { cnParagraph } from '@/styles/fontStyles';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
 import type { CardProps } from '@/types/CardProps';
+import { baseUrl } from '@/utils/constants/baseUrl';
 
 /**
  * @file ActionButton.tsx
@@ -23,7 +24,9 @@ import type { CardProps } from '@/types/CardProps';
  * @returns {JSX.Element} The rendered component.
  */
 
-export const ActionButton: React.FC<ActionButtonProps & CardProps> = ({
+export const ActionButton: React.FC<
+  ActionButtonProps & { className: CardProps['className'] }
+> = ({
   cta,
   icon,
   href,
@@ -34,44 +37,69 @@ export const ActionButton: React.FC<ActionButtonProps & CardProps> = ({
   onClick,
   className,
 }) => {
-  const buttonContent = (
-    <Button
-      onClick={onClick}
-      variant={variant}
-      type={type}
-      size={size}
-      className={cn(className, cnSmallText)}
+  const isLink = Boolean(href);
+  const isInternalLink =
+    href?.startsWith('#') || href?.startsWith('tel:') || href?.startsWith('/');
+  const isInternalDocumentLink = href?.startsWith('documents/');
+
+  const linkProps = isLink
+    ? {
+        href:
+          isInternalLink || isInternalDocumentLink ? href : `${baseUrl}${href}`,
+        target: isInternalLink || !isInternalDocumentLink ? '_self' : '_blank',
+        rel: !isInternalLink ? 'noopener noreferrer' : '',
+      }
+    : {};
+
+  const downloadProps = downloadActive ? { download: true } : {};
+
+  const handleClick = () => {
+    if (href) {
+      window.location.href = href;
+    }
+  };
+
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement>
+  ) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleClick();
+    }
+  };
+
+  return isLink ? (
+    <a
+      {...linkProps}
+      {...downloadProps}
+      onClick={onClick || handleClick}
+      aria-label={cta}
+      onKeyDown={handleKeyDown}
+      type={type || 'button'}
+      tabIndex={0}
     >
-      {IconLoader(icon ?? '')}
-      {(cta && capitalizeFirstLetterOfEachWord(cta)) ?? ''}
-    </Button>
-  );
-
-  if (href) {
-    return (
-      <a
-        href={
-          href.startsWith('#') ||
-          href.startsWith('tel:') ||
-          href.startsWith('documents/') ||
-          href.startsWith('/')
-            ? href
-            : `${baseUrl}${href}`
-        }
-        target={
-          href.startsWith('#') ||
-          href.startsWith('tel:') ||
-          href.startsWith('/')
-            ? '_self'
-            : '_blank'
-        }
-        rel='noopener noreferrer'
-        {...(downloadActive ? { download: true } : {})}
+      <Button
+        variant={variant}
+        type={type || 'button'}
+        size={size}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        className={cn(className, cnParagraph)}
       >
-        {buttonContent}
-      </a>
-    );
-  }
-
-  return buttonContent;
+        {IconLoader(icon ?? '')}
+        <span>{cta && capitalizeFirstLetterOfEachWord(cta)}</span>
+      </Button>
+    </a>
+  ) : (
+    <button
+      onClick={onClick && handleClick}
+      onKeyDown={handleKeyDown}
+      aria-label={cta}
+      className={cn(className, cnParagraph)}
+    >
+      <Button variant={variant} type={type || 'button'} size={size}>
+        {IconLoader(icon ?? '')}
+        <span>{cta && capitalizeFirstLetterOfEachWord(cta)}</span>
+      </Button>
+    </button>
+  );
 };
