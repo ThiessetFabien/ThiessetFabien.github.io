@@ -4,13 +4,14 @@
  */
 'use client';
 import React, { useEffect } from 'react';
-import useIntersectionObserver from '@/hooks/IntersectionObserver';
+import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
 import 'leaflet-defaulticon-compatibility';
-import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
-import { cn } from '@/lib/utils';
+
+import useIntersectionObserver from '@/hooks/IntersectionObserver';
 import { useIsClient } from '@/hooks/useIsClient';
+import { cn } from '@/lib/utils';
 import type { LocationEventsProps } from '@/types/LocationEventsProps';
 
 /**

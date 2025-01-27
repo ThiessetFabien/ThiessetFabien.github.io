@@ -1,8 +1,9 @@
+import { ToggleDarkMode } from '@/components/ui/Toggle/DarkModeToggle';
 import { cn } from '@/lib/utils';
-import { ToggleDarkMode } from '@/ui/ToggleDarkMode/ToggleDarkMode';
+import { cnPaddingX } from '@/styles/boxModelStyles';
 import { cnFlexBetweenX } from '@/styles/flexStyles';
 import { cnTitle2, cnTitle2Size } from '@/styles/fontStyles';
-import { cnPaddingX } from '@/styles/boxModelStyles';
+import { CardProps } from '@/types/CardProps.jsx';
 
 /**
  * @file Header.tsx
@@ -17,16 +18,21 @@ import { cnPaddingX } from '@/styles/boxModelStyles';
  * @example
  * <Header className="custom-class" />
  */
-export const Header: React.FC<{ className: string }> = ({ className }) => {
+export const Header: React.FC<{ className: CardProps['className'] }> = ({
+  className,
+}) => {
   return (
-    <header className={className}>
-      <div className={cn('mx-auto max-w-7xl', cnPaddingX, cnFlexBetweenX)}>
+    <header className={className} aria-label='Main header'>
+      <nav
+        className={cn('mx-auto max-w-7xl', cnPaddingX, cnFlexBetweenX)}
+        aria-label='Main navigation'
+      >
         <h2 className={cn(cnTitle2, cnTitle2Size, 'text-center')}>
           {'fab'.toUpperCase()}
           <span className='font-light'>{'uilds'.toUpperCase()}</span>
         </h2>
-        <ToggleDarkMode />
-      </div>
+        <ToggleDarkMode aria-label='Toggle dark mode' />
+      </nav>
     </header>
   );
 };

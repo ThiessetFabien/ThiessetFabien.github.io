@@ -1,5 +1,12 @@
-import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import React, { useEffect, useRef } from 'react';
+
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/hooks/FormatText';
+import { Badge } from '@/lib/components/ui/badge';
 import {
   CardTitle,
   CardDescription,
@@ -8,30 +15,24 @@ import {
   Card,
   CardContent,
 } from '@/lib/components/ui/card';
-import { Badge } from '@/lib/components/ui/badge';
 import { cn } from '@/lib/utils';
-
-import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
-import { CardProps } from '@/types/CardProps';
 import { cnBorder } from '@/styles/borderStyles';
-import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
 import {
   cnPadding,
   cnPaddingBottom,
   cnPaddingX,
   cnSmallSpaceX,
 } from '@/styles/boxModelStyles';
+import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
 import {
   cnLightTextMuted,
   cnParagraph,
   cnSmallText,
   cnTitle3,
 } from '@/styles/fontStyles';
-import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/hooks/FormatText';
+import { CardProps } from '@/types/CardProps';
+import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
+
 import { ActionButton } from '../CallToAction/ActionButton';
 
 /**
@@ -98,13 +99,18 @@ export const ProjectsCard: React.FC<{
                 controls={project.title === 'casalink' ? true : false}
                 controlsList='nodownload'
                 autoPlay={project.title === 'casalink' ? false : true}
-                width={590}
-                height={315}
                 loop={project.title === 'casalink' ? false : true}
                 muted={project.title === 'casalink' ? false : true}
                 className='min-h-1/2 h-auto min-w-full rounded-t-lg object-cover'
               >
+                <track
+                  kind='captions'
+                  srcLang='fr'
+                  src={`videos/${project.videoSrc}`}
+                  label={`${project.title} captions`}
+                />
                 <source src={`videos/${project.videoSrc}`} type='video/mp4' />
+                Your browser does not support the video tag.
               </video>
             )}
             <CardHeader className={cn(cnPadding, 'flex-1')}>

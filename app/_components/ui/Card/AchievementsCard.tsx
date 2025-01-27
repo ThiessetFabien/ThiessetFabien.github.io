@@ -1,29 +1,33 @@
-import type { CardProps } from '@/types/CardProps';
+import {
+  capitalizeFirstLetterOfEachWord,
+  formatSpecialWords,
+} from '@/hooks/FormatText';
 import { IconLoader } from '@/hooks/IconLoader';
 import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
-import {
-  capitalizeFirstLetterOfEachWord,
-  formatSpecialWords,
-} from '@/hooks/FormatText';
 import { cnLightTextMuted } from '@/styles/fontStyles';
+import type { CardProps } from '@/types/CardProps';
 
 export const AchievementsCard: React.FC<{
   achievements: CardProps['achievements'];
   className: CardProps['className'];
 }> = ({ achievements, className }) => {
   return (
-    <ul className={className}>
-      {achievements &&
-        achievements.map((achievement, index) => (
+    <section aria-labelledby='achievements-heading'>
+      <h2 id='achievements-heading' className='sr-only'>
+        Achievements
+      </h2>
+      <ul className={className}>
+        {achievements?.map((achievement, index) => (
           <li key={index} className={cn(cnSmallGap, 'flex')}>
             <div
               className={cn(
                 'flex-shrink-0',
                 index < 2 ? 'text-primary' : 'text-secondary'
               )}
+              aria-hidden='true'
             >
               {IconLoader(achievement.icon || '')}
             </div>
@@ -34,12 +38,15 @@ export const AchievementsCard: React.FC<{
                 )}
                 <span className={cn(cnSmallText, cnLightTextMuted)}>
                   &nbsp;&bull;&nbsp;
-                  {capitalizeFirstLetterOfEachWord(achievement.date)}
+                  <time dateTime={achievement.date}>
+                    {capitalizeFirstLetterOfEachWord(achievement.date)}
+                  </time>
                 </span>
               </p>
             </div>
           </li>
         ))}
-    </ul>
+      </ul>
+    </section>
   );
 };

@@ -2,14 +2,14 @@
  * @file CardProps.tsx
  * @description This file contains the type definition for the props used in various card components.
  */
-import type { TechnologieProps } from './TechnologieProps';
 import type { AchievementProps } from './AchievementProps';
+import type { ActionButtonProps } from './ActionButtonProps';
 import type { ExperiencesProps } from './ExperiencesProps';
 import type { OtherExperienceProps } from './OtherExperiencesProps';
 import type { ProjectProps } from './ProjectProps';
+import type { TechnologieProps } from './TechnologieProps';
 import type { TestimonialProps } from './TestimonialProps';
 import type { TopTechnologieProps } from './Top3TechnologieProps';
-import type { ActionButtonProps } from './ActionButtonProps';
 
 /**
  * CardProps type.

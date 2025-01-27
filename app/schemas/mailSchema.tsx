@@ -16,10 +16,10 @@ export const createStringSchema = (
 
 export const formSchema = z.object({
   name: createStringSchema(2, 50, 'name').nonempty('Name is required'),
-  type: z.enum(['offer', 'collaboration', 'question', 'other'], {
+  type: z.enum(['Offer', 'Inquiry', 'Other'], {
     required_error: 'You need to select a notification type.',
   }),
-  mail: z.string().email('Invalid email address'),
+  email: z.string().email('Invalid email address'),
   phone: createStringSchema(10, 15, 'phone').nonempty('Phone is required'),
   message: createStringSchema(10, 500, 'message').nonempty(
     'Message is required'

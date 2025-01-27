@@ -3,12 +3,13 @@
  * @description This component renders call-to-action buttons with dynamic icons.
  */
 import React from 'react';
-import { ActionButton } from '@/ui/CallToAction/ActionButton';
-import type { CardProps } from '@/types/CardProps';
-import type { ActionButtonProps } from '@/types/ActionButtonProps';
+
+import { useIsXs } from '@/hooks/useMediaQueries';
 import { cn } from '@/lib/utils';
 import { cnSmallGap } from '@/styles/boxModelStyles';
-import { useIsXs } from '@/hooks/useMediaQueries';
+import type { ActionButtonProps } from '@/types/ActionButtonProps';
+import type { CardProps } from '@/types/CardProps';
+import { ActionButton } from '@/ui/CallToAction/ActionButton';
 
 /**
  * FooterCard component props.
@@ -42,15 +43,7 @@ export const FooterCard: React.FC<{
   icon3?: CardProps['icon3'];
   href3?: CardProps['href3'];
   downloadActive3?: CardProps['downloadActive3'];
-  cta4?: CardProps['cta4'];
-  icon4?: CardProps['icon4'];
-  href4?: CardProps['href4'];
-  downloadActive4?: CardProps['downloadActive4'];
-  cta5?: CardProps['cta5'];
-  icon5?: CardProps['icon5'];
-  href5?: CardProps['href5'];
-  downloadActive5?: CardProps['downloadActive5'];
-  className: string;
+  className: CardProps['className'];
 }> = ({
   mailto,
   cta1,
@@ -85,6 +78,7 @@ export const FooterCard: React.FC<{
           downloadActive={downloadActive || undefined}
           variant={variant}
           type={mailto ? 'submit' : 'button'}
+          aria-label={cta || ''}
           className={className}
         />
       )
@@ -97,7 +91,7 @@ export const FooterCard: React.FC<{
   }
 
   return (
-    <div className={cn('flex flex-wrap', cnSmallGap, className)}>
+    <footer className={cn('flex flex-wrap', cnSmallGap, className)}>
       {renderActionButton(
         icon1,
         href1,
@@ -120,7 +114,7 @@ export const FooterCard: React.FC<{
         downloadActive3,
         'outline'
       )}
-    </div>
+    </footer>
   );
 };
 

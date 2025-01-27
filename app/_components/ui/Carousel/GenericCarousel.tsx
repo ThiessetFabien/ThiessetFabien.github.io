@@ -2,16 +2,16 @@
  * @file GenericCarousel.tsx
  * @description This file exports a generic carousel component that can be used for different types of carousels.
  */
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
+import { EmblaCarouselType } from 'embla-carousel';
 import AutoPlay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
+import { Pause, Play } from 'lucide-react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+
+import { useIsClient } from '@/hooks/useIsClient';
+import { Progress } from '@/lib/components/ui/progress';
+import { Toggle } from '@/lib/components/ui/toggle';
 import { cn } from '@/lib/utils';
-import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
-import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
-import {
-  SelectedSnapDisplay,
-  useSelectedSnapDisplay,
-} from '@/ui/Carousel/Buttons/SelectedSnapDisplay';
 import {
   manipulationStyle,
   cnPaddingX,
@@ -25,13 +25,15 @@ import {
   cnFlexCenterY,
   cnFlexCol,
 } from '@/styles/flexStyles';
-import { useIsClient } from '@/hooks/useIsClient';
-import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
 import type { CardProps } from '@/types/CardProps';
-import { Toggle } from '@/lib/components/ui/toggle';
-import { Pause, Play } from 'lucide-react';
-import { EmblaCarouselType } from 'embla-carousel';
-import { Progress } from '@/lib/components/ui/progress';
+import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
+import {
+  SelectedSnapDisplay,
+  useSelectedSnapDisplay,
+} from '@/ui/Carousel/Buttons/SelectedSnapDisplay';
+
+import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
+import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
 
 /**
  * GenericCarousel component.
