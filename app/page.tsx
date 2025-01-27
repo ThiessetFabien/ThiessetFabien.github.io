@@ -8,10 +8,6 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-import { ExperiencesCard } from '@/components/ui/Card/ExperiencesCard';
-import { FooterCard } from '@/components/ui/Card/LayoutCard/FooterCard';
-import { MailCard } from '@/components/ui/Card/MailCard';
-import { ProjectsCard } from '@/components/ui/Card/ProjectsCard';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
@@ -25,30 +21,34 @@ import {
   cnSmallGap,
   cnSpaceY,
 } from '@/styles/boxModelStyles';
+import { cnGap, cnPadding } from '@/styles/boxModelStyles';
+import { cnFlexCol } from '@/styles/flexStyles';
 import { cnParagraph } from '@/styles/fontStyles';
-import { AchievementsCard } from '@/ui/Card/AchievementsCard';
-import { HeaderCard } from '@/ui/Card/LayoutCard/HeaderCard';
-import { PresentationCard } from '@/ui/Card/PresentationCard';
+import type { CardProps } from '@/types/CardProps';
+import { AchievementsCard } from '@/ui/Cards/AchievementsCard';
+import { ExperiencesCard } from '@/ui/Cards/ExperiencesCard';
+import { FooterCard } from '@/ui/Cards/LayoutCards/FooterCard';
+import { HeaderCard } from '@/ui/Cards/LayoutCards/HeaderCard';
+import { MailCard } from '@/ui/Cards/MailCard';
+import { PresentationCard } from '@/ui/Cards/PresentationCard';
+import { ProjectsCard } from '@/ui/Cards/ProjectsCard';
+import SkillsCard from '@/ui/Cards/SkillsCard';
 import fetchData from '@api/data.json';
 
-import SkillsCard from './_components/ui/Card/SkillsCard';
 import { useIsClient } from './hooks/useIsClient';
-import { cnGap, cnPadding } from './styles/boxModelStyles';
-import { cnFlexCol } from './styles/flexStyles';
-import type { CardProps } from './types/CardProps';
 
 /**
  * HomePage component.
  * @returns {JSX.Element} The rendered component.
  */
 
-const LazyMap = dynamic(() => import('@/ui/Card/MapCard'), {
+const LazyMap = dynamic(() => import('@/ui/Cards/MapCard'), {
   ssr: false,
   loading: () => <p>Loading map...</p>,
 });
 
 const LazyTestimonialsCard = dynamic(
-  () => import('@/ui/Carousel/TestimonialsCarousel'),
+  () => import('@/ui/Carousels/TestimonialsCarousel'),
   {
     ssr: false,
   }
@@ -85,14 +85,6 @@ const HomePage: React.FC = (): JSX.Element => {
               icon3={card.icon3}
               href3={card.href3}
               downloadActive3={card.downloadActive3}
-              cta4={card.cta4}
-              icon4={card.icon4}
-              href4={card.href4}
-              downloadActive4={card.downloadActive4}
-              cta5={card.cta5}
-              icon5={card.icon5}
-              href5={card.href5}
-              downloadActive5={card.downloadActive5}
               className={cn(cnGap, cnPadding, 'w-full space-y-0')}
             />
           )}

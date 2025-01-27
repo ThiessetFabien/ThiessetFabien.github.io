@@ -13,7 +13,7 @@ import { Progress } from '@/lib/components/ui/progress';
 import { Toggle } from '@/lib/components/ui/toggle';
 import { cn } from '@/lib/utils';
 import {
-  manipulationStyle,
+  cnManipulation,
   cnPaddingX,
   cnPaddingBottom,
   cnSmallSpaceX,
@@ -30,7 +30,7 @@ import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
 import {
   SelectedSnapDisplay,
   useSelectedSnapDisplay,
-} from '@/ui/Carousel/Buttons/SelectedSnapDisplay';
+} from '@/ui/Carousels/Buttons/SelectedSnapDisplay';
 
 import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
 import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';
@@ -145,13 +145,13 @@ export const GenericCarousel: React.FC<
             <PrevButton
               onClick={onPrevButtonClick}
               disabled={prevBtnDisabled}
-              className={cn(manipulationStyle, 'px-0')}
+              className={cn(cnManipulation, 'px-0')}
               aria-label='Previous slide'
             />
             <NextButton
               onClick={onNextButtonClick}
               disabled={nextBtnDisabled}
-              className={cn(manipulationStyle, 'px-0')}
+              className={cn(cnManipulation, 'px-0')}
               aria-label='Next slide'
             />
           </div>

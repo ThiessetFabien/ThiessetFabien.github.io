@@ -46,24 +46,18 @@ export const ActionButton: React.FC<
     ? {
         href:
           isInternalLink || isInternalDocumentLink ? href : `${baseUrl}${href}`,
-        target: isInternalLink || !isInternalDocumentLink ? '_self' : '_blank',
+        target: isInternalLink ? '_self' : '_blank',
         rel: !isInternalLink ? 'noopener noreferrer' : '',
       }
     : {};
 
   const downloadProps = downloadActive ? { download: true } : {};
 
-  const handleClick = () => {
-    if (href) {
-      window.location.href = href;
-    }
-  };
-
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement>
   ) => {
     if (event.key === 'Enter' || event.key === ' ') {
-      handleClick();
+      onClick?.(event as unknown as React.MouseEvent<HTMLButtonElement>);
     }
   };
 
@@ -71,35 +65,36 @@ export const ActionButton: React.FC<
     <a
       {...linkProps}
       {...downloadProps}
-      onClick={onClick || handleClick}
+      onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
       aria-label={cta}
       onKeyDown={handleKeyDown}
-      type={type || 'button'}
+      role='button'
       tabIndex={0}
     >
       <Button
         variant={variant}
         type={type || 'button'}
         size={size}
-        onClick={handleClick}
+        onClick={onClick}
         onKeyDown={handleKeyDown}
-        className={cn(className, cnParagraph)}
+        className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
       >
         {IconLoader(icon ?? '')}
         <span>{cta && capitalizeFirstLetterOfEachWord(cta)}</span>
       </Button>
     </a>
   ) : (
-    <button
-      onClick={onClick && handleClick}
+    <Button
+      variant={variant}
+      type={type || 'button'}
+      size={size}
+      onClick={onClick}
       onKeyDown={handleKeyDown}
       aria-label={cta}
-      className={cn(className, cnParagraph)}
+      className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
     >
-      <Button variant={variant} type={type || 'button'} size={size}>
-        {IconLoader(icon ?? '')}
-        <span>{cta && capitalizeFirstLetterOfEachWord(cta)}</span>
-      </Button>
-    </button>
+      {IconLoader(icon ?? '')}
+      <span>{cta && capitalizeFirstLetterOfEachWord(cta)}</span>
+    </Button>
   );
 };

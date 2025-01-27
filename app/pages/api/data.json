@@ -70,7 +70,7 @@
     "cta1": "view my works",
     "icon1": "Eye",
     "href1": "#card-3",
-    "cta2": "explore more of my work",
+    "cta2": "explore all",
     "icon2": "Github",
     "href2": "www.github.com/ThiessetFabien?tab=repositories"
   },
@@ -148,10 +148,10 @@
     "href1": "#card-9",
     "cta2": "see more",
     "icon2": "Eye",
-    "href2": "documents/CV.pdf",
+    "href2": "documents/resume.pdf",
     "cta3": "resume",
     "icon3": "Download",
-    "href3": "documents/CV.pdf",
+    "href3": "documents/resume.pdf",
     "downloadActive3": true
   },
   {
@@ -162,6 +162,8 @@
         "title": "portfolio",
         "organization": "server side rendering",
         "description": "showcase site of my work, highlighting my projects and skills in web development.",
+        "imageSrc": "images/portfolio.webp",
+        "imageAlt": "Portfolio",
         "videoSrc": "852421-sd_640_360_30fps.mp4",
         "website": "fabuilds.netlify.app/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
@@ -169,8 +171,10 @@
       },
       {
         "title": "casalink",
-        "organization": "single page app",
+        "organization": "single page application",
         "description": "family planning application for managing tasks and events with delagated for children.",
+        "imageSrc": "images/casalink.webp",
+        "imageAlt": "Casalink",
         "videoSrc": "casalink.mp4",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
         "file": "documents/CDC-Casalink.pdf",

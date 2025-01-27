@@ -1,6 +1,7 @@
 import { EmblaCarouselType } from 'embla-carousel';
 import React, {
   ComponentPropsWithRef,
+  memo,
   useCallback,
   useEffect,
   useState,
@@ -8,7 +9,7 @@ import React, {
 
 import { cn } from '@/lib/utils';
 import { ActionButtonProps } from '@/types/ActionButtonProps.jsx';
-import { ActionButton } from '@/ui/CallToAction/ActionButton';
+import { ActionButton } from '@/ui/Buttons/ActionButton';
 
 type UsePrevNextButtonsType = {
   prevBtnDisabled: boolean;
@@ -55,38 +56,37 @@ export const usePrevNextButtons = (
 
 type PropType = ComponentPropsWithRef<'button'>;
 
-export const PrevButton: React.FC<PropType & ActionButtonProps> = (
-  props,
-  ClassName
-) => {
-  const { ...restProps } = props;
+export const PrevButton: React.FC<PropType & ActionButtonProps> = memo(
+  ({ className, ...restProps }) => {
+    return (
+      <ActionButton
+        icon='ArrowLeft'
+        type='button'
+        variant='outline'
+        size='icon'
+        aria-label='Previous slide'
+        className={cn(className, 'hover:text-accent-foreground')}
+        {...restProps}
+      />
+    );
+  }
+);
 
-  return (
-    <ActionButton
-      icon='ArrowLeft'
-      type='button'
-      variant='outline'
-      size='icon'
-      className={cn(ClassName, 'hover:text-accent-foreground')}
-      {...restProps}
-    ></ActionButton>
-  );
-};
+export const NextButton: React.FC<PropType & ActionButtonProps> = memo(
+  ({ className, ...restProps }) => {
+    return (
+      <ActionButton
+        icon='ArrowRight'
+        type='button'
+        variant='outline'
+        size='icon'
+        aria-label='Next slide'
+        className={cn(className, 'hover:text-accent-foreground')}
+        {...restProps}
+      />
+    );
+  }
+);
 
-export const NextButton: React.FC<PropType & ActionButtonProps> = (
-  props,
-  ClassName
-) => {
-  const { ...restProps } = props;
-
-  return (
-    <ActionButton
-      icon='ArrowRight'
-      type='button'
-      variant='outline'
-      size='icon'
-      className={cn(ClassName, 'hover:text-accent-foreground')}
-      {...restProps}
-    />
-  );
-};
+PrevButton.displayName = 'PrevButton';
+NextButton.displayName = 'NextButton';
