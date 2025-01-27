@@ -2,12 +2,13 @@
   "root": true,
   "extends": [
     "next",
-    "prettier",
     "next/core-web-vitals",
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["@next/next", "@typescript-eslint", "import", "jsx-a11y"],
+  "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
   "parser": "@typescript-eslint/parser",
   "overrides": [
     {
@@ -22,12 +23,20 @@
     }
   ],
   "rules": {
-    "react/react-in-jsx-scope": 0,
-    "react/jsx-filename-extension": [2, { "extensions": [".ts", ".tsx"] }],
-    "import/extensions": [
+    "import/order": [
       "error",
-      "ignorePackages",
-      { "ts": "never", "tsx": "never", "js": "never", "jsx": "never" }
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
     ],
     "react/jsx-props-no-spreading": 0,
     "jsx-a11y/label-has-associated-control": [2, { "assert": "either" }],
@@ -40,5 +49,12 @@
     "@next/next/no-html-link-for-pages": "error",
     "@next/next/no-sync-scripts": "error",
     "@typescript-eslint/no-unused-vars": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }
