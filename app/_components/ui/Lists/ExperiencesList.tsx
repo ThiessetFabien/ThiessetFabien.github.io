@@ -21,7 +21,6 @@ export const ExperiencesList: React.FC<{
             cnMarginX,
             'h-2 w-2 translate-y-2 rounded-full bg-ring'
           )}
-          // className={cn(cnMarginRight, 'shrink-0', 'text-primary')}
         ></div>
         <div className={cn(cnFlexCol)}>
           <h3 className={cn(cnTitle3, 'xs:flex xs:flex-row')}>

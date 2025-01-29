@@ -46,19 +46,19 @@ export function ToggleDarkMode() {
           variant='outline'
           size='sm'
           onClick={handleToggle}
-          className='relative'
+          className='relative rounded-full'
           data-state={resolvedTheme === 'dark' ? 'on' : 'off'}
         >
           {resolvedTheme === 'dark' ? (
-            <Moon
-              className={cn(
-                'rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0'
-              )}
-            />
-          ) : (
             <Sun
               className={cn(
                 'absolute rotate-90 scale-100 transition-all dark:rotate-0 dark:scale-0'
+              )}
+            />
+          ) : (
+            <Moon
+              className={cn(
+                'rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0'
               )}
             />
           )}
