@@ -10,14 +10,7 @@ import { Poppins } from '@/fonts/Poppins';
 import { cn } from '@/lib/utils';
 import '@/styles/reset.css';
 import '@/styles/globals.css';
-import {
-  cnMarginX,
-  cnPadding,
-  cnPaddingX,
-  cnPaddingY,
-  cnSmallMarginX,
-  cnSmallPaddingX,
-} from '@/styles/boxModelStyles';
+import { cnMarginX, cnPaddingY } from '@/styles/boxModelStyles';
 import { cnGap } from '@/styles/boxModelStyles';
 import {
   cnFlexBetweenX,

@@ -22,7 +22,7 @@ import {
   cnSpaceY,
 } from '@/styles/boxModelStyles';
 import { cnGap, cnPadding } from '@/styles/boxModelStyles';
-import { cnFlexBetweenX, cnFlexBetweenY, cnFlexCol } from '@/styles/flexStyles';
+import { cnFlexBetweenY, cnFlexCol } from '@/styles/flexStyles';
 import { cnParagraph } from '@/styles/fontStyles';
 import type { CardProps } from '@/types/CardProps';
 import { AchievementsCard } from '@/ui/Cards/AchievementsCard';
