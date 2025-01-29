@@ -52,7 +52,7 @@ export const SkillsCard: React.FC<{
             key={index}
             className={cn(
               cnBorderNone,
-              'flex flex-auto items-center',
+              'flex flex-auto items-center p-0',
               'h-auto',
               'max-w-[calc((100%-1.5rem)/4)]',
               'xxs:min-w-[calc((100%-3rem)/4)]',
@@ -111,7 +111,7 @@ export const SkillsCard: React.FC<{
             cnDescription,
             cnLightTextMuted,
             'w-full flex-1',
-            'relative top-1.5 mb-1.5'
+            'relative top-1.5'
           )}
         >
           {content && typeof content === 'string'
@@ -120,7 +120,7 @@ export const SkillsCard: React.FC<{
         </CardDescription>
         <section
           className={cn(
-            'grid w-full auto-rows-auto gap-x-0.5',
+            'grid w-full auto-rows-auto py-0',
             'grid-cols-2',
             'xxs:grid-cols-3',
             'md:grid-cols-6',
@@ -133,6 +133,7 @@ export const SkillsCard: React.FC<{
               variant='outline'
               className={cn(
                 className,
+                cnBorderNone,
                 'gap-1',
                 'w-full',
                 'relative top-1.5 mb-1.5'
@@ -148,7 +149,7 @@ export const SkillsCard: React.FC<{
                     cnSizeIcon,
                     tech.slug.includes('express') ? 'filter-white' : ''
                   )}
-                  priority
+                  loading='lazy'
                 />
               </div>
               <p className={cn(cnParagraph, 'text-center')}>

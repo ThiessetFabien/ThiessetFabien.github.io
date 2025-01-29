@@ -12,7 +12,11 @@ import {
   AvatarImage,
 } from '@/lib/components/ui/avatar';
 import { cn } from '@/lib/utils';
-import { cnPaddingX, cnSmallSpaceY } from '@/styles/boxModelStyles';
+import {
+  cnPaddingBottom,
+  cnPaddingX,
+  cnSmallSpaceY,
+} from '@/styles/boxModelStyles';
 import { cnFlexCol } from '@/styles/flexStyles';
 import {
   cnLightTextMuted,
@@ -97,6 +101,7 @@ export const TestimonialsCarousel: React.FC<{
         'flex-wrap justify-between',
         cnSmallSpaceY,
         cnPaddingX,
+        cnPaddingBottom,
         'min-h-full min-w-full'
       )}
     >

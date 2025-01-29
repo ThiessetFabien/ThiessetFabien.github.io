@@ -85,7 +85,7 @@ export const MailCard: React.FC<{
     toast({
       title: 'You submitted the following values:',
       description: (
-        <pre className='bg-background0 mt-2 w-[340px] rounded-md p-4'>
+        <pre className='bg-background0 mt-2 w-[340px] p-4'>
           <code className='text-foreground'>
             {JSON.stringify(data, null, 2)}
           </code>

@@ -57,7 +57,7 @@ export default function RootLayout({
           'font-sans text-foreground',
           cnFlexFullCenter,
           cnFlexCol,
-          'bg-lightImage bg-cover bg-center bg-no-repeat opacity-95'
+          'bg-gradient-to-br from-secondary to-primary'
         )}
       >
         <ThemeProvider
