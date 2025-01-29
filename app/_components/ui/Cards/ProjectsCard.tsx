@@ -1,4 +1,3 @@
-import { Code, Link } from 'lucide-react';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -19,27 +18,15 @@ import { Tabs, TabsList, TabsTrigger } from '@/lib/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import { cnBorder, cnBorderNone } from '@/styles/borderStyles';
 import {
-  cnGap,
-  cnPadding,
-  cnPaddingBottom,
-  cnPaddingTop,
-  cnPaddingX,
-  cnPaddingY,
   cnSmallGap,
-  cnSmallMarginRight,
   cnSmallPadding,
-  cnSmallPaddingX,
-  cnSmallSpaceX,
   cnSmallSpaceY,
-  cnSpaceY,
 } from '@/styles/boxModelStyles';
 import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
 import { cnParagraph, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
-import { cnSizeFull, cnSizeIcon } from '@/styles/sizeStyles';
+import { cnSizeFull } from '@/styles/sizeStyles';
 import { CardProps } from '@/types/CardProps';
-import { ActionButton } from '@/ui/Buttons/ActionButton';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
 
 /**
  * @file CardProjects.tsx
