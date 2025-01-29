@@ -52,7 +52,7 @@ export const Map: React.FC = () => {
           center={francePosition}
           zoom={4}
           scrollWheelZoom={false}
-          className={'h-full min-h-80 w-full rounded-xl'}
+          className={'h-full min-h-80 w-full'}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
