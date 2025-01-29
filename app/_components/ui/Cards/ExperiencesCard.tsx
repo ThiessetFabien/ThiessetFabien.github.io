@@ -42,7 +42,6 @@ export const ExperiencesCard: React.FC<{
             type='always'
             className={cn(
               cnBorder,
-              'rounded-xl',
               'w-full',
               'h-[10.25rem]',
               'xxs:h-[6.25rem]',

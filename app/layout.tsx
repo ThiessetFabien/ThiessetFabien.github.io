@@ -10,9 +10,13 @@ import { Poppins } from '@/fonts/Poppins';
 import { cn } from '@/lib/utils';
 import '@/styles/reset.css';
 import '@/styles/globals.css';
-import { cnPadding } from '@/styles/boxModelStyles';
+import { cnMarginX, cnPaddingY } from '@/styles/boxModelStyles';
 import { cnGap } from '@/styles/boxModelStyles';
-import { cnFlexFullCenter } from '@/styles/flexStyles';
+import {
+  cnFlexBetweenX,
+  cnFlexCol,
+  cnFlexFullCenter,
+} from '@/styles/flexStyles';
 
 import { metadata } from './metadata';
 
@@ -22,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='fr' dir='ltr' className={'w-full'}>
+    <html lang='fr' dir='ltr' className='w-full'>
       <Head>
         <title>{`${metadata.title}`}</title>
         <meta name='description' content={`${metadata.description}`} />
@@ -42,8 +46,11 @@ export default function RootLayout({
           Poppins.variable,
           Expletus_Sans.variable,
           'container relative z-0',
-          'h-100% container mx-auto min-w-full',
-          'bg-background font-sans text-foreground'
+          'h-100% -full m-auto',
+          'font-sans text-foreground',
+          cnFlexFullCenter,
+          cnFlexCol,
+          'bg-gradient-to-br from-secondary to-primary'
         )}
       >
         <ThemeProvider
@@ -52,11 +59,19 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header className={cn('h-full', cnPadding)} />
+          <Header
+            className={cn(
+              'm-auto h-full max-w-7xl rounded-b-xl',
+              cnPaddingY,
+              cnMarginX,
+              cnFlexBetweenX,
+              'bg-background'
+            )}
+          />
           <main
             className={cn(
               cnGap,
-              cnPadding,
+              cnPaddingY,
               'mx-auto max-w-7xl',
               'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
             )}
@@ -65,10 +80,10 @@ export default function RootLayout({
           </main>
           <Footer
             className={cn(
-              cnFlexFullCenter,
-              cnPadding,
-              'text-center',
-              'h-full min-w-full'
+              cnPaddingY,
+              cnFlexBetweenX,
+              'h-full',
+              'm-auto max-w-7xl rounded-t-xl bg-background'
             )}
           />
         </ThemeProvider>

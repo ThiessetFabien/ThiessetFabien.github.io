@@ -1,4 +1,3 @@
-import { Code, Link } from 'lucide-react';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -17,19 +16,17 @@ import {
 } from '@/lib/components/ui/card';
 import { Tabs, TabsList, TabsTrigger } from '@/lib/components/ui/tabs';
 import { cn } from '@/lib/utils';
-import { cnBorder } from '@/styles/borderStyles';
+import { cnBorder, cnBorderNone } from '@/styles/borderStyles';
 import {
-  cnPaddingBottom,
-  cnSmallPaddingX,
-  cnSmallSpaceX,
+  cnSmallGap,
+  cnSmallPadding,
+  cnSmallSpaceY,
 } from '@/styles/boxModelStyles';
 import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
-import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
-import { cnSizeFull, cnSizeIcon } from '@/styles/sizeStyles';
+import { cnParagraph, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
+import { cnSizeFull } from '@/styles/sizeStyles';
 import { CardProps } from '@/types/CardProps';
-import { ActionButton } from '@/ui/Buttons/ActionButton';
 import { baseUrl } from '@/utils/constants/baseUrl';
-import { dynamicMarginBottom } from '@/utils/dynamicMarginBottom';
 
 /**
  * @file CardProjects.tsx
@@ -77,14 +74,81 @@ export const ProjectsCard: React.FC<{
           className={cn(
             cnFlexCol,
             cnBorder,
-            dynamicMarginBottom(projectIndex),
-            'col-span-1 min-w-full bg-popover',
-            cnSizeFull
+            cnSmallPadding,
+            cnSmallSpaceY,
+            'rounded-none bg-popover',
+            'col-span-1 xl:max-w-none'
           )}
         >
           <CardHeader className='p-0'>
+            <CardTitle className={cn('flex min-h-fit items-center')}>
+              <Tabs defaultValue={project.title} className='w-full'>
+                <TabsList
+                  className={cn(
+                    'grid h-fit w-full',
+                    project.file ? 'grid-cols-3' : 'grid-cols-2'
+                  )}
+                >
+                  <TabsTrigger value={project.title} className='p-0'>
+                    <a
+                      href={
+                        project.website
+                          ? `${baseUrl}${project.website}`
+                          : undefined
+                      }
+                      target='_blank'
+                      rel='noreferrer noopener'
+                    >
+                      <p
+                        className={cn(
+                          'flex-row',
+                          'gap-1',
+                          project.website !== undefined
+                            ? 'hover:text-accent hover:underline'
+                            : '',
+                          cnTitle3
+                        )}
+                      >
+                        {capitalizeFirstLetterOfPhrase(
+                          formatSpecialWords(project.title)
+                        )}
+                      </p>
+                    </a>
+                  </TabsTrigger>
+                  <TabsTrigger value={project.github} className='p-0'>
+                    <a
+                      href={`${baseUrl}${project.github}`}
+                      target='_blank'
+                      rel='noreferrer noopener'
+                    >
+                      <p
+                        className={cn(
+                          cnFlexBetweenX,
+                          'gap-1 hover:text-secondary hover:underline'
+                        )}
+                      >
+                        <span>Code</span>
+                      </p>
+                    </a>
+                  </TabsTrigger>
+                  {project.file && (
+                    <TabsTrigger value={project.file} className='p-0'>
+                      <a href={`${project.file}`} target='_blank'>
+                        <p
+                          className={cn(
+                            'gap-1 hover:text-secondary hover:underline'
+                          )}
+                        >
+                          Spec.
+                        </p>
+                      </a>
+                    </TabsTrigger>
+                  )}
+                </TabsList>
+              </Tabs>
+            </CardTitle>
             {project.imageSrc && project.imageAlt && (
-              <figure>
+              <figure className={cn(cnSizeFull)}>
                 {!videoLoaded[projectIndex] && (
                   <Image
                     src={`/${project.imageSrc}`}
@@ -92,7 +156,7 @@ export const ProjectsCard: React.FC<{
                     width={590}
                     height={315}
                     priority
-                    className='sm:min-h-1/2 max-h-32 min-w-full rounded-t-xl object-cover sm:max-h-none'
+                    className='h-fit max-h-full min-h-fit min-w-full rounded-none object-cover object-center xl:min-h-full'
                   />
                 )}
                 <video
@@ -110,7 +174,7 @@ export const ProjectsCard: React.FC<{
                   loop={project.title === 'casalink' ? false : true}
                   muted={project.title === 'casalink' ? false : true}
                   className={cn(
-                    'sm:min-h-1/2 max-h-32 min-w-full rounded-t-xl object-cover sm:max-h-none',
+                    'max-h-full min-h-fit min-w-full rounded-none object-cover object-center xl:min-h-full',
                     videoLoaded[projectIndex] ? '' : 'hidden'
                   )}
                 >
@@ -121,112 +185,24 @@ export const ProjectsCard: React.FC<{
                 <figcaption className='sr-only'>{project.imageAlt}</figcaption>
               </figure>
             )}
-            <CardTitle
-              className={cn(
-                'flex items-center',
-                cnPaddingBottom,
-                cnSmallSpaceX
-              )}
-            >
-              <Tabs defaultValue={project.title} className='w-full'>
-                <TabsList
-                  className={cn(
-                    'grid w-full',
-                    project.website ? 'grid-cols-2' : 'grid-cols-1'
-                  )}
-                >
-                  <TabsTrigger value={project.title}>
-                    <a
-                      href={
-                        project.website
-                          ? `${baseUrl}${project.website}`
-                          : `${baseUrl}${project.github}`
-                      }
-                      target='_blank'
-                      rel='noreferrer noopener'
-                    >
-                      <p
-                        className={cn(
-                          'flex-row',
-                          cnFlexBetweenX,
-                          'gap-1 hover:underline'
-                        )}
-                      >
-                        {!project.website ? (
-                          <Code className={cnSizeIcon} />
-                        ) : (
-                          <Link className={cnSizeIcon} />
-                        )}
-                        <span>
-                          {capitalizeFirstLetterOfPhrase(
-                            project.website
-                              ? project.title.toUpperCase()
-                              : `repository of ${project.title.toUpperCase()}`
-                          )}
-                        </span>
-                      </p>
-                    </a>
-                  </TabsTrigger>
-                  {project.github && project.website && (
-                    <TabsTrigger
-                      value={project.website ? project.github : project.title}
-                    >
-                      <a
-                        href={`${baseUrl}${project.github}`}
-                        target='_blank'
-                        rel='noreferrer noopener'
-                      >
-                        <p
-                          className={cn(
-                            'flex-row-reverse',
-                            cnFlexBetweenX,
-                            'gap-1 hover:underline'
-                          )}
-                        >
-                          <span>Repository</span>
-                          <Code size={14} />
-                        </p>
-                      </a>
-                    </TabsTrigger>
-                  )}
-                </TabsList>
-              </Tabs>
-            </CardTitle>
           </CardHeader>
-          <CardContent
-            className={cn(
-              cnParagraph,
-              'flex-auto',
-              cnFlexCol,
-              'justify-between'
-            )}
-          >
-            {capitalizeFirstLetterOfPhrase(
-              formatSpecialWords(project.description)
-            )}
-            {project.file && (
-              <ActionButton
-                cta='See the specifications'
-                icon='FileCog'
-                href={`${project.file}`}
-                variant='link'
-                className={cn(cnSmallText, 'border-none pl-0')}
-              />
-            )}
+          <CardContent className={cn(cnParagraph, 'max-w-prose px-0 pb-0')}>
+            <p>
+              {capitalizeFirstLetterOfPhrase(
+                formatSpecialWords(project.description)
+              )}
+            </p>
           </CardContent>
-          <CardFooter
-            className={cn(
-              cnFlexBetweenX,
-              cnSmallPaddingX,
-              cnPaddingBottom,
-              'h-auto flex-wrap'
-            )}
-          >
+          <CardFooter className={cn('h-fit flex-wrap px-0 pb-0', cnSmallGap)}>
             {project.tags.map((tag, tagIndex) => (
               <Badge
                 key={tagIndex}
                 variant='outline'
-                className={cn('rounded-xl', cnSmallText, 'font-light')}
+                className={cn(
+                  cnSmallText,
+                  cnBorderNone,
+                  'rounded-none p-0 font-light'
+                )}
               >
                 <p>
                   {capitalizeFirstLetterOfEachWord(

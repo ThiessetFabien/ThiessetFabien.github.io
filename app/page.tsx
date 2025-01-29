@@ -22,7 +22,7 @@ import {
   cnSpaceY,
 } from '@/styles/boxModelStyles';
 import { cnGap, cnPadding } from '@/styles/boxModelStyles';
-import { cnFlexCol } from '@/styles/flexStyles';
+import { cnFlexBetweenY, cnFlexCol } from '@/styles/flexStyles';
 import { cnParagraph } from '@/styles/fontStyles';
 import type { CardProps } from '@/types/CardProps';
 import { AchievementsCard } from '@/ui/Cards/AchievementsCard';
@@ -36,6 +36,7 @@ import SkillsCard from '@/ui/Cards/SkillsCard';
 import fetchData from '@api/data.json';
 
 import { useIsClient } from './hooks/useIsClient';
+import { cnSizeFull } from './styles/sizeStyles';
 
 /**
  * HomePage component.
@@ -64,7 +65,7 @@ const HomePage: React.FC = (): JSX.Element => {
         <Card
           key={index}
           id={`card-${index}`}
-          className={cn('flex h-full w-full', cnFlexCol, card.colSpan)}
+          className={cn(cnSizeFull, cnFlexCol, card.colSpan)}
         >
           {card.imageSrc && !card.map && (
             <PresentationCard
@@ -85,7 +86,12 @@ const HomePage: React.FC = (): JSX.Element => {
               icon3={card.icon3}
               href3={card.href3}
               downloadActive3={card.downloadActive3}
-              className={cn(cnGap, cnPadding, 'w-full space-y-0')}
+              className={cn(
+                cnGap,
+                cnPadding,
+                cnFlexBetweenY,
+                'w-full flex-auto space-y-0'
+              )}
             />
           )}
           {!card.imageSrc ? (
@@ -136,8 +142,7 @@ const HomePage: React.FC = (): JSX.Element => {
                   <ProjectsCard
                     projects={card.projects}
                     className={cn(
-                      cnGap,
-                      'h-full',
+                      cnSmallGap,
                       'grid xs:auto-rows-auto sm:grid-cols-2 lg:grid-cols-4'
                     )}
                   />

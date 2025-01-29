@@ -13,8 +13,7 @@ export const cnTitle2 = cn('font-caption font-bold tracking-tight');
 
 export const cnTitle3 = cn(
   'font-caption font-semibold tracking-tight',
-  'text-xs',
-  'sm:text-sm',
+  'text-sm',
   'md:text-base'
 );
 
