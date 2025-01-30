@@ -5,6 +5,7 @@
 
 'use client';
 
+import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
@@ -37,7 +38,6 @@ import fetchData from '@api/data.json';
 
 import { useIsClient } from './hooks/useIsClient';
 import { cnSizeFull } from './styles/sizeStyles';
-import { motion } from 'framer-motion';
 
 /**
  * HomePage component.
