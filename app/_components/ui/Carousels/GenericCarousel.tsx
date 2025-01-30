@@ -5,6 +5,7 @@
 import { EmblaCarouselType } from 'embla-carousel';
 import AutoPlay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
+import { motion } from 'framer-motion';
 import { Pause, Play } from 'lucide-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -141,19 +142,23 @@ export const GenericCarousel: React.FC<
             'h-full w-full'
           )}
         >
-          <div className={cn(cnSmallSpaceX, 'flex-none')}>
-            <PrevButton
-              onClick={onPrevButtonClick}
-              disabled={prevBtnDisabled}
-              className={cn(cnManipulation, 'px-0')}
-              aria-label='Previous slide'
-            />
-            <NextButton
-              onClick={onNextButtonClick}
-              disabled={nextBtnDisabled}
-              className={cn(cnManipulation, 'px-0')}
-              aria-label='Next slide'
-            />
+          <div className={cn(cnSmallSpaceX, 'flex flex-none')}>
+            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+              <PrevButton
+                onClick={onPrevButtonClick}
+                disabled={prevBtnDisabled}
+                className={cn(cnManipulation, 'px-0')}
+                aria-label='Previous slide'
+              />
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+              <NextButton
+                onClick={onNextButtonClick}
+                disabled={nextBtnDisabled}
+                className={cn(cnManipulation, 'px-0')}
+                aria-label='Next slide'
+              />
+            </motion.div>
           </div>
           <Progress
             value={progressValue}
@@ -168,27 +173,29 @@ export const GenericCarousel: React.FC<
             className='flex-1'
           />
           <div className={cn(cnSmallSpaceX, cnFlexFullCenter)}>
-            <Toggle
-              variant='outline'
-              size='sm'
-              onClick={handlePlayPause}
-              className={cn('relative', 'flex-none')}
-              data-state={isPlaying ? 'on' : 'off'}
-              aria-label={isPlaying ? 'Pause autoplay' : 'Play autoplay'}
-            >
-              {isPlaying ? (
-                <Pause
-                  className={cn('scale-100 transition-all dark:scale-0')}
-                />
-              ) : (
-                <Play
-                  className={cn(
-                    'absolute scale-100 transition-all dark:scale-0'
-                  )}
-                />
-              )}
-              <span className='sr-only'>Toggle play pause</span>{' '}
-            </Toggle>
+            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+              <Toggle
+                variant='outline'
+                size='sm'
+                onClick={handlePlayPause}
+                className={cn('relative', 'flex-none')}
+                data-state={isPlaying ? 'on' : 'off'}
+                aria-label={isPlaying ? 'Pause autoplay' : 'Play autoplay'}
+              >
+                {isPlaying ? (
+                  <Pause
+                    className={cn('scale-100 transition-all dark:scale-0')}
+                  />
+                ) : (
+                  <Play
+                    className={cn(
+                      'absolute scale-100 transition-all dark:scale-0'
+                    )}
+                  />
+                )}
+                <span className='sr-only'>Toggle play pause</span>{' '}
+              </Toggle>
+            </motion.div>
           </div>
         </div>
       </div>
