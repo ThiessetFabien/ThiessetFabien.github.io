@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -69,150 +70,187 @@ export const ProjectsCard: React.FC<{
   return (
     <div className={className}>
       {projects?.map((project, projectIndex) => (
-        <Card
+        <motion.div
+          whileHover={{
+            scale: [null, 1.05, 1.1],
+            rotate: [null, 0.5, 1],
+            transition: {
+              duration: 0.2,
+              times: [0, 0.6, 1],
+              ease: ['easeInOut', 'easeOut'],
+            },
+          }}
+          transition={{
+            duration: 0.3,
+            ease: 'easeOut',
+          }}
           key={projectIndex}
-          className={cn(
-            cnFlexCol,
-            cnBorder,
-            cnSmallPadding,
-            cnSmallSpaceY,
-            'rounded-none bg-popover',
-            'col-span-1 xl:max-w-none'
-          )}
         >
-          <CardHeader className='p-0'>
-            <CardTitle className={cn('flex min-h-fit items-center')}>
-              <Tabs defaultValue={project.title} className='w-full'>
-                <TabsList
-                  className={cn(
-                    'grid h-fit w-full',
-                    project.file ? 'grid-cols-3' : 'grid-cols-2'
-                  )}
-                >
-                  <TabsTrigger value={project.title} className='p-0'>
-                    <a
-                      href={
-                        project.website
-                          ? `${baseUrl}${project.website}`
-                          : undefined
-                      }
-                      target='_blank'
-                      rel='noreferrer noopener'
-                    >
-                      <p
-                        className={cn(
-                          'flex-row',
-                          'gap-1',
-                          project.website !== undefined
-                            ? 'hover:text-accent hover:underline'
-                            : '',
-                          cnTitle3
-                        )}
-                      >
-                        {capitalizeFirstLetterOfPhrase(
-                          formatSpecialWords(project.title)
-                        )}
-                      </p>
-                    </a>
-                  </TabsTrigger>
-                  <TabsTrigger value={project.github} className='p-0'>
-                    <a
-                      href={`${baseUrl}${project.github}`}
-                      target='_blank'
-                      rel='noreferrer noopener'
-                    >
-                      <p
-                        className={cn(
-                          cnFlexBetweenX,
-                          'gap-1 hover:text-secondary hover:underline'
-                        )}
-                      >
-                        <span>Code</span>
-                      </p>
-                    </a>
-                  </TabsTrigger>
-                  {project.file && (
-                    <TabsTrigger value={project.file} className='p-0'>
-                      <a href={`${project.file}`} target='_blank'>
-                        <p
-                          className={cn(
-                            'gap-1 hover:text-secondary hover:underline'
-                          )}
-                        >
-                          Spec.
-                        </p>
-                      </a>
-                    </TabsTrigger>
-                  )}
-                </TabsList>
-              </Tabs>
-            </CardTitle>
-            {project.imageSrc && project.imageAlt && (
-              <figure className={cn(cnSizeFull)}>
-                {!videoLoaded[projectIndex] && (
-                  <Image
-                    src={`/${project.imageSrc}`}
-                    alt={project?.imageAlt}
-                    width={590}
-                    height={315}
-                    priority
-                    className='h-fit max-h-full min-h-fit min-w-full rounded-none object-cover object-center xl:min-h-full'
-                  />
-                )}
-                <video
-                  ref={
-                    project.title === 'casalink'
-                      ? (el) => {
-                          videoRefs.current[projectIndex] = el;
-                        }
-                      : null
-                  }
-                  onLoadedData={() => handleVideoLoaded(projectIndex)}
-                  controls={project.title === 'casalink' ? true : false}
-                  controlsList='nodownload'
-                  autoPlay={project.title === 'casalink' ? false : true}
-                  loop={project.title === 'casalink' ? false : true}
-                  muted={project.title === 'casalink' ? false : true}
-                  className={cn(
-                    'max-h-full min-h-fit min-w-full rounded-none object-cover object-center xl:min-h-full',
-                    videoLoaded[projectIndex] ? '' : 'hidden'
-                  )}
-                >
-                  <track kind='captions' src={`videos/${project.videoSrc}`} />
-                  <source src={`videos/${project.videoSrc}`} type='video/mp4' />
-                  Your browser does not support the video tag.
-                </video>
-                <figcaption className='sr-only'>{project.imageAlt}</figcaption>
-              </figure>
+          <Card
+            className={cn(
+              cnFlexCol,
+              cnBorder,
+              cnSmallPadding,
+              cnSmallSpaceY,
+              'rounded-none bg-popover',
+              'col-span-1 xl:max-w-none'
             )}
-          </CardHeader>
-          <CardContent className={cn(cnParagraph, 'max-w-prose px-0 pb-0')}>
-            <p>
-              {capitalizeFirstLetterOfPhrase(
-                formatSpecialWords(project.description)
-              )}
-            </p>
-          </CardContent>
-          <CardFooter className={cn('h-fit flex-wrap px-0 pb-0', cnSmallGap)}>
-            {project.tags.map((tag, tagIndex) => (
-              <Badge
-                key={tagIndex}
-                variant='outline'
-                className={cn(
-                  cnSmallText,
-                  cnBorderNone,
-                  'rounded-none p-0 font-light'
-                )}
-              >
-                <p>
-                  {capitalizeFirstLetterOfEachWord(
-                    formatSpecialWords(`${tag}`)
+          >
+            <CardHeader className='p-0'>
+              <CardTitle className={cn('flex min-h-fit items-center')}>
+                <Tabs defaultValue={project.title} className='w-full'>
+                  <TabsList
+                    className={cn(
+                      'grid h-fit w-full',
+                      project.file ? 'grid-cols-3' : 'grid-cols-2'
+                    )}
+                  >
+                    <TabsTrigger value={project.title} className='p-0'>
+                      <motion.div
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.8 }}
+                      >
+                        <a
+                          href={
+                            project.website
+                              ? `${baseUrl}${project.website}`
+                              : undefined
+                          }
+                          target='_blank'
+                          rel='noreferrer noopener'
+                        >
+                          <p
+                            className={cn(
+                              'flex-row',
+                              'gap-1',
+                              project.website !== undefined
+                                ? 'hover:text-accent hover:underline'
+                                : '',
+                              cnTitle3
+                            )}
+                          >
+                            {capitalizeFirstLetterOfPhrase(
+                              formatSpecialWords(project.title)
+                            )}
+                          </p>
+                        </a>
+                      </motion.div>
+                    </TabsTrigger>
+
+                    <TabsTrigger value={project.github} className='p-0'>
+                      <motion.div
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.8 }}
+                      >
+                        <a
+                          href={`${baseUrl}${project.github}`}
+                          target='_blank'
+                          rel='noreferrer noopener'
+                        >
+                          <p
+                            className={cn(
+                              cnFlexBetweenX,
+                              'gap-1 hover:text-secondary hover:underline'
+                            )}
+                          >
+                            <span>Code</span>
+                          </p>
+                        </a>
+                      </motion.div>
+                    </TabsTrigger>
+                    {project.file && (
+                      <TabsTrigger value={project.file} className='p-0'>
+                        <motion.div
+                          whileHover={{ scale: 1.2 }}
+                          whileTap={{ scale: 0.8 }}
+                        >
+                          <a href={`${project.file}`} target='_blank'>
+                            <p
+                              className={cn(
+                                'gap-1 hover:text-secondary hover:underline'
+                              )}
+                            >
+                              Spec.
+                            </p>
+                          </a>
+                        </motion.div>
+                      </TabsTrigger>
+                    )}
+                  </TabsList>
+                </Tabs>
+              </CardTitle>
+              {project.imageSrc && project.imageAlt && (
+                <figure className={cn(cnSizeFull)}>
+                  {!videoLoaded[projectIndex] && (
+                    <Image
+                      src={`/${project.imageSrc}`}
+                      alt={project?.imageAlt}
+                      width={590}
+                      height={315}
+                      priority
+                      className='h-fit max-h-full min-h-fit min-w-full rounded-none object-cover object-center xl:min-h-full'
+                    />
                   )}
-                </p>
-              </Badge>
-            ))}
-          </CardFooter>
-        </Card>
+                  <video
+                    ref={
+                      project.title === 'casalink'
+                        ? (el) => {
+                            videoRefs.current[projectIndex] = el;
+                          }
+                        : null
+                    }
+                    onLoadedData={() => handleVideoLoaded(projectIndex)}
+                    controls={project.title === 'casalink' ? true : false}
+                    controlsList='nodownload'
+                    autoPlay={project.title === 'casalink' ? false : true}
+                    loop={project.title === 'casalink' ? false : true}
+                    muted={project.title === 'casalink' ? false : true}
+                    className={cn(
+                      'max-h-full min-h-fit min-w-full rounded-none object-cover object-center xl:min-h-full',
+                      videoLoaded[projectIndex] ? '' : 'hidden'
+                    )}
+                  >
+                    <track kind='captions' src={`videos/${project.videoSrc}`} />
+                    <source
+                      src={`videos/${project.videoSrc}`}
+                      type='video/mp4'
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                  <figcaption className='sr-only'>
+                    {project.imageAlt}
+                  </figcaption>
+                </figure>
+              )}
+            </CardHeader>
+            <CardContent className={cn(cnParagraph, 'max-w-prose px-0 pb-0')}>
+              <p>
+                {capitalizeFirstLetterOfPhrase(
+                  formatSpecialWords(project.description)
+                )}
+              </p>
+            </CardContent>
+            <CardFooter className={cn('h-fit flex-wrap px-0 pb-0', cnSmallGap)}>
+              {project.tags.map((tag, tagIndex) => (
+                <Badge
+                  key={tagIndex}
+                  variant='outline'
+                  className={cn(
+                    cnSmallText,
+                    cnBorderNone,
+                    'rounded-none p-0 font-light'
+                  )}
+                >
+                  <p>
+                    {capitalizeFirstLetterOfEachWord(
+                      formatSpecialWords(`${tag}`)
+                    )}
+                  </p>
+                </Badge>
+              ))}
+            </CardFooter>
+          </Card>
+        </motion.div>
       ))}
     </div>
   );

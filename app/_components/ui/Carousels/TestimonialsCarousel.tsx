@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -12,6 +13,7 @@ import {
   AvatarImage,
 } from '@/lib/components/ui/avatar';
 import { cn } from '@/lib/utils';
+import { cnBorder2 } from '@/styles/borderStyles';
 import {
   cnPaddingBottom,
   cnPaddingX,
@@ -110,27 +112,35 @@ export const TestimonialsCarousel: React.FC<{
         {capitalizeFirstLetterOfPhrase(formatSpecialWords(testimonial.content))}
         &nbsp;&quot;
       </p>
-      <div className={cn('flex flex-shrink-0 items-center')}>
+      <div className={cn('flex items-center')}>
         <div className='relative left-0 top-0'>
-          <Avatar className='h-12 w-12 border border-primary'>
-            <AvatarImage
-              src={`${baseUrl}${testimonial.imageSrc}`}
-              alt={capitalizeFirstLetterOfEachWord(testimonial.author)}
-            />
-            <AvatarFallback className={cnParagraph}>
-              {capitalizeFirstLetterOfEachWord(testimonial.author)}
-            </AvatarFallback>
-          </Avatar>
-          <ActionButton
-            href={`${testimonial.linkedin}`}
-            variant='outline'
-            icon='Linkedin'
-            className={cn(
-              'absolute bottom-0 right-0 z-auto',
-              'h-2/5 w-2/5',
-              'p-1'
-            )}
-          />
+          <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+            <a
+              href={`${baseUrl}${testimonial.linkedin}`}
+              target='_blank'
+              rel='noreferrer noopener'
+            >
+              <Avatar
+                className={cn('h-12 w-12 border border-accent', cnBorder2)}
+              >
+                <AvatarImage
+                  src={`${baseUrl}${testimonial.imageSrc}`}
+                  alt={capitalizeFirstLetterOfEachWord(testimonial.author)}
+                />
+                <AvatarFallback className={cnParagraph}>
+                  {capitalizeFirstLetterOfEachWord(testimonial.author)}
+                </AvatarFallback>
+              </Avatar>
+              <ActionButton
+                icon='Linkedin'
+                variant='link'
+                size='icon'
+                className={cn(
+                  'absolute -bottom-2 -right-2 z-auto scale-50 rounded-full bg-accent'
+                )}
+              />
+            </a>
+          </motion.div>
         </div>
         <div className={cn(cnSmallText, 'ml-4')}>
           <p className={cn(cnFlexCol)}>

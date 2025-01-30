@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -42,28 +43,35 @@ export function ToggleDarkMode() {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Toggle
-          variant='outline'
-          size='sm'
-          onClick={handleToggle}
-          className='relative rounded-full'
-          data-state={resolvedTheme === 'dark' ? 'on' : 'off'}
+        <motion.div
+          animate={{ rotate: 0 }}
+          whileHover={{ rotate: 360, scale: 1.2 }}
+          transition={{ duration: 0.5 }}
+          whileTap={{ scale: 0.8 }}
         >
-          {resolvedTheme === 'dark' ? (
-            <Sun
-              className={cn(
-                'absolute rotate-90 scale-100 transition-all dark:rotate-0 dark:scale-0'
-              )}
-            />
-          ) : (
-            <Moon
-              className={cn(
-                'rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0'
-              )}
-            />
-          )}
-          <span className='sr-only'>Toggle theme</span>
-        </Toggle>
+          <Toggle
+            variant='outline'
+            size='sm'
+            onClick={handleToggle}
+            className='relative rounded-full'
+            data-state={resolvedTheme === 'dark' ? 'on' : 'off'}
+          >
+            {resolvedTheme === 'dark' ? (
+              <Sun
+                className={cn(
+                  'rotate-90 scale-100 transition-all dark:rotate-0 dark:scale-0'
+                )}
+              />
+            ) : (
+              <Moon
+                className={cn(
+                  'rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0'
+                )}
+              />
+            )}
+            <span className='sr-only'>Toggle theme</span>
+          </Toggle>
+        </motion.div>
       </HoverCardTrigger>
       <HoverCardContent>
         <p className={cn(cnSmallText, 'w-auto')}>

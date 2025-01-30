@@ -2,6 +2,7 @@
  * @file CallToAction.tsx
  * @description This component renders call-to-action buttons with dynamic icons.
  */
+import { motion } from 'framer-motion';
 import React from 'react';
 
 import { useIsXs } from '@/hooks/useMediaQueries';
@@ -71,16 +72,18 @@ export const FooterCard: React.FC<{
     return (
       icon &&
       (href || mailto) && (
-        <ActionButton
-          icon={icon || ''}
-          href={mailto ? mailto : href || ''}
-          cta={cta || ''}
-          downloadActive={downloadActive || undefined}
-          variant={variant}
-          type={mailto ? 'submit' : 'button'}
-          aria-label={cta || ''}
-          className={className}
-        />
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
+          <ActionButton
+            icon={icon || ''}
+            href={mailto ? mailto : href || ''}
+            cta={cta || ''}
+            downloadActive={downloadActive || undefined}
+            variant={variant}
+            type={mailto ? 'submit' : 'button'}
+            aria-label={cta || ''}
+            className={className}
+          />
+        </motion.div>
       )
     );
   };

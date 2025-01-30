@@ -9,6 +9,7 @@ import {
   HoverCardTrigger,
 } from '@/lib/components/ui/hover-card';
 import { cn } from '@/lib/utils';
+import { cnBorder } from '@/styles/borderStyles';
 import { cnSpaceX } from '@/styles/boxModelStyles';
 import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
 import type { CardProps } from '@/types/CardProps';
@@ -42,6 +43,7 @@ export const ExperiencesAccordion: React.FC<{
         <AccordionContent
           id='accordion-content'
           aria-labelledby='accordion-trigger'
+          className={cnBorder}
         >
           {experience &&
             experience.map((item, index: number) => (
