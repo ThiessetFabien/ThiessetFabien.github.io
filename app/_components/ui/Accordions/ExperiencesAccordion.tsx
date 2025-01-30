@@ -43,7 +43,7 @@ export const ExperiencesAccordion: React.FC<{
         <AccordionContent
           id='accordion-content'
           aria-labelledby='accordion-trigger'
-          className={cnBorder}
+          className={cn(cnBorder, 'bg-popover')}
         >
           {experience &&
             experience.map((item, index: number) => (
