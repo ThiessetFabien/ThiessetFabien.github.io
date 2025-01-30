@@ -72,7 +72,7 @@ export const FooterCard: React.FC<{
     return (
       icon &&
       (href || mailto) && (
-        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
           <ActionButton
             icon={icon || ''}
             href={mailto ? mailto : href || ''}
