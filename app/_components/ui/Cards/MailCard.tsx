@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -119,41 +120,46 @@ export const MailCard: React.FC<{
                   Type of email
                 </FormLabel>
                 <FormControl>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
+                  <motion.div
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.8 }}
                   >
-                    <SelectTrigger className='bg-input'>
-                      <SelectValue
-                        className={cn(
-                          'min-w-full',
-                          'paragraph-placeholder',
-                          cnParagraph
-                        )}
-                        placeholder='Select a type of email to display'
-                      />
-                    </SelectTrigger>
-                    <SelectContent className={cn('min-w-full', cnParagraph)}>
-                      <SelectItem
-                        className={cn('min-w-full', cnParagraph)}
-                        value='offer'
-                      >
-                        Offer
-                      </SelectItem>
-                      <SelectItem
-                        className={cn('min-w-full', cnParagraph)}
-                        value='collaboration'
-                      >
-                        Inquiry
-                      </SelectItem>
-                      <SelectItem
-                        className={cn('min-w-full', cnParagraph)}
-                        value='other'
-                      >
-                        Other
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <SelectTrigger className='bg-input'>
+                        <SelectValue
+                          className={cn(
+                            'min-w-full',
+                            'paragraph-placeholder',
+                            cnParagraph
+                          )}
+                          placeholder='Select a type of email to display'
+                        />
+                      </SelectTrigger>
+                      <SelectContent className={cn('min-w-full', cnParagraph)}>
+                        <SelectItem
+                          className={cn('min-w-full', cnParagraph)}
+                          value='offer'
+                        >
+                          Offer
+                        </SelectItem>
+                        <SelectItem
+                          className={cn('min-w-full', cnParagraph)}
+                          value='collaboration'
+                        >
+                          Inquiry
+                        </SelectItem>
+                        <SelectItem
+                          className={cn('min-w-full', cnParagraph)}
+                          value='other'
+                        >
+                          Other
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </motion.div>
                 </FormControl>
                 <FormMessage>{errors.type?.message}</FormMessage>
               </FormItem>
@@ -164,18 +170,20 @@ export const MailCard: React.FC<{
               Name
             </FormLabel>
             <FormControl>
-              <Input
-                id='name'
-                placeholder='John Doe'
-                {...register('name')}
-                className={cn(
-                  'min-w-full',
-                  'paragraph-placeholder',
-                  'bg-input',
-                  cnParagraph
-                )}
-                required
-              />
+              <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+                <Input
+                  id='name'
+                  placeholder='John Doe'
+                  {...register('name')}
+                  className={cn(
+                    'min-w-full',
+                    'paragraph-placeholder',
+                    'bg-input',
+                    cnParagraph
+                  )}
+                  required
+                />
+              </motion.div>
             </FormControl>
             <FormMessage>{errors.name?.message}</FormMessage>
           </FormItem>
@@ -187,18 +195,20 @@ export const MailCard: React.FC<{
               Phone
             </FormLabel>
             <FormControl>
-              <Input
-                id='phone'
-                placeholder='0123456789'
-                {...register('phone')}
-                className={cn(
-                  'min-w-full',
-                  'paragraph-placeholder',
-                  'bg-input',
-                  cnParagraph
-                )}
-                required
-              />
+              <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+                <Input
+                  id='phone'
+                  placeholder='0123456789'
+                  {...register('phone')}
+                  className={cn(
+                    'min-w-full',
+                    'paragraph-placeholder',
+                    'bg-input',
+                    cnParagraph
+                  )}
+                  required
+                />
+              </motion.div>
             </FormControl>
             <FormMessage>{errors.phone?.message}</FormMessage>
           </FormItem>
@@ -210,17 +220,19 @@ export const MailCard: React.FC<{
               Email
             </FormLabel>
             <FormControl>
-              <Input
-                placeholder='your@mail.com'
-                {...register('email')}
-                className={cn(
-                  'min-w-full',
-                  'paragraph-placeholder',
-                  'bg-input',
-                  cnParagraph
-                )}
-                required
-              />
+              <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+                <Input
+                  placeholder='your@mail.com'
+                  {...register('email')}
+                  className={cn(
+                    'min-w-full',
+                    'paragraph-placeholder',
+                    'bg-input',
+                    cnParagraph
+                  )}
+                  required
+                />
+              </motion.div>
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -232,18 +244,23 @@ export const MailCard: React.FC<{
               Message
             </FormLabel>
             <FormControl className='flex-grow'>
-              <Textarea
-                id='message'
-                placeholder='Tell me a little bit about your project...'
-                className={cn(
-                  cnParagraph,
-                  'bg-input',
-                  'h-full min-h-32 max-w-full resize-y xl:min-h-36',
-                  'paragraph-placeholder'
-                )}
-                {...register('message')}
-                required
-              />
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.8 }}
+              >
+                <Textarea
+                  id='message'
+                  placeholder='Tell me a little bit about your project...'
+                  className={cn(
+                    cnParagraph,
+                    'bg-input',
+                    'h-full min-h-32 max-w-full resize-y xl:min-h-36',
+                    'paragraph-placeholder'
+                  )}
+                  {...register('message')}
+                  required
+                />
+              </motion.div>
             </FormControl>
             <FormMessage>{errors.message?.message}</FormMessage>
           </FormItem>
