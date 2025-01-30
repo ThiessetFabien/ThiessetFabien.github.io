@@ -111,7 +111,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 />
                 <CardContent
                   className={cn(
-                    'flex-auto',
+                    'flex-1',
                     !card.testimonials
                       ? cnPaddingX
                       : 'container h-full min-w-full flex-auto overflow-hidden p-0'
@@ -198,10 +198,11 @@ const HomePage: React.FC = (): JSX.Element => {
             ) : (
               <CardContent className='hidden' />
             )}
-            {!card.imageSrc &&
-              !card.mailto &&
+            {!card.mailto &&
               ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
-                <CardFooter className={cn(cnPaddingX, cnPaddingBottom)}>
+                <CardFooter
+                  className={cn(cnPaddingX, cnPaddingBottom, 'flex-none')}
+                >
                   <FooterCard
                     className={'flex w-full'}
                     cta1={card.cta1}

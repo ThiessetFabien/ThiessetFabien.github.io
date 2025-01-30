@@ -1,6 +1,6 @@
 [
   {
-    "title": "ethical web developer",
+    "title": "ethical software developer",
     "description": "let's be honest and work together for an accessible and humane world.",
     "content": "You need a website that is stunning and truly functional. if you want to learn more about working with me, take a look through my website.",
     "imageSrc": "/images/profile.webp",
@@ -67,10 +67,10 @@
         "slug": "jest/jest-plain"
       }
     ],
-    "cta1": "view my works",
+    "cta1": "explore",
     "icon1": "Eye",
     "href1": "#card-3",
-    "cta2": "explore all",
+    "cta2": "view all",
     "icon2": "Github",
     "href2": "www.github.com/ThiessetFabien?tab=repositories"
   },

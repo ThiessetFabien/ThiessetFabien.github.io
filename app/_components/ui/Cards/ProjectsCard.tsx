@@ -92,6 +92,7 @@ export const ProjectsCard: React.FC<{
               cnBorder,
               cnSmallPadding,
               cnSmallSpaceY,
+              cnSizeFull,
               'rounded-none bg-popover',
               'col-span-1 xl:max-w-none'
             )}
