@@ -59,7 +59,7 @@ export function ToggleDarkMode() {
             {resolvedTheme === 'dark' ? (
               <Sun
                 className={cn(
-                  'absolute rotate-90 scale-100 transition-all dark:rotate-0 dark:scale-0'
+                  'rotate-90 scale-100 transition-all dark:rotate-0 dark:scale-0'
                 )}
               />
             ) : (

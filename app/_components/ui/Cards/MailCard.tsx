@@ -121,7 +121,7 @@ export const MailCard: React.FC<{
                 </FormLabel>
                 <FormControl>
                   <motion.div
-                    whileHover={{ scale: 1.2 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.8 }}
                   >
                     <Select
@@ -170,7 +170,7 @@ export const MailCard: React.FC<{
               Name
             </FormLabel>
             <FormControl>
-              <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
                 <Input
                   id='name'
                   placeholder='John Doe'
@@ -195,7 +195,7 @@ export const MailCard: React.FC<{
               Phone
             </FormLabel>
             <FormControl>
-              <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
                 <Input
                   id='phone'
                   placeholder='0123456789'
@@ -220,7 +220,10 @@ export const MailCard: React.FC<{
               Email
             </FormLabel>
             <FormControl>
-              <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+              <motion.div
+                whileHover={{ scale: 1.025 }}
+                whileTap={{ scale: 0.8 }}
+              >
                 <Input
                   placeholder='your@mail.com'
                   {...register('email')}
@@ -245,7 +248,7 @@ export const MailCard: React.FC<{
             </FormLabel>
             <FormControl className='flex-grow'>
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.025 }}
                 whileTap={{ scale: 0.8 }}
               >
                 <Textarea
