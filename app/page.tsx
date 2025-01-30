@@ -114,7 +114,7 @@ const HomePage: React.FC = (): JSX.Element => {
                     'flex-auto',
                     !card.testimonials
                       ? cnPaddingX
-                      : 'container h-full min-w-full flex-1 overflow-hidden p-0'
+                      : 'container h-full min-w-full flex-auto overflow-hidden p-0'
                   )}
                 >
                   {card.experiences &&
