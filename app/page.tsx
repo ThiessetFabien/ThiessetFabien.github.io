@@ -66,7 +66,7 @@ const HomePage: React.FC = (): JSX.Element => {
         <Card
           key={index}
           id={`card-${index}`}
-          className={cn(cnSizeFull, cnFlexCol, card.colSpan)}
+          className={cn('h-full', cnFlexCol, card.colSpan)}
         >
           <motion.div
             initial={{ y: 10, opacity: 0 }}
