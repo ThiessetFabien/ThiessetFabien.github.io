@@ -17,12 +17,7 @@ import {
 } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
 import { cnBorder2, cnBorderBottom4 } from '@/styles/borderStyles';
-import {
-  cnGap,
-  cnGapX,
-  cnSmallGap,
-  cnSmallSpaceY,
-} from '@/styles/boxModelStyles';
+import { cnGapX, cnSmallGap, cnSmallSpaceY } from '@/styles/boxModelStyles';
 import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
 import {
   cnTitle1,
@@ -41,8 +36,6 @@ import { cnBigImage } from '@/styles/imageStyles';
 import { cnSizeAuto } from '@/styles/sizeStyles';
 import { cnLittleTranslateSm } from '@/styles/translateStyles';
 import type { CardProps } from '@/types/CardProps';
-
-import FooterCard from './LayoutCards/FooterCard';
 
 export const PresentationCard: React.FC<{
   title: CardProps['title'];
@@ -70,18 +63,6 @@ export const PresentationCard: React.FC<{
     content,
     imageSrc,
     imageAlt,
-    cta1,
-    icon1,
-    href1,
-    downloadActive1,
-    cta2,
-    icon2,
-    href2,
-    downloadActive2,
-    cta3,
-    icon3,
-    href3,
-    downloadActive3,
     className,
   }) => {
     return (

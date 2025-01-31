@@ -24,7 +24,7 @@ export const formSchema = z.object({
   message: createStringSchema(10, 500, 'message').nonempty(
     'Message is required'
   ),
-  consent: z.boolean().refine((value) => value !== true, {
+  consent: z.boolean().refine((value) => value === true, {
     message: 'You need to accept the privacy policy',
   }),
 });

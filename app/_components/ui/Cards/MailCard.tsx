@@ -1,8 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { Checkbox } from '@/lib/components/ui/checkbox';
 import {
   Form,
   FormControl,
@@ -12,26 +13,16 @@ import {
   FormMessage,
 } from '@/lib/components/ui/form';
 import { Input } from '@/lib/components/ui/input';
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-  SelectGroup,
-} from '@/lib/components/ui/select';
+import { RadioGroup, RadioGroupItem } from '@/lib/components/ui/radio-group';
 import { Textarea } from '@/lib/components/ui/textarea';
 import { toast } from '@/lib/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { formSchema } from '@/schemas/mailSchema';
-import { cnGap, cnSmallGap, cnSmallSpaceX } from '@/styles/boxModelStyles';
+import { cnSmallGap, cnSmallSpaceX } from '@/styles/boxModelStyles';
+import { cnFlexCenterY } from '@/styles/flexStyles';
 import { cnParagraph } from '@/styles/fontStyles';
 import type { CardProps } from '@/types/CardProps';
 import { FooterCard } from '@/ui/Cards/LayoutCards/FooterCard';
-import { SelectLabel } from '@radix-ui/react-select';
-import { RadioGroup, RadioGroupItem } from '@/lib/components/ui/radio-group';
-import { cnFlexCenterY } from '@/styles/flexStyles';
-import { Checkbox } from '@/lib/components/ui/checkbox';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -66,7 +57,7 @@ export const MailCard: React.FC<{
   downloadActive3,
   className,
 }) => {
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       type: 'Offer',
@@ -74,18 +65,21 @@ export const MailCard: React.FC<{
       phone: '',
       email: '',
       message: '',
+      consent: false,
     },
   });
 
   const {
-    register,
     control,
     formState: { errors },
     handleSubmit,
   } = form;
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
-    const mailtoLink = `mailto:${mailto}?subject=${data.type}&body=${data.message}`;
+    const mailtoLink = `mailto:${mailto}?subject=Contact Form Submission&body=${encodeURIComponent(
+      `Type: ${data.type}\nName: ${data.name}\nPhone: ${data.phone}\nMessage: ${data.message}`
+    )}`;
+
     window.location.href = mailtoLink;
     toast({
       title: 'You submitted the following values:',
@@ -126,7 +120,7 @@ export const MailCard: React.FC<{
                 <FormControl>
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.8 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Input
                       id='name'
@@ -159,7 +153,7 @@ export const MailCard: React.FC<{
                 <FormControl>
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.8 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Input
                       id='phone'
@@ -191,8 +185,8 @@ export const MailCard: React.FC<{
                 </FormLabel>
                 <FormControl>
                   <motion.div
-                    whileHover={{ scale: 1.025 }}
-                    whileTap={{ scale: 0.8 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Input
                       placeholder='your@mail.com'
@@ -235,7 +229,7 @@ export const MailCard: React.FC<{
                         <FormControl>
                           <motion.div
                             whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.8 }}
+                            whileTap={{ scale: 0.9 }}
                           >
                             <RadioGroupItem value='Offer' />
                           </motion.div>
@@ -246,7 +240,7 @@ export const MailCard: React.FC<{
                         <FormControl>
                           <motion.div
                             whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.8 }}
+                            whileTap={{ scale: 0.9 }}
                           >
                             <RadioGroupItem value='Collaboration' />
                           </motion.div>
@@ -259,7 +253,7 @@ export const MailCard: React.FC<{
                         <FormControl>
                           <motion.div
                             whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.8 }}
+                            whileTap={{ scale: 0.9 }}
                           >
                             <RadioGroupItem value='Other' />
                           </motion.div>
@@ -286,7 +280,7 @@ export const MailCard: React.FC<{
                 <FormControl className='flex-grow'>
                   <motion.div
                     whileHover={{ scale: 1.025 }}
-                    whileTap={{ scale: 0.8 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Textarea
                       id='message'
