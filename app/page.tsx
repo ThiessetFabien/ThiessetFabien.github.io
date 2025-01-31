@@ -37,7 +37,6 @@ import SkillsCard from '@/ui/Cards/SkillsCard';
 import fetchData from '@api/data.json';
 
 import { useIsClient } from './hooks/useIsClient';
-import { cnSizeFull } from './styles/sizeStyles';
 
 /**
  * HomePage component.
