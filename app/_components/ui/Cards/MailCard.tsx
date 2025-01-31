@@ -18,15 +18,20 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
+  SelectGroup,
 } from '@/lib/components/ui/select';
 import { Textarea } from '@/lib/components/ui/textarea';
 import { toast } from '@/lib/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { formSchema } from '@/schemas/mailSchema';
-import { cnGap } from '@/styles/boxModelStyles';
+import { cnGap, cnSmallGap, cnSmallSpaceX } from '@/styles/boxModelStyles';
 import { cnParagraph } from '@/styles/fontStyles';
 import type { CardProps } from '@/types/CardProps';
 import { FooterCard } from '@/ui/Cards/LayoutCards/FooterCard';
+import { SelectLabel } from '@radix-ui/react-select';
+import { RadioGroup, RadioGroupItem } from '@/lib/components/ui/radio-group';
+import { cnFlexCenterY } from '@/styles/flexStyles';
+import { Checkbox } from '@/lib/components/ui/checkbox';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -61,26 +66,25 @@ export const MailCard: React.FC<{
   downloadActive3,
   className,
 }) => {
-  type FormData = z.infer<typeof formSchema>;
-
-  const form = useForm<FormData>({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
       type: 'Offer',
+      name: '',
+      phone: '',
+      email: '',
       message: '',
     },
   });
 
   const {
-    handleSubmit,
-    formState: { errors },
     register,
+    control,
+    formState: { errors },
+    handleSubmit,
   } = form;
 
-  const onSubmit: SubmitHandler<FormSchema> = (data: FormData) => {
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
     const mailtoLink = `mailto:${mailto}?subject=${data.type}&body=${data.message}`;
     window.location.href = mailtoLink;
     toast({
@@ -100,173 +104,233 @@ export const MailCard: React.FC<{
     <Form {...form} aria-labelledby='contact'>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={(cn(className), 'flex flex-grow flex-col')}
+        className={cn(className, 'flex flex-col')}
       >
         <div
           className={cn(
-            cnGap,
-            'grid auto-rows-auto grid-cols-1 grid-rows-1 items-end md:grid-cols-4'
+            cnSmallGap,
+            'grid auto-rows-auto grid-cols-1 md:grid-cols-3'
           )}
         >
           <FormField
-            control={form.control}
-            name='type'
+            control={control}
+            name='name'
             render={({ field }) => (
               <FormItem>
                 <FormLabel
-                  htmlFor='type'
+                  htmlFor='name'
                   className={cn('min-w-full', cnParagraph)}
                 >
-                  Type of email
+                  Name and family name :
                 </FormLabel>
                 <FormControl>
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.8 }}
                   >
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <SelectTrigger className='bg-input'>
-                        <SelectValue
-                          className={cn(
-                            'min-w-full',
-                            'paragraph-placeholder',
-                            cnParagraph
-                          )}
-                          placeholder='Select a type of email to display'
-                        />
-                      </SelectTrigger>
-                      <SelectContent className={cn('min-w-full', cnParagraph)}>
-                        <SelectItem
-                          className={cn('min-w-full', cnParagraph)}
-                          value='offer'
-                        >
-                          Offer
-                        </SelectItem>
-                        <SelectItem
-                          className={cn('min-w-full', cnParagraph)}
-                          value='collaboration'
-                        >
-                          Inquiry
-                        </SelectItem>
-                        <SelectItem
-                          className={cn('min-w-full', cnParagraph)}
-                          value='other'
-                        >
-                          Other
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <Input
+                      id='name'
+                      placeholder='John Doe'
+                      {...field}
+                      className={cn(
+                        'min-w-full',
+                        'paragraph-placeholder',
+                        'bg-input',
+                        cnParagraph
+                      )}
+                      required
+                    />
                   </motion.div>
                 </FormControl>
-                <FormMessage>{errors.type?.message}</FormMessage>
               </FormItem>
             )}
           />
-          <FormItem>
-            <FormLabel htmlFor='name' className={cn('min-w-full', cnParagraph)}>
-              Name
-            </FormLabel>
-            <FormControl>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
-                <Input
-                  id='name'
-                  placeholder='John Doe'
-                  {...register('name')}
-                  className={cn(
-                    'min-w-full',
-                    'paragraph-placeholder',
-                    'bg-input',
-                    cnParagraph
-                  )}
-                  required
-                />
-              </motion.div>
-            </FormControl>
-            <FormMessage>{errors.name?.message}</FormMessage>
-          </FormItem>
-          <FormItem>
-            <FormLabel
-              htmlFor='phone'
-              className={cn('min-w-full', cnParagraph)}
-            >
-              Phone
-            </FormLabel>
-            <FormControl>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
-                <Input
-                  id='phone'
-                  placeholder='0123456789'
-                  {...register('phone')}
-                  className={cn(
-                    'min-w-full',
-                    'paragraph-placeholder',
-                    'bg-input',
-                    cnParagraph
-                  )}
-                  required
-                />
-              </motion.div>
-            </FormControl>
-            <FormMessage>{errors.phone?.message}</FormMessage>
-          </FormItem>
-          <FormItem>
-            <FormLabel
-              htmlFor='email'
-              className={cn('min-w-full', cnParagraph)}
-            >
-              Email
-            </FormLabel>
-            <FormControl>
-              <motion.div
-                whileHover={{ scale: 1.025 }}
-                whileTap={{ scale: 0.8 }}
+          <FormField
+            control={control}
+            name='phone'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel
+                  htmlFor='phone'
+                  className={cn('min-w-full', cnParagraph)}
+                >
+                  Phone :
+                </FormLabel>
+                <FormControl>
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.8 }}
+                  >
+                    <Input
+                      id='phone'
+                      placeholder='0123456789'
+                      {...field}
+                      className={cn(
+                        'min-w-full',
+                        'paragraph-placeholder',
+                        'bg-input',
+                        cnParagraph
+                      )}
+                      required
+                    />
+                  </motion.div>
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name='email'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel
+                  htmlFor='email'
+                  className={cn('min-w-full', cnParagraph)}
+                >
+                  Email :
+                </FormLabel>
+                <FormControl>
+                  <motion.div
+                    whileHover={{ scale: 1.025 }}
+                    whileTap={{ scale: 0.8 }}
+                  >
+                    <Input
+                      placeholder='your@mail.com'
+                      {...field}
+                      className={cn(
+                        'min-w-full',
+                        'paragraph-placeholder',
+                        'bg-input',
+                        cnParagraph
+                      )}
+                      required
+                    />
+                  </motion.div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name='type'
+            render={({ field }) => (
+              <FormItem className='col-span-1 row-span-1 flex-none md:col-span-3'>
+                <div className={cn(cnFlexCenterY, cnSmallGap)}>
+                  <FormLabel htmlFor='type' className={cnParagraph}>
+                    Type of email :
+                  </FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      className={cn('flex', cnSmallGap)}
+                    >
+                      <FormItem
+                        className={cn(
+                          'flex items-center space-y-0',
+                          cnSmallSpaceX
+                        )}
+                      >
+                        <FormControl>
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.8 }}
+                          >
+                            <RadioGroupItem value='Offer' />
+                          </motion.div>
+                        </FormControl>
+                        <FormLabel className={'font-normal'}>Offer</FormLabel>
+                      </FormItem>
+                      <FormItem className='flex items-center space-x-3 space-y-0'>
+                        <FormControl>
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.8 }}
+                          >
+                            <RadioGroupItem value='Collaboration' />
+                          </motion.div>
+                        </FormControl>
+                        <FormLabel className={'font-normal'}>
+                          Collaboration
+                        </FormLabel>
+                      </FormItem>
+                      <FormItem className='flex items-center space-x-3 space-y-0'>
+                        <FormControl>
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.8 }}
+                          >
+                            <RadioGroupItem value='Other' />
+                          </motion.div>
+                        </FormControl>
+                        <FormLabel className={'font-normal'}>Other</FormLabel>
+                      </FormItem>
+                    </RadioGroup>
+                  </FormControl>
+                </div>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name='message'
+            render={({ field }) => (
+              <FormItem className='col-span-1 md:col-span-3'>
+                <FormLabel
+                  htmlFor='message'
+                  className={cn('min-w-full', cnParagraph)}
+                >
+                  <span className='sr-only'>Message</span>
+                </FormLabel>
+                <FormControl className='flex-grow'>
+                  <motion.div
+                    whileHover={{ scale: 1.025 }}
+                    whileTap={{ scale: 0.8 }}
+                  >
+                    <Textarea
+                      id='message'
+                      placeholder='Tell me a little bit about your project...'
+                      className={cn(
+                        cnParagraph,
+                        'bg-input',
+                        'h-full min-h-20 max-w-full resize-y xl:min-h-24',
+                        'paragraph-placeholder'
+                      )}
+                      {...field}
+                      required
+                    />
+                  </motion.div>
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={control}
+            name='consent'
+            render={({ field }) => (
+              <FormItem
+                className={cn(
+                  'col-span-1 row-span-1 flex flex-none space-y-0 shadow md:col-span-3',
+                  cnSmallSpaceX,
+                  cnParagraph
+                )}
               >
-                <Input
-                  placeholder='your@mail.com'
-                  {...register('email')}
-                  className={cn(
-                    'min-w-full',
-                    'paragraph-placeholder',
-                    'bg-input',
-                    cnParagraph
-                  )}
-                  required
-                />
-              </motion.div>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-          <FormItem className='col-span-1 md:col-span-4'>
-            <FormLabel
-              htmlFor='message'
-              className={cn('min-w-full', cnParagraph)}
-            >
-              Message
-            </FormLabel>
-            <FormControl className='flex-grow'>
-              <motion.div
-                whileHover={{ scale: 1.025 }}
-                whileTap={{ scale: 0.8 }}
-              >
-                <Textarea
-                  id='message'
-                  placeholder='Tell me a little bit about your project...'
-                  className={cn(
-                    cnParagraph,
-                    'bg-input',
-                    'h-full min-h-32 max-w-full resize-y xl:min-h-36',
-                    'paragraph-placeholder'
-                  )}
-                  {...register('message')}
-                  required
-                />
-              </motion.div>
-            </FormControl>
-            <FormMessage>{errors.message?.message}</FormMessage>
-          </FormItem>
+                {/* className='flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow' */}
+                <FormControl>
+                  <Checkbox
+                    id='consent'
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                    required
+                  />
+                </FormControl>
+                <FormLabel htmlFor='consent' className={cnParagraph}>
+                  I agree to be contacted using the provided information.
+                </FormLabel>
+              </FormItem>
+            )}
+          />
           <FooterCard
             mailto={mailto}
             cta1={cta1}
@@ -281,7 +345,7 @@ export const MailCard: React.FC<{
             icon3={icon3}
             href3={href3}
             downloadActive3={downloadActive3}
-            className='col-span-1 row-span-1 flex-none md:col-span-4'
+            className='col-span-1 row-span-1 flex-none md:col-span-3'
           />
         </div>
       </form>
