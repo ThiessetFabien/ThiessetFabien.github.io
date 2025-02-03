@@ -30,7 +30,8 @@
       "@/styles/*": ["styles/*"],
       "@/utils/*": ["utils/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/schemas/*": ["schemas/*"]
+      "@/schemas/*": ["schemas/*"],
+      "@/services/*": ["services/*"],
     },
     "target": "ES2017"
   },

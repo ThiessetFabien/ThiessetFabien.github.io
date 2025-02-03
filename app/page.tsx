@@ -37,7 +37,6 @@ import SkillsCard from '@/ui/Cards/SkillsCard';
 import fetchData from '@api/data.json';
 
 import { useIsClient } from './hooks/useIsClient';
-import { cnSizeFull } from './styles/sizeStyles';
 
 /**
  * HomePage component.
@@ -66,7 +65,7 @@ const HomePage: React.FC = (): JSX.Element => {
         <Card
           key={index}
           id={`card-${index}`}
-          className={cn(cnSizeFull, cnFlexCol, card.colSpan)}
+          className={cn('h-full', cnFlexCol, card.colSpan)}
         >
           <motion.div
             initial={{ y: 10, opacity: 0 }}
@@ -111,10 +110,10 @@ const HomePage: React.FC = (): JSX.Element => {
                 />
                 <CardContent
                   className={cn(
-                    'flex-auto',
+                    'flex-1',
                     !card.testimonials
                       ? cnPaddingX
-                      : 'container h-full min-w-full flex-1 overflow-hidden p-0'
+                      : 'container h-full min-w-full flex-auto overflow-hidden p-0'
                   )}
                 >
                   {card.experiences &&
@@ -198,10 +197,11 @@ const HomePage: React.FC = (): JSX.Element => {
             ) : (
               <CardContent className='hidden' />
             )}
-            {!card.imageSrc &&
-              !card.mailto &&
+            {!card.mailto &&
               ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
-                <CardFooter className={cn(cnPaddingX, cnPaddingBottom)}>
+                <CardFooter
+                  className={cn(cnPaddingX, cnPaddingBottom, 'flex-none')}
+                >
                   <FooterCard
                     className={'flex w-full'}
                     cta1={card.cta1}
