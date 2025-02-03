@@ -73,7 +73,6 @@ export const ProjectsCard: React.FC<{
         <motion.div
           whileHover={{
             scale: [null, 1.05, 1.1],
-            rotate: [null, 0.5, 1],
             transition: {
               duration: 0.2,
               times: [0, 0.6, 1],
@@ -92,6 +91,7 @@ export const ProjectsCard: React.FC<{
               cnBorder,
               cnSmallPadding,
               cnSmallSpaceY,
+              cnSizeFull,
               'rounded-none bg-popover',
               'col-span-1 xl:max-w-none'
             )}
@@ -136,7 +136,6 @@ export const ProjectsCard: React.FC<{
                         </a>
                       </motion.div>
                     </TabsTrigger>
-
                     <TabsTrigger value={project.github} className='p-0'>
                       <motion.div
                         whileHover={{ scale: 1.2 }}
