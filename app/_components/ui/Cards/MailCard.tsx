@@ -75,22 +75,38 @@ export const MailCard: React.FC<{
     handleSubmit,
   } = form;
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    const mailtoLink = `mailto:${mailto}?subject=Contact Form Submission&body=${encodeURIComponent(
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        toast({
+          title: 'You submitted the following values:',
+          description: (
+            <pre className='bg-background0 mt-2 w-[340px] p-4'>
+              <code className='text-foreground'>
+                {JSON.stringify(data, null, 2)}
+              </code>
+            </pre>
+          ),
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Error sending the email',
+        description: 'Please try again later.',
+      });
+    }
+    const mailtoLink = `mailto:${mailto}?subject=${data.type} - Contact From Porfolio&body=${encodeURIComponent(
       `Type: ${data.type}\nName: ${data.name}\nPhone: ${data.phone}\nMessage: ${data.message}`
     )}`;
 
     window.location.href = mailtoLink;
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className='bg-background0 mt-2 w-[340px] p-4'>
-          <code className='text-foreground'>
-            {JSON.stringify(data, null, 2)}
-          </code>
-        </pre>
-      ),
-    });
     console.log(data);
   };
 

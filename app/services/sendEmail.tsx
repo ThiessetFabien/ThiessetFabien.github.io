@@ -1,18 +1,23 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
+import { z } from 'zod';
 
-const sendEmail = async (data) => {
-  let transporter = nodemailer.createTransport({
-    service: 'gmail', // Utilisez le service de votre choix
+import type { formSchema } from '@/schemas/mailSchema';
+
+type FormData = z.infer<typeof formSchema>;
+
+export const sendEmail = async (data: FormData) => {
+  const transporter = nodemailer.createTransport({
+    service: process.env.CONTACT_SERVICE,
     auth: {
-      user: 'your-email@gmail.com', // Remplacez par votre email
-      pass: 'your-email-password', // Remplacez par votre mot de passe
+      user: process.env.CONTACT_USER,
+      pass: process.env.CONTACT_PASS,
     },
   });
 
-  let mailOptions = {
-    from: 'your-email@gmail.com', // Remplacez par votre email
-    to: 'recipient-email@example.com', // Remplacez par l'email du destinataire
-    subject: 'Contact Form Submission',
+  const mailOptions = {
+    from: data.email,
+    to: process.env.CONTACT_USER,
+    subject: `[${data.type}] - Contact From Portfolio`,
     text: `Type: ${data.type}\nName: ${data.name}\nPhone: ${data.phone}\nMessage: ${data.message}`,
   };
 
@@ -23,5 +28,3 @@ const sendEmail = async (data) => {
     console.error('Error sending email:', error);
   }
 };
-
-module.exports = sendEmail;
