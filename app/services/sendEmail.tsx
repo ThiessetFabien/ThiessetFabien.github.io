@@ -1,30 +1,55 @@
+'use server';
 import nodemailer from 'nodemailer';
-import { z } from 'zod';
+import { getOAuthToken } from './generateToken';
 
-import type { formSchema } from '@/schemas/mailSchema';
+const transporter = nodemailer.createTransport({
+  service: process.env.SMTP_SERVER_SERVICE,
+  host: process.env.SMTP_SERVER_HOST,
+  port: 465,
+  secure: true,
+  auth: {
+    type: 'OAuth2',
+    user: process.env.SMTP_SERVER_USERNAME,
+    clientId: process.env.GMAIL_CLIENT_ID,
+    clientSecret: process.env.GMAIL_CLIENT_SECRET,
+    refreshToken: process.env.GMAIL_REFRESH_TOKEN,
+    accessToken: await getOAuthToken(),
+  },
+});
 
-type FormData = z.infer<typeof formSchema>;
-
-export const sendEmail = async (data: FormData) => {
-  const transporter = nodemailer.createTransport({
-    service: process.env.CONTACT_SERVICE,
-    auth: {
-      user: process.env.CONTACT_USER,
-      pass: process.env.CONTACT_PASS,
-    },
-  });
-
-  const mailOptions = {
-    from: data.email,
-    to: process.env.CONTACT_USER,
-    subject: `[${data.type}] - Contact From Portfolio`,
-    text: `Type: ${data.type}\nName: ${data.name}\nPhone: ${data.phone}\nMessage: ${data.message}`,
-  };
-
+export const sendEmail = async ({
+  email,
+  sendTo,
+  subject,
+  text,
+  html,
+}: {
+  email: string;
+  sendTo: string;
+  subject: string;
+  text: string;
+  html?: string;
+}) => {
   try {
-    await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully');
+    await transporter.verify();
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error(
+      'Something went wrong',
+      process.env.SMTP_SERVER_USERNAME,
+      process.env.SMTP_SERVER_SERVICE,
+      error
+    );
+
+    const info = await transporter.sendMail({
+      from: email,
+      to: process.env.SITE_MAIL_RECIEVER,
+      subject,
+      text,
+      html: html ? html : '',
+    });
+
+    console.log('Message sent: ', info.messageId);
+    console.log('Mail sent to: ', sendTo);
+    return info;
   }
 };

@@ -14,7 +14,7 @@ export const createStringSchema = (
       message: `This ${fieldName} must contain at most ${max} characters`,
     });
 
-export const formSchema = z.object({
+export const ContactFormSchema = z.object({
   name: createStringSchema(2, 50, 'name').nonempty('Name is required'),
   type: z.enum(['Offer', 'Inquiry', 'Other'], {
     required_error: 'You need to select a notification type.',
@@ -28,3 +28,5 @@ export const formSchema = z.object({
     message: 'You need to accept the privacy policy',
   }),
 });
+
+export type FormSchema = z.infer<typeof ContactFormSchema>;

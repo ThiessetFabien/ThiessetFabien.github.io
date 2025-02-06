@@ -17,29 +17,30 @@ import { RadioGroup, RadioGroupItem } from '@/lib/components/ui/radio-group';
 import { Textarea } from '@/lib/components/ui/textarea';
 import { toast } from '@/lib/hooks/use-toast';
 import { cn } from '@/lib/utils';
-import { formSchema } from '@/schemas/mailSchema';
+import { ContactFormSchema } from '@/schemas/contactFormSchema';
+import type { FormSchema } from '@/schemas/contactFormSchema';
+import { sendEmail } from '@/services/sendEmail';
 import { cnSmallGap, cnSmallSpaceX } from '@/styles/boxModelStyles';
 import { cnFlexCenterY } from '@/styles/flexStyles';
 import { cnParagraph } from '@/styles/fontStyles';
+import { ActionButtonProps } from '@/types/ActionButtonProps.jsx';
 import type { CardProps } from '@/types/CardProps';
 import { FooterCard } from '@/ui/Cards/LayoutCards/FooterCard';
 
-type FormSchema = z.infer<typeof formSchema>;
-
 export const MailCard: React.FC<{
   mailto: CardProps['mailto'];
-  cta1: CardProps['cta1'];
-  icon1: CardProps['icon1'];
-  href1: CardProps['href1'];
-  downloadActive1: CardProps['downloadActive1'];
-  cta2: CardProps['cta2'];
-  icon2: CardProps['icon2'];
-  href2: CardProps['href2'];
-  downloadActive2: CardProps['downloadActive2'];
-  cta3: CardProps['cta3'];
-  icon3: CardProps['icon3'];
-  href3: CardProps['href3'];
-  downloadActive3: CardProps['downloadActive3'];
+  cta1: ActionButtonProps['cta'];
+  icon1: ActionButtonProps['icon'];
+  href1: ActionButtonProps['href'];
+  downloadActive1: ActionButtonProps['downloadActive'];
+  cta2: ActionButtonProps['cta'];
+  icon2: ActionButtonProps['icon'];
+  href2: ActionButtonProps['href'];
+  downloadActive2: ActionButtonProps['downloadActive'];
+  cta3: ActionButtonProps['cta'];
+  icon3: ActionButtonProps['icon'];
+  href3: ActionButtonProps['href'];
+  downloadActive3: ActionButtonProps['downloadActive'];
   className: CardProps['className'];
 }> = ({
   mailto,
@@ -58,7 +59,7 @@ export const MailCard: React.FC<{
   className,
 }) => {
   const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(ContactFormSchema),
     defaultValues: {
       type: 'Offer',
       name: '',
@@ -74,17 +75,19 @@ export const MailCard: React.FC<{
     formState: { errors },
     handleSubmit,
   } = form;
-
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const isLoading = form.formState.isSubmitting;
+  const onSubmit = async (data: z.infer<typeof ContactFormSchema>) => {
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+      const mailText = `Type: ${data.type}\nName: ${data.name}\nPhone: ${data.phone}\nMessage: ${data.message}`;
+
+      const response = await sendEmail({
+        email: data.email,
+        sendTo: `${process.env.SITE_MAIL_RECIEVER}`,
+        subject: `[${data.type}] New Contact From Portfolio`,
+        text: mailText,
       });
-      if (response.ok) {
+
+      if (response?.messageId) {
         toast({
           title: 'You submitted the following values:',
           description: (
@@ -101,13 +104,8 @@ export const MailCard: React.FC<{
         title: 'Error sending the email',
         description: 'Please try again later.',
       });
+      console.error('Error sending the email', error);
     }
-    const mailtoLink = `mailto:${mailto}?subject=${data.type} - Contact From Porfolio&body=${encodeURIComponent(
-      `Type: ${data.type}\nName: ${data.name}\nPhone: ${data.phone}\nMessage: ${data.message}`
-    )}`;
-
-    window.location.href = mailtoLink;
-    console.log(data);
   };
 
   return (
@@ -152,6 +150,7 @@ export const MailCard: React.FC<{
                     />
                   </motion.div>
                 </FormControl>
+                <FormMessage>{errors.name?.message}</FormMessage>
               </FormItem>
             )}
           />
@@ -185,6 +184,7 @@ export const MailCard: React.FC<{
                     />
                   </motion.div>
                 </FormControl>
+                <FormMessage>{errors.phone?.message}</FormMessage>
               </FormItem>
             )}
           />
@@ -217,7 +217,7 @@ export const MailCard: React.FC<{
                     />
                   </motion.div>
                 </FormControl>
-                <FormMessage />
+                <FormMessage>{errors.email?.message}</FormMessage>
               </FormItem>
             )}
           />
@@ -258,12 +258,10 @@ export const MailCard: React.FC<{
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                           >
-                            <RadioGroupItem value='Collaboration' />
+                            <RadioGroupItem value='Inquiry' />
                           </motion.div>
                         </FormControl>
-                        <FormLabel className={'font-normal'}>
-                          Collaboration
-                        </FormLabel>
+                        <FormLabel className={'font-normal'}>Inquiry</FormLabel>
                       </FormItem>
                       <FormItem className='flex items-center space-x-3 space-y-0'>
                         <FormControl>
@@ -278,6 +276,7 @@ export const MailCard: React.FC<{
                       </FormItem>
                     </RadioGroup>
                   </FormControl>
+                  <FormMessage>{errors.type?.message}</FormMessage>
                 </div>
               </FormItem>
             )}
@@ -312,6 +311,7 @@ export const MailCard: React.FC<{
                     />
                   </motion.div>
                 </FormControl>
+                <FormMessage>{errors.message?.message}</FormMessage>
               </FormItem>
             )}
           />
@@ -326,7 +326,6 @@ export const MailCard: React.FC<{
                   cnParagraph
                 )}
               >
-                {/* className='flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow' */}
                 <FormControl>
                   <Checkbox
                     id='consent'
@@ -335,6 +334,7 @@ export const MailCard: React.FC<{
                     required
                   />
                 </FormControl>
+                <FormMessage>{errors.consent?.message}</FormMessage>
                 <FormLabel htmlFor='consent' className={cnParagraph}>
                   I agree to be contacted using the provided information.
                 </FormLabel>
@@ -347,6 +347,7 @@ export const MailCard: React.FC<{
             icon1={icon1}
             href1={href1}
             downloadActive1={downloadActive1}
+            disabled1={isLoading ? true : false}
             cta2={cta2}
             icon2={icon2}
             href2={href2}
