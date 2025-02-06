@@ -8,6 +8,7 @@ import { cnParagraph } from '@/styles/fontStyles';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
 import type { CardProps } from '@/types/CardProps';
 import { baseUrl } from '@/utils/constants/baseUrl';
+import { Loader2, LoaderCircle } from 'lucide-react';
 
 /**
  * @file ActionButton.tsx
@@ -31,6 +32,7 @@ export const ActionButton: React.FC<
   icon,
   href,
   downloadActive,
+  disabled,
   variant,
   type,
   size,
@@ -38,6 +40,7 @@ export const ActionButton: React.FC<
   className,
 }) => {
   const isLink = Boolean(href);
+
   const isInternalLink =
     href?.startsWith('#') || href?.startsWith('tel:') || href?.startsWith('/');
   const isInternalDocumentLink = href?.startsWith('documents/');
@@ -52,6 +55,10 @@ export const ActionButton: React.FC<
     : {};
 
   const downloadProps = downloadActive ? { download: true } : {};
+
+  const isDisabled = Boolean(disabled);
+
+  const disabledProps = disabled ? { disabled: true } : {};
 
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement>
@@ -78,9 +85,16 @@ export const ActionButton: React.FC<
         onClick={onClick}
         onKeyDown={handleKeyDown}
         className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
+        {...disabledProps}
       >
-        {IconLoader(icon ?? '')}
-        <span>{cta && capitalizeFirstLetterOfEachWord(cta)}</span>
+        {/* <Loader2 className='animate-spin'>Please wait</Loader2> */}
+        {isDisabled
+          ? IconLoader('LoaderCircle', 'animate-spin')
+          : IconLoader(icon ?? '')}
+        <span>
+          {cta &&
+            capitalizeFirstLetterOfEachWord(isDisabled ? 'Please wait' : cta)}
+        </span>
       </Button>
     </a>
   ) : (
@@ -92,9 +106,15 @@ export const ActionButton: React.FC<
       onKeyDown={handleKeyDown}
       aria-label={cta}
       className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
+      {...disabledProps}
     >
-      {IconLoader(icon ?? '')}
-      <span>{cta && capitalizeFirstLetterOfEachWord(cta)}</span>
+      {isDisabled
+        ? IconLoader('LoaderCircle', 'animate-spin')
+        : IconLoader(icon ?? '')}
+      <span>
+        {cta &&
+          capitalizeFirstLetterOfEachWord(isDisabled ? 'Please wait' : cta)}
+      </span>
     </Button>
   );
 };

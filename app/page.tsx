@@ -6,6 +6,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Loader2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
@@ -45,13 +46,14 @@ import { useIsClient } from './hooks/useIsClient';
 
 const LazyMap = dynamic(() => import('@/ui/Cards/MapCard'), {
   ssr: false,
-  loading: () => <p>Loading map...</p>,
+  loading: () => <Loader2 className='animate-spin'>Please wait</Loader2>,
 });
 
 const LazyTestimonialsCard = dynamic(
   () => import('@/ui/Carousels/TestimonialsCarousel'),
   {
     ssr: false,
+    loading: () => <Loader2 className='animate-spin'>Please wait</Loader2>,
   }
 );
 

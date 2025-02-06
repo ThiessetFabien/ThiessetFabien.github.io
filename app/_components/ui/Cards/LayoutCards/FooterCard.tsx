@@ -32,18 +32,19 @@ import { ActionButton } from '@/ui/Buttons/ActionButton';
  */
 export const FooterCard: React.FC<{
   mailto?: CardProps['mailto'];
-  cta1?: CardProps['cta1'];
-  icon1?: CardProps['icon1'];
-  href1?: CardProps['href1'];
-  downloadActive1?: CardProps['downloadActive1'];
-  cta2?: CardProps['cta2'];
-  icon2?: CardProps['icon2'];
-  href2?: CardProps['href2'];
-  downloadActive2?: CardProps['downloadActive2'];
-  cta3?: CardProps['cta3'];
-  icon3?: CardProps['icon3'];
-  href3?: CardProps['href3'];
-  downloadActive3?: CardProps['downloadActive3'];
+  cta1?: ActionButtonProps['cta'];
+  icon1?: ActionButtonProps['icon'];
+  href1?: ActionButtonProps['href'];
+  downloadActive1?: ActionButtonProps['downloadActive'];
+  disabled1?: ActionButtonProps['disabled'];
+  cta2?: ActionButtonProps['cta'];
+  icon2?: ActionButtonProps['icon'];
+  href2?: ActionButtonProps['href'];
+  downloadActive2?: ActionButtonProps['downloadActive'];
+  cta3?: ActionButtonProps['cta'];
+  icon3?: ActionButtonProps['icon'];
+  href3?: ActionButtonProps['href'];
+  downloadActive3?: ActionButtonProps['downloadActive'];
   className: CardProps['className'];
 }> = ({
   mailto,
@@ -51,6 +52,7 @@ export const FooterCard: React.FC<{
   icon1,
   href1,
   downloadActive1,
+  disabled1,
   cta2,
   icon2,
   href2,
@@ -66,6 +68,7 @@ export const FooterCard: React.FC<{
     href?: ActionButtonProps['href'],
     cta?: ActionButtonProps['cta'],
     downloadActive?: ActionButtonProps['downloadActive'],
+    disabled?: ActionButtonProps['disabled'],
     variant?: ActionButtonProps['variant'],
     mailto?: CardProps['mailto']
   ) => {
@@ -78,6 +81,7 @@ export const FooterCard: React.FC<{
             href={mailto ? mailto : href || ''}
             cta={cta || ''}
             downloadActive={downloadActive || undefined}
+            disabled={disabled}
             variant={variant}
             type={mailto ? 'submit' : 'button'}
             aria-label={cta || ''}
@@ -100,6 +104,7 @@ export const FooterCard: React.FC<{
         href1,
         cta1,
         downloadActive1,
+        disabled1,
         'default',
         mailto
       )}
@@ -108,6 +113,7 @@ export const FooterCard: React.FC<{
         href2,
         hideCta(cta2),
         downloadActive2,
+        undefined,
         'secondary'
       )}
       {renderActionButton(
@@ -115,6 +121,7 @@ export const FooterCard: React.FC<{
         href3,
         hideCta(cta3),
         downloadActive3,
+        undefined,
         'outline'
       )}
     </footer>

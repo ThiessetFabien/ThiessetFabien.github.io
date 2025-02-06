@@ -3,6 +3,7 @@
  * @description This file exports a component that dynamically loads and renders an icon from the lucide-react library.
  */
 
+import { CardProps } from '@/types/CardProps.jsx';
 import React, { useEffect, useState } from 'react';
 
 /**
@@ -13,8 +14,12 @@ import React, { useEffect, useState } from 'react';
  * <IconLoader icon="Home" />
  */
 
-export const IconLoader = (icon: string) => {
+export const IconLoader = (
+  icon: string,
+  className?: CardProps['className']
+) => {
   const [Icon, setIcon] = useState<React.ComponentType | null>(null);
+  const [ClassName, setClassName] = useState<CardProps['className']>('');
 
   useEffect(() => {
     const loadIcon = async () => {
@@ -24,7 +29,11 @@ export const IconLoader = (icon: string) => {
       setIcon(() => iconModule[icon] as React.ComponentType);
     };
     loadIcon();
-  }, [icon]);
 
-  return Icon ? <Icon /> : null;
+    setClassName(className || '');
+  }, [icon, className]);
+
+  return Icon ? (
+    <Icon {...({ className: `${ClassName}` } as React.ComponentProps<'svg'>)} />
+  ) : null;
 };

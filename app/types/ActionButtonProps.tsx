@@ -5,6 +5,7 @@ export interface ActionButtonProps {
   icon?: string;
   href?: string;
   downloadActive?: boolean;
+  disabled?: boolean;
   variant?:
     | 'default'
     | 'secondary'
