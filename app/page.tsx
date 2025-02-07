@@ -10,11 +10,13 @@ import { Loader2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
+import fetchData from '@/api/data.json';
+import { MailCard } from '@/components/forms/MailCard';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@/hooks/FormatText';
-import useCardGrid from '@/hooks/useCardGrid';
+import { useCardGrid } from '@/styles/useCardGrid';
 import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
 import { cn } from '@/lib/utils';
 import {
@@ -31,11 +33,9 @@ import { AchievementsCard } from '@/ui/Cards/AchievementsCard';
 import { ExperiencesCard } from '@/ui/Cards/ExperiencesCard';
 import { FooterCard } from '@/ui/Cards/LayoutCards/FooterCard';
 import { HeaderCard } from '@/ui/Cards/LayoutCards/HeaderCard';
-import { MailCard } from '@/ui/Cards/MailCard';
 import { PresentationCard } from '@/ui/Cards/PresentationCard';
-import { ProjectsCard } from '@/ui/Cards/ProjectsCard';
+import { ProjectsCard } from '@/features/ProjectsCard';
 import SkillsCard from '@/ui/Cards/SkillsCard';
-import fetchData from '@api/data.json';
 
 import { useIsClient } from './hooks/useIsClient';
 
@@ -50,7 +50,7 @@ const LazyMap = dynamic(() => import('@/ui/Cards/MapCard'), {
 });
 
 const LazyTestimonialsCard = dynamic(
-  () => import('@/ui/Carousels/TestimonialsCarousel'),
+  () => import('@/features/TestimonialsCarousel'),
   {
     ssr: false,
     loading: () => <Loader2 className='animate-spin'>Please wait</Loader2>,

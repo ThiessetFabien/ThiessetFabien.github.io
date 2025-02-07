@@ -3,7 +3,7 @@ const { transform } = require('typescript');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class', 'class'],
-  content: ['app/**/*.{ts,tsx}', '_components/**/*.{ts,tsx}'],
+  content: ['app/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}'],
   theme: {
     extend: {
       screens: {
