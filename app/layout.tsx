@@ -3,8 +3,6 @@
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 
-import { Footer } from '@/components/layout/Footer/FooterLayout';
-import { Header } from '@/components/layout/Header/HeaderLayout';
 import { Expletus_Sans } from '@/fonts/ExpletusSans';
 import { Poppins } from '@/fonts/Poppins';
 import { cn } from '@/lib/utils';
@@ -17,6 +15,8 @@ import {
   cnFlexCol,
   cnFlexFullCenter,
 } from '@/styles/flexStyles';
+import { Footer } from 'components/layout/Footer/FooterLayout';
+import { Header } from 'components/layout/Header/HeaderLayout';
 
 import { metadata } from './metadata';
 
