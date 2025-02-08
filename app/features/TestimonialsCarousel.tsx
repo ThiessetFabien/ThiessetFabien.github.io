@@ -6,7 +6,7 @@ import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@/hooks/FormatText';
-import { shuffleArray } from '@/hooks/ShuffleArray';
+import { shuffleArray } from '@/utils/ShuffleArray';
 import {
   Avatar,
   AvatarFallback,
