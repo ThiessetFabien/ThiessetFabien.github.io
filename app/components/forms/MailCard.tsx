@@ -76,7 +76,9 @@ export const MailCard: React.FC<{
     formState: { errors },
     handleSubmit,
   } = form;
+
   const isLoading = form.formState.isSubmitting;
+
   const onSubmit = async (data: z.infer<typeof ContactFormSchema>) => {
     try {
       const text = `Type: ${data.type}\n\nName: ${data.name}\n\nPhone: ${data.phone}\n\nMessage: ${data.message}`;

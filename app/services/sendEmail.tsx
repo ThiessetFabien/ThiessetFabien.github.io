@@ -1,3 +1,4 @@
+import { SMTP_SERVER_USERNAME } from './ENV_VARS';
 import type { EmailData } from '@/types/data/EmailDataProps';
 
 export const sendEmail = async (
@@ -11,19 +12,20 @@ export const sendEmail = async (
       },
       body: JSON.stringify({
         email: data.email,
+        to: SMTP_SERVER_USERNAME,
         subject: data.subject,
         message: data.text,
       }),
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || "Erreur lors de l'envoi");
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to send email');
     }
 
     return await response.json();
   } catch (error) {
-    console.error("Erreur lors de l'envoi:", error);
+    console.error('Failed to send email:', error);
     throw error;
   }
 };

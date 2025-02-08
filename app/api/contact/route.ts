@@ -17,7 +17,10 @@ const oAuth2Client = new google.auth.OAuth2(
   REDIRECT_URI
 );
 
-oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+oAuth2Client.setCredentials({
+  refresh_token: REFRESH_TOKEN,
+  scope: 'https://mail.google.com/',
+});
 
 export async function POST(request: Request) {
   if (request.method !== 'POST') {
@@ -32,19 +35,16 @@ export async function POST(request: Request) {
       );
     }
 
-    const { email, subject, message } = await request.json();
+    const { email, subject, text, sendTo } = await request.json();
 
-    if (!email || !subject || !message) {
+    if (!email || !subject || !text || !sendTo) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
 
-    const accessToken = await oAuth2Client.getAccessToken();
+    const { token: accessToken } = await oAuth2Client.getAccessToken();
 
     if (!accessToken) {
-      return NextResponse.json(
-        { error: 'Could not get access token' },
-        { status: 500 }
-      );
+      return new Error('Failed to get access token');
     }
 
     const transporter = nodemailer.createTransport({
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
         clientId: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         refreshToken: REFRESH_TOKEN,
-        accessToken: accessToken?.token || '',
+        accessToken: accessToken,
       },
     });
 
@@ -64,24 +64,19 @@ export async function POST(request: Request) {
     const mailOptions = {
       from: email,
       to: SMTP_SERVER_USERNAME,
-      replyTo: email,
       subject,
-      text: message,
+      text: text,
     };
 
     const info = await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true, messageId: info.messageId });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error sending email:', error);
 
-    if (error instanceof Error && error.message.includes('authentication')) {
-      return NextResponse.json(
-        { error: 'Error authenticating' },
-        { status: 401 }
-      );
-    }
-
-    return NextResponse.json({ error: 'Error sending email' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to send mail', details: error.message },
+      { status: 500 }
+    );
   }
 }
