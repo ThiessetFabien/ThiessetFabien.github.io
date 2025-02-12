@@ -1,81 +1,54 @@
 import { google } from 'googleapis';
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
-
-import {
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URI,
-  REFRESH_TOKEN,
-  SMTP_SERVER_SERVICE,
-  SMTP_SERVER_USERNAME,
-} from '@/services/ENV_VARS';
-
-const oAuth2Client = new google.auth.OAuth2(
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URI
-);
-
-oAuth2Client.setCredentials({
-  refresh_token: REFRESH_TOKEN,
-  scope: 'https://mail.google.com/',
-});
 
 export async function POST(request: Request) {
-  if (request.method !== 'POST') {
-    return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
-  }
-
   try {
-    if (!CLIENT_ID || !CLIENT_SECRET || !REDIRECT_URI || !REFRESH_TOKEN) {
-      return NextResponse.json(
-        { error: 'Missing environment variables' },
-        { status: 500 }
-      );
-    }
+    const oAuth2Client = new google.auth.OAuth2(
+      process.env.GMAIL_CLIENT_ID,
+      process.env.GMAIL_CLIENT_SECRET,
+      process.env.GMAIL_REDIRECT_URI
+    );
 
-    const { email, subject, text, sendTo } = await request.json();
+    oAuth2Client.setCredentials({
+      refresh_token: process.env.GMAIL_REFRESH_TOKEN,
+    });
 
-    if (!email || !subject || !text || !sendTo) {
-      return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
-    }
+    const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
 
-    const { token: accessToken } = await oAuth2Client.getAccessToken();
+    const { email, subject, text } = await request.json();
 
-    if (!accessToken) {
-      return new Error('Failed to get access token');
-    }
+    // Création du message au format RFC 2822
+    const utf8Subject = `=?utf-8?B?${Buffer.from(subject).toString('base64')}?=`;
+    const messageParts = [
+      `From: ${email}`,
+      `To: ${process.env.SMTP_SERVER_USERNAME}`,
+      'Content-Type: text/plain; charset=utf-8',
+      'MIME-Version: 1.0',
+      `Subject: ${utf8Subject}`,
+      '',
+      text,
+    ];
+    const message = messageParts.join('\n');
 
-    const transporter = nodemailer.createTransport({
-      service: SMTP_SERVER_SERVICE,
-      auth: {
-        type: 'OAuth2',
-        user: SMTP_SERVER_USERNAME,
-        clientId: CLIENT_ID,
-        clientSecret: CLIENT_SECRET,
-        refreshToken: REFRESH_TOKEN,
-        accessToken: accessToken,
+    // Encodage du message en base64url
+    const encodedMessage = Buffer.from(message)
+      .toString('base64')
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=+$/, '');
+
+    const res = await gmail.users.messages.send({
+      userId: 'me',
+      requestBody: {
+        raw: encodedMessage,
       },
     });
 
-    await transporter.verify();
-
-    const mailOptions = {
-      from: email,
-      to: SMTP_SERVER_USERNAME,
-      subject,
-      text: text,
-    };
-
-    const info = await transporter.sendMail(mailOptions);
-
-    return NextResponse.json({ success: true, messageId: info.messageId });
+    return NextResponse.json({ success: true, messageId: res.data.id });
   } catch (error: any) {
     console.error('Error sending email:', error);
-
     return NextResponse.json(
-      { error: 'Failed to send mail', details: error.message },
+      { error: error.message || 'Failed to send email' },
       { status: 500 }
     );
   }
