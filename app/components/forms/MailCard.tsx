@@ -20,7 +20,6 @@ import { cn } from '@/lib/utils';
 import { ContactFormSchema } from '@/schemas/contactFormSchema';
 import type { FormSchema } from '@/schemas/contactFormSchema';
 import { SMTP_SERVER_USERNAME } from '@/services/ENV_VARS';
-import { sendEmail } from '@/services/sendEmail';
 import { cnSmallGap, cnSmallSpaceX } from '@/styles/boxModelStyles';
 import { cnFlexCenterY } from '@/styles/flexStyles';
 import { cnParagraph } from '@/styles/fontStyles';
@@ -83,14 +82,20 @@ export const MailCard: React.FC<{
     try {
       const text = `Type: ${data.type}\n\nName: ${data.name}\n\nPhone: ${data.phone}\n\nMessage: ${data.message}`;
 
-      const response = await sendEmail({
-        email: data.email,
-        sendTo: `${SMTP_SERVER_USERNAME}`,
-        subject: `[${data.type}] New Contact From Fabuilds Portfolio`,
-        text: text,
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          sendTo: `${SMTP_SERVER_USERNAME}`,
+          subject: `[${data.type}] New Contact From Fabuilds Portfolio`,
+          text: text,
+        }),
       });
 
-      if (response.success) {
+      if (response.ok) {
         toast({
           title: 'Message submitted with success',
           description: 'I will get back to you as soon as possible.',
