@@ -26,6 +26,7 @@ import { cnParagraph } from '@/styles/fontStyles';
 import type { ActionButtonProps } from '@/types/ActionButtonProps';
 import type { CardProps } from '@/types/CardProps';
 import { FooterCard } from 'components/ui/Cards/LayoutCards/FooterCard';
+import { useState } from 'react';
 
 export const MailCard: React.FC<{
   mailto: CardProps['mailto'];
@@ -80,29 +81,25 @@ export const MailCard: React.FC<{
 
   const onSubmit = async (data: z.infer<typeof ContactFormSchema>) => {
     try {
-      const text = `Type: ${data.type}\n\nName: ${data.name}\n\nPhone: ${data.phone}\n\nMessage: ${data.message}`;
-
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email: data.email,
-          sendTo: `${SMTP_SERVER_USERNAME}`,
-          subject: `[${data.type}] New Contact From Fabuilds Portfolio`,
-          text: text,
-        }),
+        body: JSON.stringify(data),
       });
 
-      if (response.ok) {
-        toast({
-          title: 'Message submitted with success',
-          description: 'I will get back to you as soon as possible.',
-          variant: 'default',
-        });
-        form.reset();
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
+
+      toast({
+        title: 'Success sending the email',
+        description: 'I will get back to you as soon as possible.',
+        variant: 'default',
+      });
+
+      form.reset();
     } catch (error) {
       toast({
         title: 'Error sending the email',
