@@ -1,54 +1,52 @@
-import { google } from 'googleapis';
 import { NextResponse } from 'next/server';
+import { gmail } from '@/services/gmailAuth';
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const oAuth2Client = new google.auth.OAuth2(
-      process.env.GMAIL_CLIENT_ID,
-      process.env.GMAIL_CLIENT_SECRET,
-      process.env.GMAIL_REDIRECT_URI
-    );
+    const { name, email, message, type } = await req.json();
 
-    oAuth2Client.setCredentials({
-      refresh_token: process.env.GMAIL_REFRESH_TOKEN,
-    });
+    const utf8Subject = `=?utf-8?B?${Buffer.from(
+      `Nouveau message de ${name} - ${type}`
+    ).toString('base64')}?=`;
 
-    const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
-
-    const { email, subject, text } = await request.json();
-
-    // Création du message au format RFC 2822
-    const utf8Subject = `=?utf-8?B?${Buffer.from(subject).toString('base64')}?=`;
     const messageParts = [
       `From: ${email}`,
       `To: ${process.env.SMTP_SERVER_USERNAME}`,
-      'Content-Type: text/plain; charset=utf-8',
-      'MIME-Version: 1.0',
+      `Content-Type: text/html; charset=utf-8`,
+      `MIME-Version: 1.0`,
       `Subject: ${utf8Subject}`,
       '',
-      text,
+      `<h2>Nouveau message de contact</h2>
+      <p><strong>Nom:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Type:</strong> ${type}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message}</p>`,
     ];
-    const message = messageParts.join('\n');
 
-    // Encodage du message en base64url
-    const encodedMessage = Buffer.from(message)
+    const messageRaw = messageParts.join('\n');
+
+    const encodedMessage = Buffer.from(messageRaw)
       .toString('base64')
       .replace(/\+/g, '-')
       .replace(/\//g, '_')
       .replace(/=+$/, '');
 
-    const res = await gmail.users.messages.send({
+    await gmail.users.messages.send({
       userId: 'me',
       requestBody: {
         raw: encodedMessage,
       },
     });
 
-    return NextResponse.json({ success: true, messageId: res.data.id });
-  } catch (error: any) {
+    return NextResponse.json(
+      { success: true, message: 'Email sent successfully' },
+      { status: 200 }
+    );
+  } catch (error) {
     console.error('Error sending email:', error);
     return NextResponse.json(
-      { error: error.message || 'Failed to send email' },
+      { success: false, error: 'Failed to send email' },
       { status: 500 }
     );
   }
