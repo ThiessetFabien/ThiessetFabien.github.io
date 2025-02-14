@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@lib/utils';
 
 export const cnBigImage = cn(
   'max-h-[92px] min-h-[92px] min-w-[92px] max-w-[92px]',

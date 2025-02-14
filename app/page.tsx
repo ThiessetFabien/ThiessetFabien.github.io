@@ -10,47 +10,46 @@ import { Loader2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-import fetchData from '@/api/data.json';
-import { MailCard } from '@/components/forms/MailCard';
+import fetchData from '@api/data.json';
+import { MailCard } from '@components/forms/MailCard';
+import { ProjectsCard } from '@features/ProjectsCard';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@/hooks/FormatText';
-import { useCardGrid } from '@/styles/useCardGrid';
-import { Card, CardContent, CardFooter } from '@/lib/components/ui/card';
-import { cn } from '@/lib/utils';
+} from '@hooks/FormatText';
+import { useIsClient } from '@hooks/useIsClient';
+import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
+import { cn } from '@lib/utils';
 import {
   cnPaddingBottom,
   cnPaddingX,
   cnSmallGap,
   cnSpaceY,
-} from '@/styles/boxModelStyles';
-import { cnGap, cnPadding } from '@/styles/boxModelStyles';
-import { cnFlexBetweenY, cnFlexCol } from '@/styles/flexStyles';
-import { cnParagraph } from '@/styles/fontStyles';
-import type { CardProps } from '@/types/CardProps';
-import { AchievementsCard } from '@/ui/Cards/AchievementsCard';
-import { ExperiencesCard } from '@/ui/Cards/ExperiencesCard';
-import { FooterCard } from '@/ui/Cards/LayoutCards/FooterCard';
-import { HeaderCard } from '@/ui/Cards/LayoutCards/HeaderCard';
-import { PresentationCard } from '@/ui/Cards/PresentationCard';
-import { ProjectsCard } from '@/features/ProjectsCard';
-import SkillsCard from '@/ui/Cards/SkillsCard';
-
-import { useIsClient } from './hooks/useIsClient';
+} from '@styles/boxModelStyles';
+import { cnGap, cnPadding } from '@styles/boxModelStyles';
+import { cnFlexBetweenY, cnFlexCol } from '@styles/flexStyles';
+import { cnParagraph } from '@styles/fontStyles';
+import { useCardGrid } from '@styles/useCardGrid';
+import type { CardProps } from '@types/CardProps';
+import { AchievementsCard } from '@ui/Cards/AchievementsCard';
+import { ExperiencesCard } from '@ui/Cards/ExperiencesCard';
+import { FooterCard } from '@ui/Cards/LayoutCards/FooterCard';
+import { HeaderCard } from '@ui/Cards/LayoutCards/HeaderCard';
+import { PresentationCard } from '@ui/Cards/PresentationCard';
+import SkillsCard from '@ui/Cards/SkillsCard';
 
 /**
  * HomePage component.
  * @returns {JSX.Element} The rendered component.
  */
 
-const LazyMap = dynamic(() => import('@/ui/Cards/MapCard'), {
+const LazyMap = dynamic(() => import('@ui/Cards/MapCard'), {
   ssr: false,
   loading: () => <Loader2 className='animate-spin'>Please wait</Loader2>,
 });
 
 const LazyTestimonialsCard = dynamic(
-  () => import('@/features/TestimonialsCarousel'),
+  () => import('@features/TestimonialsCarousel'),
   {
     ssr: false,
     loading: () => <Loader2 className='animate-spin'>Please wait</Loader2>,

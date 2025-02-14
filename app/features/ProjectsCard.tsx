@@ -6,28 +6,28 @@ import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@/hooks/FormatText';
-import { Badge } from '@/lib/components/ui/badge';
+} from '@hooks/FormatText';
+import { Badge } from '@lib/components/ui/badge';
 import {
   CardTitle,
   CardFooter,
   CardHeader,
   Card,
   CardContent,
-} from '@/lib/components/ui/card';
-import { Tabs, TabsList, TabsTrigger } from '@/lib/components/ui/tabs';
-import { cn } from '@/lib/utils';
-import { cnBorder, cnBorderNone } from '@/styles/borderStyles';
+} from '@lib/components/ui/card';
+import { Tabs, TabsList, TabsTrigger } from '@lib/components/ui/tabs';
+import { cn } from '@lib/utils';
+import { cnBorder, cnBorderNone } from '@styles/borderStyles';
 import {
   cnSmallGap,
   cnSmallPadding,
   cnSmallSpaceY,
-} from '@/styles/boxModelStyles';
-import { cnFlexBetweenX, cnFlexCol } from '@/styles/flexStyles';
-import { cnParagraph, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
-import { cnSizeFull } from '@/styles/sizeStyles';
-import { CardProps } from '@/types/CardProps';
-import { baseUrl } from '@/utils/constants/baseUrl';
+} from '@styles/boxModelStyles';
+import { cnFlexBetweenX, cnFlexCol } from '@styles/flexStyles';
+import { cnParagraph, cnSmallText, cnTitle3 } from '@styles/fontStyles';
+import { cnSizeFull } from '@styles/sizeStyles';
+import { CardProps } from '@types/CardProps';
+import { baseUrl } from '@utils/constants/baseUrl';
 
 /**
  * @file CardProjects.tsx

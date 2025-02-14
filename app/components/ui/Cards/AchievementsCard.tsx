@@ -1,14 +1,14 @@
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
-} from '@/hooks/FormatText';
-import { IconLoader } from '@/services/IconLoader';
-import { cn } from '@/lib/utils';
-import { cnSmallGap } from '@/styles/boxModelStyles';
-import { cnFlexCol } from '@/styles/flexStyles';
-import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
-import { cnLightTextMuted } from '@/styles/fontStyles';
-import type { CardProps } from '@/types/CardProps';
+} from '@hooks/FormatText';
+import { cn } from '@lib/utils';
+import { IconLoader } from '@services/IconLoader';
+import { cnSmallGap } from '@styles/boxModelStyles';
+import { cnFlexCol } from '@styles/flexStyles';
+import { cnParagraph, cnSmallText } from '@styles/fontStyles';
+import { cnLightTextMuted } from '@styles/fontStyles';
+import type { CardProps } from '@types/CardProps';
 
 export const AchievementsCard: React.FC<{
   achievements: CardProps['achievements'];

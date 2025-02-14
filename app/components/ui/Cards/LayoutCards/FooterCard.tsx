@@ -5,12 +5,12 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-import { useIsXs } from '@/styles/useMediaQueries';
-import { cn } from '@/lib/utils';
-import { cnSmallGap } from '@/styles/boxModelStyles';
-import type { ActionButtonProps } from '@/types/ActionButtonProps';
-import type { CardProps } from '@/types/CardProps';
-import { ActionButton } from 'components/ui/Buttons/ActionButton';
+import { cn } from '@lib/utils';
+import { cnSmallGap } from '@styles/boxModelStyles';
+import { useIsXs } from '@styles/useMediaQueries';
+import type { ActionButtonProps } from '@types/ActionButtonProps';
+import type { CardProps } from '@types/CardProps';
+import { ActionButton } from '@ui/Buttons/ActionButton';
 
 /**
  * FooterCard component props.

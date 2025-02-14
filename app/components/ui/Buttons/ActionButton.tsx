@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { capitalizeFirstLetterOfEachWord } from '@/hooks/FormatText';
-import { IconLoader } from '@/services/IconLoader';
-import { Button } from '@/lib/components/ui/button';
-import { cn } from '@/lib/utils';
-import { cnParagraph } from '@/styles/fontStyles';
-import type { ActionButtonProps } from '@/types/ActionButtonProps';
-import type { CardProps } from '@/types/CardProps';
-import { baseUrl } from '@/utils/constants/baseUrl';
+import { capitalizeFirstLetterOfEachWord } from '@hooks/FormatText';
+import { Button } from '@lib/components/ui/button';
+import { cn } from '@lib/utils';
+import { IconLoader } from '@services/IconLoader';
+import { cnParagraph } from '@styles/fontStyles';
+import type { ActionButtonProps } from '@types/ActionButtonProps';
+import type { CardProps } from '@types/CardProps';
+import { baseUrl } from '@utils/constants/baseUrl';
 
 /**
  * @file ActionButton.tsx

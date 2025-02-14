@@ -1,4 +1,4 @@
-import { TestimonialProps } from '@/types/TestimonialProps';
+import { TestimonialProps } from '@types/TestimonialProps';
 
 export const shuffleArray = (array: TestimonialProps[]) => {
   for (let i = array.length - 1; i > 0; i--) {

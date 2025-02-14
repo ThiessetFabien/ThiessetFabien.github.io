@@ -1,21 +1,21 @@
-import { capitalizeFirstLetterOfPhrase } from '@/hooks/FormatText';
+import { capitalizeFirstLetterOfPhrase } from '@hooks/FormatText';
 import {
   AccordionTrigger,
   AccordionContent,
-} from '@/lib/components/ui/accordion';
+} from '@lib/components/ui/accordion';
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@/lib/components/ui/hover-card';
-import { cn } from '@/lib/utils';
-import { cnBorder } from '@/styles/borderStyles';
-import { cnSpaceX } from '@/styles/boxModelStyles';
-import { cnParagraph, cnSmallText } from '@/styles/fontStyles';
-import type { CardProps } from '@/types/CardProps';
-import type { ExperienceProps } from '@/types/ExperienceProps';
-import type { OtherExperienceProps } from '@/types/OtherExperiencesProps';
-import { ExperiencesList } from 'components/ui/Lists/ExperiencesList';
+} from '@lib/components/ui/hover-card';
+import { cn } from '@lib/utils';
+import { cnBorder } from '@styles/borderStyles';
+import { cnSpaceX } from '@styles/boxModelStyles';
+import { cnParagraph, cnSmallText } from '@styles/fontStyles';
+import type { CardProps } from '@types/CardProps';
+import type { ExperienceProps } from '@types/ExperienceProps';
+import type { OtherExperienceProps } from '@types/OtherExperiencesProps';
+import { ExperiencesList } from '@ui/Lists/ExperiencesList';
 
 export const ExperiencesAccordion: React.FC<{
   experience: ExperienceProps[];

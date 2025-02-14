@@ -5,7 +5,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { CardProps } from '@/types/CardProps.jsx';
+import type { CardProps } from '@types/CardProps';
 
 /**
  * IconLoader component.

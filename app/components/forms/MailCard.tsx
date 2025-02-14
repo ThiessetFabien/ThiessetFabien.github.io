@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Checkbox } from '@/lib/components/ui/checkbox';
+import { Checkbox } from '@lib/components/ui/checkbox';
 import {
   Form,
   FormControl,
@@ -11,22 +11,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/lib/components/ui/form';
-import { Input } from '@/lib/components/ui/input';
-import { RadioGroup, RadioGroupItem } from '@/lib/components/ui/radio-group';
-import { Textarea } from '@/lib/components/ui/textarea';
-import { toast } from '@/lib/hooks/use-toast';
-import { cn } from '@/lib/utils';
-import { ContactFormSchema } from '@/schemas/contactFormSchema';
-import type { FormSchema } from '@/schemas/contactFormSchema';
-import { SMTP_SERVER_USERNAME } from '@/services/ENV_VARS';
-import { cnSmallGap, cnSmallSpaceX } from '@/styles/boxModelStyles';
-import { cnFlexCenterY } from '@/styles/flexStyles';
-import { cnParagraph } from '@/styles/fontStyles';
-import type { ActionButtonProps } from '@/types/ActionButtonProps';
-import type { CardProps } from '@/types/CardProps';
-import { FooterCard } from 'components/ui/Cards/LayoutCards/FooterCard';
-import { useState } from 'react';
+} from '@lib/components/ui/form';
+import { Input } from '@lib/components/ui/input';
+import { RadioGroup, RadioGroupItem } from '@lib/components/ui/radio-group';
+import { Textarea } from '@lib/components/ui/textarea';
+import { toast } from '@lib/hooks/use-toast';
+import { cn } from '@lib/utils';
+import { ContactFormSchema } from '@schemas/contactFormSchema';
+import type { FormSchema } from '@schemas/contactFormSchema';
+import { cnSmallGap, cnSmallSpaceX } from '@styles/boxModelStyles';
+import { cnFlexCenterY } from '@styles/flexStyles';
+import { cnParagraph } from '@styles/fontStyles';
+import type { ActionButtonProps } from '@types/ActionButtonProps';
+import type { CardProps } from '@types/CardProps';
+import { FooterCard } from '@ui/Cards/LayoutCards/FooterCard';
 
 export const MailCard: React.FC<{
   mailto: CardProps['mailto'];

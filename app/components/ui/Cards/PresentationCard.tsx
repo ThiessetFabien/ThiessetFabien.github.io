@@ -3,40 +3,36 @@ import React, { memo } from 'react';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
-} from '@/hooks/FormatText';
-import {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-} from '@/lib/components/ui/avatar';
+} from '@hooks/FormatText';
+import { Avatar, AvatarImage, AvatarFallback } from '@lib/components/ui/avatar';
 import {
   CardTitle,
   CardDescription,
   CardHeader,
   CardContent,
-} from '@/lib/components/ui/card';
-import { cn } from '@/lib/utils';
-import { cnBorder2, cnBorderBottom4 } from '@/styles/borderStyles';
-import { cnGapX, cnSmallGap, cnSmallSpaceY } from '@/styles/boxModelStyles';
-import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
+} from '@lib/components/ui/card';
+import { cn } from '@lib/utils';
+import { cnBorder2, cnBorderBottom4 } from '@styles/borderStyles';
+import { cnGapX, cnSmallGap, cnSmallSpaceY } from '@styles/boxModelStyles';
+import { cnFlexCol, cnFlexFullCenter } from '@styles/flexStyles';
 import {
   cnTitle1,
   cnBigDescription,
   cnSmallText,
   cnLightTextMuted,
   cnParagraph,
-} from '@/styles/fontStyles';
+} from '@styles/fontStyles';
 import {
   cnHiddenSmBlock,
   cnHiddenXxsFlex,
   cnSmHidden,
   cnXxsHidden,
-} from '@/styles/hideItemStyles';
-import { cnBigImage } from '@/styles/imageStyles';
-import { cnSizeAuto } from '@/styles/sizeStyles';
-import { cnLittleTranslateSm } from '@/styles/translateStyles';
-import type { ActionButtonProps } from '@/types/ActionButtonProps';
-import type { CardProps } from '@/types/CardProps';
+} from '@styles/hideItemStyles';
+import { cnBigImage } from '@styles/imageStyles';
+import { cnSizeAuto } from '@styles/sizeStyles';
+import { cnLittleTranslateSm } from '@styles/translateStyles';
+import type { ActionButtonProps } from '@types/ActionButtonProps';
+import type { CardProps } from '@types/CardProps';
 
 export const PresentationCard: React.FC<{
   title: CardProps['title'];

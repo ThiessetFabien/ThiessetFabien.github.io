@@ -2,15 +2,15 @@ import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@/hooks/FormatText';
+} from '@hooks/FormatText';
 import {
   CardTitle,
   CardDescription,
   CardHeader,
-} from '@/lib/components/ui/card';
-import { cn } from '@/lib/utils';
-import { cnDescription, cnTitle2, cnTitle2Size } from '@/styles/fontStyles';
-import type { CardProps } from '@/types/CardProps';
+} from '@lib/components/ui/card';
+import { cn } from '@lib/utils';
+import { cnDescription, cnTitle2, cnTitle2Size } from '@styles/fontStyles';
+import type { CardProps } from '@types/CardProps';
 
 export const HeaderCard: React.FC<{
   title: CardProps['title'];
