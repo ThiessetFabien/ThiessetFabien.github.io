@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@lib/utils';
 
 export const cnSizeIcon = cn('w-auto', 'h-3', 'sm:h-4', 'mb:h-5');
 

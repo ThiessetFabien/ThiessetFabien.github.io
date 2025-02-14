@@ -9,23 +9,23 @@ import React, { memo } from 'react';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@/hooks/FormatText';
-import { Badge } from '@/lib/components/ui/badge';
-import { CardDescription } from '@/lib/components/ui/card';
-import { cn } from '@/lib/utils';
-import { cnBorderNone } from '@/styles/borderStyles';
-import { cnSmallGap } from '@/styles/boxModelStyles';
-import { cnFlexCol, cnFlexFullCenter } from '@/styles/flexStyles';
+} from '@hooks/FormatText';
+import { Badge } from '@lib/components/ui/badge';
+import { CardDescription } from '@lib/components/ui/card';
+import { cn } from '@lib/utils';
+import { cnBorderNone } from '@styles/borderStyles';
+import { cnSmallGap } from '@styles/boxModelStyles';
+import { cnFlexCol, cnFlexFullCenter } from '@styles/flexStyles';
 import {
   cnParagraph,
   cnTitle3,
   cnDescription,
   cnLightTextMuted,
-} from '@/styles/fontStyles';
-import { cnHiddenXsFlex } from '@/styles/hideItemStyles';
-import { cnSizeBigIcon, cnSizeIcon } from '@/styles/sizeStyles';
-import type { CardProps } from '@/types/CardProps';
-import { baseUrl } from '@/utils/constants/baseUrl';
+} from '@styles/fontStyles';
+import { cnHiddenXsFlex } from '@styles/hideItemStyles';
+import { cnSizeBigIcon, cnSizeIcon } from '@styles/sizeStyles';
+import type { CardProps } from '@types/CardProps';
+import { baseUrl } from '@utils/constants/baseUrl';
 
 /**
  * SkillsCard component.

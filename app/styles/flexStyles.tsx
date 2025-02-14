@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@lib/utils';
 
 export const cnFlexBetweenX = cn('flex w-full items-center justify-between');
 

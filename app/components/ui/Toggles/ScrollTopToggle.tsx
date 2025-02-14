@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 
-import { IconLoader } from '@/services/IconLoader';
-import { HoverCard, HoverCardContent } from '@/lib/components/ui/hover-card';
-import { HoverCardTrigger } from '@/lib/components/ui/hover-card';
-import { Toggle } from '@/lib/components/ui/toggle';
-import { cnParagraph } from '@/styles/fontStyles';
-import type { ScrollTopToggleProps } from '@/types/ScrollTopToggleProps';
+import { HoverCard, HoverCardContent } from '@lib/components/ui/hover-card';
+import { HoverCardTrigger } from '@lib/components/ui/hover-card';
+import { Toggle } from '@lib/components/ui/toggle';
+import { IconLoader } from '@services/IconLoader';
+import { cnParagraph } from '@styles/fontStyles';
+import type { ScrollTopToggleProps } from '@types/ScrollTopToggleProps';
 
 export const ScrollTopToggle: React.FC<ScrollTopToggleProps> = ({
   variant = 'default',

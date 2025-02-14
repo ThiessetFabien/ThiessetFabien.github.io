@@ -1,12 +1,12 @@
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
-} from '@/hooks/FormatText';
-import { cn } from '@/lib/utils';
-import { cnMarginX } from '@/styles/boxModelStyles';
-import { cnFlexCol } from '@/styles/flexStyles';
-import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@/styles/fontStyles';
-import type { ExperienceProps } from '@/types/ExperienceProps';
+} from '@hooks/FormatText';
+import { cn } from '@lib/utils';
+import { cnMarginX } from '@styles/boxModelStyles';
+import { cnFlexCol } from '@styles/flexStyles';
+import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@styles/fontStyles';
+import type { ExperienceProps } from '@types/ExperienceProps';
 
 export const ExperiencesList: React.FC<{
   title: ExperienceProps['title'];

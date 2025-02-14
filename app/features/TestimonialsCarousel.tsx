@@ -5,33 +5,23 @@ import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@/hooks/FormatText';
-import { shuffleArray } from '@/utils/ShuffleArray';
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from '@/lib/components/ui/avatar';
-import { cn } from '@/lib/utils';
-import { cnBorder2 } from '@/styles/borderStyles';
+} from '@hooks/FormatText';
+import { Avatar, AvatarFallback, AvatarImage } from '@lib/components/ui/avatar';
+import { cn } from '@lib/utils';
+import { cnBorder2 } from '@styles/borderStyles';
 import {
   cnPaddingBottom,
   cnPaddingX,
   cnSmallSpaceY,
-} from '@/styles/boxModelStyles';
-import { cnFlexCol } from '@/styles/flexStyles';
-import {
-  cnLightTextMuted,
-  cnParagraph,
-  cnSmallText,
-} from '@/styles/fontStyles';
-import { CardProps } from '@/types/CardProps';
-import type { TestimonialProps } from '@/types/TestimonialProps';
-import { baseUrl } from '@/utils/constants/baseUrl';
-
-import { ActionButton } from '@/ui/Buttons/ActionButton';
-
-import GenericCarousel from '@/ui/Carousels/GenericCarousel';
+} from '@styles/boxModelStyles';
+import { cnFlexCol } from '@styles/flexStyles';
+import { cnLightTextMuted, cnParagraph, cnSmallText } from '@styles/fontStyles';
+import { CardProps } from '@types/CardProps';
+import type { TestimonialProps } from '@types/TestimonialProps';
+import { ActionButton } from '@ui/Buttons/ActionButton';
+import GenericCarousel from '@ui/Carousels/GenericCarousel';
+import { baseUrl } from '@utils/constants/baseUrl';
+import { shuffleArray } from '@utils/ShuffleArray';
 
 /**
  * @file TestimonialsCarousel.tsx

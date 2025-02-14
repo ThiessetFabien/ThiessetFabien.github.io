@@ -2,16 +2,15 @@
  * @file Map.tsx
  * @description This component renders a map with a specific position and radius.
  */
-'use client';
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
 import 'leaflet-defaulticon-compatibility';
 
-import useIntersectionObserver from '@/hooks/IntersectionObserver';
-import { useIsClient } from '@/hooks/useIsClient';
-import type { LocationEventsProps } from '@/types/LocationEventsProps';
+import useIntersectionObserver from '@hooks/IntersectionObserver';
+import { useIsClient } from '@hooks/useIsClient';
+import type { LocationEventsProps } from '@types/LocationEventsProps';
 
 /**
  * Map component.

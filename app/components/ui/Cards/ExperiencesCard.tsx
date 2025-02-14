@@ -4,16 +4,16 @@
  */
 import React from 'react';
 
-import { Accordion, AccordionItem } from '@/lib/components/ui/accordion';
-import { ScrollArea } from '@/lib/components/ui/scroll-area';
-import { cn } from '@/lib/utils';
-import { cnBorder } from '@/styles/borderStyles';
-import type { CardProps } from '@/types/CardProps';
-import type { ExperienceProps } from '@/types/ExperienceProps';
-import type { ExperiencesProps } from '@/types/ExperiencesProps';
-import type { OtherExperienceProps } from '@/types/OtherExperiencesProps';
-import { ExperiencesAccordion } from 'components/ui/Accordions/ExperiencesAccordion';
-import { ExperiencesList } from 'components/ui/Lists/ExperiencesList';
+import { Accordion, AccordionItem } from '@lib/components/ui/accordion';
+import { ScrollArea } from '@lib/components/ui/scroll-area';
+import { cn } from '@lib/utils';
+import { cnBorder } from '@styles/borderStyles';
+import type { CardProps } from '@types/CardProps';
+import type { ExperienceProps } from '@types/ExperienceProps';
+import type { ExperiencesProps } from '@types/ExperiencesProps';
+import type { OtherExperienceProps } from '@types/OtherExperiencesProps';
+import { ExperiencesAccordion } from '@ui/Accordions/ExperiencesAccordion';
+import { ExperiencesList } from '@ui/Lists/ExperiencesList';
 
 /**
  * CardProjects component.

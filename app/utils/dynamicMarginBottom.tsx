@@ -3,7 +3,7 @@
  * @description This file exports a function that returns a dynamic margin-bottom class based on the index.
  */
 
-import { cnMarginBottom } from '@/styles/boxModelStyles';
+import { cnMarginBottom } from '@styles/boxModelStyles';
 
 /**
  * Returns a dynamic margin-bottom class based on the index.

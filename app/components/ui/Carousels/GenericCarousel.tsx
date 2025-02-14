@@ -9,10 +9,10 @@ import { motion } from 'framer-motion';
 import { Pause, Play } from 'lucide-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import { useIsClient } from '@/hooks/useIsClient';
-import { Progress } from '@/lib/components/ui/progress';
-import { Toggle } from '@/lib/components/ui/toggle';
-import { cn } from '@/lib/utils';
+import { useIsClient } from '@hooks/useIsClient';
+import { Progress } from '@lib/components/ui/progress';
+import { Toggle } from '@lib/components/ui/toggle';
+import { cn } from '@lib/utils';
 import {
   cnManipulation,
   cnPaddingX,
@@ -20,18 +20,14 @@ import {
   cnSmallSpaceX,
   cnSmallSpaceY,
   cnSmallGap,
-} from '@/styles/boxModelStyles';
-import {
-  cnFlexFullCenter,
-  cnFlexCenterY,
-  cnFlexCol,
-} from '@/styles/flexStyles';
-import type { CardProps } from '@/types/CardProps';
-import type { GenericCarouselProps } from '@/types/GenericCarouselProps';
+} from '@styles/boxModelStyles';
+import { cnFlexFullCenter, cnFlexCenterY, cnFlexCol } from '@styles/flexStyles';
+import type { CardProps } from '@types/CardProps';
+import type { GenericCarouselProps } from '@types/GenericCarouselProps';
 import {
   SelectedSnapDisplay,
   useSelectedSnapDisplay,
-} from 'components/ui/Carousels/Buttons/SelectedSnapDisplay';
+} from '@ui/Carousels/Buttons/SelectedSnapDisplay';
 
 import { NextButton, PrevButton } from './Buttons/ArrowButtonsCarousel';
 import { usePrevNextButtons } from './Buttons/ArrowButtonsCarousel';

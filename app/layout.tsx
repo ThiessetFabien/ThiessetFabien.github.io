@@ -3,20 +3,20 @@
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 
-import { Expletus_Sans } from '@/fonts/ExpletusSans';
-import { Poppins } from '@/fonts/Poppins';
-import { cn } from '@/lib/utils';
-import '@/styles/reset.css';
-import '@/styles/globals.css';
-import { cnMarginX, cnPaddingY } from '@/styles/boxModelStyles';
-import { cnGap } from '@/styles/boxModelStyles';
+import { Footer } from '@components/layout/Footer/FooterLayout';
+import { Header } from '@components/layout/Header/HeaderLayout';
+import { Expletus_Sans } from '@fonts/ExpletusSans';
+import { Poppins } from '@fonts/Poppins';
+import { cn } from '@lib/utils';
+import '@styles/reset.css';
+import '@styles/globals.css';
+import { cnMarginX, cnPaddingY } from '@styles/boxModelStyles';
+import { cnGap } from '@styles/boxModelStyles';
 import {
   cnFlexBetweenX,
   cnFlexCol,
   cnFlexFullCenter,
-} from '@/styles/flexStyles';
-import { Footer } from 'components/layout/Footer/FooterLayout';
-import { Header } from 'components/layout/Header/HeaderLayout';
+} from '@styles/flexStyles';
 
 import { metadata } from './metadata';
 

@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@lib/utils';
 
 export const cnTitle1 = cn(
   'font-caption font-bold tracking-tight',

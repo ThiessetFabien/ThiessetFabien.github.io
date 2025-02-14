@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import type { CardProps } from '@/types/CardProps';
+import type { CardProps } from '@types/CardProps';
 
 export const useCardGrid = (cards: CardProps[]) => {
   const gridConfig = useMemo(() => {

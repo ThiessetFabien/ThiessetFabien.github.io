@@ -1,8 +1,16 @@
 import { NextResponse } from 'next/server';
-import { gmail } from '@/services/gmailAuth';
+import type { NextRequest as Request } from 'next/server';
+
+import { gmail } from '@config/gmailAuth';
+import { checkGmailAuth } from '@middleware/checkGmailAuth';
 
 export async function POST(req: Request) {
   try {
+    const authCheck = await checkGmailAuth(req);
+    if (authCheck.status !== 200) {
+      return authCheck;
+    }
+
     const { name, email, message, type } = await req.json();
 
     const utf8Subject = `=?utf-8?B?${Buffer.from(
