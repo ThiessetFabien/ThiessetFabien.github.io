@@ -17,7 +17,10 @@
     "lint": "next lint",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write --ignore-path .gitignore .",
-    "lintAndformat": "prettier --write --ignore-path .gitignore . && npm run lint:fix"
+    "lintAndformat": "prettier --write --ignore-path .gitignore . && npm run lint:fix",
+    "clean:.next": "rm -rf .next",
+    "clean:node_modules": "rm -rf node_modules",
+    "clean:all": "rm -rf .next node_modules"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
