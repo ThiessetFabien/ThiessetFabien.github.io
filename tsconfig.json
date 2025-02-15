@@ -17,21 +17,28 @@
         "name": "next"
       }
     ],
-    "baseUrl": "app/",
+    "baseUrl": ".",
     "paths": {
-      "@/components/*": ["_components/*"],
-      "@/ui/*": ["_components/ui/*"],
-      "@/layout/*": ["_components/layout/*"],
-      "@api/*": ["pages/api/*"],
-      "@/config/*": ["config/*"],
-      "@/fonts/*": ["fonts/*"],
-      "@/lib/*": ["lib/*"],
-      "@/types/*": ["types/*"],
-      "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/schemas/*": ["schemas/*"],
-      "@/services/*": ["services/*"],
+      "@/*": ["*"],
+      "@src/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@api/*": ["src/app/api/*"],
+      "@components/*": ["src/components/*"],
+      "@common/*": ["src/components/common/*"],
+      "@forms/*": ["src/components/forms/*"],
+      "@layouts/*": ["src/components/layouts/*"],
+      "@ui/*": ["src/components/ui/*"],
+      "@config/*": ["src/config/*"],
+      "@fonts/*": ["src/fonts/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@lib/*": ["src/lib/*"],
+      "@services/*": ["src/lib/services/*"],
+      "@utils/*": ["src/lib/utils/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@providers/*": ["src/providers/*"],
+      "@schemas/*": ["src/schemas/*"],
+      "@styles/*": ["src/styles/*"],
+      "@types/*": ["src/types/*"]
     },
     "target": "ES2017"
   },
@@ -40,7 +47,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/pages/page.tsx"
+    "src/app/pages/page.tsx"
   ],
   "exclude": ["node_modules"]
 }
