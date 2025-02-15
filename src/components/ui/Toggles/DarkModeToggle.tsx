@@ -59,13 +59,17 @@ export function ToggleDarkMode() {
             {resolvedTheme === 'dark' ? (
               <Sun
                 className={cn(
-                  'rotate-90 scale-100 transition-all dark:rotate-0 dark:scale-0'
+                  resolvedTheme === 'dark'
+                    ? 'rotate-0 scale-100 transition-all duration-200'
+                    : 'rotate-90 scale-0 transition-all duration-200'
                 )}
               />
             ) : (
               <Moon
                 className={cn(
-                  'rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0'
+                  resolvedTheme === 'dark'
+                    ? '-rotate-90 scale-0 transition-all duration-200'
+                    : 'rotate-0 scale-100 transition-all duration-200'
                 )}
               />
             )}

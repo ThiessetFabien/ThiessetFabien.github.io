@@ -92,10 +92,6 @@
     "typescript": "^5.7.3"
   },
   "pnpm": {
-    "overrides": {},
-    "ignoredBuiltDependencies": [
-      "@parcel/watcher",
-      "sharp"
-    ]
+    "overrides": {}
   }
 }
