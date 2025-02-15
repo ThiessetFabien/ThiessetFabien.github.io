@@ -183,13 +183,19 @@ export const GenericCarousel: React.FC<
               >
                 {isPlaying ? (
                   <Pause
-                    className={cn('scale-100 transition-all dark:scale-0')}
+                    className={
+                      isPlaying
+                        ? 'rotate-0 scale-100 transition-all duration-200'
+                        : 'rotate-90 scale-0 transition-all duration-200'
+                    }
                   />
                 ) : (
                   <Play
-                    className={cn(
-                      'absolute scale-100 transition-all dark:scale-0'
-                    )}
+                    className={
+                      isPlaying
+                        ? '-rotate-90 scale-0 transition-all duration-200'
+                        : 'rotate-0 scale-100 transition-all duration-200'
+                    }
                   />
                 )}
                 <span className='sr-only'>Toggle play pause</span>{' '}
