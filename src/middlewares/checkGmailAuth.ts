@@ -1,10 +1,17 @@
+import { OAuth2Client } from 'google-auth-library';
 import { NextResponse } from 'next/server';
 
 import { gmail } from '@config/gmailAuth';
 
-export async function checkGmailAuth() {
+export async function checkGmailAuth(): Promise<NextResponse> {
   try {
-    const credentials = await gmail.context._options.auth?.getAccessToken();
+    const auth = gmail.context._options.auth as OAuth2Client;
+
+    if (!auth) {
+      throw new Error('No auth found');
+    }
+
+    const credentials = await auth.getAccessToken();
 
     if (!credentials) {
       throw new Error('No credentials found');
@@ -12,10 +19,10 @@ export async function checkGmailAuth() {
 
     return NextResponse.next();
   } catch (error) {
-    console.error('Error checking Gmail auth:', error);
-
     return NextResponse.json(
-      { error: 'Error authenticating' },
+      {
+        error: `Error authenticating ! ${error instanceof Error ? error.message : 'Unknown error'}`,
+      },
       { status: 401 }
     );
   }
