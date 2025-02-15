@@ -10,8 +10,7 @@
   "type": "module",
   "scripts": {
     "dev": "dotenv -e .env.development.local -- next dev",
-    "build": "prettier --check . && next build",
-    "build:local": "prettier --write . && next build",
+    "build": "prettier --write . && next build",
     "prod": "netlify deploy --prod",
     "start": "next start",
     "lint": "next lint",
@@ -93,10 +92,6 @@
     "typescript": "^5.7.3"
   },
   "pnpm": {
-    "overrides": {},
-    "ignoredBuiltDependencies": [
-      "@parcel/watcher",
-      "sharp"
-    ]
+    "overrides": {}
   }
 }
