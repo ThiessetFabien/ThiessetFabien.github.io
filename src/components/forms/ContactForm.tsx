@@ -3,6 +3,13 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { FooterCard } from '@/src/components/ui/cards/layouts.cards/FooterCard';
+import { cn } from '@/src/lib/utils';
+import type { FormSchema } from '@/src/schemas/contactForm.schema';
+import { ContactFormSchema } from '@/src/schemas/contactForm.schema';
+import { cnSmallGap, cnSmallSpaceX } from '@/src/styles/boxModel.style';
+import { cnFlexCenterY } from '@/src/styles/flex.style';
+import { cnParagraph } from '@/src/styles/font.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
 import { Checkbox } from '@lib/components/ui/checkbox';
 import {
@@ -17,14 +24,7 @@ import { Input } from '@lib/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@lib/components/ui/radio-group';
 import { Textarea } from '@lib/components/ui/textarea';
 import { useToast } from '@lib/hooks/use-toast';
-import { cn } from '@lib/utils';
-import type { FormSchema } from '@schemas/contactFormSchema';
-import { ContactFormSchema } from '@schemas/contactFormSchema';
 import type { CardProps } from '@src/types/CardProps';
-import { cnSmallGap, cnSmallSpaceX } from '@styles/boxModelStyles';
-import { cnFlexCenterY } from '@styles/flexStyles';
-import { cnParagraph } from '@styles/fontStyles';
-import { FooterCard } from '@ui/Cards/LayoutCards/FooterCard';
 
 export const ContactForm: React.FC<{
   mailto: CardProps['mailto'];

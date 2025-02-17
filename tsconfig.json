@@ -35,7 +35,7 @@
       "@services/*": ["src/lib/services/*"],
       "@utils/*": ["src/lib/utils/*"],
       "@middlewares/*": ["src/middlewares/*"],
-      "@providers/*": ["src/providers/*"],
+      "@providers/*": ["src/components/providers/*"],
       "@schemas/*": ["src/schemas/*"],
       "@styles/*": ["src/styles/*"],
       "@types/*": ["src/types/*"]
