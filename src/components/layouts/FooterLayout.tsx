@@ -2,20 +2,15 @@
 
 import React from 'react';
 
-import { ScrollTopToggle } from '@/src/components/ui/toggles/ScrollTopToggle';
-import { scrollToTop } from '@/src/hooks/ScrollToTop.hook';
-import { year } from '@/src/lib/utils/dynamicYear.util';
-import { cnPaddingX } from '@/src/styles/boxModel.style';
-import { cnFlexBetweenX, cnFlexFullCenter } from '@/src/styles/flex.style';
-import {
-  cnLightTextMuted,
-  cnSmallText,
-  cnTitle3,
-} from '@/src/styles/font.style';
-import { cnHiddenXsFlex } from '@/src/styles/hideItem.style';
-import type { CardProps } from '@src/types/CardProps';
-
+import { ScrollTopToggle } from '@components/ui/toggles/ScrollTopToggle';
+import { scrollToTop } from '@hooks/ScrollToTop.hook';
 import { cn } from '@lib/utils';
+import { year } from '@lib/utils/dynamicYear.util';
+import type { CardProps } from '@src/types/CardProps';
+import { cnPaddingX } from '@styles/boxModel.style';
+import { cnFlexBetweenX, cnFlexFullCenter } from '@styles/flex.style';
+import { cnLightTextMuted, cnSmallText, cnTitle3 } from '@styles/font.style';
+import { cnHiddenXsFlex } from '@styles/hideItem.style';
 
 /**
  * @file Footer.tsx

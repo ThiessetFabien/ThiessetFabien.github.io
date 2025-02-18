@@ -1,7 +1,7 @@
 'use client';
 
-import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
+import { ThemeProvider } from 'next-themes';
 
 import {
   cnFlexBetweenX,
@@ -13,14 +13,13 @@ import { Poppins } from '@fonts/Poppins.font';
 import { Footer } from '@layouts/FooterLayout';
 import { Header } from '@layouts/HeaderLayout';
 import { Toaster } from '@lib/components/ui/toaster';
+import { cn } from '@lib/utils';
 import { cnGap, cnMarginX, cnPaddingY } from '@styles/boxModel.style';
 
 import '@styles/globals.css';
 import '@styles/reset.css';
 
-import { metadata } from './metadata';
-
-import { cn } from '@lib/utils';
+import { metadata } from '../config/metadata';
 
 export default function RootLayout({
   children,

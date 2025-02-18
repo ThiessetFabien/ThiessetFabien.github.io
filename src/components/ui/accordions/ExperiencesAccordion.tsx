@@ -14,9 +14,8 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from '@lib/components/ui/hover-card';
-import type { CardProps } from '@src/types/CardProps';
-
 import { cn } from '@lib/utils';
+import type { CardProps } from '@src/types/CardProps';
 
 export const ExperiencesAccordion: React.FC<{
   experience: ExperienceProps[];

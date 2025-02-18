@@ -10,9 +10,8 @@ import {
   cnParagraph,
   cnSmallText,
 } from '@/src/styles/font.style';
-import type { CardProps } from '@src/types/CardProps';
-
 import { cn } from '@lib/utils';
+import type { CardProps } from '@src/types/CardProps';
 
 export const AchievementsCard: React.FC<{
   achievements: CardProps['achievements'];

@@ -7,9 +7,9 @@ import React, {
   useState,
 } from 'react';
 
-import { ActionButton } from '@/src/components/ui/buttons/ActionButton';
-import { ActionButtonProps } from '@/src/types/ActionButtonProps.js';
+import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
 import { cn } from '@lib/utils';
+import { ActionButton } from '@ui/buttons/ActionButton';
 
 type UsePrevNextButtonsType = {
   prevBtnDisabled: boolean;
