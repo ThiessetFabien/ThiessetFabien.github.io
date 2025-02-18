@@ -22,6 +22,7 @@ import {
 } from '@/src/styles/hideItem.style';
 import { cnBigImage } from '@/src/styles/image.styles';
 import { cnSizeAuto } from '@/src/styles/size.style';
+import { cnLittleTranslateSm } from '@/src/styles/translate.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
 import { Avatar, AvatarFallback, AvatarImage } from '@lib/components/ui/avatar';
 import {
@@ -30,10 +31,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@lib/components/ui/card';
-import type { CardProps } from '@src/types/CardProps';
-import { cnLittleTranslateSm } from '@/src/styles/translate.style';
-
 import { cn } from '@lib/utils';
+import type { CardProps } from '@src/types/CardProps';
 
 export const HeroCard: React.FC<{
   title: CardProps['title'];

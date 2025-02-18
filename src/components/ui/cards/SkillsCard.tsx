@@ -24,9 +24,8 @@ import { cnHiddenXsFlex } from '@/src/styles/hideItem.style';
 import { cnSizeBigIcon, cnSizeIcon } from '@/src/styles/size.style';
 import { Badge } from '@lib/components/ui/badge';
 import { CardDescription } from '@lib/components/ui/card';
-import type { CardProps } from '@src/types/CardProps';
-
 import { cn } from '@lib/utils';
+import type { CardProps } from '@src/types/CardProps';
 
 /**
  * SkillsCard component.

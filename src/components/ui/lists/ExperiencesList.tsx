@@ -10,7 +10,6 @@ import {
   cnTitle3,
 } from '@/src/styles/font.style';
 import type { ExperienceProps } from '@/src/types/ExperienceProps';
-
 import { cn } from '@lib/utils';
 
 export const ExperiencesList: React.FC<{

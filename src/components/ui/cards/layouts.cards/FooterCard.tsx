@@ -8,10 +8,10 @@ import React from 'react';
 
 import { ActionButton } from '@/src/components/ui/buttons/ActionButton';
 import { cnSmallGap } from '@/src/styles/boxModel.style';
+import { useIsXs } from '@/src/styles/mediaQueries.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
-import { useIsXs } from '@/src/styles/mediaQueries.style';
 
 /**
  * FooterCard component props.

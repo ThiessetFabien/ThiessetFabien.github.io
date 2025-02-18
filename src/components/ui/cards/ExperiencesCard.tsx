@@ -13,9 +13,8 @@ import type { ExperiencesProps } from '@/src/types/ExperiencesProps';
 import type { OtherExperienceProps } from '@/src/types/OtherExperiencesProps';
 import { Accordion, AccordionItem } from '@lib/components/ui/accordion';
 import { ScrollArea } from '@lib/components/ui/scroll-area';
-import type { CardProps } from '@src/types/CardProps';
-
 import { cn } from '@lib/utils';
+import type { CardProps } from '@src/types/CardProps';
 
 /**
  * CardProjects component.

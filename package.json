@@ -14,7 +14,7 @@
     "prod": "netlify deploy --prod",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "npm run lint --fix",
+    "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write --ignore-path .gitignore .",
     "lintAndformat": "prettier --write --ignore-path .gitignore . && npm run lint:fix",
     "clean:.next": "rm -rf .next",
@@ -95,6 +95,14 @@
     "typescript": "^5.7.3"
   },
   "pnpm": {
-    "overrides": {}
+    "overrides": {},
+    "ignoredBuiltDependencies": [
+      "@parcel/watcher",
+      "sharp"
+    ],
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "sharp"
+    ]
   }
 }

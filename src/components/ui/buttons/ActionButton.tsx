@@ -1,14 +1,13 @@
 import React from 'react';
 
-import { IconLoader } from '@/src/components/ui/icons/IconLoader';
-import { baseUrl } from '@/src/lib/utils/baseUrl.util';
-import { capitalizeFirstLetterOfEachWord } from '@/src/lib/utils/formatText.util';
-import { cnParagraph } from '@/src/styles/font.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
 import { Button } from '@lib/components/ui/button';
-import type { CardProps } from '@src/types/CardProps';
-
 import { cn } from '@lib/utils';
+import { baseUrl } from '@lib/utils/baseUrl.util';
+import { capitalizeFirstLetterOfEachWord } from '@lib/utils/formatText.util';
+import type { CardProps } from '@src/types/CardProps';
+import { cnParagraph } from '@styles/font.style';
+import { IconLoader } from '@ui/icons/IconLoader';
 
 /**
  * @file ActionButton.tsx
@@ -87,7 +86,6 @@ export const ActionButton: React.FC<
         className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
         {...disabledProps}
       >
-        {/* <Loader2 className='animate-spin'>Please wait</Loader2> */}
         {isDisabled
           ? IconLoader('LoaderCircle', 'animate-spin')
           : IconLoader(icon ?? '')}

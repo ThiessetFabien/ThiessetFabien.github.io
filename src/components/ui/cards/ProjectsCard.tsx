@@ -26,9 +26,8 @@ import {
   CardTitle,
 } from '@lib/components/ui/card';
 import { Tabs, TabsList, TabsTrigger } from '@lib/components/ui/tabs';
-import { CardProps } from '@src/types/CardProps';
-
 import { cn } from '@lib/utils';
+import { CardProps } from '@src/types/CardProps';
 
 /**
  * @file CardProjects.tsx

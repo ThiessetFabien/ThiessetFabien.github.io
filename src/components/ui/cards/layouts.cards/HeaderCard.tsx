@@ -9,9 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@lib/components/ui/card';
-import type { CardProps } from '@src/types/CardProps';
-
 import { cn } from '@lib/utils';
+import type { CardProps } from '@src/types/CardProps';
 
 export const HeaderCard: React.FC<{
   title: CardProps['title'];

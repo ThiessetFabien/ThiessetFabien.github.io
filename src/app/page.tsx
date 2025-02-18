@@ -32,12 +32,12 @@ import {
 } from '@/src/styles/boxModel.style';
 import { cnFlexBetweenY, cnFlexCol } from '@/src/styles/flex.style';
 import { cnParagraph } from '@/src/styles/font.style';
+import { useCardGrid } from '@/src/styles/grid.style';
 import fetchData from '@api/data.json';
 import { ContactForm } from '@forms/ContactForm';
 import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
-import { useCardGrid } from '@/src/styles/grid.style';
 
 /**
  * HomePage component.

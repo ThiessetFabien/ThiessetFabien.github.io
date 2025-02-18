@@ -9,11 +9,12 @@ import { motion } from 'framer-motion';
 import { Pause, Play } from 'lucide-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import {
-  SelectSnapDisplay,
-  useSelectedSnapDisplay,
-} from '@/src/components/ui/selects/SelectSnapDisplay';
-import { useIsClient } from '@/src/hooks/useIsClient.hook';
+import type { GenericCarouselProps } from '@/src/types/GenericCarouselProps';
+import { useIsClient } from '@hooks/useIsClient.hook';
+import { Progress } from '@lib/components/ui/progress';
+import { Toggle } from '@lib/components/ui/toggle';
+import { cn } from '@lib/utils';
+import type { CardProps } from '@src/types/CardProps';
 import {
   cnManipulation,
   cnPaddingBottom,
@@ -21,23 +22,18 @@ import {
   cnSmallGap,
   cnSmallSpaceX,
   cnSmallSpaceY,
-} from '@/src/styles/boxModel.style';
-import {
-  cnFlexCenterY,
-  cnFlexCol,
-  cnFlexFullCenter,
-} from '@/src/styles/flex.style';
-import type { GenericCarouselProps } from '@/src/types/GenericCarouselProps';
-import { Progress } from '@lib/components/ui/progress';
-import { Toggle } from '@lib/components/ui/toggle';
-import { cn } from '@lib/utils';
-import type { CardProps } from '@src/types/CardProps';
-
+} from '@styles/boxModel.style';
+import { cnFlexCenterY, cnFlexCol, cnFlexFullCenter } from '@styles/flex.style';
 import {
   NextButton,
   PrevButton,
   usePrevNextButtons,
-} from '../buttons/ArrowsCarouselsButtons';
+} from '@ui/buttons/ArrowsCarouselsButtons';
+import {
+  SelectSnapDisplay,
+  useSelectedSnapDisplay,
+} from '@ui/selects/SelectSnapDisplay';
+
 
 /**
  * GenericCarousel component.
