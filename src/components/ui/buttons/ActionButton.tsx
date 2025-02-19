@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
+import type { IconName } from '@/src/types/IconNameProps';
 import { Button } from '@lib/components/ui/button';
 import { cn } from '@lib/utils';
 import { baseUrl } from '@lib/utils/baseUrl.util';
@@ -25,7 +26,10 @@ import { IconLoader } from '@ui/icons/IconLoader';
  */
 
 export const ActionButton: React.FC<
-  ActionButtonProps & { className: CardProps['className'] }
+  Omit<ActionButtonProps, 'icon'> & {
+    icon?: IconName;
+    className?: CardProps['className'];
+  }
 > = ({
   cta,
   icon,
@@ -86,13 +90,16 @@ export const ActionButton: React.FC<
         className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
         {...disabledProps}
       >
-        {isDisabled
-          ? IconLoader('LoaderCircle', 'animate-spin')
-          : IconLoader(icon ?? '')}
-        <span>
-          {cta &&
-            capitalizeFirstLetterOfEachWord(isDisabled ? 'Please wait' : cta)}
-        </span>
+        {isDisabled ? (
+          <IconLoader icon='LoaderCircle' className='animate-spin' />
+        ) : icon ? (
+          <IconLoader icon={icon} />
+        ) : null}
+        {cta && (
+          <span>
+            {capitalizeFirstLetterOfEachWord(isDisabled ? 'Please wait' : cta)}
+          </span>
+        )}
       </Button>
     </a>
   ) : (
@@ -106,13 +113,16 @@ export const ActionButton: React.FC<
       className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
       {...disabledProps}
     >
-      {isDisabled
-        ? IconLoader('LoaderCircle', 'animate-spin')
-        : IconLoader(icon ?? '')}
-      <span>
-        {cta &&
-          capitalizeFirstLetterOfEachWord(isDisabled ? 'Please wait' : cta)}
-      </span>
+      {isDisabled ? (
+        <IconLoader icon='LoaderCircle' className='animate-spin' />
+      ) : icon ? (
+        <IconLoader icon={icon} />
+      ) : null}
+      {cta && (
+        <span>
+          {capitalizeFirstLetterOfEachWord(isDisabled ? 'Please wait' : cta)}
+        </span>
+      )}
     </Button>
   );
 };

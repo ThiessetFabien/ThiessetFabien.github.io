@@ -1,8 +1,3 @@
-import { IconLoader } from '@/src/components/ui/icons/IconLoader';
-import {
-  capitalizeFirstLetterOfEachWord,
-  formatSpecialWords,
-} from '@/src/lib/utils/formatText.util';
 import { cnSmallGap } from '@/src/styles/boxModel.style';
 import { cnFlexCol } from '@/src/styles/flex.style';
 import {
@@ -11,7 +6,12 @@ import {
   cnSmallText,
 } from '@/src/styles/font.style';
 import { cn } from '@lib/utils';
+import {
+  capitalizeFirstLetterOfEachWord,
+  formatSpecialWords,
+} from '@lib/utils/formatText.util';
 import type { CardProps } from '@src/types/CardProps';
+import { IconLoader } from '@ui/icons/IconLoader';
 
 export const AchievementsCard: React.FC<{
   achievements: CardProps['achievements'];
@@ -32,7 +32,7 @@ export const AchievementsCard: React.FC<{
               )}
               aria-hidden='true'
             >
-              {IconLoader(achievement.icon || '')}
+              <IconLoader icon={achievement.icon} />
             </div>
             <div className={cnFlexCol}>
               <p className={cn(cnParagraph, 'min-w-full')}>
