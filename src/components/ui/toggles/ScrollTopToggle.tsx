@@ -22,7 +22,7 @@ export const ScrollTopToggle: React.FC<ScrollTopToggleProps> = ({
     <HoverCardTrigger asChild>
       <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
         <Toggle variant={variant} size={size} onClick={onClick} type={type}>
-          {IconLoader(icon)}
+          <IconLoader icon={icon} />
           <span className='sr-only'>{ariaLabel}</span>
         </Toggle>
       </motion.div>

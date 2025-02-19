@@ -3,9 +3,10 @@
  * @description This file exports a component that dynamically loads and renders an icon from the lucide-react library.
  */
 
-import React, { useEffect, useState } from 'react';
-import * as Icons from 'lucide-react';
+import type { IconName } from '@src/types/IconNameProps';
 import type { LucideIcon } from 'lucide-react';
+import * as Icons from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 
 import type { CardProps } from '@src/types/CardProps';
 
@@ -18,28 +19,26 @@ import type { CardProps } from '@src/types/CardProps';
  */
 
 interface IconLoaderProps {
-  icon: keyof typeof Icons;
+  icon: IconName;
   className?: CardProps['className'];
 }
 
-export const IconLoader = (
-  icon: string,
-  className?: CardProps['className']
-) => {
-  const [Icon, setIcon] = useState<LucideIcon | null>(null);
+export const IconLoader: React.FC<IconLoaderProps> = ({ icon, className }) => {
+  const [IconComponent, setIconComponent] = useState<LucideIcon | null>(null);
 
   useEffect(() => {
-    const IconComponent = Icons.icon;
+    if (!icon) return;
 
-    if (IconComponent) {
-      setIcon(() => IconComponent as LucideIcon);
+    const LoadedIcon = Icons[icon];
+
+    if (LoadedIcon) {
+      setIconComponent(LoadedIcon as LucideIcon);
     } else {
       console.error(`Icon ${icon} not found`);
     }
-
   }, [icon]);
 
-  return Icon ? (
-    <Icon {...({ className: `${ClassName}` } as React.ComponentProps<'svg'>)} />
-  ) : null;
+  if (!IconComponent) return null;
+
+  return <IconComponent className={className} />;
 };

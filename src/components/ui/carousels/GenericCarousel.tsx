@@ -34,7 +34,6 @@ import {
   useSelectedSnapDisplay,
 } from '@ui/selects/SelectSnapDisplay';
 
-
 /**
  * GenericCarousel component.
  * @param {Object} props - The props for the component.
