@@ -3,12 +3,12 @@
  * @description This file exports a component that dynamically loads and renders an icon from the lucide-react library.
  */
 
-import type { IconName } from '@src/types/IconNameProps';
 import type { LucideIcon } from 'lucide-react';
 import * as Icons from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
 import type { CardProps } from '@src/types/CardProps';
+import type { IconName } from '@src/types/IconNameProps';
 
 /**
  * IconLoader component.
