@@ -20,6 +20,9 @@ import type { ExperienceProps } from './ExperienceProps';
  */
 export interface ExperiencesProps {
   developer: ExperienceProps[];
+  developerDescription?: string;
   projectCoordinator: ExperienceProps[];
+  projectCoordinatorDescription?: string;
   nurseAssistant: ExperienceProps[];
+  nurseAssistantDescription?: string;
 }
