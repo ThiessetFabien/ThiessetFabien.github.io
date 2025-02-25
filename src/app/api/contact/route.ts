@@ -1,10 +1,12 @@
-import { NextResponse } from 'next/server';
 import type { NextRequest as Request } from 'next/server';
+import { NextResponse } from 'next/server';
 
-import { gmail } from '@config/gmailAuth';
-import { checkGmailAuth } from '@middlewares/checkGmailAuth';
+import { gmail } from '@/src/config/gmailAuth.config';
+import { SanitizationService } from '@/src/lib/services/sanitize.service';
+import { checkGmailAuth } from '@/src/middlewares/gmailAuth.middleware';
+import { ContactFormSchema } from '@/src/schemas/contactForm.schema';
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
     const authCheck = await checkGmailAuth();
 
@@ -12,25 +14,43 @@ export async function POST(req: Request) {
       return authCheck;
     }
 
-    const { name, email, message, type } = await req.json();
+    const body = await request.json();
+
+    const validatedData = ContactFormSchema.parse(body);
+
+    const sanitzeInput = SanitizationService.getInstance().sanitizeInput;
+
+    const sanitizedData = {
+      email: sanitzeInput(validatedData.email),
+      type: sanitzeInput(validatedData.type),
+      name: sanitzeInput(validatedData.name),
+      message: sanitzeInput(validatedData.message),
+    };
+
+    if (Object.values(sanitizedData).some((value) => !value)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid data' },
+        { status: 400 }
+      );
+    }
 
     const utf8Subject = `=?utf-8?B?${Buffer.from(
-      `Nouveau message de ${name} - ${type}`
+      `Nouveau message de ${sanitizedData.name} - ${sanitizedData.type}`
     ).toString('base64')}?=`;
 
     const messageParts = [
-      `From: ${email}`,
+      `From: ${sanitizedData.email}`,
       `To: ${process.env.SMTP_SERVER_USERNAME}`,
       `Content-Type: text/html; charset=utf-8`,
       `MIME-Version: 1.0`,
       `Subject: ${utf8Subject}`,
       '',
       `<h2>Nouveau message de contact</h2>
-      <p><strong>Nom:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Type:</strong> ${type}</p>
+      <p><strong>Nom:</strong> ${sanitizedData.name}</p>
+      <p><strong>Email:</strong> ${sanitizedData.email}</p>
+      <p><strong>Type:</strong> ${sanitizedData.type}</p>
       <p><strong>Message:</strong></p>
-      <p>${message}</p>`,
+      <p>${sanitizedData.message}</p>`,
     ];
 
     const messageRaw = messageParts.join('\n');

@@ -3,23 +3,23 @@
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 
-import { Expletus_Sans } from '@fonts/ExpletusSans';
-import { Poppins } from '@fonts/Poppins';
-import { Footer } from '@layouts/Footer/FooterLayout';
-import { Header } from '@layouts/Header/HeaderLayout';
-import { Toaster } from '@lib/components/ui/toaster';
-import { cn } from '@lib/utils';
-import { cnGap, cnMarginX, cnPaddingY } from '@styles/boxModelStyles';
 import {
   cnFlexBetweenX,
   cnFlexCol,
   cnFlexFullCenter,
-} from '@styles/flexStyles';
+} from '@/src/styles/flex.style';
+import { Expletus_Sans } from '@fonts/ExpletusSans.font';
+import { Poppins } from '@fonts/Poppins.font';
+import { Footer } from '@layouts/FooterLayout';
+import { Header } from '@layouts/HeaderLayout';
+import { Toaster } from '@lib/components/ui/toaster';
+import { cn } from '@lib/utils';
+import { cnGap, cnMarginX, cnPaddingY } from '@styles/boxModel.style';
 
 import '@styles/globals.css';
 import '@styles/reset.css';
 
-import { metadata } from './metadata';
+import { metadata } from '../config/metadata';
 
 export default function RootLayout({
   children,

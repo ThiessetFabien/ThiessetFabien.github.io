@@ -10,13 +10,18 @@ import { Loader2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-import { HeroCard } from '@/src/components/ui/Cards/HeroCard';
-import fetchData from '@api/data.json';
-import { ContactForm } from '@forms/ContactForm';
-import { useIsClient } from '@hooks/useIsClient';
-import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
-import { cn } from '@lib/utils';
-import type { CardProps } from '@src/types/CardProps';
+import { AchievementsCard } from '@/src/components/ui/cards/AchievementsCard';
+import { ExperiencesCard } from '@/src/components/ui/cards/ExperiencesCard';
+import { HeroCard } from '@/src/components/ui/cards/HeroCard';
+import { FooterCard } from '@/src/components/ui/cards/layouts.cards/FooterCard';
+import { HeaderCard } from '@/src/components/ui/cards/layouts.cards/HeaderCard';
+import { ProjectsCard } from '@/src/components/ui/cards/ProjectsCard';
+import SkillsCard from '@/src/components/ui/cards/SkillsCard';
+import { useIsClient } from '@/src/hooks/useIsClient.hook';
+import {
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/src/lib/utils/formatText.util';
 import {
   cnGap,
   cnPadding,
@@ -24,33 +29,28 @@ import {
   cnPaddingX,
   cnSmallGap,
   cnSpaceY,
-} from '@styles/boxModelStyles';
-import { cnFlexBetweenY, cnFlexCol } from '@styles/flexStyles';
-import { cnParagraph } from '@styles/fontStyles';
-import { useCardGrid } from '@styles/useCardGrid';
-import { AchievementsCard } from '@ui/Cards/AchievementsCard';
-import { ExperiencesCard } from '@ui/Cards/ExperiencesCard';
-import { FooterCard } from '@ui/Cards/LayoutCards/FooterCard';
-import { HeaderCard } from '@ui/Cards/LayoutCards/HeaderCard';
-import { ProjectsCard } from '@ui/Cards/ProjectsCard';
-import SkillsCard from '@ui/Cards/SkillsCard';
-import {
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@utils/FormatText';
+} from '@/src/styles/boxModel.style';
+import { cnFlexBetweenY, cnFlexCol } from '@/src/styles/flex.style';
+import { cnParagraph } from '@/src/styles/font.style';
+import { useCardGrid } from '@/src/styles/grid.style';
+import fetchData from '@api/data.json';
+import { ContactForm } from '@forms/ContactForm';
+import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
+import { cn } from '@lib/utils';
+import type { CardProps } from '@src/types/CardProps';
 
 /**
  * HomePage component.
  * @returns {JSX.Element} The rendered component.
  */
 
-const LazyMap = dynamic(() => import('@ui/Cards/MapCard'), {
+const LazyMap = dynamic(() => import('@/src/components/ui/cards/MapCard'), {
   ssr: false,
   loading: () => <Loader2 className='animate-spin'>Please wait</Loader2>,
 });
 
 const LazyTestimonialsCard = dynamic(
-  () => import('@ui/Carousels/TestimonialsCarousel'),
+  () => import('@/src/components/ui/carousels/TestimonialsCarousel'),
   {
     ssr: false,
     loading: () => <Loader2 className='animate-spin'>Please wait</Loader2>,
