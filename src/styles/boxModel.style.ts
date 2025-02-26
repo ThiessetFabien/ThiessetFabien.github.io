@@ -12,6 +12,8 @@ export const cnPaddingTop = 'pt-4 md:pt-6';
 
 export const cnPaddingBottom = 'pb-4 md:pb-6';
 
+export const cnSmallPaddingBottom = 'pb-2 md:pb-4';
+
 export const cnSmallMarginX = 'mx-2 md:mx-4';
 
 export const cnMarginX = 'mx-2 sm:mx-4 md:mx-6';

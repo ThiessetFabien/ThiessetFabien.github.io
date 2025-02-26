@@ -76,7 +76,7 @@
   },
   {
     "title": "where i've worked",
-    "description": "i've a passion for creating beautiful and functional apps with a diverse background in web development, project coordination, and supporting individuals with disabilities.",
+    "description": "i am passionate about creating beautiful and functional applications. i have a diverse background in web development, project coordination, and supporting individuals with disabilities.",
     "experiences": [
       {
         "developer": [
@@ -96,7 +96,7 @@
             "date": "apr 2024"
           },
           {
-            "title": "full-stack javaScript web developer learner",
+            "title": "full-stack javascript developer learner",
             "company": "o'Clock school",
             "date": "dec 2023 - jun 2024"
           },
@@ -111,36 +111,33 @@
             "date": "avr 2023 - dec 2023"
           }
         ],
-        "projectCoordinator": {
-          "content": "i was responsible for coordinating the daily life of residents with disabilities, for the implementation of the humanitude method, which aims to improve the quality of life of residents and the well-being of caregivers.",
-          "items": [
-            {
-              "title": "daily life referent",
-              "company": "helene borel center",
-              "date": "2023 - 2024"
-            },
-            {
-              "title": "humanitude coordinator",
-              "company": "helene borel center",
-              "date": "2018 - 2023"
-            }
-          ]
-        },
-        "nurseAssistant": {
-          "content": "i am committed to supporting people with disabilities.",
-          "items": [
-            {
-              "title": "nurse assistant",
-              "company": "udapei59 mas thumeries",
-              "date": "2024 - present"
-            },
-            {
-              "title": "nurse assistant",
-              "company": "helene borel center",
-              "date": "2009 - 2024"
-            }
-          ]
-        }
+        "developerDescription": "I learn faster and am more efficient in a team. I constantly seek to expand my skills and put them into practice.",
+        "projectCoordinator": [
+          {
+            "title": "daily life referent",
+            "company": "helene borel center",
+            "date": "2023 - 2024"
+          },
+          {
+            "title": "humanitude coordinator",
+            "company": "helene borel center",
+            "date": "2018 - 2023"
+          }
+        ],
+        "projectCoordinatorDescription": "i was responsible for coordinating the daily life of residents with disabilities, for the implementation of the humanitude method, which aims to improve the quality of life of residents and the well-being of caregivers.",
+        "nurseAssistant": [
+          {
+            "title": "nurse assistant",
+            "company": "udapei59 mas thumeries",
+            "date": "2024 - present"
+          },
+          {
+            "title": "nurse assistant",
+            "company": "helene borel center",
+            "date": "2009 - 2024"
+          }
+        ],
+        "nurseAssistantDescription": "i am committed to supporting people with disabilities."
       }
     ],
     "icon1": "Mail",

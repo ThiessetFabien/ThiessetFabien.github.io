@@ -19,24 +19,26 @@ export const ExperiencesList: React.FC<{
 }> = ({ title, company, date }) => {
   return (
     <ul className={'w-full'}>
-      <li className={'flex'}>
+      <li className='flex'>
         <div
           className={cn(
             cnMarginX,
             'h-2 w-2 translate-y-2 rounded-full bg-ring'
           )}
-        ></div>
-        <div className={cn(cnFlexCol)}>
-          <h3 className={cn(cnTitle3, 'xs:flex xs:flex-row')}>
-            {title && capitalizeFirstLetterOfEachWord(title)}
-            <span className={cn('block xs:flex', 'text-secondary')}>
-              &nbsp;@{' '}
+        />
+        <div className={cn(cnFlexCol, 'sm:flex-row')}>
+          <p className={cn(cnTitle3, cnFlexCol, 'items-baseline sm:flex-row')}>
+            <span>{title && capitalizeFirstLetterOfEachWord(title)}</span>
+            <span className='hidden w-auto sm:flex'>&nbsp;</span>
+            <span className={cn('inline-block text-secondary')}>
+              @
               {company &&
                 capitalizeFirstLetterOfEachWord(formatSpecialWords(company))}
             </span>
-          </h3>
-          <p className={cn(cnSmallText, cnLightTextMuted)}>
-            {date && capitalizeFirstLetterOfEachWord(date)}
+            <span className='hidden w-auto sm:flex'>&nbsp;</span>
+            <span className={cn(cnSmallText, cnLightTextMuted)}>
+              {date && capitalizeFirstLetterOfEachWord(date)}
+            </span>
           </p>
         </div>
       </li>

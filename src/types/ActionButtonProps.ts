@@ -1,4 +1,5 @@
 import type { ButtonProps } from '@lib/components/ui/button';
+
 import type { IconName } from './IconNameProps';
 
 export interface ActionButtonProps extends Omit<ButtonProps, 'children'> {

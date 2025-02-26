@@ -5,15 +5,25 @@
 
 import React from 'react';
 
-import { ExperiencesAccordion } from '@/src/components/ui/accordions/ExperiencesAccordion';
 import { ExperiencesList } from '@/src/components/ui/lists/ExperiencesList';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/src/lib/components/ui/tabs';
+import { cn } from '@/src/lib/utils';
+import { capitalizeFirstLetterOfPhrase } from '@/src/lib/utils/formatText.util';
 import { cnBorder } from '@/src/styles/border.style';
+import {
+  cnSmallPaddingBottom,
+  cnSmallPaddingX,
+  cnSmallSpaceY,
+} from '@/src/styles/boxModel.style';
+import { cnParagraph } from '@/src/styles/font.style';
 import type { ExperienceProps } from '@/src/types/ExperienceProps';
 import type { ExperiencesProps } from '@/src/types/ExperiencesProps';
 import type { OtherExperienceProps } from '@/src/types/OtherExperiencesProps';
-import { Accordion, AccordionItem } from '@lib/components/ui/accordion';
-import { ScrollArea } from '@lib/components/ui/scroll-area';
-import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
 /**
@@ -39,59 +49,91 @@ export const ExperiencesCard: React.FC<{
       </h2>
       {experiences?.map((experience, index) => (
         <article key={index}>
-          <ScrollArea
-            type='always'
-            className={cn(
-              cnBorder,
-              'w-full',
-              'h-[10.25rem]',
-              'xxs:h-[6.25rem]',
-              'sm:h-[6.875rem]',
-              'md:h-[7.875rem]',
-              'bg-popover'
-            )}
+          <Tabs
+            defaultValue='developer'
+            className={cn(cnBorder, 'w-full', 'bg-popover')}
           >
-            {experience?.developer.map((developer, developerIndex) => (
-              <ExperiencesList
-                key={developerIndex}
-                title={developer.title}
-                company={developer.company}
-                date={developer.date}
-              />
-            ))}
-          </ScrollArea>
-          <Accordion type='single' collapsible className='w-full'>
-            <AccordionItem value={`projectCoordinator-${index}`}>
-              <ExperiencesAccordion
-                content={
-                  (
-                    experience?.projectCoordinator as unknown as OtherExperienceProps
-                  ).content
-                }
-                experience={
-                  (
-                    experience?.projectCoordinator as unknown as OtherExperienceProps
-                  ).items
-                }
-                className=''
-              />
-            </AccordionItem>
-            <AccordionItem value={`nurseAssistant-${index}`}>
-              <ExperiencesAccordion
-                content={
-                  (
-                    experience?.nurseAssistant as unknown as OtherExperienceProps
-                  ).content
-                }
-                experience={
-                  (
-                    experience?.nurseAssistant as unknown as OtherExperienceProps
-                  ).items
-                }
-                className=''
-              />
-            </AccordionItem>
-          </Accordion>
+            <TabsList className='w-full'>
+              <TabsTrigger value='developer'>Software Developer</TabsTrigger>
+              <TabsTrigger
+                value='other-experiences'
+                className={'flex w-full justify-start'}
+              >
+                Other Experiences
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent
+              value='developer'
+              id='tab-developer'
+              aria-labelledby='tab-developer'
+              className={cn(
+                cnSmallSpaceY,
+                cnSmallPaddingX,
+                cnSmallPaddingBottom
+              )}
+            >
+              {experience?.developerDescription && (
+                <p className={cn(cnParagraph, cnSmallPaddingX)}>
+                  {capitalizeFirstLetterOfPhrase(
+                    experience.developerDescription
+                  )}
+                </p>
+              )}
+              {experience?.developer.map((developer, developerIndex) => (
+                <ExperiencesList
+                  key={developerIndex}
+                  title={developer.title}
+                  company={developer.company}
+                  date={developer.date}
+                />
+              ))}
+            </TabsContent>
+            <TabsContent
+              value='other-experiences'
+              id='tab-other-experiences'
+              aria-labelledby='tab-other-experiences'
+              className={cn(
+                cnSmallSpaceY,
+                cnSmallPaddingX,
+                cnSmallPaddingBottom
+              )}
+            >
+              {experience?.projectCoordinatorDescription && (
+                <p className={cn(cnParagraph, cnSmallPaddingX)}>
+                  {capitalizeFirstLetterOfPhrase(
+                    experience?.projectCoordinatorDescription
+                  )}
+                </p>
+              )}
+              {experience?.projectCoordinator.map(
+                (projectCoordinator, projectCoordinatorIndex) => (
+                  <ExperiencesList
+                    key={projectCoordinatorIndex}
+                    title={projectCoordinator.title}
+                    company={projectCoordinator.company}
+                    date={projectCoordinator.date}
+                  />
+                )
+              )}
+              {experience?.nurseAssistantDescription && (
+                <p className={cn(cnParagraph, cnSmallPaddingX)}>
+                  {capitalizeFirstLetterOfPhrase(
+                    experience?.nurseAssistantDescription
+                  )}
+                </p>
+              )}
+              {experience?.nurseAssistant.map(
+                (nurseAssistant, nurseAssistantIndex) => (
+                  <ExperiencesList
+                    key={nurseAssistantIndex}
+                    title={nurseAssistant.title}
+                    company={nurseAssistant.company}
+                    date={nurseAssistant.date}
+                  />
+                )
+              )}
+            </TabsContent>
+          </Tabs>
         </article>
       ))}
     </section>

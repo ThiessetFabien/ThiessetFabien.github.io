@@ -5,6 +5,7 @@ import {
   cnParagraph,
   cnSmallText,
 } from '@/src/styles/font.style';
+import { IconName } from '@/src/types/IconNameProps';
 import { cn } from '@lib/utils';
 import {
   capitalizeFirstLetterOfEachWord,
@@ -32,7 +33,7 @@ export const AchievementsCard: React.FC<{
               )}
               aria-hidden='true'
             >
-              <IconLoader icon={achievement.icon} />
+              <IconLoader icon={achievement.icon as IconName} />
             </div>
             <div className={cnFlexCol}>
               <p className={cn(cnParagraph, 'min-w-full')}>
