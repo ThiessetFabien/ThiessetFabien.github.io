@@ -54,7 +54,7 @@ export const ExperiencesCard: React.FC<{
             className={cn(cnBorder, 'w-full', 'bg-popover')}
           >
             <TabsList className='w-full'>
-              <TabsTrigger value='developer'>Developer</TabsTrigger>
+              <TabsTrigger value='developer'>Software Developer</TabsTrigger>
               <TabsTrigger
                 value='other-experiences'
                 className={'flex w-full justify-start'}
@@ -122,7 +122,6 @@ export const ExperiencesCard: React.FC<{
                   )}
                 </p>
               )}
-
               {experience?.nurseAssistant.map(
                 (nurseAssistant, nurseAssistantIndex) => (
                   <ExperiencesList
