@@ -67,13 +67,14 @@ const HomePage: React.FC = (): JSX.Element => {
         <Card
           key={index}
           id={`card-${index}`}
-          className={cn('h-full', cnFlexCol, card.colSpan)}
+          className={cn('h-full items-stretch', cnFlexCol, card.colSpan)}
         >
           <motion.div
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.2 }}
+            className='flex h-full flex-col'
           >
             {card.imageSrc && !card.map && (
               <HeroCard

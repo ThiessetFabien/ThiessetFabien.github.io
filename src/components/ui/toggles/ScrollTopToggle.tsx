@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 
+import { IconName } from '@/src/types/IconNameProps';
 import {
   HoverCard,
   HoverCardContent,
@@ -22,7 +23,7 @@ export const ScrollTopToggle: React.FC<ScrollTopToggleProps> = ({
     <HoverCardTrigger asChild>
       <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
         <Toggle variant={variant} size={size} onClick={onClick} type={type}>
-          <IconLoader icon={icon} />
+          <IconLoader icon={icon as IconName} />
           <span className='sr-only'>{ariaLabel}</span>
         </Toggle>
       </motion.div>
