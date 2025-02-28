@@ -1,6 +1,5 @@
 'use client';
 
-import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 
 import {
@@ -19,29 +18,13 @@ import { cnGap, cnMarginX, cnPaddingY } from '@styles/boxModel.style';
 import '@styles/globals.css';
 import '@styles/reset.css';
 
-import { metadata } from '../config/metadata';
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='fr' dir='ltr' className='w-full'>
-      <Head>
-        <title>{`${metadata.title}`}</title>
-        <meta name='description' content={`${metadata.description}`} />
-        <meta name='keywords' content={`${metadata.keywords}`} />
-        <meta
-          name='author'
-          content={
-            Array.isArray(metadata.authors)
-              ? metadata.authors.map((author) => author.name).join(', ')
-              : metadata.authors?.name
-          }
-        />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      </Head>
+    <html lang='en' dir='ltr' className='w-full'>
       <body
         className={cn(
           Poppins.variable,
