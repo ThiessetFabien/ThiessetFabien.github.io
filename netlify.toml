@@ -2,6 +2,9 @@
   command = "npm run build"
   publish = "out"
 
+[build.environment]
+  NODE_ENV = "production"
+
 [[redirects]]
 from = "/_next/image"
 to = "/.netlify/images?url=:url&w=:width&q=:quality"
@@ -25,6 +28,8 @@ status = 200
 [context]
 
   [context.production]
+    [context.production.environment]
+      NODE_ENV = "production"
 
   [context.main]
 
