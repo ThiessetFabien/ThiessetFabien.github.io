@@ -11,6 +11,7 @@ export const capitalizeFirstLetterOfPhrase = (str: string) => {
 export const formatSpecialWords = (string: string) => {
   const replacements: { [key: string]: string } = {
     api: 'API',
+    apis: 'APIs',
     css: 'CSS',
     sass: 'SASS',
     'node\\.js': 'Node.JS',
