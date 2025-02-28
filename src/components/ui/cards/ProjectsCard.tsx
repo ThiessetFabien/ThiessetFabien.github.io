@@ -7,9 +7,8 @@ import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@/src/lib/utils/formatText.util';
-import { cnBorder, cnBorderNone } from '@/src/styles/border.style';
+import { cnBorder } from '@/src/styles/border.style';
 import {
-  cnPaddingTop,
   cnSmallGap,
   cnSmallPadding,
   cnSmallSpaceY,
@@ -147,7 +146,7 @@ export const ProjectsCard: React.FC<{
               className={cn(
                 cnParagraph,
                 cnSpaceY,
-                cnPaddingTop,
+                cnSizeFull,
                 'max-w-prose px-0 pb-0'
               )}
             >
@@ -164,17 +163,15 @@ export const ProjectsCard: React.FC<{
                 )}
               </p>
             </CardContent>
-            <CardFooter className={cn('flex h-fit flex-col p-0', cnSpaceY)}>
-              <div className={cn(cnSmallGap, 'flex w-full flex-wrap')}>
+            <CardFooter
+              className={cn('flex h-fit flex-col p-0', cnSmallSpaceY)}
+            >
+              <div className={cn(cnSizeFull, 'flex flex-wrap gap-1')}>
                 {project.tags.map((tag, tagIndex) => (
                   <Badge
                     key={tagIndex}
                     variant='outline'
-                    className={cn(
-                      cnSmallText,
-                      cnBorderNone,
-                      'rounded-none p-0 font-light'
-                    )}
+                    className={cn(cnSmallText, 'px-1 py-0 font-light')}
                   >
                     <p>
                       {capitalizeFirstLetterOfEachWord(
@@ -191,13 +188,21 @@ export const ProjectsCard: React.FC<{
                     icon='ExternalLink'
                     href={project.website}
                     type='button'
-                    variant='default'
+                    variant='destructive'
                   />
                 )}
                 {project.github && (
                   <ActionButton
                     icon='Github'
                     href={project.github}
+                    type='button'
+                    variant='outline'
+                  />
+                )}
+                {project.file && (
+                  <ActionButton
+                    icon='FileUser'
+                    href={project.file}
                     type='button'
                     variant='outline'
                   />
