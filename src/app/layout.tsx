@@ -17,6 +17,8 @@ import { cnGap, cnMarginX, cnPaddingY } from '@styles/boxModel.style';
 
 import '@styles/globals.css';
 import '@styles/reset.css';
+import { MetaHead } from '../components/layouts/MetaHead';
+import { metadata } from '../config/metadata';
 
 export default function RootLayout({
   children,
@@ -25,6 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' dir='ltr' className='w-full'>
+      <MetaHead
+        title={`${metadata?.title}`}
+        description={`${metadata?.description}`}
+      />
       <body
         className={cn(
           Poppins.variable,
