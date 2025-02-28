@@ -91,7 +91,7 @@ export const ProjectsCard: React.FC<{
               cnFlexCol,
               cnBorder,
               cnSmallPadding,
-              cnSmallSpaceY,
+              cnSpaceY,
               cnSizeFull,
               'bg-popover',
               'col-span-1 xl:max-w-none'
@@ -171,11 +171,11 @@ export const ProjectsCard: React.FC<{
                   <Badge
                     key={tagIndex}
                     variant='outline'
-                    className={cn(cnSmallText, 'px-1 py-0 font-light')}
+                    className={cn(cnSmallText, 'border-none p-0 font-light')}
                   >
                     <p>
                       {capitalizeFirstLetterOfEachWord(
-                        formatSpecialWords(`${tag}`)
+                        formatSpecialWords(`#${tag}`)
                       )}
                     </p>
                   </Badge>
@@ -183,29 +183,44 @@ export const ProjectsCard: React.FC<{
               </div>
               <div className={cn(cnFlexCenterY, cnSmallGap, 'w-full')}>
                 {project.website && (
-                  <ActionButton
-                    cta='Visit project'
-                    icon='ExternalLink'
-                    href={project.website}
-                    type='button'
-                    variant='destructive'
-                  />
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.8 }}
+                  >
+                    <ActionButton
+                      cta='Site'
+                      icon='ExternalLink'
+                      href={project.website}
+                      type='button'
+                      variant='destructive'
+                    />
+                  </motion.div>
                 )}
                 {project.github && (
-                  <ActionButton
-                    icon='Github'
-                    href={project.github}
-                    type='button'
-                    variant='outline'
-                  />
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.8 }}
+                  >
+                    <ActionButton
+                      icon='Github'
+                      href={project.github}
+                      type='button'
+                      variant='outline'
+                    />
+                  </motion.div>
                 )}
                 {project.file && (
-                  <ActionButton
-                    icon='FileUser'
-                    href={project.file}
-                    type='button'
-                    variant='outline'
-                  />
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.8 }}
+                  >
+                    <ActionButton
+                      icon='FileUser'
+                      href={project.file}
+                      type='button'
+                      variant='outline'
+                    />
+                  </motion.div>
                 )}
               </div>
             </CardFooter>
