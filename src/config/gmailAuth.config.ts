@@ -1,10 +1,13 @@
 import dotenv from 'dotenv';
 import { google } from 'googleapis';
-dotenv.config(
-  process.env.NODE_ENV === 'development'
-    ? { path: '.env.development.local' }
-    : { path: '.env.production' }
-);
+dotenv.config({
+  path:
+    process.env.NODE_ENV === 'development'
+      ? '.env.development.local'
+      : process.env.NODE_ENV === 'production'
+        ? '.env.production'
+        : '.env',
+});
 
 const oAuth2Client = new google.auth.OAuth2(
   process.env.GMAIL_CLIENT_ID,
