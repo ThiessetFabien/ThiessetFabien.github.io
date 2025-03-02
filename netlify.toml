@@ -3,7 +3,7 @@
   publish = "out"
 
 [build.environment]
-  NODE_ENV = ""
+  NODE_ENV = "production"
 
 [[redirects]]
 from = "/_next/image"
