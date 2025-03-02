@@ -1,25 +1,32 @@
 import dotenv from 'dotenv';
 import { google } from 'googleapis';
+
+const logEnvironmentSetup = () => {
+  console.log('Configuration environnement:', {
+    NODE_ENV: process.env.NODE_ENV,
+    GMAIL_CONFIG: {
+      hasClientId: !!process.env.GMAIL_CLIENT_ID,
+      hasClientSecret: !!process.env.GMAIL_CLIENT_SECRET,
+      hasRefreshToken: !!process.env.GMAIL_REFRESH_TOKEN,
+      hasRedirectUri: !!process.env.GMAIL_REDIRECT_URI,
+    },
+  });
+};
+
 dotenv.config({
   path:
     process.env.NODE_ENV === 'development'
       ? '.env.development.local'
-      : process.env.NODE_ENV === 'production'
-        ? '.env.production'
-        : '.env',
+      : '.env.production',
 });
+
+logEnvironmentSetup();
 
 const oAuth2Client = new google.auth.OAuth2(
   process.env.GMAIL_CLIENT_ID,
   process.env.GMAIL_CLIENT_SECRET,
   process.env.GMAIL_REDIRECT_URI
 );
-
-console.log('Environnement:', process.env.NODE_ENV);
-console.log('Client ID exists:', !!process.env.GMAIL_CLIENT_ID);
-console.log('Client Secret exists:', !!process.env.GMAIL_CLIENT_SECRET);
-console.log('Redirect URI exists:', !!process.env.GMAIL_REDIRECT_URI);
-console.log('Refresh Token exists:', !!process.env.GMAIL_REFRESH_TOKEN);
 
 oAuth2Client.setCredentials({
   refresh_token: process.env.GMAIL_REFRESH_TOKEN,

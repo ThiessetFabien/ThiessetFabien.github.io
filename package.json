@@ -10,9 +10,8 @@
   "type": "module",
   "scripts": {
     "dev": "dotenv -e .env.development.local -- next dev",
-    "dev:prod": "dotenv -e .env.production -- next dev",
-    "build": "dotenv -e .env.production -- prettier --write . && next build",
-    "prod": "dotenv -e .env.production -- netlify deploy --prod",
+    "build": "NODE_ENV=production && prettier --write . && next build",
+    "prod": "NODE_ENV=production netlify deploy --prod",
     "deploy": "pnpm run build && pnpm run prod",
     "start": "next start",
     "lint": "next lint",
