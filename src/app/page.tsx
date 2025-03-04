@@ -37,6 +37,7 @@ import { ContactForm } from '@forms/ContactForm';
 import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
+
 import { useIsClient } from '../hooks/useIsClient.hook';
 
 /**
