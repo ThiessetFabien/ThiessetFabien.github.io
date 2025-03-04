@@ -17,7 +17,6 @@ import { FooterCard } from '@/src/components/ui/cards/layouts.cards/FooterCard';
 import { HeaderCard } from '@/src/components/ui/cards/layouts.cards/HeaderCard';
 import { ProjectsCard } from '@/src/components/ui/cards/ProjectsCard';
 import SkillsCard from '@/src/components/ui/cards/SkillsCard';
-import { useIsClient } from '@/src/hooks/useIsClient.hook';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
@@ -38,6 +37,8 @@ import { ContactForm } from '@forms/ContactForm';
 import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
+
+import { useIsClient } from '../hooks/useIsClient.hook';
 
 /**
  * HomePage component.
