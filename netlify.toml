@@ -1,9 +1,10 @@
 [build]
   command = "npm run build"
-  publish = "out"
+  publish = ".next"
 
 [build.environment]
-  NODE_ENV = ""
+  NODE_ENV = "production"
+  NEXT_USE_NETLIFY_EDGE = "true"
 
 [[redirects]]
 from = "/_next/image"
@@ -32,6 +33,9 @@ status = 200
       NODE_ENV = "production"
 
   [context.main]
+
+[functions]
+  node_bundler = "esbuild"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
