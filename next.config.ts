@@ -11,7 +11,7 @@ const nextconfig: NextConfig = {
     SMTP_SERVER_USERNAME: process.env.SMTP_SERVER_USERNAME,
   },
   reactStrictMode: false,
-  // output: 'export',
+  output: 'export',
   images: {
     unoptimized: true,
   },

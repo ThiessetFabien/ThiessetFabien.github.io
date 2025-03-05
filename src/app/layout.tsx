@@ -36,7 +36,7 @@ export default function RootLayout({
           Poppins.variable,
           Expletus_Sans.variable,
           'container relative z-0',
-          'h-100% -full m-auto',
+          'm-auto h-[100dvh]',
           'font-sans text-foreground',
           cnFlexFullCenter,
           cnFlexCol,
@@ -51,7 +51,7 @@ export default function RootLayout({
         >
           <Header
             className={cn(
-              'm-auto h-full max-w-7xl rounded-b-xl',
+              'm-auto max-h-[10vh] max-w-7xl rounded-b-xl',
               cnPaddingY,
               cnMarginX,
               cnFlexBetweenX,
@@ -62,7 +62,7 @@ export default function RootLayout({
             className={cn(
               cnGap,
               cnPaddingY,
-              'mx-auto max-w-7xl',
+              'mx-auto h-full max-w-7xl',
               'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
             )}
           >
@@ -72,7 +72,7 @@ export default function RootLayout({
             className={cn(
               cnPaddingY,
               cnFlexBetweenX,
-              'h-full',
+              'max-h-[10vh]',
               'm-auto max-w-7xl rounded-t-xl bg-background'
             )}
           />
