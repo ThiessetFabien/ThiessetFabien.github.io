@@ -6,12 +6,19 @@ import { SanitizationService } from '@/src/lib/services/sanitize.service';
 import { checkGmailAuth } from '@/src/middlewares/gmailAuth.middleware';
 import { ContactFormSchema } from '@/src/schemas/contactForm.schema';
 
+export const config = {
+  runtime: 'edge',
+};
+
 export async function POST(request: Request) {
   try {
     const authCheck = await checkGmailAuth();
 
     if (authCheck.status !== 200) {
-      return authCheck;
+      return NextResponse.json(
+        { error: 'Authentication failed' },
+        { status: 401 }
+      );
     }
 
     const body = await request.json();
@@ -75,7 +82,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error sending email:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to send email' },
+      { success: false, error: 'Internal server error' },
       { status: 500 }
     );
   }

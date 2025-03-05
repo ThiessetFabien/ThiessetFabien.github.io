@@ -26,6 +26,13 @@ status = 200
   w = ":width"
   q = ":quality"
 
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"
+
 [context]
 
   [context.production]
