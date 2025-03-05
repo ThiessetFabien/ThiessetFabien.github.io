@@ -36,7 +36,7 @@ export default function RootLayout({
           Poppins.variable,
           Expletus_Sans.variable,
           'container relative z-0',
-          'm-auto h-[100dvh]',
+          'm-auto min-h-[100dvh]',
           'font-sans text-foreground',
           cnFlexFullCenter,
           cnFlexCol,
@@ -51,7 +51,7 @@ export default function RootLayout({
         >
           <Header
             className={cn(
-              'm-auto max-h-[10vh] max-w-7xl rounded-b-xl',
+              'mx-auto h-full max-h-[10vh] max-w-7xl rounded-b-xl',
               cnPaddingY,
               cnMarginX,
               cnFlexBetweenX,
@@ -72,8 +72,8 @@ export default function RootLayout({
             className={cn(
               cnPaddingY,
               cnFlexBetweenX,
-              'max-h-[10vh]',
-              'm-auto max-w-7xl rounded-t-xl bg-background'
+              'h-full max-h-[10vh]',
+              'mx-auto max-w-7xl rounded-t-xl bg-background'
             )}
           />
           <Toaster />
