@@ -111,32 +111,30 @@ export const ProjectsCard: React.FC<{
                       className='h-fit max-h-full min-h-fit min-w-full rounded-xl object-cover object-center xl:min-h-full'
                     />
                   )}
-                  <video
-                    ref={
-                      project.title === 'casalink'
-                        ? (el) => {
-                            videoRefs.current[projectIndex] = el;
-                          }
-                        : null
-                    }
-                    onLoadedData={() => handleVideoLoaded(projectIndex)}
-                    controls={project.title === 'casalink' ? true : false}
-                    controlsList='nodownload'
-                    autoPlay={project.title === 'casalink' ? false : true}
-                    loop={project.title === 'casalink' ? false : true}
-                    muted={project.title === 'casalink' ? false : true}
-                    className={cn(
-                      'max-h-full min-h-fit min-w-full rounded-xl object-cover object-center xl:min-h-full',
-                      videoLoaded[projectIndex] ? '' : 'hidden'
-                    )}
-                  >
-                    <track kind='captions' src={`videos/${project.videoSrc}`} />
-                    <source
-                      src={`videos/${project.videoSrc}`}
-                      type='video/mp4'
-                    />
-                    Your browser does not support the video tag.
-                  </video>
+                  {project.videoSrc && (
+                    <video
+                      ref={(el) => {
+                        videoRefs.current[projectIndex] = el;
+                      }}
+                      onLoadedData={() => handleVideoLoaded(projectIndex)}
+                      controls
+                      controlsList='nodownload'
+                      className={cn(
+                        'max-h-full min-h-fit min-w-full rounded-xl object-cover object-center xl:min-h-full',
+                        videoLoaded[projectIndex] ? '' : 'hidden'
+                      )}
+                    >
+                      <track
+                        kind='captions'
+                        src={`videos/${project.videoSrc}`}
+                      />
+                      <source
+                        src={`videos/${project.videoSrc}`}
+                        type='video/mp4'
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
                   <figcaption className='sr-only'>
                     {project.imageAlt}
                   </figcaption>
