@@ -7,21 +7,11 @@ export async function sanitizeMiddleware(request: NextRequest) {
   if (request.method === 'POST' || request.method === 'PUT') {
     try {
       const sanitizer = SanitizationService.getInstance();
-      const body = await request.json();
+      const clonedRequest = request.clone();
+      const body = await clonedRequest.json();
       const sanitizedBody = sanitizer.sanitizeObject(body);
 
-      const newRequest = new Request(request.url, {
-        method: request.method,
-        headers: request.headers,
-        body: JSON.stringify(sanitizedBody),
-      });
-
-      Object.defineProperty(newRequest, 'sanitizedBody', {
-        value: sanitizedBody,
-        writable: false,
-      });
-
-      return newRequest;
+      return NextResponse.json(sanitizedBody);
     } catch (error) {
       return NextResponse.json(
         {
