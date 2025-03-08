@@ -2,12 +2,11 @@
  * @file globals.css
  * @description This file contains global CSS styles and custom properties for the application.
  */
-
+@charset 'UTF-8';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 @import url('leaflet/dist/leaflet.css');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 /* Custom properties for theme colors */
 /* ! Irrelevant Pink OCD */
