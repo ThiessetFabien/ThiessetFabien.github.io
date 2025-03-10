@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from 'next-themes';
 
+import { VideoRedirectHandler } from '@/src/components/VideoRedirectHandler';
 import {
   cnFlexBetweenX,
   cnFlexCol,
@@ -26,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' dir='ltr' className='w-full'>
+    <html lang='fr' suppressHydrationWarning className='w-full'>
       <MetaHead
         title={`${metadata?.title}`}
         description={`${metadata?.description}`}
@@ -43,6 +44,7 @@ export default function RootLayout({
           'bg-gradient-to-br from-secondary to-primary'
         )}
       >
+        <VideoRedirectHandler />
         <ThemeProvider
           attribute='class'
           defaultTheme='system'

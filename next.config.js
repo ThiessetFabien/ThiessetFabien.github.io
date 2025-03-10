@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
-import type { NextConfig } from 'next';
 
-const nextconfig: NextConfig = {
+const nextconfig = {
   env: {
     PORT: process.env.PORT || '3000',
     GMAIL_CLIENT_ID: process.env.GMAIL_CLIENT_ID,

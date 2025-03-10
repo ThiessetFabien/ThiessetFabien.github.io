@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { FooterCard } from '@/src/components/ui/cards/layouts.cards/FooterCard';
+import { ClientSanitizationService } from '@/src/lib/services/client-sanitize.service';
 import { cn } from '@/src/lib/utils';
 import type { FormSchema } from '@/src/schemas/contactForm.schema';
 import { ContactFormSchema } from '@/src/schemas/contactForm.schema';
@@ -72,12 +73,16 @@ export const ContactForm: React.FC<{
 
   const onSubmit = async (data: z.infer<typeof ContactFormSchema>) => {
     try {
+      // Sanitizer les données avant envoi
+      const sanitizer = ClientSanitizationService.getInstance();
+      const sanitizedData = sanitizer.sanitizeObject(data);
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(sanitizedData),
       });
 
       if (!response.ok) {

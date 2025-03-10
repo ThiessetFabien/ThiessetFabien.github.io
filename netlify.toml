@@ -1,6 +1,7 @@
 [build]
   command = "pnpm run build"
   publish = ".next"
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_ENV = "production"
@@ -25,6 +26,11 @@ status = 200
   url = ":url"
   w = ":width"
   q = ":quality"
+
+[[redirects]]
+from = "/api/contact"
+to = "/.netlify/functions/contact-form"
+status = 200
 
 [[headers]]
   for = "/api/*"
