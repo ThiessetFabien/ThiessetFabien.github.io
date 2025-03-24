@@ -14,7 +14,7 @@
     "dev:prod": "dotenv -e .env.production -- sh -c 'pnpm run copy-leaflet-images && next dev'",
     "dev:analyze": "ANALYZE=true next dev",
     "build:analyze": "ANALYZE=true next build",
-    "build": "dotenv -e .env.production -- sh -c && next build",
+    "build": "dotenv -e .env.production && next build",
     "prod": "dotenv -e .env.production -- pnpm netlify deploy --prod",
     "deploy": "pnpm run build && pnpm run prod",
     "start": "dotenv -e .env.production -- sh -c 'next start'",
