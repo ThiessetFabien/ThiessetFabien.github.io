@@ -10,30 +10,23 @@ import useIntersectionObserver from '@/src/hooks/IntersectionObserver.hook';
 import { useIsClient } from '@/src/hooks/useIsClient.hook';
 import type { LocationEventsProps } from '@/src/types/LocationEventsProps';
 
-// Import Leaflet styles
-import '@/src/styles/leaflet.css';
+// Import Leaflet styles from node_modules
 import 'leaflet/dist/leaflet.css';
+// Import Personal Leaflet styles
+import '@/src/styles/leaflet.css';
 
-// Fix for Leaflet icons
-const icon = L.icon({
-  iconUrl: '/images/leaflet/marker-icon.png',
-  iconRetinaUrl: '/images/leaflet/marker-icon-2x.png',
-  shadowUrl: '/images/leaflet/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-  shadowAnchor: [12, 41],
-  tooltipAnchor: [16, -28],
-});
-
+// Config Leaflet icons
 L.Icon.Default.mergeOptions({
   iconUrl: '/images/leaflet/marker-icon.png',
   iconRetinaUrl: '/images/leaflet/marker-icon-2x.png',
   shadowUrl: '/images/leaflet/marker-shadow.png',
 });
 
-L.Marker.prototype.options.icon = icon;
+L.Marker.prototype.options.icon = L.icon({
+  iconUrl: '/images/leaflet/marker-icon.png',
+  iconRetinaUrl: '/images/leaflet/marker-icon-2x.png',
+  shadowUrl: '/images/leaflet/marker-shadow.png',
+});
 
 /**
  * Map component.
