@@ -130,17 +130,18 @@ export const ProjectsCard: React.FC<{
                       videoLoaded[projectIndex] ? '' : 'hidden'
                     )}
                   >
+                    <track
+                      kind='captions'
+                      src={`/videos/${project.title}.vtt`}
+                      srcLang='fr'
+                      label='Sous-titres en français'
+                      default
+                    />
                     {project.videoSrc && (
-                      <>
-                        <track
-                          kind='captions'
-                          src={`videos/${project.videoSrc}`}
-                        />
-                        <source
-                          src={`videos/${project.videoSrc}`}
-                          type='video/mp4'
-                        />
-                      </>
+                      <source
+                        src={`videos/${project.videoSrc}`}
+                        type='video/mp4'
+                      />
                     )}
                     Your browser does not support the video tag.
                   </video>

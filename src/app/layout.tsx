@@ -1,5 +1,7 @@
 'use client';
 
+import { ThemeProvider } from 'next-themes';
+
 import { VideoRedirectHandler } from '@/src/components/VideoRedirectHandler';
 import {
   cnFlexBetweenX,
@@ -13,7 +15,6 @@ import { cn } from '@lib/utils';
 import { Expletus_Sans } from '@src/fonts/ExpletusSans.font';
 import { Poppins } from '@src/fonts/Poppins.font';
 import { cnGap, cnMarginX, cnPaddingY } from '@styles/boxModel.style';
-import { ThemeProvider } from 'next-themes';
 
 import '@src/styles/globals.css';
 import '@src/styles/reset.css';

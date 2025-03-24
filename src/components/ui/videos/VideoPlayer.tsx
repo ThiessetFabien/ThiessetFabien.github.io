@@ -46,7 +46,15 @@ export function VideoPlayer({ videoId, fallbackVideoId }: VideoPlayerProps) {
         src={`/videos/${actualVideoId}`}
         className='w-full rounded-lg'
         onError={handleVideoError}
-      />
+      >
+        <track
+          kind='captions'
+          src={`/videos/${actualVideoId}.vtt`}
+          srcLang='fr'
+          label='Sous-titres en français'
+          default
+        />
+      </video>
       {hasError && (
         <p className='mt-2 text-red-500'>
           This video is not available. Please try again later.

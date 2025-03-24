@@ -28,11 +28,11 @@ export class ClientSanitizationService {
         const value = obj[key];
 
         if (typeof value === 'string') {
-          (result as any)[key] = this.sanitizeString(value);
+          (result as Record<string, unknown>)[key] = this.sanitizeString(value);
         } else if (typeof value === 'object' && value !== null) {
-          (result as any)[key] = this.sanitizeObject(value);
+          (result as Record<string, unknown>)[key] = this.sanitizeObject(value);
         } else {
-          (result as any)[key] = value;
+          (result as Record<string, unknown>)[key] = value;
         }
       }
     }
