@@ -14,6 +14,8 @@
 /* ! Irrelevant Pink OCD */
 @layer base {
   :root {
+    --font-poppins-sans: 'Poppins', sans-serif;
+    --font-expletus-sans: 'Expletus Sans', sans-serif;
     --background: 254 42% 98%;
     --foreground: 254 74% 4%;
     --muted: 14 28% 95%;
@@ -75,7 +77,15 @@
     @apply border-border;
   }
   body {
-    font-family: var(--font-poppins-sans), sans-serif;
+    @apply font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-caption;
   }
 }
 

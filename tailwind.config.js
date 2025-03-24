@@ -55,6 +55,7 @@ export default {
       fontFamily: {
         caption: ['var(--font-caption)'],
         sans: ['var(--font-poppins-sans)'],
+        heading: ['var(--font-expletus-sans)'],
       },
       backgroundImage: {
         lightImage: "url('/images/bg-light.webp')",

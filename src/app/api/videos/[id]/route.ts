@@ -1,16 +1,30 @@
 import fs from 'fs';
 import path from 'path';
 
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const VIDEOS_DIRECTORY = path.join(process.cwd(), 'public/videos');
 const DEFAULT_VIDEO_ID = 'default-video';
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
-  const { id } = params;
+export const dynamic = 'force-static';
+export const revalidate = false;
+
+type RouteContext = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+export async function generateStaticParams() {
+  return [
+    {
+      id: 'casalink',
+    },
+  ];
+}
+
+export async function GET(request: NextRequest, { params }: RouteContext) {
+  const { id } = await params;
 
   if (!id || id === 'undefined') {
     if (fs.existsSync(path.join(VIDEOS_DIRECTORY, `${DEFAULT_VIDEO_ID}.mp4`))) {

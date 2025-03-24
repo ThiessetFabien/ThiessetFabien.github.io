@@ -15,7 +15,8 @@ const nextconfig = {
     SMTP_SERVER_USERNAME: process.env.SMTP_SERVER_USERNAME,
   },
   reactStrictMode: false,
-  output: 'export',
+  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  productionBrowserSourceMaps: true,
   images: {
     unoptimized: true,
   },
@@ -48,6 +49,7 @@ const nextconfig = {
         __dirname,
         'node_modules/leaflet/dist/images'
       ),
+      'lucide-react': resolve(__dirname, 'node_modules/lucide-react'),
     };
     return config;
   },
@@ -58,7 +60,7 @@ const nextconfig = {
       },
     },
   },
-  transpilePackages: ['leaflet', 'react-leaflet'],
+  transpilePackages: ['leaflet', 'react-leaflet', 'lucide-react'],
 };
 
 export default nextconfig;

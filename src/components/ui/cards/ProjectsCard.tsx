@@ -107,7 +107,10 @@ export const ProjectsCard: React.FC<{
                       alt={project?.imageAlt}
                       width={590}
                       height={315}
-                      loading='lazy'
+                      loading={
+                        project.title === 'casalink api' ? 'eager' : 'lazy'
+                      }
+                      priority={project.title === 'casalink api'}
                       className='h-fit max-h-full min-h-fit min-w-full rounded-xl object-cover object-center xl:min-h-full'
                     />
                   )}

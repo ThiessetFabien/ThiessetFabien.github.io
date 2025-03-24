@@ -12,18 +12,25 @@ import type { LocationEventsProps } from '@/src/types/LocationEventsProps';
 
 // Import Leaflet styles
 import '@/src/styles/leaflet.css';
+import 'leaflet/dist/leaflet.css';
 
 // Fix for Leaflet icons
 const icon = L.icon({
-  iconUrl: '/static/images/marker-icon.png',
-  iconRetinaUrl: '/static/images/marker-icon-2x.png',
-  shadowUrl: '/static/images/marker-shadow.png',
+  iconUrl: '/images/leaflet/marker-icon.png',
+  iconRetinaUrl: '/images/leaflet/marker-icon-2x.png',
+  shadowUrl: '/images/leaflet/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
   shadowAnchor: [12, 41],
   tooltipAnchor: [16, -28],
+});
+
+L.Icon.Default.mergeOptions({
+  iconUrl: '/images/leaflet/marker-icon.png',
+  iconRetinaUrl: '/images/leaflet/marker-icon-2x.png',
+  shadowUrl: '/images/leaflet/marker-shadow.png',
 });
 
 L.Marker.prototype.options.icon = icon;
