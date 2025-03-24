@@ -2,8 +2,7 @@
  * @file Map.tsx
  * @description This component renders a map with a specific position and radius.
  */
-import 'leaflet-defaulticon-compatibility';
-import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import React, { useEffect } from 'react';
 import { Circle, MapContainer, TileLayer, useMap } from 'react-leaflet';
@@ -11,6 +10,21 @@ import { Circle, MapContainer, TileLayer, useMap } from 'react-leaflet';
 import useIntersectionObserver from '@/src/hooks/IntersectionObserver.hook';
 import { useIsClient } from '@/src/hooks/useIsClient.hook';
 import type { LocationEventsProps } from '@/src/types/LocationEventsProps';
+
+// Fix pour les icônes Leaflet
+const icon = L.icon({
+  iconUrl: '/static/images/marker-icon.png',
+  iconRetinaUrl: '/static/images/marker-icon-2x.png',
+  shadowUrl: '/static/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+  shadowAnchor: [12, 41],
+  tooltipAnchor: [16, -28],
+});
+
+L.Marker.prototype.options.icon = icon;
 
 /**
  * Map component.

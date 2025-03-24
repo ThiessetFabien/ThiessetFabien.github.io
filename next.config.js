@@ -14,6 +14,16 @@ const nextconfig = {
   images: {
     unoptimized: true,
   },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(png|jpg|gif)$/i,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/images/[name][ext]',
+      },
+    });
+    return config;
+  },
 };
 
 export default nextconfig;
