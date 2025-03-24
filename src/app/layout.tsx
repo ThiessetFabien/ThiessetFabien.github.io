@@ -1,23 +1,22 @@
 'use client';
 
-import { ThemeProvider } from 'next-themes';
-
 import { VideoRedirectHandler } from '@/src/components/VideoRedirectHandler';
 import {
   cnFlexBetweenX,
   cnFlexCol,
   cnFlexFullCenter,
 } from '@/src/styles/flex.style';
-import { Expletus_Sans } from '@fonts/ExpletusSans.font';
-import { Poppins } from '@fonts/Poppins.font';
 import { Footer } from '@layouts/FooterLayout';
 import { Header } from '@layouts/HeaderLayout';
 import { Toaster } from '@lib/components/ui/toaster';
 import { cn } from '@lib/utils';
+import { Expletus_Sans } from '@src/fonts/ExpletusSans.font';
+import { Poppins } from '@src/fonts/Poppins.font';
 import { cnGap, cnMarginX, cnPaddingY } from '@styles/boxModel.style';
+import { ThemeProvider } from 'next-themes';
 
-import '@styles/globals.css';
-import '@styles/reset.css';
+import '@src/styles/globals.css';
+import '@src/styles/reset.css';
 import { MetaHead } from '../components/layouts/MetaHead';
 import { metadata } from '../config/metadata';
 
@@ -34,15 +33,17 @@ export default function RootLayout({
       />
       <body
         className={cn(
-          Poppins.variable,
-          Expletus_Sans.variable,
           'container relative z-0',
           'm-auto min-h-[100dvh]',
-          'font-sans text-foreground',
+          'font-poppins-sans text-foreground',
           cnFlexFullCenter,
           cnFlexCol,
           'bg-gradient-to-br from-secondary to-primary'
         )}
+        style={{
+          ...Poppins.style,
+          ...Expletus_Sans.style,
+        }}
       >
         <VideoRedirectHandler />
         <ThemeProvider

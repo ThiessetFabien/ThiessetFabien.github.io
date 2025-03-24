@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const nextconfig = {
   env: {
@@ -22,8 +27,38 @@ const nextconfig = {
         filename: 'static/images/[name][ext]',
       },
     });
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              plugins: ['tailwindcss', 'autoprefixer'],
+            },
+          },
+        },
+      ],
+    });
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'leaflet/dist/images': resolve(
+        __dirname,
+        'node_modules/leaflet/dist/images'
+      ),
+    };
     return config;
   },
+  experimental: {
+    turbo: {
+      rules: {
+        '*.{png,jpg,gif}': ['@next/font/image'],
+      },
+    },
+  },
+  transpilePackages: ['leaflet', 'react-leaflet'],
 };
 
 export default nextconfig;

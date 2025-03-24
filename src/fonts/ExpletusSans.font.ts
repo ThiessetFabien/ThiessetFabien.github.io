@@ -1,8 +1,14 @@
-import { Expletus_Sans as Expletus_SansFont } from 'next/font/google';
+/**
+ * @file ExpletusSans.font.ts
+ * @description This file configures the Expletus Sans font from Google Fonts using CDN.
+ */
 
-export const Expletus_Sans = Expletus_SansFont({
-  subsets: ['latin'],
-  style: ['normal'],
-  weight: ['500', '700'],
+export const Expletus_Sans = {
   variable: '--font-caption',
-});
+  className: 'font-caption',
+  style: {
+    fontFamily: 'Expletus Sans, sans-serif',
+    fontWeight: '500',
+    fontStyle: 'normal',
+  },
+};

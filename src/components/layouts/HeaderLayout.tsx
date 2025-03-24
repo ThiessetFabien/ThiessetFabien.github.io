@@ -18,7 +18,7 @@ import type { CardProps } from '@src/types/CardProps';
  * @example
  * <Header className="custom-class" />
  */
-export const Header: React.FC<{ className: CardProps['className'] }> = ({
+export const Header: React.FC<{ className?: CardProps['className'] }> = ({
   className,
 }) => {
   return (

@@ -3,7 +3,6 @@
  * @description This component renders a map with a specific position and radius.
  */
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import React, { useEffect } from 'react';
 import { Circle, MapContainer, TileLayer, useMap } from 'react-leaflet';
 
@@ -11,7 +10,10 @@ import useIntersectionObserver from '@/src/hooks/IntersectionObserver.hook';
 import { useIsClient } from '@/src/hooks/useIsClient.hook';
 import type { LocationEventsProps } from '@/src/types/LocationEventsProps';
 
-// Fix pour les icônes Leaflet
+// Import Leaflet styles
+import '@/src/styles/leaflet.css';
+
+// Fix for Leaflet icons
 const icon = L.icon({
   iconUrl: '/static/images/marker-icon.png',
   iconRetinaUrl: '/static/images/marker-icon-2x.png',
