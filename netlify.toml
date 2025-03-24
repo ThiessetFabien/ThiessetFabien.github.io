@@ -31,7 +31,9 @@ status = 200
 from = "/api/contact"
 to = "/.netlify/functions/contact-form"
 status = 200
+force = true
 
+# CORS
 [[headers]]
   for = "/api/*"
   [headers.values]
@@ -40,7 +42,6 @@ status = 200
     Access-Control-Allow-Headers = "Content-Type"
 
 [context]
-
   [context.production]
     [context.production.environment]
       NODE_ENV = "production"
@@ -49,6 +50,7 @@ status = 200
 
 [functions]
   node_bundler = "esbuild"
+  external_node_modules = ["nodemailer"]
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
