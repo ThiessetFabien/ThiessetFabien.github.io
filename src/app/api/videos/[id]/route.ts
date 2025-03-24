@@ -1,6 +1,7 @@
 import fs from 'fs';
-import { NextResponse } from 'next/server';
 import path from 'path';
+
+import { NextResponse } from 'next/server';
 
 const VIDEOS_DIRECTORY = path.join(process.cwd(), 'public/videos');
 const DEFAULT_VIDEO_ID = 'default-video';
