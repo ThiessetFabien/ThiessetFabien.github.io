@@ -5,5 +5,6 @@ export interface FormFieldProps<T extends FieldValues> {
   name: Path<T>;
   label: string;
   placeholder?: string;
+  autocomplete?: string;
   errors?: FieldError;
 }
