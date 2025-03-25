@@ -37,7 +37,7 @@ const DynamicLeaflet = () => {
   }
 
   return (
-    <div className='h-full min-h-[350px] w-full'>
+    <div className='h-full w-full'>
       <LeafletMap />
     </div>
   );

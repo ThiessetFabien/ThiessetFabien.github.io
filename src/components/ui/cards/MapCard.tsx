@@ -15,7 +15,7 @@ const DynamicLeafletMap = dynamic(() => import('../maps/DynamicLeaflet'), {
 
 const MapCard: React.FC = () => {
   return (
-    <div className='block h-full min-h-[350px] w-full'>
+    <div className='block h-full w-full'>
       <DynamicLeafletMap />
     </div>
   );

@@ -223,6 +223,13 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
       console.error('Error while loading the map :', error);
     });
 
+    // Ajouter un écouteur de redimensionnement
+    window.addEventListener('resize', () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.invalidateSize();
+      }
+    });
+
     return () => {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
@@ -231,13 +238,19 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
+      // Nettoyer l'écouteur de redimensionnement
+      window.removeEventListener('resize', () => {
+        if (mapInstanceRef.current) {
+          mapInstanceRef.current.invalidateSize();
+        }
+      });
     };
   }, [center, zoom, markers, scrollWheelZoom, flyToAnimation]);
 
   return (
     <div
       ref={mapRef}
-      className='h-full min-h-[350px] w-full overflow-hidden rounded-md'
+      className='h-full w-full overflow-hidden rounded-md'
       style={{ position: 'relative', touchAction: 'manipulation' }}
     >
       {!isMapInitialized && (
