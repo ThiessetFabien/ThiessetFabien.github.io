@@ -8,7 +8,6 @@ import * as Icons from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
 import type { CardProps } from '@src/types/CardProps';
-import type { IconName } from '@src/types/IconNameProps';
 
 /**
  * IconLoader component.
@@ -19,7 +18,7 @@ import type { IconName } from '@src/types/IconNameProps';
  */
 
 interface IconLoaderProps {
-  icon: IconName;
+  icon: string;
   className?: CardProps['className'];
 }
 
@@ -29,7 +28,7 @@ export const IconLoader: React.FC<IconLoaderProps> = ({ icon, className }) => {
   useEffect(() => {
     if (!icon) return;
 
-    const LoadedIcon = Icons[icon];
+    const LoadedIcon = Icons[icon as keyof typeof Icons];
 
     if (LoadedIcon) {
       setIconComponent(LoadedIcon as LucideIcon);

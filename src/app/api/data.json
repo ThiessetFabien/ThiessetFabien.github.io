@@ -1,7 +1,7 @@
 [
   {
-    "title": "ethical software developer",
-    "description": "let's be honest and work together for an accessible and humane world.",
+    "title": "turning vision into reality with code, a11y and humanity.",
+    "description": "full-stack developer react data api | integrator | project coordinator",
     "content": "You need a website that is stunning and truly functional. if you want to learn more about working with me, take a look through my website.",
     "imageSrc": "/images/profile.webp",
     "imageAlt": "profile picture",
@@ -11,9 +11,9 @@
     "cta2": "link up",
     "icon2": "Linkedin",
     "href2": "www.linkedin.com/in/fabien-thiesset/",
-    "cta3": "inquire here",
+    "cta3": "say hello",
     "icon3": "Mail",
-    "href3": "#card-9"
+    "href3": "mailto:thiessetfabienpro@gmail.com"
   },
   {
     "title": "being full-stack is my focus",
@@ -212,18 +212,23 @@
     "achievements": [
       {
         "icon": "GraduationCap",
-        "title": "rncp level 5 web and mobile developer - during a training leave",
-        "date": "juil 2024"
+        "title": "certified full stack developer curriculum & a2 english for developper",
+        "date": "fev 2025 - present"
+      },
+      {
+        "icon": "GraduationCap",
+        "title": "professional title level 5 of web & mobile developer (bac+2)",
+        "date": "jun - juil 2024"
       },
       {
         "icon": "ReceiptEuro",
-        "title": "funding agreement with transition pro hauts-de-france",
-        "date": "sept 2023"
+        "title": "funding agreement of transition pro hauts-de-france",
+        "date": "avr - sept 2023"
       },
       {
         "icon": "Accessibility",
-        "title": "humanitude label for first medicalized center in mainland, and the third establishment in france (including overseas territories)",
-        "date": "dec 2019"
+        "title": "Obtaining and Maintaining the Humanitude Label for the First Medically-Assisted Living Facility in Metropolitan France",
+        "date": "2019 - 2024"
       }
     ]
   },
@@ -385,11 +390,6 @@
     "content": "as a shonen anime fan, i enjoy coffee while working and reward myself with demon slayer and my hero academia."
   },
   {
-    "title": "available for mobile, vehicle",
-    "description": "i am available for work in the Lille area and for remote work.",
-    "map": true
-  },
-  {
     "title": "let's talk about your project",
     "description": "passion is energy. feel the power that comes from focusing on what excites you (oprah winfrey).",
     "mailto": "thiessetfabienpro@gmail.com",
@@ -401,5 +401,10 @@
     "cta3": "reach out",
     "icon3": "Linkedin",
     "href3": "www.linkedin.com/in/fabien-thiesset/"
+  },
+  {
+    "title": "available for mobile, vehicle",
+    "description": "I am willing to relocate within 30 minutes of Douai and further if remote work is possible.",
+    "map": true
   }
 ]

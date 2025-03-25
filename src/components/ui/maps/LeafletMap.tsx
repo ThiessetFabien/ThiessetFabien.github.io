@@ -1,23 +1,15 @@
 import { type Map as LeafletMapType } from 'leaflet';
 import React, { memo, useEffect, useRef, useState } from 'react';
 
-// Options pour personnaliser la carte
 interface LeafletMapProps {
-  center?: [number, number]; // Coordonnées du centre de la carte
-  zoom?: number; // Niveau de zoom initial
+  center?: [number, number];
+  zoom?: number;
   markers?: Array<{
-    // Liste des marqueurs à afficher
     position: [number, number];
     popup?: string;
-    circle?: {
-      radius: number;
-      color: string;
-      fillColor?: string;
-      fillOpacity?: number;
-    };
   }>;
-  scrollWheelZoom?: boolean; // Activer/désactiver le zoom à la molette
-  flyToAnimation?: boolean; // Activer/désactiver l'animation flyTo
+  scrollWheelZoom?: boolean;
+  flyToAnimation?: boolean;
 }
 
 const LeafletMap: React.FC<LeafletMapProps> = ({
@@ -27,12 +19,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
     {
       position: [50.381645, 3.053234],
       popup: 'I code here every day !',
-      circle: {
-        radius: 30000,
-        color: '#22c55e',
-        fillColor: '#22c55e',
-        fillOpacity: 0.3,
-      },
     },
   ],
   scrollWheelZoom = false,
@@ -46,14 +32,12 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
   useEffect(() => {
     if (!mapRef.current) return;
 
-    // Import dynamique de Leaflet seulement côté client
     const loadMap = async () => {
       const L = (await import('leaflet')).default;
       await import('leaflet/dist/leaflet.css');
 
       if (mapInstanceRef.current) return;
 
-      // Définir les icônes personnalisées
       const customIcon = new L.Icon({
         iconUrl: '/images/leaflet/marker-icon.png',
         iconRetinaUrl: '/images/leaflet/marker-icon-2x.png',
@@ -64,36 +48,40 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         shadowSize: [41, 41],
       });
 
-      // Commence avec une vue sur la France entière
       const francePosition: [number, number] = [46.6034, 3.1236];
       const initialZoom = flyToAnimation ? 5 : zoom;
       const initialCenter = flyToAnimation ? francePosition : center;
 
-      // Initialiser la carte
+      // Ajustement du zoom pour les petits écrans
+      const isMobile = window.innerWidth < 768;
+      const adjustedZoom = isMobile
+        ? Math.max(initialZoom - 1, 4)
+        : initialZoom;
+
       const map = L.map(mapRef.current as HTMLElement, {
         preferCanvas: true,
-        attributionControl: true, // Activez pour vérifier que la carte se charge
+        attributionControl: true,
         zoomControl: true,
         scrollWheelZoom,
-      }).setView(initialCenter, initialZoom);
+        // Ajouter des options spécifiques pour mobile
+        dragging: true,
+        touchZoom: true,
+      }).setView(initialCenter, adjustedZoom);
 
       mapInstanceRef.current = map;
 
-      // Ajout des tuiles avec options de performance
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19, // Augmentez le zoom maximal
-        tileSize: 256, // Utilisez la taille standard de tuile
-        zoomOffset: 0, // Réinitialisez l'offset
+        maxZoom: 19,
+        tileSize: 256,
+        zoomOffset: 0,
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      // Recalculer la taille après le rendu
+      // Force invalidateSize plusieurs fois pour s'assurer du rendu correct
       map.invalidateSize();
 
       console.log('Initialisation de la carte terminée');
-
-      // Ajouter les marqueurs et cercles
       interface Marker {
         position: [number, number];
         popup?: string;
@@ -122,8 +110,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         customIcon: L.Icon
       ) => {
         markers.forEach((marker) => {
-          console.log("Ajout d'un marqueur à la position:", marker.position);
-
           const leafletMarker = L.marker(marker.position, {
             icon: customIcon,
           }).addTo(map);
@@ -133,8 +119,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           }
 
           if (marker.circle) {
-            console.log("Ajout d'un cercle avec rayon:", marker.circle.radius);
-
             const circleOptions: CircleOptions = {
               radius: marker.circle.radius,
               color: marker.circle.color,
@@ -155,13 +139,10 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
 
       setIsMapInitialized(true);
 
-      // Si l'animation flyTo est activée, configurer l'observateur d'intersection
       if (flyToAnimation) {
         const handleIntersection = (entries: IntersectionObserverEntry[]) => {
           const [entry] = entries;
           if (entry.isIntersecting && mapInstanceRef.current) {
-            console.log("La carte est visible, démarrage de l'animation flyTo");
-
             mapInstanceRef.current.flyTo(center, zoom, {
               duration: 1.5,
               easeLinearity: 0.25,
@@ -211,12 +192,10 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           };
         }
 
-        interface CustomIcon extends L.Icon {}
-
         const addPopupToFirstMarker = (
           markers: Marker[],
           mapInstance: LeafletMapType,
-          customIcon: CustomIcon
+          customIcon: L.Icon
         ) => {
           markers.forEach((marker, index) => {
             if (marker.popup && index === 0) {
@@ -231,18 +210,21 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         addPopupToFirstMarker(markers, mapInstanceRef.current!, customIcon);
       }
 
-      setTimeout(() => {
-        if (mapInstanceRef.current) {
-          mapInstanceRef.current.invalidateSize();
-        }
-      }, 500);
+      // Répéter invalidateSize à plusieurs intervalles
+      const invalidateIntervals = [100, 500, 1000, 2000];
+      invalidateIntervals.forEach((delay) => {
+        setTimeout(() => {
+          if (mapInstanceRef.current) {
+            mapInstanceRef.current.invalidateSize();
+          }
+        }, delay);
+      });
     };
 
     loadMap().catch((error) => {
-      console.error('Erreur lors du chargement de la carte:', error);
+      console.error('Error while loading the map :', error);
     });
 
-    // Nettoyage
     return () => {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
@@ -257,12 +239,12 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
   return (
     <div
       ref={mapRef}
-      className='h-[400px] w-full overflow-hidden rounded-md'
-      style={{ position: 'relative' }}
+      className='h-full min-h-[350px] w-full overflow-hidden rounded-md'
+      style={{ position: 'relative', touchAction: 'manipulation' }}
     >
       {!isMapInitialized && (
         <div className='flex h-full w-full items-center justify-center bg-gray-100'>
-          <p>Chargement de la carte...</p>
+          <p>Loading map...</p>
         </div>
       )}
     </div>

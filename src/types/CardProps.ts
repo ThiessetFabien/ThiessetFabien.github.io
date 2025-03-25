@@ -87,6 +87,6 @@ export interface CardProps {
 
   mailto?: string;
 
-  className: string;
+  className?: string;
   colSpan?: string;
 }
