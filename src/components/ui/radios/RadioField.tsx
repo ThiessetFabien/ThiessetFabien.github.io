@@ -31,7 +31,7 @@ export function EmailTypeField<T extends FieldValues>({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className='col-span-1 row-span-1 md:col-span-3'>
+        <FormItem className='col-span-1 row-span-1 flex-none md:col-span-3'>
           <FormLabel htmlFor={id} className={cnParagraph}>
             {label}
           </FormLabel>
@@ -41,12 +41,12 @@ export function EmailTypeField<T extends FieldValues>({
                 name={name}
                 onValueChange={field.onChange}
                 defaultValue={field.value}
-                className={cn(cnFlexCenterY, cnSmallSpaceX)}
+                className={cn('flex', cnSmallGap)}
               >
                 {EMAIL_TYPES.map((type) => (
                   <FormItem
                     key={type}
-                    className={cn(cnFlexCenterY, cnSmallSpaceX)}
+                    className={cn(cnFlexCenterY, cnSmallSpaceX, 'space-y-0')}
                   >
                     <FormControl>
                       <motion.div

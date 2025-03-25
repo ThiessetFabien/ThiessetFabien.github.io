@@ -12,6 +12,7 @@ import {
   FormMessage,
 } from '@lib/components/ui/form';
 import { Input } from '@lib/components/ui/input';
+import { motion } from 'framer-motion';
 
 export function InputField<T extends FieldValues>({
   control,
@@ -33,28 +34,21 @@ export function InputField<T extends FieldValues>({
             {label}{' '}
           </FormLabel>
           <FormControl>
-            <Input
-              id={id}
-              placeholder={placeholder}
-              autoComplete={autocomplete || name}
-              {...field}
-              className={cn(
-                'min-w-full',
-                'paragraph-placeholder',
-                'bg-input',
-                cnParagraph
-              )}
-              style={{
-                transition: 'transform 0.2s ease',
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.transform = 'scale(1.1)';
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.transform = 'scale(1)';
-              }}
-              required
-            />
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <Input
+                id={id}
+                placeholder={placeholder}
+                autoComplete={autocomplete || name}
+                {...field}
+                className={cn(
+                  'min-w-full',
+                  'paragraph-placeholder',
+                  'bg-input',
+                  cnParagraph
+                )}
+                required
+              />
+            </motion.div>
           </FormControl>
           {errors?.message && (
             <FormMessage>{String(errors.message)}</FormMessage>
