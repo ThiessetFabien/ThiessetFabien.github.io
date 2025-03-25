@@ -22,10 +22,12 @@ import {
   cnParagraph,
   cnSmallText,
 } from '@/src/styles/font.style';
-import { Avatar, AvatarFallback, AvatarImage } from '@lib/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 import { cn } from '@lib/utils';
 import { CardProps } from '@src/types/CardProps';
 import type { TestimonialProps } from '@src/types/TestimonialProps';
+
+import { TestimonialImage } from '../images/TestimonalImage';
 
 /**
  * @file TestimonialsCarousel.tsx
@@ -117,8 +119,8 @@ export const TestimonialsCarousel: React.FC<{
               <Avatar
                 className={cn('h-12 w-12 border border-accent', cnBorder2)}
               >
-                <AvatarImage
-                  src={`${baseUrl}${testimonial.imageSrc}`}
+                <TestimonialImage
+                  src={testimonial.imageSrc}
                   alt={capitalizeFirstLetterOfEachWord(testimonial.author)}
                 />
                 <AvatarFallback className={cnParagraph}>

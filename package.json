@@ -25,7 +25,8 @@
     "type-check": "tsc --noEmit",
     "clean:.next": "rm -rf .next",
     "clean:node_modules": "rm -rf node_modules",
-    "clean:all": "rm -rf .next node_modules"
+    "clean:all": "rm -rf .next node_modules",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

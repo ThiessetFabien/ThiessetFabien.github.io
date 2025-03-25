@@ -21,10 +21,11 @@ import {
   cnXxsHidden,
 } from '@/src/styles/hideItem.style';
 import { cnBigImage } from '@/src/styles/image.styles';
+import { ResponsiveImage } from '@/src/styles/mediaQueries.style';
 import { cnSizeAuto } from '@/src/styles/size.style';
 import { cnLittleTranslateSm } from '@/src/styles/translate.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
-import { Avatar, AvatarFallback, AvatarImage } from '@lib/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 import {
   CardContent,
   CardDescription,
@@ -32,9 +33,9 @@ import {
   CardTitle,
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
+import { formatSpecialWords } from '@lib/utils/formatText.util';
 import type { CardProps } from '@src/types/CardProps';
-
-import { formatSpecialWords } from '../../../lib/utils/formatText.util';
+import { ProfileImage } from '@ui/images/ProfileImage';
 
 export const HeroCard: React.FC<{
   title: CardProps['title'];
@@ -87,16 +88,17 @@ export const HeroCard: React.FC<{
               cnSizeAuto
             )}
           >
-            <AvatarImage
+            <ProfileImage
               src={imageSrc || ''}
               alt={imageAlt || ''}
+              width={ResponsiveImage()}
+              height={ResponsiveImage()}
               className={cn(
                 'relative rounded-full',
                 cnSizeAuto,
                 cnLittleTranslateSm,
                 cnBigImage
               )}
-              loading='eager'
             />
             <AvatarFallback
               className={cn(

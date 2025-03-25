@@ -22,9 +22,17 @@ const nextconfig = {
     unoptimized: true,
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
-    domains: ['tile.openstreetmap.org'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    domains: ['tile.openstreetmap.org', 'media.licdn.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+        pathname: '/dms/image/**',
+      },
+    ],
+    deviceSizes: [360, 640, 750, 828, 1080, 1200],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    formats: ['image/webp', 'image/avif'],
   },
   webpack: (config) => {
     config.module.rules.push({

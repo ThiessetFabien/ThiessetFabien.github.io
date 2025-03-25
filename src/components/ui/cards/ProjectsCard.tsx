@@ -165,14 +165,14 @@ export const ProjectsCard: React.FC<{
                       <Image
                         src={`/${project.imageSrc}`}
                         alt={project?.imageAlt}
-                        width={590}
-                        height={315}
+                        width={300}
+                        height={300}
                         loading={
                           project.title === 'casalink api' ? 'eager' : 'lazy'
                         }
                         quality={80}
                         placeholder='blur'
-                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(590, 315))}`}
+                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 300))}`}
                         priority={project.title === 'casalink api'}
                         className='h-fit max-h-full min-h-fit w-fit min-w-full rounded-xl object-cover object-center xl:min-h-full'
                       />
