@@ -2,10 +2,10 @@ import React from 'react';
 
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
 import type { IconName } from '@/src/types/IconNameProps';
+import { baseUrl } from '@/src/utils/baseUrl.util';
+import { capitalizeFirstLetterOfEachWord } from '@/src/utils/formatText.util';
 import { Button } from '@lib/components/ui/button';
 import { cn } from '@lib/utils';
-import { baseUrl } from '@lib/utils/baseUrl.util';
-import { capitalizeFirstLetterOfEachWord } from '@lib/utils/formatText.util';
 import type { CardProps } from '@src/types/CardProps';
 import { cnParagraph } from '@styles/font.style';
 import { IconLoader } from '@ui/icons/IconLoader';

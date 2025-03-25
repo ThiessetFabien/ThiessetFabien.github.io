@@ -2,11 +2,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 
-import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/src/lib/utils/formatText.util';
 import { cnBorder } from '@/src/styles/border.style';
 import {
   cnSmallGap,
@@ -16,6 +11,11 @@ import {
 import { cnFlexCol } from '@/src/styles/flex.style';
 import { cnParagraph, cnSmallText, cnTitle3 } from '@/src/styles/font.style';
 import { cnSizeFull } from '@/src/styles/size.style';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/src/utils/formatText.util';
 import { Badge } from '@lib/components/ui/badge';
 import {
   Card,

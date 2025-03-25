@@ -1,4 +1,7 @@
-import { type Map as LeafletMapType } from 'leaflet';
+import L, { type Map as LeafletMapType } from 'leaflet';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import React, { memo, useEffect, useRef, useState } from 'react';
 
 interface LeafletMapProps {
@@ -30,6 +33,34 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
   const [isMapInitialized, setIsMapInitialized] = useState(false);
 
   useEffect(() => {
+    const preloadTiles = async () => {
+      const urls = [
+        'https://a.tile.openstreetmap.org/4/8/5.png',
+        'https://b.tile.openstreetmap.org/4/8/5.png',
+        'https://c.tile.openstreetmap.org/4/8/5.png',
+      ];
+
+      urls.forEach((url) => {
+        const img = new Image();
+        img.src = url;
+      });
+    };
+
+    preloadTiles();
+  }, []);
+
+  useEffect(() => {
+    // Seulement dans l'environnement client
+    if (typeof window !== 'undefined') {
+      L.Icon.Default.mergeOptions({
+        iconUrl: markerIcon,
+        iconRetinaUrl: markerIcon2x,
+        shadowUrl: markerShadow,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     if (!mapRef.current) return;
 
     const loadMap = async () => {
@@ -52,7 +83,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
       const initialZoom = flyToAnimation ? 5 : zoom;
       const initialCenter = flyToAnimation ? francePosition : center;
 
-      // Ajustement du zoom pour les petits écrans
       const isMobile = window.innerWidth < 768;
       const adjustedZoom = isMobile
         ? Math.max(initialZoom - 1, 4)
@@ -63,7 +93,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         attributionControl: true,
         zoomControl: true,
         scrollWheelZoom,
-        // Ajouter des options spécifiques pour mobile
         dragging: true,
         touchZoom: true,
       }).setView(initialCenter, adjustedZoom);
@@ -76,9 +105,20 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         zoomOffset: 0,
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(map);
+      })
+        .on('tileload', function (event) {
+          const tile = event.tile;
+          if (tile && tile instanceof HTMLImageElement) {
+            tile.setAttribute('loading', 'lazy');
+            tile.setAttribute('decoding', 'async');
 
-      // Force invalidateSize plusieurs fois pour s'assurer du rendu correct
+            if ('fetchPriority' in tile) {
+              tile.fetchPriority = 'low';
+            }
+          }
+        })
+        .addTo(map);
+
       map.invalidateSize();
       interface Marker {
         position: [number, number];
@@ -208,7 +248,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         addPopupToFirstMarker(markers, mapInstanceRef.current!, customIcon);
       }
 
-      // Répéter invalidateSize à plusieurs intervalles
       const invalidateIntervals = [100, 500, 1000, 2000];
       invalidateIntervals.forEach((delay) => {
         setTimeout(() => {
@@ -223,7 +262,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
       console.error('Error while loading the map :', error);
     });
 
-    // Ajouter un écouteur de redimensionnement
     window.addEventListener('resize', () => {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.invalidateSize();
@@ -238,7 +276,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
-      // Nettoyer l'écouteur de redimensionnement
+
       window.removeEventListener('resize', () => {
         if (mapInstanceRef.current) {
           mapInstanceRef.current.invalidateSize();

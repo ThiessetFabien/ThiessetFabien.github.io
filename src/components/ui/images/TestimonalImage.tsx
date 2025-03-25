@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { baseUrl } from '@/src/lib/utils/baseUrl.util';
+import { baseUrl } from '@/src/utils/baseUrl.util';
 
 interface TestimonialImageProps {
   src: string;
@@ -27,10 +27,11 @@ export const TestimonialImage = ({ src, alt }: TestimonialImageProps) => {
     <Image
       src={imageUrl}
       alt={alt}
-      width={120}
-      height={120}
-      className='aspect-square h-full w-full'
+      fill
+      sizes='(max-width: 768px) 64px, 96px'
+      className='aspect-square h-full w-full rounded-full object-cover'
       loading='lazy'
+      priority={false}
       unoptimized={isAbsoluteUrl || src.startsWith('media.licdn.com')}
     />
   );

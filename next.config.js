@@ -1,9 +1,28 @@
 /** @type {import('next').NextConfig} */
+
+import { createRequire } from 'module';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
+const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+function analyzeBundle(config) {
+  if (process.env.ANALYZE === 'true') {
+    const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+    config.plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: resolve(__dirname, 'bundle-analysis.html'),
+        generateStatsFile: true,
+        statsFilename: resolve(__dirname, 'bundle-stats.json'),
+        openAnalyzer: false,
+      })
+    );
+  }
+  return config;
+}
 
 const nextconfig = {
   env: {
@@ -19,7 +38,6 @@ const nextconfig = {
   productionBrowserSourceMaps: false,
   swcMinify: true,
   images: {
-    unoptimized: true,
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     domains: ['tile.openstreetmap.org', 'media.licdn.com'],
@@ -69,6 +87,33 @@ const nextconfig = {
       use: ['style-loader', 'css-loader'],
     });
 
+    config.module.rules.push({
+      test: /\.(png|jpe?g|gif|webp)$/i,
+      exclude: /node_modules[\\/]leaflet/,
+      use: [
+        {
+          loader: 'responsive-loader',
+          options: {
+            adapter: require('responsive-loader/sharp'),
+            sizes: [300, 600, 900, 1200],
+            placeholder: true,
+            placeholderSize: 20,
+            quality: 70,
+            name: 'static/images/[name]-[width].[ext]',
+          },
+        },
+      ],
+    });
+
+    config.module.rules.push({
+      test: /\.(png|jpe?g)$/i,
+      include: /node_modules[\\/]leaflet/,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/chunks/images/[name].[hash][ext]',
+      },
+    });
+
     config.resolve.alias = {
       ...config.resolve.alias,
       'leaflet/dist/images': resolve(
@@ -102,7 +147,7 @@ const nextconfig = {
       };
     }
 
-    return config;
+    return analyzeBundle(config);
   },
   experimental: {
     turbo: {

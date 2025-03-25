@@ -18,6 +18,24 @@ export default function Document() {
           }
         />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+        <link
+          rel='preconnect'
+          href='https://fonts.googleapis.com'
+          crossOrigin='anonymous'
+        />
+
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossOrigin='anonymous'
+        />
+
+        <link
+          rel='preconnect'
+          href='https://tile.openstreetmap.org'
+          crossOrigin='anonymous'
+        />
       </Head>
       <body>
         <Main />
