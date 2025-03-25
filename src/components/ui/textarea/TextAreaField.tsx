@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import React from 'react';
 import { FieldValues } from 'react-hook-form';
 
 import { cn } from '@/src/lib/utils';
@@ -20,19 +21,21 @@ export function MessageField<T extends FieldValues>({
   label,
   placeholder,
 }: FormFieldProps<T>): JSX.Element {
+  const id = React.useId();
+
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
         <FormItem className='col-span-1 md:col-span-3'>
-          <FormLabel htmlFor={name} className={cn('min-w-full', cnParagraph)}>
+          <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
             <span className='sr-only'>{label}</span>
           </FormLabel>
           <FormControl className='flex-grow'>
             <motion.div whileHover={{ scale: 1.025 }} whileTap={{ scale: 0.9 }}>
               <Textarea
-                id={name}
+                id={id}
                 placeholder={placeholder}
                 className={cn(
                   cnParagraph,

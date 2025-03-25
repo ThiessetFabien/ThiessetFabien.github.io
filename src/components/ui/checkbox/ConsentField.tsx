@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import React from 'react';
 import type { FieldValues } from 'react-hook-form';
 
 import type { FormFieldProps } from '@/src/types/FormFieldProps';
@@ -20,6 +21,8 @@ export function ConsentField<T extends FieldValues>({
   name,
   label,
 }: FormFieldProps<T>): JSX.Element {
+  const id = React.useId();
+
   return (
     <FormField
       control={control}
@@ -27,7 +30,7 @@ export function ConsentField<T extends FieldValues>({
       render={({ field }) => (
         <FormItem
           className={cn(
-            'col-span-1 row-span-1 flex flex-none space-y-0 shadow md:col-span-3',
+            'col-span-1 row-span-1 flex flex-none space-y-0 md:col-span-3',
             cnSmallSpaceX,
             cnParagraph
           )}
@@ -35,7 +38,8 @@ export function ConsentField<T extends FieldValues>({
           <FormControl>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <Checkbox
-                id={name}
+                id={id}
+                name={name}
                 checked={field.value}
                 onCheckedChange={field.onChange}
                 required
@@ -45,7 +49,7 @@ export function ConsentField<T extends FieldValues>({
           {errors?.message && (
             <FormMessage>{String(errors.message)}</FormMessage>
           )}
-          <FormLabel htmlFor={name} className={cnParagraph}>
+          <FormLabel htmlFor={id} className={cnParagraph}>
             {label}
           </FormLabel>
         </FormItem>

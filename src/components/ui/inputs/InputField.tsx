@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import React from 'react';
 import { FieldValues } from 'react-hook-form';
 
 import { cn } from '@/src/lib/utils';
@@ -19,21 +20,25 @@ export function InputField<T extends FieldValues>({
   name,
   label,
   placeholder,
+  autocomplete,
 }: FormFieldProps<T>): JSX.Element {
+  const id = React.useId();
+
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel htmlFor={name} className={cn('min-w-full', cnParagraph)}>
-            {label}
+          <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
+            {label}{' '}
           </FormLabel>
           <FormControl>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <Input
-                id={name}
+                id={id}
                 placeholder={placeholder}
+                autoComplete={autocomplete || name}
                 {...field}
                 className={cn(
                   'min-w-full',
@@ -45,11 +50,9 @@ export function InputField<T extends FieldValues>({
               />
             </motion.div>
           </FormControl>
-          <FormMessage>
-            {errors?.message && (
-              <FormMessage>{String(errors.message)}</FormMessage>
-            )}
-          </FormMessage>
+          {errors?.message && (
+            <FormMessage>{String(errors.message)}</FormMessage>
+          )}
         </FormItem>
       )}
     />

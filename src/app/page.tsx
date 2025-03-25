@@ -5,10 +5,10 @@
 
 'use client';
 
+// Corrigez l'import de framer-motion
 import { motion } from 'framer-motion';
-import { Loader2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import { AchievementsCard } from '@/src/components/ui/cards/AchievementsCard';
 import { ExperiencesCard } from '@/src/components/ui/cards/ExperiencesCard';
@@ -17,6 +17,7 @@ import { FooterCard } from '@/src/components/ui/cards/layouts.cards/FooterCard';
 import { HeaderCard } from '@/src/components/ui/cards/layouts.cards/HeaderCard';
 import { ProjectsCard } from '@/src/components/ui/cards/ProjectsCard';
 import SkillsCard from '@/src/components/ui/cards/SkillsCard';
+import LoadingSpinner from '@/src/components/ui/spinner/LoadingSpinner';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
@@ -32,34 +33,54 @@ import {
 import { cnFlexBetweenY, cnFlexCol } from '@/src/styles/flex.style';
 import { cnParagraph } from '@/src/styles/font.style';
 import { useCardGrid } from '@/src/styles/grid.style';
-import fetchData from '@api/data.json';
 import { ContactForm } from '@forms/ContactForm';
 import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
-import { useIsClient } from '../hooks/useIsClient.hook';
+import { useIsClient } from '../hooks/useIsClient';
 
 /**
- * HomePage component.
- * @returns {JSX.Element} The rendered component.
+ * Chargement différé des composants lourds pour améliorer les performances
  */
-
 const LazyMap = dynamic(() => import('@/src/components/ui/cards/MapCard'), {
   ssr: false,
-  loading: () => <Loader2 className='animate-spin'>Please wait</Loader2>,
+  loading: () => <LoadingSpinner size='lg' message='Loading map...' />,
 });
 
 const LazyTestimonialsCard = dynamic(
   () => import('@/src/components/ui/carousels/TestimonialsCarousel'),
   {
     ssr: false,
-    loading: () => <Loader2 className='animate-spin'>Please wait</Loader2>,
+    loading: () => (
+      <LoadingSpinner size='md' message='Loading testimonials...' />
+    ),
   }
 );
 
+/**
+ * HomePage component.
+ * @returns {JSX.Element} The rendered component.
+ */
 const HomePage: React.FC = (): JSX.Element => {
-  const gridConfig = useCardGrid(fetchData as CardProps[]);
+  const [data, setData] = useState<CardProps[]>([]);
+
+  // Utilisation correcte de useEffect (pas UseEffect)
+  useEffect(() => {
+    // Importation dynamique des données
+    import('@api/data.json')
+      .then((module) => {
+        // Utilisation d'un type casting pour éviter l'erreur TypeScript
+        setData(module.default as unknown as CardProps[]);
+      })
+      .catch((error) => {
+        console.error('Erreur lors du chargement des données:', error);
+        // Définir un état d'erreur ou des données par défaut si nécessaire
+        setData([]);
+      });
+  }, []);
+
+  const gridConfig = useCardGrid(data);
   const isClient = useIsClient();
 
   return (
@@ -230,4 +251,4 @@ const HomePage: React.FC = (): JSX.Element => {
   );
 };
 
-export default HomePage;
+export default memo(HomePage);

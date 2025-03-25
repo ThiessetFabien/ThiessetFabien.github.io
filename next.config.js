@@ -16,9 +16,15 @@ const nextconfig = {
   },
   reactStrictMode: false,
   output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: false,
+  swcMinify: true,
   images: {
     unoptimized: true,
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    domains: ['tile.openstreetmap.org'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
   webpack: (config) => {
     config.module.rules.push({
@@ -28,8 +34,10 @@ const nextconfig = {
         filename: 'static/images/[name][ext]',
       },
     });
+
     config.module.rules.push({
       test: /\.css$/,
+      exclude: /leaflet\.css$/,
       use: [
         'style-loader',
         'css-loader',
@@ -37,12 +45,22 @@ const nextconfig = {
           loader: 'postcss-loader',
           options: {
             postcssOptions: {
-              plugins: ['tailwindcss', 'autoprefixer'],
+              plugins: [
+                'tailwindcss',
+                'autoprefixer',
+                process.env.NODE_ENV === 'production' ? 'cssnano' : null,
+              ].filter(Boolean),
             },
           },
         },
       ],
     });
+
+    config.module.rules.push({
+      test: /leaflet\.css$/,
+      use: ['style-loader', 'css-loader'],
+    });
+
     config.resolve.alias = {
       ...config.resolve.alias,
       'leaflet/dist/images': resolve(
@@ -51,12 +69,45 @@ const nextconfig = {
       ),
       'lucide-react': resolve(__dirname, 'node_modules/lucide-react'),
     };
+
+    if (process.env.NODE_ENV === 'production') {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          maxInitialRequests: 25,
+          minSize: 20000,
+          maxSize: 250000,
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name(module) {
+                const packageName = module.context.match(
+                  /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+                )[1];
+                return `npm.${packageName.replace('@', '')}`;
+              },
+            },
+          },
+        },
+        moduleIds: 'deterministic',
+      };
+    }
+
     return config;
   },
   experimental: {
     turbo: {
       rules: {
         '*.{png,jpg,gif}': ['@next/font/image'],
+      },
+    },
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    modularizeImports: {
+      'lucide-react': {
+        transform: 'lucide-react/dist/esm/icons/{{member}}',
+        preventFullImport: true,
       },
     },
   },

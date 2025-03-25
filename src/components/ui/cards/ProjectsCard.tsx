@@ -46,12 +46,34 @@ import { ActionButton } from '../buttons/ActionButton';
  * <CardProjects projects={projects} className="custom-class" />
  */
 
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stop-color="#333" offset="20%" />
+      <stop stop-color="#222" offset="50%" />
+      <stop stop-color="#333" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#333" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+</svg>`;
+
+const toBase64 = (str: string) =>
+  typeof window === 'undefined'
+    ? Buffer.from(str).toString('base64')
+    : window.btoa(str);
+
 export const ProjectsCard: React.FC<{
   projects: CardProps['projects'];
   className: CardProps['className'];
 }> = ({ projects, className }) => {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [videoLoaded, setVideoLoaded] = useState<boolean[]>([]);
+
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
 
   useEffect(() => {
     projects?.forEach((project, index) => {
@@ -60,6 +82,40 @@ export const ProjectsCard: React.FC<{
       }
     });
   }, [projects]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = cardRefs.current.findIndex(
+              (ref) => ref === entry.target
+            );
+            if (index !== -1) {
+              setVisibleCards((prev) => {
+                const newVisible = [...prev];
+                newVisible[index] = true;
+                return newVisible;
+              });
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentRefs = cardRefs.current;
+
+    currentRefs.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      currentRefs.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
 
   const handleVideoLoaded = (index: number) => {
     setVideoLoaded((prev) => {
@@ -73,6 +129,9 @@ export const ProjectsCard: React.FC<{
     <div className={className}>
       {projects?.map((project, projectIndex) => (
         <motion.div
+          ref={(el) => {
+            cardRefs.current[projectIndex] = el;
+          }}
           whileHover={{
             scale: [null, 1.05, 1.1],
             transition: {
@@ -98,62 +157,67 @@ export const ProjectsCard: React.FC<{
               'col-span-1 xl:max-w-none'
             )}
           >
-            <CardHeader className='p-0'>
-              {project.imageSrc && project.imageAlt && (
-                <figure className={cn(cnSizeFull)}>
-                  {!videoLoaded[projectIndex] && (
-                    <Image
-                      src={`/${project.imageSrc}`}
-                      alt={project?.imageAlt}
-                      width={590}
-                      height={315}
-                      loading={
-                        project.title === 'casalink api' ? 'eager' : 'lazy'
-                      }
-                      priority={project.title === 'casalink api'}
-                      className='h-fit max-h-full min-h-fit min-w-full rounded-xl object-cover object-center xl:min-h-full'
-                    />
-                  )}
-                  <video
-                    ref={
-                      project.title === 'casalink'
-                        ? (el) => {
-                            videoRefs.current[projectIndex] = el;
-                          }
-                        : null
-                    }
-                    onLoadedData={() => handleVideoLoaded(projectIndex)}
-                    controls={project.title === 'casalink' ? true : false}
-                    controlsList='nodownload'
-                    autoPlay={project.title === 'casalink' ? false : true}
-                    loop={project.title === 'casalink' ? false : true}
-                    muted={project.title === 'casalink' ? false : true}
-                    className={cn(
-                      'max-h-full min-h-fit min-w-full rounded-xl object-cover object-center xl:min-h-full',
-                      videoLoaded[projectIndex] ? '' : 'hidden'
-                    )}
-                  >
-                    <track
-                      kind='captions'
-                      src={`/videos/${project.title}.vtt`}
-                      srcLang='fr'
-                      label='Sous-titres en français'
-                      default
-                    />
-                    {project.videoSrc && (
-                      <source
-                        src={`videos/${project.videoSrc}`}
-                        type='video/mp4'
+            {visibleCards[projectIndex] && (
+              <CardHeader className='p-0'>
+                {project.imageSrc && project.imageAlt && (
+                  <figure className={cn(cnSizeFull)}>
+                    {!videoLoaded[projectIndex] && (
+                      <Image
+                        src={`/${project.imageSrc}`}
+                        alt={project?.imageAlt}
+                        width={590}
+                        height={315}
+                        loading={
+                          project.title === 'casalink api' ? 'eager' : 'lazy'
+                        }
+                        quality={80}
+                        placeholder='blur'
+                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(590, 315))}`}
+                        priority={project.title === 'casalink api'}
+                        className='h-fit max-h-full min-h-fit w-fit min-w-full rounded-xl object-cover object-center xl:min-h-full'
                       />
                     )}
-                    Your browser does not support the video tag.
-                  </video>
-                  <figcaption className='sr-only'>
-                    {project.imageAlt}
-                  </figcaption>
-                </figure>
-              )}
-            </CardHeader>
+                    <video
+                      ref={(el) => {
+                        videoRefs.current[projectIndex] = el;
+                      }}
+                      onLoadedData={() => handleVideoLoaded(projectIndex)}
+                      controls={project.title === 'casalink'}
+                      controlsList='nodownload'
+                      autoPlay={project.title !== 'casalink'}
+                      loop={project.title !== 'casalink'}
+                      muted={project.title !== 'casalink'}
+                      preload={
+                        project.title !== 'casalink' ? 'auto' : 'metadata'
+                      }
+                      poster={`/${project.imageSrc}`}
+                      className={cn(
+                        'max-h-full min-h-fit min-w-full rounded-xl object-cover object-center xl:min-h-full',
+                        videoLoaded[projectIndex] ? '' : 'hidden'
+                      )}
+                    >
+                      <track
+                        kind='captions'
+                        src={`/videos/${project.title}.vtt`}
+                        srcLang='fr'
+                        label='Sous-titres en français'
+                        default
+                      />
+                      {project.videoSrc && (
+                        <source
+                          src={`videos/${project.videoSrc}`}
+                          type='video/mp4'
+                        />
+                      )}
+                      Your browser does not support the video tag.
+                    </video>
+                    <figcaption className='sr-only'>
+                      {project.imageAlt}
+                    </figcaption>
+                  </figure>
+                )}
+              </CardHeader>
+            )}
             <CardContent
               className={cn(
                 cnParagraph,

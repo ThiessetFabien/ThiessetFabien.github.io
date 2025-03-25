@@ -8,7 +8,11 @@ export const capitalizeFirstLetterOfPhrase = (str: string) => {
   );
 };
 
-export const formatSpecialWords = (string: string) => {
+export const formatSpecialWords = (string: string | undefined | null) => {
+  if (string === undefined || string === null) {
+    return '';
+  }
+
   const replacements: { [key: string]: string } = {
     api: 'API',
     apis: 'APIs',
@@ -26,7 +30,6 @@ export const formatSpecialWords = (string: string) => {
     jwt: 'JWT',
     restful: 'RESTful',
     fabien: 'Fabien',
-    it: 'IT',
     oprah: 'Oprah',
     winfrey: 'Winfrey',
     javascript: 'JavaScript',
@@ -39,6 +42,9 @@ export const formatSpecialWords = (string: string) => {
     area: 'Area',
     rncp: 'RNCP',
     'nest\\.js': 'Nest.JS',
+    rsai: 'RSAI',
+    benoit: 'Benoît',
+    sdk: 'SDK',
   };
 
   let formattedString = string;
