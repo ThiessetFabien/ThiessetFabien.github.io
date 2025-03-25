@@ -19,10 +19,6 @@ import { ProjectsCard } from '@/src/components/ui/cards/ProjectsCard';
 import SkillsCard from '@/src/components/ui/cards/SkillsCard';
 import LoadingSpinner from '@/src/components/ui/spinner/LoadingSpinner';
 import {
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/src/lib/utils/formatText.util';
-import {
   cnGap,
   cnPadding,
   cnPaddingBottom,
@@ -33,12 +29,16 @@ import {
 import { cnFlexBetweenY, cnFlexCol } from '@/src/styles/flex.style';
 import { cnParagraph } from '@/src/styles/font.style';
 import { useCardGrid } from '@/src/styles/grid.style';
+import {
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/src/utils/formatText.util';
 import { ContactForm } from '@forms/ContactForm';
 import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
-import { useIsClient } from '../hooks/useIsClient';
+import { useIsClient } from '../hooks/useIsClient.hook';
 
 /**
  * Chargement différé des composants lourds pour améliorer les performances

@@ -1,9 +1,9 @@
+import { cnDescription, cnTitle2, cnTitle2Size } from '@/src/styles/font.style';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@/src/lib/utils/formatText.util';
-import { cnDescription, cnTitle2, cnTitle2Size } from '@/src/styles/font.style';
+} from '@/src/utils/formatText.util';
 import {
   CardDescription,
   CardHeader,

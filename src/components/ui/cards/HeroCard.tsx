@@ -1,9 +1,5 @@
 import React, { memo } from 'react';
 
-import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-} from '@/src/lib/utils/formatText.util';
 import { cnBorder2, cnBorderBottom4 } from '@/src/styles/border.style';
 import { cnGapX, cnSmallGap, cnSmallSpaceY } from '@/src/styles/boxModel.style';
 import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
@@ -21,10 +17,16 @@ import {
   cnXxsHidden,
 } from '@/src/styles/hideItem.style';
 import { cnBigImage } from '@/src/styles/image.styles';
+import { ResponsiveImage } from '@/src/styles/mediaQueries.style';
 import { cnSizeAuto } from '@/src/styles/size.style';
 import { cnLittleTranslateSm } from '@/src/styles/translate.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
-import { Avatar, AvatarFallback, AvatarImage } from '@lib/components/ui/avatar';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+} from '@/src/utils/formatText.util';
+import { formatSpecialWords } from '@/src/utils/formatText.util';
+import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 import {
   CardContent,
   CardDescription,
@@ -33,8 +35,7 @@ import {
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
-
-import { formatSpecialWords } from '../../../lib/utils/formatText.util';
+import { ProfileImage } from '@ui/images/ProfileImage';
 
 export const HeroCard: React.FC<{
   title: CardProps['title'];
@@ -87,16 +88,17 @@ export const HeroCard: React.FC<{
               cnSizeAuto
             )}
           >
-            <AvatarImage
+            <ProfileImage
               src={imageSrc || ''}
               alt={imageAlt || ''}
+              width={ResponsiveImage()}
+              height={ResponsiveImage()}
               className={cn(
                 'relative rounded-full',
                 cnSizeAuto,
                 cnLittleTranslateSm,
                 cnBigImage
               )}
-              loading='eager'
             />
             <AvatarFallback
               className={cn(

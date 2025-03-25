@@ -13,7 +13,6 @@ import {
   TabsTrigger,
 } from '@/src/lib/components/ui/tabs';
 import { cn } from '@/src/lib/utils';
-import { capitalizeFirstLetterOfPhrase } from '@/src/lib/utils/formatText.util';
 import { cnBorder } from '@/src/styles/border.style';
 import {
   cnSmallPaddingBottom,
@@ -24,6 +23,7 @@ import { cnParagraph } from '@/src/styles/font.style';
 import type { ExperienceProps } from '@/src/types/ExperienceProps';
 import type { ExperiencesProps } from '@/src/types/ExperiencesProps';
 import type { OtherExperienceProps } from '@/src/types/OtherExperiencesProps';
+import { capitalizeFirstLetterOfPhrase } from '@/src/utils/formatText.util';
 import type { CardProps } from '@src/types/CardProps';
 
 /**

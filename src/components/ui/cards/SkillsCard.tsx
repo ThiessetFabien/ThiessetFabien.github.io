@@ -6,11 +6,6 @@
 import Image from 'next/image';
 import React, { memo } from 'react';
 
-import { baseUrl } from '@/src/lib/utils/baseUrl.util';
-import {
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/src/lib/utils/formatText.util';
 import { cnBorderNone } from '@/src/styles/border.style';
 import { cnSmallGap } from '@/src/styles/boxModel.style';
 import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
@@ -22,6 +17,11 @@ import {
 } from '@/src/styles/font.style';
 import { cnHiddenXsFlex } from '@/src/styles/hideItem.style';
 import { cnSizeBigIcon, cnSizeIcon } from '@/src/styles/size.style';
+import { baseUrl } from '@/src/utils/baseUrl.util';
+import {
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/src/utils/formatText.util';
 import { Badge } from '@lib/components/ui/badge';
 import { CardDescription } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';

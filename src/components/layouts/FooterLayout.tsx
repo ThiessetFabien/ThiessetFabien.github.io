@@ -2,10 +2,10 @@
 
 import React from 'react';
 
+import { year } from '@/src/utils/dynamicYear.util';
 import { ScrollTopToggle } from '@components/ui/toggles/ScrollTopToggle';
 import { scrollToTop } from '@hooks/ScrollToTop.hook';
 import { cn } from '@lib/utils';
-import { year } from '@lib/utils/dynamicYear.util';
 import type { CardProps } from '@src/types/CardProps';
 import { cnPaddingX } from '@styles/boxModel.style';
 import { cnFlexBetweenX, cnFlexFullCenter } from '@styles/flex.style';

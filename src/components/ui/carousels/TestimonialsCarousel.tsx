@@ -3,13 +3,6 @@ import React, { useEffect, useState } from 'react';
 
 import { ActionButton } from '@/src/components/ui/buttons/ActionButton';
 import GenericCarousel from '@/src/components/ui/carousels/GenericCarousel';
-import { baseUrl } from '@/src/lib/utils/baseUrl.util';
-import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/src/lib/utils/formatText.util';
-import { shuffleArray } from '@/src/lib/utils/ShuffleArray.util';
 import { cnBorder2 } from '@/src/styles/border.style';
 import {
   cnPaddingBottom,
@@ -22,10 +15,19 @@ import {
   cnParagraph,
   cnSmallText,
 } from '@/src/styles/font.style';
-import { Avatar, AvatarFallback, AvatarImage } from '@lib/components/ui/avatar';
+import { baseUrl } from '@/src/utils/baseUrl.util';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@/src/utils/formatText.util';
+import { shuffleArray } from '@/src/utils/ShuffleArray.util';
+import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 import { cn } from '@lib/utils';
 import { CardProps } from '@src/types/CardProps';
 import type { TestimonialProps } from '@src/types/TestimonialProps';
+
+import { TestimonialImage } from '../images/TestimonalImage';
 
 /**
  * @file TestimonialsCarousel.tsx
@@ -115,10 +117,13 @@ export const TestimonialsCarousel: React.FC<{
               rel='noreferrer noopener'
             >
               <Avatar
-                className={cn('h-12 w-12 border border-accent', cnBorder2)}
+                className={cn(
+                  'relative aspect-square h-12 w-12 border border-accent',
+                  cnBorder2
+                )}
               >
-                <AvatarImage
-                  src={`${baseUrl}${testimonial.imageSrc}`}
+                <TestimonialImage
+                  src={testimonial.imageSrc}
                   alt={capitalizeFirstLetterOfEachWord(testimonial.author)}
                 />
                 <AvatarFallback className={cnParagraph}>

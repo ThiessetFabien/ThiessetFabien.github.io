@@ -23,3 +23,10 @@ export const useIsLg = () => {
 export const useIsXl = () => {
   return useMediaQuery({ query: '(min-width: 1280px)' });
 };
+
+export const ResponsiveImage = () => {
+  const isXs = useIsXs();
+  const isSm = useIsSm();
+
+  return isXs ? 100 : isSm ? 200 : 300;
+};

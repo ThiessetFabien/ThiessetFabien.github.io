@@ -1,6 +1,7 @@
 /* eslint-env node */
-const formatCommand = 'prettier . --check';
 
 export default {
-  '*': formatCommand,
+  '*.{js,jsx,ts,tsx}': ['prettier --write', 'eslint --fix'],
+  '*.{css,scss}': 'prettier --write',
+  '*.{json,md}': 'prettier --write',
 };

@@ -6,11 +6,11 @@ import {
   cnSmallText,
 } from '@/src/styles/font.style';
 import { IconName } from '@/src/types/IconNameProps';
-import { cn } from '@lib/utils';
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
-} from '@lib/utils/formatText.util';
+} from '@/src/utils/formatText.util';
+import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 import { IconLoader } from '@ui/icons/IconLoader';
 

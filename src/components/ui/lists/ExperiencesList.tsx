@@ -1,7 +1,3 @@
-import {
-  capitalizeFirstLetterOfEachWord,
-  formatSpecialWords,
-} from '@/src/lib/utils/formatText.util';
 import { cnMarginX } from '@/src/styles/boxModel.style';
 import { cnFlexCol } from '@/src/styles/flex.style';
 import {
@@ -10,6 +6,10 @@ import {
   cnTitle3,
 } from '@/src/styles/font.style';
 import type { ExperienceProps } from '@/src/types/ExperienceProps';
+import {
+  capitalizeFirstLetterOfEachWord,
+  formatSpecialWords,
+} from '@/src/utils/formatText.util';
 import { cn } from '@lib/utils';
 
 export const ExperiencesList: React.FC<{
