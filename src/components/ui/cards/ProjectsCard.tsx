@@ -104,12 +104,14 @@ export const ProjectsCard: React.FC<{
       { threshold: 0.1 }
     );
 
-    cardRefs.current.forEach((ref) => {
+    const currentRefs = cardRefs.current;
+
+    currentRefs.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
-      cardRefs.current.forEach((ref) => {
+      currentRefs.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };

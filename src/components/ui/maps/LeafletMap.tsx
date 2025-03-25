@@ -80,8 +80,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
 
       // Force invalidateSize plusieurs fois pour s'assurer du rendu correct
       map.invalidateSize();
-
-      console.log('Initialisation de la carte terminée');
       interface Marker {
         position: [number, number];
         popup?: string;

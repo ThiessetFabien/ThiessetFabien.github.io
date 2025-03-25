@@ -18,15 +18,18 @@ const DynamicLeaflet = () => {
 
     // Corrige un problème courant avec Leaflet sur mobile
     const resizeMap = () => {
-      // Déclenche un événement de redimensionnement pour que Leaflet recalcule sa taille
-      window.dispatchEvent(new Event('resize'));
+      // Utiliser un type plus spécifique pour éviter les événements récursifs
+      const resizeEvent = new UIEvent('resize');
+      window.dispatchEvent(resizeEvent);
     };
 
-    window.addEventListener('resize', resizeMap);
-    // Appeler une fois après montage
-    setTimeout(resizeMap, 300);
+    // Ne pas ajouter de gestionnaire d'événements pour éviter les boucles
+    // Appeler simplement après le montage
+    const timeoutId = setTimeout(resizeMap, 300);
 
-    return () => window.removeEventListener('resize', resizeMap);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   if (!mounted) {
