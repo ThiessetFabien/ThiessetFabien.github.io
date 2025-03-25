@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import { FieldValues } from 'react-hook-form';
 
@@ -12,7 +13,6 @@ import {
   FormMessage,
 } from '@lib/components/ui/form';
 import { Input } from '@lib/components/ui/input';
-import { motion } from 'framer-motion';
 
 export function InputField<T extends FieldValues>({
   control,
