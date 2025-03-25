@@ -34,6 +34,8 @@ import {
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
+import { formatSpecialWords } from '../../../lib/utils/formatText.util';
+
 export const HeroCard: React.FC<{
   title: CardProps['title'];
   description: CardProps['description'];
@@ -122,7 +124,8 @@ export const HeroCard: React.FC<{
               'max-w-prose'
             )}
           >
-            {description && capitalizeFirstLetterOfPhrase(description)}
+            {description &&
+              capitalizeFirstLetterOfEachWord(formatSpecialWords(description))}
             <p
               className={cn(
                 cnParagraph,

@@ -35,6 +35,7 @@ export function EmailTypeField<T extends FieldValues>({
             </FormLabel>
             <FormControl>
               <RadioGroup
+                id={name}
                 onValueChange={field.onChange}
                 defaultValue={field.value}
                 className={cn('flex', cnSmallGap)}
@@ -49,7 +50,7 @@ export function EmailTypeField<T extends FieldValues>({
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
-                        <RadioGroupItem value={type} />
+                        <RadioGroupItem id={`${name}-${type}`} value={type} />
                       </motion.div>
                     </FormControl>
                     <FormLabel className={'font-normal'}>{type}</FormLabel>

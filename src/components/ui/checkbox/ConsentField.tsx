@@ -27,7 +27,7 @@ export function ConsentField<T extends FieldValues>({
       render={({ field }) => (
         <FormItem
           className={cn(
-            'col-span-1 row-span-1 flex flex-none space-y-0 shadow md:col-span-3',
+            'col-span-1 row-span-1 flex flex-none space-y-0 md:col-span-3',
             cnSmallSpaceX,
             cnParagraph
           )}
