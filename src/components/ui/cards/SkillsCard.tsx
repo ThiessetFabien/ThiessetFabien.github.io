@@ -75,6 +75,8 @@ export const SkillsCard: React.FC<{
                 width={40}
                 height={40}
                 loading='lazy'
+                priority={false}
+                quality={75}
                 className={cn(
                   cnSizeBigIcon,
                   'relative top-1.5',
@@ -145,6 +147,8 @@ export const SkillsCard: React.FC<{
                   alt={tech.name}
                   width={50}
                   height={50}
+                  priority={false}
+                  quality={75}
                   className={cn(
                     cnSizeIcon,
                     tech.slug.includes('express') ? 'filter-white' : ''

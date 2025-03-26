@@ -38,14 +38,20 @@ const nextconfig = {
   productionBrowserSourceMaps: false,
   swcMinify: true,
   images: {
+    unoptimized: true,
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
-    domains: ['tile.openstreetmap.org', 'media.licdn.com'],
+    domains: ['tile.openstreetmap.org', 'media.licdn.com', 'cdn.jsdelivr.net'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'media.licdn.com',
         pathname: '/dms/image/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+        pathname: '/gh/devicons/devicon@latest/icons/**',
       },
     ],
     deviceSizes: [360, 640, 750, 828, 1080, 1200],
@@ -152,7 +158,7 @@ const nextconfig = {
   experimental: {
     turbo: {
       rules: {
-        '*.{png,jpg,gif}': ['@next/font/image'],
+        '*.{png,jpg,gif,webp}': ['@next/font/image'],
       },
     },
     optimizeCss: true,

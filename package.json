@@ -18,7 +18,7 @@
     "prod": "dotenv -e .env.production -- npx netlify-cli deploy --prod",
     "deploy": "pnpm run build && pnpm run prod",
     "start": "dotenv -e .env.production -- sh -c 'next start'",
-    "precommit": "prettier --write --ignore-path .gitignore . && pnpm run lint:fix",
+    "precommit": "npx lint-staged",
     "format": "prettier --write --ignore-path .gitignore .",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
