@@ -1,11 +1,5 @@
-/**
- * @file page.tsx
- * @description This file renders the home page with various sections including cards, maps, and carousels.
- */
-
 'use client';
 
-// Corrigez l'import de framer-motion
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import React, { memo, useEffect, useState } from 'react';
@@ -40,9 +34,6 @@ import type { CardProps } from '@src/types/CardProps';
 
 import { useIsClient } from '../hooks/useIsClient.hook';
 
-/**
- * Chargement différé des composants lourds pour améliorer les performances
- */
 const LazyMap = dynamic(() => import('@/src/components/ui/cards/MapCard'), {
   ssr: false,
   loading: () => <LoadingSpinner size='lg' message='Loading map...' />,
@@ -59,23 +50,19 @@ const LazyTestimonialsCard = dynamic(
 );
 
 /**
- * HomePage component.
- * @returns {JSX.Element} The rendered component.
+ * Renders the home page with various sections including cards, maps, and carousels.
+ * @returns {JSX.Element} The rendered home page component.
  */
 const HomePage: React.FC = (): JSX.Element => {
   const [data, setData] = useState<CardProps[]>([]);
 
-  // Utilisation correcte de useEffect (pas UseEffect)
   useEffect(() => {
-    // Importation dynamique des données
     import('@api/data.json')
       .then((module) => {
-        // Utilisation d'un type casting pour éviter l'erreur TypeScript
         setData(module.default as unknown as CardProps[]);
       })
       .catch((error) => {
-        console.error('Erreur lors du chargement des données:', error);
-        // Définir un état d'erreur ou des données par défaut si nécessaire
+        console.error('Error loading data:', error);
         setData([]);
       });
   }, []);
