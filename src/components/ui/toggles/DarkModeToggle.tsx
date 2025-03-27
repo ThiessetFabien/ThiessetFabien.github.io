@@ -1,32 +1,26 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-import { cnSmallText } from '@/src/styles/font.style';
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '@lib/components/ui/hover-card';
 import { Toggle } from '@lib/components/ui/toggle';
-import { cn } from '@lib/utils';
 
 /**
- * @file ToggleDarkMode.tsx
- * @description This file exports a component that toggles between dark and light modes using the next-themes library.
+ * A component that allows users to toggle between dark and light themes.
+ * It uses the `next-themes` library to manage the theme state and ensures the component is only rendered on the client side.
+ *
+ * @param {Object} props - Component properties.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @returns {JSX.Element | null} The rendered component or null if not mounted.
  */
-
-/**
- * ToggleDarkMode component.
- * @returns {JSX.Element} The rendered component.
- * @example
- * <ToggleDarkMode />
- */
-
-export function ToggleDarkMode() {
+export function ToggleDarkMode({
+  className,
+}: {
+  className?: string;
+}): JSX.Element | null {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isRotating, setIsRotating] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -37,51 +31,88 @@ export function ToggleDarkMode() {
   }
 
   const handleToggle = () => {
+    setIsRotating(true);
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+    setTimeout(() => setIsRotating(false), 500);
+  };
+
+  const iconVariants = {
+    initial: {
+      rotate: 0,
+      scale: 0,
+    },
+    animate: {
+      rotate: 0,
+      scale: 1,
+      transition: {
+        duration: 0.2,
+        ease: 'easeInOut',
+      },
+    },
+    exit: {
+      rotate: resolvedTheme === 'dark' ? 90 : -90,
+      scale: 0,
+      transition: {
+        duration: 0.2,
+        ease: 'easeInOut',
+      },
+    },
+    rotate: {
+      rotate: 360,
+      transition: { duration: 0.5 },
+    },
+  };
+
+  const containerVariants = {
+    initial: { opacity: 0.85 },
+    hover: {
+      scale: 1.2,
+      opacity: 1,
+      transition: { duration: 0.3 },
+    },
+    tap: { scale: 0.8, transition: { duration: 0.1 } },
   };
 
   return (
-    <HoverCard>
-      <HoverCardTrigger asChild>
-        <motion.div
-          animate={{ rotate: 0 }}
-          whileHover={{ rotate: 360, scale: 1.2 }}
-          transition={{ duration: 0.5 }}
-          whileTap={{ scale: 0.8 }}
-        >
-          <Toggle
-            variant='outline'
-            size='sm'
-            onClick={handleToggle}
-            className='relative rounded-full'
-            data-state={resolvedTheme === 'dark' ? 'on' : 'off'}
-          >
-            {resolvedTheme === 'dark' ? (
-              <Sun
-                className={cn(
-                  resolvedTheme === 'dark'
-                    ? 'rotate-0 scale-100 transition-all duration-200'
-                    : 'rotate-90 scale-0 transition-all duration-200'
-                )}
-              />
-            ) : (
-              <Moon
-                className={cn(
-                  resolvedTheme === 'dark'
-                    ? '-rotate-90 scale-0 transition-all duration-200'
-                    : 'rotate-0 scale-100 transition-all duration-200'
-                )}
-              />
-            )}
-            <span className='sr-only'>Toggle theme</span>
-          </Toggle>
-        </motion.div>
-      </HoverCardTrigger>
-      <HoverCardContent>
-        <p className={cn(cnSmallText, 'w-auto')}>
-          {resolvedTheme === 'dark' ? 'Light mode' : 'Dark mode'}
-        </p>
-      </HoverCardContent>
-    </HoverCard>
+    <motion.div
+      initial='initial'
+      whileHover='hover'
+      whileTap='tap'
+      variants={containerVariants}
+      className={className}
+    >
+      <Toggle
+        variant='outline'
+        size='sm'
+        onClick={handleToggle}
+        className='relative rounded-full border-0 bg-accent'
+        data-state={resolvedTheme === 'dark' ? 'on' : 'off'}
+      >
+        <AnimatePresence mode='wait'>
+          {resolvedTheme === 'dark' ? (
+            <motion.div
+              key='sun'
+              variants={iconVariants}
+              initial='initial'
+              animate={isRotating ? 'animate' : ['animate', 'rotate']}
+              exit='exit'
+            >
+              <Sun />
+            </motion.div>
+          ) : (
+            <motion.div
+              key='moon'
+              variants={iconVariants}
+              initial='initial'
+              animate={isRotating ? ['animate', 'rotate'] : 'animate'}
+              exit='exit'
+            >
+              <Moon />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <span className='sr-only'>Toggle theme</span>
+      </Toggle>
+    </motion.div>
   );
 }

@@ -9,18 +9,31 @@ import {
   cnFlexFullCenter,
 } from '@/src/styles/flex.style';
 import { Footer } from '@layouts/FooterLayout';
-import { Header } from '@layouts/HeaderLayout';
 import { Toaster } from '@lib/components/ui/toaster';
 import { cn } from '@lib/utils';
 import { Expletus_Sans } from '@src/fonts/ExpletusSans.font';
 import { Poppins } from '@src/fonts/Poppins.font';
-import { cnGap, cnMarginX, cnPaddingY } from '@styles/boxModel.style';
+import {
+  cnGap,
+  cnMarginTop,
+  cnPaddingTop,
+  cnPaddingY,
+} from '@styles/boxModel.style';
 
 import '@src/styles/globals.css';
 import '@src/styles/reset.css';
 import { MetaHead } from '../components/layouts/MetaHead';
+import { FloatingToggles } from '../components/ui/toggles/FloatingToggles';
 import { metadata } from '../config/metadata';
 
+/**
+ * Root layout component for the application.
+ * Provides theming, global styles, and layout structure.
+ *
+ * @param {Object} props - Component properties.
+ * @param {React.ReactNode} props.children - The child components to render within the layout.
+ * @returns {JSX.Element} The root layout structure.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,8 +51,9 @@ export default function RootLayout({
           'm-auto min-h-[100dvh]',
           'font-poppins-sans text-foreground',
           cnFlexFullCenter,
-          cnFlexCol,
-          'bg-gradient-to-br from-secondary to-primary'
+          cnPaddingTop,
+          cnFlexCol
+          // 'bg-gradient-to-br from-secondary to-primary'
         )}
         style={{
           ...Poppins.style,
@@ -53,20 +67,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header
-            className={cn(
-              'mx-auto h-full max-h-[10vh] max-w-7xl rounded-b-xl',
-              cnPaddingY,
-              cnMarginX,
-              cnFlexBetweenX,
-              'bg-background'
-            )}
-          />
+          <FloatingToggles />
           <main
             className={cn(
               cnGap,
-              cnPaddingY,
-              'mx-auto h-full max-w-7xl',
+              'h-full',
               'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
             )}
           >
@@ -75,9 +80,10 @@ export default function RootLayout({
           <Footer
             className={cn(
               cnPaddingY,
+              cnMarginTop,
               cnFlexBetweenX,
               'h-full max-h-[10vh]',
-              'mx-auto max-w-7xl rounded-t-xl bg-background'
+              'mx-auto'
             )}
           />
           <Toaster />

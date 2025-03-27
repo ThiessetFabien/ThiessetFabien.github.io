@@ -48,5 +48,9 @@ export const cnGap = 'gap-4 md:gap-6';
 
 export const cnGapX = 'gap-x-4 md:gap-x-6';
 
+export const cnTopRightPosition = 'right-4 md:right-6 top-4 md:top-6';
+
+export const cnBottomRightPosition = 'right-4 md:right-6 bottom-4 md:bottom-6';
+
 export const cnManipulation =
   'touch-manipulation cursor-pointer appearance-none ';
