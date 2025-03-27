@@ -1,7 +1,7 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-import { SanitizationService } from '@/src/lib/services/sanitize.service';
+import { SanitizationService } from '@/src/services/sanitize.service';
 
 export async function sanitizeMiddleware(request: NextRequest) {
   if (request.method === 'POST' || request.method === 'PUT') {

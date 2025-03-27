@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { FooterCard } from '@/src/components/ui/cards/layouts.cards/FooterCard';
-import { ClientSanitizationService } from '@/src/lib/services/client-sanitize.service';
 import { cn } from '@/src/lib/utils';
 import type { FormSchema } from '@/src/schemas/contactForm.schema';
 import { ContactFormSchema } from '@/src/schemas/contactForm.schema';
+import { ClientSanitizationService } from '@/src/services/client-sanitize.service';
 import { cnSmallGap } from '@/src/styles/boxModel.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
 import { Form } from '@lib/components/ui/form';

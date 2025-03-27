@@ -1,6 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-import { metadata } from '../config/metadata';
+import { metadata } from '../app/metadata';
 
 export default function Document() {
   return (

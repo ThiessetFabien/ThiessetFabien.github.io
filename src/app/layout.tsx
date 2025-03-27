@@ -21,9 +21,10 @@ import '@src/styles/globals.css';
 import '@src/styles/reset.css';
 import { MetaHead } from '../components/layouts/MetaHead';
 import { FloatingToggles } from '../components/ui/toggles/FloatingToggles';
-import { metadata } from '../config/metadata';
 import { cnLightTextMuted } from '../styles/font.style';
 import { cnSizeFull } from '../styles/size.style';
+
+import { metadata } from './metadata';
 
 /**
  * Root layout component for the application.
