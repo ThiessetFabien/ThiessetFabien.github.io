@@ -5,10 +5,7 @@ import React from 'react';
 import { year } from '@/src/utils/dynamicYear.util';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
-import { cnPaddingX } from '@styles/boxModel.style';
-import { cnFlexBetweenX, cnFlexFullCenter } from '@styles/flex.style';
-import { cnLightTextMuted, cnSmallText } from '@styles/font.style';
-import { cnHiddenXsFlex } from '@styles/hideItem.style';
+import { cnSmallText, cnTitle2, cnTitle2Size } from '@styles/font.style';
 
 /**
  * Footer component that displays the current year and additional information.
@@ -22,15 +19,30 @@ export const Footer: React.FC<{ className: CardProps['className'] }> = ({
 }) => {
   return (
     <footer className={className}>
-      <div
-        className={cn('mx-auto', cnPaddingX, cnFlexBetweenX, cnLightTextMuted)}
-      >
-        <p className={cn('w-full flex-wrap', cnSmallText, cnFlexFullCenter)}>
-          &copy;&nbsp;{year}&nbsp;&bull; Built by Fabien Thiesset.
-          <span className={cn('inline', cnHiddenXsFlex)}>&nbsp;&bull;</span>
-          <span className='inline'>&nbsp;All rights reserved.</span>
-        </p>
-      </div>
+      <h2 className={cn('mx-auto text-center', cnTitle2, cnTitle2Size)}>
+        Fabien Thiesset
+      </h2>
+      <p className={cn('mx-auto text-center italic', cnSmallText)}>
+        Expert React & Data API | Developer Fullstack | Project Coordinator
+      </p>
+      <p className={cn('mx-auto text-center', cnSmallText)}>
+        For more information, send me a message to&nbsp;
+        <a
+          href='mailto:fabienthiessetpro@gmail.com'
+          target='_blank'
+          rel='noreferrer'
+          className='text-primary hover:text-secondary/80 hover:underline focus:text-secondary/80 focus:underline'
+          aria-label='Contact me'
+        >
+          fabienthiessetpro@gmail.com
+        </a>
+        .
+      </p>
+      <p className={cn('mx-auto text-center', cnSmallText)}>
+        &copy;&nbsp;2024 - {year}&nbsp;&bull;&nbsp;
+        <b className='font-bold'>Fabien Thiesset</b>&nbsp;&bull; &nbsp;All
+        rights reserved
+      </p>
     </footer>
   );
 };

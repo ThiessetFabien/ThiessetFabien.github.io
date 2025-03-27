@@ -3,11 +3,7 @@
 import { ThemeProvider } from 'next-themes';
 
 import { VideoRedirectHandler } from '@/src/components/VideoRedirectHandler';
-import {
-  cnFlexBetweenX,
-  cnFlexCol,
-  cnFlexFullCenter,
-} from '@/src/styles/flex.style';
+import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
 import { Footer } from '@layouts/FooterLayout';
 import { Toaster } from '@lib/components/ui/toaster';
 import { cn } from '@lib/utils';
@@ -16,8 +12,9 @@ import { Poppins } from '@src/fonts/Poppins.font';
 import {
   cnGap,
   cnMarginTop,
+  cnPadding,
   cnPaddingTop,
-  cnPaddingY,
+  cnSmallSpaceY,
 } from '@styles/boxModel.style';
 
 import '@src/styles/globals.css';
@@ -25,6 +22,8 @@ import '@src/styles/reset.css';
 import { MetaHead } from '../components/layouts/MetaHead';
 import { FloatingToggles } from '../components/ui/toggles/FloatingToggles';
 import { metadata } from '../config/metadata';
+import { cnLightTextMuted } from '../styles/font.style';
+import { cnSizeFull } from '../styles/size.style';
 
 /**
  * Root layout component for the application.
@@ -79,11 +78,13 @@ export default function RootLayout({
           </main>
           <Footer
             className={cn(
-              cnPaddingY,
+              cnPadding,
               cnMarginTop,
-              cnFlexBetweenX,
-              'h-full max-h-[10vh]',
-              'mx-auto'
+              cnSizeFull,
+              cnFlexCol,
+              cnLightTextMuted,
+              cnSmallSpaceY,
+              'mx-auto justify-center'
             )}
           />
           <Toaster />
