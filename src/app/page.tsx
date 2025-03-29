@@ -76,7 +76,11 @@ const HomePage: React.FC = (): JSX.Element => {
         <Card
           key={index}
           id={`card-${index}`}
-          className={cn('h-full items-stretch', cnFlexCol, card.colSpan)}
+          className={cn(
+            'min-h-[96dvh] items-stretch md:min-h-[94dvh]',
+            cnFlexCol,
+            card.colSpan
+          )}
         >
           <motion.div
             initial={{ y: 10, opacity: 0 }}
@@ -87,23 +91,11 @@ const HomePage: React.FC = (): JSX.Element => {
           >
             {card.imageSrc && !card.map && (
               <HeroCard
-                title={card.title}
-                description={card.description}
-                content={card.content}
+                name={card.name}
+                familyName={card.familyName}
+                expertises={card.expertises}
                 imageSrc={card.imageSrc}
                 imageAlt={card.imageAlt}
-                cta1={card.cta1}
-                icon1={card.icon1}
-                href1={card.href1}
-                downloadActive1={card.downloadActive1}
-                cta2={card.cta2}
-                icon2={card.icon2}
-                href2={card.href2}
-                downloadActive2={card.downloadActive2}
-                cta3={card.cta3}
-                icon3={card.icon3}
-                href3={card.href3}
-                downloadActive3={card.downloadActive3}
                 className={cn(
                   cnGap,
                   cnPadding,
@@ -115,10 +107,9 @@ const HomePage: React.FC = (): JSX.Element => {
             {!card.imageSrc ? (
               <>
                 <HeaderCard
-                  title={card.title}
+                  title={card.name}
                   description={card.description}
-                  index={index}
-                  className={cnPadding}
+                  className={cn(cnPadding)}
                 />
                 <CardContent
                   className={cn(
@@ -136,21 +127,12 @@ const HomePage: React.FC = (): JSX.Element => {
                         className=''
                       />
                     )}
-                  {isClient &&
-                    card.topTechnologies &&
-                    card.technologies &&
-                    card.technologies.length > 0 && (
-                      <SkillsCard
-                        topTechnologies={card.topTechnologies}
-                        technologies={card.technologies}
-                        content={card.content}
-                        className={cn(
-                          'flex w-full min-w-full flex-row flex-wrap',
-                          'container overflow-hidden',
-                          cnSmallGap
-                        )}
-                      />
-                    )}
+                  {card.jobs && (
+                    <SkillsCard
+                      jobs={card.jobs}
+                      className={cn(cnSpaceY, 'w-full')}
+                    />
+                  )}
                   {isClient &&
                     card.testimonials &&
                     card.testimonials.length > 0 && (

@@ -1,3 +1,10 @@
+/**
+ * Determines the visibility of an item based on its value.
+ *
+ * @param item - The string value of the item to evaluate.
+ * @returns A string indicating the visibility of the item.
+ *          Returns 'hidden' if the item is an empty string, otherwise returns an empty string.
+ */
 export const hideItem = (item: string) => {
   return item === '' ? 'hidden' : '';
 };

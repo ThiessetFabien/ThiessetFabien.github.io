@@ -1,6 +1,7 @@
 'use client';
 
 import { ThemeProvider } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 import { VideoRedirectHandler } from '@/src/components/VideoRedirectHandler';
 import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
@@ -23,6 +24,7 @@ import { MetaHead } from '../components/layouts/MetaHead';
 import { FloatingToggles } from '../components/ui/toggles/FloatingToggles';
 import { cnLightTextMuted } from '../styles/font.style';
 import { cnSizeFull } from '../styles/size.style';
+import { CardProps } from '../types/CardProps';
 
 import { metadata } from './metadata';
 
@@ -34,11 +36,46 @@ import { metadata } from './metadata';
  * @param {React.ReactNode} props.children - The child components to render within the layout.
  * @returns {JSX.Element} The root layout structure.
  */
+/**
+ * RootLayout component serves as the main layout wrapper for the application.
+ * It includes global providers, theming, and layout structure.
+ *
+ * @param {Readonly<{ children: React.ReactNode }>} props - The props for the RootLayout component.
+ * @param {React.ReactNode} props.children - The child components to be rendered within the layout.
+ * @returns {JSX.Element} The rendered RootLayout component.
+ *
+ * @remarks
+ * - This component uses `useState` to manage the `data` state, which is populated
+ *   by dynamically importing a JSON file.
+ * - The `useEffect` hook is used to load the data asynchronously on component mount.
+ * - The layout includes a `ThemeProvider` for managing themes, a `Footer` component
+ *   that displays data from the loaded JSON, and a `Toaster` for notifications.
+ *
+ * @example
+ * ```tsx
+ * <RootLayout>
+ *   <div>Your content here</div>
+ * </RootLayout>
+ * ```
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): JSX.Element {
+  const [data, setData] = useState<CardProps[]>([]);
+
+  useEffect(() => {
+    import('@api/data.json')
+      .then((module: { default: unknown }) => {
+        setData(module.default as unknown as CardProps[]);
+      })
+      .catch((error) => {
+        console.error('Error loading data:', error);
+        setData([]);
+      });
+  }, []);
+
   return (
     <html lang='fr' suppressHydrationWarning className='w-full'>
       <MetaHead
@@ -78,6 +115,9 @@ export default function RootLayout({
             {children}
           </main>
           <Footer
+            name={data[0]?.name}
+            familyName={data[0]?.familyName}
+            expertises={data[0]?.expertises}
             className={cn(
               cnPadding,
               cnMarginTop,

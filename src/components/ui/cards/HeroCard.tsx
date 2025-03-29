@@ -1,34 +1,23 @@
-import React, { memo } from 'react';
+import { motion } from 'framer-motion';
+import React, { memo, useEffect, useState, useCallback } from 'react';
 
 import { cnBorder2, cnBorderBottom4 } from '@/src/styles/border.style';
-import { cnGapX, cnSmallGap, cnSmallSpaceY } from '@/src/styles/boxModel.style';
+import { cnSpaceY } from '@/src/styles/boxModel.style';
 import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
 import {
   cnBigDescription,
-  cnLightTextMuted,
-  cnParagraph,
+  cnDescription,
   cnSmallText,
   cnTitle1,
 } from '@/src/styles/font.style';
-import {
-  cnHiddenSmBlock,
-  cnHiddenXxsFlex,
-  cnSmHidden,
-  cnXxsHidden,
-} from '@/src/styles/hideItem.style';
 import { cnBigImage } from '@/src/styles/image.styles';
 import { ResponsiveImage } from '@/src/styles/mediaQueries.style';
-import { cnSizeAuto } from '@/src/styles/size.style';
+import { cnSizeAuto, cnSizeFull } from '@/src/styles/size.style';
 import { cnLittleTranslateSm } from '@/src/styles/translate.style';
-import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
-import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-} from '@/src/utils/formatText.util';
+import { capitalizeFirstLetterOfEachWord } from '@/src/utils/formatText.util';
 import { formatSpecialWords } from '@/src/utils/formatText.util';
 import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 import {
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -37,29 +26,147 @@ import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 import { ProfileImage } from '@ui/images/ProfileImage';
 
+const Cursor = () => {
+  return (
+    <motion.span
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{
+        repeat: Infinity,
+        repeatType: 'reverse',
+        duration: 0.5,
+      }}
+      className='font-bold text-primary'
+    >
+      {' '}
+      |
+    </motion.span>
+  );
+};
+
+/**
+ * Component for animating typewriter text.
+ */
+const TypewriterText: React.FC<{
+  text: string;
+  typingSpeed?: number;
+  delayBeforeStart?: number;
+  delayBeforeDelete?: number;
+  onComplete?: () => void;
+  className?: string;
+}> = ({
+  text,
+  typingSpeed = 70,
+  delayBeforeStart = 300,
+  delayBeforeDelete = 1200,
+  onComplete,
+  className,
+}) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setDisplayedText('');
+    setCurrentIndex(0);
+    setIsTyping(false);
+    setIsDeleting(false);
+
+    const startTimer = setTimeout(() => {
+      setIsTyping(true);
+    }, delayBeforeStart);
+
+    return () => clearTimeout(startTimer);
+  }, [text, delayBeforeStart]);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (isTyping && currentIndex < text.length) {
+      timer = setTimeout(() => {
+        setDisplayedText(text.substring(0, currentIndex + 1));
+        setCurrentIndex(currentIndex + 1);
+      }, typingSpeed);
+    } else if (isTyping && currentIndex === text.length) {
+      timer = setTimeout(() => {
+        setIsTyping(false);
+        setIsDeleting(true);
+        setCurrentIndex(text.length);
+      }, delayBeforeDelete);
+    } else if (isDeleting && currentIndex > 0) {
+      timer = setTimeout(() => {
+        setDisplayedText(text.substring(0, currentIndex - 1));
+        setCurrentIndex(currentIndex - 1);
+      }, typingSpeed / 1.5);
+    } else if (isDeleting && currentIndex === 0) {
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+        if (onComplete) onComplete();
+      }, 500);
+    }
+
+    return () => clearTimeout(timer);
+  }, [
+    isTyping,
+    isDeleting,
+    currentIndex,
+    text,
+    typingSpeed,
+    delayBeforeDelete,
+    onComplete,
+  ]);
+
+  return (
+    <span className={cn('inline-block', className)}>
+      {displayedText}
+      {(isTyping || isDeleting) && <Cursor />}
+    </span>
+  );
+};
+
+/**
+ * HeroCard component displaying a profile with typewriter animation for expertise.
+ */
 export const HeroCard: React.FC<{
-  title: CardProps['title'];
-  description: CardProps['description'];
-  content: CardProps['content'];
+  name: CardProps['name'];
+  familyName: CardProps['familyName'];
+  expertises: CardProps['expertises'];
   imageSrc: CardProps['imageSrc'];
   imageAlt: CardProps['imageAlt'];
-  cta1: ActionButtonProps['cta'];
-  icon1: ActionButtonProps['icon'];
-  href1: ActionButtonProps['href'];
-  downloadActive1: ActionButtonProps['downloadActive'];
-  cta2: ActionButtonProps['cta'];
-  icon2: ActionButtonProps['icon'];
-  href2: ActionButtonProps['href'];
-  downloadActive2: ActionButtonProps['downloadActive'];
-  cta3: ActionButtonProps['cta'];
-  icon3: ActionButtonProps['icon'];
-  href3: ActionButtonProps['href'];
-  downloadActive3: ActionButtonProps['downloadActive'];
   className: CardProps['className'];
-}> = memo(({ title, description, content, imageSrc, imageAlt, className }) => {
+}> = memo(({ name, familyName, expertises, imageSrc, imageAlt, className }) => {
+  const [currentExpertiseIndex, setCurrentExpertiseIndex] = useState(0);
+  const [showExpertise, setShowExpertise] = useState(true);
+
+  const handleExpertiseComplete = useCallback(() => {
+    if (!expertises || expertises.length === 0) return;
+
+    setShowExpertise(false);
+
+    setTimeout(() => {
+      setCurrentExpertiseIndex((prev) => (prev + 1) % expertises.length);
+      setShowExpertise(true);
+    }, 300);
+  }, [expertises]);
+
+  useEffect(() => {
+    setShowExpertise(true);
+    setCurrentExpertiseIndex(0);
+  }, []);
+
   return (
     <CardHeader className={className}>
-      <CardTitle className={cn('relative flex h-auto w-full', cnGapX)}>
+      <CardTitle
+        className={cn(
+          'flex',
+          cnSizeFull,
+          cnSpaceY,
+          cnFlexCol,
+          cnFlexFullCenter
+        )}
+      >
         <div
           className={cn(
             cnFlexFullCenter,
@@ -113,52 +220,38 @@ export const HeroCard: React.FC<{
             </AvatarFallback>
           </Avatar>
         </div>
-        <div className={cn(cnFlexCol, 'justify-center')}>
-          <h2 className={cnTitle1}>
-            {title && capitalizeFirstLetterOfEachWord(title)}
-          </h2>
-          <CardDescription
-            className={cn(
-              cnFlexCol,
-              cnSmallGap,
-              cnBigDescription,
-              cnHiddenXxsFlex,
-              'max-w-prose'
+        <h1 className={cn(cnTitle1)}>
+          {name && capitalizeFirstLetterOfEachWord(name)}{' '}
+          {familyName && familyName.toUpperCase()}
+        </h1>
+        <CardDescription
+          className={cn(
+            cnFlexCol,
+            cnFlexFullCenter,
+            cnBigDescription,
+            'max-w-prose'
+          )}
+        >
+          <p className={cn(cnDescription, 'text-foreground')}>
+            Besoin d&apos;un dev ?
+          </p>
+          <p className={cn(cnDescription, 'text-foreground')}>
+            <span className='hidden xxs:inline'>Je suis </span>
+            {showExpertise && expertises && expertises.length > 0 && (
+              <TypewriterText
+                text={capitalizeFirstLetterOfEachWord(
+                  formatSpecialWords(expertises[currentExpertiseIndex])
+                )}
+                typingSpeed={60}
+                delayBeforeStart={500}
+                delayBeforeDelete={1500}
+                onComplete={handleExpertiseComplete}
+                className='text-primary'
+              />
             )}
-          >
-            {description &&
-              capitalizeFirstLetterOfEachWord(formatSpecialWords(description))}
-            <p
-              className={cn(
-                cnParagraph,
-                cnHiddenSmBlock,
-                'text-foreground',
-                'max-w-prose'
-              )}
-            >
-              {typeof content === 'string' &&
-                capitalizeFirstLetterOfPhrase(content)}
-            </p>
-          </CardDescription>
-        </div>
+          </p>
+        </CardDescription>
       </CardTitle>
-      <CardContent
-        className={cn(
-          cnSmallSpaceY,
-          'xxs:space-y-0',
-          'p-0',
-          cnSmHidden,
-          'max-w-prose'
-        )}
-      >
-        <p className={cn(cnBigDescription, cnLightTextMuted, cnXxsHidden)}>
-          {description && capitalizeFirstLetterOfPhrase(description)}
-        </p>
-        <p className={cn(cnParagraph)}>
-          {typeof content === 'string' &&
-            capitalizeFirstLetterOfPhrase(content)}
-        </p>
-      </CardContent>
     </CardHeader>
   );
 });

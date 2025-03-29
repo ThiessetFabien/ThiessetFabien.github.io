@@ -3,6 +3,10 @@
 import React from 'react';
 
 import { year } from '@/src/utils/dynamicYear.util';
+import {
+  capitalizeFirstLetterOfEachWord,
+  formatSpecialWords,
+} from '@/src/utils/formatText.util';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 import { cnSmallText, cnTitle2, cnTitle2Size } from '@styles/font.style';
@@ -14,19 +18,44 @@ import { cnSmallText, cnTitle2, cnTitle2Size } from '@styles/font.style';
  * @returns {JSX.Element} The rendered Footer component.
  */
 
-export const Footer: React.FC<{ className: CardProps['className'] }> = ({
+export const Footer: React.FC<{
+  name: CardProps['name'];
+  familyName: CardProps['familyName'];
+  expertises: CardProps['expertises'];
+  className: CardProps['className'];
+}> = ({
+  name,
+  familyName,
+  expertises,
   className,
-}) => {
+}: {
+  name?: string;
+  familyName?: string;
+  expertises?: string[] | string;
+  className?: string;
+}): JSX.Element => {
   return (
     <footer className={className}>
       <h2 className={cn('mx-auto text-center', cnTitle2, cnTitle2Size)}>
-        Fabien Thiesset
+        {name && capitalizeFirstLetterOfEachWord(name)}{' '}
+        {familyName?.toLocaleUpperCase()}
       </h2>
-      <p className={cn('mx-auto text-center italic', cnSmallText)}>
-        Expert React & Data API | Developer Fullstack | Project Coordinator
-      </p>
+      {expertises && expertises.length > 0 && (
+        <p className={cn('mx-auto text-center italic', cnSmallText)}>
+          {Array.isArray(expertises)
+            ? expertises.map((expertise: React.Key | undefined, i: number) => (
+                <span key={expertise}>
+                  {capitalizeFirstLetterOfEachWord(
+                    formatSpecialWords(String(expertise))
+                  )}
+                  {i < expertises.length - 1 ? ' | ' : ''}
+                </span>
+              ))
+            : capitalizeFirstLetterOfEachWord(formatSpecialWords(expertises))}
+        </p>
+      )}
       <p className={cn('mx-auto text-center', cnSmallText)}>
-        For more information, send me a message to&nbsp;
+        Pour plus d&apos;informations, envoi moi un message sur{' '}
         <a
           href='mailto:fabienthiessetpro@gmail.com'
           target='_blank'

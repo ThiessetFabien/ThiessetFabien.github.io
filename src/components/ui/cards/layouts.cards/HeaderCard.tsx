@@ -12,28 +12,39 @@ import {
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
+/**
+ * A React functional component that renders a header card with a title and an optional description.
+ *
+ * @component
+ * @param {Object} props - The props object for the HeaderCard component.
+ * @param {string} props.title - The title of the card, which will be displayed in uppercase and formatted with each word capitalized.
+ * @param {string} [props.description] - An optional description for the card, formatted with special words handled and the first letter of the phrase capitalized.
+ * @param {string} [props.className] - An optional CSS class name to apply custom styles to the card header.
+ *
+ * @returns {JSX.Element} A header element containing the card title and optional description.
+ */
 export const HeaderCard: React.FC<{
   title: CardProps['title'];
   description: CardProps['description'];
   className: CardProps['className'];
-  index: number;
-}> = ({ title, description, className, index }) => {
+}> = ({ title, description, className }) => {
   return (
     <header>
       <CardHeader className={className}>
         <CardTitle
-          className={cn(
-            cnTitle2,
-            index === 2 || index === 3 || index === 4 || index === 9
-              ? cnTitle2Size
-              : ''
-          )}
+          className={cn('hyphens-auto break-words text-center')}
           aria-label={title}
         >
-          {title && capitalizeFirstLetterOfEachWord(title)}
+          <h2 className={cn(cnTitle2, cnTitle2Size)}>
+            {title &&
+              capitalizeFirstLetterOfEachWord(title.toLocaleUpperCase())}
+          </h2>
         </CardTitle>
         {description && (
-          <CardDescription className={cnDescription} aria-label={description}>
+          <CardDescription
+            className={cn(cnDescription, 'px-1 sm:px-0')}
+            aria-label={description}
+          >
             {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
           </CardDescription>
         )}

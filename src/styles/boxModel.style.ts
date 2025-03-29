@@ -1,3 +1,5 @@
+import { cn } from '../lib/utils';
+
 export const cnSmallPadding = 'p-2 md:p-4';
 
 export const cnPadding = 'p-4 md:p-6';
@@ -48,9 +50,12 @@ export const cnGap = 'gap-4 md:gap-6';
 
 export const cnGapX = 'gap-x-4 md:gap-x-6';
 
-export const cnTopRightPosition = 'right-4 md:right-6 top-4 md:top-6';
+export const cnTopRightPosition = cn('right-4 md:right-6', 'top-4 md:top-6');
 
-export const cnBottomRightPosition = 'right-4 md:right-6 bottom-4 md:bottom-6';
+export const cnBottomRightPosition = cn(
+  'right-4 md:right-6',
+  'bottom-4 md:bottom-6'
+);
 
 export const cnManipulation =
   'touch-manipulation cursor-pointer appearance-none ';

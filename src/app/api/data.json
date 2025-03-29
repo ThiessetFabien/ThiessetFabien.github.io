@@ -1,164 +1,56 @@
 [
   {
-    "title": "turning vision into reality with code, a11y and humanity.",
-    "description": "expert react & data api | developer fullstack | project coordinator",
-    "content": "You need a website that is stunning and truly functional. if you want to learn more about working with me, take a look through my website.",
+    "name": "fabien",
+    "familyName": "thiesset",
+    "expertises": [
+      "expert react.js & node.js",
+      "développeur full-stack",
+      "coordonnateur de projet"
+    ],
     "imageSrc": "/images/profile.webp",
-    "imageAlt": "profile picture",
-    "icon1": "ArrowBigDownDash",
-    "cta1": "get started",
-    "href1": "#card-3",
-    "cta2": "link up",
-    "icon2": "Linkedin",
-    "href2": "www.linkedin.com/in/fabien-thiesset/",
-    "cta3": "say hello",
-    "icon3": "Mail",
-    "href3": "mailto:thiessetfabienpro@gmail.com"
+    "imageAlt": "profile picture"
   },
   {
-    "title": "being full-stack is my focus",
-    "description": "i specialize in building web applications using modern technologies.",
-    "topTechnologies": [
+    "name": "à propos",
+    "jobs": [
       {
-        "name": "react.js",
-        "description": "with next.js, i craft functional user interfaces.",
-        "slug": "react/react-original"
+        "name": "développeur",
+        "description": "développeur full-stack vivant à douai, en france. spécialisé dans la création d'applications web et mobile avec une préférence pour le front-end et une expertise particulière avec le framework next.js de react.js, et express.js pour node.js. Après une année d'expériences, je continue d'apprendre en développant des solutions numériques, des sites vitrines en travaillant principalement avec typescript, react.js et node.js.",
+        "skills": [
+          "migration et optimisation d'environnements de développement sur arch linux.",
+          "conception et maquettage d'interfaces utilisateurs intuitives et engageantes.",
+          "intégration d'interfaces utilisateurs accessibles et dynamiques (w3c).",
+          "implémentation et intégrité de bases de données relationnelles postgresql.",
+          "développe des composants sécurisés d'accès à postgresql et mongodb.",
+          "création de composants métiers sécurisés et testés avec jest.",
+          "rédaction de documentation technique et fonctionnelle en anglais.",
+          "application d'une approche structurée de résolution de problèmes."
+        ]
       },
       {
-        "name": "tailwind css",
-        "description": "i design attractive and responsive application swiftly.",
-        "slug": "tailwindcss/tailwindcss-original"
-      },
-      {
-        "name": "node.js",
-        "description": "I develop secure and resilient server-side applications with express.js.",
-        "slug": "nodejs/nodejs-original"
-      },
-      {
-        "name": "sql & nosql",
-        "description": "I ensure secure database with postgresql and mongodb.",
-        "slug": "postgresql/postgresql-original"
+        "name": "coordinateur de projet | scrum master",
+        "description": "de 2018 à 2024, j'ai coordonné le quotidien des personnes accueillies en situation de handicap, pour la mise en œuvre de la méthode humanitude et son label, qui vise à améliorer la qualité de vie et le bien-être des personnes accueillies et des professionnels. j'ai également été scrum master durant le projet de fin de formation o'clock. j'utilise mes compétences agiles pour aider l'équipe à donner le meilleur au client.",
+        "skills": [
+          "animation et fédération d'équipes autour de valeurs communes.",
+          "adaptation rapide des processus de travail lors de la crise covid-19.",
+          "collaboration efficacement avec les services et l'encadrement et l'IGM HDF.",
+          "travail en binôme avec la direction et co-animation du comité de pilotage.",
+          "animation d'atelier et sensibilisation des équipes aux bonnes pratiques.",
+          "co-création et suivi du référentiel d'autoévaluation de 500 indicateurs.",
+          "elaboration et mise en oeuvre de stratégies d'accompagements complexes.",
+          "instauration d'une communication bienveillante et attentive."
+        ]
       }
-    ],
-    "content": "and i currently work with",
-    "technologies": [
-      {
-        "name": "typescript",
-        "slug": "typescript/typescript-original"
-      },
-      {
-        "name": "express.js",
-        "slug": "express/express-original"
-      },
-      {
-        "name": "next.js",
-        "slug": "nextjs/nextjs-original"
-      },
-      {
-        "name": "sass",
-        "slug": "sass/sass-original"
-      },
-      {
-        "name": "mongoDB",
-        "slug": "mongodb/mongodb-original"
-      },
-      {
-        "name": "jest",
-        "slug": "jest/jest-plain"
-      }
-    ],
-    "cta1": "explore",
-    "icon1": "Eye",
-    "href1": "#card-3",
-    "cta2": "view all",
-    "icon2": "Github",
-    "href2": "www.github.com/ThiessetFabien?tab=repositories"
+    ]
   },
   {
-    "title": "where i've worked",
-    "description": "i am passionate about creating beautiful and functional applications. i have a diverse background in web development, project coordination, and supporting individuals with disabilities.",
-    "experiences": [
-      {
-        "developer": [
-          {
-            "title": "react & i++ specializations",
-            "company": "o'clock replay",
-            "date": "sep 2023 - dec 2024"
-          },
-          {
-            "title": "full-stack web developer & scrum master",
-            "company": "o'clock school",
-            "date": "may - jun 2024"
-          },
-          {
-            "title": "data api specialization",
-            "company": "o'clock school",
-            "date": "apr 2024"
-          },
-          {
-            "title": "full-stack javascript developer learner",
-            "company": "o'Clock school",
-            "date": "dec 2023 - jun 2024"
-          },
-          {
-            "title": "front-end developer intern",
-            "company": "chimenbou sp.",
-            "date": "jul 2023"
-          },
-          {
-            "title": "self-training front-end",
-            "company": "grafikart cursus",
-            "date": "avr 2023 - dec 2023"
-          }
-        ],
-        "developerDescription": "I learn faster and am more efficient in a team. I constantly seek to expand my skills and put them into practice.",
-        "projectCoordinator": [
-          {
-            "title": "daily life referent",
-            "company": "helene borel center",
-            "date": "2023 - 2024"
-          },
-          {
-            "title": "humanitude coordinator",
-            "company": "helene borel center",
-            "date": "2018 - 2023"
-          }
-        ],
-        "projectCoordinatorDescription": "i was responsible for coordinating the daily life of residents with disabilities, for the implementation of the humanitude method, which aims to improve the quality of life of residents and the well-being of caregivers.",
-        "nurseAssistant": [
-          {
-            "title": "nurse assistant",
-            "company": "udapei59 mas thumeries",
-            "date": "2024 - present"
-          },
-          {
-            "title": "nurse assistant",
-            "company": "helene borel center",
-            "date": "2009 - 2024"
-          }
-        ],
-        "nurseAssistantDescription": "i am committed to supporting people with disabilities."
-      }
-    ],
-    "icon1": "Mail",
-    "cta1": "engage talent",
-    "href1": "#card-9",
-    "cta2": "see more",
-    "icon2": "Eye",
-    "href2": "documents/resume.pdf",
-    "cta3": "resume",
-    "icon3": "Download",
-    "href3": "documents/resume.pdf",
-    "downloadActive3": true
-  },
-  {
-    "title": "some things i've built",
-    "description": "here is a collection of my recent javascript projects, showcasing the type of clients i collaborate with and the solutions i provide.",
+    "title": "quelques choses que j'ai construites",
+    "description": "voici une collection de mes projets javascript récents, montrant le type de clients avec lesquels je collabore et les solutions que je propose.",
     "projects": [
       {
         "title": "portfolio",
-        "organization": "server side rendering",
-        "description": "showcase site of my work, highlighting my projects and skills in web development.",
+        "organization": "rendu côté serveur",
+        "description": "site vitrine de mon travail, mettant en avant mes projets et compétences en développement web.",
         "imageSrc": "images/portfolio.webp",
         "imageAlt": "Portfolio",
         "website": "fabuilds.netlify.app/",
@@ -167,8 +59,8 @@
       },
       {
         "title": "casalink",
-        "organization": "single page application",
-        "description": "family planning application for managing tasks and events with delagated for children.",
+        "organization": "application monopage",
+        "description": "application de planning familial pour gérer les tâches et événements avec délégation pour les enfants.",
         "imageSrc": "images/casalink.webp",
         "imageAlt": "Casalink",
         "videoSrc": "casalink.mp4",
@@ -180,7 +72,7 @@
       {
         "title": "casalink api",
         "organization": "api restful",
-        "description": "secure server for casalink app, managing the data tested and authenticated with jwt.",
+        "description": "serveur sécurisé pour l'application casalink, gérant les données testées et authentifiées avec jwt.",
         "imageSrc": "images/casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
@@ -190,7 +82,7 @@
       {
         "title": "mailnager api",
         "organization": "api",
-        "description": "server for managing mails and tracking job, created for a friend and fellow alumni.",
+        "description": "serveur pour la gestion des mails et le suivi des emplois, créé pour un ami et ancien élève.",
         "imageSrc": "images/mailnager.webp",
         "imageAlt": "Casalink documentation",
         "github": "github.com/ThiessetFabien/MailNagerAPI",
@@ -198,81 +90,81 @@
       }
     ],
     "icon1": "Mail",
-    "cta1": "hire me!",
+    "cta1": "engagez-moi !",
     "href1": "#card-9",
-    "cta2": "let's network",
+    "cta2": "réseautons",
     "icon2": "Linkedin",
     "href2": "www.linkedin.com/in/fabien-thiesset/",
-    "cta3": "work together",
+    "cta3": "travaillons ensemble",
     "icon3": "Github",
     "href3": "github.com/ThiessetFabien?tab=repositories"
   },
   {
-    "title": "things i have acheived",
+    "title": "ce que j'ai accompli",
     "achievements": [
       {
         "icon": "GraduationCap",
-        "title": "certified full stack developer curriculum & a2 english for developper",
-        "date": "fev 2025 - present"
+        "title": "cursus certifié développeur full stack et anglais a2 pour développeur",
+        "date": "fév 2025 - présent"
       },
       {
         "icon": "GraduationCap",
-        "title": "professional title level 5 of web & mobile developer (bac+2)",
-        "date": "jun - juil 2024"
+        "title": "titre professionnel niveau 5 de développeur web et mobile (bac+2)",
+        "date": "juin - juil 2024"
       },
       {
         "icon": "ReceiptEuro",
-        "title": "funding agreement of transition pro hauts-de-france",
+        "title": "accord de financement de transition pro hauts-de-france",
         "date": "avr - sept 2023"
       },
       {
         "icon": "Accessibility",
-        "title": "Obtaining and Maintaining the Humanitude Label for the First Medically-Assisted Living Facility in Metropolitan France",
+        "title": "obtention et maintien du label humanitude pour le premier établissement médico-social de France métropolitaine",
         "date": "2019 - 2024"
       }
     ]
   },
   {
-    "title": "what they say about my work?",
+    "title": "ce qu'ils disent de mon travail",
     "testimonials": [
       {
         "author": "dupoirier christophe",
-        "job": "professional jury & product leader",
+        "job": "professional jury et product leader",
         "company": "renault",
         "content": "i had the opportunity to evaluate Fabien during his thesis defense in july 2024 as a professional jury, and i can confirm that his level of technical knowledge and the quality of his intellectual approach to project design make him a serious candidate for a full stack developer position.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1608645411974?e=1748476800&v=beta&t=SCxyt_hsjjt6sd7AcZEgalwIGawFCa_CrDqQNBI4iGQ",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1608645411974?e=1748476800etv=betaett=SCxyt_hsjjt6sd7AcZEgalwIGawFCa_CrDqQNBI4iGQ",
         "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/"
       },
       {
         "author": "dupoirier christophe",
-        "job": "professional jury & product leader",
+        "job": "professional jury et product leader",
         "company": "renault",
         "content": "fabien's career change has been perfectly successful as he previously worked as a nursing assistant in a medical environment. this demonstrates his unwavering commitment and true professional attitude.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1608645411974?e=1748476800&v=beta&t=SCxyt_hsjjt6sd7AcZEgalwIGawFCa_CrDqQNBI4iGQ",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1608645411974?e=1748476800etv=betaett=SCxyt_hsjjt6sd7AcZEgalwIGawFCa_CrDqQNBI4iGQ",
         "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/"
       },
       {
         "author": "nicolas zanforlini",
-        "job": "professional jury & lead developer",
+        "job": "professional jury et lead developer",
         "company": "freelance",
         "content": "i had the opportunity to evaluate his skills during his diploma examination. he is a motivated, competent, and curious young man, and he is an asset to any team with good communication skills. i highly recommend him.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQG9eTvW6wRapQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1639988026836?e=1748476800&v=beta&t=dkcLXrXpW24qfwK8pUFoW5BSztPumqIZY8uvZRma5mI",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQG9eTvW6wRapQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1639988026836?e=1748476800etv=betaett=dkcLXrXpW24qfwK8pUFoW5BSztPumqIZY8uvZRma5mI",
         "linkedin": "https://www.linkedin.com/in/nicolas-zanforlini-5a06b518b/"
       },
       {
         "author": "benoît schiex",
-        "job": "trainer & developer",
+        "job": "trainer et developer",
         "company": "o'clock school",
         "content": "having followed Fabien during his training, i noted his qualities of rigor and commitment, which allowed him to achieve an excellent level in web application design and development by the end of his course.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1544974008196?e=1748476800&v=beta&t=-im8HlVqmEKU5wNvGhSEUP7lWfLnJWptHbvU-vHq71Q",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1544974008196?e=1748476800etv=betaett=-im8HlVqmEKU5wNvGhSEUP7lWfLnJWptHbvU-vHq71Q",
         "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
       },
       {
         "author": "benoît schiex",
-        "job": "trainer & developer",
+        "job": "trainer et developer",
         "company": "o'clock school",
         "content": "the projects carried out demonstrated an understanding of the needs, with technical responses that were always of high quality both in terms of choices and implementation. his curiosity and rigor were the foundation of his successful training.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1544974008196?e=1748476800&v=beta&t=-im8HlVqmEKU5wNvGhSEUP7lWfLnJWptHbvU-vHq71Q",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1544974008196?e=1748476800etv=betaett=-im8HlVqmEKU5wNvGhSEUP7lWfLnJWptHbvU-vHq71Q",
         "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
       },
       {
@@ -280,7 +172,7 @@
         "job": "pedagogical advisor",
         "company": "o'clock school",
         "content": "i had the opportunity to follow Fabien during his web development training, and he stood out for his seriousness and motivation. always positive and diligent, he successfully met every challenge, working autonomously while being comfortable in a team.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709198087943?e=1748476800&v=beta&t=aptbtjYuTVwKlOfUMeuEdnV3uljiowtBf8LvglhO2To",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709198087943?e=1748476800etv=betaett=aptbtjYuTVwKlOfUMeuEdnV3uljiowtBf8LvglhO2To",
         "linkedin": "www.linkedin.com/in/adrien-delcroix/"
       },
       {
@@ -288,47 +180,47 @@
         "job": "pedagogical advisor",
         "company": "o'clock school",
         "content": "fabien also demonstrated a great ability to overcome technical difficulties, always seeking effective solutions. his team spirit and involvement were essential during collaborative projects.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709198087943?e=1748476800&v=beta&t=aptbtjYuTVwKlOfUMeuEdnV3uljiowtBf8LvglhO2To",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709198087943?e=1748476800etv=betaett=aptbtjYuTVwKlOfUMeuEdnV3uljiowtBf8LvglhO2To",
         "linkedin": "www.linkedin.com/in/adrien-delcroix/"
       },
       {
         "author": "alexis vignot",
-        "job": "student & collaborator",
+        "job": "student et collaborator",
         "company": "o'clock school",
         "content": "i had the pleasure of working with fabien thiesset on the Casalink project, and i can only praise his skills and professionalism as a full-stack developer. fabien demonstrated mastery of both front-end and back-end technologies, which was crucial to the success of our project.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1624568924087?e=1748476800&v=beta&t=4D8mZ_QxctfTxY5_miGi9E_da0vJART9MqSlklXxHpQ",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1624568924087?e=1748476800etv=betaett=4D8mZ_QxctfTxY5_miGi9E_da0vJART9MqSlklXxHpQ",
         "linkedin": "www.linkedin.com/in/alexis-vignot/"
       },
       {
         "author": "alexis vignot",
-        "job": "student & collaborator",
+        "job": "student et collaborator",
         "company": "o'clock school",
         "content": "his methodical approach and ability to solve complex problems have helped overcome many technical challenges. additionally, fabien is an excellent communicator, always ready to share his knowledge and collaborate effectively with the team.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1624568924087?e=1748476800&v=beta&t=4D8mZ_QxctfTxY5_miGi9E_da0vJART9MqSlklXxHpQ",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1624568924087?e=1748476800etv=betaett=4D8mZ_QxctfTxY5_miGi9E_da0vJART9MqSlklXxHpQ",
         "linkedin": "www.linkedin.com/in/alexis-vignot/"
       },
       {
         "author": "alexis vignot",
-        "job": "student & collaborator",
+        "job": "student et collaborator",
         "company": "o'clock school",
         "content": "i highly recommend fabien for any future opportunities. his passion for development and commitment to excellence make him a valuable asset for any project.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1624568924087?e=1748476800&v=beta&t=4D8mZ_QxctfTxY5_miGi9E_da0vJART9MqSlklXxHpQ",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1624568924087?e=1748476800etv=betaett=4D8mZ_QxctfTxY5_miGi9E_da0vJART9MqSlklXxHpQ",
         "linkedin": "www.linkedin.com/in/alexis-vignot/"
       },
       {
         "author": "emilie suray",
-        "job": "quality & risk management officer",
+        "job": "quality et risk management officer",
         "company": "helene borel center",
         "content": "fabien has shown a great ability to reinvent himself by transitioning from the role of coordinator to that of a developer. i had the opportunity to work with him, and his seriousness, rigor, and interpersonal skills make him a valuable collaborator.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1748476800&v=beta&t=gyko4_vPK7-SP3GXHBPXUGTqBPqfa-HkSEX4L62Q4v4",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1748476800etv=betaett=gyko4_vPK7-SP3GXHBPXUGTqBPqfa-HkSEX4L62Q4v4",
         "linkedin": "www.linkedin.com/in/emilie-s-065196130/"
       },
       {
         "author": "emilie suray",
-        "job": "quality & risk management officer",
+        "job": "quality et risk management officer",
         "company": "helene borel center",
         "content": "his career change demonstrates his motivation and ability to learn quickly. fabien brings a human touch to his projects, which, combined with his new technical expertise, is an undeniable asset to any team.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1748476800&v=beta&t=gyko4_vPK7-SP3GXHBPXUGTqBPqfa-HkSEX4L62Q4v4",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1748476800etv=betaett=gyko4_vPK7-SP3GXHBPXUGTqBPqfa-HkSEX4L62Q4v4",
         "linkedin": "www.linkedin.com/in/emilie-s-065196130/"
       },
       {
@@ -368,7 +260,7 @@
         "job": "it technician",
         "company": "helene borel center",
         "content": "i have had the pleasure of working with Fabien on various ir-related issues multiple times. fabien is excellent at expressing the needs of other users and translating them in a simple and effective manner, which allows for quicker resolutions.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712083084075?e=1748476800&v=beta&t=c2454jsT7raEKcMfYAT4M0rghRSS7Qs1JlPveyVBemI",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712083084075?e=1748476800etv=betaett=c2454jsT7raEKcMfYAT4M0rghRSS7Qs1JlPveyVBemI",
         "linkedin": "www.linkedin.com/in/anthony-goguillon-a0464565/"
       },
       {
@@ -376,35 +268,35 @@
         "job": "it technician",
         "company": "helene borel center",
         "content": "what we also appreciate about fabien is his enthusiasm for technology, a true passion that enables him to be a source of proposals. not to mention his interpersonal skills, his rigor, his willingness to make things progress, and of course, his good humor.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712083084075?e=1748476800&v=beta&t=c2454jsT7raEKcMfYAT4M0rghRSS7Qs1JlPveyVBemI",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712083084075?e=1748476800etv=betaett=c2454jsT7raEKcMfYAT4M0rghRSS7Qs1JlPveyVBemI",
         "linkedin": "www.linkedin.com/in/anthony-goguillon-a0464565/"
       }
     ]
   },
   {
-    "title": "eager to apply and learn more",
-    "content": "seeking a company that values human and technical skills. open to apprenticeship opportunities."
+    "title": "désireux d'appliquer et d'apprendre davantage",
+    "content": "à la recherche d'une entreprise qui valorise les compétences humaines et techniques. ouvert aux opportunités d'apprentissage."
   },
   {
-    "title": "savoring coffee while coding",
-    "content": "as a shonen anime fan, i enjoy coffee while working and reward myself with demon slayer and my hero academia."
+    "title": "savourer un café tout en codant",
+    "content": "en tant que fan d'anime shonen, j'apprécie le café pendant que je travaille et me récompense avec demon slayer et my hero academia."
   },
   {
-    "title": "let's talk about your project",
-    "description": "passion is energy. feel the power that comes from focusing on what excites you (oprah winfrey).",
+    "title": "parlons de votre projet",
+    "description": "la passion est de l'énergie. ressentez la puissance qui vient de se concentrer sur ce qui vous enthousiasme (oprah winfrey).",
     "mailto": "thiessetfabienpro@gmail.com",
-    "cta1": "inquire now",
+    "cta1": "renseignez-vous maintenant",
     "icon1": "Send",
-    "cta2": "ring today",
+    "cta2": "appelez aujourd'hui",
     "icon2": "PhoneOutgoing",
     "href2": "tel:+33610920974",
-    "cta3": "reach out",
+    "cta3": "contactez-moi",
     "icon3": "Linkedin",
     "href3": "www.linkedin.com/in/fabien-thiesset/"
   },
   {
-    "title": "available for mobile, vehicle",
-    "description": "I am willing to relocate within 30 minutes of Douai and further if remote work is possible.",
+    "title": "disponible pour mobilité, véhicule",
+    "description": "je suis prêt à déménager dans un rayon de 30 minutes autour de Douai et plus loin si le télétravail est possible.",
     "map": true
   }
 ]

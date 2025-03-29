@@ -1,10 +1,7 @@
-/**
- * @file CardProps.tsx
- * @description This file contains the type definition for the props used in various card components.
- */
 import { AchievementProps } from './AchievementProps';
 import type { ActionButtonProps } from './ActionButtonProps';
 import type { ExperiencesProps } from './ExperiencesProps';
+import { JobsProps } from './JobsProps';
 import type { OtherExperienceProps } from './OtherExperiencesProps';
 import type { ProjectProps } from './ProjectProps';
 import type { TechnologieProps } from './TechnologieProps';
@@ -12,31 +9,59 @@ import type { TestimonialProps } from './TestimonialProps';
 import type { TopTechnologieProps } from './Top3TechnologieProps';
 
 /**
- * CardProps type.
- * @typedef {Object} CardProps
- * @property {string} [imageSrc] - The source URL for the card image.
- * @property {string} [imageAlt] - The alt text for the card image.
+ * Represents the properties for a card component.
+ *
+ * @interface CardProps
+ * @property {number} [index] - The index of the card.
+ * @property {string} name - The name associated with the card.
+ * @property {string} familyName - The family name associated with the card.
+ * @property {string[] | undefined} expertises - The list of expertises.
+ * @property {JobsProps[] | undefined} jobs - The list of jobs.
  * @property {string} [title] - The title of the card.
  * @property {string} [description] - The description of the card.
- * @property {string} [cta1] - The text for the first call-to-action button.
- * @property {string} [icon1] - The icon for the first call-to-action button.
- * @property {string} [href1] - The href for the first call-to-action button.
- * @property {boolean} downloadActive1 - Whether the first call-to-action button should trigger a download.
- * @property {string} [cta2] - The text for the second call-to-action button.
- * @property {string} [icon2] - The icon for the second call-to-action button.
- * @property {string} [href2] - The href for the second call-to-action button.
- * @property {boolean} downloadActive2 - Whether the second call-to-action button should trigger a download.
- * @property {boolean} [map] - Whether to display a map in the card.
- * @property {Experiences[]} [experiences] - The experiences to display in the card.
- * @property {Experiences[]} [otherExperiences] - Other experiences to display in the card.
- * @property {Projects[]} [projects] - The projects to display in the card.
- * @property {Technologies[]} [technologies] - The technologies to display in the card.
- * @property {React.ReactNode} [content] - Additional content to display in the card.
- * @property {string} [className] - Additional class names for the card.
+ * @property {string} [imageSrc] - The source URL for the card image.
+ * @property {string} [imageAlt] - The alt text for the card image.
+ * @property {boolean} [map] - Indicates if a map should be displayed.
+ * @property {string} [cta1] - Text for the first call-to-action button.
+ * @property {string} [icon1] - Icon for the first call-to-action button.
+ * @property {string} [href1] - Href for the first call-to-action button.
+ * @property {boolean} [downloadActive1] - Indicates if the first button triggers a download.
+ * @property {string} [cta2] - Text for the second call-to-action button.
+ * @property {string} [icon2] - Icon for the second call-to-action button.
+ * @property {string} [href2] - Href for the second call-to-action button.
+ * @property {boolean} [downloadActive2] - Indicates if the second button triggers a download.
+ * @property {string} [cta3] - Text for the third call-to-action button.
+ * @property {string} [icon3] - Icon for the third call-to-action button.
+ * @property {string} [href3] - Href for the third call-to-action button.
+ * @property {boolean} [downloadActive3] - Indicates if the third button triggers a download.
+ * @property {string} [cta4] - Text for the fourth call-to-action button.
+ * @property {string} [icon4] - Icon for the fourth call-to-action button.
+ * @property {string} [href4] - Href for the fourth call-to-action button.
+ * @property {boolean} [downloadActive4] - Indicates if the fourth button triggers a download.
+ * @property {string} [cta5] - Text for the fifth call-to-action button.
+ * @property {string} [icon5] - Icon for the fifth call-to-action button.
+ * @property {string} [href5] - Href for the fifth call-to-action button.
+ * @property {boolean} [downloadActive5] - Indicates if the fifth button triggers a download.
+ * @property {ExperiencesProps[]} [experiences] - List of experiences.
+ * @property {OtherExperienceProps[]} [otherExperiences] - List of other experiences.
+ * @property {ProjectProps[]} [projects] - List of projects.
+ * @property {TopTechnologieProps[]} [topTechnologies] - List of top technologies.
+ * @property {TechnologieProps[]} [technologies] - List of technologies.
+ * @property {TestimonialProps[]} [testimonials] - List of testimonials.
+ * @property {AchievementProps[]} [achievements] - List of achievements.
+ * @property {React.ReactNode} [content] - Additional content for the card.
+ * @property {string} [funFact] - A fun fact to display.
+ * @property {string} [mailto] - Email address for contact.
+ * @property {string} [className] - Additional class names for styling.
+ * @property {string} [colSpan] - Column span for layout purposes.
  */
-
 export interface CardProps {
   index?: number;
+  name: string;
+  familyName: string;
+  expertises: string[] | undefined;
+  jobs: JobsProps[] | undefined;
+
   title?: string;
   description?: string;
 
