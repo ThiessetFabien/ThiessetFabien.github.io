@@ -31,7 +31,7 @@ export const cnDescription = cn('font-normal', 'font-sans');
 
 export const cnParagraph = cn('font-normal', 'font-sans', 'text-base');
 
-export const cnSmallText = cn('text-xs', 'font-sans');
+export const cnSmallText = cn('text-xs', 'font-sans font-normal');
 
 export const cnBoldTextMuted = cn(
   'text-muted-foreground',

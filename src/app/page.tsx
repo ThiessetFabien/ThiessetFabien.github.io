@@ -79,6 +79,7 @@ const HomePage: React.FC = (): JSX.Element => {
           className={cn(
             'min-h-[96dvh] items-stretch md:min-h-[94dvh]',
             cnFlexCol,
+
             card.colSpan
           )}
         >
@@ -94,13 +95,14 @@ const HomePage: React.FC = (): JSX.Element => {
                 name={card.name}
                 familyName={card.familyName}
                 expertises={card.expertises}
+                services={card.services}
                 imageSrc={card.imageSrc}
                 imageAlt={card.imageAlt}
                 className={cn(
                   cnGap,
                   cnPadding,
                   cnFlexBetweenY,
-                  'w-full flex-auto space-y-0'
+                  'w-full space-y-0'
                 )}
               />
             )}

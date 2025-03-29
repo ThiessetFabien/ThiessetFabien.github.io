@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion';
 import React, { memo, useEffect, useState, useCallback } from 'react';
 
+import { Badge } from '@/src/lib/components/ui/badge';
 import { cnBorder2, cnBorderBottom4 } from '@/src/styles/border.style';
-import { cnSpaceY } from '@/src/styles/boxModel.style';
+import {
+  cnSmallGap,
+  cnSmallPadding,
+  cnSpaceY,
+} from '@/src/styles/boxModel.style';
 import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
 import {
   cnBigDescription,
@@ -12,18 +17,23 @@ import {
 } from '@/src/styles/font.style';
 import { cnBigImage } from '@/src/styles/image.styles';
 import { ResponsiveImage } from '@/src/styles/mediaQueries.style';
-import { cnSizeAuto, cnSizeFull } from '@/src/styles/size.style';
+import { cnSizeAuto } from '@/src/styles/size.style';
 import { cnLittleTranslateSm } from '@/src/styles/translate.style';
-import { capitalizeFirstLetterOfEachWord } from '@/src/utils/formatText.util';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+} from '@/src/utils/formatText.util';
 import { formatSpecialWords } from '@/src/utils/formatText.util';
 import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 import {
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
+import { IconLoader } from '@ui/icons/IconLoader';
 import { ProfileImage } from '@ui/images/ProfileImage';
 
 const Cursor = () => {
@@ -133,127 +143,177 @@ export const HeroCard: React.FC<{
   name: CardProps['name'];
   familyName: CardProps['familyName'];
   expertises: CardProps['expertises'];
+  services: CardProps['services'];
   imageSrc: CardProps['imageSrc'];
   imageAlt: CardProps['imageAlt'];
   className: CardProps['className'];
-}> = memo(({ name, familyName, expertises, imageSrc, imageAlt, className }) => {
-  const [currentExpertiseIndex, setCurrentExpertiseIndex] = useState(0);
-  const [showExpertise, setShowExpertise] = useState(true);
+}> = memo(
+  ({
+    name,
+    familyName,
+    expertises,
+    services,
+    imageSrc,
+    imageAlt,
+    className,
+  }) => {
+    const [currentExpertiseIndex, setCurrentExpertiseIndex] = useState(0);
+    const [showExpertise, setShowExpertise] = useState(true);
 
-  const handleExpertiseComplete = useCallback(() => {
-    if (!expertises || expertises.length === 0) return;
+    const handleExpertiseComplete = useCallback(() => {
+      if (!expertises || expertises.length === 0) return;
 
-    setShowExpertise(false);
+      setShowExpertise(false);
 
-    setTimeout(() => {
-      setCurrentExpertiseIndex((prev) => (prev + 1) % expertises.length);
+      setTimeout(() => {
+        setCurrentExpertiseIndex((prev) => (prev + 1) % expertises.length);
+        setShowExpertise(true);
+      }, 300);
+    }, [expertises]);
+
+    useEffect(() => {
       setShowExpertise(true);
-    }, 300);
-  }, [expertises]);
+      setCurrentExpertiseIndex(0);
+    }, []);
 
-  useEffect(() => {
-    setShowExpertise(true);
-    setCurrentExpertiseIndex(0);
-  }, []);
-
-  return (
-    <CardHeader className={className}>
-      <CardTitle
-        className={cn(
-          'flex',
-          cnSizeFull,
-          cnSpaceY,
-          cnFlexCol,
-          cnFlexFullCenter
-        )}
-      >
-        <div
-          className={cn(
-            cnFlexFullCenter,
-            'h-full w-auto',
-            'relative z-30',
-            cnBigImage,
-            'rounded-full border-primary',
-            cnBorder2
-          )}
-        >
-          <div
+    return (
+      <>
+        <div className={cn(cnFlexFullCenter, cnFlexCol, 'h-full')}>
+          <CardHeader className={className}>
+            <CardTitle
+              className={cn('flex', cnSpaceY, cnFlexCol, cnFlexFullCenter)}
+            >
+              <div
+                className={cn(
+                  cnFlexFullCenter,
+                  'h-full w-auto',
+                  'relative z-30',
+                  cnBigImage,
+                  'rounded-full border-primary',
+                  cnBorder2
+                )}
+              >
+                <div
+                  className={cn(
+                    'h-full w-auto',
+                    'relative z-50',
+                    cnBigImage,
+                    'rounded-full border-primary',
+                    cnBorderBottom4
+                  )}
+                />
+                <Avatar
+                  className={cn(
+                    'absolute z-0',
+                    'scale-105 sm:scale-110',
+                    '-top-2 md:-top-2.5',
+                    cnBigImage,
+                    cnSizeAuto
+                  )}
+                >
+                  <ProfileImage
+                    src={imageSrc || ''}
+                    alt={imageAlt || ''}
+                    width={ResponsiveImage()}
+                    height={ResponsiveImage()}
+                    className={cn(
+                      'relative rounded-full',
+                      cnSizeAuto,
+                      cnLittleTranslateSm,
+                      cnBigImage
+                    )}
+                  />
+                  <AvatarFallback
+                    className={cn(
+                      cnSmallText,
+                      'relative rounded-full',
+                      cnSizeAuto,
+                      cnLittleTranslateSm,
+                      cnBigImage
+                    )}
+                  >
+                    Profile
+                  </AvatarFallback>
+                </Avatar>
+              </div>
+              <h1 className={cn(cnTitle1)}>
+                {name && capitalizeFirstLetterOfEachWord(name)}{' '}
+                {familyName && familyName.toUpperCase()}
+              </h1>
+            </CardTitle>
+            <CardDescription
+              className={cn(cnFlexCol, cnFlexFullCenter, cnBigDescription)}
+            >
+              <p className={cn(cnDescription, 'text-foreground')}>
+                Besoin d&apos;un dev ?
+              </p>
+              <div
+                className={cn(
+                  cnDescription,
+                  'text-foreground',
+                  'flex h-auto flex-col xxs:flex-row',
+                  'w-full items-center justify-center'
+                )}
+              >
+                <span className='invisible h-0 w-0 xs:visible xs:h-auto xs:w-auto'>
+                  Je suis&nbsp;
+                </span>
+                <div className='min-h-[1.75rem]'>
+                  {showExpertise && expertises && expertises.length > 0 && (
+                    <TypewriterText
+                      text={capitalizeFirstLetterOfEachWord(
+                        formatSpecialWords(expertises[currentExpertiseIndex])
+                      )}
+                      typingSpeed={60}
+                      delayBeforeStart={500}
+                      delayBeforeDelete={1500}
+                      onComplete={handleExpertiseComplete}
+                      className='text-center text-primary'
+                    />
+                  )}
+                </div>
+              </div>
+            </CardDescription>
+          </CardHeader>
+          <CardContent
             className={cn(
-              'h-full w-auto',
-              'relative z-50',
-              cnBigImage,
-              'rounded-full border-primary',
-              cnBorderBottom4
-            )}
-          />
-          <Avatar
-            className={cn(
-              'absolute z-0',
-              'scale-105 sm:scale-110',
-              '-top-2 md:-top-2.5',
-              cnBigImage,
-              cnSizeAuto
+              'flex flex-wrap justify-center',
+              'mx-auto max-w-3xl',
+              'my-2 gap-2 sm:gap-3'
             )}
           >
-            <ProfileImage
-              src={imageSrc || ''}
-              alt={imageAlt || ''}
-              width={ResponsiveImage()}
-              height={ResponsiveImage()}
-              className={cn(
-                'relative rounded-full',
-                cnSizeAuto,
-                cnLittleTranslateSm,
-                cnBigImage
-              )}
-            />
-            <AvatarFallback
-              className={cn(
-                cnSmallText,
-                'relative rounded-full',
-                cnSizeAuto,
-                cnLittleTranslateSm,
-                cnBigImage
-              )}
-            >
-              Profile
-            </AvatarFallback>
-          </Avatar>
+            {services &&
+              services.length > 0 &&
+              services.map((service, index) => (
+                <Badge
+                  variant='outline'
+                  key={index}
+                  className={cn(
+                    cnSmallPadding,
+                    cnSmallGap,
+                    'flex flex-grow sm:flex-grow-0',
+                    'basis-[calc(100%/3)] md:basis-auto',
+                    'min-w-3xl sm:min-w-auto sm:flex-col md:flex-row',
+                    index < 4 && 'flex-col md:flex-row',
+                    index === 4 && 'justify-center'
+                  )}
+                >
+                  <IconLoader
+                    icon={service.icon}
+                    className='h-4 w-4 flex-shrink-0 text-secondary'
+                  />
+                  <span className={cn('break-words text-center', cnSmallText)}>
+                    {capitalizeFirstLetterOfPhrase(
+                      formatSpecialWords(service.item)
+                    )}
+                  </span>
+                </Badge>
+              ))}
+          </CardContent>
         </div>
-        <h1 className={cn(cnTitle1)}>
-          {name && capitalizeFirstLetterOfEachWord(name)}{' '}
-          {familyName && familyName.toUpperCase()}
-        </h1>
-        <CardDescription
-          className={cn(
-            cnFlexCol,
-            cnFlexFullCenter,
-            cnBigDescription,
-            'max-w-prose'
-          )}
-        >
-          <p className={cn(cnDescription, 'text-foreground')}>
-            Besoin d&apos;un dev ?
-          </p>
-          <p className={cn(cnDescription, 'text-foreground')}>
-            <span className='hidden xxs:inline'>Je suis </span>
-            {showExpertise && expertises && expertises.length > 0 && (
-              <TypewriterText
-                text={capitalizeFirstLetterOfEachWord(
-                  formatSpecialWords(expertises[currentExpertiseIndex])
-                )}
-                typingSpeed={60}
-                delayBeforeStart={500}
-                delayBeforeDelete={1500}
-                onComplete={handleExpertiseComplete}
-                className='text-primary'
-              />
-            )}
-          </p>
-        </CardDescription>
-      </CardTitle>
-    </CardHeader>
-  );
-});
+      </>
+    );
+  }
+);
 
 HeroCard.displayName = 'HeroCard';

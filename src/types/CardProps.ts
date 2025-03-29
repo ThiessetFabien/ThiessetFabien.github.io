@@ -4,6 +4,7 @@ import type { ExperiencesProps } from './ExperiencesProps';
 import { JobsProps } from './JobsProps';
 import type { OtherExperienceProps } from './OtherExperiencesProps';
 import type { ProjectProps } from './ProjectProps';
+import type { ServicesProps } from './ServicesProps';
 import type { TechnologieProps } from './TechnologieProps';
 import type { TestimonialProps } from './TestimonialProps';
 import type { TopTechnologieProps } from './Top3TechnologieProps';
@@ -15,6 +16,7 @@ import type { TopTechnologieProps } from './Top3TechnologieProps';
  * @property {number} [index] - The index of the card.
  * @property {string} name - The name associated with the card.
  * @property {string} familyName - The family name associated with the card.
+ * @property {ServicesProps[]} services - The list of services provided.
  * @property {string[] | undefined} expertises - The list of expertises.
  * @property {JobsProps[] | undefined} jobs - The list of jobs.
  * @property {string} [title] - The title of the card.
@@ -59,6 +61,8 @@ export interface CardProps {
   index?: number;
   name: string;
   familyName: string;
+  services: ServicesProps[];
+
   expertises: string[] | undefined;
   jobs: JobsProps[] | undefined;
 

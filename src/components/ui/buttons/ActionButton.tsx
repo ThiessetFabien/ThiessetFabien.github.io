@@ -11,20 +11,20 @@ import { cnParagraph } from '@styles/font.style';
 import { IconLoader } from '@ui/icons/IconLoader';
 
 /**
- * @file ActionButton.tsx
- * @description This file exports a reusable button component.
+ * A versatile button component supporting links, icons, and various states.
+ * @param {Object} props - Component properties.
+ * @param {string} [props.cta] - Button text.
+ * @param {string} [props.icon] - Icon name.
+ * @param {string} [props.href] - Link URL.
+ * @param {boolean} [props.downloadActive] - Enables download behavior.
+ * @param {boolean} [props.disabled] - Disables the button.
+ * @param {string} [props.variant] - Button variant.
+ * @param {string} [props.type] - Button type (e.g., 'button', 'submit').
+ * @param {string} [props.size] - Button size.
+ * @param {Function} [props.onClick] - Click handler.
+ * @param {string} [props.className] - Additional class names.
+ * @returns {JSX.Element} Rendered button component.
  */
-
-/**
- * ActionButton component.
- * @param {ActionButton} props - The props for the component.
- * @param {string} props.href - The URL that the button links to.
- * @param {string} props.icon - The icon to display in the button.
- * @param {string} props.text - The text to display in the button.
- * @param {boolean} props.download - Whether the button should trigger a download.
- * @returns {JSX.Element} The rendered component.
- */
-
 export const ActionButton: React.FC<
   Omit<ActionButtonProps, 'icon'> & {
     icon?: IconName;

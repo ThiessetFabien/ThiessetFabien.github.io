@@ -76,6 +76,8 @@ export const formatSpecialWords = (string: string | undefined | null) => {
     "o'clock": "O'Clock",
     'front-end': 'Front-End',
     'arch linux': 'Arch Linux',
+    agile: 'Agile',
+    html: 'HTML',
   };
   let formattedString = string;
 

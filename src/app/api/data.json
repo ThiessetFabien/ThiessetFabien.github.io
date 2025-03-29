@@ -8,7 +8,17 @@
       "coordonnateur de projet"
     ],
     "imageSrc": "/images/profile.webp",
-    "imageAlt": "profile picture"
+    "imageAlt": "profile picture",
+    "services": [
+      { "icon": "Code", "item": "développement react.js, node.js" },
+      {
+        "icon": "Layout",
+        "item": "conception d'application, de site web"
+      },
+      { "icon": "Wrench", "item": "maintenance corrective, évolutive" },
+      { "icon": "Monitor", "item": "intégration html css" },
+      { "icon": "Users", "item": "développement agile" }
+    ]
   },
   {
     "name": "à propos",
