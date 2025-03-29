@@ -52,6 +52,15 @@ export const cnGapX = 'gap-x-4 md:gap-x-6';
 
 export const cnTopRightPosition = cn('right-4 md:right-6', 'top-4 md:top-6');
 
+/**
+ * A utility class name generator for positioning an element at the bottom-right corner
+ * with responsive adjustments for different screen sizes.
+ *
+ * - On smaller screens, the element is positioned 1rem (4 units) from the right and bottom.
+ * - On medium screens and above, the element is positioned 1.5rem (6 units) from the right and bottom.
+ *
+ * @constant
+ */
 export const cnBottomRightPosition = cn(
   'right-4 md:right-6',
   'bottom-4 md:bottom-6'

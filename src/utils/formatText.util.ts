@@ -18,6 +18,20 @@ export const capitalizeFirstLetterOfPhrase = (str: string) => {
     .join(' ');
 };
 
+/**
+ * Formats a given string by replacing specific words or phrases with their corresponding
+ * formatted versions as defined in a replacements map. If the input string is `undefined`
+ * or `null`, an empty string is returned.
+ *
+ * @param string - The input string to format. Can be `string`, `undefined`, or `null`.
+ * @returns The formatted string with replacements applied, or an empty string if the input is `undefined` or `null`.
+ *
+ * @example
+ * ```typescript
+ * const result = formatSpecialWords("I love javascript and css");
+ * console.log(result); // Output: "I love JavaScript and CSS"
+ * ```
+ */
 export const formatSpecialWords = (string: string | undefined | null) => {
   if (string === undefined || string === null) {
     return '';
