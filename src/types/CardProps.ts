@@ -17,8 +17,8 @@ import type { TopTechnologieProps } from './Top3TechnologieProps';
  * @property {string} name - The name associated with the card.
  * @property {string} familyName - The family name associated with the card.
  * @property {ServicesProps[]} services - The list of services provided.
- * @property {string[] | undefined} expertises - The list of expertises.
- * @property {JobsProps[] | undefined} jobs - The list of jobs.
+ * @property {string[]} expertises - The list of expertises.
+ * @property {JobsProps[]} jobs - The list of jobs.
  * @property {string} [title] - The title of the card.
  * @property {string} [description] - The description of the card.
  * @property {string} [imageSrc] - The source URL for the card image.
@@ -63,8 +63,8 @@ export interface CardProps {
   familyName: string;
   services: ServicesProps[];
 
-  expertises: string[] | undefined;
-  jobs: JobsProps[] | undefined;
+  expertises: string[];
+  jobs: JobsProps[];
 
   title?: string;
   description?: string;

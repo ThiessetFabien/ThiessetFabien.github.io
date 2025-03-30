@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { cnSpaceY } from '@/src/styles/boxModel.style';
+import { cnSmallSpaceY } from '@/src/styles/boxModel.style';
 import { cnFlexCol } from '@/src/styles/flex.style';
 import { cnParagraph, cnTitle3 } from '@/src/styles/font.style';
 import { useIsLg } from '@/src/styles/mediaQueries.style';
@@ -24,38 +24,45 @@ export const SkillsCard: React.FC<Pick<CardProps, 'jobs' | 'className'>> = memo(
     const isLg = useIsLg();
     return (
       <div className={className}>
-        {jobs?.map((job, i) => (
-          <React.Fragment key={i}>
-            <h3 className={cn(cnTitle3)}>
-              {capitalizeFirstLetterOfEachWord(formatSpecialWords(job.name))}
-            </h3>
-            <p className={cnParagraph}>
-              {capitalizeFirstLetterOfPhrase(
-                formatSpecialWords(job.description)
+        {jobs &&
+          jobs.length > 0 &&
+          jobs.map((job, i) => (
+            <React.Fragment key={i}>
+              {job.name && (
+                <h3 className={cn(cnTitle3)}>
+                  {capitalizeFirstLetterOfEachWord(
+                    formatSpecialWords(job.name)
+                  )}
+                </h3>
               )}
-            </p>
-            {isLg ? (
-              <div className={cn('flex items-start justify-between gap-4')}>
-                <ul className={cn('w-1/2', cnFlexCol, cnSpaceY)}>
-                  {job.skills.slice(0, 4).map((skill, i) => (
-                    <SkillList key={i} skill={skill} />
-                  ))}
+              <p className={cnParagraph}>
+                {capitalizeFirstLetterOfPhrase(
+                  formatSpecialWords(job.description)
+                )}
+              </p>
+              {isLg && job.skills ? (
+                <div className={cn('flex items-start justify-between gap-4')}>
+                  <ul className={cn('w-1/2', cnFlexCol, cnSmallSpaceY)}>
+                    {job.skills.slice(0, 4).map((skill, i) => (
+                      <SkillList key={i} skill={skill} />
+                    ))}
+                  </ul>
+                  <ul className={cn('w-1/2', cnFlexCol, cnSmallSpaceY)}>
+                    {job.skills.slice(4).map((skill, i) => (
+                      <SkillList key={i} skill={skill} />
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <ul className={cn('w-full', cnFlexCol, cnSmallSpaceY)}>
+                  {job.skills &&
+                    job.skills.map((skill, i) => (
+                      <SkillList key={i} skill={skill} />
+                    ))}
                 </ul>
-                <ul className={cn('w-1/2', cnFlexCol, cnSpaceY)}>
-                  {job.skills.slice(4).map((skill, i) => (
-                    <SkillList key={i} skill={skill} />
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <ul className={cn('w-full', cnFlexCol, cnSpaceY)}>
-                {job.skills.map((skill, i) => (
-                  <SkillList key={i} skill={skill} />
-                ))}
-              </ul>
-            )}
-          </React.Fragment>
-        ))}
+              )}
+            </React.Fragment>
+          ))}
       </div>
     );
   }
