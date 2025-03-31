@@ -25,9 +25,9 @@
     "jobs": [
       {
         "name": "développeur",
-        "description": "développeur full-stack préférant le front-end et spécialisé dans la création d'applications web et mobile avec une expertise particulière avec les frameworks next.js et express.js. après une année d'expériences, je continue d'apprendre en développant des solutions numériques, des sites vitrines en travaillant principalement avec typescript.",
+        "description": "développeur full-stack préférant le front-end et spécialisé dans la création d'applications web et mobile avec une expertise particulière des frameworks next.js et express.js. après une année d'expériences, je continue d'apprendre en développant des solutions numériques, des sites vitrines en travaillant principalement avec typescript.",
         "skills": [
-          "migration et optimisation d'environnements de développement sur arch linux.",
+          "migration et optimisation d'environnements de développement linux.",
           "conception et maquettage d'interfaces utilisateurs intuitives et engageantes.",
           "intégration d'interfaces utilisateurs accessibles et dynamiques (w3c).",
           "implémentation et intégrité de bases de données relationnelles postgresql.",
@@ -39,10 +39,10 @@
       },
       {
         "name": "coordinateur de projet | scrum master",
-        "description": "j'ai coordonné le quotidien des personnes accueillies en situation de handicap, pour la mise en œuvre de la méthode humanitude et son label, qui vise à améliorer la qualité de vie et le bien-être des personnes accueillies et des professionnels. j'ai également été scrum master durant le projet de fin de formation o'clock. mon but ? donner le mielleur au client.",
+        "description": "Depuis 2018, j'ai enrichi mon parcours d'aide soignant en coordonnant le quotidien des personnes accueillies en situation de handicap, pour la mise en œuvre de la méthode humanitude et son label, qui vise à améliorer la qualité de vie et le bien-être. nourrit d'une approche pragmatique, empathique et sensible à la création de solutions numériques accessibles, j'ai naturellement pris le rôle de scrum master durant le projet de fin de formation o'clock.",
         "skills": [
           "animation et fédération d'équipes autour de valeurs communes.",
-          "adaptation rapide des processus de travail lors de la crise covid-19.",
+          "adaptation rapide des processus, particulièrement lors de la crise covid-19.",
           "collaboration efficacement avec les services et l'encadrement et l'IGM HDF.",
           "travail en binôme avec la direction et co-animation du comité de pilotage.",
           "animation d'atelier et sensibilisation des équipes aux bonnes pratiques.",
@@ -50,10 +50,6 @@
           "elaboration et mise en oeuvre de stratégies d'accompagements complexes.",
           "instauration d'une communication bienveillante et attentive."
         ]
-      },
-      {
-        "name": "aide soignant",
-        "description": "Mon parcours d'aide soignant nourrit une approche pragmatique, empathique et sensible à la création de solutions numériques accessibles."
       }
     ]
   },

@@ -78,6 +78,9 @@ export const formatSpecialWords = (string: string | undefined | null) => {
     'arch linux': 'Arch Linux',
     agile: 'Agile',
     html: 'HTML',
+    covid: 'COVID',
+    linux: 'Linux',
+    w3c: 'W3C',
   };
   let formattedString = string;
 

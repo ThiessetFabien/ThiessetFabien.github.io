@@ -6,6 +6,8 @@ import {
   formatSpecialWords,
 } from '@/src/utils/formatText.util';
 
+import { IconLoader } from '../icons/IconLoader';
+
 /**
  * A React functional component that renders a list item (`<li>`) representing a skill.
  * The skill is displayed as a formatted and capitalized string, preceded by a styled indicator.
@@ -18,15 +20,13 @@ import {
 
 export const SkillList: React.FC<{
   skill: string;
-}> = ({ skill }) => {
+}> = ({ skill }: { skill: string }): JSX.Element => {
   return (
     <>
       <li className='flex'>
-        <div
-          className={cn(
-            cnSmallMarginX,
-            'h-2 min-w-2 translate-y-1 rounded-full bg-ring'
-          )}
+        <IconLoader
+          className={cn(cnSmallMarginX, 'flex-shrink-0 rounded-full bg-ring')}
+          icon={'CircleCheckBig'}
         />
         <span className={cn(cnParagraph)}>
           {capitalizeFirstLetterOfPhrase(formatSpecialWords(skill))}
