@@ -1,17 +1,22 @@
 import React, { memo } from 'react';
 
+import { Card, CardContent, CardHeader } from '@/src/lib/components/ui/card';
 import { cnSpaceY } from '@/src/styles/boxModel.style';
-import { cnFlexCol } from '@/src/styles/flex.style';
+import {
+  cnFlexBetweenY,
+  cnFlexCol,
+  cnFlexFullCenter,
+} from '@/src/styles/flex.style';
 import { cnParagraph, cnTitle3 } from '@/src/styles/font.style';
-import { useIsLg } from '@/src/styles/mediaQueries.style';
+import { cnSizeFull } from '@/src/styles/size.style';
 import {
   capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@/src/utils/formatText.util';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
+import { HighlightedText } from '../badge/HighlightedText';
 import { SkillList } from '../lists/SkillList';
 
 /**
@@ -21,47 +26,76 @@ import { SkillList } from '../lists/SkillList';
  */
 export const SkillsCard: React.FC<Pick<CardProps, 'jobs' | 'className'>> = memo(
   ({ jobs, className }: Pick<CardProps, 'jobs' | 'className'>): JSX.Element => {
-    const isLg = useIsLg();
+    const highlightWords = [
+      'développeur full-stack orienté front-end',
+      'next.js',
+      'express.js',
+      'typescript',
+      'coordinnateur de projet',
+      'qualité du prendre soin',
+      'bien-être',
+      'scrum master',
+    ];
+
     return (
-      <div className={className}>
+      <div
+        className={cn(
+          className,
+          cnFlexFullCenter,
+          cnFlexCol,
+          cnSizeFull,
+          cnSpaceY,
+          'xl:flex-row xl:space-y-0'
+        )}
+      >
         {jobs &&
           jobs.length > 0 &&
           jobs.map((job, i) => (
-            <React.Fragment key={i}>
-              {job.name && (
-                <h3 className={cn(cnTitle3)}>
-                  {capitalizeFirstLetterOfEachWord(
-                    formatSpecialWords(job.name)
-                  )}
-                </h3>
+            <Card
+              key={i}
+              className={cn(
+                'w-full flex-1 xl:w-1/2',
+                i === 0 && 'bg-foreground/80 text-background'
               )}
-              <p className={cnParagraph}>
-                {capitalizeFirstLetterOfPhrase(
-                  formatSpecialWords(job.description)
+            >
+              <CardHeader>
+                {job.name && (
+                  <h3 className={cn(cnTitle3)}>
+                    {capitalizeFirstLetterOfEachWord(
+                      formatSpecialWords(job.name)
+                    )}
+                  </h3>
                 )}
-              </p>
-              {isLg && job.skills ? (
-                <div className={cn('flex items-start justify-between gap-4')}>
-                  <ul className={cn('w-1/2', cnFlexCol, cnSpaceY)}>
-                    {job.skills.slice(0, 4).map((skill, i) => (
-                      <SkillList key={i} skill={skill} />
-                    ))}
-                  </ul>
-                  <ul className={cn('w-1/2', cnFlexCol, cnSpaceY)}>
-                    {job.skills.slice(4).map((skill, i) => (
-                      <SkillList key={i} skill={skill} />
-                    ))}
-                  </ul>
-                </div>
-              ) : (
-                <ul className={cn('w-full', cnFlexCol, cnSpaceY)}>
-                  {job.skills &&
-                    job.skills.map((skill, i) => (
-                      <SkillList key={i} skill={skill} />
-                    ))}
-                </ul>
-              )}
-            </React.Fragment>
+                <p
+                  className={cn(
+                    cnParagraph,
+                    'lg:max-w-auto max-w-max hyphens-auto break-words text-justify'
+                  )}
+                >
+                  <HighlightedText
+                    text={job.description}
+                    highlightWords={highlightWords}
+                  />
+                </p>
+              </CardHeader>
+              <CardContent>
+                {job.skills && (
+                  <div className={cnFlexBetweenY}>
+                    <ul
+                      className={cn(
+                        cnFlexCol,
+                        cnSpaceY,
+                        'w-full hyphens-auto break-words'
+                      )}
+                    >
+                      {job.skills.map((skill, i) => (
+                        <SkillList key={i} skill={skill} />
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
           ))}
       </div>
     );

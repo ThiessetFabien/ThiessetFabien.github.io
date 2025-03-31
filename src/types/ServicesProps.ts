@@ -1,7 +1,7 @@
 import { IconName } from './IconNameProps';
 
 /**
- * Represents the properties for a service item.
+ * Defines the properties for a service item.
  */
 export interface ServicesProps {
   /**
@@ -10,7 +10,12 @@ export interface ServicesProps {
   icon: IconName;
 
   /**
-   * The description or name of the service item.
+   * The name of the service item.
    */
   item: string;
+
+  /**
+   * A brief description of the service.
+   */
+  description: string;
 }

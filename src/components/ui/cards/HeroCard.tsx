@@ -4,6 +4,7 @@ import React, { memo, useEffect, useState, useCallback } from 'react';
 import { Badge } from '@/src/lib/components/ui/badge';
 import { cnBorder2, cnBorderBottom4 } from '@/src/styles/border.style';
 import {
+  cnPaddingX,
   cnSmallGap,
   cnSmallPadding,
   cnSpaceY,
@@ -56,7 +57,14 @@ const Cursor = () => {
 };
 
 /**
- * Component for animating typewriter text.
+ * TypewriterText component animates text with a typewriter effect.
+ *
+ * @param text - The text to animate.
+ * @param typingSpeed - Speed of typing animation in milliseconds.
+ * @param delayBeforeStart - Delay before typing starts in milliseconds.
+ * @param delayBeforeDelete - Delay before deleting starts in milliseconds.
+ * @param onComplete - Callback triggered when animation completes.
+ * @param className - Additional class names for styling.
  */
 const TypewriterText: React.FC<{
   text: string;
@@ -137,7 +145,15 @@ const TypewriterText: React.FC<{
 };
 
 /**
- * HeroCard component displaying a profile with typewriter animation for expertise.
+ * HeroCard component displays a profile card with typewriter animation for expertise.
+ *
+ * @param name - First name of the profile.
+ * @param familyName - Last name of the profile.
+ * @param expertises - List of expertise strings to animate.
+ * @param services - List of services with icons and descriptions.
+ * @param imageSrc - Source URL for the profile image.
+ * @param imageAlt - Alt text for the profile image.
+ * @param className - Additional class names for styling.
  */
 export const HeroCard: React.FC<{
   name: CardProps['name'];
@@ -180,9 +196,7 @@ export const HeroCard: React.FC<{
       <>
         <div className={cn(cnFlexFullCenter, cnFlexCol, 'h-full')}>
           <CardHeader className={className}>
-            <CardTitle
-              className={cn('flex', cnSpaceY, cnFlexCol, cnFlexFullCenter)}
-            >
+            <CardTitle className={cn('flex', cnSpaceY, cnFlexCol)}>
               <div
                 className={cn(
                   cnFlexFullCenter,
@@ -241,24 +255,23 @@ export const HeroCard: React.FC<{
                 {familyName && familyName.toUpperCase()}
               </h1>
             </CardTitle>
-            <CardDescription
-              className={cn(cnFlexCol, cnFlexFullCenter, cnBigDescription)}
-            >
+            <CardDescription className={cn(cnFlexCol, cnBigDescription)}>
               <p className={cn(cnDescription, 'text-foreground')}>
-                Besoin d&apos;un dev ?
+                Besoin d&apos;un développeur ?
               </p>
-              <div
+              <p
                 className={cn(
                   cnDescription,
+                  cnFlexCol,
                   'text-foreground',
-                  'flex h-auto flex-col xxs:flex-row',
-                  'w-full items-center justify-center'
+                  'h-auto xxs:flex-row',
+                  'w-full'
                 )}
               >
                 <span className='invisible h-0 w-0 xs:visible xs:h-auto xs:w-auto'>
                   Je suis&nbsp;
                 </span>
-                <div className='min-h-[1.75rem]'>
+                <span className='min-h-[1.75rem]'>
                   {showExpertise && expertises && expertises.length > 0 && (
                     <TypewriterText
                       text={capitalizeFirstLetterOfEachWord(
@@ -268,45 +281,50 @@ export const HeroCard: React.FC<{
                       delayBeforeStart={500}
                       delayBeforeDelete={1500}
                       onComplete={handleExpertiseComplete}
-                      className='text-center text-primary'
+                      className='text-primary'
                     />
                   )}
-                </div>
-              </div>
+                </span>
+              </p>
             </CardDescription>
           </CardHeader>
           <CardContent
             className={cn(
-              'flex flex-wrap justify-center',
-              'mx-auto max-w-3xl',
-              'my-2 gap-2 sm:gap-3'
+              cnPaddingX,
+              cnSmallGap,
+              'grid max-w-full flex-wrap',
+              'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'
             )}
           >
             {services &&
               services.length > 0 &&
-              services.map((service, index) => (
+              services.map((service, i) => (
                 <Badge
                   variant='outline'
-                  key={index}
+                  key={i}
                   className={cn(
                     cnSmallPadding,
+                    cnFlexFullCenter,
                     cnSmallGap,
-                    'flex flex-grow sm:flex-grow-0',
-                    'basis-[calc(100%/3)] md:basis-auto',
-                    'min-w-3xl sm:min-w-auto sm:flex-col md:flex-row',
-                    index < 4 && 'flex-col md:flex-row',
-                    index === 4 && 'justify-center'
+                    'flex-col sm:flex-row',
+                    i > 3 &&
+                      'lg:col-span-2 lg:flex-row lg:justify-center xl:col-span-1 xl:flex-row',
+                    cnSmallText,
+                    'hyphens-auto break-words'
                   )}
                 >
                   <IconLoader
                     icon={service.icon}
                     className='h-4 w-4 flex-shrink-0 text-secondary'
                   />
-                  <span className={cn('break-words text-center', cnSmallText)}>
-                    {capitalizeFirstLetterOfPhrase(
-                      formatSpecialWords(service.item)
-                    )}
-                  </span>
+                  <p className={cn(cnFlexCol, 'text-center')}>
+                    <span className='font-bold'>
+                      {capitalizeFirstLetterOfPhrase(
+                        formatSpecialWords(service.item)
+                      )}
+                    </span>
+                    <span>{formatSpecialWords(service.description)}</span>
+                  </p>
                 </Badge>
               ))}
           </CardContent>

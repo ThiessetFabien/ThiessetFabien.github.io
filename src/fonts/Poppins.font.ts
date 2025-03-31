@@ -8,7 +8,7 @@ export const Poppins = {
   className: 'font-poppins-sans',
   style: {
     fontFamily: 'Poppins, sans-serif',
-    fontWeight: '400',
+    fontWeight: '300',
     fontStyle: 'normal',
   },
 };

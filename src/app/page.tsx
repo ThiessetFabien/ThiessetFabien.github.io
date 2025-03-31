@@ -129,12 +129,7 @@ const HomePage: React.FC = (): JSX.Element => {
                         className=''
                       />
                     )}
-                  {card.jobs && (
-                    <SkillsCard
-                      jobs={card.jobs}
-                      className={cn(cnSpaceY, 'w-full')}
-                    />
-                  )}
+                  {card.jobs && <SkillsCard jobs={card.jobs} />}
                   {isClient &&
                     card.testimonials &&
                     card.testimonials.length > 0 && (
@@ -191,9 +186,10 @@ const HomePage: React.FC = (): JSX.Element => {
                 </CardContent>
               </>
             ) : (
-              <CardContent className='hidden' />
+              <CardContent className='invisible' />
             )}
             {!card.mailto &&
+              !card.jobs &&
               ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
                 <CardFooter
                   className={cn(cnPaddingX, cnPaddingBottom, 'flex-none')}

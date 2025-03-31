@@ -1,12 +1,7 @@
 import { cn } from '@lib/utils';
 
 /**
- * A utility class name constant for styling title elements.
- * Combines multiple Tailwind CSS classes to define font style, weight, tracking, and responsive text sizes.
- *
- * - `font-caption font-bold tracking-tight`: Sets the font style to caption, makes it bold, and applies tight letter spacing.
- * - `text-3xl`: Sets the base text size to 3xl.
- * - `lg:text-6xl`: Adjusts the text size to 6xl on large screens.
+ * Utility class for styling title elements with combined Tailwind CSS classes.
  */
 export const cnTitle1 = cn(
   'font-caption font-bold tracking-tight',
@@ -14,12 +9,24 @@ export const cnTitle1 = cn(
   'lg:text-6xl'
 );
 
+/**
+ * Utility class for defining the size of Title 2 elements.
+ */
 export const cnTitle2Size = cn('text-3xl');
 
+/**
+ * Utility class for styling Title 2 elements.
+ */
 export const cnTitle2 = cn('font-caption font-bold tracking-tight');
 
+/**
+ * Utility class for styling Title 3 elements.
+ */
 export const cnTitle3 = cn('font-caption font-bold tracking-tight', 'text-2xl');
 
+/**
+ * Utility class for styling large description text.
+ */
 export const cnBigDescription = cn(
   'font-normal',
   'font-sans',
@@ -27,18 +34,33 @@ export const cnBigDescription = cn(
   'lg:text-2xl'
 );
 
+/**
+ * Utility class for styling description text.
+ */
 export const cnDescription = cn('font-normal', 'font-sans');
 
-export const cnParagraph = cn('font-normal', 'font-sans', 'text-base');
+/**
+ * Utility class for styling paragraph text.
+ */
+export const cnParagraph = cn('font-normal', 'font-sans');
 
-export const cnSmallText = cn('text-xs', 'font-sans font-normal');
+/**
+ * Utility class for styling small text.
+ */
+export const cnSmallText = cn('text-sm', 'font-sans font-normal');
 
+/**
+ * Utility class for styling bold muted text.
+ */
 export const cnBoldTextMuted = cn(
   'text-muted-foreground',
   'font-sans',
   'font-semibold'
 );
 
+/**
+ * Utility class for styling light muted text.
+ */
 export const cnLightTextMuted = cn(
   'text-muted-foreground',
   'font-sans',

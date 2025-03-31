@@ -8,6 +8,12 @@ export const capitalizeFirstLetterOfEachWord = (str: string) => {
     .join(' ');
 };
 
+/**
+ * Capitalizes the first letter of each phrase in a string. Phrases are split by `.`, `?`, or `!`.
+ *
+ * @param str - The input string.
+ * @returns The string with the first letter of each phrase capitalized.
+ */
 export const capitalizeFirstLetterOfPhrase = (str: string) => {
   return str
     .split(/(?<=\.|\?|!)\s+/)
@@ -20,17 +26,10 @@ export const capitalizeFirstLetterOfPhrase = (str: string) => {
 
 /**
  * Formats a given string by replacing specific words or phrases with their corresponding
- * formatted versions as defined in a replacements map. If the input string is `undefined`
- * or `null`, an empty string is returned.
+ * formatted versions as defined in a replacements map.
  *
  * @param string - The input string to format. Can be `string`, `undefined`, or `null`.
  * @returns The formatted string with replacements applied, or an empty string if the input is `undefined` or `null`.
- *
- * @example
- * ```typescript
- * const result = formatSpecialWords("I love javascript and css");
- * console.log(result); // Output: "I love JavaScript and CSS"
- * ```
  */
 export const formatSpecialWords = (string: string | undefined | null) => {
   if (string === undefined || string === null) {
@@ -77,10 +76,17 @@ export const formatSpecialWords = (string: string | undefined | null) => {
     'front-end': 'Front-End',
     'arch linux': 'Arch Linux',
     agile: 'Agile',
+    scrum: 'Scrum',
     html: 'HTML',
     covid: 'COVID',
     linux: 'Linux',
     w3c: 'W3C',
+    développeur: 'Développeur',
+    'coordinnateur de projet': 'Coordinnateur de Projet',
+    jest: 'Jest',
+    andodea: 'Andodea',
+    'qualité du prendre soin': 'Qualité du Prendre Soin',
+    'bien-être': 'Bien-Être',
   };
   let formattedString = string;
 

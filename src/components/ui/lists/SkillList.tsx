@@ -1,5 +1,5 @@
 import { cn } from '@/src/lib/utils';
-import { cnSmallMarginX } from '@/src/styles/boxModel.style';
+import { cnSmallMarginRight } from '@/src/styles/boxModel.style';
 import { cnParagraph } from '@/src/styles/font.style';
 import {
   capitalizeFirstLetterOfPhrase,
@@ -9,15 +9,12 @@ import {
 import { IconLoader } from '../icons/IconLoader';
 
 /**
- * A React functional component that renders a list item (`<li>`) representing a skill.
- * The skill is displayed as a formatted and capitalized string, preceded by a styled indicator.
+ * Renders a list item representing a skill with a styled indicator and formatted text.
  *
- * @component
- * @param {Object} props - The props object.
- * @param {string} props.skill - The skill to be displayed in the list item.
- * @returns {JSX.Element} A list item containing the formatted skill name and a visual indicator.
+ * @param {Object} props - Component props.
+ * @param {string} props.skill - The skill to display.
+ * @returns {JSX.Element} The rendered list item.
  */
-
 export const SkillList: React.FC<{
   skill: string;
 }> = ({ skill }: { skill: string }): JSX.Element => {
@@ -25,8 +22,8 @@ export const SkillList: React.FC<{
     <>
       <li className='flex'>
         <IconLoader
-          className={cn(cnSmallMarginX, 'flex-shrink-0 rounded-full bg-ring')}
-          icon={'CircleCheckBig'}
+          className={cn(cnSmallMarginRight, 'flex-shrink-0 text-primary')}
+          icon={'Check'}
         />
         <span className={cn(cnParagraph)}>
           {capitalizeFirstLetterOfPhrase(formatSpecialWords(skill))}

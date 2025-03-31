@@ -13,24 +13,33 @@ import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
 /**
- * A React functional component that renders a header card with a title and an optional description.
+ * HeaderCard component.
  *
- * @component
- * @param {Object} props - The props object for the HeaderCard component.
- * @param {string} props.title - The title of the card, which will be displayed in uppercase and formatted with each word capitalized.
- * @param {string} [props.description] - An optional description for the card, formatted with special words handled and the first letter of the phrase capitalized.
- * @param {string} [props.className] - An optional CSS class name to apply custom styles to the card header.
+ * @param {Object} props - Component properties.
+ * @param {string} props.title - The card title, displayed in uppercase with each word capitalized.
+ * @param {string} [props.description] - Optional card description, formatted with special words handled and the first letter capitalized.
+ * @param {string} [props.className] - Optional CSS class for custom styles.
  *
- * @returns {JSX.Element} A header element containing the card title and optional description.
+ * @returns {JSX.Element} The rendered HeaderCard component.
  */
 export const HeaderCard: React.FC<{
   title: CardProps['title'];
   description: CardProps['description'];
   className: CardProps['className'];
-}> = ({ title, description, className }) => {
+}> = ({
+  title,
+  description,
+  className,
+}: {
+  title: string | undefined;
+  description?: string;
+  className?: string;
+}): JSX.Element => {
   return (
     <header>
-      <CardHeader className={className}>
+      <CardHeader
+        className={cn(className, 'hyphens-auto break-words text-center')}
+      >
         <CardTitle
           className={cn('hyphens-auto break-words text-center')}
           aria-label={title}
