@@ -16,7 +16,7 @@ import {
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
-import { HighlightedText } from '../badge/HighlightedText';
+import { HighlightedText } from '../../../utils/HighlightedText';
 import { SkillList } from '../lists/SkillList';
 
 /**
@@ -55,7 +55,7 @@ export const SkillsCard: React.FC<Pick<CardProps, 'jobs' | 'className'>> = memo(
               key={i}
               className={cn(
                 'w-full flex-1 xl:w-1/2',
-                i === 0 && 'bg-foreground/80 text-background'
+                i === 0 ? 'h-full bg-foreground/80 text-background' : 'h-auto'
               )}
             >
               <CardHeader>

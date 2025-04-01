@@ -109,7 +109,10 @@ export const ContactForm: React.FC<{
   };
 
   return (
-    <Form {...form} aria-labelledby='contact'>
+    <Form {...form} aria-labelledby='contact-form-heading'>
+      <h2 id='contact-form-heading' className='sr-only'>
+        Formulaire de contact
+      </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={cn(className, 'flex flex-col')}
@@ -126,6 +129,7 @@ export const ContactForm: React.FC<{
             errors={errors.name}
             label='Name and family name :'
             placeholder='John Doe'
+            aria-required='true'
           />
           <InputField
             control={control}
@@ -133,6 +137,7 @@ export const ContactForm: React.FC<{
             name='phone'
             label='Phone :'
             placeholder='0123456789'
+            aria-required='true'
           />
           <InputField
             control={control}
@@ -159,6 +164,7 @@ export const ContactForm: React.FC<{
             errors={errors.consent}
             name='consent'
             label='I agree to be contacted using the provided information.'
+            aria-required='true'
           />
           <FooterCard
             mailto={mailto}

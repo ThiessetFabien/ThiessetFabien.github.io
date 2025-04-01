@@ -41,33 +41,33 @@
         "name": "développeur",
         "description": "développeur full-stack orienté front-end, spécialisé dans la création d'applications web et mobile avec une expertise particulière des frameworks next.js et express.js. après une année d'expériences, nourrit d'une approche pragmatique, je développe des solutions numériques accessibles, en travaillant principalement avec typescript.",
         "skills": [
-          "optimisation d'environnements de développement linux.",
-          "conception, maquettage d'interfaces utilisateurs intuitives.",
-          "intégration d'interfaces utilisateurs accessibles, dynamiques.",
-          "implémentation et intégrité de bases de données postgresql.",
+          "optimisation d'environnement de développement linux.",
+          "conception, maquettage d'interface utilisateur intuitive.",
+          "intégration d'interface utilisateur moderne, accessible.",
+          "implémentation et intégrité de base de données postgresql.",
           "création de composant sécurisé d'accès à postgresql, mongodb.",
-          "création de composants métiers sécurisés et testés avec jest.",
+          "création de composant métier sécurisé et testé avec jest.",
           "rédaction de documentation technique et fonctionnelle en anglais.",
-          "approche structurée de résolution de problèmes.",
+          "approche structurée de résolution de problème.",
           "apprentissage continu de l'anglais, du développement et veille technologique."
         ]
       },
       {
-        "name": "coordinateur de projets | scrum master",
-        "description": "Depuis 2018, j'ai enrichi mon parcours d'aide soignant en occupant le poste de coordinnateur de projet de la démarche humanitude son label, et du quotidien des personnes accueillies en situation de handicap, garantissant la qualité du prendre soin et le bien-être. j'ai également occupé le rôle de scrum master pour le projet de fin de formation à l'école o'clock.",
+        "name": "coordinateur de projet | scrum master",
+        "description": "Depuis 2018, j'ai enrichi mon parcours d'aide soignant en occupant le poste de coordinnateur de projet de la démarche humanitude, son label, et du quotidien de personne en situation de handicap, garantissant la qualité du prendre soin et le bien-être. j'ai aussi été scrum master pour notre projet de fin de formation.",
         "skills": [
-          "facilitation de groupes autour de valeurs communes, partage des bonnes pratiques et co-animation de comités stratégiques.",
-          "Gestion collaborative de la planification, suivi d'évaluations complexes (+200 critères) et adaptation rapide des processus.",
+          "facilitation de groupe autour de valeur commune, partage de bonnes pratiques et co-animation de comité stratégique.",
+          "Gestion collaborative de la planification, suivi d'évaluation complexe (+200 critères) et adaptation rapide des processus.",
           "co-conception, test, optimisation de la plateforme ancodea.",
           "coordination efficace avec les équipes internes, externes, incluant l'IGM HDF, garantissant une communication fluide.",
-          "élaboration et mise en oeuvre de stratégies adaptées à des contextes complexes, notamment en période de covid-19.",
+          "élaboration et mise en oeuvre de stratégie adaptée à des contextes complexes, notamment en période de covid-19.",
           "instauration d'une culture collaborative basée sur l'écoute active, l'autonomie et le leadership positif."
         ]
       }
     ]
   },
   {
-    "title": "quelques choses que j'ai construites",
+    "name": "portfolio",
     "description": "voici une collection de mes projets javascript récents, montrant le type de clients avec lesquels je collabore et les solutions que je propose.",
     "projects": [
       {

@@ -3,6 +3,7 @@
 import { ThemeProvider } from 'next-themes';
 import { useEffect, useState } from 'react';
 
+import { FloatingMenubar } from '@/src/components/ui/menus/FloatingMenubar';
 import { VideoRedirectHandler } from '@/src/components/VideoRedirectHandler';
 import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
 import { Footer } from '@layouts/FooterLayout';
@@ -76,8 +77,47 @@ export default function RootLayout({
       });
   }, []);
 
+  const menuItems = [
+    {
+      id: 'linkedin',
+      icon: 'Linkedin',
+      label: 'LinkedIn',
+      href: 'www.linkedin.com/in/fabien-thiesset',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    {
+      id: 'github',
+      icon: 'Github',
+      label: 'Github',
+      href: 'https://github.com/ThiessetFabien?tab=repositories',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    {
+      id: 'contact',
+      icon: 'Mail',
+      label: 'Contact',
+      href: 'mailto:thiessetfabienpro@gmail.com',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    {
+      id: 'phone',
+      icon: 'Phone',
+      label: 'Phone',
+      href: 'tel:+33610920974',
+    },
+  ];
+
   return (
-    <html lang='fr' suppressHydrationWarning className='w-full'>
+    <html
+      lang='fr'
+      suppressHydrationWarning
+      className='w-full'
+      itemScope
+      itemType='https://schema.org/WebPage'
+    >
       <MetaHead
         title={`${metadata?.title}`}
         description={`${metadata?.description}`}
@@ -90,7 +130,6 @@ export default function RootLayout({
           cnFlexFullCenter,
           cnPaddingTop,
           cnFlexCol
-          // 'bg-gradient-to-br from-secondary to-primary'
         )}
         style={{
           ...Poppins.style,
@@ -104,8 +143,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <a
+            href='#main-content'
+            className='sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-background focus:p-2 focus:text-foreground'
+          >
+            Aller au contenu principal
+          </a>
           <FloatingToggles />
+          <FloatingMenubar items={menuItems} />
           <main
+            id='main-content'
+            aria-label='Contenu principal'
             className={cn(
               cnGap,
               'h-full',

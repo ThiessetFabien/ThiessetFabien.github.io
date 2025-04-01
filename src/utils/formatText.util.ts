@@ -84,7 +84,7 @@ export const formatSpecialWords = (string: string | undefined | null) => {
     développeur: 'Développeur',
     'coordinnateur de projet': 'Coordinnateur de Projet',
     jest: 'Jest',
-    andodea: 'Andodea',
+    ancodea: 'Ancodea',
     'qualité du prendre soin': 'Qualité du Prendre Soin',
     'bien-être': 'Bien-Être',
   };
