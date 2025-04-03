@@ -1,3 +1,4 @@
+import { cnBorderRadiusFull } from '@/src/styles/border.style';
 import { cnMarginX } from '@/src/styles/boxModel.style';
 import { cnFlexCol } from '@/src/styles/flex.style';
 import {
@@ -23,7 +24,8 @@ export const ExperiencesList: React.FC<{
         <div
           className={cn(
             cnMarginX,
-            'h-2 w-2 translate-y-2 rounded-full bg-ring'
+            cnBorderRadiusFull,
+            'h-2 w-2 translate-y-2 bg-ring'
           )}
         />
         <div className={cn(cnFlexCol, 'sm:flex-row')}>

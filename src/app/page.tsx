@@ -44,7 +44,7 @@ const LazyTestimonialsCard = dynamic(
   {
     ssr: false,
     loading: () => (
-      <LoadingSpinner size='md' message='Loading testimonials...' />
+      <LoadingSpinner size='lg' message='Loading testimonials...' />
     ),
   }
 );

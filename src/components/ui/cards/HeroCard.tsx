@@ -2,7 +2,11 @@ import { motion } from 'framer-motion';
 import React, { memo, useEffect, useState, useCallback } from 'react';
 
 import { Badge } from '@/src/lib/components/ui/badge';
-import { cnBorder2, cnBorderBottom4 } from '@/src/styles/border.style';
+import {
+  cnBorder2,
+  cnBorderBottom4,
+  cnBorderRadiusFull,
+} from '@/src/styles/border.style';
 import {
   cnPaddingX,
   cnSmallGap,
@@ -18,7 +22,11 @@ import {
 } from '@/src/styles/font.style';
 import { cnBigImage } from '@/src/styles/image.styles';
 import { ResponsiveImage } from '@/src/styles/mediaQueries.style';
-import { cnSizeAuto } from '@/src/styles/size.style';
+import {
+  cnAutoHeightFullWidth,
+  cnSizeAuto,
+  cnSizeIcon,
+} from '@/src/styles/size.style';
 import { cnLittleTranslateSm } from '@/src/styles/translate.style';
 import {
   capitalizeFirstLetterOfEachWord,
@@ -203,7 +211,8 @@ export const HeroCard: React.FC<{
                   'h-full w-auto',
                   'relative z-30',
                   cnBigImage,
-                  'rounded-full border-primary',
+                  cnBorderRadiusFull,
+                  'border-primary',
                   cnBorder2
                 )}
               >
@@ -212,7 +221,8 @@ export const HeroCard: React.FC<{
                     'h-full w-auto',
                     'relative z-50',
                     cnBigImage,
-                    'rounded-full border-primary',
+                    cnBorderRadiusFull,
+                    'border-primary',
                     cnBorderBottom4
                   )}
                 />
@@ -231,7 +241,8 @@ export const HeroCard: React.FC<{
                     width={ResponsiveImage()}
                     height={ResponsiveImage()}
                     className={cn(
-                      'relative rounded-full',
+                      'relative',
+                      cnBorderRadiusFull,
                       cnSizeAuto,
                       cnLittleTranslateSm,
                       cnBigImage
@@ -240,7 +251,8 @@ export const HeroCard: React.FC<{
                   <AvatarFallback
                     className={cn(
                       cnSmallText,
-                      'relative rounded-full',
+                      'relative',
+                      cnBorderRadiusFull,
                       cnSizeAuto,
                       cnLittleTranslateSm,
                       cnBigImage
@@ -263,9 +275,9 @@ export const HeroCard: React.FC<{
                 className={cn(
                   cnDescription,
                   cnFlexCol,
+                  cnAutoHeightFullWidth,
                   'text-foreground',
-                  'h-auto xxs:flex-row',
-                  'w-full'
+                  'xxs:flex-row'
                 )}
               >
                 <span className='invisible h-0 w-0 xs:visible xs:h-auto xs:w-auto'>
@@ -306,7 +318,8 @@ export const HeroCard: React.FC<{
                     cnSmallPadding,
                     cnFlexFullCenter,
                     cnSmallGap,
-                    'flex-col sm:flex-row',
+                    cnFlexCol,
+                    'sm:flex-row',
                     i > 3 &&
                       'lg:col-span-2 lg:flex-row lg:justify-center xl:col-span-1 xl:flex-row',
                     cnSmallText,
@@ -315,7 +328,7 @@ export const HeroCard: React.FC<{
                 >
                   <IconLoader
                     icon={service.icon}
-                    className='h-4 w-4 flex-shrink-0 text-secondary'
+                    className={cn(cnSizeIcon, 'text-secondary')}
                   />
                   <p className={cn(cnFlexCol, 'text-center')}>
                     <span className='font-bold'>

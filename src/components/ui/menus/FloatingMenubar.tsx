@@ -1,15 +1,6 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import {
-  BriefcaseBusiness,
-  ClipboardList,
-  GalleryHorizontal,
-  Home,
-  PenTool,
-  User,
-} from 'lucide-react';
-import Link from 'next/link';
 import * as React from 'react';
 import { useCallback, useEffect, useState, useRef } from 'react';
 
@@ -18,52 +9,28 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from '@/src/lib/components/ui/menubar';
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '@/src/lib/components/ui/sheet';
 import { cn } from '@/src/lib/utils';
+import { cnBorderRadiusMd } from '@/src/styles/border.style';
 import {
   cnGap,
   cnPaddingBottom,
   cnPaddingX,
+  cnSmallMarginLeft,
   cnSmallPadding,
   cnSmallSpaceY,
 } from '@/src/styles/boxModel.style';
-import { cnFlexCenterY, cnFlexCol } from '@/src/styles/flex.style';
+import {
+  cnFlexCenterX,
+  cnFlexCenterY,
+  cnFlexCol,
+} from '@/src/styles/flex.style';
+import { cnHiddenLgInline } from '@/src/styles/hideItem.style';
+import { cnSizeIcon } from '@/src/styles/size.style';
 import { scrollToTop } from '@hooks/ScrollToTop.hook';
-import { useIsMobile, useIsTablet } from '@src/hooks/useMediaQuery.hook';
+import { useIsLg } from '@src/styles/mediaQueries.style';
+import { MenuItemProps } from '@src/types/MenuItemProps';
 import { IconLoader } from '@ui/icons/IconLoader';
-
-/**
- * Interface for menu item properties
- */
-interface MenuItemType {
-  id: string;
-  icon: string;
-  label: string;
-  href?: string;
-  target?: string;
-  rel?: string;
-  onClick?: () => void;
-  disabled?: boolean;
-  items?: {
-    id: string;
-    label: string;
-    href?: string;
-    onClick?: () => void;
-    disabled?: boolean;
-  }[];
-}
-
-/**
- * Props for the FloatingMenubar component
- */
-interface FloatingMenubarProps {
-  items: MenuItemType[];
-  className?: string;
-}
+import { MobileMenu } from '@ui/sheet/MobileMenu';
 
 /**
  * A floating menu bar component that provides navigation and action buttons.
@@ -75,11 +42,13 @@ interface FloatingMenubarProps {
 export const FloatingMenubar = ({
   items,
   className,
-}: FloatingMenubarProps): JSX.Element | null => {
+}: {
+  items: MenuItemProps[];
+  className?: string;
+}): JSX.Element | null => {
   const [isMounted, setIsMounted] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const isMobile = useIsMobile();
-  const isTablet = useIsTablet();
+  const IsLg = useIsLg();
 
   // Reference for scroll tracking
   const lastScrollYRef = useRef(0);
@@ -126,148 +95,78 @@ export const FloatingMenubar = ({
   }
 
   // Dynamically add scrollTop button to existing items
-  const menuItemsWithScrollTop: (
-    | MenuItemType
-    | {
-        id: string;
-        icon: string;
-        onClick: () => void;
-        label: string;
-        href: string;
-        target?: string;
-        rel?: string;
-      }
-  )[] = [
-    ...items,
-    ...(scrollTopVisible
-      ? [
-          {
-            id: 'scrollTop',
-            icon: 'ChevronsUp',
-            label: 'Scroll to Top',
-            onClick: scrollToTop,
-            href: '',
-          },
-        ]
-      : []),
-  ];
+  const menuItemsMobile: MenuItemProps[] = items.filter(
+    (item) =>
+      ![
+        'services',
+        'about',
+        'portfolio',
+        'experience',
+        'resume',
+        'motivation',
+      ].includes(item.id)
+  );
 
-  const positionClasses = isMobile
-    ? cn('fixed left-0 right-0 bottom-0 z-50 px-6', cnPaddingBottom)
-    : 'fixed left-4 top-1/2 z-50';
+  const menuItemsTabletteAndDesktop: MenuItemProps[] = items.filter(
+    (item) => item.id !== 'scrollTop'
+  );
 
-  const menubarClasses = isMobile
-    ? cn(
-        cnSmallPadding,
-        cnGap,
-        'flex justify-around backdrop-blur-md border bg-background/90'
-      )
+  const positionClasses = IsLg
+    ? 'fixed h-content left-8 top-1/2 -translate-y-1/2 z-50'
     : cn(
+        'fixed w-full left-0 right-0 bottom-0 z-50 px-6',
+        cnPaddingBottom,
+        cnFlexCenterX
+      );
+
+  const menubarClasses = IsLg
+    ? cn(
         cnFlexCol,
         cnSmallSpaceY,
         cnPaddingX,
-        'backdrop-blur-md bg-background/90 rounded-lg border shadow-lg'
+        'backdrop-blur-md bg-background/90 rounded-lg border shadow-lg h-content'
+      )
+    : cn(
+        cnSmallPadding,
+        cnGap,
+        'flex justify-around backdrop-blur-md border bg-background/90'
       );
-
-  // Mobile menu component
-  const MobileMenu = () => (
-    <Sheet>
-      <SheetTrigger
-        className={cn(cnFlexCenterY, 'rounded-md transition-all')}
-        aria-label='Ouvrir le menu de navigation'
-      >
-        <IconLoader
-          icon='Menu'
-          className='h-4 w-4 flex-shrink-0'
-          aria-hidden='true'
-        />
-      </SheetTrigger>
-      <SheetContent side='left'>
-        <nav
-          aria-label='Navigation principale'
-          className='flex flex-col space-y-4 pt-8'
-        >
-          <Link href='/' className='flex items-center gap-2'>
-            <Home className='h-4 w-4' aria-hidden='true' />
-            <span>Accueil</span>
-          </Link>
-          <Link href='/about' className='flex items-center gap-2'>
-            <User className='h-4 w-4' aria-hidden='true' />
-            <span>À propos</span>
-          </Link>
-          <Link href='/portfolio' className='flex items-center gap-2'>
-            <GalleryHorizontal className='h-4 w-4' aria-hidden='true' />
-            <span>Portfolio</span>
-          </Link>
-          <Link href='/experiences' className='flex items-center gap-2'>
-            <BriefcaseBusiness className='h-4 w-4' aria-hidden='true' />
-            <span>Expériences</span>
-          </Link>
-          <Link href='/cv' className='flex items-center gap-2'>
-            <ClipboardList className='h-4 w-4' aria-hidden='true' />
-            <span>CV</span>
-          </Link>
-          <Link href='/motivation' className='flex items-center gap-2'>
-            <PenTool className='h-4 w-4' aria-hidden='true' />
-            <span>Motivation</span>
-          </Link>
-          {items.map((item) => (
-            <Link
-              key={item.id}
-              href={item.href || '#'}
-              target={item.target}
-              rel={item.rel}
-              className='flex items-center gap-2'
-              aria-label={item.label}
-            >
-              <IconLoader
-                icon={item.icon}
-                className='h-4 w-4'
-                aria-hidden='true'
-              />
-              <span>{item.label}</span>
-            </Link>
-          ))}
-        </nav>
-      </SheetContent>
-    </Sheet>
-  );
 
   return (
     <AnimatePresence>
       <div
-        className={cn(positionClasses, 'flex w-full justify-center', className)}
+        className={cn(positionClasses, className)}
         role='navigation'
         aria-label='Navigation flottante'
       >
-        {isMobile ? (
-          <Menubar className={cn(menubarClasses, cnGap)}>
-            <MobileMenu />
-            {items.map((item) => (
-              <Link
+        {!IsLg ? (
+          <Menubar className={cn(menubarClasses)}>
+            <MobileMenu items={items} />
+            {menuItemsMobile.map((item) => (
+              <a
                 key={item.id}
-                href={item.href || '#'}
+                href={item.href}
                 target={item.target}
                 rel={item.rel}
-                className='flex items-center gap-2'
+                className={cnFlexCenterY}
                 aria-label={item.label}
               >
                 <IconLoader
                   icon={item.icon}
-                  className='h-4 w-4'
+                  className={cnSizeIcon}
                   aria-hidden='true'
                 />
-              </Link>
+              </a>
             ))}
             {scrollTopVisible && (
               <button
                 onClick={scrollToTop}
-                className='flex items-center'
+                className={cnFlexCenterY}
                 aria-label='Revenir en haut de la page'
               >
                 <IconLoader
                   icon='ChevronsUp'
-                  className='h-4 w-4'
+                  className={cnSizeIcon}
                   aria-hidden='true'
                 />
               </button>
@@ -275,10 +174,10 @@ export const FloatingMenubar = ({
           </Menubar>
         ) : (
           <Menubar className={cn(menubarClasses)}>
-            {menuItemsWithScrollTop.map((item) => (
+            {menuItemsTabletteAndDesktop.map((item) => (
               <MenubarMenu key={item.id}>
                 <div
-                  className='relative flex items-center'
+                  className='relative flex'
                   onMouseEnter={() => handleHover(item.id)}
                   onMouseLeave={() => handleHover(null)}
                 >
@@ -291,29 +190,29 @@ export const FloatingMenubar = ({
                         className={cn(
                           cnSmallPadding,
                           cnFlexCenterY,
-                          'rounded-md transition-all',
-                          'hover:bg-accent/80 hover:text-accent-foreground hover:backdrop-blur-none',
-                          item.id === 'scrollTop' && 'hover:animate-pulse'
+                          cnBorderRadiusMd,
+                          'transition-all',
+                          'hover:bg-accent/80 hover:text-accent-foreground hover:backdrop-blur-none'
                         )}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        animate={
-                          item.id !== 'scrollTop'
-                            ? undefined
-                            : { scale: 1, opacity: 1 }
-                        }
                         aria-label={item.label}
                       >
                         <IconLoader
                           icon={item.icon}
-                          className='h-4 w-4 flex-shrink-0'
+                          className={cnSizeIcon}
                           aria-hidden='true'
                         />
                         <AnimatePresence mode='wait'>
-                          {(hoveredItem === item.id || isTablet) && (
-                            <span className='hidden lg:inline'>
+                          {(hoveredItem === item.id || !IsLg) && (
+                            <span className={cn(cnHiddenLgInline)}>
                               {item.id === 'scrollTop' ? (
-                                <span className='ml-2 whitespace-nowrap'>
+                                <span
+                                  className={cn(
+                                    cnSmallMarginLeft,
+                                    'whitespace-nowrap'
+                                  )}
+                                >
                                   {item.label}
                                 </span>
                               ) : (
@@ -322,7 +221,10 @@ export const FloatingMenubar = ({
                                   animate={{ width: 'auto', opacity: 1 }}
                                   exit={{ width: 0, opacity: 0 }}
                                   transition={{ duration: 0.3 }}
-                                  className='ml-2 overflow-hidden whitespace-nowrap'
+                                  className={cn(
+                                    cnSmallMarginLeft,
+                                    'overflow-hidden whitespace-nowrap'
+                                  )}
                                 >
                                   {item.label}
                                 </motion.span>
@@ -337,7 +239,8 @@ export const FloatingMenubar = ({
                       className={cn(
                         cnSmallPadding,
                         cnFlexCenterY,
-                        'rounded-md transition-all',
+                        cnBorderRadiusMd,
+                        'transition-all',
                         'hover:bg-accent/80 hover:text-accent-foreground hover:backdrop-blur-none'
                       )}
                       onClick={item.onClick}
@@ -346,28 +249,31 @@ export const FloatingMenubar = ({
                       <motion.div
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className='flex items-center'
+                        className={cnFlexCenterY}
                       >
                         <IconLoader
                           icon={item.icon}
-                          className='h-4 w-4 flex-shrink-0'
+                          className={cnSizeIcon}
                           aria-hidden='true'
                         />
-                        <AnimatePresence>
-                          {(hoveredItem === item.id || isTablet) && (
-                            <span className='hidden lg:inline'>
-                              <motion.span
-                                initial={{ width: 0, opacity: 0 }}
-                                animate={{ width: 'auto', opacity: 1 }}
-                                exit={{ width: 0, opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className='ml-2 overflow-hidden whitespace-nowrap'
-                              >
+                        {(hoveredItem === item.id || !IsLg) && (
+                          <AnimatePresence>
+                            <motion.span
+                              initial={{ width: 0, opacity: 0 }}
+                              animate={{ width: 'auto', opacity: 1 }}
+                              exit={{ width: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className={cn(
+                                cnSmallMarginLeft,
+                                'overflow-hidden whitespace-nowrap'
+                              )}
+                            >
+                              <span className={cn(cnHiddenLgInline)}>
                                 {item.label}
-                              </motion.span>
-                            </span>
-                          )}
-                        </AnimatePresence>
+                              </span>
+                            </motion.span>
+                          </AnimatePresence>
+                        )}
                       </motion.div>
                     </MenubarTrigger>
                   )}

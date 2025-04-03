@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 
+import { cn } from '@/src/lib/utils';
+import { cnBorderRadiusFull } from '@/src/styles/border.style';
 import { cnSizeFull } from '@/src/styles/size.style';
 import { IconName } from '@/src/types/IconNameProps';
 import { Toggle } from '@lib/components/ui/toggle';
@@ -56,7 +58,10 @@ export const ScrollTopToggle: React.FC<ScrollTopToggleProps> = ({
         size={size}
         onClick={onClick}
         type={type}
-        className='relative rounded-full bg-accent px-0 dark:text-accent-foreground'
+        className={cn(
+          'dark:text-accent-foreground0 relative bg-accent px-0',
+          cnBorderRadiusFull
+        )}
       >
         <motion.div variants={iconVariants} whileHover='hover'>
           <IconLoader icon={icon as IconName} className={cnSizeFull} />

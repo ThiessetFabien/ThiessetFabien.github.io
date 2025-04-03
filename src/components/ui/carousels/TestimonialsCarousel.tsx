@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import { ActionButton } from '@/src/components/ui/buttons/ActionButton';
 import GenericCarousel from '@/src/components/ui/carousels/GenericCarousel';
-import { cnBorder2 } from '@/src/styles/border.style';
+import { cnBorder2, cnBorderRadiusFull } from '@/src/styles/border.style';
 import {
   cnPaddingBottom,
   cnPaddingX,
@@ -135,7 +135,8 @@ export const TestimonialsCarousel: React.FC<{
                 variant='link'
                 size='icon'
                 className={cn(
-                  'absolute -bottom-2 -right-2 z-auto scale-50 rounded-full bg-accent'
+                  'absolute -bottom-2 -right-2 z-auto scale-50 bg-accent',
+                  cnBorderRadiusFull
                 )}
               />
             </a>

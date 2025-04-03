@@ -1,22 +1,13 @@
-/**
- * Determines the visibility of an item based on its value.
- *
- * @param item - The string value of the item to evaluate.
- * @returns A string indicating the visibility of the item.
- *          Returns 'hidden' if the item is an empty string, otherwise returns an empty string.
- */
-export const hideItem = (item: string) => {
-  return item === '' ? 'hidden' : '';
-};
+export const cnHiddenSmBlock: string = 'hidden sm:block'; // Class for hiding an element on small screens and displaying it as a block.
 
-export const cnHiddenSmBlock = 'hidden sm:block';
+export const cnHiddenXxsFlex: string = 'xxs:flex hidden'; // Class for hiding an element and displaying it as flex on extra extra small screens.
 
-export const cnHiddenXxsFlex = 'xxs:flex hidden';
+export const cnHiddenXsFlex: string = 'xs:flex hidden'; // Class for hiding an element and displaying it as flex on extra small screens.
 
-export const cnHiddenXsFlex = 'xs:flex hidden';
+export const cnHiddenSmFlex: string = 'sm:flex hidden'; // Class for hiding an element and displaying it as flex on small screens.
 
-export const cnHiddenSmFlex = 'sm:flex hidden';
+export const cnXxsHidden: string = 'xxs:hidden'; // Class for hiding an element on extra extra small screens.
 
-export const cnXxsHidden = 'xxs:hidden';
+export const cnSmHidden: string = 'sm:hidden'; // Class for hiding an element on small screens.
 
-export const cnSmHidden = 'sm:hidden';
+export const cnHiddenLgInline: string = 'hidden lg:inline'; // Class for hiding an element and displaying it inline on large screens.

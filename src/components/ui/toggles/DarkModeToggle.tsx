@@ -3,6 +3,8 @@ import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
+import { cn } from '@/src/lib/utils';
+import { cnBorderNone, cnBorderRadiusFull } from '@/src/styles/border.style';
 import { Toggle } from '@lib/components/ui/toggle';
 
 /**
@@ -85,7 +87,7 @@ export function ToggleDarkMode({
         variant='outline'
         size='sm'
         onClick={handleToggle}
-        className='relative rounded-full border-0 bg-accent'
+        className={cn('relative bg-accent', cnBorderRadiusFull, cnBorderNone)}
         data-state={resolvedTheme === 'dark' ? 'on' : 'off'}
       >
         <AnimatePresence mode='wait'>

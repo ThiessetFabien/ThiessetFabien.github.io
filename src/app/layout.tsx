@@ -9,6 +9,7 @@ import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
 import { Footer } from '@layouts/FooterLayout';
 import { Toaster } from '@lib/components/ui/toaster';
 import { cn } from '@lib/utils';
+import { menuItems } from '@src/config/menuItems.config';
 import { Expletus_Sans } from '@src/fonts/ExpletusSans.font';
 import { Poppins } from '@src/fonts/Poppins.font';
 import {
@@ -28,7 +29,6 @@ import { cnSizeFull } from '../styles/size.style';
 import { CardProps } from '../types/CardProps';
 
 import { metadata } from './metadata';
-
 /**
  * Root layout component for the application.
  * Provides theming, global styles, and layout structure.
@@ -76,39 +76,6 @@ export default function RootLayout({
         setData([]);
       });
   }, []);
-
-  const menuItems = [
-    {
-      id: 'linkedin',
-      icon: 'Linkedin',
-      label: 'LinkedIn',
-      href: 'www.linkedin.com/in/fabien-thiesset',
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    },
-    {
-      id: 'github',
-      icon: 'Github',
-      label: 'Github',
-      href: 'https://github.com/ThiessetFabien?tab=repositories',
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    },
-    {
-      id: 'contact',
-      icon: 'Mail',
-      label: 'Contact',
-      href: 'mailto:thiessetfabienpro@gmail.com',
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    },
-    {
-      id: 'phone',
-      icon: 'Phone',
-      label: 'Phone',
-      href: 'tel:+33610920974',
-    },
-  ];
 
   return (
     <html

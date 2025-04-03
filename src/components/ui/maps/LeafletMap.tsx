@@ -4,6 +4,11 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import React, { memo, useEffect, useRef, useState } from 'react';
 
+import { cn } from '@/src/lib/utils';
+import { cnBorderRadiusMd } from '@/src/styles/border.style';
+import { cnFlexFullCenter } from '@/src/styles/flex.style';
+import { cnSizeFull } from '@/src/styles/size.style';
+
 interface LeafletMapProps {
   center?: [number, number];
   zoom?: number;
@@ -288,11 +293,11 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
   return (
     <div
       ref={mapRef}
-      className='h-full w-full overflow-hidden rounded-md'
+      className={cn(cnSizeFull, cnBorderRadiusMd, 'overflow-hidden')}
       style={{ position: 'relative', touchAction: 'manipulation' }}
     >
       {!isMapInitialized && (
-        <div className='flex h-full w-full items-center justify-center bg-gray-100'>
+        <div className={cn(cnSizeFull, cnFlexFullCenter, 'bg-gray-100')}>
           <p>Loading map...</p>
         </div>
       )}

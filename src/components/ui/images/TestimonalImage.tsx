@@ -1,6 +1,8 @@
 import Image from 'next/image';
 
-import { baseUrl } from '@/src/utils/baseUrl.util';
+import { cn } from '@src/lib/utils';
+import { cnBorderRadiusFull } from '@src/styles/border.style';
+import { baseUrl } from '@src/utils/baseUrl.util';
 
 interface TestimonialImageProps {
   src: string;
@@ -29,7 +31,10 @@ export const TestimonialImage = ({ src, alt }: TestimonialImageProps) => {
       alt={alt}
       fill
       sizes='(max-width: 768px) 64px, 96px'
-      className='aspect-square h-full w-full rounded-full object-cover'
+      className={cn(
+        'aspect-square h-full w-full object-cover',
+        cnBorderRadiusFull
+      )}
       loading='lazy'
       priority={false}
       unoptimized={isAbsoluteUrl || src.startsWith('media.licdn.com')}
