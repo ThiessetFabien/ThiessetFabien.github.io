@@ -2,15 +2,15 @@ export const menuItems = [
   {
     id: 'services',
     icon: 'Home',
-    label: 'Services',
-    href: '#home',
+    label: 'Découvrez mes services',
+    href: '/',
     target: '_self',
     rel: 'noopener noreferrer',
   },
   {
     id: 'about',
     icon: 'User',
-    label: 'À propos',
+    label: 'Apprenez à me connaître',
     href: '#about',
     target: '_self',
     rel: 'noopener noreferrer',
@@ -18,7 +18,7 @@ export const menuItems = [
   {
     id: 'portfolio',
     icon: 'GalleryHorizontal',
-    label: 'Portfolio',
+    label: 'Explorez mes projets récents',
     href: '#portfolio',
     target: '_self',
     rel: 'noopener noreferrer',
@@ -26,7 +26,7 @@ export const menuItems = [
   {
     id: 'experience',
     icon: 'BriefcaseBusiness',
-    label: 'Expérience',
+    label: 'Découvrez mon parcours professionnel',
     href: '#experience',
     target: '_self',
     rel: 'noopener noreferrer',
@@ -34,7 +34,7 @@ export const menuItems = [
   {
     id: 'resume',
     icon: 'ClipboardList',
-    label: 'CV',
+    label: 'Téléchargez mon CV',
     href: '/documents/resume.pdf',
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -42,7 +42,7 @@ export const menuItems = [
   {
     id: 'motivation',
     icon: 'PenTool',
-    label: 'Lettre de motivation',
+    label: 'Lisez ma lettre de motivation',
     href: '/documents/motivation.pdf',
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -50,7 +50,7 @@ export const menuItems = [
   {
     id: 'linkedin',
     icon: 'Linkedin',
-    label: 'LinkedIn',
+    label: 'Rejoignez-moi sur LinkedIn',
     href: 'www.linkedin.com/in/fabien-thiesset',
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -58,7 +58,7 @@ export const menuItems = [
   {
     id: 'github',
     icon: 'Github',
-    label: 'Github',
+    label: 'Découvrez mes projets sur GitHub',
     href: 'https://github.com/ThiessetFabien?tab=repositories',
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -66,7 +66,7 @@ export const menuItems = [
   {
     id: 'contact',
     icon: 'Mail',
-    label: 'Contact',
+    label: 'Envoyez-moi un message',
     href: 'mailto:thiessetfabienpro@gmail.com',
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -74,7 +74,7 @@ export const menuItems = [
   {
     id: 'phone',
     icon: 'Phone',
-    label: 'Appeler',
+    label: 'Appelez-moi directement',
     href: 'tel:+33610920974',
   },
 ];

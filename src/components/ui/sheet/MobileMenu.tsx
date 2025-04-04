@@ -3,16 +3,22 @@ import { motion } from 'framer-motion';
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetTitle,
   SheetTrigger,
 } from '@/src/lib/components/ui/sheet';
 import { cnBorderRadiusMd } from '@/src/styles/border.style';
-import { cnSmallPadding, cnSpaceX } from '@/src/styles/boxModel.style';
-import { cnSmallText } from '@/src/styles/font.style';
+import {
+  cnPaddingTop,
+  cnSmallPadding,
+  cnSpaceX,
+  cnSpaceY,
+} from '@/src/styles/boxModel.style';
+import { cnSmallText, cnTitle3 } from '@/src/styles/font.style';
 import { cnSizeIcon } from '@/src/styles/size.style';
 import { MenuItemProps } from '@/src/types/MenuItemProps';
 import { cn } from '@src/lib/utils';
-import { cnFlexCenterY } from '@src/styles/flex.style';
+import { cnFlexCenterY, cnFlexCol } from '@src/styles/flex.style';
 
 import { IconLoader } from '../icons/IconLoader';
 
@@ -24,14 +30,20 @@ export const MobileMenu = ({ items }: { items: MenuItemProps[] }) => (
     >
       <IconLoader icon='Menu' className={cnSizeIcon} aria-hidden='true' />
     </SheetTrigger>
-    <SheetContent side='left'>
-      <SheetTitle className='text-lg font-medium'>Navigation</SheetTitle>
+    <SheetContent side='left' className='w-[90%] sm:max-w-md'>
+      <SheetTitle className={cnTitle3}>Navigation</SheetTitle>
+      <SheetDescription className='sr-only'>
+        <p>
+          Menu de navigation permettant d&apos;accéder aux différentes sections
+          du site
+        </p>
+      </SheetDescription>
       <nav
         aria-label='Navigation principale'
-        className='flex flex-col space-y-4 pt-8'
+        className={cn(cnFlexCol, cnSpaceY, cnPaddingTop)}
       >
         {items.map((item) => (
-          <motion.a
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             key={item.id}
@@ -57,7 +69,7 @@ export const MobileMenu = ({ items }: { items: MenuItemProps[] }) => (
               />
               <span>{item.label}</span>
             </a>
-          </motion.a>
+          </motion.div>
         ))}
       </nav>
     </SheetContent>

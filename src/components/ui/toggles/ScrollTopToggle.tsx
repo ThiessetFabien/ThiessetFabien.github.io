@@ -59,7 +59,7 @@ export const ScrollTopToggle: React.FC<ScrollTopToggleProps> = ({
         onClick={onClick}
         type={type}
         className={cn(
-          'dark:text-accent-foreground0 relative bg-accent px-0',
+          'relative bg-accent px-0 dark:text-accent-foreground',
           cnBorderRadiusFull
         )}
       >

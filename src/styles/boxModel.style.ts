@@ -6,6 +6,8 @@ export const cnPadding = 'p-4 md:p-6';
 
 export const cnSmallPaddingX = 'px-2 md:px-4';
 
+export const cnSmallPaddingY = 'py-2 md:py-4';
+
 export const cnPaddingX = 'px-4 md:px-6';
 
 export const cnPaddingY = 'py-4 md:py-6';
@@ -13,6 +15,8 @@ export const cnPaddingY = 'py-4 md:py-6';
 export const cnPaddingTop = 'pt-4 md:pt-6';
 
 export const cnPaddingBottom = 'pb-4 md:pb-6';
+
+export const cnSmallPaddingRight = 'pr-2 md:pr-4';
 
 export const cnSmallPaddingBottom = 'pb-2 md:pb-4';
 
@@ -60,6 +64,18 @@ export const cnTopRightPosition = cn('right-4 md:right-6', 'top-4 md:top-6');
  * - On medium screens and above, the element is positioned 1.5rem (6 units) from the right and bottom.
  *
  * @constant
+ */
+/**
+ * A constant that defines a set of CSS class names for positioning an element
+ * at the bottom-right corner of the screen. The classes include responsive
+ * adjustments for different screen sizes.
+ *
+ * - `right-4`: Positions the element 1rem (16px) from the right edge.
+ * - `md:right-6`: Adjusts the position to 1.5rem (24px) from the right edge on medium screens and larger.
+ * - `bottom-4`: Positions the element 1rem (16px) from the bottom edge.
+ * - `md:bottom-6`: Adjusts the position to 1.5rem (24px) from the bottom edge on medium screens and larger.
+ *
+ * @constant {string} cnBottomRightPosition
  */
 export const cnBottomRightPosition = cn(
   'right-4 md:right-6',
