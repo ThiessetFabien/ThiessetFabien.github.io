@@ -18,7 +18,7 @@ export const menuItems = [
   {
     id: 'portfolio',
     icon: 'GalleryHorizontal',
-    label: 'Explorez mes projets récents',
+    label: 'Explorez mes projets',
     href: '#portfolio',
     target: '_self',
     rel: 'noopener noreferrer',
@@ -26,7 +26,7 @@ export const menuItems = [
   {
     id: 'experience',
     icon: 'BriefcaseBusiness',
-    label: 'Découvrez mon parcours professionnel',
+    label: 'Découvrez mon parcours',
     href: '#experience',
     target: '_self',
     rel: 'noopener noreferrer',
@@ -42,7 +42,7 @@ export const menuItems = [
   {
     id: 'motivation',
     icon: 'PenTool',
-    label: 'Lisez ma lettre de motivation',
+    label: 'Lisez ma motivation',
     href: '/documents/motivation.pdf',
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -58,7 +58,7 @@ export const menuItems = [
   {
     id: 'github',
     icon: 'Github',
-    label: 'Découvrez mes projets sur GitHub',
+    label: 'Découvrez mon GitHub',
     href: 'https://github.com/ThiessetFabien?tab=repositories',
     target: '_blank',
     rel: 'noopener noreferrer',

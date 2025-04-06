@@ -25,7 +25,11 @@ import { IconLoader } from '../icons/IconLoader';
 export const MobileMenu = ({ items }: { items: MenuItemProps[] }) => (
   <Sheet>
     <SheetTrigger
-      className={cn(cnFlexCenterY, cnBorderRadiusMd, 'transition-all')}
+      className={cn(
+        cnFlexCenterY,
+        cnBorderRadiusMd,
+        'p-1.5 transition-colors duration-200'
+      )}
       aria-label='Ouvrir le menu de navigation'
     >
       <IconLoader icon='Menu' className={cnSizeIcon} aria-hidden='true' />
@@ -58,7 +62,7 @@ export const MobileMenu = ({ items }: { items: MenuItemProps[] }) => (
                 cnSpaceX,
                 cnBorderRadiusMd,
                 cnSmallText,
-                'group hover:bg-accent hover:text-accent-foreground'
+                'group transition-colors duration-200 hover:bg-accent hover:text-accent-foreground'
               )}
               aria-label={item.label}
             >

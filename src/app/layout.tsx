@@ -12,13 +12,7 @@ import { cn } from '@lib/utils';
 import { menuItems } from '@src/config/menuItems.config';
 import { Expletus_Sans } from '@src/fonts/ExpletusSans.font';
 import { Poppins } from '@src/fonts/Poppins.font';
-import {
-  cnGap,
-  cnMarginTop,
-  cnPadding,
-  cnPaddingTop,
-  cnSmallSpaceY,
-} from '@styles/boxModel.style';
+import { cnMarginTop, cnPadding, cnSmallSpaceY } from '@styles/boxModel.style';
 
 import '@src/styles/globals.css';
 import '@src/styles/reset.css';
@@ -95,7 +89,6 @@ export default function RootLayout({
           'm-auto min-h-[100dvh]',
           'font-poppins-sans text-foreground',
           cnFlexFullCenter,
-          cnPaddingTop,
           cnFlexCol
         )}
         style={{
@@ -122,7 +115,6 @@ export default function RootLayout({
             id='main-content'
             aria-label='Contenu principal'
             className={cn(
-              cnGap,
               'h-full',
               'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
             )}

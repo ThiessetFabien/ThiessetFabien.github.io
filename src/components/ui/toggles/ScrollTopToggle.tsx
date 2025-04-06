@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import { cn } from '@/src/lib/utils';
 import { cnBorderRadiusFull } from '@/src/styles/border.style';
-import { cnSizeFull } from '@/src/styles/size.style';
+import { cnSizeIcon } from '@/src/styles/size.style';
 import { IconName } from '@/src/types/IconNameProps';
 import { Toggle } from '@lib/components/ui/toggle';
 import type { ScrollTopToggleProps } from '@src/types/ScrollTopToggleProps';
@@ -59,12 +59,15 @@ export const ScrollTopToggle: React.FC<ScrollTopToggleProps> = ({
         onClick={onClick}
         type={type}
         className={cn(
-          'relative bg-accent px-0 dark:text-accent-foreground',
+          'relative h-10 w-10 bg-accent p-1.5 transition-colors duration-200',
           cnBorderRadiusFull
         )}
       >
         <motion.div variants={iconVariants} whileHover='hover'>
-          <IconLoader icon={icon as IconName} className={cnSizeFull} />
+          <IconLoader
+            icon={icon as IconName}
+            className={cn(cnSizeIcon, 'text-accent-foreground')}
+          />
         </motion.div>
         <span className='sr-only'>{ariaLabel}</span>
       </Toggle>

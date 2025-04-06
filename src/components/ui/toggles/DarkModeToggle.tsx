@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 import { cn } from '@/src/lib/utils';
 import { cnBorderNone, cnBorderRadiusFull } from '@/src/styles/border.style';
+import { cnSizeIcon } from '@/src/styles/size.style';
 import { Toggle } from '@lib/components/ui/toggle';
 
 /**
@@ -87,7 +88,11 @@ export function ToggleDarkMode({
         variant='outline'
         size='sm'
         onClick={handleToggle}
-        className={cn('relative bg-accent', cnBorderRadiusFull, cnBorderNone)}
+        className={cn(
+          'relative h-10 w-10 bg-accent p-1.5 transition-colors duration-200',
+          cnBorderRadiusFull,
+          cnBorderNone
+        )}
         data-state={resolvedTheme === 'dark' ? 'on' : 'off'}
       >
         <AnimatePresence mode='wait'>
@@ -99,7 +104,7 @@ export function ToggleDarkMode({
               animate={isRotating ? 'animate' : ['animate', 'rotate']}
               exit='exit'
             >
-              <Sun />
+              <Sun className={cnSizeIcon} />
             </motion.div>
           ) : (
             <motion.div
@@ -109,7 +114,7 @@ export function ToggleDarkMode({
               animate={isRotating ? ['animate', 'rotate'] : 'animate'}
               exit='exit'
             >
-              <Moon />
+              <Moon className={cnSizeIcon} />
             </motion.div>
           )}
         </AnimatePresence>

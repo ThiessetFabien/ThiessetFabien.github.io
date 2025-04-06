@@ -12,8 +12,9 @@ import {
 } from '@/src/styles/border.style';
 import {
   cnGap,
-  cnPadding,
+  cnLeftCenterPosition,
   cnPaddingBottom,
+  cnSmallPadding,
   cnSmallSpaceY,
 } from '@/src/styles/boxModel.style';
 import {
@@ -101,11 +102,11 @@ export const FloatingMenubar = ({
         cnPaddingBottom,
         cnFlexCenterX
       )
-    : 'fixed h-content left-8 top-1/2 -translate-y-1/2 z-50';
+    : cn(cnLeftCenterPosition, 'fixed h-content z-50');
 
   const menubarClasses = !IsLg
     ? cn(
-        cnPadding,
+        cnSmallPadding,
         cnGap,
         cnBorderRadiusFull,
         cnBorder,
@@ -136,7 +137,10 @@ export const FloatingMenubar = ({
                 href={item.href}
                 target={item.target}
                 rel={item.rel}
-                className={cnFlexCenterY}
+                className={cn(
+                  cnFlexCenterY,
+                  'p-1.5 transition-colors duration-200'
+                )}
                 aria-label={item.label}
               >
                 <IconLoader
@@ -149,7 +153,10 @@ export const FloatingMenubar = ({
             {scrollTopVisible && (
               <button
                 onClick={scrollToTop}
-                className={cnFlexCenterY}
+                className={cn(
+                  cnFlexCenterY,
+                  'p-1.5 transition-colors duration-200'
+                )}
                 aria-label='Revenir en haut de la page'
               >
                 <IconLoader
@@ -165,7 +172,7 @@ export const FloatingMenubar = ({
             {menuItemsTabletteAndDesktop.map((item) => (
               <MenubarMenu key={item.id}>
                 <div
-                  className='relative flex w-full items-baseline'
+                  className='relative flex w-full items-center justify-start'
                   onMouseEnter={() => handleHover(item.id)}
                   onMouseLeave={() => handleHover(null)}
                 >
@@ -178,16 +185,19 @@ export const FloatingMenubar = ({
                       cnFlexCenterY,
                       cnBorderRadiusFull,
                       cnBorder,
-                      'relative aspect-square h-8 w-8 flex-nowrap bg-background/80 p-0 backdrop-blur-md transition-all',
+                      'relative aspect-square h-10 w-10 flex-nowrap bg-background/80 backdrop-blur-md transition-all',
                       hoveredItem === item.id &&
-                        'w-auto bg-transparent hover:bg-accent/80 hover:text-accent-foreground'
+                        'bg-transparent hover:bg-accent/80 hover:text-accent-foreground',
+                      hoveredItem === item.id && 'w-auto max-w-[250px]'
                     )}
                     aria-label={item.label}
                   >
                     <div
                       className={cn(
                         'flex items-center justify-center',
-                        hoveredItem === item.id ? 'h-full w-8' : 'h-full w-full'
+                        hoveredItem === item.id
+                          ? 'h-full w-10 min-w-10'
+                          : 'h-full w-full'
                       )}
                     >
                       <IconLoader
@@ -199,15 +209,15 @@ export const FloatingMenubar = ({
 
                     {hoveredItem === item.id && (
                       <motion.span
-                        initial={{ width: 0, opacity: 0 }}
-                        animate={{ width: 'auto', opacity: 1 }}
-                        exit={{ width: 0, opacity: 0 }}
+                        initial={{ opacity: 0, width: 0 }}
+                        animate={{ opacity: 1, width: 'auto' }}
+                        exit={{ opacity: 0, width: 0 }}
                         transition={{
                           duration: 0.3,
                           opacity: { delay: 0.15, duration: 0.15 },
                         }}
                         className={cn(
-                          'overflow-hidden whitespace-nowrap pr-1',
+                          'overflow-hidden whitespace-nowrap px-3 pr-4',
                           cnSmallText
                         )}
                       >

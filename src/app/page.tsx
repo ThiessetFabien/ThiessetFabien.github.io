@@ -13,7 +13,6 @@ import { ProjectsCard } from '@/src/components/ui/cards/ProjectsCard';
 import SkillsCard from '@/src/components/ui/cards/SkillsCard';
 import LoadingSpinner from '@/src/components/ui/spinner/LoadingSpinner';
 import {
-  cnGap,
   cnPadding,
   cnPaddingBottom,
   cnPaddingX,
@@ -33,6 +32,7 @@ import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
 import { useIsClient } from '../hooks/useIsClient.hook';
+import { cnBorderNone } from '../styles/border.style';
 
 const LazyMap = dynamic(() => import('@/src/components/ui/cards/MapCard'), {
   ssr: false,
@@ -77,8 +77,9 @@ const HomePage: React.FC = (): JSX.Element => {
           key={index}
           id={`card-${index}`}
           className={cn(
-            'min-h-[96dvh] items-stretch md:min-h-[94dvh]',
+            'my-0 min-h-[96dvh] p-0 md:min-h-[94dvh] lg:pl-20',
             cnFlexCol,
+            cnBorderNone,
 
             card.colSpan
           )}
@@ -98,12 +99,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 services={card.services}
                 imageSrc={card.imageSrc}
                 imageAlt={card.imageAlt}
-                className={cn(
-                  cnGap,
-                  cnPadding,
-                  cnFlexBetweenY,
-                  'w-full space-y-0'
-                )}
+                className={cn(cnFlexBetweenY, 'w-full space-y-0')}
               />
             )}
             {!card.imageSrc ? (
