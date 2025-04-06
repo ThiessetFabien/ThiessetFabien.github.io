@@ -43,9 +43,51 @@ import { TestimonialImage } from '../images/TestimonalImage';
  * @example
  * <TestimonialsCarousel testimonials={testimonials} className="custom-class" />
  */
+/**
+ * A React functional component that renders a carousel of testimonials.
+ * The testimonials are shuffled and processed to ensure unique content and authors
+ * are displayed in sequence. Each testimonial includes content, author details, and
+ * a LinkedIn link with an avatar image.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {TestimonialProps[] | undefined} props.testimonials - An array of testimonials to display.
+ * Each testimonial includes content, author, job, company, and LinkedIn link.
+ * @param {string} [props.className] - Optional additional CSS class names for the component.
+ * @returns {JSX.Element} The rendered carousel component.
+ *
+ * @example
+ * ```tsx
+ * const testimonials = [
+ *   {
+ *     content: "This is a great service!",
+ *     author: "John Doe",
+ *     job: "Software Engineer",
+ *     company: "Tech Corp",
+ *     linkedin: "/john-doe",
+ *     imageSrc: "/images/john-doe.jpg"
+ *   },
+ *   {
+ *     content: "Highly recommend this product.",
+ *     author: "Jane Smith",
+ *     job: "Product Manager",
+ *     company: "Innovate Ltd",
+ *     linkedin: "/jane-smith",
+ *     imageSrc: "/images/jane-smith.jpg"
+ *   }
+ * ];
+ *
+ * <TestimonialsCarousel testimonials={testimonials} className="custom-class" />
+ * ```
+ */
 export const TestimonialsCarousel: React.FC<{
-  testimonials: CardProps['testimonials'];
-}> = ({ testimonials }) => {
+  testimonials: TestimonialProps[] | undefined;
+  className?: string;
+}> = ({
+  testimonials,
+}: {
+  testimonials: TestimonialProps[] | undefined;
+}): JSX.Element => {
   const [shuffled, setShuffled] = useState<CardProps['testimonials']>([]);
 
   useEffect(() => {

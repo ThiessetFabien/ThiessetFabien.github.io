@@ -35,7 +35,7 @@
     ]
   },
   {
-    "name": "à propos",
+    "title": "à propos",
     "jobs": [
       {
         "name": "développeur",
@@ -67,7 +67,7 @@
     ]
   },
   {
-    "name": "portfolio",
+    "title": "portfolio",
     "description": "voici une collection de mes projets javascript récents, montrant le type de clients avec lesquels je collabore et les solutions que je propose.",
     "projects": [
       {

@@ -77,9 +77,10 @@ const HomePage: React.FC = (): JSX.Element => {
           key={index}
           id={`card-${index}`}
           className={cn(
-            'my-0 min-h-[96dvh] p-0 md:min-h-[94dvh] lg:pl-20',
+            'm-0 min-h-[100dvh] p-0 lg:pl-20',
             cnFlexCol,
             cnBorderNone,
+            'rounded-none',
 
             card.colSpan
           )}
@@ -89,101 +90,99 @@ const HomePage: React.FC = (): JSX.Element => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className='flex h-full flex-col'
+            className={cn(cnFlexCol, 'h-full')}
           >
-            {card.imageSrc && !card.map && (
-              <HeroCard
-                name={card.name}
-                familyName={card.familyName}
-                expertises={card.expertises}
-                services={card.services}
-                imageSrc={card.imageSrc}
-                imageAlt={card.imageAlt}
-                className={cn(cnFlexBetweenY, 'w-full space-y-0')}
+            <>
+              <HeaderCard
+                title={card.title}
+                description={card.description}
+                className={cn(cnPadding)}
               />
-            )}
-            {!card.imageSrc ? (
-              <>
-                <HeaderCard
-                  title={card.name}
-                  description={card.description}
-                  className={cn(cnPadding)}
-                />
-                <CardContent
-                  className={cn(
-                    'flex-1',
-                    !card.testimonials
-                      ? cnPaddingX
-                      : 'container h-full min-w-full flex-auto overflow-hidden p-0'
-                  )}
-                >
-                  {card.experiences &&
-                    card.experiences?.length > 0 &&
-                    !card.technologies && (
-                      <ExperiencesCard
-                        experiences={card.experiences}
-                        className=''
-                      />
-                    )}
-                  {card.jobs && <SkillsCard jobs={card.jobs} />}
-                  {isClient &&
-                    card.testimonials &&
-                    card.testimonials.length > 0 && (
-                      <LazyTestimonialsCard testimonials={card.testimonials} />
-                    )}
-                  {card.projects && card.projects.length > 0 && (
-                    <ProjectsCard
-                      projects={card.projects}
-                      className={cn(
-                        cnSmallGap,
-                        'grid xs:auto-rows-auto sm:grid-cols-2 lg:grid-cols-4'
-                      )}
+              <CardContent
+                className={cn(
+                  'flex-1',
+                  !card.testimonials
+                    ? cnPaddingX
+                    : 'container h-full min-w-full flex-auto overflow-hidden p-0'
+                )}
+              >
+                {card.imageSrc && !card.map && (
+                  <HeroCard
+                    name={card.name}
+                    familyName={card.familyName}
+                    expertises={card.expertises}
+                    services={card.services}
+                    imageSrc={card.imageSrc}
+                    imageAlt={card.imageAlt}
+                    className={cn(cnFlexBetweenY, 'w-full space-y-0')}
+                  />
+                )}
+
+                {card.experiences &&
+                  card.experiences?.length > 0 &&
+                  !card.technologies && (
+                    <ExperiencesCard
+                      experiences={card.experiences}
+                      className=''
                     />
                   )}
-                  {card.achievements && card.achievements.length > 0 && (
-                    <AchievementsCard
-                      achievements={card.achievements}
-                      className={cnSpaceY}
-                    />
+                {card.jobs && <SkillsCard jobs={card.jobs} />}
+                {isClient &&
+                  card.testimonials &&
+                  card.testimonials.length > 0 && (
+                    <LazyTestimonialsCard testimonials={card.testimonials} />
                   )}
-                  {card.mailto && (
-                    <ContactForm
-                      mailto={card.mailto}
-                      cta1={card.cta1}
-                      icon1={card.icon1}
-                      href1={card.href1}
-                      downloadActive1={card.downloadActive1}
-                      cta2={card.cta2}
-                      icon2={card.icon2}
-                      href2={card.href2}
-                      downloadActive2={card.downloadActive2}
-                      cta3={card.cta3}
-                      icon3={card.icon3}
-                      href3={card.href3}
-                      downloadActive3={card.downloadActive3}
-                      className={cnSpaceY}
-                    />
-                  )}
-                  {isClient && card.map && <LazyMap />}
-                  {!card.experiences &&
-                    !card.topTechnologies &&
-                    !card.technologies &&
-                    !card.testimonials &&
-                    !card.projects &&
-                    !card.achievements &&
-                    !card.mailto && (
-                      <p className={cnParagraph}>
-                        {typeof card.content === 'string' &&
-                          capitalizeFirstLetterOfPhrase(
-                            formatSpecialWords(card.content)
-                          )}
-                      </p>
+                {card.projects && card.projects.length > 0 && (
+                  <ProjectsCard
+                    projects={card.projects}
+                    className={cn(
+                      cnSmallGap,
+                      'grid xs:auto-rows-auto sm:grid-cols-2 lg:grid-cols-4'
                     )}
-                </CardContent>
-              </>
-            ) : (
-              <CardContent className='invisible' />
-            )}
+                  />
+                )}
+                {card.achievements && card.achievements.length > 0 && (
+                  <AchievementsCard
+                    achievements={card.achievements}
+                    className={cnSpaceY}
+                  />
+                )}
+                {card.mailto && (
+                  <ContactForm
+                    mailto={card.mailto}
+                    cta1={card.cta1}
+                    icon1={card.icon1}
+                    href1={card.href1}
+                    downloadActive1={card.downloadActive1}
+                    cta2={card.cta2}
+                    icon2={card.icon2}
+                    href2={card.href2}
+                    downloadActive2={card.downloadActive2}
+                    cta3={card.cta3}
+                    icon3={card.icon3}
+                    href3={card.href3}
+                    downloadActive3={card.downloadActive3}
+                    className={cnSpaceY}
+                  />
+                )}
+                {isClient && card.map && <LazyMap />}
+                {!card.experiences &&
+                  !card.topTechnologies &&
+                  !card.technologies &&
+                  !card.testimonials &&
+                  !card.projects &&
+                  !card.achievements &&
+                  !card.mailto && (
+                    <p className={cnParagraph}>
+                      {typeof card.content === 'string' &&
+                        capitalizeFirstLetterOfPhrase(
+                          formatSpecialWords(card.content)
+                        )}
+                    </p>
+                  )}
+              </CardContent>
+            </>
+            <CardContent className='invisible' />
             {!card.mailto &&
               !card.jobs &&
               ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (

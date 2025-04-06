@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React, { memo, useEffect, useState, useCallback } from 'react';
 
 import { Badge } from '@/src/lib/components/ui/badge';
@@ -24,6 +23,7 @@ import { cnBigImage } from '@/src/styles/image.styles';
 import { ResponsiveImage } from '@/src/styles/mediaQueries.style';
 import {
   cnAutoHeightFullWidth,
+  cnAutoWidthFullHeight,
   cnSizeAuto,
   cnSizeIcon,
 } from '@/src/styles/size.style';
@@ -44,113 +44,7 @@ import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 import { IconLoader } from '@ui/icons/IconLoader';
 import { ProfileImage } from '@ui/images/ProfileImage';
-
-const Cursor = () => {
-  return (
-    <motion.span
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        repeat: Infinity,
-        repeatType: 'reverse',
-        duration: 0.5,
-      }}
-      className='font-bold text-primary'
-    >
-      {' '}
-      |
-    </motion.span>
-  );
-};
-
-/**
- * TypewriterText component animates text with a typewriter effect.
- *
- * @param text - The text to animate.
- * @param typingSpeed - Speed of typing animation in milliseconds.
- * @param delayBeforeStart - Delay before typing starts in milliseconds.
- * @param delayBeforeDelete - Delay before deleting starts in milliseconds.
- * @param onComplete - Callback triggered when animation completes.
- * @param className - Additional class names for styling.
- */
-const TypewriterText: React.FC<{
-  text: string;
-  typingSpeed?: number;
-  delayBeforeStart?: number;
-  delayBeforeDelete?: number;
-  onComplete?: () => void;
-  className?: string;
-}> = ({
-  text,
-  typingSpeed = 70,
-  delayBeforeStart = 300,
-  delayBeforeDelete = 1200,
-  onComplete,
-  className,
-}) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    setDisplayedText('');
-    setCurrentIndex(0);
-    setIsTyping(false);
-    setIsDeleting(false);
-
-    const startTimer = setTimeout(() => {
-      setIsTyping(true);
-    }, delayBeforeStart);
-
-    return () => clearTimeout(startTimer);
-  }, [text, delayBeforeStart]);
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-
-    if (isTyping && currentIndex < text.length) {
-      timer = setTimeout(() => {
-        setDisplayedText(text.substring(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      }, typingSpeed);
-    } else if (isTyping && currentIndex === text.length) {
-      timer = setTimeout(() => {
-        setIsTyping(false);
-        setIsDeleting(true);
-        setCurrentIndex(text.length);
-      }, delayBeforeDelete);
-    } else if (isDeleting && currentIndex > 0) {
-      timer = setTimeout(() => {
-        setDisplayedText(text.substring(0, currentIndex - 1));
-        setCurrentIndex(currentIndex - 1);
-      }, typingSpeed / 1.5);
-    } else if (isDeleting && currentIndex === 0) {
-      timer = setTimeout(() => {
-        setIsDeleting(false);
-        if (onComplete) onComplete();
-      }, 500);
-    }
-
-    return () => clearTimeout(timer);
-  }, [
-    isTyping,
-    isDeleting,
-    currentIndex,
-    text,
-    typingSpeed,
-    delayBeforeDelete,
-    onComplete,
-  ]);
-
-  return (
-    <span className={cn('inline-block', className)}>
-      {displayedText}
-      {(isTyping || isDeleting) && <Cursor />}
-    </span>
-  );
-};
+import { TypewriterText } from '@ui/typewriter/TypewriterText';
 
 /**
  * HeroCard component displays a profile card with typewriter animation for expertise.
@@ -208,7 +102,7 @@ export const HeroCard: React.FC<{
               <div
                 className={cn(
                   cnFlexFullCenter,
-                  'h-full w-auto',
+                  cnAutoWidthFullHeight,
                   'relative z-30',
                   cnBigImage,
                   cnBorderRadiusFull,
@@ -218,7 +112,7 @@ export const HeroCard: React.FC<{
               >
                 <div
                   className={cn(
-                    'h-full w-auto',
+                    cnAutoWidthFullHeight,
                     'relative z-50',
                     cnBigImage,
                     cnBorderRadiusFull,

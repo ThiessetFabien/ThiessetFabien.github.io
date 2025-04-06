@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { cnSizeFull } from '@/src/styles/size.style';
 import { cn } from '@src/lib/utils';
 import { cnBorderRadiusFull } from '@src/styles/border.style';
 import { baseUrl } from '@src/utils/baseUrl.util';
@@ -32,7 +33,8 @@ export const TestimonialImage = ({ src, alt }: TestimonialImageProps) => {
       fill
       sizes='(max-width: 768px) 64px, 96px'
       className={cn(
-        'aspect-square h-full w-full object-cover',
+        'aspect-square object-cover',
+        cnSizeFull,
         cnBorderRadiusFull
       )}
       loading='lazy'

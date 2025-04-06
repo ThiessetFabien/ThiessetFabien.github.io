@@ -8,7 +8,9 @@ import type { FormSchema } from '@/src/schemas/contactForm.schema';
 import { ContactFormSchema } from '@/src/schemas/contactForm.schema';
 import { ClientSanitizationService } from '@/src/services/client-sanitize.service';
 import { cnSmallGap } from '@/src/styles/boxModel.style';
+import { cnFlexCol } from '@/src/styles/flex.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
+import { IconName } from '@/src/types/IconNameProps';
 import { Form } from '@lib/components/ui/form';
 import { useToast } from '@lib/hooks/use-toast';
 import type { CardProps } from '@src/types/CardProps';
@@ -18,21 +20,63 @@ import { EmailTypeField } from '@ui/radios/RadioField';
 import { ConsentField } from '../ui/checkbox/ConsentField';
 import { MessageField } from '../ui/textarea/TextAreaField';
 
+/**
+ * A React functional component that renders a contact form with various input fields,
+ * validation, and a footer card containing action buttons. The form is designed to
+ * handle user input, validate it using Zod schema, and submit the data to a backend API.
+ *
+ * @component
+ * @param {Object} props - The props object.
+ * @param {string} props.mailto - The email address to be used in the footer card.
+ * @param {string} props.cta1 - The call-to-action text for the first button in the footer card.
+ * @param {React.ReactNode} props.icon1 - The icon for the first button in the footer card.
+ * @param {string} props.href1 - The URL for the first button in the footer card.
+ * @param {boolean} props.downloadActive1 - Indicates if the first button in the footer card is a download link.
+ * @param {string} props.cta2 - The call-to-action text for the second button in the footer card.
+ * @param {React.ReactNode} props.icon2 - The icon for the second button in the footer card.
+ * @param {string} props.href2 - The URL for the second button in the footer card.
+ * @param {boolean} props.downloadActive2 - Indicates if the second button in the footer card is a download link.
+ * @param {string} props.cta3 - The call-to-action text for the third button in the footer card.
+ * @param {React.ReactNode} props.icon3 - The icon for the third button in the footer card.
+ * @param {string} props.href3 - The URL for the third button in the footer card.
+ * @param {boolean} props.downloadActive3 - Indicates if the third button in the footer card is a download link.
+ * @param {string} props.className - Additional CSS class names for styling the form container.
+ *
+ * @returns {JSX.Element} The rendered contact form component.
+ *
+ * @example
+ * <ContactForm
+ *   mailto="example@mail.com"
+ *   cta1="Download CV"
+ *   icon1={<DownloadIcon />}
+ *   href1="/cv.pdf"
+ *   downloadActive1={true}
+ *   cta2="Visit Portfolio"
+ *   icon2={<PortfolioIcon />}
+ *   href2="https://portfolio.example.com"
+ *   downloadActive2={false}
+ *   cta3="Contact Me"
+ *   icon3={<ContactIcon />}
+ *   href3="mailto:example@mail.com"
+ *   downloadActive3={false}
+ *   className="custom-class"
+ * />
+ */
 export const ContactForm: React.FC<{
-  mailto: CardProps['mailto'];
-  cta1: ActionButtonProps['cta'];
-  icon1: ActionButtonProps['icon'];
-  href1: ActionButtonProps['href'];
-  downloadActive1: ActionButtonProps['downloadActive'];
-  cta2: ActionButtonProps['cta'];
-  icon2: ActionButtonProps['icon'];
-  href2: ActionButtonProps['href'];
-  downloadActive2: ActionButtonProps['downloadActive'];
-  cta3: ActionButtonProps['cta'];
-  icon3: ActionButtonProps['icon'];
-  href3: ActionButtonProps['href'];
-  downloadActive3: ActionButtonProps['downloadActive'];
-  className: CardProps['className'];
+  mailto?: CardProps['mailto'];
+  cta1?: ActionButtonProps['cta'];
+  icon1?: IconName;
+  href1?: ActionButtonProps['href'];
+  downloadActive1?: ActionButtonProps['downloadActive'];
+  cta2?: ActionButtonProps['cta'];
+  icon2?: IconName;
+  href2?: ActionButtonProps['href'];
+  downloadActive2?: ActionButtonProps['downloadActive'];
+  cta3?: ActionButtonProps['cta'];
+  icon3?: IconName;
+  href3?: ActionButtonProps['href'];
+  downloadActive3?: ActionButtonProps['downloadActive'];
+  className?: CardProps['className'];
 }> = ({
   mailto,
   cta1,
@@ -48,7 +92,22 @@ export const ContactForm: React.FC<{
   href3,
   downloadActive3,
   className,
-}) => {
+}: {
+  mailto?: string;
+  cta1?: string;
+  icon1?: IconName | undefined;
+  href1?: string;
+  downloadActive1?: boolean;
+  cta2?: string;
+  icon2?: IconName | undefined;
+  href2?: string;
+  downloadActive2?: boolean;
+  cta3?: string;
+  icon3?: IconName | undefined;
+  href3?: string;
+  downloadActive3?: boolean;
+  className?: string;
+}): JSX.Element => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(ContactFormSchema),
     defaultValues: {
@@ -73,7 +132,6 @@ export const ContactForm: React.FC<{
 
   const onSubmit = async (data: z.infer<typeof ContactFormSchema>) => {
     try {
-      // Sanitizer les données avant envoi
       const sanitizer = ClientSanitizationService.getInstance();
       const sanitizedData = sanitizer.sanitizeObject(data);
 
@@ -115,7 +173,7 @@ export const ContactForm: React.FC<{
       </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={cn(className, 'flex flex-col')}
+        className={cn(className, cnFlexCol)}
       >
         <div
           className={cn(
@@ -169,7 +227,7 @@ export const ContactForm: React.FC<{
           <FooterCard
             mailto={mailto}
             cta1={cta1}
-            icon1={icon1}
+            icon1={icon1 as IconName | undefined}
             href1={href1}
             downloadActive1={downloadActive1}
             disabled1={isLoading ? true : false}

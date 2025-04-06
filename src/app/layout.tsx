@@ -5,7 +5,11 @@ import { useEffect, useState } from 'react';
 
 import { FloatingMenubar } from '@/src/components/ui/menus/FloatingMenubar';
 import { VideoRedirectHandler } from '@/src/components/VideoRedirectHandler';
-import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
+import {
+  cnFlexCenterX,
+  cnFlexCol,
+  cnFlexFullCenter,
+} from '@/src/styles/flex.style';
 import { Footer } from '@layouts/FooterLayout';
 import { Toaster } from '@lib/components/ui/toaster';
 import { cn } from '@lib/utils';
@@ -132,7 +136,8 @@ export default function RootLayout({
               cnFlexCol,
               cnLightTextMuted,
               cnSmallSpaceY,
-              'mx-auto justify-center'
+              cnFlexCenterX,
+              'mx-auto'
             )}
           />
           <Toaster />
