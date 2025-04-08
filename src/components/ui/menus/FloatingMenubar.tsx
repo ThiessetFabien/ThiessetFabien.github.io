@@ -14,6 +14,7 @@ import {
   cnGap,
   cnLeftCenterPosition,
   cnPaddingBottom,
+  cnPaddingX,
   cnSmallPadding,
   cnSmallSpaceY,
 } from '@/src/styles/boxModel.style';
@@ -25,27 +26,33 @@ import {
 import { cnSmallText } from '@/src/styles/font.style';
 import { cnSizeIcon } from '@/src/styles/size.style';
 import { scrollToTop } from '@hooks/ScrollToTop.hook';
+import { useActiveSection } from '@hooks/useActiveSection.hook';
 import { useIsLg } from '@src/styles/mediaQueries.style';
 import { MenuItemProps } from '@src/types/MenuItemProps';
 import { IconLoader } from '@ui/icons/IconLoader';
 import { MobileMenu } from '@ui/sheet/MobileMenu';
 
-/**
- * A floating menu bar component that provides navigation and action buttons.
- * Responsive design with different layouts for mobile and desktop.
- */
-export const FloatingMenubar = ({
-  items,
-  className,
-}: {
+interface FloatingMenubarProps {
   items: MenuItemProps[];
-  className?: string;
-}): JSX.Element | null => {
+}
+
+/**
+ * FloatingMenubar component provides a responsive navigation menu.
+ * It adapts to different screen sizes and includes hover effects, active state detection, and scroll-to-top functionality.
+ *
+ * @param {FloatingMenubarProps} props - Component props.
+ * @returns {JSX.Element | null} The rendered FloatingMenubar component.
+ */
+export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
+  items,
+}: FloatingMenubarProps): JSX.Element | null => {
   const [isMounted, setIsMounted] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const IsLg = useIsLg();
   const lastScrollYRef = useRef(0);
   const [scrollTopVisible, setScrollTopVisible] = useState(false);
+  const { activeSection } = useActiveSection();
 
   useEffect(() => {
     setIsMounted(true);
@@ -78,7 +85,27 @@ export const FloatingMenubar = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMounted, handleScroll]);
 
+  const handleItemClick = (item: MenuItemProps) => {
+    if (item.onClick) {
+      item.onClick();
+    }
+
+    if (item.items && item.items.length > 0) {
+      setActiveSubmenu(activeSubmenu === item.id ? null : item.id);
+    } else {
+      setActiveSubmenu(null);
+    }
+  };
+
   if (!isMounted) return null;
+
+  const isItemActive = (item: MenuItemProps): boolean => {
+    if (item.href?.includes('#card-')) {
+      const sectionId = item.href.replace('#card-', '');
+      return sectionId === activeSection;
+    }
+    return false;
+  };
 
   const menuItemsMobile = items.filter(
     (item) =>
@@ -98,7 +125,8 @@ export const FloatingMenubar = ({
 
   const positionClasses = !IsLg
     ? cn(
-        'fixed w-full left-0 right-0 bottom-0 z-50 px-6',
+        'fixed w-full left-0 right-0 bottom-0 z-50',
+        cnPaddingX,
         cnPaddingBottom,
         cnFlexCenterX
       )
@@ -124,9 +152,9 @@ export const FloatingMenubar = ({
   return (
     <AnimatePresence>
       <div
-        className={cn(positionClasses, className)}
+        className={cn(positionClasses)}
         role='navigation'
-        aria-label='Navigation flottante'
+        aria-label='Floating navigation'
       >
         {!IsLg ? (
           <Menubar className={menubarClasses}>
@@ -139,9 +167,11 @@ export const FloatingMenubar = ({
                 rel={item.rel}
                 className={cn(
                   cnFlexCenterY,
-                  'p-1.5 transition-colors duration-200'
+                  'transition-colors duration-200',
+                  isItemActive(item) && 'text-primary'
                 )}
                 aria-label={item.label}
+                aria-current={isItemActive(item) ? 'page' : undefined}
               >
                 <IconLoader
                   icon={item.icon}
@@ -153,11 +183,8 @@ export const FloatingMenubar = ({
             {scrollTopVisible && (
               <button
                 onClick={scrollToTop}
-                className={cn(
-                  cnFlexCenterY,
-                  'p-1.5 transition-colors duration-200'
-                )}
-                aria-label='Revenir en haut de la page'
+                className={cn(cnFlexCenterY, 'transition-colors duration-200')}
+                aria-label='Scroll to top'
               >
                 <IconLoader
                   icon='ChevronsUp'
@@ -180,17 +207,19 @@ export const FloatingMenubar = ({
                     href={item.href}
                     target={item.target}
                     rel={item.rel}
-                    onClick={item.onClick}
+                    onClick={() => handleItemClick(item)}
                     className={cn(
                       cnFlexCenterY,
                       cnBorderRadiusFull,
                       cnBorder,
                       'relative aspect-square h-10 w-10 flex-nowrap bg-background/80 backdrop-blur-md transition-all',
+                      isItemActive(item) && 'bg-accent text-accent-foreground',
                       hoveredItem === item.id &&
                         'bg-transparent hover:bg-accent/80 hover:text-accent-foreground',
                       hoveredItem === item.id && 'w-auto max-w-[250px]'
                     )}
                     aria-label={item.label}
+                    aria-current={isItemActive(item) ? 'page' : undefined}
                   >
                     <div
                       className={cn(

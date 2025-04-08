@@ -8,18 +8,18 @@ import { cn } from '@/src/lib/utils';
 import { cnBorderRadiusMd } from '@/src/styles/border.style';
 import { cnFlexFullCenter } from '@/src/styles/flex.style';
 import { cnSizeFull } from '@/src/styles/size.style';
+import { type LeafletMapProps } from '@/src/types/LeafletMapProps';
 
-interface LeafletMapProps {
-  center?: [number, number];
-  zoom?: number;
-  markers?: Array<{
-    position: [number, number];
-    popup?: string;
-  }>;
-  scrollWheelZoom?: boolean;
-  flyToAnimation?: boolean;
-}
-
+/**
+ * LeafletMap component renders an interactive map using Leaflet.js.
+ *
+ * @param {LeafletMapProps} props - The properties for the LeafletMap component.
+ * @param {[number, number]} [props.center=[50.3675, 3.0803]] - The initial center of the map.
+ * @param {number} [props.zoom=9] - The initial zoom level of the map.
+ * @param {Array<{ position: [number, number]; popup?: string }>} [props.markers] - Array of markers to display on the map.
+ * @param {boolean} [props.scrollWheelZoom=false] - Enables or disables zooming with the scroll wheel.
+ * @param {boolean} [props.flyToAnimation=true] - Enables or disables fly-to animation when the map is loaded.
+ */
 const LeafletMap: React.FC<LeafletMapProps> = ({
   center = [50.3675, 3.0803],
   zoom = 9,
@@ -31,7 +31,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
   ],
   scrollWheelZoom = false,
   flyToAnimation = true,
-}) => {
+}: LeafletMapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<LeafletMapType | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -55,7 +55,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
   }, []);
 
   useEffect(() => {
-    // Seulement dans l'environnement client
     if (typeof window !== 'undefined') {
       L.Icon.Default.mergeOptions({
         iconUrl: markerIcon,

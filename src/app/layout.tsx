@@ -90,7 +90,7 @@ export default function RootLayout({
       <body
         className={cn(
           'container relative z-0',
-          'm-auto min-h-[100dvh]',
+          'min-h-[100dvh] min-w-[100dvw]',
           'font-poppins-sans text-foreground',
           cnFlexFullCenter,
           cnFlexCol

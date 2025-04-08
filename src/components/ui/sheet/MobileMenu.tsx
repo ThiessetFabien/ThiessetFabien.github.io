@@ -28,7 +28,7 @@ export const MobileMenu = ({ items }: { items: MenuItemProps[] }) => (
       className={cn(
         cnFlexCenterY,
         cnBorderRadiusMd,
-        'p-1.5 transition-colors duration-200'
+        'transition-colors duration-200'
       )}
       aria-label='Ouvrir le menu de navigation'
     >

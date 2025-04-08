@@ -89,7 +89,7 @@ export function ToggleDarkMode({
         size='sm'
         onClick={handleToggle}
         className={cn(
-          'relative h-10 w-10 bg-accent p-1.5 transition-colors duration-200',
+          'relative h-10 w-10 bg-accent px-0 transition-colors duration-200',
           cnBorderRadiusFull,
           cnBorderNone
         )}

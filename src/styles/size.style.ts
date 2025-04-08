@@ -2,8 +2,8 @@ import { cn } from '@/src/lib/utils';
 
 export const cnSizeIcon: string = cn(
   'w-auto flex-shrink-0',
-  'h4 min-w-4',
-  '[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:pointer-events-none'
+  'h-5 min-w-5',
+  '[&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:pointer-events-none'
 );
 
 /**

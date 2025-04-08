@@ -31,7 +31,11 @@
         "description": "corrective, évolutive"
       },
       { "icon": "Monitor", "item": "intégration", "description": "html css" },
-      { "icon": "Users", "item": "méthodes", "description": "agile scrum" }
+      {
+        "icon": "Users",
+        "item": "agilité",
+        "description": "développement en mode agile scrum"
+      }
     ]
   },
   {

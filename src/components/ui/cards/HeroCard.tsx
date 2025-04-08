@@ -7,7 +7,7 @@ import {
   cnBorderRadiusFull,
 } from '@/src/styles/border.style';
 import {
-  cnPaddingX,
+  cnPaddingY,
   cnSmallGap,
   cnSmallPadding,
   cnSpaceY,
@@ -97,7 +97,7 @@ export const HeroCard: React.FC<{
     return (
       <>
         <div className={cn(cnFlexFullCenter, cnFlexCol, 'h-full')}>
-          <CardHeader className={className}>
+          <CardHeader className={cn(className, cnPaddingY, 'px-0')}>
             <CardTitle className={cn('flex', cnSpaceY, cnFlexCol)}>
               <div
                 className={cn(
@@ -196,9 +196,8 @@ export const HeroCard: React.FC<{
           </CardHeader>
           <CardContent
             className={cn(
-              cnPaddingX,
               cnSmallGap,
-              'grid max-w-full flex-wrap',
+              'grid max-w-full flex-wrap p-0',
               'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'
             )}
           >
@@ -230,7 +229,11 @@ export const HeroCard: React.FC<{
                         formatSpecialWords(service.item)
                       )}
                     </span>
-                    <span>{formatSpecialWords(service.description)}</span>
+                    <span>
+                      {capitalizeFirstLetterOfPhrase(
+                        formatSpecialWords(service.description)
+                      )}
+                    </span>
                   </p>
                 </Badge>
               ))}

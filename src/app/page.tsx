@@ -77,7 +77,7 @@ const HomePage: React.FC = (): JSX.Element => {
           key={index}
           id={`card-${index}`}
           className={cn(
-            'm-0 min-h-[100dvh] p-0 lg:pl-20',
+            'min m-0 min-h-[100dvh] p-0 lg:pl-20',
             cnFlexCol,
             cnBorderNone,
             'rounded-none',
@@ -93,11 +93,13 @@ const HomePage: React.FC = (): JSX.Element => {
             className={cn(cnFlexCol, 'h-full')}
           >
             <>
-              <HeaderCard
-                title={card.title}
-                description={card.description}
-                className={cn(cnPadding)}
-              />
+              {card.title && (
+                <HeaderCard
+                  title={card.title}
+                  description={card.description}
+                  className={cn(cnPadding)}
+                />
+              )}
               <CardContent
                 className={cn(
                   'flex-1',
