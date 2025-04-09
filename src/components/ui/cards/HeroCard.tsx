@@ -7,20 +7,23 @@ import {
   cnBorderRadiusFull,
 } from '@/src/styles/border.style';
 import {
+  cnGap,
   cnPaddingY,
   cnSmallGap,
   cnSmallPadding,
+  cnSmallSpaceY,
   cnSpaceY,
 } from '@/src/styles/boxModel.style';
 import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
 import {
-  cnBigDescription,
   cnDescription,
+  cnLightTextMuted,
   cnSmallText,
   cnTitle1,
 } from '@/src/styles/font.style';
+import { cnHiddenSmBlock } from '@/src/styles/hideItem.style';
 import { cnBigImage } from '@/src/styles/image.styles';
-import { ResponsiveImage } from '@/src/styles/mediaQueries.style';
+import { ResponsiveImage, useIsSm } from '@/src/styles/mediaQueries.style';
 import {
   cnAutoHeightFullWidth,
   cnAutoWidthFullHeight,
@@ -61,6 +64,7 @@ export const HeroCard: React.FC<{
   name: CardProps['name'];
   familyName: CardProps['familyName'];
   expertises: CardProps['expertises'];
+  description: CardProps['description'];
   services: CardProps['services'];
   imageSrc: CardProps['imageSrc'];
   imageAlt: CardProps['imageAlt'];
@@ -70,6 +74,7 @@ export const HeroCard: React.FC<{
     name,
     familyName,
     expertises,
+    description,
     services,
     imageSrc,
     imageAlt,
@@ -77,6 +82,8 @@ export const HeroCard: React.FC<{
   }) => {
     const [currentExpertiseIndex, setCurrentExpertiseIndex] = useState(0);
     const [showExpertise, setShowExpertise] = useState(true);
+
+    const isSM = useIsSm();
 
     const handleExpertiseComplete = useCallback(() => {
       if (!expertises || expertises.length === 0) return;
@@ -97,8 +104,17 @@ export const HeroCard: React.FC<{
     return (
       <>
         <div className={cn(cnFlexFullCenter, cnFlexCol, 'h-full')}>
-          <CardHeader className={cn(className, cnPaddingY, 'px-0')}>
-            <CardTitle className={cn('flex', cnSpaceY, cnFlexCol)}>
+          <CardHeader
+            className={cn(className, cnPaddingY, 'px-0', isSM && cnGap)}
+          >
+            <CardTitle
+              className={cn(
+                'flex',
+                !isSM && cnSpaceY,
+                cnFlexCol,
+                isSM && cn('flex-row', cnGap)
+              )}
+            >
               <div
                 className={cn(
                   cnFlexFullCenter,
@@ -156,41 +172,57 @@ export const HeroCard: React.FC<{
                   </AvatarFallback>
                 </Avatar>
               </div>
-              <h1 className={cn(cnTitle1)}>
-                {name && capitalizeFirstLetterOfEachWord(name)}{' '}
-                {familyName && familyName.toUpperCase()}
-              </h1>
-            </CardTitle>
-            <CardDescription className={cn(cnFlexCol, cnBigDescription)}>
-              <p className={cn(cnDescription, 'text-foreground')}>
-                Besoin d&apos;un développeur ?
-              </p>
-              <p
+              <div
                 className={cn(
-                  cnDescription,
-                  cnFlexCol,
-                  cnAutoHeightFullWidth,
-                  'text-foreground',
-                  'xxs:flex-row'
+                  cnSmallSpaceY,
+                  isSM ? cn(cnFlexCol, 'w-full justify-center') : undefined
                 )}
               >
-                <span className='invisible h-0 w-0 xs:visible xs:h-auto xs:w-auto'>
-                  Je suis&nbsp;
-                </span>
-                <span className='min-h-[1.75rem]'>
-                  {showExpertise && expertises && expertises.length > 0 && (
-                    <TypewriterText
-                      text={capitalizeFirstLetterOfEachWord(
-                        formatSpecialWords(expertises[currentExpertiseIndex])
-                      )}
-                      typingSpeed={60}
-                      delayBeforeStart={500}
-                      delayBeforeDelete={1500}
-                      onComplete={handleExpertiseComplete}
-                      className='text-primary'
-                    />
+                <h1 className={cn(cnTitle1)}>
+                  {name && capitalizeFirstLetterOfEachWord(name)}{' '}
+                  {familyName && familyName.toUpperCase()}
+                </h1>
+                <p className={cn(cnDescription, 'text-foreground')}>
+                  Besoin d&apos;un développeur ?
+                </p>
+                <p
+                  className={cn(
+                    cnDescription,
+                    cnFlexCol,
+                    cnAutoHeightFullWidth,
+                    'text-foreground',
+                    'xxs:flex-row'
                   )}
-                </span>
+                >
+                  <span className='invisible h-0 w-0 xs:visible xs:h-auto xs:w-auto'>
+                    Je suis&nbsp;
+                  </span>
+                  <span className='min-h-[1.75rem]'>
+                    {showExpertise && expertises && expertises.length > 0 && (
+                      <TypewriterText
+                        text={capitalizeFirstLetterOfEachWord(
+                          formatSpecialWords(expertises[currentExpertiseIndex])
+                        )}
+                        typingSpeed={60}
+                        delayBeforeStart={500}
+                        delayBeforeDelete={1500}
+                        onComplete={handleExpertiseComplete}
+                        className='font-semibold text-primary'
+                      />
+                    )}
+                  </span>
+                </p>
+              </div>
+            </CardTitle>
+            <CardDescription className={cn(cnFlexCol, cnDescription)}>
+              <p
+                className={cn(
+                  cnAutoHeightFullWidth,
+                  cnLightTextMuted,
+                  cnHiddenSmBlock
+                )}
+              >
+                {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
               </p>
             </CardDescription>
           </CardHeader>

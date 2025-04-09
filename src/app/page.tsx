@@ -113,6 +113,7 @@ const HomePage: React.FC = (): JSX.Element => {
                     name={card.name}
                     familyName={card.familyName}
                     expertises={card.expertises}
+                    description={card.description}
                     services={card.services}
                     imageSrc={card.imageSrc}
                     imageAlt={card.imageAlt}
@@ -187,7 +188,10 @@ const HomePage: React.FC = (): JSX.Element => {
             <CardContent className='invisible' />
             {!card.mailto &&
               !card.jobs &&
-              ((card.cta1 && card.href1) || (card.cta2 && card.href2)) && (
+              ((card.cta1 && card.href1) || (card.cta2 && card.href2)) &&
+              card.cta1 &&
+              card.cta2 &&
+              card.cta3 && (
                 <CardFooter
                   className={cn(cnPaddingX, cnPaddingBottom, 'flex-none')}
                 >
