@@ -7,7 +7,7 @@
       "développeur full-stack",
       "coordonnateur de projet"
     ],
-    "description": "développeur full-stack expert react.js et node.js expérimenté en coordination de projet complexe pour la démarche humanitude. Mon parcours d'aide soignant nourrit une approche pragmatique et sensible à la création de solution numérique accessible.",
+    "description": "expérimenté en coordination de projet complexe pour la démarche humanitude, mon parcours d'aide soignant nourrit une approche pragmatique, humaine et sensible à la création de solution numérique accessible à tous.",
     "imageSrc": "/images/profile.webp",
     "imageAlt": "profile picture",
     "services": [
@@ -126,6 +126,245 @@
     "cta3": "travaillons ensemble",
     "icon3": "Github",
     "href3": "github.com/ThiessetFabien?tab=repositories"
+  },
+  {
+    "title": "expériences",
+    "description": "transformer une vision en réalité accessible avec du code et de l'humanité",
+    "experiences": [
+      {
+        "job": "concepteur développeur de site web bénévole - next.js",
+        "date": "avril 2025 - aujourd'hui",
+        "company": "rigolo comme la vie",
+        "location": "douai",
+        "goal": "conception et développement du site vitrine de la directrice de crèche, infirmière experte de la petite enfance, proposant ses services d'accompagnement à la parentalité, de groupe d'analyse de pratique et de formation professionnelle.",
+        "tasks": ["définition du besoin avec la cliente."],
+        "role": "concepteur développeur full-stack.",
+        "stack": ["next.js", "typescript", "tailwind css"],
+        "skills": ["conception de site web", "méthode agile scrum"]
+      },
+      {
+        "job": "concepteur développeur d'application bénévole - react native",
+        "date": "janvier 2025 - aujourd'hui",
+        "company": "association udapei59",
+        "location": "thumeries",
+        "goal": "développement d'un launcher d'application android adapté aux capacités cognitives et physiques d'une résidentes et facilitant l'accès aux applications d'appels, de musique et de jeux.",
+        "tasks": [
+          "définition du besoin et tests d'utilisation avec la cliente, l'ergothérapeute et l'éducateur spécialisé."
+        ],
+        "role": "concepteur développeur full-stack.",
+        "stack": ["react native", "typescript", "tailwind css"],
+        "skills": [
+          "conception d'application mobile",
+          "méthode agile scrum",
+          "développement front-end",
+          "développement back-end"
+        ]
+      },
+      {
+        "job": "fondateur et développeur de fabuilds - next.js",
+        "date": "novembre 2024 - décembre 2024",
+        "company": "projet personnel",
+        "goal": "création d'un portfolio et d'un blog moderne présentant mes compétences, projets en développement web et mes articles.",
+        "tasks": [
+          "conception du cahier des charges et de la maquette.",
+          "intégration responsive en mobile first en mode clair et sombre.",
+          "création d'un carousel de recommandations d'anciens collaborateurs.",
+          "optimisation des performances avec les lazy loading.",
+          "réalisation de carte intégrant la vidéo de démonstration.",
+          "développement adaptatif du menu burger et de la barre de navigation.",
+          "implémentation d'une carte openstreetmap indiquant la mobilité.",
+          "connexion sécurisée oauth2 à l'api google avec un formulaire."
+        ],
+        "role": "concepteur développeur full-stack.",
+        "stack": [
+          "next.js",
+          "typescript",
+          "tailwind css",
+          "shadcn/ui",
+          "openstreetmap",
+          "google apis",
+          "json",
+          "embla",
+          "lazygit",
+          "oauth2",
+          "github"
+        ],
+        "skills": [
+          "développement front-end",
+          "développement back-end sécurisé",
+          "rédaction de documentation technique et fonctionnelle en anglais",
+          "bonnes pratiques de développement",
+          "intégration d'interface accessible",
+          "seo",
+          "notion",
+          "draw.io"
+        ]
+      },
+      {
+        "job": "Développeur spécialisé react.js et intégration ++",
+        "date": "septembre 2024 - octobre 2024",
+        "company": "école o'clock",
+        "location": "replay"
+      },
+      {
+        "job": "développeur full-stack et scrum master - react.js/express.js",
+        "date": "mai 2024 - juin 2024",
+        "company": "projet fin formation école o'clock",
+        "location": "téléprésentiel",
+        "goal": "développement de l'application web Casalink permettant la gestion du planning familial d'un foyer avec délégation aux enfants.",
+        "tasks": [
+          "coordination de l'architecture du MVP et des conventions.",
+          "formation de l'équipe aux bonnes pratiques colaboratives sur Notion.",
+          "création de l'architecture et de composants back-end de l'api restful.",
+          "maintenance corrective et évolutive facilitant le développement front-end.",
+          "migration sécurisée de la base de données",
+          "sécuration des données utilisateurs, gestion des erreurs et des logs.",
+          "implémentation de la connexion json web token.",
+          "intégration responsive en mobile first de la modale de code pin.",
+          "facilitation, animation et suivi quotidien des rituels scrum."
+        ],
+        "role": "développeur full-stack et scrum master d'une équipe de cinq développeurs.",
+        "stack": [
+          "typescript",
+          "react.js",
+          "express.js",
+          "postgresql",
+          "sass",
+          "sqitch",
+          "jwt",
+          "notion",
+          "google sheets"
+        ],
+        "skills": [
+          "développement front-end",
+          "développement back-end sécurisé",
+          "rédaction du cahier des charges et de la documentation de l'API en anglais.",
+          "garant de l'agilité, des rites scrum de l'équipe de cinq développeurs."
+        ]
+      },
+      {
+        "job": "titre professionnel developpeur web et web mobile full-stack javascript",
+        "date": "décembre 2023 - juillet 2024",
+        "company": "école o'clock",
+        "location": "téléprésentiel",
+        "goal": "apprentissage intensif du développement web et web mobile avec le langage javascript, dans un cursus de six mois, 35 heures par semaine en réalisant des projets concrets, un projet de fin de formation en équipe.",
+        "tasks": [
+          "trois mois de socle: html, css, javascript, sql.",
+          "un mois de spécialisation data api.",
+          "un mois de projet de fin de formation en équipe.",
+          "61 challenges quotidiens.",
+          "cinq ateliers de pair-programming de deux apprenants.",
+          "huit parkours de code chronométré."
+        ],
+        "role": "apprenant développeur full-stack.",
+        "stack": [
+          "html, css, javascript, react.js, node.js, express.js, postgresql, mongodb, docker, sqitch, graphql."
+        ],
+        "skills": [
+          "installer et configurer son environnement de travail en fonction du projet",
+          "maquetter des interfaces utilisateur",
+          "réaliser des interfaces statiques",
+          "développer la partie dynamique des interfaces",
+          "mettre en place une base de données relationnelle",
+          "développer des composants d'accès aux données sql et nosql",
+          "développer des composants métier côté serveur",
+          "documenter le déploiement d'une application dynamique",
+          "communiquer",
+          "metter en oeuvre une démarche de résolution de problème",
+          "apprentissage continue"
+        ]
+      },
+      {
+        "job": "stagiaire développeur front-end",
+        "date": "juillet 2023",
+        "company": "Chimenbou, Entreprise individuelle",
+        "location": "télétravail",
+        "goal": "conception et intégration de la plateforme collaborative dev brother favorisant l'apprentissage des bases en programmation, en cybersécurité et en conception 3d.",
+        "tasks": [
+          "conception de la moodboard et la maquette.",
+          "réalisation d'assets graphiques personnalisées par prompt engineering.",
+          "intégration responsive en mobile first respectant les normes w3c.",
+          "versionnage du code avec github desktop.",
+          "découverte du langage de programmation javascript."
+        ],
+        "role": "stagiaire développeur front-end.",
+        "stack": [
+          "javascript",
+          "html",
+          "css",
+          "notion",
+          "google slide",
+          "figma",
+          "dall-e",
+          "github desktop"
+        ],
+        "skills": [
+          "conception de site web",
+          "intégration responsive en mobile first",
+          "développement front-end"
+        ]
+      },
+      {
+        "job": "financement de la formation de développeur web et web mobile full-stack javascript à l'école o'clock",
+        "date": "avril 2023 - septembre 2023",
+        "company": "transition pro hauts-de-france",
+        "location": "téléprésentiel",
+        "goal": "remplissage du dossier d'autopositionnement et la plateforme de transition limité à 4000 caractères afin d'obtenir le financement de la formation de développeur web et web mobile full-stack javascript à l'école o'clock et le maintien de salaire durant celle-ci.",
+        "tasks": [
+          "description du métier de développeur web et mobile",
+          "présentation de la cohérence du projet de changement de métier/profession",
+          "présentation de la pertinence du parcours de formation retenu, des modalités et de son financement",
+          "présentation des perspectives d'emploi à l'issue du parcours de formation"
+        ],
+        "role": "demandeur de financement de formation."
+      },
+      {
+        "job": "référent bien-être et aide soignant",
+        "date": "septembre 2024 - aujourd'hui",
+        "company": "association udapei59",
+        "location": "thumeries",
+        "goal": "analyse les besoins d'onze personnes accueillies porteuses de déficiences mentales et/ou physiques, et propose des solutions adaptées en collaborant avec l'équipe pluridisciplinaire de 25 professionnels."
+      },
+      {
+        "job": "référent vie quotidienne et aide soignant",
+        "date": "avril 2023 - décembre 2023",
+        "company": "association centre hélène borel",
+        "location": "raimbeaucourt",
+        "goal": "structure, organise et suit le quotidien de 52 personnes accueillies porteuses de déficiences physiques en garantissant la qualité du prendre soin et le bien-être en collaborant avec l'équipe pluridisciplinaire de 38 professionnels et les divers services transversaux."
+      },
+      {
+        "job": "autoformation html/css/javascript et node.js",
+        "date": "février 2023 - décembre 2023",
+        "company": "grafikart",
+        "location": "en ligne"
+      },
+      {
+        "job": "coordonnateur de la démarche humanitude et aide soignant",
+        "date": "février 2018 - avril 2023",
+        "company": "association centre hélène borel",
+        "location": "raimbeaucourt",
+        "goal": "optimise la communication entre 56 personnes accueillies porteuse de déficiens physiques, 38 professionnels et les services transversaux en la coordination les projets complexes, de la gestion de la qualité, de l'obtention et du maintien du label de 500 critères et 200 indicateurs.",
+        "tasks": [
+          "facilitation de groupe autour de valeurs communes.",
+          "partage de bonnes pratiques",
+          "co-animation de comité stratégique.",
+          "gestion collaborative de la planification.",
+          "suivi d'évaluation complexe de plus de 500 critères et 200 indicateurs.",
+          "co-conception, test, optimisation de la plateforme ancodea.",
+          "coordination efficace avec les équipes internes, transversales et le réseau humanitude.",
+          "élaboration et mise en oeuvre de stratégie adaptée à des contextes complexes (covid-19).",
+          "instauration d'une culture collaborative basée sur l'écoute active, l'autonomie et le leadership positif."
+        ],
+        "skills": ["méthodologie Gantt", "notion", "microsoft office"]
+      },
+      {
+        "job": "aide soignant",
+        "date": "décembre 2009 - février 2018",
+        "company": "association centre hélène borel",
+        "location": "raimbeaucourt, lomme",
+        "goal": "assure la continuité des soins et le bien-être de personnes accueillies porteuses de déficiences physiques en collaborant avec l'équipe pluridisciplinaire."
+      }
+    ]
   },
   {
     "title": "ce que j'ai accompli",

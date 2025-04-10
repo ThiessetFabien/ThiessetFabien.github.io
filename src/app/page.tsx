@@ -36,7 +36,9 @@ import { cnBorderNone } from '../styles/border.style';
 
 const LazyMap = dynamic(() => import('@/src/components/ui/cards/MapCard'), {
   ssr: false,
-  loading: () => <LoadingSpinner size='lg' message='Loading map...' />,
+  loading: () => (
+    <LoadingSpinner size='lg' message='Chargement de la carte...' />
+  ),
 });
 
 const LazyTestimonialsCard = dynamic(
@@ -44,7 +46,7 @@ const LazyTestimonialsCard = dynamic(
   {
     ssr: false,
     loading: () => (
-      <LoadingSpinner size='lg' message='Loading testimonials...' />
+      <LoadingSpinner size='lg' message='Chargement des recommendations...' />
     ),
   }
 );
@@ -121,14 +123,12 @@ const HomePage: React.FC = (): JSX.Element => {
                   />
                 )}
 
-                {card.experiences &&
-                  card.experiences?.length > 0 &&
-                  !card.technologies && (
-                    <ExperiencesCard
-                      experiences={card.experiences}
-                      className=''
-                    />
-                  )}
+                {card.experiences && card.experiences?.length > 0 && (
+                  <ExperiencesCard
+                    experiences={card.experiences}
+                    className=''
+                  />
+                )}
                 {card.jobs && <SkillsCard jobs={card.jobs} />}
                 {isClient &&
                   card.testimonials &&

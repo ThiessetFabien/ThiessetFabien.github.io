@@ -27,7 +27,7 @@ export const menuItems = [
     id: 'experience',
     icon: 'BriefcaseBusiness',
     label: 'Expériences',
-    href: '#experience',
+    href: '#card-3',
     target: '_self',
     rel: 'noopener noreferrer',
   },

@@ -87,6 +87,20 @@ export const formatSpecialWords = (string: string | undefined | null) => {
     ancodea: 'Ancodea',
     'qualité du prendre soin': 'Qualité du Prendre Soin',
     'bien-être': 'Bien-Être',
+    'back-end': 'Back-End',
+    openstreetmap: 'OpenStreetMap',
+    json: 'JSON',
+    github: 'GitHub',
+    oauth2: 'OAuth2',
+    google: 'Google',
+    'json web token': 'JSON Web Token',
+    seo: 'SEO',
+    "concepteur développeur d'applications web et mobile":
+      "Concepteur Développeur d'Applications Web et Mobile",
+    freelance: 'Freelance',
+    'dev brother': 'Dev Brother',
+    'github desktop': 'GitHub Desktop',
+    '3d': '3D',
   };
   let formattedString = string;
 
