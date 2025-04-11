@@ -55,7 +55,7 @@ export const ExperiencesList: React.FC<{
             <div key={i} className={cn('relative', cnSmallSpaceY)}>
               <div
                 className={cn(
-                  'absolute -left-8 top-0 z-50 flex-shrink-0 md:-left-12',
+                  'absolute -left-8 top-0 z-50 flex-shrink-0 md:-left-10',
                   cnBorderRadiusFull,
                   'h-4 w-4',
                   cnSmallMarginX,
@@ -118,7 +118,7 @@ export const ExperiencesList: React.FC<{
                         {capitalizeFirstLetterOfEachWord(
                           formatSpecialWords(item)
                         )}
-                        {i < (experience.stack ?? []).length - 1 ? ', ' : '.'}
+                        {i < (experience.stack ?? []).length - 1 ? ' · ' : '.'}
                       </span>
                     ))}
                   </li>
@@ -131,7 +131,7 @@ export const ExperiencesList: React.FC<{
                         {capitalizeFirstLetterOfPhrase(
                           formatSpecialWords(item)
                         )}
-                        {i < (experience.skills ?? []).length - 1 ? ', ' : '.'}
+                        {i < (experience.skills ?? []).length - 1 ? ' · ' : '.'}
                       </span>
                     ))}
                   </li>

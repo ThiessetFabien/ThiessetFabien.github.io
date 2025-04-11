@@ -46,7 +46,7 @@ const nextconfig = {
       {
         protocol: 'https',
         hostname: 'media.licdn.com',
-        pathname: '/dms/image/**',
+        pathname: '/**',
       },
       {
         protocol: 'https',

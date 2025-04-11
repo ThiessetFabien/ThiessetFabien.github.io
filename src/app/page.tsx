@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import React, { memo, useEffect, useState } from 'react';
 
-import { AchievementsCard } from '@/src/components/ui/cards/AchievementsCard';
 import { ExperiencesCard } from '@/src/components/ui/cards/ExperiencesCard';
 import { HeroCard } from '@/src/components/ui/cards/HeroCard';
 import { FooterCard } from '@/src/components/ui/cards/layouts.cards/FooterCard';
@@ -22,6 +21,7 @@ import {
 import { cnFlexBetweenY, cnFlexCol } from '@/src/styles/flex.style';
 import { cnParagraph } from '@/src/styles/font.style';
 import { useCardGrid } from '@/src/styles/grid.style';
+import type { ExperiencesProps } from '@/src/types/ExperiencesProps';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
@@ -122,19 +122,7 @@ const HomePage: React.FC = (): JSX.Element => {
                     className={cn(cnFlexBetweenY, 'w-full space-y-0')}
                   />
                 )}
-
-                {card.experiences && card.experiences?.length > 0 && (
-                  <ExperiencesCard
-                    experiences={card.experiences}
-                    className=''
-                  />
-                )}
                 {card.jobs && <SkillsCard jobs={card.jobs} />}
-                {isClient &&
-                  card.testimonials &&
-                  card.testimonials.length > 0 && (
-                    <LazyTestimonialsCard testimonials={card.testimonials} />
-                  )}
                 {card.projects && card.projects.length > 0 && (
                   <ProjectsCard
                     projects={card.projects}
@@ -144,12 +132,17 @@ const HomePage: React.FC = (): JSX.Element => {
                     )}
                   />
                 )}
-                {card.achievements && card.achievements.length > 0 && (
-                  <AchievementsCard
-                    achievements={card.achievements}
-                    className={cnSpaceY}
+                {card.experiences && card.experiences?.length > 0 && (
+                  <ExperiencesCard
+                    experiences={card.experiences as ExperiencesProps[]}
+                    className=''
                   />
                 )}
+                {isClient &&
+                  card.testimonials &&
+                  card.testimonials.length > 0 && (
+                    <LazyTestimonialsCard testimonials={card.testimonials} />
+                  )}
                 {card.mailto && (
                   <ContactForm
                     mailto={card.mailto}

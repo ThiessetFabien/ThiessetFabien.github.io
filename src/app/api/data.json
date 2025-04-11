@@ -243,7 +243,7 @@
         ]
       },
       {
-        "job": "titre professionnel developpeur web et web mobile full-stack javascript",
+        "job": "titre professionnel niveau 5 developpeur web et web mobile full-stack javascript (bac+2)",
         "date": "décembre 2023 - juillet 2024",
         "company": "école o'clock",
         "location": "téléprésentiel",
@@ -343,7 +343,7 @@
         "date": "février 2018 - avril 2023",
         "company": "association centre hélène borel",
         "location": "raimbeaucourt",
-        "goal": "optimise la communication entre 56 personnes accueillies porteuse de déficiens physiques, 38 professionnels et les services transversaux en la coordination les projets complexes, de la gestion de la qualité, de l'obtention et du maintien du label de 500 critères et 200 indicateurs.",
+        "goal": "optimise la communication entre 56 personnes accueillies porteuse de déficiences physiques, 38 professionnels et les services transversaux en la coordination les projets complexes, de la gestion de la qualité, de l'obtention et du maintien du label de 500 critères et 200 indicateurs dans le premier foyer d'accueil médicalisé de france métropolitaine.",
         "tasks": [
           "facilitation de groupe autour de valeurs communes.",
           "partage de bonnes pratiques",
@@ -367,175 +367,70 @@
     ]
   },
   {
-    "title": "ce que j'ai accompli",
-    "achievements": [
-      {
-        "icon": "GraduationCap",
-        "title": "cursus certifié développeur full stack et anglais a2 pour développeur",
-        "date": "fév 2025 - présent"
-      },
-      {
-        "icon": "GraduationCap",
-        "title": "titre professionnel niveau 5 de développeur web et mobile (bac+2)",
-        "date": "juin - juil 2024"
-      },
-      {
-        "icon": "ReceiptEuro",
-        "title": "accord de financement de transition pro hauts-de-france",
-        "date": "avr - sept 2023"
-      },
-      {
-        "icon": "Accessibility",
-        "title": "obtention et maintien du label humanitude pour le premier établissement médico-social de France métropolitaine",
-        "date": "2019 - 2024"
-      }
-    ]
-  },
-  {
-    "title": "ce qu'ils disent de mon travail",
+    "title": "témoignages",
     "testimonials": [
       {
         "author": "dupoirier christophe",
-        "job": "professional jury et product leader",
+        "job": "product leader et jury professionnel",
         "company": "renault",
-        "content": "i had the opportunity to evaluate Fabien during his thesis defense in july 2024 as a professional jury, and i can confirm that his level of technical knowledge and the quality of his intellectual approach to project design make him a serious candidate for a full stack developer position.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1608645411974?e=1748476800etv=betaett=SCxyt_hsjjt6sd7AcZEgalwIGawFCa_CrDqQNBI4iGQ",
-        "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/"
-      },
-      {
-        "author": "dupoirier christophe",
-        "job": "professional jury et product leader",
-        "company": "renault",
-        "content": "fabien's career change has been perfectly successful as he previously worked as a nursing assistant in a medical environment. this demonstrates his unwavering commitment and true professional attitude.",
+        "content": "J’ai eu le plaisir de travailler avec Fabien Thiesset sur le projet Casalink, et je ne peux que louer ses compétences et son professionnalisme en tant que développeur fullstack. Fabien a démontré une maîtrise des technologies front-end et back-end, ce qui a été crucial pour le succès de notre projet. Son approche méthodique et sa capacité à résoudre des problèmes complexes ont permis de surmonter de nombreux défis techniques. De plus, Fabien est un excellent communicant, toujours prêt à partager ses connaissances et à collaborer efficacement avec l’équipe. Je recommande vivement Fabien pour toute opportunité future. Sa passion pour le développement et son engagement envers l’excellence en font un atout précieux pour n’importe quel projet.",
         "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1608645411974?e=1748476800etv=betaett=SCxyt_hsjjt6sd7AcZEgalwIGawFCa_CrDqQNBI4iGQ",
         "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/"
       },
       {
         "author": "nicolas zanforlini",
-        "job": "professional jury et lead developer",
+        "job": "lead developpeur, formateur et jury professionnel DWWM / CDUI / CDA",
         "company": "freelance",
-        "content": "i had the opportunity to evaluate his skills during his diploma examination. he is a motivated, competent, and curious young man, and he is an asset to any team with good communication skills. i highly recommend him.",
+        "content": "e recommande Fabien, j'ai eu l'occasion d'évaluer ses compétences lors du passage de son diplôme, c'est un jeune homme motivé, compétent et curieux, il est un atout au sein d'une équipe avec une bonne communication. Je recommande fortement",
         "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQG9eTvW6wRapQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1639988026836?e=1748476800etv=betaett=dkcLXrXpW24qfwK8pUFoW5BSztPumqIZY8uvZRma5mI",
         "linkedin": "https://www.linkedin.com/in/nicolas-zanforlini-5a06b518b/"
       },
       {
         "author": "benoît schiex",
-        "job": "trainer et developer",
-        "company": "o'clock school",
-        "content": "having followed Fabien during his training, i noted his qualities of rigor and commitment, which allowed him to achieve an excellent level in web application design and development by the end of his course.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1544974008196?e=1748476800etv=betaett=-im8HlVqmEKU5wNvGhSEUP7lWfLnJWptHbvU-vHq71Q",
-        "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
-      },
-      {
-        "author": "benoît schiex",
-        "job": "trainer et developer",
-        "company": "o'clock school",
-        "content": "the projects carried out demonstrated an understanding of the needs, with technical responses that were always of high quality both in terms of choices and implementation. his curiosity and rigor were the foundation of his successful training.",
+        "job": "développeur et formateur",
+        "company": "école o'clock",
+        "content": "Je recommande Fabien, j'ai eu l'occasion d'évaluer ses compétences lors du passage de son diplôme, c'est un jeune homme motivé, compétent et curieux, il est un atout au sein d'une équipe avec une bonne communication. Je recommande fortement",
         "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1544974008196?e=1748476800etv=betaett=-im8HlVqmEKU5wNvGhSEUP7lWfLnJWptHbvU-vHq71Q",
         "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
       },
       {
         "author": "adrien delcroix",
-        "job": "pedagogical advisor",
-        "company": "o'clock school",
-        "content": "i had the opportunity to follow Fabien during his web development training, and he stood out for his seriousness and motivation. always positive and diligent, he successfully met every challenge, working autonomously while being comfortable in a team.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709198087943?e=1748476800etv=betaett=aptbtjYuTVwKlOfUMeuEdnV3uljiowtBf8LvglhO2To",
-        "linkedin": "www.linkedin.com/in/adrien-delcroix/"
-      },
-      {
-        "author": "adrien delcroix",
-        "job": "pedagogical advisor",
-        "company": "o'clock school",
-        "content": "fabien also demonstrated a great ability to overcome technical difficulties, always seeking effective solutions. his team spirit and involvement were essential during collaborative projects.",
+        "job": "référent pédagogique",
+        "company": "école o'clock",
+        "content": "J'ai eu l'occasion de suivre Fabien pendant sa formation en développement web, et il s'est démarqué par son sérieux et sa motivation. Toujours positif et appliqué, il a su relever chaque défi avec brio, en travaillant de manière autonome tout en étant à l'aise en équipe. Fabien a également montré une grande capacité à surmonter les difficultés techniques, cherchant toujours des solutions efficaces. Son esprit d'équipe et son implication ont été essentiels lors des projets collaboratifs. Je le recommande sans hésitation pour tout poste en développement web !",
         "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709198087943?e=1748476800etv=betaett=aptbtjYuTVwKlOfUMeuEdnV3uljiowtBf8LvglhO2To",
         "linkedin": "www.linkedin.com/in/adrien-delcroix/"
       },
       {
         "author": "alexis vignot",
-        "job": "student et collaborator",
-        "company": "o'clock school",
-        "content": "i had the pleasure of working with fabien thiesset on the Casalink project, and i can only praise his skills and professionalism as a full-stack developer. fabien demonstrated mastery of both front-end and back-end technologies, which was crucial to the success of our project.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1624568924087?e=1748476800etv=betaett=4D8mZ_QxctfTxY5_miGi9E_da0vJART9MqSlklXxHpQ",
-        "linkedin": "www.linkedin.com/in/alexis-vignot/"
-      },
-      {
-        "author": "alexis vignot",
-        "job": "student et collaborator",
-        "company": "o'clock school",
-        "content": "his methodical approach and ability to solve complex problems have helped overcome many technical challenges. additionally, fabien is an excellent communicator, always ready to share his knowledge and collaborate effectively with the team.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1624568924087?e=1748476800etv=betaett=4D8mZ_QxctfTxY5_miGi9E_da0vJART9MqSlklXxHpQ",
-        "linkedin": "www.linkedin.com/in/alexis-vignot/"
-      },
-      {
-        "author": "alexis vignot",
-        "job": "student et collaborator",
-        "company": "o'clock school",
-        "content": "i highly recommend fabien for any future opportunities. his passion for development and commitment to excellence make him a valuable asset for any project.",
+        "job": "développeur full-stack et collègue projet de fin de formation",
+        "company": "école o'clock",
+        "content": "J’ai eu le plaisir de travailler avec Fabien Thiesset sur le projet Casalink, et je ne peux que louer ses compétences et son professionnalisme en tant que développeur fullstack. Fabien a démontré une maîtrise des technologies front-end et back-end, ce qui a été crucial pour le succès de notre projet. Son approche méthodique et sa capacité à résoudre des problèmes complexes ont permis de surmonter de nombreux défis techniques. De plus, Fabien est un excellent communicant, toujours prêt à partager ses connaissances et à collaborer efficacement avec l’équipe. Je recommande vivement Fabien pour toute opportunité future. Sa passion pour le développement et son engagement envers l’excellence en font un atout précieux pour n’importe quel projet.",
         "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQHqNUcI0AfaNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1624568924087?e=1748476800etv=betaett=4D8mZ_QxctfTxY5_miGi9E_da0vJART9MqSlklXxHpQ",
         "linkedin": "www.linkedin.com/in/alexis-vignot/"
       },
       {
         "author": "emilie suray",
-        "job": "quality et risk management officer",
-        "company": "helene borel center",
-        "content": "fabien has shown a great ability to reinvent himself by transitioning from the role of coordinator to that of a developer. i had the opportunity to work with him, and his seriousness, rigor, and interpersonal skills make him a valuable collaborator.",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1748476800etv=betaett=gyko4_vPK7-SP3GXHBPXUGTqBPqfa-HkSEX4L62Q4v4",
-        "linkedin": "www.linkedin.com/in/emilie-s-065196130/"
-      },
-      {
-        "author": "emilie suray",
-        "job": "quality et risk management officer",
-        "company": "helene borel center",
-        "content": "his career change demonstrates his motivation and ability to learn quickly. fabien brings a human touch to his projects, which, combined with his new technical expertise, is an undeniable asset to any team.",
+        "job": "responsable qualité et gestion des risques - DPO",
+        "company": "centre hélène borel",
+        "content": "Fabien a démontré une belle capacité à se réinventer en passant du métier de coordonnateur à celui de développeur. J’ai eu l’occasion de travailler avec lui, et son sérieux, sa rigueur, ainsi que ses compétences relationnelles font de lui un collaborateur précieux. Sa reconversion témoigne de sa motivation et de son aptitude à apprendre rapidement. Fabien apporte une sensibilité humaine à ses projets, ce qui, combiné à sa nouvelle expertise technique, est un atout indéniable pour toute équipe.",
         "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGxWzN86GjqZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1573585439996?e=1748476800etv=betaett=gyko4_vPK7-SP3GXHBPXUGTqBPqfa-HkSEX4L62Q4v4",
         "linkedin": "www.linkedin.com/in/emilie-s-065196130/"
       },
       {
         "author": "sylvette depreux",
-        "job": "head of the it department",
-        "company": "helene borel center",
-        "content": "i worked with fabien, who was the it referent for his healthcare facility. fabien acted as the liaison between the needs expressed by the users in the facility and the it department. he communicated requests for improvements, software updates, and necessary equipment.",
+        "job": "responsable système d'information",
+        "company": "centre hélène borel",
+        "content": "Responsable du service informatique, j’ai travaillé avec Fabien référent informatique pour son établissement de santé : Fabien faisait le lien entre les besoins émis par les utilisateurs des métiers du foyer et le service informatique. Ainsi, il me faisait part des demandes d’amélioration, des demandes d’évolution des logiciels métiers et du matériel nécessaire. Fabien réalisait aussi des statistiques à partir des données du système d’information. Fabien était un collaborateur investi, capable de faire le lien entre le service informatique et l’établissement dans lequel il travaillait. La collaboration a été efficace, permettant d’améliorer la qualité du service rendu pour les utilisateurs. Fabien est un collaborateur posé capable de prendre du recul et de suggérer des solutions.",
         "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-        "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
-      },
-      {
-        "author": "sylvette depreux",
-        "job": "head of the it department",
-        "company": "helene borel center",
-        "content": "fabien also generated statistics from the information system data. i worked with fabien, who was the it referent for his healthcare facility. fabien acted as the liaison between the needs expressed by the users in the facility and the it department.",
-        "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-        "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
-      },
-      {
-        "author": "sylvette depreux",
-        "job": "head of the it department",
-        "company": "helene borel center",
-        "content": "he communicated requests for improvements, software updates, and necessary equipment. fabien also generated statistics from the information system data. fabien was a dedicated collaborator, capable of bridging the gap between the it department and the facility where he worked.",
-        "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-        "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
-      },
-      {
-        "author": "sylvette depreux",
-        "job": "head of the it department",
-        "company": "helene borel center",
-        "content": "the collaboration was effective, improving the quality of service provided to users. fabien is a calm collaborator, capable of taking a step back and suggesting solutions.",
-        "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-        "linkedin": "www.linkedin.com/in/sylvette-depreux-b43412135/"
+        "linkedin": "https://www.linkedin.com/in/sylvette-depreux-b43412135/"
       },
       {
         "author": "anthony goguillon",
-        "job": "it technician",
-        "company": "helene borel center",
-        "content": "i have had the pleasure of working with Fabien on various ir-related issues multiple times. fabien is excellent at expressing the needs of other users and translating them in a simple and effective manner, which allows for quicker resolutions.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712083084075?e=1748476800etv=betaett=c2454jsT7raEKcMfYAT4M0rghRSS7Qs1JlPveyVBemI",
-        "linkedin": "www.linkedin.com/in/anthony-goguillon-a0464565/"
-      },
-      {
-        "author": "anthony goguillon",
-        "job": "it technician",
-        "company": "helene borel center",
-        "content": "what we also appreciate about fabien is his enthusiasm for technology, a true passion that enables him to be a source of proposals. not to mention his interpersonal skills, his rigor, his willingness to make things progress, and of course, his good humor.",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712083084075?e=1748476800etv=betaett=c2454jsT7raEKcMfYAT4M0rghRSS7Qs1JlPveyVBemI",
+        "job": "technicien informatique",
+        "company": "centre hélène borel",
+        "content": "En tant que technicien informatique , j'ai eu à plusieurs reprises le plaisir de travailler avec Fabien sur des problématiques d'ordre informatique. Fabien sait parfaitement exprimer les besoins d'autres utilisateurs et les retranscrire de manière simple et efficace , cela permet une résolution plus rapide. Ce qu'on apprécie aussi chez Fabien c'est son appétence pour la technologie , une vrai passion lui permettant d'être force de proposition. Sans oublier ses qualités humaines , sa rigueur , sa volonté de faire avancer les choses et bien sûr sa bonne humeur.",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712083084075?e=1749686400&v=beta&t=VcmCUuVqstztEhpf29U4LDI4Ngx43oM8qRIOjqYzuOY",
         "linkedin": "www.linkedin.com/in/anthony-goguillon-a0464565/"
       }
     ]

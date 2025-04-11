@@ -14,41 +14,33 @@ import {
 } from '@/src/styles/boxModel.style';
 import { cnTitle2, cnTitle2Size } from '@/src/styles/font.style';
 import type { CardProps } from '@/src/types/CardProps';
+import type { ExperiencesProps } from '@/src/types/ExperiencesProps';
 
 /**
- * ExperiencesCard component.
- * @param {Object} props - The props for the component.
- * @param {Array} props.experiences - An array of experience objects to be displayed.
- * @param {string} [props.className] - Additional class names to apply to the component.
+ * A React component that displays a list of experiences grouped into current and past categories.
+ *
+ * @param {Object} props - The component props.
+ * @param {ExperiencesProps[]} props.experiences - An array of experience objects to display.
+ * @param {string} [props.className] - Optional additional class names for the component.
  * @returns {JSX.Element} The rendered ExperiencesCard component.
  */
-
 export const ExperiencesCard: React.FC<{
-  experiences: Array<{
-    job: string;
-    date: string;
-    company: string;
-    location: string;
-    goal?: string;
-    role?: string;
-    tasks?: string[];
-    stack?: string[];
-    skills?: string[];
-  }>;
+  experiences: ExperiencesProps[];
   className: CardProps['className'];
-}> = ({ experiences, className }) => {
+}> = ({
+  experiences,
+  className,
+}: {
+  experiences: ExperiencesProps[];
+  className?: string;
+}): JSX.Element => {
   return (
     <section className={className} aria-labelledby='experiences-heading'>
       <h2 id='experiences-heading' className='sr-only'>
         Experiences
       </h2>
       <article
-        className={cn(
-          'w-full lg:flex',
-          'bg-popover',
-          cnSmallPaddingX,
-          cnSmallPaddingBottom
-        )}
+        className={cn('w-full lg:flex', cnSmallPaddingX, cnSmallPaddingBottom)}
       >
         <div className={cn(cnSpaceY, 'lg:w-1/2')}>
           <h4

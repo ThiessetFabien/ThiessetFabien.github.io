@@ -113,6 +113,7 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
         'services',
         'about',
         'portfolio',
+        'recommendations',
         'experience',
         'resume',
         'motivation',

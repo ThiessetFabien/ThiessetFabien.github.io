@@ -36,25 +36,22 @@ export const useCardGrid = (cards: CardProps[]) => {
           colSpan = 'lg:col-span-12 lg:row-span-1';
           break;
         case !!card.experiences:
-          colSpan = 'lg:col-span-12 lg:row-span-2';
+          colSpan = 'lg:col-span-12 lg:row-span-1';
           break;
         case !!card.projects:
           colSpan = 'lg:col-span-12 lg:row-span-1';
           break;
-        case !!card.achievements:
-          colSpan = 'lg:col-span-4 lg:row-span-1';
-          break;
         case !!card.testimonials:
-          colSpan = 'lg:col-span-4 lg:row-span-1';
+          colSpan = 'lg:col-span-12 lg:row-span-1';
           break;
         case !!card.map:
-          colSpan = 'lg:col-span-6 lg:row-span-1';
+          colSpan = 'lg:col-span-12 lg:row-span-1';
           break;
         case !!card.mailto:
           colSpan = 'lg:col-span-6 lg:row-span-1';
           break;
         default:
-          colSpan = 'lg:col-span-4 lg:row-span-1';
+          colSpan = 'lg:col-span-3 lg:row-span-1';
           break;
       }
       return {

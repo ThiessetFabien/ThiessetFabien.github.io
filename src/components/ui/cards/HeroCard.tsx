@@ -16,6 +16,7 @@ import {
 } from '@/src/styles/boxModel.style';
 import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
 import {
+  cnBigDescription,
   cnDescription,
   cnLightTextMuted,
   cnSmallText,
@@ -175,19 +176,19 @@ export const HeroCard: React.FC<{
               <div
                 className={cn(
                   cnSmallSpaceY,
-                  isSM ? cn(cnFlexCol, 'w-full justify-center') : undefined
+                  isSM ?? cn(cnFlexCol, 'w-full justify-center')
                 )}
               >
                 <h1 className={cn(cnTitle1)}>
                   {name && capitalizeFirstLetterOfEachWord(name)}{' '}
                   {familyName && familyName.toUpperCase()}
                 </h1>
-                <p className={cn(cnDescription, 'text-foreground')}>
+                <p className={cn(cnBigDescription, 'text-foreground')}>
                   Besoin d&apos;un développeur ?
                 </p>
                 <p
                   className={cn(
-                    cnDescription,
+                    cnBigDescription,
                     cnFlexCol,
                     cnAutoHeightFullWidth,
                     'text-foreground',

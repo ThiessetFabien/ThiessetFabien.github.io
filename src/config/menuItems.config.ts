@@ -32,6 +32,14 @@ export const menuItems = [
     rel: 'noopener noreferrer',
   },
   {
+    id: 'testimonial',
+    icon: 'Star',
+    label: 'Témoignages',
+    href: '#card-4',
+    target: '_self',
+    rel: 'noopener noreferrer',
+  },
+  {
     id: 'resume',
     icon: 'ClipboardList',
     label: 'CV',
