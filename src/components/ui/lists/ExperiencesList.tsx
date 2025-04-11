@@ -15,26 +15,47 @@ import {
   cnLightTextMuted,
   cnSmallText,
 } from '@/src/styles/font.style';
+import { ExperiencesProps } from '@/src/types/ExperiencesProps';
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
   capitalizeFirstLetterOfPhrase,
 } from '@/src/utils/formatText.util';
 
+/**
+ * A React functional component that renders a list of experiences, categorized
+ * by their subtitle ('actuelle' or 'passée'). Each experience displays detailed
+ * information such as job title, date, company, location, and optional details
+ * like goal, role, tasks, stack, and skills.
+ *
+ * @component
+ * @param {Object} props - The props object.
+ * @param {'actuelle' | 'passée'} props.subtitle - The category of experiences to display.
+ *   - 'actuelle': Filters experiences that include "aujourd'hui" in their date.
+ *   - 'passée': Filters experiences that do not include "aujourd'hui" in their date.
+ * @param {Array<Object>} props.experiences - An array of experience objects.
+ * @param {string} props.experiences[].job - The job title of the experience.
+ * @param {string} props.experiences[].date - The date or duration of the experience.
+ * @param {string} props.experiences[].company - The company name of the experience.
+ * @param {string} props.experiences[].location - The location of the experience.
+ * @param {string} [props.experiences[].goal] - The goal or purpose of the experience (optional).
+ * @param {string} [props.experiences[].role] - The role played in the experience (optional).
+ * @param {Array<string>} [props.experiences[].tasks] - A list of tasks performed during the experience (optional).
+ * @param {Array<string>} [props.experiences[].stack] - A list of technologies or tools used during the experience (optional).
+ * @param {Array<string>} [props.experiences[].skills] - A list of skills acquired or demonstrated during the experience (optional).
+ *
+ * @returns {JSX.Element} A JSX element that renders the filtered and formatted list of experiences.
+ */
 export const ExperiencesList: React.FC<{
   subtitle: 'actuelle' | 'passée';
-  experiences: Array<{
-    job: string;
-    date: string;
-    company: string;
-    location: string;
-    goal?: string;
-    role?: string;
-    tasks?: string[];
-    stack?: string[];
-    skills?: string[];
-  }>;
-}> = ({ subtitle, experiences }) => {
+  experiences: ExperiencesProps[];
+}> = ({
+  subtitle,
+  experiences,
+}: {
+  subtitle: 'actuelle' | 'passée';
+  experiences: ExperiencesProps[];
+}): JSX.Element => {
   return (
     <div
       className={cn(

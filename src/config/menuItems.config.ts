@@ -1,4 +1,46 @@
-export const menuItems = [
+/**
+ * Configuration for menu items used in the application.
+ * Each menu item represents a navigational link or action with associated metadata.
+ */
+/**
+ * Type definition for a menu item.
+ */
+export interface MenuItem {
+  /**
+   * Unique identifier for the menu item.
+   */
+  id: string;
+
+  /**
+   * Icon name associated with the menu item.
+   */
+  icon: string;
+
+  /**
+   * Display label for the menu item.
+   */
+  label: string;
+
+  /**
+   * Hyperlink reference for the menu item.
+   * Can be an anchor link, external URL, or file path.
+   */
+  href: string;
+
+  /**
+   * Specifies where to open the linked document.
+   * Common values: '_self', '_blank'.
+   */
+  target?: '_self' | '_blank';
+
+  /**
+   * Relationship between the current document and the linked document.
+   * Common values: 'noopener noreferrer'.
+   */
+  rel?: string;
+}
+
+export const menuItems: MenuItem[] = [
   {
     id: 'services',
     icon: 'Home',
