@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { FooterCard } from '@/src/components/ui/cards/layouts.cards/FooterCard';
+import { menuItems } from '@/src/config/menuItems.config';
 import { cn } from '@/src/lib/utils';
 import type { FormSchema } from '@/src/schemas/contactForm.schema';
 import { ContactFormSchema } from '@/src/schemas/contactForm.schema';
 import { ClientSanitizationService } from '@/src/services/client-sanitize.service';
-import { cnSmallGap } from '@/src/styles/boxModel.style';
+import { cnGap, cnSmallGap, cnSpaceY } from '@/src/styles/boxModel.style';
 import { cnFlexCol } from '@/src/styles/flex.style';
+import { cnDescription, cnTitle3 } from '@/src/styles/font.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
 import { IconName } from '@/src/types/IconNameProps';
 import { Form } from '@lib/components/ui/form';
@@ -63,10 +65,6 @@ import { MessageField } from '../ui/textarea/TextAreaField';
  * />
  */
 export const ContactForm: React.FC<{
-  mailto?: CardProps['mailto'];
-  cta1?: ActionButtonProps['cta'];
-  icon1?: IconName;
-  href1?: ActionButtonProps['href'];
   downloadActive1?: ActionButtonProps['downloadActive'];
   cta2?: ActionButtonProps['cta'];
   icon2?: IconName;
@@ -78,10 +76,6 @@ export const ContactForm: React.FC<{
   downloadActive3?: ActionButtonProps['downloadActive'];
   className?: CardProps['className'];
 }> = ({
-  mailto,
-  cta1,
-  icon1,
-  href1,
   downloadActive1,
   cta2,
   icon2,
@@ -91,7 +85,6 @@ export const ContactForm: React.FC<{
   icon3,
   href3,
   downloadActive3,
-  className,
 }: {
   mailto?: string;
   cta1?: string;
@@ -168,67 +161,70 @@ export const ContactForm: React.FC<{
 
   return (
     <Form {...form} aria-labelledby='contact-form-heading'>
-      <h2 id='contact-form-heading' className='sr-only'>
-        Formulaire de contact
-      </h2>
+      <div className={cn('w-full', cnSmallGap, cnFlexCol)}>
+        <h3 id='contact-form-heading' className={cn(cnTitle3, 'text-center')}>
+          Parlons de votre projet
+        </h3>
+        <p className={cn(cnDescription, 'mb-4 text-center')}>
+          La passion est de l&apos;énergie. Ressentez la puissance qui vient se
+          concentrer sur ce qui vous enthousiasme (Oprah Winfrey).
+        </p>
+      </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={cn(className, cnFlexCol)}
+        className={cn('w-full', cnSpaceY, cnFlexCol)}
       >
-        <div
-          className={cn(
-            cnSmallGap,
-            'grid auto-rows-auto grid-cols-1 md:grid-cols-3'
-          )}
-        >
+        <div className={cn('w-full', cnGap, cnFlexCol)}>
           <InputField
             control={control}
             name='name'
             errors={errors.name}
-            label='Name and family name :'
-            placeholder='John Doe'
+            label='Nom prénom :'
+            placeholder='Jean Dupont'
             aria-required='true'
           />
           <InputField
             control={control}
             errors={errors.phone}
             name='phone'
-            label='Phone :'
-            placeholder='0123456789'
+            label='Téléphone direct :'
+            placeholder='+33612345678'
             aria-required='true'
           />
           <InputField
             control={control}
             errors={errors.email}
             name='email'
-            label='Email :'
-            placeholder='your@mail.com'
+            label='Adresse email :'
+            placeholder='votre@mail.com'
           />
           <EmailTypeField
             control={control}
             errors={errors.type}
             name='type'
-            label='Type of email :'
+            label='Type de demande :'
           />
           <MessageField
             control={control}
             errors={errors.message}
             name='message'
             label='Message :'
-            placeholder='Tell me more about your project...'
+            placeholder='Parlez-moi un peu de votre projet...'
           />
           <ConsentField
             control={control}
             errors={errors.consent}
             name='consent'
-            label='I agree to be contacted using the provided information.'
+            label="J'accepte d'être contacté(e) en utilisant les informations fournies."
             aria-required='true'
           />
           <FooterCard
-            mailto={mailto}
-            cta1={cta1}
-            icon1={icon1 as IconName | undefined}
-            href1={href1}
+            mailto={menuItems.find((item) => item.id === 'contact')?.href}
+            cta1='envoyer votre demande'
+            icon1={
+              menuItems.find((item) => item.id === 'contact')?.icon as IconName
+            }
+            href1={menuItems.find((item) => item.id === 'contact')?.href}
             downloadActive1={downloadActive1}
             disabled1={isLoading ? true : false}
             cta2={cta2}

@@ -1,7 +1,6 @@
-import type { EmblaOptionsType } from 'embla-carousel';
-
 export interface GenericCarouselProps {
-  items?: React.ReactNode[];
-  options?: EmblaOptionsType;
+  items: React.ReactNode[];
   delay?: number;
+  controls?: boolean;
+  className?: string;
 }

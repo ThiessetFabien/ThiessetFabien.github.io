@@ -1,16 +1,23 @@
-import type { ButtonProps } from '@lib/components/ui/button';
-
 import type { IconName } from './IconNameProps';
 
-export interface ActionButtonProps extends Omit<ButtonProps, 'children'> {
-  mailto?: string;
-  type?: 'button' | 'submit' | 'reset';
+export interface ActionButtonProps {
   cta?: string;
   icon?: IconName;
   href?: string;
   downloadActive?: boolean;
   disabled?: boolean;
-  variant?: ButtonProps['variant'];
-  size?: ButtonProps['size'];
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  variant?:
+    | 'default'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | 'ghost'
+    | 'link';
+  type?: string;
+  size?: 'icon' | 'default' | 'sm' | 'lg' | 'xs' | null;
+  onClick?: (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.MouseEvent<HTMLAnchorElement>
+  ) => void;
 }

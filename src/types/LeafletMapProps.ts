@@ -1,4 +1,19 @@
 /**
+ * Type pour les marqueurs sur la carte
+ */
+export interface MapMarker {
+  position: [number, number];
+  popup?: string;
+  circle?: {
+    radius: number;
+    color: string;
+    fillColor?: string;
+    fillOpacity?: number;
+    weight?: number;
+  };
+}
+
+/**
  * Interface representing the properties for a Leaflet map component.
  */
 export interface LeafletMapProps {
@@ -23,19 +38,7 @@ export interface LeafletMapProps {
    *   { position: [51.5074, -0.1278], popup: "London" }
    * ]
    */
-  markers?: Array<{
-    /**
-     * The geographical position of the marker, specified as a tuple of latitude and longitude.
-     * @example [48.8566, 2.3522] // Coordinates for Paris, France
-     */
-    position: [number, number];
-
-    /**
-     * Optional text to display in a popup when the marker is clicked.
-     * @example "Welcome to Paris!"
-     */
-    popup?: string;
-  }>;
+  markers?: MapMarker[];
 
   /**
    * Whether the map should allow zooming with the mouse scroll wheel.

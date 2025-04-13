@@ -16,30 +16,16 @@ import {
   cnPaddingBottom,
   cnPaddingX,
   cnSmallGap,
-  cnSpaceY,
 } from '@/src/styles/boxModel.style';
 import { cnFlexBetweenY, cnFlexCol } from '@/src/styles/flex.style';
-import { cnParagraph } from '@/src/styles/font.style';
 import { useCardGrid } from '@/src/styles/grid.style';
 import type { ExperiencesProps } from '@/src/types/ExperiencesProps';
-import {
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/src/utils/formatText.util';
-import { ContactForm } from '@forms/ContactForm';
 import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import type { CardProps } from '@src/types/CardProps';
 
 import { useIsClient } from '../hooks/useIsClient.hook';
 import { cnBorderNone } from '../styles/border.style';
-
-const LazyMap = dynamic(() => import('@/src/components/ui/cards/MapCard'), {
-  ssr: false,
-  loading: () => (
-    <LoadingSpinner size='lg' message='Chargement de la carte...' />
-  ),
-});
 
 const LazyTestimonialsCard = dynamic(
   () => import('@/src/components/ui/carousels/TestimonialsCarousel'),
@@ -143,42 +129,8 @@ const HomePage: React.FC = (): JSX.Element => {
                   card.testimonials.length > 0 && (
                     <LazyTestimonialsCard testimonials={card.testimonials} />
                   )}
-                {card.mailto && (
-                  <ContactForm
-                    mailto={card.mailto}
-                    cta1={card.cta1}
-                    icon1={card.icon1}
-                    href1={card.href1}
-                    downloadActive1={card.downloadActive1}
-                    cta2={card.cta2}
-                    icon2={card.icon2}
-                    href2={card.href2}
-                    downloadActive2={card.downloadActive2}
-                    cta3={card.cta3}
-                    icon3={card.icon3}
-                    href3={card.href3}
-                    downloadActive3={card.downloadActive3}
-                    className={cnSpaceY}
-                  />
-                )}
-                {isClient && card.map && <LazyMap />}
-                {!card.experiences &&
-                  !card.topTechnologies &&
-                  !card.technologies &&
-                  !card.testimonials &&
-                  !card.projects &&
-                  !card.achievements &&
-                  !card.mailto && (
-                    <p className={cnParagraph}>
-                      {typeof card.content === 'string' &&
-                        capitalizeFirstLetterOfPhrase(
-                          formatSpecialWords(card.content)
-                        )}
-                    </p>
-                  )}
               </CardContent>
             </>
-            <CardContent className='invisible' />
             {!card.mailto &&
               !card.jobs &&
               ((card.cta1 && card.href1) || (card.cta2 && card.href2)) &&

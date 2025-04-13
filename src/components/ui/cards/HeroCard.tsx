@@ -11,6 +11,7 @@ import {
   cnPaddingY,
   cnSmallGap,
   cnSmallPadding,
+  cnSmallPaddingLeft,
   cnSmallSpaceY,
   cnSpaceY,
 } from '@/src/styles/boxModel.style';
@@ -184,20 +185,7 @@ export const HeroCard: React.FC<{
                   {familyName && familyName.toUpperCase()}
                 </h1>
                 <p className={cn(cnBigDescription, 'text-foreground')}>
-                  Besoin d&apos;un développeur ?
-                </p>
-                <p
-                  className={cn(
-                    cnBigDescription,
-                    cnFlexCol,
-                    cnAutoHeightFullWidth,
-                    'text-foreground',
-                    'xxs:flex-row'
-                  )}
-                >
-                  <span className='invisible h-0 w-0 xs:visible xs:h-auto xs:w-auto'>
-                    Je suis&nbsp;
-                  </span>
+                  Besoin d&apos;un{' '}
                   <span className='min-h-[1.75rem]'>
                     {showExpertise && expertises && expertises.length > 0 && (
                       <TypewriterText
@@ -211,7 +199,8 @@ export const HeroCard: React.FC<{
                         className='font-semibold text-primary'
                       />
                     )}
-                  </span>
+                  </span>{' '}
+                  ?
                 </p>
               </div>
             </CardTitle>
@@ -220,7 +209,9 @@ export const HeroCard: React.FC<{
                 className={cn(
                   cnAutoHeightFullWidth,
                   cnLightTextMuted,
-                  cnHiddenSmBlock
+                  cnHiddenSmBlock,
+                  cnSmallPaddingLeft,
+                  'relative'
                 )}
               >
                 {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}

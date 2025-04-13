@@ -1,11 +1,10 @@
 import React from 'react';
 
-import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
-import type { IconName } from '@/src/types/IconNameProps';
 import { baseUrl } from '@/src/utils/baseUrl.util';
 import { capitalizeFirstLetterOfEachWord } from '@/src/utils/formatText.util';
 import { Button } from '@lib/components/ui/button';
 import { cn } from '@lib/utils';
+import type { ActionButtonProps } from '@src/types/ActionButtonProps';
 import type { CardProps } from '@src/types/CardProps';
 import { cnParagraph } from '@styles/font.style';
 import { IconLoader } from '@ui/icons/IconLoader';
@@ -26,8 +25,7 @@ import { IconLoader } from '@ui/icons/IconLoader';
  * @returns {JSX.Element} Rendered button component.
  */
 export const ActionButton: React.FC<
-  Omit<ActionButtonProps, 'icon'> & {
-    icon?: IconName;
+  ActionButtonProps & {
     className?: CardProps['className'];
   }
 > = ({
@@ -37,11 +35,32 @@ export const ActionButton: React.FC<
   downloadActive,
   disabled,
   variant,
-  type,
+  type = 'button',
   size,
   onClick,
   className,
-}) => {
+}: {
+  cta?: string;
+  icon?: string;
+  href?: string;
+  downloadActive?: boolean;
+  disabled?: boolean;
+  variant?:
+    | 'default'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | 'ghost'
+    | 'link';
+  type?: ActionButtonProps['type'];
+  size?: 'icon' | 'default' | 'sm' | 'lg' | 'xs' | null;
+  onClick?: (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.MouseEvent<HTMLAnchorElement>
+  ) => void;
+  className?: string;
+}): JSX.Element => {
   const isLink = Boolean(href);
 
   const isInternalLink =
@@ -75,7 +94,7 @@ export const ActionButton: React.FC<
     <a
       {...linkProps}
       {...downloadProps}
-      onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
+      onClick={onClick}
       aria-label={cta}
       onKeyDown={handleKeyDown}
       role='button'
@@ -83,8 +102,8 @@ export const ActionButton: React.FC<
     >
       <Button
         variant={variant}
-        type={type || 'button'}
-        size={size}
+        type={(type as 'button' | 'submit' | 'reset') ?? 'button'}
+        size={size ?? 'default'}
         onClick={onClick}
         onKeyDown={handleKeyDown}
         className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
@@ -105,7 +124,7 @@ export const ActionButton: React.FC<
   ) : (
     <Button
       variant={variant}
-      type={type || 'button'}
+      type={(type as 'button' | 'submit' | 'reset') || 'button'}
       size={size}
       onClick={onClick}
       onKeyDown={handleKeyDown}

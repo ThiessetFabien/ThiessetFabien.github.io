@@ -16,7 +16,7 @@ import { cnSmallGap, cnSmallSpaceX } from '@styles/boxModel.style';
 import { cnFlexCenterY } from '@styles/flex.style';
 import { cnParagraph } from '@styles/font.style';
 
-const EMAIL_TYPES = ['Offer', 'Inquiry', 'Other'] as const;
+const EMAIL_TYPES = ['Offre', 'Question', 'Autre'] as const;
 
 export function EmailTypeField<T extends FieldValues>({
   control,

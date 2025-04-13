@@ -30,7 +30,7 @@ export function ConsentField<T extends FieldValues>({
       render={({ field }) => (
         <FormItem
           className={cn(
-            'col-span-1 row-span-1 flex flex-none space-y-0 md:col-span-3',
+            'col-span-1 row-span-1 flex items-center space-y-0 md:col-span-3',
             cnSmallSpaceX,
             cnParagraph
           )}
@@ -46,12 +46,12 @@ export function ConsentField<T extends FieldValues>({
               />
             </motion.div>
           </FormControl>
+          <FormLabel htmlFor={id} className={cn(cnParagraph, 'mb-0 mt-0')}>
+            {label}
+          </FormLabel>
           {errors?.message && (
             <FormMessage>{String(errors.message)}</FormMessage>
           )}
-          <FormLabel htmlFor={id} className={cnParagraph}>
-            {label}
-          </FormLabel>
         </FormItem>
       )}
     />

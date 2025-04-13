@@ -15,7 +15,12 @@
 
 .leaflet-circle,
 .leaflet-circle-marker {
-  pointer-events: none !important;
+  pointer-events: auto !important; /* Permettre l'interaction avec les cercles */
+}
+
+.mobility-zone-circle {
+  opacity: 0.7 !important;
+  pointer-events: auto !important;
 }
 
 .leaflet-control-container .leaflet-control {

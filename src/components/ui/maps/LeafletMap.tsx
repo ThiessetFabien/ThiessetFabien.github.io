@@ -22,11 +22,17 @@ import { type LeafletMapProps } from '@/src/types/LeafletMapProps';
  */
 const LeafletMap: React.FC<LeafletMapProps> = ({
   center = [50.3675, 3.0803],
-  zoom = 9,
+  zoom = 8,
   markers = [
     {
       position: [50.381645, 3.053234],
-      popup: 'I code here every day !',
+      circle: {
+        radius: 30000, // 30km approximativement pour 30 minutes en voiture
+        color: '#4F46E5',
+        fillColor: '#4F46E5',
+        fillOpacity: 0.2,
+        weight: 2,
+      },
     },
   ],
   scrollWheelZoom = false,
@@ -124,60 +130,43 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         .addTo(map);
 
       map.invalidateSize();
-      interface Marker {
-        position: [number, number];
-        popup?: string;
-        circle?: {
-          radius: number;
-          color: string;
-          fillColor?: string;
-          fillOpacity?: number;
-        };
-      }
 
-      interface CircleOptions {
-        radius: number;
-        color: string;
-        fillColor: string;
-        fillOpacity: number;
-        weight: number;
-        opacity: number;
-        interactive: boolean;
-        pane: string;
-      }
+      // Ajouter d'abord les marqueurs
+      markers.forEach((marker) => {
+        L.marker(marker.position, {
+          icon: customIcon,
+        }).addTo(map);
+      });
 
-      const addMarkersAndCircles = (
-        markers: Marker[],
-        map: LeafletMapType,
-        customIcon: L.Icon
-      ) => {
-        markers.forEach((marker) => {
-          const leafletMarker = L.marker(marker.position, {
-            icon: customIcon,
+      // Puis ajouter explicitement le cercle de mobilité pour chaque marqueur
+      markers.forEach((marker) => {
+        if (marker.circle) {
+          console.log(
+            'Ajout du cercle à la position:',
+            marker.position,
+            'avec rayon:',
+            marker.circle.radius
+          );
+          L.circle(marker.position, {
+            radius: marker.circle.radius,
+            color: marker.circle.color,
+            fillColor: marker.circle.fillColor || marker.circle.color,
+            fillOpacity: marker.circle.fillOpacity || 0.2,
+            weight: marker.circle.weight || 3,
+            opacity: 0.8,
+            interactive: false,
           }).addTo(map);
+        }
+      });
 
-          if (marker.popup) {
-            leafletMarker.bindPopup(marker.popup);
-          }
+      setIsMapInitialized(true);
 
-          if (marker.circle) {
-            const circleOptions: CircleOptions = {
-              radius: marker.circle.radius,
-              color: marker.circle.color,
-              fillColor: marker.circle.fillColor || marker.circle.color,
-              fillOpacity: marker.circle.fillOpacity || 0.3,
-              weight: 3,
-              opacity: 0.8,
-              interactive: false,
-              pane: 'overlayPane',
-            };
-
-            L.circle(marker.position, circleOptions).addTo(map);
-          }
-        });
-      };
-
-      addMarkersAndCircles(markers, mapInstanceRef.current!, customIcon);
+      // Garantir que la carte est bien redimensionnée
+      setTimeout(() => {
+        if (mapInstanceRef.current) {
+          mapInstanceRef.current.invalidateSize();
+        }
+      }, 500);
 
       setIsMapInitialized(true);
 
@@ -191,25 +180,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
             });
 
             mapInstanceRef.current.invalidateSize();
-
-            setTimeout(() => {
-              markers.forEach((marker) => {
-                if (marker.popup) {
-                  const popupMarkers = document.querySelectorAll(
-                    '.leaflet-marker-icon'
-                  );
-                  popupMarkers.forEach((popupMarker, index) => {
-                    if (index === 0) {
-                      (popupMarker as HTMLElement).click();
-                    }
-                  });
-                }
-              });
-            }, 1600);
-
-            if (observerRef.current) {
-              observerRef.current.disconnect();
-            }
           }
         };
 
@@ -223,33 +193,24 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           observerRef.current.observe(mapRef.current);
         }
       } else {
-        interface Marker {
-          position: [number, number];
-          popup?: string;
-          circle?: {
-            radius: number;
-            color: string;
-            fillColor?: string;
-            fillOpacity?: number;
-          };
-        }
-
-        const addPopupToFirstMarker = (
-          markers: Marker[],
-          mapInstance: LeafletMapType,
-          customIcon: L.Icon
-        ) => {
-          markers.forEach((marker, index) => {
-            if (marker.popup && index === 0) {
-              const leafletMarker = L.marker(marker.position, {
-                icon: customIcon,
-              }).addTo(mapInstance);
-              leafletMarker.openPopup();
-            }
-          });
-        };
-
-        addPopupToFirstMarker(markers, mapInstanceRef.current!, customIcon);
+        // Interface déjà déclarée, pas besoin de la redéclarer ici
+        // Désactivation complète de l'ouverture automatique des popups
+        // const addPopupToFirstMarker = (
+        //   markers: Marker[],
+        //   mapInstance: LeafletMapType,
+        //   customIcon: L.Icon
+        // ) => {
+        //   markers.forEach((marker, index) => {
+        //     if (marker.popup && index === 0) {
+        //       const leafletMarker = L.marker(marker.position, {
+        //         icon: customIcon,
+        //       }).addTo(mapInstance);
+        //       leafletMarker.openPopup();
+        //     }
+        //   });
+        // };
+        //
+        // addPopupToFirstMarker(markers, mapInstanceRef.current!, customIcon);
       }
 
       const invalidateIntervals = [100, 500, 1000, 2000];

@@ -367,39 +367,15 @@
     ]
   },
   {
-    "title": "témoignages",
+    "title": "parlons de vos projets",
     "testimonials": [
       {
         "author": "dupoirier christophe",
         "job": "product leader et jury professionnel",
         "company": "renault",
-        "content": "J’ai eu le plaisir de travailler avec Fabien Thiesset sur le projet Casalink, et je ne peux que louer ses compétences et son professionnalisme en tant que développeur fullstack. Fabien a démontré une maîtrise des technologies front-end et back-end, ce qui a été crucial pour le succès de notre projet. Son approche méthodique et sa capacité à résoudre des problèmes complexes ont permis de surmonter de nombreux défis techniques. De plus, Fabien est un excellent communicant, toujours prêt à partager ses connaissances et à collaborer efficacement avec l’équipe. Je recommande vivement Fabien pour toute opportunité future. Sa passion pour le développement et son engagement envers l’excellence en font un atout précieux pour n’importe quel projet.",
+        "content": "j’ai eu le plaisir de travailler avec Fabien Thiesset sur le projet Casalink, et je ne peux que louer ses compétences et son professionnalisme en tant que développeur fullstack. Fabien a démontré une maîtrise des technologies front-end et back-end, ce qui a été crucial pour le succès de notre projet. Son approche méthodique et sa capacité à résoudre des problèmes complexes ont permis de surmonter de nombreux défis techniques. De plus, Fabien est un excellent communicant, toujours prêt à partager ses connaissances et à collaborer efficacement avec l’équipe. Je recommande vivement Fabien pour toute opportunité future. Sa passion pour le développement et son engagement envers l’excellence en font un atout précieux pour n’importe quel projet.",
         "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQGo1hIPNYYsSg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1608645411974?e=1748476800etv=betaett=SCxyt_hsjjt6sd7AcZEgalwIGawFCa_CrDqQNBI4iGQ",
         "linkedin": "www.linkedin.com/in/dupoirier-christophe-43aa3363/"
-      },
-      {
-        "author": "nicolas zanforlini",
-        "job": "lead developpeur, formateur et jury professionnel DWWM / CDUI / CDA",
-        "company": "freelance",
-        "content": "e recommande Fabien, j'ai eu l'occasion d'évaluer ses compétences lors du passage de son diplôme, c'est un jeune homme motivé, compétent et curieux, il est un atout au sein d'une équipe avec une bonne communication. Je recommande fortement",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQG9eTvW6wRapQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1639988026836?e=1748476800etv=betaett=dkcLXrXpW24qfwK8pUFoW5BSztPumqIZY8uvZRma5mI",
-        "linkedin": "https://www.linkedin.com/in/nicolas-zanforlini-5a06b518b/"
-      },
-      {
-        "author": "benoît schiex",
-        "job": "développeur et formateur",
-        "company": "école o'clock",
-        "content": "Je recommande Fabien, j'ai eu l'occasion d'évaluer ses compétences lors du passage de son diplôme, c'est un jeune homme motivé, compétent et curieux, il est un atout au sein d'une équipe avec une bonne communication. Je recommande fortement",
-        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1544974008196?e=1748476800etv=betaett=-im8HlVqmEKU5wNvGhSEUP7lWfLnJWptHbvU-vHq71Q",
-        "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
-      },
-      {
-        "author": "adrien delcroix",
-        "job": "référent pédagogique",
-        "company": "école o'clock",
-        "content": "J'ai eu l'occasion de suivre Fabien pendant sa formation en développement web, et il s'est démarqué par son sérieux et sa motivation. Toujours positif et appliqué, il a su relever chaque défi avec brio, en travaillant de manière autonome tout en étant à l'aise en équipe. Fabien a également montré une grande capacité à surmonter les difficultés techniques, cherchant toujours des solutions efficaces. Son esprit d'équipe et son implication ont été essentiels lors des projets collaboratifs. Je le recommande sans hésitation pour tout poste en développement web !",
-        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709198087943?e=1748476800etv=betaett=aptbtjYuTVwKlOfUMeuEdnV3uljiowtBf8LvglhO2To",
-        "linkedin": "www.linkedin.com/in/adrien-delcroix/"
       },
       {
         "author": "alexis vignot",
@@ -410,6 +386,30 @@
         "linkedin": "www.linkedin.com/in/alexis-vignot/"
       },
       {
+        "author": "nicolas zanforlini",
+        "job": "lead developpeur, formateur et jury professionnel DWWM / CDUI / CDA",
+        "company": "freelance",
+        "content": "je recommande Fabien, j'ai eu l'occasion d'évaluer ses compétences lors du passage de son diplôme, c'est un jeune homme motivé, compétent et curieux, il est un atout au sein d'une équipe avec une bonne communication. Je recommande fortement",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4D03AQG9eTvW6wRapQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1639988026836?e=1748476800etv=betaett=dkcLXrXpW24qfwK8pUFoW5BSztPumqIZY8uvZRma5mI",
+        "linkedin": "https://www.linkedin.com/in/nicolas-zanforlini-5a06b518b/"
+      },
+      {
+        "author": "adrien delcroix",
+        "job": "référent pédagogique",
+        "company": "école o'clock",
+        "content": "J'ai eu l'occasion de suivre Fabien pendant sa formation en développement web, et il s'est démarqué par son sérieux et sa motivation. Toujours positif et appliqué, il a su relever chaque défi avec brio, en travaillant de manière autonome tout en étant à l'aise en équipe. Fabien a également montré une grande capacité à surmonter les difficultés techniques, cherchant toujours des solutions efficaces. Son esprit d'équipe et son implication ont été essentiels lors des projets collaboratifs. Je le recommande sans hésitation pour tout poste en développement web !",
+        "imageSrc": "media.licdn.com/dms/image/v2/D4E03AQF0F6WT0DO1ng/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709198087943?e=1748476800etv=betaett=aptbtjYuTVwKlOfUMeuEdnV3uljiowtBf8LvglhO2To",
+        "linkedin": "www.linkedin.com/in/adrien-delcroix/"
+      },
+      {
+        "author": "benoît schiex",
+        "job": "développeur et formateur",
+        "company": "école o'clock",
+        "content": "Je recommande Fabien, j'ai eu l'occasion d'évaluer ses compétences lors du passage de son diplôme, c'est un jeune homme motivé, compétent et curieux, il est un atout au sein d'une équipe avec une bonne communication. Je recommande fortement",
+        "imageSrc": "media.licdn.com/dms/image/v2/C4E03AQEDFeanJjJWyQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1544974008196?e=1748476800etv=betaett=-im8HlVqmEKU5wNvGhSEUP7lWfLnJWptHbvU-vHq71Q",
+        "linkedin": "www.linkedin.com/in/beno%C3%AEt-schiex-1228745/"
+      },
+      {
         "author": "emilie suray",
         "job": "responsable qualité et gestion des risques - DPO",
         "company": "centre hélène borel",
@@ -418,39 +418,22 @@
         "linkedin": "www.linkedin.com/in/emilie-s-065196130/"
       },
       {
-        "author": "sylvette depreux",
-        "job": "responsable système d'information",
-        "company": "centre hélène borel",
-        "content": "Responsable du service informatique, j’ai travaillé avec Fabien référent informatique pour son établissement de santé : Fabien faisait le lien entre les besoins émis par les utilisateurs des métiers du foyer et le service informatique. Ainsi, il me faisait part des demandes d’amélioration, des demandes d’évolution des logiciels métiers et du matériel nécessaire. Fabien réalisait aussi des statistiques à partir des données du système d’information. Fabien était un collaborateur investi, capable de faire le lien entre le service informatique et l’établissement dans lequel il travaillait. La collaboration a été efficace, permettant d’améliorer la qualité du service rendu pour les utilisateurs. Fabien est un collaborateur posé capable de prendre du recul et de suggérer des solutions.",
-        "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-        "linkedin": "https://www.linkedin.com/in/sylvette-depreux-b43412135/"
-      },
-      {
         "author": "anthony goguillon",
         "job": "technicien informatique",
         "company": "centre hélène borel",
         "content": "En tant que technicien informatique , j'ai eu à plusieurs reprises le plaisir de travailler avec Fabien sur des problématiques d'ordre informatique. Fabien sait parfaitement exprimer les besoins d'autres utilisateurs et les retranscrire de manière simple et efficace , cela permet une résolution plus rapide. Ce qu'on apprécie aussi chez Fabien c'est son appétence pour la technologie , une vrai passion lui permettant d'être force de proposition. Sans oublier ses qualités humaines , sa rigueur , sa volonté de faire avancer les choses et bien sûr sa bonne humeur.",
         "imageSrc": "media.licdn.com/dms/image/v2/D4D03AQE8GtOEfBs6Mw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712083084075?e=1749686400&v=beta&t=VcmCUuVqstztEhpf29U4LDI4Ngx43oM8qRIOjqYzuOY",
         "linkedin": "www.linkedin.com/in/anthony-goguillon-a0464565/"
+      },
+      {
+        "author": "sylvette depreux",
+        "job": "responsable système d'information",
+        "company": "centre hélène borel",
+        "content": "Responsable du service informatique, j’ai travaillé avec Fabien référent informatique pour son établissement de santé : Fabien faisait le lien entre les besoins émis par les utilisateurs des métiers du foyer et le service informatique. Ainsi, il me faisait part des demandes d’amélioration, des demandes d’évolution des logiciels métiers et du matériel nécessaire. Fabien réalisait aussi des statistiques à partir des données du système d’information. Fabien était un collaborateur investi, capable de faire le lien entre le service informatique et l’établissement dans lequel il travaillait. La collaboration a été efficace, permettant d’améliorer la qualité du service rendu pour les utilisateurs. Fabien est un collaborateur posé capable de prendre du recul et de suggérer des solutions.",
+        "imageSrc": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+        "linkedin": "https://www.linkedin.com/in/sylvette-depreux-b43412135/"
       }
-    ]
-  },
-  {
-    "title": "parlons de votre projet",
-    "description": "la passion est de l'énergie. ressentez la puissance qui vient de se concentrer sur ce qui vous enthousiasme (oprah winfrey).",
-    "mailto": "thiessetfabienpro@gmail.com",
-    "cta1": "renseignez-vous maintenant",
-    "icon1": "Send",
-    "cta2": "appelez aujourd'hui",
-    "icon2": "PhoneOutgoing",
-    "href2": "tel:+33610920974",
-    "cta3": "contactez-moi",
-    "icon3": "Linkedin",
-    "href3": "www.linkedin.com/in/fabien-thiesset/"
-  },
-  {
-    "title": "disponible pour mobilité, véhicule",
-    "description": "je suis prêt à déménager dans un rayon de 30 minutes autour de Douai et plus loin si le télétravail est possible.",
+    ],
     "map": true
   }
 ]
