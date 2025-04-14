@@ -10,19 +10,31 @@ import { cnParagraph } from '@styles/font.style';
 import { IconLoader } from '@ui/icons/IconLoader';
 
 /**
- * A versatile button component supporting links, icons, and various states.
- * @param {Object} props - Component properties.
- * @param {string} [props.cta] - Button text.
- * @param {string} [props.icon] - Icon name.
- * @param {string} [props.href] - Link URL.
- * @param {boolean} [props.downloadActive] - Enables download behavior.
- * @param {boolean} [props.disabled] - Disables the button.
- * @param {string} [props.variant] - Button variant.
- * @param {string} [props.type] - Button type (e.g., 'button', 'submit').
- * @param {string} [props.size] - Button size.
- * @param {Function} [props.onClick] - Click handler.
- * @param {string} [props.className] - Additional class names.
- * @returns {JSX.Element} Rendered button component.
+ * ActionButton component that renders either a button or an anchor tag based on the presence of an href prop.
+ *
+ * @component
+ *
+ * @param props - The component props
+ * @param {string} [props.cta] - Call to action text to display in the button
+ * @param {string} [props.icon] - Icon name to display before the text
+ * @param {string} [props.href] - If provided, renders the button as an anchor tag with this URL
+ * @param {boolean} [props.downloadActive] - When true and href is provided, adds download attribute to the anchor
+ * @param {boolean} [props.disabled] - When true, disables the button and shows a loading spinner
+ * @param {'default'|'destructive'|'outline'|'secondary'|'ghost'|'link'} [props.variant] - Visual style variant of the button
+ * @param {'button'|'submit'|'reset'} [props.type='button'] - HTML button type attribute
+ * @param {'icon'|'default'|'sm'|'lg'|'xs'|null} [props.size] - Size of the button
+ * @param {Function} [props.onClick] - Click handler function
+ * @param {string} [props.className] - Additional CSS classes to apply
+ *
+ * @returns {JSX.Element} - The rendered button or anchor element
+ *
+ * @example
+ * // Regular button with icon
+ * <ActionButton cta="Click me" icon="ArrowRight" onClick={handleClick} />
+ *
+ * @example
+ * // Link button with download
+ * <ActionButton cta="Download CV" href="documents/cv.pdf" downloadActive={true} />
  */
 export const ActionButton: React.FC<
   ActionButtonProps & {

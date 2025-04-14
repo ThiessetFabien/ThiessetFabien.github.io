@@ -74,7 +74,7 @@ export const menuItems: MenuItem[] = [
     rel: 'noopener noreferrer',
   },
   {
-    id: 'testimonial',
+    id: 'testimonials',
     icon: 'Star',
     label: 'Témoignages',
     href: '#card-4',

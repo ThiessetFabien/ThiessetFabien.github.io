@@ -15,6 +15,21 @@ import { cn } from '@lib/utils';
 import { cnSmallSpaceX } from '@styles/boxModel.style';
 import { cnParagraph } from '@styles/font.style';
 
+/**
+ * A reusable consent field component for forms, built with TypeScript and React.
+ * This component integrates with React Hook Form and provides a styled checkbox
+ * with motion effects and error handling.
+ *
+ * @template T - A generic type extending `FieldValues` from React Hook Form.
+ *
+ * @param {FormFieldProps<T>} props - The props for the ConsentField component.
+ * @param {Control<T>} props.control - The control object from React Hook Form for managing form state.
+ * @param {FieldError | undefined} props.errors - An optional error object for displaying validation messages.
+ * @param {string} props.name - The name of the field, used for form registration and state management.
+ * @param {string} props.label - The label text displayed next to the checkbox.
+ *
+ * @returns {JSX.Element} A JSX element representing the consent field.
+ */
 export function ConsentField<T extends FieldValues>({
   control,
   errors,

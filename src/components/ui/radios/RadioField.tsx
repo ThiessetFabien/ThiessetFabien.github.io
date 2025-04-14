@@ -18,6 +18,26 @@ import { cnParagraph } from '@styles/font.style';
 
 const EMAIL_TYPES = ['Offre', 'Question', 'Autre'] as const;
 
+/**
+ * A form field component for selecting email types using radio buttons.
+ * Renders a radio group with animation effects on hover and tap.
+ *
+ * @template T - Type extending FieldValues from React Hook Form
+ * @param {Object} props - The component props
+ * @param {Control<T>} props.control - The React Hook Form control object
+ * @param {FieldError | undefined} props.errors - Form field errors object
+ * @param {string} props.label - The label text for the field
+ * @param {Path<T>} props.name - The name of the form field
+ * @returns {JSX.Element} A form field with radio buttons for email type selection
+ *
+ * @example
+ * <EmailTypeField
+ *   control={control}
+ *   errors={errors.emailType}
+ *   label="Email Type"
+ *   name="emailType"
+ * />
+ */
 export function EmailTypeField<T extends FieldValues>({
   control,
   errors,

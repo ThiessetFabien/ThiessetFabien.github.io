@@ -3,7 +3,7 @@
 import { ThemeProvider } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-import { FloatingMenubar } from '@/src/components/ui/menus/FloatingMenubar';
+import { FloatingMenubar } from '@/src/components/ui/sheet/FloatingMenubar';
 import { VideoRedirectHandler } from '@/src/components/VideoRedirectHandler';
 import {
   cnFlexCenterX,

@@ -104,166 +104,169 @@ export const HeroCard: React.FC<{
     }, []);
 
     return (
-      <>
-        <div className={cn(cnFlexFullCenter, cnFlexCol, 'h-full')}>
-          <CardHeader
-            className={cn(className, cnPaddingY, 'px-0', isSM && cnGap)}
+      <div className={cn(cnFlexFullCenter, cnFlexCol, 'h-full')}>
+        <CardHeader
+          className={cn(className, cnPaddingY, 'px-0', isSM && cnGap)}
+        >
+          <CardTitle
+            className={cn(
+              'flex',
+              !isSM && cnSpaceY,
+              cnFlexCol,
+              isSM && cn('flex-row', cnGap)
+            )}
           >
-            <CardTitle
+            <div
               className={cn(
-                'flex',
-                !isSM && cnSpaceY,
-                cnFlexCol,
-                isSM && cn('flex-row', cnGap)
+                cnFlexFullCenter,
+                cnAutoWidthFullHeight,
+                'relative z-30',
+                cnBigImage,
+                cnBorderRadiusFull,
+                'border-primary',
+                cnBorder2
               )}
             >
               <div
                 className={cn(
-                  cnFlexFullCenter,
                   cnAutoWidthFullHeight,
-                  'relative z-30',
+                  'relative z-50',
                   cnBigImage,
                   cnBorderRadiusFull,
                   'border-primary',
-                  cnBorder2
+                  cnBorderBottom4
+                )}
+              />
+              <Avatar
+                className={cn(
+                  'absolute z-0',
+                  'scale-105 sm:scale-110',
+                  '-top-2 md:-top-2.5',
+                  cnBigImage,
+                  cnSizeAuto
                 )}
               >
-                <div
+                <ProfileImage
+                  src={imageSrc || ''}
+                  alt={imageAlt || ''}
+                  width={ResponsiveImage()}
+                  height={ResponsiveImage()}
                   className={cn(
-                    cnAutoWidthFullHeight,
-                    'relative z-50',
-                    cnBigImage,
+                    'relative',
                     cnBorderRadiusFull,
-                    'border-primary',
-                    cnBorderBottom4
+                    cnSizeAuto,
+                    cnLittleTranslateSm,
+                    cnBigImage
                   )}
                 />
-                <Avatar
+                <AvatarFallback
                   className={cn(
-                    'absolute z-0',
-                    'scale-105 sm:scale-110',
-                    '-top-2 md:-top-2.5',
-                    cnBigImage,
-                    cnSizeAuto
+                    cnSmallText,
+                    'relative',
+                    cnBorderRadiusFull,
+                    cnSizeAuto,
+                    cnLittleTranslateSm,
+                    cnBigImage
                   )}
                 >
-                  <ProfileImage
-                    src={imageSrc || ''}
-                    alt={imageAlt || ''}
-                    width={ResponsiveImage()}
-                    height={ResponsiveImage()}
-                    className={cn(
-                      'relative',
-                      cnBorderRadiusFull,
-                      cnSizeAuto,
-                      cnLittleTranslateSm,
-                      cnBigImage
-                    )}
-                  />
-                  <AvatarFallback
-                    className={cn(
-                      cnSmallText,
-                      'relative',
-                      cnBorderRadiusFull,
-                      cnSizeAuto,
-                      cnLittleTranslateSm,
-                      cnBigImage
-                    )}
-                  >
-                    Profile
-                  </AvatarFallback>
-                </Avatar>
-              </div>
-              <div
-                className={cn(
-                  cnSmallSpaceY,
-                  isSM ?? cn(cnFlexCol, 'w-full justify-center')
-                )}
-              >
-                <h1 className={cn(cnTitle1)}>
-                  {name && capitalizeFirstLetterOfEachWord(name)}{' '}
-                  {familyName && familyName.toUpperCase()}
-                </h1>
-                <p className={cn(cnBigDescription, 'text-foreground')}>
-                  Besoin d&apos;un{' '}
-                  <span className='min-h-[1.75rem]'>
-                    {showExpertise && expertises && expertises.length > 0 && (
-                      <TypewriterText
-                        text={capitalizeFirstLetterOfEachWord(
-                          formatSpecialWords(expertises[currentExpertiseIndex])
-                        )}
-                        typingSpeed={60}
-                        delayBeforeStart={500}
-                        delayBeforeDelete={1500}
-                        onComplete={handleExpertiseComplete}
-                        className='font-semibold text-primary'
-                      />
-                    )}
-                  </span>{' '}
-                  ?
-                </p>
-              </div>
-            </CardTitle>
-            <CardDescription className={cn(cnFlexCol, cnDescription)}>
+                  Profile
+                </AvatarFallback>
+              </Avatar>
+            </div>
+            <div
+              className={cn(
+                cnSmallSpaceY,
+                'sm:flex sm:w-full sm:flex-col sm:justify-center'
+              )}
+            >
+              <h1 className={cn(cnTitle1)}>
+                {name && capitalizeFirstLetterOfEachWord(name)}{' '}
+                {familyName && familyName.toUpperCase()}
+              </h1>
               <p
                 className={cn(
-                  cnAutoHeightFullWidth,
-                  cnLightTextMuted,
-                  cnHiddenSmBlock,
-                  cnSmallPaddingLeft,
-                  'relative'
+                  cnBigDescription,
+                  'flex flex-col text-foreground xs:block'
                 )}
               >
-                {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
+                <span className='block sm:inline'>Besoin d&apos;un </span>
+                <span className='block min-h-[1.75rem] sm:inline'>
+                  {showExpertise && expertises && expertises.length > 0 && (
+                    <TypewriterText
+                      text={capitalizeFirstLetterOfEachWord(
+                        formatSpecialWords(expertises[currentExpertiseIndex])
+                      )}
+                      typingSpeed={60}
+                      delayBeforeStart={500}
+                      delayBeforeDelete={1500}
+                      onComplete={handleExpertiseComplete}
+                      className='font-semibold text-primary'
+                    />
+                  )}{' '}
+                  ?
+                </span>
               </p>
-            </CardDescription>
-          </CardHeader>
-          <CardContent
-            className={cn(
-              cnSmallGap,
-              'grid max-w-full flex-wrap p-0',
-              'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'
-            )}
-          >
-            {services &&
-              services.length > 0 &&
-              services.map((service, i) => (
-                <Badge
-                  variant='outline'
-                  key={i}
-                  className={cn(
-                    cnSmallPadding,
-                    cnFlexFullCenter,
-                    cnSmallGap,
-                    cnFlexCol,
-                    'sm:flex-row',
-                    i > 3 &&
-                      'lg:col-span-2 lg:flex-row lg:justify-center xl:col-span-1 xl:flex-row',
-                    cnSmallText,
-                    'hyphens-auto break-words'
-                  )}
-                >
-                  <IconLoader
-                    icon={service.icon}
-                    className={cn(cnSizeIcon, 'text-secondary')}
-                  />
-                  <p className={cn(cnFlexCol, 'text-center')}>
-                    <span className='font-bold'>
-                      {capitalizeFirstLetterOfPhrase(
-                        formatSpecialWords(service.item)
-                      )}
-                    </span>
-                    <span>
-                      {capitalizeFirstLetterOfPhrase(
-                        formatSpecialWords(service.description)
-                      )}
-                    </span>
-                  </p>
-                </Badge>
-              ))}
-          </CardContent>
-        </div>
-      </>
+            </div>
+          </CardTitle>
+          <CardDescription className={cn(cnFlexCol, cnDescription)}>
+            <p
+              className={cn(
+                cnAutoHeightFullWidth,
+                cnLightTextMuted,
+                cnHiddenSmBlock,
+                cnSmallPaddingLeft,
+                'relative'
+              )}
+            >
+              {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
+            </p>
+          </CardDescription>
+        </CardHeader>
+        <CardContent
+          className={cn(
+            cnSmallGap,
+            'grid max-w-full flex-wrap p-0',
+            'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'
+          )}
+        >
+          {services &&
+            services.length > 0 &&
+            services.map((service, i) => (
+              <Badge
+                variant='outline'
+                key={i}
+                className={cn(
+                  cnSmallPadding,
+                  cnFlexFullCenter,
+                  cnSmallGap,
+                  cnFlexCol,
+                  'sm:flex-row',
+                  i > 3 &&
+                    'lg:col-span-2 lg:flex-row lg:justify-center xl:col-span-1 xl:flex-row',
+                  cnSmallText,
+                  'hyphens-auto break-words'
+                )}
+              >
+                <IconLoader
+                  icon={service.icon}
+                  className={cn(cnSizeIcon, 'text-secondary')}
+                />
+                <p className={cn(cnFlexCol, 'text-center')}>
+                  <span className='font-bold'>
+                    {capitalizeFirstLetterOfPhrase(
+                      formatSpecialWords(service.item)
+                    )}
+                  </span>
+                  <span>
+                    {capitalizeFirstLetterOfPhrase(
+                      formatSpecialWords(service.description)
+                    )}
+                  </span>
+                </p>
+              </Badge>
+            ))}
+        </CardContent>
+      </div>
     );
   }
 );

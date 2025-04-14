@@ -26,7 +26,7 @@ import { motion } from 'framer-motion';
  * );
  * ```
  */
-export const Cursor = () => {
+export const Cursor = (): JSX.Element => {
   return (
     <motion.span
       initial={{ opacity: 0 }}
@@ -37,10 +37,10 @@ export const Cursor = () => {
         repeatType: 'reverse',
         duration: 0.5,
       }}
-      className='font-bold text-primary'
+      className='whitespace-nowrap font-bold text-primary'
     >
       {' '}
-      |
+      |{''}
     </motion.span>
   );
 };

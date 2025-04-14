@@ -2,6 +2,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState, useCallback } from 'react';
 
 import { ActionButton } from '@/src/components/ui/buttons/ActionButton';
+import {
+  cnPaddingBottom,
+  cnSmallPaddingBottom,
+} from '@/src/styles/boxModel.style';
 import { cnFlexCenterY } from '@/src/styles/flex.style';
 import { GenericCarouselProps } from '@/src/types/GenericCarouselProps';
 import { cn } from '@lib/utils';
@@ -20,7 +24,6 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
   items,
   delay = 5000,
   controls = false,
-  className,
 }: GenericCarouselProps): JSX.Element | null => {
   const [currentSlideIndex, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -69,7 +72,7 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
 
   return (
     <div
-      className={cn('relative h-full min-w-full overflow-hidden', className)}
+      className={cn('relative h-[90%] min-w-full', cnSmallPaddingBottom)}
       onMouseEnter={() => {
         setIsPaused(true);
         setIsHovering(true);
@@ -104,9 +107,9 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
           >
             <ActionButton
               icon={isPaused ? 'Play' : 'Pause'}
-              variant='ghost'
+              variant='outline'
               size='xs'
-              className='focus:ring-2 focus:ring-primary focus:ring-offset-1'
+              className='rounded-full px-0 focus:ring-2 focus:ring-primary focus:ring-offset-1'
             />
           </motion.div>
 
@@ -145,7 +148,12 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
           transition={{ duration: 0.5 }}
           className='flex h-full flex-col justify-between py-2'
         >
-          <div className='scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent flex-grow overflow-auto pb-8'>
+          <div
+            className={cn(
+              'scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent flex-grow overflow-auto',
+              cnPaddingBottom
+            )}
+          >
             {items[currentSlideIndex]}
           </div>
         </motion.div>
@@ -156,7 +164,7 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
           {isHovering && (
             <>
               <motion.div
-                className='absolute left-0 top-1/2 z-10 -translate-y-1/2'
+                className='absolute left-0 top-1/2 z-10 flex -translate-y-1/2 items-center'
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
@@ -175,7 +183,7 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
               </motion.div>
 
               <motion.div
-                className='absolute right-0 top-1/2 z-10 -translate-y-1/2'
+                className='absolute right-0 top-1/2 z-10 flex -translate-y-1/2 items-center'
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}

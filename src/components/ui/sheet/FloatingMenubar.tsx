@@ -113,7 +113,7 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
         'services',
         'about',
         'portfolio',
-        'recommendations',
+        'testimonials',
         'experience',
         'resume',
         'motivation',
@@ -131,7 +131,7 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
         cnPaddingBottom,
         cnFlexCenterX
       )
-    : cn(cnLeftCenterPosition, 'fixed h-content z-50');
+    : cn(cnLeftCenterPosition, 'fixed h-content z-50 left-5');
 
   const menubarClasses = !IsLg
     ? cn(

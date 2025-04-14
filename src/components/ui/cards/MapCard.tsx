@@ -38,7 +38,7 @@ const MapCard: React.FC = () => {
     <div className='relative h-full w-full'>
       <DynamicLeafletMap
         center={[50.381645, 3.053234]}
-        zoom={9}
+        zoom={8}
         flyToAnimation={true}
         markers={[
           {

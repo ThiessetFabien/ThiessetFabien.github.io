@@ -8,11 +8,17 @@ import {
   cnGap,
   cnMarginLeft,
   cnPadding,
+  cnPaddingTop,
   cnPaddingX,
-  cnSmallPaddingY,
+  cnPaddingY,
   cnSmallSpaceY,
+  cnSpaceY,
 } from '@/src/styles/boxModel.style';
-import { cnFlexCenterY, cnFlexCol } from '@/src/styles/flex.style';
+import {
+  cnFlexCenterY,
+  cnFlexCol,
+  cnFlexFullCenter,
+} from '@/src/styles/flex.style';
 import { cnParagraph, cnSmallText, cnTitle3 } from '@/src/styles/font.style';
 import { baseUrl } from '@/src/utils/baseUrl.util';
 import {
@@ -108,7 +114,6 @@ export const TestimonialsCarousel: React.FC<{
         className={cn(
           cnSmallText,
           cnPaddingX,
-          cnSmallPaddingY,
           'relative flex flex-grow items-center justify-center overflow-auto italic'
         )}
       >
@@ -119,11 +124,7 @@ export const TestimonialsCarousel: React.FC<{
         </span>
       </p>
 
-      <div
-        className={cn(
-          'flex w-full items-center justify-center border-t border-muted pt-2'
-        )}
-      >
+      <div className={cn('w-full', cnFlexFullCenter)}>
         <Avatar
           className={cn(
             'relative aspect-square h-10 w-10 border border-primary shadow-sm',
@@ -158,12 +159,12 @@ export const TestimonialsCarousel: React.FC<{
                   variant='outline'
                   cta='LinkedIn'
                   size='xs'
-                  className='ml-0.5 items-baseline px-1.5 py-0 text-[0.65rem]'
+                  className='ml-0.5 items-baseline px-1.5 py-0 text-[0.65rem] text-foreground'
                 />
               </motion.div>
             </a>
           </div>
-          <div className={'flex text-xs text-muted-foreground'}>
+          <div className={'flex text-xs text-muted'}>
             <span className='inline-block font-medium'>
               {capitalizeFirstLetterOfEachWord(
                 formatSpecialWords(testimonial.job)
@@ -189,28 +190,39 @@ export const TestimonialsCarousel: React.FC<{
         cnGap
       )}
     >
-      <div className={cn(cnFlexCol, cnSmallSpaceY, 'h-[calc(100dvh-120px)]')}>
+      <div
+        className={cn(
+          cnFlexCol,
+          cnSmallSpaceY,
+          cnGap,
+          'h-auto min-h-[420px] md:h-[calc(100dvh-120px)]'
+        )}
+      >
         <div
           className={cn(
             cnBorder,
-            'flex-grow overflow-hidden rounded-lg border-muted'
+            cnPaddingTop,
+            'flex-grow overflow-hidden rounded-lg border-muted',
+            'bg-foreground/80 text-background'
           )}
         >
           <h3 className={cn(cnTitle3, 'text-center')}>
             Ce qu&apos;ils disent de mon travail
           </h3>
-          <div className='h-[calc(100%-40px)]'>
-            <GenericCarousel items={items} delay={7000} controls={true} />
-          </div>
+          <GenericCarousel items={items} delay={7000} controls={true} />
         </div>
         <div
           className={cn(
-            cnSmallSpaceY,
             cnBorder,
+            cnPaddingY,
+            cnSpaceY,
+            'bg-foreground/80 text-background',
             'h-[325px] overflow-hidden rounded-lg border-muted'
           )}
         >
-          <h3 className={cn(cnTitle3, 'text-center')}>Où je travaille</h3>
+          <h3 className={cn(cnTitle3, 'text-center')}>
+            Où je travaille localement ?
+          </h3>
           <div className='h-[285px]'>
             <MapCard />
           </div>
