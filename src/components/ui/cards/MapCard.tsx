@@ -53,10 +53,6 @@ const MapCard: React.FC = () => {
           },
         ]}
       />
-      <div className='absolute bottom-0 left-0 right-0 bg-background/80 py-1 text-center text-xs'>
-        <span className='font-medium'>Zone de mobilité</span>: rayon de 30
-        minutes en voiture
-      </div>
     </div>
   );
 };

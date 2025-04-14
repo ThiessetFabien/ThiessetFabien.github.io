@@ -27,7 +27,7 @@ export const TestimonialsCard: React.FC<{
       {testimonials && testimonials.length > 0 && (
         <Card
           className={cn(
-            'w-full flex-1 xl:w-full',
+            'h-full w-full flex-1 xl:w-full',
             'bg-foreground/10 backdrop-blur-sm'
           )}
         >

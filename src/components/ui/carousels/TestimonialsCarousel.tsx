@@ -1,26 +1,20 @@
-import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-import { ActionButton } from '@/src/components/ui/buttons/ActionButton';
 import GenericCarousel from '@/src/components/ui/carousels/GenericCarousel';
-import { cnBorder, cnBorder2 } from '@/src/styles/border.style';
+import { cnBorder } from '@/src/styles/border.style';
 import {
   cnGap,
-  cnMarginLeft,
+  cnMarginTop,
   cnPadding,
   cnPaddingTop,
   cnPaddingX,
   cnPaddingY,
+  cnSmallPadding,
   cnSmallSpaceY,
   cnSpaceY,
 } from '@/src/styles/boxModel.style';
-import {
-  cnFlexCenterY,
-  cnFlexCol,
-  cnFlexFullCenter,
-} from '@/src/styles/flex.style';
+import { cnFlexCol } from '@/src/styles/flex.style';
 import { cnParagraph, cnSmallText, cnTitle3 } from '@/src/styles/font.style';
-import { baseUrl } from '@/src/utils/baseUrl.util';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
@@ -109,26 +103,30 @@ export const TestimonialsCarousel: React.FC<{
   }, [testimonials]);
 
   const items = (testimonialsList ?? []).map((testimonial, index) => (
-    <div key={index} className={cn('relative flex h-full min-w-full flex-col')}>
-      <p
+    <div
+      key={index}
+      className={cn(
+        cnSmallPadding,
+        cnMarginTop,
+        cnSmallSpaceY,
+        cnBorder,
+        'relative flex h-full w-full flex-col text-center',
+        'rounded-lg',
+        'bg-primary/80 text-primary-foreground'
+      )}
+    >
+      <div
         className={cn(
-          cnSmallText,
-          cnPaddingX,
-          'relative flex flex-grow items-center justify-center overflow-auto italic'
+          cnFlexCol,
+          cnSmallSpaceY,
+          'flex h-full flex-wrap items-center justify-center'
         )}
       >
-        <span className='max-w-[90%] text-center'>
-          {capitalizeFirstLetterOfPhrase(
-            formatSpecialWords(testimonial.content)
-          )}
-        </span>
-      </p>
-
-      <div className={cn('w-full', cnFlexFullCenter)}>
         <Avatar
           className={cn(
-            'relative aspect-square h-10 w-10 border border-primary shadow-sm',
-            cnBorder2
+            'relative aspect-square h-16 w-16 flex-none',
+            'bg-primary text-primary-foreground',
+            cnBorder
           )}
         >
           <TestimonialImage
@@ -139,45 +137,31 @@ export const TestimonialsCarousel: React.FC<{
             {capitalizeFirstLetterOfEachWord(testimonial.author)}
           </AvatarFallback>
         </Avatar>
-        <div className={cn(cnSmallText, cnFlexCol, cnMarginLeft)}>
-          <div className={cnFlexCenterY}>
-            <span className={cn('font-bold text-primary')}>
-              {capitalizeFirstLetterOfEachWord(testimonial.author)}
-            </span>
-            <a
-              href={`${baseUrl}${testimonial.linkedin}`}
-              target='_blank'
-              rel='noreferrer noopener'
-              aria-label={`Profil LinkedIn de ${capitalizeFirstLetterOfEachWord(testimonial.author)}`}
-              className='ml-1.5'
-            >
-              <motion.div
-                whileHover={{ scale: 1.2, y: -2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <ActionButton
-                  variant='outline'
-                  cta='LinkedIn'
-                  size='xs'
-                  className='ml-0.5 items-baseline px-1.5 py-0 text-[0.65rem] text-foreground'
-                />
-              </motion.div>
-            </a>
-          </div>
-          <div className={'flex text-xs text-muted'}>
-            <span className='inline-block font-medium'>
-              {capitalizeFirstLetterOfEachWord(
-                formatSpecialWords(testimonial.job)
-              )}
-            </span>
+        <p className='flex-none'>
+          <span className='block font-bold text-primary-foreground'>
+            {capitalizeFirstLetterOfEachWord(testimonial.author)}
+          </span>
+          <span className={cn(cnSmallText, 'text-muted')}>
+            {capitalizeFirstLetterOfEachWord(
+              formatSpecialWords(testimonial.job)
+            )}
             <span className='mx-1'>•</span>
-            <span className={cn('inline-block')}>
-              {capitalizeFirstLetterOfEachWord(
-                formatSpecialWords(testimonial.company)
-              )}
-            </span>
-          </div>
-        </div>
+            {capitalizeFirstLetterOfEachWord(
+              formatSpecialWords(testimonial.company)
+            )}
+          </span>
+        </p>
+        <p
+          className={cn(
+            cnMarginTop,
+            cnSmallText,
+            'flex flex-grow hyphens-auto break-words italic'
+          )}
+        >
+          {capitalizeFirstLetterOfPhrase(
+            formatSpecialWords(testimonial.content)
+          )}
+        </p>
       </div>
     </div>
   ));
@@ -185,25 +169,17 @@ export const TestimonialsCarousel: React.FC<{
   return (
     <div
       className={cn(
-        'container mx-auto grid grid-cols-1 lg:grid-cols-2',
+        'container grid h-full min-w-full flex-1 grid-cols-1 xl:grid-cols-2',
         cnPaddingX,
         cnGap
       )}
     >
-      <div
-        className={cn(
-          cnFlexCol,
-          cnSmallSpaceY,
-          cnGap,
-          'h-auto min-h-[420px] md:h-[calc(100dvh-120px)]'
-        )}
-      >
+      <div className={cn(cnFlexCol, cnGap, 'h-full flex-1')}>
         <div
           className={cn(
             cnBorder,
             cnPaddingTop,
-            'flex-grow overflow-hidden rounded-lg border-muted',
-            'bg-foreground/80 text-background'
+            'flex-grow rounded-lg border-muted'
           )}
         >
           <h3 className={cn(cnTitle3, 'text-center')}>
@@ -216,8 +192,7 @@ export const TestimonialsCarousel: React.FC<{
             cnBorder,
             cnPaddingY,
             cnSpaceY,
-            'bg-foreground/80 text-background',
-            'h-[325px] overflow-hidden rounded-lg border-muted'
+            'rounded-lg border-muted'
           )}
         >
           <h3 className={cn(cnTitle3, 'text-center')}>

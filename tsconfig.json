@@ -52,5 +52,5 @@
     ".next/types/**/*.ts",
     "!**/app/page.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".next/types/app/page.ts"]
 }
