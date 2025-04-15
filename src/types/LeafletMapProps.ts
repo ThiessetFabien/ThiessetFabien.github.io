@@ -21,7 +21,7 @@ export interface LeafletMapProps {
    * The geographical center of the map, specified as a tuple of latitude and longitude.
    * @example [48.8566, 2.3522] // Coordinates for Paris, France
    */
-  center?: [number, number];
+  center?: [number, number] | undefined;
 
   /**
    * The initial zoom level of the map.

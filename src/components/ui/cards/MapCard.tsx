@@ -26,35 +26,38 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
+import { cn } from '@/src/lib/utils';
+import { CardProps } from '@/src/types/CardProps';
+
 import LoadingSpinner from '../spinner/LoadingSpinner';
 
-const DynamicLeafletMap = dynamic(() => import('../maps/DynamicLeaflet'), {
+const DynamicLeafletMap = dynamic(() => import('../maps/LeafletMap'), {
   ssr: false,
   loading: () => <LoadingSpinner size='lg' message='Loading map...' />,
 });
 
-const MapCard: React.FC = () => {
-  return (
-    <div className='relative h-full w-full'>
-      <DynamicLeafletMap
-        center={[50.381645, 3.053234]}
-        zoom={8}
-        flyToAnimation={true}
-        markers={[
-          {
-            position: [50.381645, 3.053234],
-            circle: {
-              radius: 30000,
-              color: '#4F46E5',
-              fillColor: '#4F46E5',
-              fillOpacity: 0.15,
-              weight: 3,
-            },
+const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
+  className,
+}) => (
+  <div className={cn(className, 'relative h-full w-full')}>
+    <DynamicLeafletMap
+      center={[46.6034, 3.1236]}
+      zoom={8}
+      flyToAnimation
+      markers={[
+        {
+          position: [50.381645, 3.053234],
+          circle: {
+            radius: 30000,
+            color: '#4F46E5',
+            fillColor: '#4F46E5',
+            fillOpacity: 0.15,
+            weight: 3,
           },
-        ]}
-      />
-    </div>
-  );
-};
+        },
+      ]}
+    />
+  </div>
+);
 
 export default React.memo(MapCard);

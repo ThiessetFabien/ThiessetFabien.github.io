@@ -6,7 +6,7 @@ import {
   cnPaddingBottom,
   cnSmallPaddingBottom,
 } from '@/src/styles/boxModel.style';
-import { cnFlexCenterY } from '@/src/styles/flex.style';
+import { cnFlexCenterY, cnFlexFullCenter } from '@/src/styles/flex.style';
 import { GenericCarouselProps } from '@/src/types/GenericCarouselProps';
 import { cn } from '@lib/utils';
 
@@ -70,9 +70,17 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
   const cnArrowButton =
     'h-16 bg-background/90 text-primary-foreground shadow-sm hover:bg-accent focus:ring-2 focus:ring-accent focus:ring-offset-2';
 
+  const testimonialContainerHeight =
+    'min-h-[580px] xxs:min-h-[538px] xs:min-h[514px] sm:min-h-[362px] md:min-h-[338px] lg:min-h-[318px] xl:min-h-[358px]';
+
   return (
     <div
-      className={cn('relative w-full flex-1', cnSmallPaddingBottom)}
+      className={cn(
+        'relative flex w-full flex-none',
+        testimonialContainerHeight,
+        cnSmallPaddingBottom
+      )}
+      style={{ height: testimonialContainerHeight }} // Fixe la hauteur du conteneur
       onMouseEnter={() => {
         setIsPaused(true);
         setIsHovering(true);
@@ -83,30 +91,12 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
       }}
     >
       {controls && (
-        <div className='absolute bottom-0 left-0 right-0 z-10 flex flex-1 items-center justify-center space-x-1.5'>
-          {items.map((_, index) => (
-            <motion.div
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={cn(
-                cnFlexCenterY,
-                'cursor-pointer rounded-full transition-all',
-                currentSlideIndex === index
-                  ? 'h-2 w-6 bg-accent'
-                  : 'h-2 w-2 bg-accent/40 hover:bg-accent/60'
-              )}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              role='button'
-              tabIndex={0}
-              aria-label={`Aller à la diapositive ${index + 1}`}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  goToSlide(index);
-                }
-              }}
-            />
-          ))}
+        <div
+          className={cn(
+            cnFlexFullCenter,
+            'absolute bottom-0 left-0 right-0 z-10 flex-1 space-x-1.5'
+          )}
+        >
           <motion.div
             onClick={() => setIsPaused(!isPaused)}
             className={cn(
@@ -135,6 +125,29 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
               className='rounded-full bg-accent p-0 text-accent-foreground focus:ring-2 focus:ring-accent focus:ring-offset-1'
             />
           </motion.div>
+          {items.map((_, index) => (
+            <motion.div
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={cn(
+                cnFlexCenterY,
+                'cursor-pointer rounded-full transition-all',
+                currentSlideIndex === index
+                  ? 'h-2 w-6 bg-accent'
+                  : 'h-2 w-2 bg-accent/40 hover:bg-accent/60'
+              )}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              role='button'
+              tabIndex={0}
+              aria-label={`Aller à la diapositive ${index + 1}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  goToSlide(index);
+                }
+              }}
+            />
+          ))}
         </div>
       )}
 
@@ -145,11 +158,12 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className='flex h-full flex-col justify-between'
+          className='flex flex-col justify-between'
+          style={{ height: testimonialContainerHeight }}
         >
           <div
             className={cn(
-              'scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent flex-grow',
+              'scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent flex flex-grow items-center justify-center',
               cnPaddingBottom
             )}
           >

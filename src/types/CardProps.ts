@@ -1,13 +1,9 @@
-import { AchievementProps } from './AchievementProps';
 import type { ActionButtonProps } from './ActionButtonProps';
 import type { ExperiencesProps } from './ExperiencesProps';
-import { JobsProps } from './JobsProps';
-import type { OtherExperienceProps } from './OtherExperiencesProps';
+import type { JobsProps } from './JobsProps';
 import type { ProjectProps } from './ProjectProps';
 import type { ServicesProps } from './ServicesProps';
-import type { TechnologieProps } from './TechnologieProps';
 import type { TestimonialProps } from './TestimonialProps';
-import type { TopTechnologieProps } from './Top3TechnologieProps';
 
 /**
  * Represents the properties for a card component.
@@ -100,16 +96,10 @@ export interface CardProps {
   downloadActive5?: ActionButtonProps['downloadActive'];
 
   experiences?: ExperiencesProps[];
-  otherExperiences?: OtherExperienceProps[];
 
   projects?: ProjectProps[];
 
-  topTechnologies?: TopTechnologieProps[];
-  technologies?: TechnologieProps[];
-
   testimonials?: TestimonialProps[];
-
-  achievements?: AchievementProps[];
 
   content?: React.ReactNode;
   funFact?: string;

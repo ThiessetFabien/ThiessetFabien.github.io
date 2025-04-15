@@ -13,8 +13,9 @@ import {
   cnSmallSpaceY,
   cnSpaceY,
 } from '@/src/styles/boxModel.style';
-import { cnFlexCol } from '@/src/styles/flex.style';
+import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
 import { cnParagraph, cnSmallText, cnTitle3 } from '@/src/styles/font.style';
+import { cnSizeFull } from '@/src/styles/size.style';
 import {
   capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
@@ -26,6 +27,7 @@ import { CardProps } from '@src/types/CardProps';
 import type { TestimonialProps } from '@src/types/TestimonialProps';
 
 import { ContactForm } from '../../forms/ContactForm';
+import { ActionButton } from '../buttons/ActionButton';
 import MapCard from '../cards/MapCard';
 import { TestimonialImage } from '../images/TestimonalImage';
 
@@ -109,17 +111,20 @@ export const TestimonialsCarousel: React.FC<{
         cnSmallPadding,
         cnMarginTop,
         cnSmallSpaceY,
+        cnSizeFull,
+        cnFlexCol,
         cnBorder,
-        'relative flex h-full w-full flex-col text-center',
+        'relative text-center',
         'rounded-lg',
-        'bg-primary/80 text-primary-foreground'
+        'bg-primary/80 text-primary-foreground hover:bg-gradient-to-bl hover:from-secondary hover:to-primary'
       )}
     >
       <div
         className={cn(
           cnFlexCol,
           cnSmallSpaceY,
-          'flex h-full flex-wrap items-center justify-center'
+          cnFlexFullCenter,
+          'h-full flex-wrap'
         )}
       >
         <Avatar
@@ -140,6 +145,13 @@ export const TestimonialsCarousel: React.FC<{
         <p className='flex-none'>
           <span className='block font-bold text-primary-foreground'>
             {capitalizeFirstLetterOfEachWord(testimonial.author)}
+            <ActionButton
+              variant='outline'
+              className='ml-2'
+              size='xs'
+              cta='LinkedIn'
+              href={testimonial.linkedin}
+            />
           </span>
           <span className={cn(cnSmallText, 'text-muted')}>
             {capitalizeFirstLetterOfEachWord(
@@ -155,7 +167,7 @@ export const TestimonialsCarousel: React.FC<{
           className={cn(
             cnMarginTop,
             cnSmallText,
-            'flex flex-grow hyphens-auto break-words italic'
+            'flex hyphens-auto break-words italic'
           )}
         >
           {capitalizeFirstLetterOfPhrase(
@@ -169,17 +181,16 @@ export const TestimonialsCarousel: React.FC<{
   return (
     <div
       className={cn(
-        'container grid h-full min-w-full flex-1 grid-cols-1 xl:grid-cols-2',
+        'container grid min-w-full flex-1 grid-cols-1 xl:grid-cols-2',
         cnPaddingX,
         cnGap
       )}
     >
-      <div className={cn(cnFlexCol, cnGap, 'h-full flex-1')}>
+      <div className={cn(cnFlexCol, cnGap, cnSizeFull)}>
         <div
           className={cn(
-            cnBorder,
             cnPaddingTop,
-            'flex-grow rounded-lg border-muted'
+            'h-content flex flex-col items-center justify-center rounded-lg'
           )}
         >
           <h3 className={cn(cnTitle3, 'text-center')}>
@@ -187,18 +198,11 @@ export const TestimonialsCarousel: React.FC<{
           </h3>
           <GenericCarousel items={items} delay={7000} controls={true} />
         </div>
-        <div
-          className={cn(
-            cnBorder,
-            cnPaddingY,
-            cnSpaceY,
-            'rounded-lg border-muted'
-          )}
-        >
+        <div className={cn(cnPaddingY, cnSpaceY, 'rounded-lg')}>
           <h3 className={cn(cnTitle3, 'text-center')}>
             Où je travaille localement ?
           </h3>
-          <div className='h-[285px]'>
+          <div className='h-48 overflow-hidden rounded-lg'>
             <MapCard />
           </div>
         </div>
