@@ -28,11 +28,14 @@ import { useIsClient } from '../hooks/useIsClient.hook';
 import { cnBorderNone } from '../styles/border.style';
 
 const LazyTestimonialsCard = dynamic(
-  () => import('@/src/components/ui/carousels/TestimonialsCarousel'),
+  () =>
+    import('@/src/components/ui/cards/TestimonialsCard').then(
+      (mod) => mod.TestimonialsCard
+    ),
   {
     ssr: false,
     loading: () => (
-      <LoadingSpinner size='lg' message='Chargement des recommendations...' />
+      <LoadingSpinner size='lg' message='Chargement des recommandations...' />
     ),
   }
 );

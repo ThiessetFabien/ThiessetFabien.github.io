@@ -26,7 +26,11 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
+import { Card, CardTitle, CardContent } from '@/src/lib/components/ui/card';
 import { cn } from '@/src/lib/utils';
+import { cnPaddingY, cnSpaceY, cnPaddingX } from '@/src/styles/boxModel.style';
+import { cnFlexCol } from '@/src/styles/flex.style';
+import { cnTitle3 } from '@/src/styles/font.style';
 import { CardProps } from '@/src/types/CardProps';
 
 import LoadingSpinner from '../spinner/LoadingSpinner';
@@ -40,23 +44,30 @@ const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
   className,
 }) => (
   <div className={cn(className, 'relative h-full w-full')}>
-    <DynamicLeafletMap
-      center={[46.6034, 3.1236]}
-      zoom={8}
-      flyToAnimation
-      markers={[
-        {
-          position: [50.381645, 3.053234],
-          circle: {
-            radius: 30000,
-            color: '#4F46E5',
-            fillColor: '#4F46E5',
-            fillOpacity: 0.15,
-            weight: 3,
-          },
-        },
-      ]}
-    />
+    <Card className={cn(cnPaddingY, cnSpaceY, cnFlexCol, 'flex-1')}>
+      <CardTitle className={cn(cnTitle3, 'text-center')}>
+        Où je travaille localement ?
+      </CardTitle>
+      <CardContent className={cn(cnPaddingX, 'h-44 overflow-hidden pb-0')}>
+        <DynamicLeafletMap
+          center={[46.6034, 3.1236]}
+          zoom={8}
+          flyToAnimation
+          markers={[
+            {
+              position: [50.381645, 3.053234],
+              circle: {
+                radius: 30000,
+                color: '#4F46E5',
+                fillColor: '#4F46E5',
+                fillOpacity: 0.15,
+                weight: 3,
+              },
+            },
+          ]}
+        />
+      </CardContent>
+    </Card>
   </div>
 );
 

@@ -74,9 +74,9 @@ export const menuItems: MenuItem[] = [
     rel: 'noopener noreferrer',
   },
   {
-    id: 'testimonials',
+    id: 'contact',
     icon: 'Star',
-    label: 'Témoignages',
+    label: 'Contact',
     href: '#card-4',
     target: '_self',
     rel: 'noopener noreferrer',
@@ -114,7 +114,7 @@ export const menuItems: MenuItem[] = [
     rel: 'noopener noreferrer',
   },
   {
-    id: 'contact',
+    id: 'mail',
     icon: 'Mail',
     label: 'Envoyez-moi un message',
     href: 'mailto:thiessetfabienpro@gmail.com',

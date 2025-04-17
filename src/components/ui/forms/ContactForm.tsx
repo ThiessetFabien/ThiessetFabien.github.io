@@ -8,19 +8,17 @@ import { cn } from '@/src/lib/utils';
 import type { FormSchema } from '@/src/schemas/contactForm.schema';
 import { ContactFormSchema } from '@/src/schemas/contactForm.schema';
 import { ClientSanitizationService } from '@/src/services/client-sanitize.service';
-import { cnGap, cnSmallGap, cnSpaceY } from '@/src/styles/boxModel.style';
+import { cnGap, cnSpaceY } from '@/src/styles/boxModel.style';
 import { cnFlexCol } from '@/src/styles/flex.style';
-import { cnDescription, cnTitle3 } from '@/src/styles/font.style';
 import type { ActionButtonProps } from '@/src/types/ActionButtonProps';
 import { IconName } from '@/src/types/IconNameProps';
 import { Form } from '@lib/components/ui/form';
 import { useToast } from '@lib/hooks/use-toast';
+import { ConsentField } from '@src/components/ui/checkbox/ConsentField';
+import { MessageField } from '@src/components/ui/textarea/TextAreaField';
 import type { CardProps } from '@src/types/CardProps';
 import { InputField } from '@ui/inputs/InputField';
 import { EmailTypeField } from '@ui/radios/RadioField';
-
-import { ConsentField } from '../ui/checkbox/ConsentField';
-import { MessageField } from '../ui/textarea/TextAreaField';
 
 /**
  * A React functional component that renders a contact form with various input fields,
@@ -161,15 +159,6 @@ export const ContactForm: React.FC<{
 
   return (
     <Form {...form} aria-labelledby='contact-form-heading'>
-      <div className={cn('w-full', cnSmallGap, cnFlexCol)}>
-        <h3 id='contact-form-heading' className={cn(cnTitle3, 'text-center')}>
-          Parlons de votre projet
-        </h3>
-        <p className={cn(cnDescription, 'mb-4 text-center')}>
-          La passion est de l&apos;énergie. Ressentez la puissance qui vient se
-          concentrer sur ce qui vous enthousiasme (Oprah Winfrey).
-        </p>
-      </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={cn('w-full', cnSpaceY, cnFlexCol)}

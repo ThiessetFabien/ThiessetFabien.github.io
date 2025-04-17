@@ -3,18 +3,12 @@ import React, { useEffect, useState } from 'react';
 import GenericCarousel from '@/src/components/ui/carousels/GenericCarousel';
 import { cnBorder } from '@/src/styles/border.style';
 import {
-  cnGap,
   cnMarginTop,
-  cnPadding,
-  cnPaddingTop,
-  cnPaddingX,
-  cnPaddingY,
   cnSmallPadding,
   cnSmallSpaceY,
-  cnSpaceY,
 } from '@/src/styles/boxModel.style';
 import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
-import { cnParagraph, cnSmallText, cnTitle3 } from '@/src/styles/font.style';
+import { cnParagraph, cnSmallText } from '@/src/styles/font.style';
 import { cnSizeFull } from '@/src/styles/size.style';
 import {
   capitalizeFirstLetterOfEachWord,
@@ -26,9 +20,7 @@ import { cn } from '@lib/utils';
 import { CardProps } from '@src/types/CardProps';
 import type { TestimonialProps } from '@src/types/TestimonialProps';
 
-import { ContactForm } from '../../forms/ContactForm';
 import { ActionButton } from '../buttons/ActionButton';
-import MapCard from '../cards/MapCard';
 import { TestimonialImage } from '../images/TestimonalImage';
 
 /**
@@ -115,8 +107,7 @@ export const TestimonialsCarousel: React.FC<{
         cnFlexCol,
         cnBorder,
         'relative text-center',
-        'rounded-lg',
-        'bg-primary/80 text-primary-foreground hover:bg-gradient-to-bl hover:from-secondary hover:to-primary'
+        'bg-primary/80 text-primary-foreground hover:bg-gradient-to-b hover:from-background hover:via-secondary hover:to-primary'
       )}
     >
       <div
@@ -124,7 +115,7 @@ export const TestimonialsCarousel: React.FC<{
           cnFlexCol,
           cnSmallSpaceY,
           cnFlexFullCenter,
-          'h-full flex-wrap'
+          'm-auto h-full w-full max-w-[90%] flex-wrap'
         )}
       >
         <Avatar
@@ -167,7 +158,7 @@ export const TestimonialsCarousel: React.FC<{
           className={cn(
             cnMarginTop,
             cnSmallText,
-            'flex hyphens-auto break-words italic'
+            'flex hyphens-auto break-words text-justify italic'
           )}
         >
           {capitalizeFirstLetterOfPhrase(
@@ -179,43 +170,13 @@ export const TestimonialsCarousel: React.FC<{
   ));
 
   return (
-    <div
-      className={cn(
-        'container grid min-w-full flex-1 grid-cols-1 xl:grid-cols-2',
-        cnPaddingX,
-        cnGap
-      )}
-    >
-      <div className={cn(cnFlexCol, cnGap, cnSizeFull)}>
-        <div
-          className={cn(
-            cnPaddingTop,
-            'h-content flex flex-col items-center justify-center rounded-lg'
-          )}
-        >
-          <h3 className={cn(cnTitle3, 'text-center')}>
-            Ce qu&apos;ils disent de mon travail
-          </h3>
-          <GenericCarousel items={items} delay={7000} controls={true} />
-        </div>
-        <div className={cn(cnPaddingY, cnSpaceY, 'rounded-lg')}>
-          <h3 className={cn(cnTitle3, 'text-center')}>
-            Où je travaille localement ?
-          </h3>
-          <div className='h-48 overflow-hidden rounded-lg'>
-            <MapCard />
-          </div>
-        </div>
-      </div>
-
-      <div className={cnFlexCol}>
-        <div
-          className={cn(cnPadding, cnBorder, 'h-full rounded-lg border-muted')}
-        >
-          <ContactForm />
-        </div>
-      </div>
-    </div>
+    <GenericCarousel
+      className=''
+      containerHeight='min-h-[90dvh] sm:min-h-[60dvh] md:min-h-[338px] lg:min-h-[318px] xl:min-h-[378px]'
+      items={items}
+      delay={7000}
+      controls={true}
+    />
   );
 };
 

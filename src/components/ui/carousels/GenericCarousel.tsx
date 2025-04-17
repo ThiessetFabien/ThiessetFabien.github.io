@@ -7,23 +7,45 @@ import {
   cnSmallPaddingBottom,
 } from '@/src/styles/boxModel.style';
 import { cnFlexCenterY, cnFlexFullCenter } from '@/src/styles/flex.style';
+import { CardProps } from '@/src/types/CardProps';
 import { GenericCarouselProps } from '@/src/types/GenericCarouselProps';
 import { cn } from '@lib/utils';
 
 /**
- * A generic carousel component with animation and optional auto-rotation.
+ * A reusable carousel component that displays a series of items with automatic rotation
+ * and optional controls.
  *
- * @param {GenericCarouselProps} props - The component props.
- * @param {React.ReactNode[]} props.items - Array of React elements to display in the carousel.
- * @param {number} [props.delay=5000] - Time in milliseconds between automatic slides.
- * @param {boolean} [props.controls=false] - Whether to display navigation controls.
- * @param {string} [props.className] - Additional CSS classes for the carousel container.
- * @returns {JSX.Element | null} - The rendered carousel component.
+ * @component
+ * @param {Object} props - Component props
+ * @param {React.ReactNode[]} props.items - Array of React nodes to display as carousel slides
+ * @param {number} [props.delay=5000] - Time in milliseconds between automatic slide transitions
+ * @param {boolean} [props.controls=false] - Whether to show navigation controls (prev/next buttons and indicators)
+ * @param {string} [props.containerHeight] - CSS height value for the carousel container
+ * @param {string} props.className - Additional CSS classes to apply to the carousel
+ *
+ * @returns {JSX.Element|null} The carousel component or null if no items are provided
+ *
+ * @features
+ * - Automatic rotation with configurable delay
+ * - Pause on hover or manual toggle
+ * - Keyboard navigation (arrow keys for prev/next, space to pause)
+ * - Animated transitions between slides
+ * - Visual indicators for current slide
+ * - Responsive design with customizable height
+ * - Accessibility support with ARIA labels and keyboard interaction
  */
-const GenericCarousel: React.FC<GenericCarouselProps> = ({
+const GenericCarousel: React.FC<{
+  items: GenericCarouselProps['items'];
+  delay: GenericCarouselProps['delay'];
+  controls: GenericCarouselProps['controls'];
+  containerHeight?: GenericCarouselProps['containerHeight'];
+  className: CardProps['className'];
+}> = ({
   items,
   delay = 5000,
   controls = false,
+  className,
+  containerHeight,
 }: GenericCarouselProps): JSX.Element | null => {
   const [currentSlideIndex, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -70,17 +92,14 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
   const cnArrowButton =
     'h-16 bg-background/90 text-primary-foreground shadow-sm hover:bg-accent focus:ring-2 focus:ring-accent focus:ring-offset-2';
 
-  const testimonialContainerHeight =
-    'min-h-[580px] xxs:min-h-[538px] xs:min-h[514px] sm:min-h-[362px] md:min-h-[338px] lg:min-h-[318px] xl:min-h-[358px]';
-
   return (
     <div
       className={cn(
         'relative flex w-full flex-none',
-        testimonialContainerHeight,
+        containerHeight,
+        className,
         cnSmallPaddingBottom
       )}
-      style={{ height: testimonialContainerHeight }} // Fixe la hauteur du conteneur
       onMouseEnter={() => {
         setIsPaused(true);
         setIsHovering(true);
@@ -158,8 +177,7 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className='flex flex-col justify-between'
-          style={{ height: testimonialContainerHeight }}
+          className={cn('flex flex-col justify-between', containerHeight)}
         >
           <div
             className={cn(
