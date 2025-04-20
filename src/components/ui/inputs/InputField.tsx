@@ -21,6 +21,7 @@ export function InputField<T extends FieldValues>({
   label,
   placeholder,
   autocomplete,
+  isCompact = false,
 }: FormFieldProps<T>): JSX.Element {
   const id = React.useId();
 
@@ -30,7 +31,14 @@ export function InputField<T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
+          <FormLabel
+            htmlFor={id}
+            className={cn(
+              'min-w-full',
+              cnParagraph,
+              isCompact && 'text-sm lg:text-xs'
+            )}
+          >
             {label}{' '}
           </FormLabel>
           <FormControl>
@@ -44,14 +52,18 @@ export function InputField<T extends FieldValues>({
                   'min-w-full',
                   'paragraph-placeholder',
                   'bg-input',
-                  cnParagraph
+                  cnParagraph,
+                  errors && 'border-destructive',
+                  isCompact && 'h-8 py-1 text-sm'
                 )}
                 required
               />
             </motion.div>
           </FormControl>
           {errors?.message && (
-            <FormMessage>{String(errors.message)}</FormMessage>
+            <FormMessage className={cn(isCompact ? 'text-xs' : 'text-sm')}>
+              {String(errors.message)}
+            </FormMessage>
           )}
         </FormItem>
       )}

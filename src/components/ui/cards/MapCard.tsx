@@ -28,9 +28,11 @@ import React from 'react';
 
 import { Card, CardTitle, CardContent } from '@/src/lib/components/ui/card';
 import { cn } from '@/src/lib/utils';
-import { cnPaddingY, cnSpaceY, cnPaddingX } from '@/src/styles/boxModel.style';
+import { cnBorderNone, cnBorderRadiusMd } from '@/src/styles/border.style';
+import { cnSpaceY, cnSmallPadding } from '@/src/styles/boxModel.style';
 import { cnFlexCol } from '@/src/styles/flex.style';
 import { cnTitle3 } from '@/src/styles/font.style';
+import { useIsXl } from '@/src/styles/mediaQueries.style';
 import { CardProps } from '@/src/types/CardProps';
 
 import LoadingSpinner from '../spinner/LoadingSpinner';
@@ -42,33 +44,55 @@ const DynamicLeafletMap = dynamic(() => import('../maps/LeafletMap'), {
 
 const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
   className,
-}) => (
-  <div className={cn(className, 'relative h-full w-full')}>
-    <Card className={cn(cnPaddingY, cnSpaceY, cnFlexCol, 'flex-1')}>
-      <CardTitle className={cn(cnTitle3, 'text-center')}>
-        Où je travaille localement ?
-      </CardTitle>
-      <CardContent className={cn(cnPaddingX, 'h-44 overflow-hidden pb-0')}>
-        <DynamicLeafletMap
-          center={[46.6034, 3.1236]}
-          zoom={8}
-          flyToAnimation
-          markers={[
-            {
-              position: [50.381645, 3.053234],
-              circle: {
-                radius: 30000,
-                color: '#4F46E5',
-                fillColor: '#4F46E5',
-                fillOpacity: 0.15,
-                weight: 3,
+}) => {
+  const isXl = useIsXl();
+
+  return (
+    <div className={cn(className, 'h-full')}>
+      <Card
+        className={cn(
+          cnSmallPadding,
+          cnBorderNone,
+          cnSpaceY,
+          cnFlexCol,
+          'h-full flex-1'
+        )}
+      >
+        <CardTitle className={cn(cnTitle3, 'text-center')}>
+          Où je travaille localement ?
+        </CardTitle>
+        <CardContent
+          className={cn(
+            cnBorderRadiusMd,
+            'flex-1 overflow-hidden p-0',
+            'max-h-[calc(45vh-60px)] min-h-[230px]',
+            'sm:min-h-[250px]',
+            'md:min-h-[270px]',
+            'lg:min-h-[230px] lg:!pt-2',
+            isXl && 'xl:min-h-[250px]'
+          )}
+        >
+          <DynamicLeafletMap
+            center={[46.6034, 3.1236]}
+            zoom={8}
+            flyToAnimation
+            markers={[
+              {
+                position: [50.381645, 3.053234],
+                circle: {
+                  radius: 30000,
+                  color: '#4F46E5',
+                  fillColor: '#4F46E5',
+                  fillOpacity: 0.15,
+                  weight: 3,
+                },
               },
-            },
-          ]}
-        />
-      </CardContent>
-    </Card>
-  </div>
-);
+            ]}
+          />
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
 
 export default React.memo(MapCard);

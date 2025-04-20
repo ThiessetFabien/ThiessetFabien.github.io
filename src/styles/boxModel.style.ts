@@ -20,6 +20,8 @@ export const cnSmallPaddingRight: string = 'pr-2 md:pr-4';
 
 export const cnSmallPaddingLeft: string = 'pl-2 md:pl-4';
 
+export const cnSmallPaddingTop: string = 'pt-2 md:pt-4';
+
 export const cnSmallPaddingBottom: string = 'pb-2 md:pb-4';
 
 export const cnSmallMarginX: string = 'mx-2 md:mx-4';

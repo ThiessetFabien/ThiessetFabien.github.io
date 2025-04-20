@@ -1,126 +1,229 @@
+import Autoplay, { AutoplayOptionsType } from 'embla-carousel-autoplay';
 import { motion, AnimatePresence } from 'framer-motion';
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ActionButton } from '@/src/components/ui/buttons/ActionButton';
 import {
-  cnPaddingBottom,
-  cnSmallPaddingBottom,
-} from '@/src/styles/boxModel.style';
-import { cnFlexCenterY, cnFlexFullCenter } from '@/src/styles/flex.style';
-import { CardProps } from '@/src/types/CardProps';
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselItem,
+} from '@/src/lib/components/ui/carousel';
+import { cnBorderRadiusMd } from '@/src/styles/border.style';
+import { cnSmallPaddingLeft, cnSmallSpaceX } from '@/src/styles/boxModel.style';
+import {
+  cnFlexCenterY,
+  cnFlexCol,
+  cnFlexFullCenter,
+} from '@/src/styles/flex.style';
+import {
+  useIsLg,
+  useIsXl,
+  useIsMd,
+  useIsSm,
+} from '@/src/styles/mediaQueries.style';
 import { GenericCarouselProps } from '@/src/types/GenericCarouselProps';
 import { cn } from '@lib/utils';
 
 /**
- * A reusable carousel component that displays a series of items with automatic rotation
- * and optional controls.
+ * GenericCarousel component displays items in a carousel with automatic rotation.
  *
  * @component
- * @param {Object} props - Component props
- * @param {React.ReactNode[]} props.items - Array of React nodes to display as carousel slides
- * @param {number} [props.delay=5000] - Time in milliseconds between automatic slide transitions
- * @param {boolean} [props.controls=false] - Whether to show navigation controls (prev/next buttons and indicators)
- * @param {string} [props.containerHeight] - CSS height value for the carousel container
- * @param {string} props.className - Additional CSS classes to apply to the carousel
- *
- * @returns {JSX.Element|null} The carousel component or null if no items are provided
- *
- * @features
- * - Automatic rotation with configurable delay
- * - Pause on hover or manual toggle
- * - Keyboard navigation (arrow keys for prev/next, space to pause)
- * - Animated transitions between slides
- * - Visual indicators for current slide
- * - Responsive design with customizable height
- * - Accessibility support with ARIA labels and keyboard interaction
+ * @param {GenericCarouselProps} props - Component props
+ * @returns {JSX.Element} The generic carousel component
  */
-const GenericCarousel: React.FC<{
-  items: GenericCarouselProps['items'];
-  delay: GenericCarouselProps['delay'];
-  controls: GenericCarouselProps['controls'];
-  containerHeight?: GenericCarouselProps['containerHeight'];
-  className: CardProps['className'];
-}> = ({
+const GenericCarousel: React.FC<GenericCarouselProps> = ({
   items,
   delay = 5000,
   controls = false,
   className,
   containerHeight,
-}: GenericCarouselProps): JSX.Element | null => {
-  const [currentSlideIndex, setCurrent] = useState(0);
+  showPartialNext = false,
+  onSlideChange,
+  autoplayOptions,
+  pauseOnInteraction = false,
+  pauseOnHover = true,
+}) => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [autoplayInstance, setAutoplayInstance] = useState<ReturnType<
+    typeof Autoplay
+  > | null>(null);
 
-  const goToNextSlide = useCallback(() => {
-    setCurrent((current) => (current === items.length - 1 ? 0 : current + 1));
-  }, [items.length]);
-
-  const goToPreviousSlide = useCallback(() => {
-    setCurrent((current) => (current === 0 ? items.length - 1 : current - 1));
-  }, [items.length]);
-
-  const goToSlide = useCallback((index: number) => {
-    setCurrent(index);
-  }, []);
+  const isSm = useIsSm();
+  const isMd = useIsMd();
+  const isLg = useIsLg();
+  const isXl = useIsXl();
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        goToPreviousSlide();
-      } else if (e.key === 'ArrowRight') {
-        goToNextSlide();
-      } else if (e.key === 'Space') {
-        setIsPaused((prevState) => !prevState);
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+
+    const onSelectHandler = () => {
+      const newIndex = api.selectedScrollSnap();
+      setCurrent(newIndex);
+
+      if (onSlideChange) {
+        onSlideChange(newIndex);
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [goToPreviousSlide, goToNextSlide]);
+    onSelectHandler();
+
+    api.on('select', onSelectHandler);
+
+    const plugins = api.plugins();
+    if (plugins && Array.isArray(plugins) && plugins.length > 0) {
+      const autoplay = plugins.find((plugin) => plugin.name === 'Autoplay') as
+        | ReturnType<typeof Autoplay>
+        | undefined;
+      if (autoplay) {
+        setAutoplayInstance(autoplay);
+      }
+    }
+
+    return () => {
+      api.off('select', onSelectHandler);
+    };
+  }, [api, onSlideChange]);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (!autoplayInstance) return;
 
-    const timer = setTimeout(goToNextSlide, delay);
-    return () => clearTimeout(timer);
-  }, [currentSlideIndex, delay, isPaused, goToNextSlide]);
+    if (isPaused) {
+      autoplayInstance.stop();
+    } else {
+      autoplayInstance.play();
+    }
+  }, [isPaused, autoplayInstance]);
 
   if (!items || items.length === 0) {
     return null;
   }
 
-  const cnArrowButton =
-    'h-16 bg-background/90 text-primary-foreground shadow-sm hover:bg-accent focus:ring-2 focus:ring-accent focus:ring-offset-2';
+  const defaultAutoplayOptions: AutoplayOptionsType = {
+    delay,
+    stopOnInteraction: pauseOnInteraction,
+    stopOnMouseEnter: pauseOnHover,
+    rootNode: (emblaRoot) => emblaRoot,
+  };
+
+  const mergedAutoplayOptions: AutoplayOptionsType = {
+    ...defaultAutoplayOptions,
+    ...autoplayOptions,
+  };
 
   return (
-    <div
+    <Carousel
+      opts={{
+        align: showPartialNext ? 'start' : 'center',
+        loop: true,
+        containScroll: showPartialNext ? 'trimSnaps' : 'keepSnaps',
+      }}
+      setApi={setApi}
+      plugins={[Autoplay(mergedAutoplayOptions)]}
+      orientation='horizontal'
       className={cn(
-        'relative flex w-full flex-none',
-        containerHeight,
         className,
-        cnSmallPaddingBottom
+        'relative flex w-full',
+        containerHeight || 'min-h-[200px]'
       )}
       onMouseEnter={() => {
-        setIsPaused(true);
         setIsHovering(true);
       }}
       onMouseLeave={() => {
-        setIsPaused(false);
         setIsHovering(false);
       }}
     >
+      <CarouselContent className={showPartialNext ? '-ml-2 md:-ml-4' : ''}>
+        {items.map((item, index) => (
+          <CarouselItem
+            key={index}
+            className={cn(
+              showPartialNext
+                ? cn(
+                    cnSmallPaddingLeft,
+                    'basis-[90%]',
+                    'sm:basis-[90%] md:basis-[85%] lg:basis-[90%] xl:basis-[95%]'
+                  )
+                : '',
+              'transition-opacity duration-300'
+            )}
+          >
+            <AnimatePresence mode='wait'>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.5 }}
+                className={cn(cnFlexCol, 'h-full', cnBorderRadiusMd)}
+              >
+                {item}
+              </motion.div>
+            </AnimatePresence>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+
       {controls && (
         <div
           className={cn(
             cnFlexFullCenter,
-            'absolute bottom-0 left-0 right-0 z-10 flex-1 space-x-1.5'
+            cnSmallSpaceX,
+            'absolute left-0 right-0 top-0 z-10 flex-row',
+            'rounded-full backdrop-blur-sm'
           )}
         >
+          {Array.from({ length: count }).map((_, index) => (
+            <motion.div
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={cn(
+                cnFlexCenterY,
+                'cursor-pointer rounded-full transition-all',
+                current === index
+                  ? cn(
+                      'bg-primary',
+                      'h-1.5 w-4',
+                      isSm ? 'sm:h-1.5 sm:w-5' : '',
+                      isMd ? 'md:h-2 md:w-6' : '',
+                      isLg ? 'lg:h-1.5 lg:w-5' : '',
+                      isXl ? 'xl:h-2 xl:w-6' : ''
+                    )
+                  : cn(
+                      'bg-muted hover:bg-muted-foreground',
+                      'h-1.5 w-1.5',
+                      isSm ? 'sm:h-1.5 sm:w-1.5' : '',
+                      isMd ? 'md:h-2 md:w-2' : '',
+                      isLg ? 'lg:h-1.5 lg:w-1.5' : '',
+                      isXl ? 'xl:h-2 xl:w-2' : ''
+                    )
+              )}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              role='button'
+              tabIndex={0}
+              aria-label={`Aller à la diapositive ${index + 1}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  api?.scrollTo(index);
+                }
+              }}
+            />
+          ))}
           <motion.div
             onClick={() => setIsPaused(!isPaused)}
             className={cn(
               cnFlexCenterY,
-              'mr-1 cursor-pointer text-accent hover:text-primary/80'
+              'ml-1 cursor-pointer text-accent hover:text-primary/80',
+              'group relative'
             )}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
@@ -137,105 +240,55 @@ const GenericCarousel: React.FC<{
               }
             }}
           >
+            <span className='pointer-events-none absolute -top-8 left-1/2 w-max -translate-x-1/2 rounded bg-popover px-2 py-1 text-xs opacity-0 transition-opacity duration-200 group-hover:opacity-100'>
+              {isPaused ? 'Reprendre' : 'Pause'}
+            </span>
             <ActionButton
               icon={isPaused ? 'Play' : 'Pause'}
               variant='outline'
               size='xs'
-              className='rounded-full bg-accent p-0 text-accent-foreground focus:ring-2 focus:ring-accent focus:ring-offset-1'
+              className={cn(
+                'rounded-full bg-accent p-0 text-accent-foreground focus:ring-2 focus:ring-accent focus:ring-offset-1',
+                'h-5 w-5',
+                isSm ? 'sm:h-5 sm:w-5' : '',
+                isMd ? 'md:h-6 md:w-6' : '',
+                isLg ? 'lg:h-5 lg:w-5' : '',
+                isXl ? 'xl:h-6 xl:w-6' : ''
+              )}
             />
           </motion.div>
-          {items.map((_, index) => (
-            <motion.div
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={cn(
-                cnFlexCenterY,
-                'cursor-pointer rounded-full transition-all',
-                currentSlideIndex === index
-                  ? 'h-2 w-6 bg-accent'
-                  : 'h-2 w-2 bg-accent/40 hover:bg-accent/60'
-              )}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              role='button'
-              tabIndex={0}
-              aria-label={`Aller à la diapositive ${index + 1}`}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  goToSlide(index);
-                }
-              }}
-            />
-          ))}
         </div>
       )}
 
-      <AnimatePresence mode='wait'>
-        <motion.div
-          key={currentSlideIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className={cn('flex flex-col justify-between', containerHeight)}
-        >
-          <div
+      {controls && isHovering && (
+        <>
+          <CarouselPrevious
+            variant='outline'
+            aria-label='Diapositive précédente'
             className={cn(
-              'scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent flex flex-grow items-center justify-center',
-              cnPaddingBottom
+              'absolute left-1 top-1/2 aspect-square -translate-y-1/2 opacity-70 hover:opacity-100',
+              'h-7 w-7',
+              isSm ? 'sm:left-2 sm:h-8 sm:w-8' : '',
+              isMd ? 'md:left-4 md:h-9 md:w-9' : '',
+              isLg ? 'lg:left-3 lg:h-8 lg:w-8' : '',
+              isXl ? 'xl:left-4 xl:h-9 xl:w-9' : ''
             )}
-          >
-            {items[currentSlideIndex]}
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      {controls && (
-        <AnimatePresence>
-          {isHovering && (
-            <>
-              <motion.div
-                className='absolute left-0 top-1/2 z-10 flex -translate-y-1/2 items-center'
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.2 }}
-                whileHover={{ scale: 1.1, x: 2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <ActionButton
-                  icon='ChevronLeft'
-                  onClick={goToPreviousSlide}
-                  variant='outline'
-                  size='icon'
-                  aria-label='Diapositive précédente'
-                  className={cn(cnArrowButton, 'rounded-l-none rounded-r-full')}
-                />
-              </motion.div>
-
-              <motion.div
-                className='absolute right-0 top-1/2 z-10 flex -translate-y-1/2 items-center'
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
-                transition={{ duration: 0.2 }}
-                whileHover={{ scale: 1.1, x: -2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <ActionButton
-                  icon='ChevronRight'
-                  onClick={goToNextSlide}
-                  variant='outline'
-                  size='icon'
-                  aria-label='Diapositive suivante'
-                  className={cn(cnArrowButton, 'rounded-l-full rounded-r-none')}
-                />
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
+          />
+          <CarouselNext
+            variant='outline'
+            aria-label='Diapositive suivante'
+            className={cn(
+              'absolute right-1 top-1/2 aspect-square -translate-y-1/2 opacity-70 hover:opacity-100',
+              'h-7 w-7',
+              isSm ? 'sm:right-2 sm:h-8 sm:w-8' : '',
+              isMd ? 'md:right-4 md:h-9 md:w-9' : '',
+              isLg ? 'lg:right-3 lg:h-8 lg:w-8' : '',
+              isXl ? 'xl:right-4 xl:h-9 xl:w-9' : ''
+            )}
+          />
+        </>
       )}
-    </div>
+    </Carousel>
   );
 };
 

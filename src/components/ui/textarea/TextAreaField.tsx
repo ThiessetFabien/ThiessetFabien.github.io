@@ -20,6 +20,7 @@ export function MessageField<T extends FieldValues>({
   name,
   label,
   placeholder,
+  isCompact = false,
 }: FormFieldProps<T>): JSX.Element {
   const id = React.useId();
 
@@ -28,20 +29,28 @@ export function MessageField<T extends FieldValues>({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className='col-span-1 md:col-span-3'>
-          <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
-            <span className='sr-only'>{label}</span>
+        <FormItem>
+          <FormLabel
+            htmlFor={id}
+            className={cn(
+              'min-w-full',
+              cnParagraph,
+              isCompact && 'text-sm lg:text-xs'
+            )}
+          >
+            {label}{' '}
           </FormLabel>
-          <FormControl className='flex-grow'>
-            <motion.div whileHover={{ scale: 1.025 }} whileTap={{ scale: 0.9 }}>
+          <FormControl>
+            <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
               <Textarea
                 id={id}
                 placeholder={placeholder}
                 className={cn(
-                  cnParagraph,
+                  'min-w-full',
+                  'paragraph-placeholder',
                   'bg-input',
-                  'h-full min-h-20 max-w-full resize-y xl:min-h-24',
-                  'paragraph-placeholder'
+                  cnParagraph,
+                  isCompact && 'max-h-[80px] min-h-[60px] py-1 text-sm'
                 )}
                 {...field}
                 required
@@ -49,7 +58,9 @@ export function MessageField<T extends FieldValues>({
             </motion.div>
           </FormControl>
           {errors?.message && (
-            <FormMessage>{String(errors.message)}</FormMessage>
+            <FormMessage className={cn(isCompact ? 'text-xs' : 'text-sm')}>
+              {String(errors.message)}
+            </FormMessage>
           )}
         </FormItem>
       )}

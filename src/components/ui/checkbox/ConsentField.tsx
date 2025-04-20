@@ -12,7 +12,6 @@ import {
   FormMessage,
 } from '@lib/components/ui/form';
 import { cn } from '@lib/utils';
-import { cnSmallSpaceX } from '@styles/boxModel.style';
 import { cnParagraph } from '@styles/font.style';
 
 /**
@@ -27,6 +26,7 @@ import { cnParagraph } from '@styles/font.style';
  * @param {FieldError | undefined} props.errors - An optional error object for displaying validation messages.
  * @param {string} props.name - The name of the field, used for form registration and state management.
  * @param {string} props.label - The label text displayed next to the checkbox.
+ * @param {boolean} [props.isCompact=false] - An optional boolean to determine if the compact style should be applied.
  *
  * @returns {JSX.Element} A JSX element representing the consent field.
  */
@@ -35,6 +35,7 @@ export function ConsentField<T extends FieldValues>({
   errors,
   name,
   label,
+  isCompact = false,
 }: FormFieldProps<T>): JSX.Element {
   const id = React.useId();
 
@@ -43,30 +44,34 @@ export function ConsentField<T extends FieldValues>({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem
-          className={cn(
-            'col-span-1 row-span-1 flex items-center space-y-0 md:col-span-3',
-            cnSmallSpaceX,
-            cnParagraph
-          )}
-        >
+        <FormItem className='flex flex-row items-start space-x-3 space-y-0'>
           <FormControl>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <Checkbox
                 id={id}
-                name={name}
                 checked={field.value}
                 onCheckedChange={field.onChange}
-                required
+                className={cn(isCompact && 'h-4 w-4')}
               />
             </motion.div>
           </FormControl>
-          <FormLabel htmlFor={id} className={cn(cnParagraph, 'mb-0 mt-0')}>
-            {label}
-          </FormLabel>
-          {errors?.message && (
-            <FormMessage>{String(errors.message)}</FormMessage>
-          )}
+          <div className='space-y-1 leading-none'>
+            <FormLabel
+              htmlFor={id}
+              className={cn(
+                'min-w-full',
+                cnParagraph,
+                isCompact && 'text-sm leading-tight lg:text-xs'
+              )}
+            >
+              {label}{' '}
+            </FormLabel>
+            {errors?.message && (
+              <FormMessage className={cn(isCompact ? 'text-xs' : 'text-sm')}>
+                {String(errors.message)}
+              </FormMessage>
+            )}
+          </div>
         </FormItem>
       )}
     />

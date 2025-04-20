@@ -12,37 +12,14 @@ import {
 } from '@lib/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@lib/components/ui/radio-group';
 import { cn } from '@lib/utils';
-import { cnSmallGap, cnSmallSpaceX } from '@styles/boxModel.style';
-import { cnFlexCenterY } from '@styles/flex.style';
 import { cnParagraph } from '@styles/font.style';
 
-const EMAIL_TYPES = ['Offre', 'Question', 'Autre'] as const;
-
-/**
- * A form field component for selecting email types using radio buttons.
- * Renders a radio group with animation effects on hover and tap.
- *
- * @template T - Type extending FieldValues from React Hook Form
- * @param {Object} props - The component props
- * @param {Control<T>} props.control - The React Hook Form control object
- * @param {FieldError | undefined} props.errors - Form field errors object
- * @param {string} props.label - The label text for the field
- * @param {Path<T>} props.name - The name of the form field
- * @returns {JSX.Element} A form field with radio buttons for email type selection
- *
- * @example
- * <EmailTypeField
- *   control={control}
- *   errors={errors.emailType}
- *   label="Email Type"
- *   name="emailType"
- * />
- */
 export function EmailTypeField<T extends FieldValues>({
   control,
   errors,
-  label,
   name,
+  label,
+  isCompact = false,
 }: FormFieldProps<T>): JSX.Element {
   const id = React.useId();
 
@@ -51,42 +28,70 @@ export function EmailTypeField<T extends FieldValues>({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className='col-span-1 row-span-1 flex-none md:col-span-3'>
-          <FormLabel htmlFor={id} className={cnParagraph}>
-            {label}
-          </FormLabel>
-          <div className={cn(cnSmallGap, cnFlexCenterY)}>
-            <FormControl>
-              <RadioGroup
-                name={name}
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                className={cn('flex', cnSmallGap)}
-              >
-                {EMAIL_TYPES.map((type) => (
-                  <FormItem
-                    key={type}
-                    className={cn(cnFlexCenterY, cnSmallSpaceX, 'space-y-0')}
-                  >
-                    <FormControl>
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <RadioGroupItem id={id} value={type} />
-                      </motion.div>
-                    </FormControl>
-                    <FormLabel htmlFor={id} className={'font-normal'}>
-                      {type}
-                    </FormLabel>
-                  </FormItem>
-                ))}
-              </RadioGroup>
-            </FormControl>
-            {errors?.message && (
-              <FormMessage>{String(errors.message)}</FormMessage>
+        <FormItem>
+          <FormLabel
+            htmlFor={id}
+            className={cn(
+              'min-w-full',
+              cnParagraph,
+              isCompact && 'text-sm lg:text-xs'
             )}
-          </div>
+          >
+            {label}{' '}
+          </FormLabel>
+          <FormControl>
+            <RadioGroup
+              onValueChange={field.onChange}
+              defaultValue={field.value}
+              className={cn('flex flex-col sm:flex-row', isCompact && 'gap-1')}
+              id={id}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={cn('flex items-center', isCompact && 'space-x-1')}
+              >
+                <RadioGroupItem value='Offer' id='offer' />
+                <FormLabel
+                  htmlFor='offer'
+                  className={cn('ml-2', isCompact && 'text-sm lg:text-xs')}
+                >
+                  Offre
+                </FormLabel>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={cn('flex items-center', isCompact && 'space-x-1')}
+              >
+                <RadioGroupItem value='Question' id='question' />
+                <FormLabel
+                  htmlFor='question'
+                  className={cn('ml-2', isCompact && 'text-sm lg:text-xs')}
+                >
+                  Question
+                </FormLabel>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={cn('flex items-center', isCompact && 'space-x-1')}
+              >
+                <RadioGroupItem value='Other' id='other' />
+                <FormLabel
+                  htmlFor='other'
+                  className={cn('ml-2', isCompact && 'text-sm lg:text-xs')}
+                >
+                  Autre
+                </FormLabel>
+              </motion.div>
+            </RadioGroup>
+          </FormControl>
+          {errors?.message && (
+            <FormMessage className={cn(isCompact ? 'text-xs' : 'text-sm')}>
+              {String(errors.message)}
+            </FormMessage>
+          )}
         </FormItem>
       )}
     />
