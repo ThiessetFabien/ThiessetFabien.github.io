@@ -12,7 +12,7 @@ import {
 } from '@lib/components/ui/form';
 import { cn } from '@lib/utils';
 import type { FormFieldProps } from '@src/types/FormFieldProps';
-import { cnParagraph } from '@styles/font.style';
+import { cnParagraph, cnSmallText } from '@styles/font.style';
 
 /**
  * A reusable consent field component for forms, built with TypeScript and React.
@@ -26,7 +26,6 @@ import { cnParagraph } from '@styles/font.style';
  * @param {FieldError | undefined} props.errors - An optional error object for displaying validation messages.
  * @param {string} props.name - The name of the field, used for form registration and state management.
  * @param {string} props.label - The label text displayed next to the checkbox.
- * @param {boolean} [props.isCompact=false] - An optional boolean to determine if the compact style should be applied.
  *
  * @returns {JSX.Element} A JSX element representing the consent field.
  */
@@ -35,7 +34,6 @@ export function ConsentField<T extends FieldValues>({
   errors,
   name,
   label,
-  isCompact = false,
 }: FormFieldProps<T>): JSX.Element {
   const id = React.useId();
 
@@ -51,23 +49,15 @@ export function ConsentField<T extends FieldValues>({
                 id={id}
                 checked={field.value}
                 onCheckedChange={field.onChange}
-                className={cn(isCompact && 'h-4 w-4')}
               />
             </motion.div>
           </FormControl>
           <div className='space-y-1 leading-none'>
-            <FormLabel
-              htmlFor={id}
-              className={cn(
-                'min-w-full',
-                cnParagraph,
-                isCompact && 'text-sm leading-tight lg:text-xs'
-              )}
-            >
+            <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
               {label}{' '}
             </FormLabel>
             {errors?.message && (
-              <FormMessage className={cn(isCompact ? 'text-xs' : 'text-sm')}>
+              <FormMessage className={cnSmallText}>
                 {String(errors.message)}
               </FormMessage>
             )}

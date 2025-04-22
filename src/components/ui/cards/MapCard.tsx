@@ -32,7 +32,6 @@ import { cnBorderNone, cnBorderRadiusMd } from '@src/styles/border.style';
 import { cnSpaceY, cnSmallPadding } from '@src/styles/boxModel.style';
 import { cnFlexCol } from '@src/styles/flex.style';
 import { cnTitle3 } from '@src/styles/font.style';
-import { useIsXl } from '@src/styles/mediaQueries.style';
 import { CardProps } from '@src/types/CardProps';
 
 import LoadingSpinner from '../spinner/LoadingSpinner';
@@ -45,8 +44,6 @@ const DynamicLeafletMap = dynamic(() => import('../maps/LeafletMap'), {
 const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
   className,
 }) => {
-  const isXl = useIsXl();
-
   return (
     <div className={cn(className, 'h-full')}>
       <Card
@@ -62,19 +59,11 @@ const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
           Où je travaille localement ?
         </CardTitle>
         <CardContent
-          className={cn(
-            cnBorderRadiusMd,
-            'flex-1 overflow-hidden p-0',
-            'max-h-[calc(45vh-60px)] min-h-[230px]',
-            'sm:min-h-[250px]',
-            'md:min-h-[270px]',
-            'lg:min-h-[230px] lg:!pt-2',
-            isXl && 'xl:min-h-[250px]'
-          )}
+          className={cn(cnBorderRadiusMd, 'flex-1 overflow-hidden p-0')}
         >
           <DynamicLeafletMap
             center={[46.6034, 3.1236]}
-            zoom={8}
+            zoom={9}
             flyToAnimation
             markers={[
               {

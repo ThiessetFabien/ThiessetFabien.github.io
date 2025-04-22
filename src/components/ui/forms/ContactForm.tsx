@@ -14,53 +14,28 @@ import { ContactFormSchema } from '@src/schemas/contactForm.schema';
 import { ClientSanitizationService } from '@src/services/client-sanitize.service';
 import { cnGap, cnSpaceY } from '@src/styles/boxModel.style';
 import { cnFlexCol } from '@src/styles/flex.style';
-import type { ActionButtonProps } from '@src/types/ActionButtonProps';
 import type { CardProps } from '@src/types/CardProps';
-import type { CompactMode } from '@src/types/FormFieldProps';
 import { IconName } from '@src/types/IconNameProps';
 import { InputField } from '@ui/inputs/InputField';
 import { EmailTypeField } from '@ui/radios/RadioField';
 
 /**
- * Interface pour les props du composant ContactForm
- */
-interface ContactFormProps extends CompactMode {
-  downloadActive1?: ActionButtonProps['downloadActive'];
-  cta2?: ActionButtonProps['cta'];
-  icon2?: IconName;
-  href2?: ActionButtonProps['href'];
-  downloadActive2?: ActionButtonProps['downloadActive'];
-  cta3?: ActionButtonProps['cta'];
-  icon3?: IconName;
-  href3?: ActionButtonProps['href'];
-  downloadActive3?: ActionButtonProps['downloadActive'];
-  className?: CardProps['className'];
-  mailto?: string;
-}
-
-/**
- * A React functional component that renders a contact form with various input fields,
- * validation, and a footer card containing action buttons. The form is designed to
- * handle user input, validate it using Zod schema, and submit the data to a backend API.
+ * ContactForm Component
+ *
+ * A form component that handles contact submissions with validation, sanitization, and API integration.
  *
  * @component
- * @param {ContactFormProps} props - The props for the component
- * @returns {JSX.Element} The rendered contact form component.
+ * @param {object} props - Component props
+ * @param {string} props.mailto - Email address for the contact form submission
+ * @param {boolean} props.downloadActive1 - Flag to enable download functionality on the first button
+ * @param {string} props.className - Additional CSS classes for styling
+ * @returns {JSX.Element} A fully functional contact form with validation
  */
-export const ContactForm: React.FC<ContactFormProps> = ({
-  isCompact = false,
-  mailto,
-  downloadActive1,
-  cta2,
-  icon2,
-  href2,
-  downloadActive2,
-  cta3,
-  icon3,
-  href3,
-  downloadActive3,
-  className,
-}): JSX.Element => {
+export const ContactForm: React.FC<{
+  mailto: CardProps['mailto'];
+  downloadActive1: CardProps['downloadActive1'];
+  className: CardProps['className'];
+}> = ({ mailto, downloadActive1, className }): JSX.Element => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(ContactFormSchema),
     defaultValues: {
@@ -123,11 +98,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     <Form {...form} aria-labelledby='contact-form-heading'>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={cn('w-full', isCompact ? 'space-y-2' : cnSpaceY, cnFlexCol)}
+        className={cn(className, 'w-full', cnSpaceY, cnFlexCol)}
       >
-        <div
-          className={cn('w-full', isCompact ? 'space-y-2' : cnGap, cnFlexCol)}
-        >
+        <div className={cn('w-full', cnGap, cnFlexCol)}>
           <InputField
             control={control}
             name='name'
@@ -135,7 +108,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             label='Nom prénom :'
             placeholder='Jean Dupont'
             aria-required='true'
-            isCompact={isCompact}
           />
           <InputField
             control={control}
@@ -144,7 +116,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             label='Téléphone direct :'
             placeholder='+33612345678'
             aria-required='true'
-            isCompact={isCompact}
           />
           <InputField
             control={control}
@@ -152,14 +123,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             name='email'
             label='Adresse email :'
             placeholder='votre@mail.com'
-            isCompact={isCompact}
           />
           <EmailTypeField
             control={control}
             errors={errors}
             name='type'
             label='Type de demande :'
-            isCompact={isCompact}
           />
           <MessageField
             control={control}
@@ -167,7 +136,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             name='message'
             label='Message :'
             placeholder='Parlez-moi un peu de votre projet...'
-            isCompact={isCompact}
           />
           <ConsentField
             control={control}
@@ -175,31 +143,19 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             name='consent'
             label="J'accepte d'être contacté(e) en utilisant les informations fournies."
             aria-required='true'
-            isCompact={isCompact}
           />
           <FooterCard
             mailto={
               mailto || menuItems.find((item) => item.id === 'contact')?.href
             }
-            cta1='envoyer votre demande'
+            cta1='Parlons en...'
             icon1={
               menuItems.find((item) => item.id === 'contact')?.icon as IconName
             }
             href1={menuItems.find((item) => item.id === 'contact')?.href}
             downloadActive1={downloadActive1}
             disabled1={isLoading ? true : false}
-            cta2={cta2}
-            icon2={icon2}
-            href2={href2}
-            downloadActive2={downloadActive2}
-            cta3={cta3}
-            icon3={icon3}
-            href3={href3}
-            downloadActive3={downloadActive3}
-            className={cn(
-              'col-span-1 row-span-1 flex-none md:col-span-3',
-              className
-            )}
+            className='flex-none'
           />
         </div>
       </form>

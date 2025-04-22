@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@lib/components/ui/card';
+import { Card, CardContent, CardHeader } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import { ActionButton } from '@src/components/ui/buttons/ActionButton';
 import GenericCarousel from '@src/components/ui/carousels/GenericCarousel';
@@ -50,7 +45,6 @@ export const TestimonialsCarousel: React.FC<{
   const isMd = useIsMd();
   const isLg = useIsLg();
   const isXl = useIsXl();
-  const [, setCurrentSlide] = useState(0);
 
   const items = testimonials.map((testimonial, index) => (
     <Card
@@ -69,7 +63,7 @@ export const TestimonialsCarousel: React.FC<{
           cnFlexCol,
           cnSmallSpaceY,
           cnFlexFullCenter,
-          'flex- mx-auto w-full p-0'
+          'mx-auto w-full p-0'
         )}
       >
         <Avatar
@@ -147,25 +141,26 @@ export const TestimonialsCarousel: React.FC<{
   ));
 
   return (
-    <Card className={cn(className)}>
-      <CardTitle className={cn(cnSmallPadding, cnTitle3, 'text-center')}>
-        Ce qu&apos;ils disent de mon travail
-      </CardTitle>
-      <CardContent className='p-0'>
+    <Card className={cn(className, 'flex h-full flex-col')}>
+      <CardHeader className={cn(cnTitle3, 'text-center')}>
+        <h3>Ce qu&apos;ils disent de mon travail</h3>
+      </CardHeader>
+      <CardContent className='relative flex-1 overflow-hidden p-0'>
         <GenericCarousel
-          className={cn('w-full')}
-          containerHeight={cn()}
+          className='h-full w-full'
+          containerHeight='h-full'
           items={items}
-          delay={7000}
+          delay={4000}
           controls={true}
-          showPartialNext={isMd}
-          onSlideChange={setCurrentSlide}
+          onSlideChange={() => {}}
           autoplayOptions={{
             stopOnInteraction: false,
             stopOnMouseEnter: true,
+            playOnInit: true,
           }}
           pauseOnHover={true}
           pauseOnInteraction={false}
+          showProgressBar={true}
         />
       </CardContent>
     </Card>

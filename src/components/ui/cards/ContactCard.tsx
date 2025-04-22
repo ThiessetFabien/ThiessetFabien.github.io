@@ -1,55 +1,41 @@
-import {
-  Card,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@src/lib/components/ui/card';
+import { Card, CardContent } from '@src/lib/components/ui/card';
 import { cn } from '@src/lib/utils';
-import {
-  cnSmallSpaceY,
-  cnPaddingX,
-  cnSmallPadding,
-} from '@src/styles/boxModel.style';
-import { cnFlexCenterY } from '@src/styles/flex.style';
-import { cnTitle3, cnDescription } from '@src/styles/font.style';
-import { useIsLg, useIsXl } from '@src/styles/mediaQueries.style';
+import { cnPadding } from '@src/styles/boxModel.style';
+import { cnFlexCenterY, cnFlexCol } from '@src/styles/flex.style';
+import { cnSizeFull } from '@src/styles/size.style';
 
 import { ContactForm } from '../forms/ContactForm';
 
 export const ContactCard: React.FC<{
   className?: string;
 }> = ({ className }) => {
-  const isLg = useIsLg();
-  const isXl = useIsXl();
-
   return (
-    <Card className={cn(className, 'h-full overflow-hidden')}>
-      <CardTitle
-        className={cn(
-          cnSmallSpaceY,
-          cnSmallPadding,
-          cnTitle3,
-          'hyphens-auto text-center'
-        )}
-        id='contact-form-heading'
-      >
-        Contactez-moi
-        <CardDescription className={cn(cnDescription, 'm-auto')}>
-          La simplicité se démarque, alors que la compléxité va se perdre
-          inexorablement dans la foule <span className='mx-1'>•</span> K.
-          Barnett
-        </CardDescription>
-      </CardTitle>
+    <Card className={cn(className)}>
       <CardContent
         className={cn(
-          'w-full max-w-[95%] flex-1',
-          cnPaddingX,
+          'flex-1',
+          cnSizeFull,
+          cnFlexCol,
+          cnPadding,
           cnFlexCenterY,
-          isLg && 'lg:!pt-2',
-          isXl && 'xl:flex-grow'
+          'justify-center'
         )}
       >
-        <ContactForm isCompact={isLg} />
+        <p className='flex w-full flex-col items-center justify-center'>
+          <a href='mailto:thiessetfabienpro@gmail.com' target='_blank'>
+            <span className='block text-center'>
+              thiessetfabienpro@gmail.com
+            </span>
+          </a>
+          <a href='tel:+33610920974' target='_blank'>
+            <span className='block text-center'>0610920974</span>
+          </a>
+        </p>
+        <ContactForm
+          mailto='thiessetfabienpro@gmail.com'
+          downloadActive1={false}
+          className=''
+        />
       </CardContent>
     </Card>
   );

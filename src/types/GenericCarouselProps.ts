@@ -11,4 +11,5 @@ export interface GenericCarouselProps {
   autoplayOptions?: Partial<AutoplayOptionsType>;
   pauseOnInteraction?: boolean;
   pauseOnHover?: boolean;
+  showProgressBar?: boolean;
 }

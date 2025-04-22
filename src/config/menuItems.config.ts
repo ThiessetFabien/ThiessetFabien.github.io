@@ -75,7 +75,7 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: 'contact',
-    icon: 'Star',
+    icon: 'Send',
     label: 'Contact',
     href: '#card-4',
     target: '_self',

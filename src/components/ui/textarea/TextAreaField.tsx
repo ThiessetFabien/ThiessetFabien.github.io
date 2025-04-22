@@ -11,7 +11,7 @@ import {
 } from '@lib/components/ui/form';
 import { Textarea } from '@lib/components/ui/textarea';
 import { cn } from '@src/lib/utils';
-import { cnParagraph } from '@src/styles/font.style';
+import { cnParagraph, cnSmallText } from '@src/styles/font.style';
 import { FormFieldProps } from '@src/types/FormFieldProps.js';
 
 export function MessageField<T extends FieldValues>({
@@ -20,7 +20,6 @@ export function MessageField<T extends FieldValues>({
   name,
   label,
   placeholder,
-  isCompact = false,
 }: FormFieldProps<T>): JSX.Element {
   const id = React.useId();
 
@@ -30,14 +29,7 @@ export function MessageField<T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel
-            htmlFor={id}
-            className={cn(
-              'min-w-full',
-              cnParagraph,
-              isCompact && 'text-sm lg:text-xs'
-            )}
-          >
+          <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
             {label}{' '}
           </FormLabel>
           <FormControl>
@@ -49,8 +41,7 @@ export function MessageField<T extends FieldValues>({
                   'min-w-full',
                   'paragraph-placeholder',
                   'bg-input',
-                  cnParagraph,
-                  isCompact && 'max-h-[80px] min-h-[60px] py-1 text-sm'
+                  cnParagraph
                 )}
                 {...field}
                 required
@@ -58,7 +49,7 @@ export function MessageField<T extends FieldValues>({
             </motion.div>
           </FormControl>
           {errors?.message && (
-            <FormMessage className={cn(isCompact ? 'text-xs' : 'text-sm')}>
+            <FormMessage className={cnSmallText}>
               {String(errors.message)}
             </FormMessage>
           )}

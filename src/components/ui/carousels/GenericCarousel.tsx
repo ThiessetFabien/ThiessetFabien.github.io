@@ -2,23 +2,19 @@ import Autoplay, { AutoplayOptionsType } from 'embla-carousel-autoplay';
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
+import { Progress } from '@lib/components/ui/progress';
 import { cn } from '@lib/utils';
 import { ActionButton } from '@src/components/ui/buttons/ActionButton';
 import {
-  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselNext,
   CarouselPrevious,
   CarouselItem,
+  type CarouselApi,
 } from '@src/lib/components/ui/carousel';
 import { cnBorderRadiusMd } from '@src/styles/border.style';
-import { cnSmallPaddingLeft, cnSmallSpaceX } from '@src/styles/boxModel.style';
-import {
-  cnFlexCenterY,
-  cnFlexCol,
-  cnFlexFullCenter,
-} from '@src/styles/flex.style';
+import { cnFlexCenterY, cnFlexCol } from '@src/styles/flex.style';
 import {
   useIsLg,
   useIsXl,
@@ -34,6 +30,20 @@ import { GenericCarouselProps } from '@src/types/GenericCarouselProps';
  * @param {GenericCarouselProps} props - Component props
  * @returns {JSX.Element} The generic carousel component
  */
+
+// Interface pour typer correctement les plugins
+interface AutoplayPlugin {
+  name: string;
+  play: () => void;
+  stop: () => void;
+}
+
+// Interface pour typer le plugin renvoyé par l'API du carousel
+interface CarouselPlugin {
+  name: string;
+  [key: string]: unknown;
+}
+
 const GenericCarousel: React.FC<GenericCarouselProps> = ({
   items,
   delay = 5000,
@@ -43,17 +53,16 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
   showPartialNext = false,
   onSlideChange,
   autoplayOptions,
-  pauseOnInteraction = false,
   pauseOnHover = true,
+  showProgressBar = false,
 }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const [autoplayInstance, setAutoplayInstance] = useState<ReturnType<
-    typeof Autoplay
-  > | null>(null);
+  const [autoplayInstance, setAutoplayInstance] =
+    useState<AutoplayPlugin | null>(null);
 
   const isSm = useIsSm();
   const isMd = useIsMd();
@@ -63,8 +72,11 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
   useEffect(() => {
     if (!api) return;
 
+    // Initialisation du décompte et de l'index actuel
     setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
 
+    // Handler pour les changements de slide
     const onSelectHandler = () => {
       const newIndex = api.selectedScrollSnap();
       setCurrent(newIndex);
@@ -74,25 +86,53 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
       }
     };
 
+    // Appliquer immédiatement l'index actuel
     onSelectHandler();
 
-    api.on('select', onSelectHandler);
+    // Réinitialisation forcée pour s'assurer que le carousel est correctement configuré
+    api.reInit();
 
+    // Écouter les événements
+    api.on('select', onSelectHandler);
+    api.on('reInit', onSelectHandler);
+
+    // Configuration des touches de navigation pour l'orientation verticale
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowUp') {
+        api.scrollPrev();
+      } else if (event.key === 'ArrowDown') {
+        api.scrollNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeydown);
+
+    // Récupération et configuration de l'instance Autoplay
     const plugins = api.plugins();
     if (plugins && Array.isArray(plugins) && plugins.length > 0) {
-      const autoplay = plugins.find((plugin) => plugin.name === 'Autoplay') as
-        | ReturnType<typeof Autoplay>
-        | undefined;
-      if (autoplay) {
-        setAutoplayInstance(autoplay);
+      const autoplayPlugin = plugins.find(
+        (plugin: CarouselPlugin) =>
+          plugin && typeof plugin === 'object' && plugin.name === 'Autoplay'
+      );
+      if (autoplayPlugin) {
+        setAutoplayInstance(autoplayPlugin as AutoplayPlugin);
+        // Démarrer immédiatement l'autoplay si nécessaire
+        if (!isPaused && !isHovering) {
+          setTimeout(() => {
+            autoplayPlugin.play();
+          }, 100);
+        }
       }
     }
 
     return () => {
       api.off('select', onSelectHandler);
+      api.off('reInit', onSelectHandler);
+      window.removeEventListener('keydown', handleKeydown);
     };
-  }, [api, onSlideChange]);
+  }, [api, onSlideChange, isPaused, isHovering]);
 
+  // Gestion de la pause/reprise de l'autoplay
   useEffect(() => {
     if (!autoplayInstance) return;
 
@@ -101,7 +141,14 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
     } else {
       autoplayInstance.play();
     }
-  }, [isPaused, autoplayInstance]);
+
+    // Gestion spécifique pour l'orientation verticale
+    if (isHovering && pauseOnHover) {
+      autoplayInstance.stop();
+    } else if (!isPaused && !isHovering) {
+      autoplayInstance.play();
+    }
+  }, [isPaused, autoplayInstance, isHovering, pauseOnHover]);
 
   if (!items || items.length === 0) {
     return null;
@@ -109,12 +156,13 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
 
   const defaultAutoplayOptions: AutoplayOptionsType = {
     delay,
-    stopOnInteraction: pauseOnInteraction,
-    stopOnMouseEnter: pauseOnHover,
-    rootNode: (emblaRoot) => emblaRoot,
+    stopOnInteraction: false,
+    stopOnMouseEnter: true,
+    playOnInit: true,
+    rootNode: (emblaRoot: HTMLElement) => emblaRoot,
   };
 
-  const mergedAutoplayOptions: AutoplayOptionsType = {
+  const mergedAutoplayOptions = {
     ...defaultAutoplayOptions,
     ...autoplayOptions,
   };
@@ -122,17 +170,19 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
   return (
     <Carousel
       opts={{
-        align: showPartialNext ? 'start' : 'center',
+        align: 'center',
         loop: true,
-        containScroll: showPartialNext ? 'trimSnaps' : 'keepSnaps',
+        dragFree: false,
+        watchDrag: true,
       }}
       setApi={setApi}
-      plugins={[Autoplay(mergedAutoplayOptions)]}
-      orientation='horizontal'
+      plugins={[Autoplay(mergedAutoplayOptions as AutoplayOptionsType)]}
+      orientation='vertical'
       className={cn(
         className,
         'relative flex w-full',
-        containerHeight || 'min-h-[200px]'
+        containerHeight || 'min-h-[200px]',
+        'max-h-[calc(85dvh-5rem)]'
       )}
       onMouseEnter={() => {
         setIsHovering(true);
@@ -143,19 +193,7 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
     >
       <CarouselContent className={showPartialNext ? '-ml-2 md:-ml-4' : ''}>
         {items.map((item, index) => (
-          <CarouselItem
-            key={index}
-            className={cn(
-              showPartialNext
-                ? cn(
-                    cnSmallPaddingLeft,
-                    'basis-[90%]',
-                    'sm:basis-[90%] md:basis-[85%] lg:basis-[90%] xl:basis-[95%]'
-                  )
-                : '',
-              'transition-opacity duration-300'
-            )}
-          >
+          <CarouselItem key={index} className='relative'>
             <AnimatePresence mode='wait'>
               <motion.div
                 key={index}
@@ -168,56 +206,22 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
                 {item}
               </motion.div>
             </AnimatePresence>
+
+            {showProgressBar && index === current && (
+              <div className='absolute bottom-0 right-0 top-0 h-full w-1 overflow-hidden'>
+                <Progress
+                  value={((current + 1) / count) * 100}
+                  className='h-full w-1 origin-center rotate-180 rounded-none bg-primary/10'
+                  orientation='vertical'
+                />
+              </div>
+            )}
           </CarouselItem>
         ))}
       </CarouselContent>
 
       {controls && (
-        <div
-          className={cn(
-            cnFlexFullCenter,
-            cnSmallSpaceX,
-            'absolute left-0 right-0 top-0 z-10 flex-row',
-            'rounded-full backdrop-blur-sm'
-          )}
-        >
-          {Array.from({ length: count }).map((_, index) => (
-            <motion.div
-              key={index}
-              onClick={() => api?.scrollTo(index)}
-              className={cn(
-                cnFlexCenterY,
-                'cursor-pointer rounded-full transition-all',
-                current === index
-                  ? cn(
-                      'bg-primary',
-                      'h-1.5 w-4',
-                      isSm ? 'sm:h-1.5 sm:w-5' : '',
-                      isMd ? 'md:h-2 md:w-6' : '',
-                      isLg ? 'lg:h-1.5 lg:w-5' : '',
-                      isXl ? 'xl:h-2 xl:w-6' : ''
-                    )
-                  : cn(
-                      'bg-muted hover:bg-muted-foreground',
-                      'h-1.5 w-1.5',
-                      isSm ? 'sm:h-1.5 sm:w-1.5' : '',
-                      isMd ? 'md:h-2 md:w-2' : '',
-                      isLg ? 'lg:h-1.5 lg:w-1.5' : '',
-                      isXl ? 'xl:h-2 xl:w-2' : ''
-                    )
-              )}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              role='button'
-              tabIndex={0}
-              aria-label={`Aller à la diapositive ${index + 1}`}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  api?.scrollTo(index);
-                }
-              }}
-            />
-          ))}
+        <div className='absolute bottom-2 right-2 z-10'>
           <motion.div
             onClick={() => setIsPaused(!isPaused)}
             className={cn(
@@ -264,26 +268,18 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
         <>
           <CarouselPrevious
             variant='outline'
-            aria-label='Diapositive précédente'
+            size='icon'
+            aria-label='Témoignage précédent'
             className={cn(
-              'absolute left-1 top-1/2 aspect-square -translate-y-1/2 opacity-70 hover:opacity-100',
-              'h-7 w-7',
-              isSm ? 'sm:left-2 sm:h-8 sm:w-8' : '',
-              isMd ? 'md:left-4 md:h-9 md:w-9' : '',
-              isLg ? 'lg:left-3 lg:h-8 lg:w-8' : '',
-              isXl ? 'xl:left-4 xl:h-9 xl:w-9' : ''
+              'absolute left-1/2 top-2 aspect-square -translate-x-1/2 rotate-90 opacity-70 hover:opacity-100'
             )}
           />
           <CarouselNext
             variant='outline'
-            aria-label='Diapositive suivante'
+            size='icon'
+            aria-label='Témoignage suivant'
             className={cn(
-              'absolute right-1 top-1/2 aspect-square -translate-y-1/2 opacity-70 hover:opacity-100',
-              'h-7 w-7',
-              isSm ? 'sm:right-2 sm:h-8 sm:w-8' : '',
-              isMd ? 'md:right-4 md:h-9 md:w-9' : '',
-              isLg ? 'lg:right-3 lg:h-8 lg:w-8' : '',
-              isXl ? 'xl:right-4 xl:h-9 xl:w-9' : ''
+              'absolute bottom-2 left-1/2 aspect-square -translate-x-1/2 rotate-90 opacity-70 hover:opacity-100'
             )}
           />
         </>

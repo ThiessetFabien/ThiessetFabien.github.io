@@ -11,7 +11,7 @@ import {
 } from '@lib/components/ui/form';
 import { Input } from '@lib/components/ui/input';
 import { cn } from '@src/lib/utils';
-import { cnParagraph } from '@src/styles/font.style';
+import { cnParagraph, cnSmallText } from '@src/styles/font.style';
 import { FormFieldProps } from '@src/types/FormFieldProps.js';
 
 export function InputField<T extends FieldValues>({
@@ -21,7 +21,6 @@ export function InputField<T extends FieldValues>({
   label,
   placeholder,
   autocomplete,
-  isCompact = false,
 }: FormFieldProps<T>): JSX.Element {
   const id = React.useId();
 
@@ -31,14 +30,7 @@ export function InputField<T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel
-            htmlFor={id}
-            className={cn(
-              'min-w-full',
-              cnParagraph,
-              isCompact && 'text-sm lg:text-xs'
-            )}
-          >
+          <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
             {label}{' '}
           </FormLabel>
           <FormControl>
@@ -53,15 +45,14 @@ export function InputField<T extends FieldValues>({
                   'paragraph-placeholder',
                   'bg-input',
                   cnParagraph,
-                  errors && 'border-destructive',
-                  isCompact && 'h-8 py-1 text-sm'
+                  errors && 'border-destructive'
                 )}
                 required
               />
             </motion.div>
           </FormControl>
           {errors?.message && (
-            <FormMessage className={cn(isCompact ? 'text-xs' : 'text-sm')}>
+            <FormMessage className={cnSmallText}>
               {String(errors.message)}
             </FormMessage>
           )}
