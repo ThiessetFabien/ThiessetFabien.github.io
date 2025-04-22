@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import type { FieldValues } from 'react-hook-form';
 
-import type { FormFieldProps } from '@/src/types/FormFieldProps';
 import { Checkbox } from '@lib/components/ui/checkbox';
 import {
   FormControl,
@@ -12,6 +11,7 @@ import {
   FormMessage,
 } from '@lib/components/ui/form';
 import { cn } from '@lib/utils';
+import type { FormFieldProps } from '@src/types/FormFieldProps';
 import { cnParagraph } from '@styles/font.style';
 
 /**

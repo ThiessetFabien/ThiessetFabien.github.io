@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
-import { cn } from '@/src/lib/utils';
-import { cnBorderRadiusFull } from '@/src/styles/border.style';
-import { cnSizeIcon } from '@/src/styles/size.style';
-import { IconName } from '@/src/types/IconNameProps';
 import { Toggle } from '@lib/components/ui/toggle';
+import { cn } from '@src/lib/utils';
+import { cnBorderRadiusFull } from '@src/styles/border.style';
+import { cnSizeIcon } from '@src/styles/size.style';
+import { IconName } from '@src/types/IconNameProps';
 import type { ScrollTopToggleProps } from '@src/types/ScrollTopToggleProps';
 import { IconLoader } from '@ui/icons/IconLoader';
 

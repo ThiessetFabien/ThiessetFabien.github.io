@@ -1,20 +1,16 @@
 import React from 'react';
 
-import { Card } from '@/src/lib/components/ui/card';
-import { cnBorderNone } from '@/src/styles/border.style';
-import {
-  cnGap,
-  cnPaddingBottom,
-  cnPaddingX,
-} from '@/src/styles/boxModel.style';
+import { cn } from '@lib/utils';
+import MapCard from '@src/components/ui/cards/MapCard';
+import { Card } from '@src/lib/components/ui/card';
+import { cnBorderNone } from '@src/styles/border.style';
+import { cnGap, cnPaddingBottom, cnPaddingX } from '@src/styles/boxModel.style';
 import {
   cnFlexCenterX,
   cnFlexCenterY,
   cnFlexCol,
-} from '@/src/styles/flex.style';
-import { useIsLg, useIsXl } from '@/src/styles/mediaQueries.style';
-import { cn } from '@lib/utils';
-import MapCard from '@src/components/ui/cards/MapCard';
+} from '@src/styles/flex.style';
+import { useIsLg, useIsXl } from '@src/styles/mediaQueries.style';
 import type { CardProps } from '@src/types/CardProps';
 
 import { TestimonialsCarousel } from '../carousels/TestimonialsCarousel';

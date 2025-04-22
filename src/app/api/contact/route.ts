@@ -1,10 +1,10 @@
 import type { NextRequest as Request } from 'next/server';
 import { NextResponse } from 'next/server';
 
-import { gmail } from '@/src/config/gmailAuth.config';
-import { checkGmailAuth } from '@/src/middlewares/gmailAuth.middleware';
-import { ContactFormSchema } from '@/src/schemas/contactForm.schema';
-import { SanitizationService } from '@/src/services/sanitize.service';
+import { gmail } from '@src/config/gmailAuth.config';
+import { checkGmailAuth } from '@src/middlewares/gmailAuth.middleware';
+import { ContactFormSchema } from '@src/schemas/contactForm.schema';
+import { SanitizationService } from '@src/services/sanitize.service';
 
 export const config = {
   runtime: 'edge',

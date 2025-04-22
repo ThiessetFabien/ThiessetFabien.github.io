@@ -1,16 +1,16 @@
-import { cnDescription, cnTitle2, cnTitle2Size } from '@/src/styles/font.style';
-import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/src/utils/formatText.util';
 import {
   CardDescription,
   CardHeader,
   CardTitle,
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
+import { cnDescription, cnTitle2, cnTitle2Size } from '@src/styles/font.style';
 import type { CardProps } from '@src/types/CardProps';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@src/utils/formatText.util';
 
 /**
  * HeaderCard component.

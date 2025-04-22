@@ -1,4 +1,4 @@
-import { cn } from '@/src/lib/utils';
+import { cn } from '@src/lib/utils';
 
 export const cnSizeIcon: string = cn(
   'w-auto flex-shrink-0',

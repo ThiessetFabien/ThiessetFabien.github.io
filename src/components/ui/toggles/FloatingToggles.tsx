@@ -3,16 +3,16 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-import { ToggleDarkMode } from '@/src/components/ui/toggles/DarkModeToggle';
-import { ScrollTopToggle } from '@/src/components/ui/toggles/ScrollTopToggle';
-import { cn } from '@/src/lib/utils';
-import { cnBorderRadiusFull } from '@/src/styles/border.style';
+import { scrollToTop } from '@hooks/ScrollToTop.hook';
+import { ToggleDarkMode } from '@src/components/ui/toggles/DarkModeToggle';
+import { ScrollTopToggle } from '@src/components/ui/toggles/ScrollTopToggle';
+import { cn } from '@src/lib/utils';
+import { cnBorderRadiusFull } from '@src/styles/border.style';
 import {
   cnBottomRightPosition,
   cnPaddingX,
   cnTopRightPosition,
-} from '@/src/styles/boxModel.style';
-import { scrollToTop } from '@hooks/ScrollToTop.hook';
+} from '@src/styles/boxModel.style';
 import { useIsLg } from '@src/styles/mediaQueries.style';
 
 /**

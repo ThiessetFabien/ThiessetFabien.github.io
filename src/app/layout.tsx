@@ -3,19 +3,19 @@
 import { ThemeProvider } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-import { FloatingMenubar } from '@/src/components/ui/sheet/FloatingMenubar';
-import { VideoRedirectHandler } from '@/src/components/VideoRedirectHandler';
+import { Footer } from '@layouts/FooterLayout';
+import { Toaster } from '@lib/components/ui/toaster';
+import { cn } from '@lib/utils';
+import { FloatingMenubar } from '@src/components/ui/sheet/FloatingMenubar';
+import { VideoRedirectHandler } from '@src/components/VideoRedirectHandler';
+import { menuItems } from '@src/config/menuItems.config';
+import { Expletus_Sans } from '@src/fonts/ExpletusSans.font';
+import { Poppins } from '@src/fonts/Poppins.font';
 import {
   cnFlexCenterX,
   cnFlexCol,
   cnFlexFullCenter,
-} from '@/src/styles/flex.style';
-import { Footer } from '@layouts/FooterLayout';
-import { Toaster } from '@lib/components/ui/toaster';
-import { cn } from '@lib/utils';
-import { menuItems } from '@src/config/menuItems.config';
-import { Expletus_Sans } from '@src/fonts/ExpletusSans.font';
-import { Poppins } from '@src/fonts/Poppins.font';
+} from '@src/styles/flex.style';
 import { cnMarginTop, cnPadding, cnSmallSpaceY } from '@styles/boxModel.style';
 
 import '@src/styles/globals.css';

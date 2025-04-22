@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { cnBorder } from '@/src/styles/border.style';
-import { cnPaddingX, cnSmallSpaceY } from '@/src/styles/boxModel.style';
-import { cnFlexCol } from '@/src/styles/flex.style';
+import { cn } from '@lib/utils';
+import { cnBorder } from '@src/styles/border.style';
+import { cnPaddingX, cnSmallSpaceY } from '@src/styles/boxModel.style';
+import { cnFlexCol } from '@src/styles/flex.style';
 import {
   cnDescription,
   cnLightTextMuted,
@@ -10,8 +11,7 @@ import {
   cnTitle2,
   cnTitle2Size,
   cnTitle3,
-} from '@/src/styles/font.style';
-import { cn } from '@lib/utils';
+} from '@src/styles/font.style';
 import type { AboutProps } from '@src/types/AboutProps';
 
 /**

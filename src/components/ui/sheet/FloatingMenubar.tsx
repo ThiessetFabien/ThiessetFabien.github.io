@@ -3,13 +3,15 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useState, useRef } from 'react';
 
-import { Menubar, MenubarMenu } from '@/src/lib/components/ui/menubar';
-import { cn } from '@/src/lib/utils';
+import { scrollToTop } from '@hooks/ScrollToTop.hook';
+import { useActiveSection } from '@hooks/useActiveSection.hook';
+import { Menubar, MenubarMenu } from '@src/lib/components/ui/menubar';
+import { cn } from '@src/lib/utils';
 import {
   cnBorder,
   cnBorderNone,
   cnBorderRadiusFull,
-} from '@/src/styles/border.style';
+} from '@src/styles/border.style';
 import {
   cnGap,
   cnLeftCenterPosition,
@@ -17,17 +19,15 @@ import {
   cnPaddingX,
   cnSmallPadding,
   cnSmallSpaceY,
-} from '@/src/styles/boxModel.style';
+} from '@src/styles/boxModel.style';
 import {
   cnFlexCenterX,
   cnFlexCenterY,
   cnFlexCol,
-} from '@/src/styles/flex.style';
-import { cnSmallText } from '@/src/styles/font.style';
-import { cnSizeIcon } from '@/src/styles/size.style';
-import { scrollToTop } from '@hooks/ScrollToTop.hook';
-import { useActiveSection } from '@hooks/useActiveSection.hook';
+} from '@src/styles/flex.style';
+import { cnSmallText } from '@src/styles/font.style';
 import { useIsLg } from '@src/styles/mediaQueries.style';
+import { cnSizeIcon } from '@src/styles/size.style';
 import { MenuItemProps } from '@src/types/MenuItemProps';
 import { IconLoader } from '@ui/icons/IconLoader';
 import { MobileMenu } from '@ui/sheet/MobileMenu';

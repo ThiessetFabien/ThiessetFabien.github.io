@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import { FieldValues } from 'react-hook-form';
 
-import { FormFieldProps } from '@/src/types/FormFieldProps.js';
 import {
   FormControl,
   FormField,
@@ -12,6 +11,7 @@ import {
 } from '@lib/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@lib/components/ui/radio-group';
 import { cn } from '@lib/utils';
+import { FormFieldProps } from '@src/types/FormFieldProps.js';
 import { cnParagraph } from '@styles/font.style';
 
 export function EmailTypeField<T extends FieldValues>({

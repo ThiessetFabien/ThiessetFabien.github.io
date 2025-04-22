@@ -4,32 +4,32 @@ import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import React, { memo, useEffect, useState } from 'react';
 
-import { ExperiencesCard } from '@/src/components/ui/cards/ExperiencesCard';
-import { HeroCard } from '@/src/components/ui/cards/HeroCard';
-import { FooterCard } from '@/src/components/ui/cards/layouts.cards/FooterCard';
-import { HeaderCard } from '@/src/components/ui/cards/layouts.cards/HeaderCard';
-import { ProjectsCard } from '@/src/components/ui/cards/ProjectsCard';
-import SkillsCard from '@/src/components/ui/cards/SkillsCard';
-import LoadingSpinner from '@/src/components/ui/spinner/LoadingSpinner';
+import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
+import { cn } from '@lib/utils';
+import { ExperiencesCard } from '@src/components/ui/cards/ExperiencesCard';
+import { HeroCard } from '@src/components/ui/cards/HeroCard';
+import { FooterCard } from '@src/components/ui/cards/layouts.cards/FooterCard';
+import { HeaderCard } from '@src/components/ui/cards/layouts.cards/HeaderCard';
+import { ProjectsCard } from '@src/components/ui/cards/ProjectsCard';
+import SkillsCard from '@src/components/ui/cards/SkillsCard';
+import LoadingSpinner from '@src/components/ui/spinner/LoadingSpinner';
 import {
   cnPadding,
   cnPaddingBottom,
   cnPaddingX,
   cnSmallGap,
-} from '@/src/styles/boxModel.style';
-import { cnFlexBetweenY, cnFlexCol } from '@/src/styles/flex.style';
-import { useCardGrid } from '@/src/styles/grid.style';
-import type { ExperiencesProps } from '@/src/types/ExperiencesProps';
-import { Card, CardContent, CardFooter } from '@lib/components/ui/card';
-import { cn } from '@lib/utils';
+} from '@src/styles/boxModel.style';
+import { cnFlexBetweenY, cnFlexCol } from '@src/styles/flex.style';
+import { useCardGrid } from '@src/styles/grid.style';
 import type { CardProps } from '@src/types/CardProps';
+import type { ExperiencesProps } from '@src/types/ExperiencesProps';
 
 import { useIsClient } from '../hooks/useIsClient.hook';
 import { cnBorderNone } from '../styles/border.style';
 
 const LazyTestimonialsCard = dynamic(
   () =>
-    import('@/src/components/ui/cards/TestimonialsCard').then(
+    import('@src/components/ui/cards/TestimonialsCard').then(
       (mod) => mod.TestimonialsCard
     ),
   {

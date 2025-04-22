@@ -1,26 +1,26 @@
 import React from 'react';
 
-import { Dot } from '@/src/components/ui/dot/dot';
-import { Badge } from '@/src/lib/components/ui/badge';
-import { cn } from '@/src/lib/utils';
-import { cnBorderRadiusFull } from '@/src/styles/border.style';
+import { Dot } from '@src/components/ui/dot/dot';
+import { Badge } from '@src/lib/components/ui/badge';
+import { cn } from '@src/lib/utils';
+import { cnBorderRadiusFull } from '@src/styles/border.style';
 import {
   cnSpaceY,
   cnSmallSpaceY,
   cnSmallMarginX,
   cnPaddingX,
-} from '@/src/styles/boxModel.style';
+} from '@src/styles/boxModel.style';
 import {
   cnDescription,
   cnLightTextMuted,
   cnSmallText,
-} from '@/src/styles/font.style';
-import { ExperiencesProps } from '@/src/types/ExperiencesProps';
+} from '@src/styles/font.style';
+import { ExperiencesProps } from '@src/types/ExperiencesProps';
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
   capitalizeFirstLetterOfPhrase,
-} from '@/src/utils/formatText.util';
+} from '@src/utils/formatText.util';
 
 /**
  * A React functional component that renders a list of experiences, categorized

@@ -1,12 +1,12 @@
 'use client';
 
-import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
 } from '@lib/components/ui/card';
+import { cnFlexCol, cnFlexFullCenter } from '@src/styles/flex.style';
 import { cnFlexCenterY } from '@styles/flex.style';
 
 import { ActionButton } from '../components/ui/buttons/ActionButton';

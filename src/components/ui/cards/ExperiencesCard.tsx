@@ -5,16 +5,16 @@
 
 import React from 'react';
 
-import { ExperiencesList } from '@/src/components/ui/lists/ExperiencesList';
-import { cn } from '@/src/lib/utils';
+import { ExperiencesList } from '@src/components/ui/lists/ExperiencesList';
+import { cn } from '@src/lib/utils';
 import {
   cnSmallPaddingBottom,
   cnSmallPaddingX,
   cnSpaceY,
-} from '@/src/styles/boxModel.style';
-import { cnTitle2, cnTitle2Size } from '@/src/styles/font.style';
-import type { CardProps } from '@/src/types/CardProps';
-import type { ExperiencesProps } from '@/src/types/ExperiencesProps';
+} from '@src/styles/boxModel.style';
+import { cnTitle2, cnTitle2Size } from '@src/styles/font.style';
+import type { CardProps } from '@src/types/CardProps';
+import type { ExperiencesProps } from '@src/types/ExperiencesProps';
 
 /**
  * A React component that displays a list of experiences grouped into current and past categories.

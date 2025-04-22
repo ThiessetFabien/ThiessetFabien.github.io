@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-import { year } from '@/src/utils/dynamicYear.util';
+import { cn } from '@lib/utils';
+import type { CardProps } from '@src/types/CardProps';
+import { year } from '@src/utils/dynamicYear.util';
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
-} from '@/src/utils/formatText.util';
-import { cn } from '@lib/utils';
-import type { CardProps } from '@src/types/CardProps';
+} from '@src/utils/formatText.util';
 import { cnSmallText, cnTitle2, cnTitle2Size } from '@styles/font.style';
 
 /**

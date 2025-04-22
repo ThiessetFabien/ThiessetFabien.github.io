@@ -1,7 +1,7 @@
 import { OAuth2Client } from 'google-auth-library';
 import { NextResponse } from 'next/server';
 
-import { gmail } from '@/src/config/gmailAuth.config';
+import { gmail } from '@src/config/gmailAuth.config';
 
 export async function checkGmailAuth(): Promise<NextResponse> {
   try {

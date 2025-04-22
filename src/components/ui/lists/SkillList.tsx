@@ -1,11 +1,11 @@
-import { cn } from '@/src/lib/utils';
-import { cnSmallMarginRight } from '@/src/styles/boxModel.style';
-import { cnParagraph } from '@/src/styles/font.style';
-import { cnSizeIcon } from '@/src/styles/size.style';
+import { cn } from '@src/lib/utils';
+import { cnSmallMarginRight } from '@src/styles/boxModel.style';
+import { cnParagraph } from '@src/styles/font.style';
+import { cnSizeIcon } from '@src/styles/size.style';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@/src/utils/formatText.util';
+} from '@src/utils/formatText.util';
 
 import { IconLoader } from '../icons/IconLoader';
 

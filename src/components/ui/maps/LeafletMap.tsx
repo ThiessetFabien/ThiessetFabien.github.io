@@ -2,9 +2,9 @@ import React, { memo, useEffect } from 'react';
 import { MapContainer, TileLayer, Circle, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import useIntersectionObserver from '@/src/hooks/IntersectionObserver.hook';
-import { type LeafletMapProps } from '@/src/types/LeafletMapProps';
-import { LocationEventsProps } from '@/src/types/LocationEventsProps';
+import useIntersectionObserver from '@src/hooks/IntersectionObserver.hook';
+import { type LeafletMapProps } from '@src/types/LeafletMapProps';
+import { LocationEventsProps } from '@src/types/LocationEventsProps';
 
 /**
  * LeafletMap component renders an interactive map using Leaflet.js.

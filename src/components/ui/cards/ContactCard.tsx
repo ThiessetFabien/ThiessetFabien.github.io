@@ -3,16 +3,16 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from '@/src/lib/components/ui/card';
-import { cn } from '@/src/lib/utils';
+} from '@src/lib/components/ui/card';
+import { cn } from '@src/lib/utils';
 import {
   cnSmallSpaceY,
   cnPaddingX,
   cnSmallPadding,
-} from '@/src/styles/boxModel.style';
-import { cnFlexCenterY } from '@/src/styles/flex.style';
-import { cnTitle3, cnDescription } from '@/src/styles/font.style';
-import { useIsLg, useIsXl } from '@/src/styles/mediaQueries.style';
+} from '@src/styles/boxModel.style';
+import { cnFlexCenterY } from '@src/styles/flex.style';
+import { cnTitle3, cnDescription } from '@src/styles/font.style';
+import { useIsLg, useIsXl } from '@src/styles/mediaQueries.style';
 
 import { ContactForm } from '../forms/ContactForm';
 

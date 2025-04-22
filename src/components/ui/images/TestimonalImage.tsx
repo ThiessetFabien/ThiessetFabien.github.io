@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import { cnSizeFull } from '@/src/styles/size.style';
 import { cn } from '@src/lib/utils';
 import { cnBorderRadiusFull } from '@src/styles/border.style';
+import { cnSizeFull } from '@src/styles/size.style';
 import { baseUrl } from '@src/utils/baseUrl.util';
 
 interface TestimonialImageProps {

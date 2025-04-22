@@ -1,20 +1,6 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
-import { cnBorderRadiusFull, cnBorder } from '@/src/styles/border.style';
-import {
-  cnSmallPadding,
-  cnSmallSpaceX,
-  cnSmallSpaceY,
-} from '@/src/styles/boxModel.style';
-import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
-import { cnParagraph, cnSmallText, cnTitle3 } from '@/src/styles/font.style';
-import { cnSizeFull } from '@/src/styles/size.style';
-import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-  formatSpecialWords,
-} from '@/src/utils/formatText.util';
 import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 import {
   Card,
@@ -26,13 +12,27 @@ import { cn } from '@lib/utils';
 import { ActionButton } from '@src/components/ui/buttons/ActionButton';
 import GenericCarousel from '@src/components/ui/carousels/GenericCarousel';
 import { TestimonialImage } from '@src/components/ui/images/TestimonalImage';
+import { cnBorderRadiusFull, cnBorder } from '@src/styles/border.style';
+import {
+  cnSmallPadding,
+  cnSmallSpaceX,
+  cnSmallSpaceY,
+} from '@src/styles/boxModel.style';
+import { cnFlexCol, cnFlexFullCenter } from '@src/styles/flex.style';
+import { cnParagraph, cnSmallText, cnTitle3 } from '@src/styles/font.style';
 import {
   useIsLg,
   useIsMd,
   useIsSm,
   useIsXl,
 } from '@src/styles/mediaQueries.style';
+import { cnSizeFull } from '@src/styles/size.style';
 import type { TestimonialProps } from '@src/types/TestimonialProps';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@src/utils/formatText.util';
 
 /**
  * TestimonialsCarousel component displays a carousel of testimonials.

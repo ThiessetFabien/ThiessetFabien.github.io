@@ -2,7 +2,8 @@ import Autoplay, { AutoplayOptionsType } from 'embla-carousel-autoplay';
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-import { ActionButton } from '@/src/components/ui/buttons/ActionButton';
+import { cn } from '@lib/utils';
+import { ActionButton } from '@src/components/ui/buttons/ActionButton';
 import {
   type CarouselApi,
   Carousel,
@@ -10,22 +11,21 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselItem,
-} from '@/src/lib/components/ui/carousel';
-import { cnBorderRadiusMd } from '@/src/styles/border.style';
-import { cnSmallPaddingLeft, cnSmallSpaceX } from '@/src/styles/boxModel.style';
+} from '@src/lib/components/ui/carousel';
+import { cnBorderRadiusMd } from '@src/styles/border.style';
+import { cnSmallPaddingLeft, cnSmallSpaceX } from '@src/styles/boxModel.style';
 import {
   cnFlexCenterY,
   cnFlexCol,
   cnFlexFullCenter,
-} from '@/src/styles/flex.style';
+} from '@src/styles/flex.style';
 import {
   useIsLg,
   useIsXl,
   useIsMd,
   useIsSm,
-} from '@/src/styles/mediaQueries.style';
-import { GenericCarouselProps } from '@/src/types/GenericCarouselProps';
-import { cn } from '@lib/utils';
+} from '@src/styles/mediaQueries.style';
+import { GenericCarouselProps } from '@src/types/GenericCarouselProps';
 
 /**
  * GenericCarousel component displays items in a carousel with automatic rotation.

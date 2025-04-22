@@ -3,10 +3,10 @@ import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-import { cn } from '@/src/lib/utils';
-import { cnBorderNone, cnBorderRadiusFull } from '@/src/styles/border.style';
-import { cnSizeIcon } from '@/src/styles/size.style';
 import { Toggle } from '@lib/components/ui/toggle';
+import { cn } from '@src/lib/utils';
+import { cnBorderNone, cnBorderRadiusFull } from '@src/styles/border.style';
+import { cnSizeIcon } from '@src/styles/size.style';
 
 /**
  * A component that allows users to toggle between dark and light themes.

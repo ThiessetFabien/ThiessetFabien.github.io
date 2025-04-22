@@ -1,43 +1,5 @@
 import React, { memo, useEffect, useState, useCallback } from 'react';
 
-import { Badge } from '@/src/lib/components/ui/badge';
-import {
-  cnBorder2,
-  cnBorderBottom4,
-  cnBorderRadiusFull,
-} from '@/src/styles/border.style';
-import {
-  cnGap,
-  cnPaddingY,
-  cnSmallGap,
-  cnSmallPadding,
-  cnSmallPaddingLeft,
-  cnSmallSpaceY,
-  cnSpaceY,
-} from '@/src/styles/boxModel.style';
-import { cnFlexCol, cnFlexFullCenter } from '@/src/styles/flex.style';
-import {
-  cnBigDescription,
-  cnDescription,
-  cnLightTextMuted,
-  cnSmallText,
-  cnTitle1,
-} from '@/src/styles/font.style';
-import { cnHiddenSmBlock } from '@/src/styles/hideItem.style';
-import { cnBigImage } from '@/src/styles/image.styles';
-import { ResponsiveImage, useIsSm } from '@/src/styles/mediaQueries.style';
-import {
-  cnAutoHeightFullWidth,
-  cnAutoWidthFullHeight,
-  cnSizeAuto,
-  cnSizeIcon,
-} from '@/src/styles/size.style';
-import { cnLittleTranslateSm } from '@/src/styles/translate.style';
-import {
-  capitalizeFirstLetterOfEachWord,
-  capitalizeFirstLetterOfPhrase,
-} from '@/src/utils/formatText.util';
-import { formatSpecialWords } from '@/src/utils/formatText.util';
 import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 import {
   CardContent,
@@ -46,7 +8,45 @@ import {
   CardTitle,
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
+import { Badge } from '@src/lib/components/ui/badge';
+import {
+  cnBorder2,
+  cnBorderBottom4,
+  cnBorderRadiusFull,
+} from '@src/styles/border.style';
+import {
+  cnGap,
+  cnPaddingY,
+  cnSmallGap,
+  cnSmallPadding,
+  cnSmallPaddingLeft,
+  cnSmallSpaceY,
+  cnSpaceY,
+} from '@src/styles/boxModel.style';
+import { cnFlexCol, cnFlexFullCenter } from '@src/styles/flex.style';
+import {
+  cnBigDescription,
+  cnDescription,
+  cnLightTextMuted,
+  cnSmallText,
+  cnTitle1,
+} from '@src/styles/font.style';
+import { cnHiddenSmBlock } from '@src/styles/hideItem.style';
+import { cnBigImage } from '@src/styles/image.styles';
+import { ResponsiveImage, useIsSm } from '@src/styles/mediaQueries.style';
+import {
+  cnAutoHeightFullWidth,
+  cnAutoWidthFullHeight,
+  cnSizeAuto,
+  cnSizeIcon,
+} from '@src/styles/size.style';
+import { cnLittleTranslateSm } from '@src/styles/translate.style';
 import type { CardProps } from '@src/types/CardProps';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+} from '@src/utils/formatText.util';
+import { formatSpecialWords } from '@src/utils/formatText.util';
 import { IconLoader } from '@ui/icons/IconLoader';
 import { ProfileImage } from '@ui/images/ProfileImage';
 import { TypewriterText } from '@ui/typewriter/TypewriterText';

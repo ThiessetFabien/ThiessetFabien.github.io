@@ -1,20 +1,20 @@
 import React, { memo } from 'react';
 
-import { Card, CardContent, CardHeader } from '@/src/lib/components/ui/card';
-import { cnSpaceY } from '@/src/styles/boxModel.style';
+import { cn } from '@lib/utils';
+import { Card, CardContent, CardHeader } from '@src/lib/components/ui/card';
+import { cnSpaceY } from '@src/styles/boxModel.style';
 import {
   cnFlexBetweenY,
   cnFlexCol,
   cnFlexFullCenter,
-} from '@/src/styles/flex.style';
-import { cnParagraph, cnTitle3 } from '@/src/styles/font.style';
-import { cnSizeFull } from '@/src/styles/size.style';
+} from '@src/styles/flex.style';
+import { cnParagraph, cnTitle3 } from '@src/styles/font.style';
+import { cnSizeFull } from '@src/styles/size.style';
+import type { CardProps } from '@src/types/CardProps';
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
-} from '@/src/utils/formatText.util';
-import { cn } from '@lib/utils';
-import type { CardProps } from '@src/types/CardProps';
+} from '@src/utils/formatText.util';
 
 import { HighlightedText } from '../../../utils/HighlightedText';
 import { SkillList } from '../lists/SkillList';

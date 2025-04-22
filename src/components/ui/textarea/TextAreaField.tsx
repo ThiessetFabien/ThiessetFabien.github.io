@@ -2,9 +2,6 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import { FieldValues } from 'react-hook-form';
 
-import { cn } from '@/src/lib/utils';
-import { cnParagraph } from '@/src/styles/font.style';
-import { FormFieldProps } from '@/src/types/FormFieldProps.js';
 import {
   FormControl,
   FormField,
@@ -13,6 +10,9 @@ import {
   FormMessage,
 } from '@lib/components/ui/form';
 import { Textarea } from '@lib/components/ui/textarea';
+import { cn } from '@src/lib/utils';
+import { cnParagraph } from '@src/styles/font.style';
+import { FormFieldProps } from '@src/types/FormFieldProps.js';
 
 export function MessageField<T extends FieldValues>({
   control,
