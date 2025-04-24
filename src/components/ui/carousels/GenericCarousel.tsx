@@ -1,4 +1,3 @@
-import { GenericCarouselProps } from '@src/types/GenericCarouselProps';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
@@ -22,6 +21,7 @@ import {
   useIsMd,
   useIsSm,
 } from '@src/styles/mediaQueries.style';
+import { GenericCarouselProps } from '@src/types/GenericCarouselProps';
 
 interface AutoplayPlugin {
   name: string;
@@ -159,7 +159,7 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
 
   const defaultAutoScrollOptions = {
     speed: 0.5,
-    direction: 'forward',
+    direction: 'forward' as 'forward' | 'backward',
     stopOnInteraction: true,
     stopOnMouseEnter: pauseOnHover,
     startOnInit: true,
@@ -195,7 +195,7 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
       }}
     >
       <CarouselContent className={cn('-mt-1', containerHeight || 'h-[300px]')}>
-        {items.map((item, index) => (
+        {items.map((item: React.ReactNode, index: number) => (
           <CarouselItem key={index} className='relative pt-1 md:basis-1/2'>
             <AnimatePresence mode='wait'>
               <motion.div
