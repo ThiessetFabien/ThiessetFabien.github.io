@@ -6,6 +6,8 @@ import { cnSizeFull } from '@src/styles/size.style';
 
 import { ContactForm } from '../forms/ContactForm';
 
+import { Header2Card } from './layouts.cards/Header2Card';
+
 export const ContactCard: React.FC<{
   className?: string;
 }> = ({ className }) => {
@@ -21,16 +23,11 @@ export const ContactCard: React.FC<{
           'justify-center'
         )}
       >
-        <p className='flex w-full flex-col items-center justify-center'>
-          <a href='mailto:thiessetfabienpro@gmail.com' target='_blank'>
-            <span className='block text-center'>
-              thiessetfabienpro@gmail.com
-            </span>
-          </a>
-          <a href='tel:+33610920974' target='_blank'>
-            <span className='block text-center'>0610920974</span>
-          </a>
-        </p>
+        <Header2Card
+          title='thiessetfabienpro@gmail.com'
+          description='06.10.92.09.74'
+          className='px-0'
+        />
         <ContactForm
           mailto='thiessetfabienpro@gmail.com'
           downloadActive1={false}

@@ -51,6 +51,7 @@
     "dompurify": "^3.2.5",
     "dotenv": "^16.4.7",
     "embla-carousel": "^8.6.0",
+    "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.6.3",

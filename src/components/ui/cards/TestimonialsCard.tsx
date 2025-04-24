@@ -2,9 +2,10 @@ import dynamic from 'next/dynamic';
 import { memo } from 'react';
 
 import { cn } from '@lib/utils';
+import { TestimonialsCarousel } from '@src/components/ui/carousels/TestimonialsCarousel';
+import { cnGap } from '@src/styles/boxModel.style';
 import { cnSizeFull } from '@src/styles/size.style';
 import { TestimonialProps } from '@src/types/TestimonialProps';
-import TestimonialsCarousel from '@ui/carousels/TestimonialsCarousel';
 
 import { ContactCard } from '../cards/ContactCard';
 
@@ -28,7 +29,7 @@ export const TestimonialsCard = memo(
       cnSizeFull,
       'p-0 overflow-hidden border-none rounded-none transition-all duration-300',
       'col-span-1 md:col-span-2 lg:col-span-1',
-      'h-[85dvh] max-h-[85dvh]'
+      'h-[90dvh] max-h-[90dvh]'
     );
 
     return (
@@ -36,6 +37,7 @@ export const TestimonialsCard = memo(
         className={cn(
           className,
           cnSizeFull,
+          cnGap,
           'grid grid-cols-1',
           'md:grid-cols-2',
           'lg:grid-cols-3'
@@ -58,4 +60,5 @@ export const TestimonialsCard = memo(
 
 TestimonialsCard.displayName = 'TestimonialsCard';
 
+// Ajout de l'export par défaut
 export default TestimonialsCard;

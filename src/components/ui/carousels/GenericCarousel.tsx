@@ -1,4 +1,5 @@
-import Autoplay, { AutoplayOptionsType } from 'embla-carousel-autoplay';
+import { GenericCarouselProps } from '@src/types/GenericCarouselProps';
+import AutoScroll from 'embla-carousel-auto-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
@@ -21,36 +22,48 @@ import {
   useIsMd,
   useIsSm,
 } from '@src/styles/mediaQueries.style';
-import { GenericCarouselProps } from '@src/types/GenericCarouselProps';
 
-/**
- * GenericCarousel component displays items in a carousel with automatic rotation.
- *
- * @component
- * @param {GenericCarouselProps} props - Component props
- * @returns {JSX.Element} The generic carousel component
- */
-
-// Interface pour typer correctement les plugins
 interface AutoplayPlugin {
   name: string;
   play: () => void;
   stop: () => void;
 }
 
-// Interface pour typer le plugin renvoyé par l'API du carousel
 interface CarouselPlugin {
   name: string;
   [key: string]: unknown;
 }
 
+/**
+ * A generic vertical carousel component with advanced features.
+ *
+ * @component
+ * @param {Object} props - The component props
+ * @param {React.ReactNode[]} props.items - Array of items to display in the carousel
+ * @param {boolean} [props.controls=false] - Whether to show navigation controls
+ * @param {string} [props.className] - Additional CSS class names for the carousel container
+ * @param {string} [props.containerHeight] - Custom height for the carousel container (defaults to 'h-[300px]')
+ * @param {Function} [props.onSlideChange] - Callback function triggered when the active slide changes, receives the new index
+ * @param {Object} [props.autoplayOptions] - Custom options for the AutoScroll plugin
+ * @param {boolean} [props.pauseOnHover=true] - Whether to pause autoplay when hovering over the carousel
+ * @param {boolean} [props.showProgressBar=false] - Whether to show a vertical progress bar indicator
+ *
+ * @returns {React.ReactElement|null} The carousel component or null if no items provided
+ *
+ * @example
+ * <GenericCarousel
+ *   items={testimonials}
+ *   controls={true}
+ *   containerHeight="h-[400px]"
+ *   showProgressBar={true}
+ *   onSlideChange={(index) => console.log(`Slide changed to ${index}`)}
+ * />
+ */
 const GenericCarousel: React.FC<GenericCarouselProps> = ({
   items,
-  delay = 5000,
   controls = false,
   className,
   containerHeight,
-  showPartialNext = false,
   onSlideChange,
   autoplayOptions,
   pauseOnHover = true,
@@ -72,11 +85,9 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
   useEffect(() => {
     if (!api) return;
 
-    // Initialisation du décompte et de l'index actuel
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap());
 
-    // Handler pour les changements de slide
     const onSelectHandler = () => {
       const newIndex = api.selectedScrollSnap();
       setCurrent(newIndex);
@@ -86,17 +97,13 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
       }
     };
 
-    // Appliquer immédiatement l'index actuel
     onSelectHandler();
 
-    // Réinitialisation forcée pour s'assurer que le carousel est correctement configuré
     api.reInit();
 
-    // Écouter les événements
     api.on('select', onSelectHandler);
     api.on('reInit', onSelectHandler);
 
-    // Configuration des touches de navigation pour l'orientation verticale
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowUp') {
         api.scrollPrev();
@@ -107,7 +114,6 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
 
     window.addEventListener('keydown', handleKeydown);
 
-    // Récupération et configuration de l'instance Autoplay
     const plugins = api.plugins();
     if (plugins && Array.isArray(plugins) && plugins.length > 0) {
       const autoplayPlugin = plugins.find(
@@ -116,7 +122,6 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
       );
       if (autoplayPlugin) {
         setAutoplayInstance(autoplayPlugin as AutoplayPlugin);
-        // Démarrer immédiatement l'autoplay si nécessaire
         if (!isPaused && !isHovering) {
           setTimeout(() => {
             autoplayPlugin.play();
@@ -132,7 +137,6 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
     };
   }, [api, onSlideChange, isPaused, isHovering]);
 
-  // Gestion de la pause/reprise de l'autoplay
   useEffect(() => {
     if (!autoplayInstance) return;
 
@@ -142,7 +146,6 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
       autoplayInstance.play();
     }
 
-    // Gestion spécifique pour l'orientation verticale
     if (isHovering && pauseOnHover) {
       autoplayInstance.stop();
     } else if (!isPaused && !isHovering) {
@@ -154,34 +157,34 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
     return null;
   }
 
-  const defaultAutoplayOptions: AutoplayOptionsType = {
-    delay,
-    stopOnInteraction: false,
-    stopOnMouseEnter: true,
-    playOnInit: true,
-    rootNode: (emblaRoot: HTMLElement) => emblaRoot,
+  const defaultAutoScrollOptions = {
+    speed: 0.5,
+    direction: 'forward',
+    stopOnInteraction: true,
+    stopOnMouseEnter: pauseOnHover,
+    startOnInit: true,
   };
 
-  const mergedAutoplayOptions = {
-    ...defaultAutoplayOptions,
+  const mergedAutoScrollOptions = {
+    ...defaultAutoScrollOptions,
     ...autoplayOptions,
   };
 
   return (
     <Carousel
       opts={{
-        align: 'center',
+        align: 'start',
         loop: true,
-        dragFree: false,
+        dragFree: true,
         watchDrag: true,
       }}
       setApi={setApi}
-      plugins={[Autoplay(mergedAutoplayOptions as AutoplayOptionsType)]}
+      plugins={[AutoScroll(mergedAutoScrollOptions)]}
       orientation='vertical'
       className={cn(
         className,
-        'relative flex w-full',
-        containerHeight || 'min-h-[200px]',
+        'relative w-full',
+        containerHeight || 'h-[300px]',
         'max-h-[calc(85dvh-5rem)]'
       )}
       onMouseEnter={() => {
@@ -191,9 +194,9 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
         setIsHovering(false);
       }}
     >
-      <CarouselContent className={showPartialNext ? '-ml-2 md:-ml-4' : ''}>
+      <CarouselContent className={cn('-mt-1', containerHeight || 'h-[300px]')}>
         {items.map((item, index) => (
-          <CarouselItem key={index} className='relative'>
+          <CarouselItem key={index} className='relative pt-1 md:basis-1/2'>
             <AnimatePresence mode='wait'>
               <motion.div
                 key={index}
@@ -201,7 +204,7 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.5 }}
-                className={cn(cnFlexCol, 'h-full', cnBorderRadiusMd)}
+                className={cn(cnFlexCol, 'h-full', cnBorderRadiusMd, 'p-1')}
               >
                 {item}
               </motion.div>
@@ -221,7 +224,7 @@ const GenericCarousel: React.FC<GenericCarouselProps> = ({
       </CarouselContent>
 
       {controls && (
-        <div className='absolute bottom-2 right-2 z-10'>
+        <div className='absolute bottom-4 right-2 z-10'>
           <motion.div
             onClick={() => setIsPaused(!isPaused)}
             className={cn(

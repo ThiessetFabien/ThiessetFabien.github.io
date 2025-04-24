@@ -9,7 +9,7 @@ import { cn } from '@lib/utils';
 import { ExperiencesCard } from '@src/components/ui/cards/ExperiencesCard';
 import { HeroCard } from '@src/components/ui/cards/HeroCard';
 import { FooterCard } from '@src/components/ui/cards/layouts.cards/FooterCard';
-import { HeaderCard } from '@src/components/ui/cards/layouts.cards/HeaderCard';
+import { Header1Card } from '@src/components/ui/cards/layouts.cards/Header1Card';
 import { ProjectsCard } from '@src/components/ui/cards/ProjectsCard';
 import SkillsCard from '@src/components/ui/cards/SkillsCard';
 import LoadingSpinner from '@src/components/ui/spinner/LoadingSpinner';
@@ -28,10 +28,7 @@ import { useIsClient } from '../hooks/useIsClient.hook';
 import { cnBorderNone } from '../styles/border.style';
 
 const LazyTestimonialsCard = dynamic(
-  () =>
-    import('@src/components/ui/cards/TestimonialsCard').then(
-      (mod) => mod.TestimonialsCard
-    ),
+  () => import('@src/components/ui/cards/TestimonialsCard'),
   {
     ssr: false,
     loading: () => (
@@ -85,7 +82,7 @@ const HomePage: React.FC = (): JSX.Element => {
           >
             <>
               {card.title && (
-                <HeaderCard
+                <Header1Card
                   title={card.title}
                   description={card.description}
                   className={cn(cnPadding)}

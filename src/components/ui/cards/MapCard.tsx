@@ -26,15 +26,16 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-import { Card, CardTitle, CardContent } from '@src/lib/components/ui/card';
+import { Card, CardContent } from '@src/lib/components/ui/card';
 import { cn } from '@src/lib/utils';
 import { cnBorderNone, cnBorderRadiusMd } from '@src/styles/border.style';
-import { cnSpaceY, cnSmallPadding } from '@src/styles/boxModel.style';
+import { cnSmallPadding, cnPaddingY } from '@src/styles/boxModel.style';
 import { cnFlexCol } from '@src/styles/flex.style';
-import { cnTitle3 } from '@src/styles/font.style';
 import { CardProps } from '@src/types/CardProps';
 
 import LoadingSpinner from '../spinner/LoadingSpinner';
+
+import { Header2Card } from './layouts.cards/Header2Card';
 
 const DynamicLeafletMap = dynamic(() => import('../maps/LeafletMap'), {
   ssr: false,
@@ -47,17 +48,13 @@ const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
   return (
     <div className={cn(className, 'h-full')}>
       <Card
-        className={cn(
-          cnSmallPadding,
-          cnBorderNone,
-          cnSpaceY,
-          cnFlexCol,
-          'h-full flex-1'
-        )}
+        className={cn(cnSmallPadding, cnBorderNone, cnFlexCol, 'h-full flex-1')}
       >
-        <CardTitle className={cn(cnTitle3, 'text-center')}>
-          Où je travaille localement ?
-        </CardTitle>
+        <Header2Card
+          title='Où je travaille ?'
+          description='Douai, Nord, France'
+          className={cnPaddingY}
+        />
         <CardContent
           className={cn(cnBorderRadiusMd, 'flex-1 overflow-hidden p-0')}
         >
