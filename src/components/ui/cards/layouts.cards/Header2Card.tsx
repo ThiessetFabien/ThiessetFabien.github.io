@@ -40,7 +40,7 @@ export const Header2Card: React.FC<{
         className={cn(className, 'hyphens-auto break-words text-center')}
       >
         <CardTitle
-          className={cn('hyphens-auto break-words text-center')}
+          className={cn('max-w-full hyphens-auto break-words text-center')}
           aria-label={title}
         >
           <h3 className={cnTitle3}>

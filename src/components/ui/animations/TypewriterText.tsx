@@ -41,9 +41,6 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
   const completionTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  const currentTextWithSpace =
-    currentText + (currentText.length > 0 ? ' ' : '');
-
   useEffect(() => {
     return () => {
       if (typingTimeout.current) {
@@ -62,30 +59,35 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
       const currentFullText = texts[currentTextIndex];
       const currentTextLength = currentText.length;
 
-      if (!isDeleting && currentTextLength < currentFullText.length) {
-        setCurrentText(currentFullText.substring(0, currentTextLength + 1));
-        typingTimeout.current = setTimeout(handleTyping, typingSpeed);
-      } else if (!isDeleting && currentTextLength === currentFullText.length) {
-        setIsDeleting(true);
-        typingTimeout.current = setTimeout(handleTyping, delayBetweenTexts);
-      } else if (isDeleting && currentTextLength > 0) {
-        setCurrentText(currentText.substring(0, currentTextLength - 1));
-        typingTimeout.current = setTimeout(handleTyping, deletingSpeed);
-      } else if (isDeleting && currentTextLength === 0) {
-        setIsDeleting(false);
-        setCurrentTextIndex((prevIndex) => {
-          if (prevIndex === texts.length - 1) {
-            if (!loop) {
+      if (!isDeleting) {
+        if (currentTextLength < currentFullText.length) {
+          setCurrentText(currentFullText.substring(0, currentTextLength + 1));
+          typingTimeout.current = setTimeout(handleTyping, typingSpeed);
+        } else {
+          setIsDeleting(true);
+          typingTimeout.current = setTimeout(handleTyping, delayBetweenTexts);
+        }
+      } else {
+        if (currentTextLength > 0) {
+          setCurrentText(currentText.substring(0, currentTextLength - 1));
+          typingTimeout.current = setTimeout(handleTyping, deletingSpeed);
+        } else {
+          setIsDeleting(false);
+          setCurrentTextIndex((prevIndex) => {
+            const isLastText = prevIndex === texts.length - 1;
+
+            if (isLastText && !loop) {
               if (onComplete) {
                 completionTimeout.current = setTimeout(onComplete, 500);
               }
               return prevIndex;
             }
-            return 0;
-          }
-          return prevIndex + 1;
-        });
-        typingTimeout.current = setTimeout(handleTyping, typingSpeed);
+
+            return isLastText ? 0 : prevIndex + 1;
+          });
+
+          typingTimeout.current = setTimeout(handleTyping, typingSpeed);
+        }
       }
     };
 
@@ -110,7 +112,8 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
 
   return (
     <span className={cn('inline-block whitespace-pre', className)}>
-      {currentTextWithSpace}
+      {currentText}
+      {currentText.length > 0 ? ' ' : ''}
     </span>
   );
 };

@@ -3,7 +3,6 @@ import { memo } from 'react';
 
 import { cn } from '@lib/utils';
 import { TestimonialsCarousel } from '@src/components/ui/carousels/TestimonialsCarousel';
-import { cnGap } from '@src/styles/boxModel.style';
 import { cnSizeFull } from '@src/styles/size.style';
 import { TestimonialProps } from '@src/types/TestimonialProps';
 
@@ -14,9 +13,6 @@ const MapCard = dynamic(() => import('../cards/MapCard'), {
   loading: () => <p>Chargement de la carte...</p>,
 });
 
-/**
- * Composant qui affiche les témoignages, la carte et le formulaire de contact
- */
 export const TestimonialsCard = memo(
   ({
     testimonials,
@@ -37,7 +33,6 @@ export const TestimonialsCard = memo(
         className={cn(
           className,
           cnSizeFull,
-          cnGap,
           'grid grid-cols-1',
           'md:grid-cols-2',
           'lg:grid-cols-3'
@@ -60,5 +55,4 @@ export const TestimonialsCard = memo(
 
 TestimonialsCard.displayName = 'TestimonialsCard';
 
-// Ajout de l'export par défaut
 export default TestimonialsCard;

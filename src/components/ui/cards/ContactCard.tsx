@@ -24,9 +24,9 @@ export const ContactCard: React.FC<{
         )}
       >
         <Header2Card
-          title='thiessetfabienpro@gmail.com'
-          description='06.10.92.09.74'
-          className='px-0'
+          title='06 10 92 09 74'
+          description='thiessetfabienpro@gmail.com'
+          className={cnPadding}
         />
         <ContactForm
           mailto='thiessetfabienpro@gmail.com'

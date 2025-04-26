@@ -1,16 +1,19 @@
 import { FieldErrors, FieldValues, Control, Path } from 'react-hook-form';
 
 /**
- * Props pour les champs de formulaire utilisant React Hook Form
+ * Props for compact display mode
  */
 export interface CompactMode {
   /**
-   * Indique si le champ doit être affiché en mode compact
+   * Indicates if the field should be displayed in compact mode
    * @default false
    */
   isCompact?: boolean;
 }
 
+/**
+ * Props for form fields using React Hook Form
+ */
 export interface FormFieldProps<T extends FieldValues> extends CompactMode {
   /** Control from React Hook Form */
   control: Control<T>;

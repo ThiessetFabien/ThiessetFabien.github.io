@@ -1,39 +1,39 @@
 import React from 'react';
 
 /**
- * Interface pour les props du composant GenericCarousel
+ * Interface for GenericCarousel component props
  */
 export interface GenericCarouselProps {
   /**
-   * Tableau d'éléments React à afficher dans le carousel
+   * Array of React elements to display in the carousel
    */
   items: React.ReactNode[];
 
   /**
-   * Si les contrôles de navigation doivent être affichés
+   * Whether navigation controls should be displayed
    * @default false
    */
   controls?: boolean;
 
   /**
-   * Classes CSS supplémentaires pour le conteneur du carousel
+   * Additional CSS classes for the carousel container
    */
   className?: string;
 
   /**
-   * Hauteur personnalisée pour le conteneur du carousel
+   * Custom height for the carousel container
    * @default 'h-[300px]'
    */
   containerHeight?: string;
 
   /**
-   * Fonction de rappel déclenchée lorsque la diapositive active change
-   * @param index - L'index de la nouvelle diapositive active
+   * Callback function triggered when the active slide changes
+   * @param index - The index of the new active slide
    */
   onSlideChange?: (index: number) => void;
 
   /**
-   * Options personnalisées pour le plugin AutoScroll
+   * Custom options for the AutoScroll plugin
    */
   autoplayOptions?: {
     speed?: number;
@@ -44,13 +44,13 @@ export interface GenericCarouselProps {
   };
 
   /**
-   * Si l'autoplay doit être mis en pause au survol
+   * Whether autoplay should be paused on hover
    * @default true
    */
   pauseOnHover?: boolean;
 
   /**
-   * Si une barre de progression verticale doit être affichée
+   * Whether a vertical progress bar should be displayed
    * @default false
    */
   showProgressBar?: boolean;

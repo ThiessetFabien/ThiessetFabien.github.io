@@ -35,7 +35,7 @@ export function EmailTypeField<T extends FieldValues>({
             <RadioGroup
               onValueChange={field.onChange}
               defaultValue={field.value}
-              className={cn('flex flex-col sm:flex-row')}
+              className={cn('flex flex-row', cnParagraph)}
               id={id}
             >
               <motion.div

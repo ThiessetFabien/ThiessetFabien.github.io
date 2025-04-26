@@ -1,5 +1,12 @@
 import { TestimonialProps } from '@src/types/TestimonialProps';
 
+/**
+ * Shuffles an array using the Fisher-Yates (Knuth) shuffle algorithm.
+ * This function mutates the original array.
+ *
+ * @param {TestimonialProps[]} array - The array to be shuffled
+ * @returns {TestimonialProps[]} The same array, now shuffled
+ */
 export const shuffleArray = (array: TestimonialProps[]) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
