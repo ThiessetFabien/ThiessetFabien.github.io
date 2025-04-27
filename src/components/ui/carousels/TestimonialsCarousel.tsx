@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronUp, ChevronDown, Play, Pause } from 'lucide-react';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
@@ -30,7 +29,9 @@ import {
   formatSpecialWords,
 } from '@src/utils/formatText.util';
 
+import { ArrowCarouselButton } from '../buttons/ArrowCarouselButton';
 import { Header2Card } from '../cards/layouts.cards/Header2Card';
+import { IconLoader } from '../icons/IconLoader';
 import { LinkedinIcon } from '../svg/Linkedin';
 
 export const TestimonialsCarousel: React.FC<{
@@ -47,32 +48,55 @@ export const TestimonialsCarousel: React.FC<{
 
   useEffect(() => {
     const updateHeight = () => {
-      if (contentRef.current) {
-        setContainerHeight(contentRef.current.clientHeight);
+      if (contentRef.current && containerRef.current) {
+        const headerHeight = 70;
+        const controlsHeight = 50;
+        const safetyMargin = 20;
+        const parentHeight =
+          containerRef.current.parentElement?.clientHeight || 0;
+
+        const availableHeight = Math.max(
+          parentHeight - headerHeight - controlsHeight - safetyMargin,
+          200
+        );
+
+        setContainerHeight(availableHeight);
       }
     };
 
     updateHeight();
+
     window.addEventListener('resize', updateHeight);
+
+    const resizeObserver = new ResizeObserver(updateHeight);
+    if (containerRef.current?.parentElement) {
+      resizeObserver.observe(containerRef.current.parentElement);
+    }
 
     return () => {
       window.removeEventListener('resize', updateHeight);
+      resizeObserver.disconnect();
     };
   }, []);
 
-  const determineVisibleCount = () => {
+  const determineVisibleCount = useCallback(() => {
     const avgTestimonialHeight = 210;
+    const partialTestimonialHeight = 90;
+
     const maxFullTestimonials = Math.floor(
       containerHeight / avgTestimonialHeight
     );
-    const fullTestimonialsCount = Math.max(2, maxFullTestimonials);
-    const hasPartialSpace = containerHeight % avgTestimonialHeight > 50;
+    const fullTestimonialsCount = Math.max(1, maxFullTestimonials);
+
+    const remainingHeight =
+      containerHeight - fullTestimonialsCount * avgTestimonialHeight;
+    const hasPartialSpace = remainingHeight >= partialTestimonialHeight;
 
     return {
       full: fullTestimonialsCount,
       hasPartial: hasPartialSpace,
     };
-  };
+  }, [containerHeight]);
 
   const getVisibleTestimonials = () => {
     const { full, hasPartial } = determineVisibleCount();
@@ -103,15 +127,15 @@ export const TestimonialsCarousel: React.FC<{
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
   }, [testimonials.length]);
 
-  const prevTestimonial = () => {
+  const prevTestimonial = useCallback(() => {
     setActiveIndex(
       (prev) => (prev - 1 + testimonials.length) % testimonials.length
     );
-  };
+  }, [testimonials.length]);
 
-  const togglePlayPause = () => {
+  const togglePlayPause = useCallback(() => {
     setIsPaused(!isPaused);
-  };
+  }, [isPaused]);
 
   useEffect(() => {
     const shouldBePaused = isPaused || isHovering;
@@ -128,6 +152,67 @@ export const TestimonialsCarousel: React.FC<{
     };
   }, [isPaused, isHovering, testimonials.length, nextTestimonial]);
 
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleKeyboardNavigation = (e: KeyboardEvent) => {
+      const hasFocus = carouselRef.current?.contains(document.activeElement);
+
+      if (!hasFocus && !isHovering) return;
+
+      switch (e.key) {
+        case 'ArrowUp':
+          prevTestimonial();
+          e.preventDefault();
+          break;
+        case 'ArrowDown':
+          nextTestimonial();
+          e.preventDefault();
+          break;
+        case ' ':
+        case 'p':
+        case 'P':
+          togglePlayPause();
+          e.preventDefault();
+          break;
+        case 'Home':
+          setActiveIndex(0);
+          e.preventDefault();
+          break;
+        case 'End':
+          setActiveIndex(testimonials.length - 1);
+          e.preventDefault();
+          break;
+        case 'PageUp':
+          setActiveIndex((prev) =>
+            Math.max(0, prev - determineVisibleCount().full)
+          );
+          e.preventDefault();
+          break;
+        case 'PageDown':
+          setActiveIndex((prev) =>
+            Math.min(
+              testimonials.length - 1,
+              prev + determineVisibleCount().full
+            )
+          );
+          e.preventDefault();
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyboardNavigation);
+    return () =>
+      window.removeEventListener('keydown', handleKeyboardNavigation);
+  }, [
+    isHovering,
+    nextTestimonial,
+    prevTestimonial,
+    testimonials.length,
+    determineVisibleCount,
+    togglePlayPause,
+  ]);
+
   const slideVariants = {
     enter: { opacity: 0, y: 15 },
     center: { opacity: 1, y: 0 },
@@ -135,7 +220,7 @@ export const TestimonialsCarousel: React.FC<{
   };
 
   const cnArrowStyles =
-    'pointer-events-auto self-center rounded-full opacity-70 shadow-sm hover:opacity-100';
+    'pointer-events-auto self-center rounded-full opacity-70 shadow-sm hover:opacity-100 focus:ring-2 focus:ring-primary focus:ring-offset-2';
 
   const renderTestimonial = (
     testimonial: TestimonialProps,
@@ -255,6 +340,10 @@ export const TestimonialsCarousel: React.FC<{
           className={cn(cnFlexCol, 'relative h-full')}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
+          role='region'
+          aria-label='Carousel de témoignages'
+          aria-roledescription='carousel'
+          aria-live='polite'
         >
           <div
             ref={contentRef}
@@ -270,52 +359,77 @@ export const TestimonialsCarousel: React.FC<{
 
           <div
             className={cn(
-              cnFlexCol,
-              cnFlexBetweenY,
-              'pointer-events-none absolute bottom-0 left-0 right-0 top-0'
+              'pointer-events-none absolute inset-0',
+              'flex items-center justify-between px-2'
             )}
           >
-            <Button
-              variant='outline'
-              size='icon'
-              className={cnArrowStyles}
+            <ArrowCarouselButton
               onClick={prevTestimonial}
               aria-label='Témoignage précédent'
-            >
-              <ChevronUp className='h-4 w-4' />
-            </Button>
-
-            <Button
-              variant='outline'
-              size='icon'
-              className={cnArrowStyles}
+              icon='ChevronUp'
+              className={cn(cnArrowStyles, 'bg-background/80 backdrop-blur-sm')}
+            />
+            <ArrowCarouselButton
               onClick={nextTestimonial}
               aria-label='Témoignage suivant'
-            >
-              <ChevronDown className='h-4 w-4' />
-            </Button>
-          </div>
+              icon='ChevronDown'
+              className={cn(cnArrowStyles, 'bg-background/80 backdrop-blur-sm')}
+            />
 
-          <div className='absolute bottom-3 right-3 z-10'>
-            <Button
-              variant='outline'
-              size='icon'
-              className='h-8 w-8 rounded-full opacity-70 shadow-sm hover:opacity-100'
-              onClick={togglePlayPause}
-              aria-label={
-                isPaused ? 'Reprendre le défilement' : 'Mettre en pause'
-              }
-            >
-              {isPaused || isHovering ? (
-                <Play className='h-4 w-4' />
-              ) : (
-                <Pause className='h-4 w-4' />
+            <div
+              className={cn(
+                cnSmallPadding,
+                'absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between border-t border-border/40 bg-background/60 backdrop-blur-sm'
               )}
-            </Button>
-          </div>
+            >
+              <div className='flex items-center gap-2'>
+                <Button
+                  variant='outline'
+                  size='sm'
+                  className='rounded-full'
+                  onClick={() => setActiveIndex(0)}
+                  aria-label='Premier témoignage'
+                >
+                  <span className='text-xs font-medium'>Revenir au début</span>
+                </Button>
 
-          <div className='absolute bottom-4 left-4 z-10 rounded-full bg-background/80 px-2 py-1 text-xs font-medium shadow-sm'>
-            {activeIndex + 1} / {testimonials.length}
+                <span className='text-xs font-medium'>
+                  {activeIndex + 1} / {testimonials.length}
+                </span>
+              </div>
+
+              <div className='flex items-center gap-3'>
+                <div className='hidden items-center gap-1.5 text-[10px] opacity-70 sm:flex'>
+                  <div className='flex gap-0.5'>
+                    <kbd className='inline-flex h-5 w-5 items-center justify-center rounded border border-border/60 bg-background/90 font-sans'>
+                      ↑
+                    </kbd>
+                    <kbd className='inline-flex h-5 w-5 items-center justify-center rounded border border-border/60 bg-background/90 font-sans'>
+                      ↓
+                    </kbd>
+                  </div>
+                  <kbd className='inline-flex h-5 w-5 items-center justify-center rounded border border-border/60 bg-background/90 font-sans'>
+                    P
+                  </kbd>
+                </div>
+
+                <Button
+                  variant='outline'
+                  size='icon'
+                  className='rounded-full'
+                  onClick={togglePlayPause}
+                  aria-label={
+                    isPaused ? 'Reprendre le défilement' : 'Mettre en pause'
+                  }
+                >
+                  {isPaused || isHovering ? (
+                    <IconLoader icon='Play' />
+                  ) : (
+                    <IconLoader icon='Pause' />
+                  )}
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </CardContent>
