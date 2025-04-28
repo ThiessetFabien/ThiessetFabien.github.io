@@ -27,7 +27,6 @@ import {
 } from '@src/styles/flex.style';
 import { cnSmallText } from '@src/styles/font.style';
 import { useIsLg } from '@src/styles/mediaQueries.style';
-import { cnSizeIcon } from '@src/styles/size.style';
 import { MenuItemProps } from '@src/types/MenuItemProps';
 import { IconLoader } from '@ui/icons/IconLoader';
 import { MobileMenu } from '@ui/sheet/MobileMenu';
@@ -113,7 +112,7 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
         'services',
         'about',
         'portfolio',
-        'testimonials',
+        'contact',
         'experience',
         'resume',
         'motivation',
@@ -174,11 +173,7 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
                 aria-label={item.label}
                 aria-current={isItemActive(item) ? 'page' : undefined}
               >
-                <IconLoader
-                  icon={item.icon}
-                  className={cnSizeIcon}
-                  aria-hidden='true'
-                />
+                <IconLoader icon={item.icon} />
               </a>
             ))}
             {scrollTopVisible && (
@@ -187,11 +182,7 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
                 className={cn(cnFlexCenterY, 'transition-colors duration-200')}
                 aria-label='Scroll to top'
               >
-                <IconLoader
-                  icon='ChevronsUp'
-                  className={cnSizeIcon}
-                  aria-hidden='true'
-                />
+                <IconLoader icon='ChevronsUp' />
               </button>
             )}
           </Menubar>
@@ -230,11 +221,7 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
                           : 'h-full w-full'
                       )}
                     >
-                      <IconLoader
-                        icon={item.icon}
-                        className={cnSizeIcon}
-                        aria-hidden='true'
-                      />
+                      <IconLoader icon={item.icon} />
                     </div>
 
                     {hoveredItem === item.id && (

@@ -38,7 +38,6 @@ import {
   cnAutoHeightFullWidth,
   cnAutoWidthFullHeight,
   cnSizeAuto,
-  cnSizeIcon,
 } from '@src/styles/size.style';
 import { cnLittleTranslateSm } from '@src/styles/translate.style';
 import type { CardProps } from '@src/types/CardProps';
@@ -247,10 +246,7 @@ export const HeroCard: React.FC<{
                   'hyphens-auto break-words'
                 )}
               >
-                <IconLoader
-                  icon={service.icon}
-                  className={cn(cnSizeIcon, 'text-secondary')}
-                />
+                <IconLoader icon={service.icon} className={'text-secondary'} />
                 <p className={cn(cnFlexCol, 'text-center')}>
                   <span className='font-bold'>
                     {capitalizeFirstLetterOfPhrase(

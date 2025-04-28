@@ -1,7 +1,6 @@
 import { cn } from '@src/lib/utils';
 import { cnSmallMarginRight } from '@src/styles/boxModel.style';
 import { cnParagraph } from '@src/styles/font.style';
-import { cnSizeIcon } from '@src/styles/size.style';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
@@ -23,7 +22,7 @@ export const SkillList: React.FC<{
     <>
       <li className='flex'>
         <IconLoader
-          className={cn(cnSmallMarginRight, cnSizeIcon, 'text-primary')}
+          className={cn(cnSmallMarginRight, 'text-primary')}
           icon={'Check'}
         />
         <span className={cn(cnParagraph)}>

@@ -7,6 +7,8 @@ import type { LucideIcon } from 'lucide-react';
 import * as Icons from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
+import { cn } from '@src/lib/utils';
+import { cnSizeIcon } from '@src/styles/size.style';
 import type { CardProps } from '@src/types/CardProps';
 
 /**
@@ -39,5 +41,7 @@ export const IconLoader: React.FC<IconLoaderProps> = ({ icon, className }) => {
 
   if (!IconComponent) return null;
 
-  return <IconComponent className={className} />;
+  return (
+    <IconComponent className={cn(className, cnSizeIcon)} aria-hidden='true' />
+  );
 };

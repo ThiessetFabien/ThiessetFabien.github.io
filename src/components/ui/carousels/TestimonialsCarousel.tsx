@@ -319,9 +319,9 @@ export const TestimonialsCarousel: React.FC<{
             </p>
           </CardContent>
         ) : (
-          <div className='relative h-8 overflow-hidden'>
+          <CardContent className='relative h-8 overflow-hidden'>
             <div className='absolute inset-0 z-10 bg-gradient-to-b from-transparent to-background/80'></div>
-          </div>
+          </CardContent>
         )}
       </Card>
     </motion.div>
@@ -347,7 +347,7 @@ export const TestimonialsCarousel: React.FC<{
         >
           <div
             ref={contentRef}
-            className={cn(cnPaddingX, 'flex-1 overflow-hidden')}
+            className={cn(cnPadding, 'flex-1 overflow-hidden')}
           >
             <AnimatePresence mode='popLayout'>
               {getVisibleTestimonials().map(

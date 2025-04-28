@@ -19,7 +19,15 @@ export const ArrowCarouselButton: React.FC<{
   className: CardProps['className'];
   icon: ActionButtonProps['icon'];
   onClick: ActionButtonProps['onClick'] | undefined;
-}> = ({ className, icon, onClick }) => {
+}> = ({
+  className,
+  icon,
+  onClick,
+}: {
+  className: CardProps['className'];
+  icon: ActionButtonProps['icon'];
+  onClick: ActionButtonProps['onClick'];
+}): JSX.Element => {
   return (
     <Button
       variant='outline'
