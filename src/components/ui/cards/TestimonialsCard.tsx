@@ -3,6 +3,7 @@ import { memo } from 'react';
 
 import { cn } from '@lib/utils';
 import { TestimonialsCarousel } from '@src/components/ui/carousels/TestimonialsCarousel';
+import { Card } from '@src/lib/components/ui/card';
 import { cnSizeFull } from '@src/styles/size.style';
 import { TestimonialProps } from '@src/types/TestimonialProps';
 
@@ -13,6 +14,21 @@ const MapCard = dynamic(() => import('../cards/MapCard'), {
   loading: () => <p>Chargement de la carte...</p>,
 });
 
+/**
+ * A responsive grid layout component displaying contact information, testimonials, and a map.
+ *
+ * This component organizes three cards in a responsive grid:
+ * - A ContactCard for contact information
+ * - A TestimonialsCarousel to display testimonials
+ * - A MapCard showing location information
+ *
+ * The grid adjusts from 1 column on mobile to 2 columns on medium screens and 3 columns on large screens.
+ *
+ * @param props - The component props
+ * @param props.testimonials - An array of testimonial items to be displayed in the carousel
+ * @param props.className - Optional CSS class names to apply to the container
+ * @returns A JSX element containing the three-card layout
+ */
 export const TestimonialsCard = memo(
   ({
     testimonials,
@@ -29,26 +45,26 @@ export const TestimonialsCard = memo(
     );
 
     return (
-      <div
+      <Card
         className={cn(
           className,
           cnSizeFull,
+          'border-none',
           'grid grid-cols-1',
           'md:grid-cols-2',
           'lg:grid-cols-3'
         )}
       >
-        <ContactCard
-          className={cn(styleColumn, 'bg-card-foreground text-card')}
-        />
-
         <TestimonialsCarousel
           testimonials={testimonials}
-          className={cn(styleColumn)}
+          className={cn(styleColumn, 'bg-primary')}
+        />
+        <ContactCard
+          className={cn(styleColumn, 'border-r bg-card-foreground text-card')}
         />
 
-        <MapCard className={styleColumn} />
-      </div>
+        <MapCard className={cn(styleColumn, 'bg-card-foreground text-card')} />
+      </Card>
     );
   }
 );

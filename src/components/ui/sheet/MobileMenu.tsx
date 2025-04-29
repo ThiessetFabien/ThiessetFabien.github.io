@@ -24,12 +24,7 @@ import {
 } from '@src/lib/components/ui/sheet';
 import { cn } from '@src/lib/utils';
 import { cnBorderRadiusMd } from '@src/styles/border.style';
-import {
-  cnPaddingTop,
-  cnSmallPadding,
-  cnSpaceX,
-  cnSpaceY,
-} from '@src/styles/boxModel.style';
+import { cnPaddingTop, cnSpaceX, cnSpaceY } from '@src/styles/boxModel.style';
 import { cnFlexCenterY, cnFlexCol } from '@src/styles/flex.style';
 import { cnSmallText, cnTitle3 } from '@src/styles/font.style';
 import { MenuItemProps } from '@src/types/MenuItemProps';
@@ -55,7 +50,7 @@ export const MobileMenu = ({ items }: { items: MenuItemProps[] }) => {
       >
         <IconLoader icon='Menu' />
       </SheetTrigger>
-      <SheetContent side='left' className='w-[90%] sm:max-w-md'>
+      <SheetContent side='left' className='w-[90%]'>
         <SheetTitle className={cnTitle3}>Navigation</SheetTitle>
         <div className='sr-only'>
           <SheetDescription>
@@ -63,6 +58,11 @@ export const MobileMenu = ({ items }: { items: MenuItemProps[] }) => {
             sections du site
           </SheetDescription>
         </div>
+        <style jsx global>{`
+          ${open
+            ? 'body { overflow: hidden; } .leaflet-container { pointer-events: none; }'
+            : ''}
+        `}</style>
         <nav
           aria-label='Navigation principale'
           className={cn(cnFlexCol, cnSpaceY, cnPaddingTop)}
@@ -80,11 +80,10 @@ export const MobileMenu = ({ items }: { items: MenuItemProps[] }) => {
                 onClick={handleLinkClick}
                 className={cn(
                   cnFlexCenterY,
-                  cnSmallPadding,
                   cnSpaceX,
                   cnBorderRadiusMd,
                   cnSmallText,
-                  'group transition-colors duration-200 hover:bg-accent hover:text-accent-foreground'
+                  'group p-2 transition-colors duration-200 hover:bg-accent hover:text-accent-foreground'
                 )}
                 aria-label={item.label}
               >

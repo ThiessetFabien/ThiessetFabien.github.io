@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMap } from 'react-leaflet';
 
 /**
@@ -21,13 +21,64 @@ export const MapController = ({
   zoom?: number;
 }) => {
   const map = useMap();
+  const initializedRef = useRef(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    map.invalidateSize();
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
-    setTimeout(() => {
-      map.flyTo(center, zoom, { duration: 1 });
-    }, 300);
+  useEffect(() => {
+    if (!map) return;
+
+    const validateMapContainer = () => {
+      try {
+        const container = map.getContainer();
+        return (
+          container &&
+          document.body.contains(container) &&
+          container.clientWidth > 0 &&
+          container.clientHeight > 0
+        );
+      } catch {
+        return false;
+      }
+    };
+
+    try {
+      map.invalidateSize();
+
+      if (!initializedRef.current) {
+        map.setView(center, zoom, { animate: false, duration: 0 });
+        initializedRef.current = true;
+
+        timeoutRef.current = setTimeout(() => {
+          if (validateMapContainer()) {
+            try {
+              map.setView(center, zoom, { animate: true, duration: 1 });
+            } catch (e) {
+              console.warn('Animation de carte abandonnée', e);
+              map.setView(center, zoom, { animate: false });
+            }
+          }
+        }, 300);
+      } else {
+        if (validateMapContainer()) {
+          try {
+            map.setView(center, zoom, { animate: true, duration: 1 });
+          } catch (e) {
+            console.warn('Animation de carte abandonnée', e);
+            map.setView(center, zoom, { animate: false });
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('Erreur lors de la mise à jour de la carte', e);
+    }
   }, [map, center, zoom]);
 
   return null;

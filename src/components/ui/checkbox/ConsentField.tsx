@@ -41,6 +41,7 @@ export function ConsentField<T extends FieldValues>({
     <FormField
       control={control}
       name={name}
+      aria-required='true'
       render={({ field }) => (
         <FormItem className='flex flex-row items-start space-x-3 space-y-0'>
           <FormControl>

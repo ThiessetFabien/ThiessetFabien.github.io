@@ -28,6 +28,7 @@ export function InputField<T extends FieldValues>({
     <FormField
       control={control}
       name={name}
+      aria-required='true'
       render={({ field }) => (
         <FormItem>
           <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>

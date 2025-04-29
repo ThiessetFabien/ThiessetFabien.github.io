@@ -29,7 +29,11 @@ import React from 'react';
 import { Card, CardContent } from '@src/lib/components/ui/card';
 import { cn } from '@src/lib/utils';
 import { cnBorderNone } from '@src/styles/border.style';
-import { cnPaddingY, cnPadding } from '@src/styles/boxModel.style';
+import {
+  cnPadding,
+  cnPaddingX,
+  cnPaddingBottom,
+} from '@src/styles/boxModel.style';
 import { cnFlexCol } from '@src/styles/flex.style';
 import { CardProps } from '@src/types/CardProps';
 
@@ -46,15 +50,22 @@ const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
   className,
 }) => {
   return (
-    <div className={cn(className, 'h-full')}>
-      <Card className={cn(cnPadding, cnBorderNone, cnFlexCol, 'h-full flex-1')}>
+    <>
+      <Card
+        className={cn(className, cnBorderNone, cnFlexCol, 'h-full flex-1 p-0')}
+      >
         <Header2Card
           title='Où je travaille ?'
           description='Douai, Nord, France'
-          className={cnPaddingY}
+          className={cnPadding}
         />
         <CardContent
-          className={cn('flex-1 overflow-hidden p-0', 'min-h-[300px]')}
+          className={cn(
+            'flex-1 overflow-hidden',
+            cnPaddingX,
+            cnPaddingBottom,
+            'min-h-[300px]'
+          )}
         >
           <DynamicLeafletMap
             center={[50.381645, 3.053234]}
@@ -75,7 +86,7 @@ const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
           />
         </CardContent>
       </Card>
-    </div>
+    </>
   );
 };
 
