@@ -96,8 +96,6 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
     }
   };
 
-  if (!isMounted) return null;
-
   const isItemActive = (item: MenuItemProps): boolean => {
     if (item.href?.includes('#card-')) {
       const sectionId = item.href.replace('#card-', '');

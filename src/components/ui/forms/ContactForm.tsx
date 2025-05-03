@@ -11,7 +11,6 @@ import { menuItems } from '@src/config/menuItems.config';
 import { cn } from '@src/lib/utils';
 import type { FormSchema } from '@src/schemas/contactForm.schema';
 import { ContactFormSchema } from '@src/schemas/contactForm.schema';
-import { ClientSanitizationService } from '@src/services/client-sanitize.service';
 import { cnGap, cnSpaceY } from '@src/styles/boxModel.style';
 import { cnFlexCol } from '@src/styles/flex.style';
 import { useIsXl } from '@src/styles/mediaQueries.style';
@@ -61,15 +60,12 @@ export const ContactForm: React.FC<{
 
   const onSubmit = async (data: z.infer<typeof ContactFormSchema>) => {
     try {
-      const sanitizer = ClientSanitizationService.getInstance();
-      const sanitizedData = sanitizer.sanitizeObject(data);
-
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(sanitizedData),
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
@@ -78,20 +74,20 @@ export const ContactForm: React.FC<{
       }
 
       toast({
-        title: 'Success sending the email',
-        description: 'I will get back to you as soon as possible.',
+        title: 'Message envoyé avec succès',
+        description: 'Je vous recontacterai dès que possible.',
         variant: 'default',
       });
 
       form.reset();
     } catch (error) {
       toast({
-        title: 'Error sending the email',
-        description: 'A problem occurred while sending the email.',
+        title: "Erreur lors de l'envoi du message",
+        description: "Un problème est survenu lors de l'envoi de l'email.",
         variant: 'destructive',
       });
 
-      console.error('Error sending the email', error);
+      console.error("Erreur lors de l'envoi de l'email", error);
     }
   };
 
