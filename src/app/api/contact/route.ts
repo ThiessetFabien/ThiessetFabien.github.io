@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 import { gmail } from '@src/config/gmailAuth.config';
 import { checkGmailAuth } from '@src/middlewares/gmailAuth.middleware';
 import { ContactFormSchema } from '@src/schemas/contactForm.schema';
-import { SanitizationService } from '@src/services/sanitize.service';
 
 export const config = {
   runtime: 'edge',
@@ -23,18 +22,15 @@ export async function POST(request: Request) {
 
     const body = await request.json();
 
+    // La validation avec Zod assure déjà un niveau de sécurité
     const validatedData = ContactFormSchema.parse(body);
 
-    const sanitzeInput = SanitizationService.getInstance().sanitizeInput;
-
-    const sanitizedData = {
-      email: sanitzeInput(validatedData.email),
-      type: sanitzeInput(validatedData.type),
-      name: sanitzeInput(validatedData.name),
-      message: sanitzeInput(validatedData.message),
-    };
-
-    if (Object.values(sanitizedData).some((value) => !value)) {
+    if (
+      !validatedData.email ||
+      !validatedData.type ||
+      !validatedData.name ||
+      !validatedData.message
+    ) {
       return NextResponse.json(
         { success: false, error: 'Invalid data' },
         { status: 400 }
@@ -42,22 +38,22 @@ export async function POST(request: Request) {
     }
 
     const utf8Subject = `=?utf-8?B?${Buffer.from(
-      `Nouveau message de ${sanitizedData.name} - ${sanitizedData.type}`
+      `Nouveau message de ${validatedData.name} - ${validatedData.type}`
     ).toString('base64')}?=`;
 
     const messageParts = [
-      `From: ${sanitizedData.email}`,
+      `From: ${validatedData.email}`,
       `To: ${process.env.SMTP_SERVER_USERNAME}`,
       `Content-Type: text/html; charset=utf-8`,
       `MIME-Version: 1.0`,
       `Subject: ${utf8Subject}`,
       '',
       `<h2>Nouveau message de contact</h2>
-      <p><strong>Nom:</strong> ${sanitizedData.name}</p>
-      <p><strong>Email:</strong> ${sanitizedData.email}</p>
-      <p><strong>Type:</strong> ${sanitizedData.type}</p>
+      <p><strong>Nom:</strong> ${validatedData.name}</p>
+      <p><strong>Email:</strong> ${validatedData.email}</p>
+      <p><strong>Type:</strong> ${validatedData.type}</p>
       <p><strong>Message:</strong></p>
-      <p>${sanitizedData.message}</p>`,
+      <p>${validatedData.message.replace(/\n/g, '<br>')}</p>`,
     ];
 
     const messageRaw = messageParts.join('\n');
