@@ -96,6 +96,8 @@ export const ContactForm: React.FC<{
   return (
     <Form {...form} aria-labelledby='contact-form-heading'>
       <form
+        id='contact-form'
+        name='contact-form'
         onSubmit={handleSubmit(onSubmit)}
         className={cn(className, 'w-full', cnGap, isXl && cnSpaceY, cnFlexCol)}
       >

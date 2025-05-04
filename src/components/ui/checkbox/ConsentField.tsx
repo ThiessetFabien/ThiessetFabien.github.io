@@ -47,9 +47,12 @@ export function ConsentField<T extends FieldValues>({
           <FormControl>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <Checkbox
-                id={id}
+                id={`consent-${id}`}
+                name={name}
                 checked={field.value}
                 onCheckedChange={field.onChange}
+                className={cn('mr-2 mt-1')}
+                aria-describedby={`consent-description-${id}`}
               />
             </motion.div>
           </FormControl>
