@@ -68,7 +68,7 @@ export const Footer: React.FC<{
         .
       </p>
       <p className={cn('mx-auto text-center', cnSmallText)}>
-        &copy; {year}&nbsp;&bull;&nbsp;
+        &copy; 2024{year > 2024 ? ` - ${year}` : ''}&nbsp;&bull;&nbsp;
         <b className='font-bold'>Fabien Thiesset</b>&nbsp;&bull; &nbsp;Tous
         droits réservés
       </p>

@@ -78,12 +78,20 @@
       {
         "title": "portfolio",
         "organization": "rendu côté serveur",
-        "description": "site vitrine de mon travail, mettant en avant mes projets et compétences en développement web.",
+        "description": "site vitrine mettant en avant mes projets et compétences en développement web et mobile.",
+        "learned": [
+          "utiliser les composants shadcn/ui et ajuster leur style avec tailwind css dans next.js",
+          "créer un site intéractif et responsive en utilisant les grids et flexbox",
+          "optimiser les performances avec le lazy loading",
+          "implémenter une carte openstreetmap et un carousel de recommandations",
+          "Rendre le site visible et utilisable par tous (SEO, A11y)",
+          "garantir et automatiser la qualité du code avec husky et lint-staged"
+        ],
         "imageSrc": "images/portfolio.webp",
         "imageAlt": "Portfolio",
         "website": "fabuilds.netlify.app/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
-        "tags": ["next.js", "tailwind css", "google apis"]
+        "tags": ["next.js", "tailwind css", "OSM", "Embla", "google apis"]
       },
       {
         "title": "casalink",
@@ -116,16 +124,7 @@
         "github": "github.com/ThiessetFabien/MailNagerAPI",
         "tags": ["typescript", "nest.js", "mongodb"]
       }
-    ],
-    "icon1": "Mail",
-    "cta1": "engagez-moi !",
-    "href1": "#card-9",
-    "cta2": "réseautons",
-    "icon2": "Linkedin",
-    "href2": "www.linkedin.com/in/fabien-thiesset/",
-    "cta3": "travaillons ensemble",
-    "icon3": "Github",
-    "href3": "github.com/ThiessetFabien?tab=repositories"
+    ]
   },
   {
     "title": "expériences",

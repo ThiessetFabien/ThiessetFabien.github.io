@@ -26,6 +26,8 @@ import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@src/utils/formatText.util';
+import { shimmer } from '@src/utils/shimmer';
+import { toBase64 } from '@src/utils/toBase64';
 import { cnFlexCenterY } from '@styles/flex.style';
 
 import { cnSpaceY } from '../../../styles/boxModel.style';
@@ -45,25 +47,6 @@ import { ActionButton } from '../buttons/ActionButton';
  * @example
  * <CardProjects projects={projects} className="custom-class" />
  */
-
-const shimmer = (w: number, h: number) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#333" offset="20%" />
-      <stop stop-color="#222" offset="50%" />
-      <stop stop-color="#333" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#333" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`;
-
-const toBase64 = (str: string) =>
-  typeof window === 'undefined'
-    ? Buffer.from(str).toString('base64')
-    : window.btoa(str);
 
 export const ProjectsCard: React.FC<{
   projects: CardProps['projects'];
@@ -233,25 +216,40 @@ export const ProjectsCard: React.FC<{
                   formatSpecialWords(project?.title)
                 )}
               </CardTitle>
-              <p>
-                {capitalizeFirstLetterOfPhrase(
-                  formatSpecialWords(project.description)
-                )}
+              <p className={cn(cnFlexCol, cnSmallText, cnSmallGap)}>
+                <span>
+                  {capitalizeFirstLetterOfPhrase(
+                    formatSpecialWords(project.description)
+                  )}
+                </span>
               </p>
+              <ul className={cn(cnSmallText, 'font-semibold')}>
+                Ce que j&apos;ai appris :
+                {project.learned &&
+                  Array.isArray(project.learned) &&
+                  project.learned.map((learned, index) => (
+                    <li key={index} className='flex text-xs font-normal'>
+                      <div className='mr-2 h-2 w-2 flex-shrink-0 translate-y-1 rounded-full bg-ring'></div>
+                      {capitalizeFirstLetterOfPhrase(
+                        formatSpecialWords(learned)
+                      )}
+                    </li>
+                  ))}
+              </ul>
             </CardContent>
             <CardFooter
               className={cn('flex h-fit flex-col p-0', cnSmallSpaceY)}
             >
-              <div className={cn(cnSizeFull, 'flex flex-wrap gap-1')}>
+              <div className={cn(cnSizeFull, 'flex flex-wrap gap-1 border-t')}>
                 {project.tags.map((tag, tagIndex) => (
                   <Badge
                     key={tagIndex}
                     variant='outline'
-                    className={cn(cnSmallText, 'border-none p-0 font-light')}
+                    className={cn('border-none px-1 text-xs font-light')}
                   >
                     <p>
                       {capitalizeFirstLetterOfEachWord(
-                        formatSpecialWords(`#${tag}`)
+                        formatSpecialWords(`${tag}`)
                       )}
                     </p>
                   </Badge>
@@ -265,10 +263,9 @@ export const ProjectsCard: React.FC<{
                   >
                     <ActionButton
                       cta='Site'
-                      icon='ExternalLink'
                       href={project.website}
                       type='button'
-                      variant='destructive'
+                      variant='secondary'
                     />
                   </motion.div>
                 )}
@@ -278,7 +275,7 @@ export const ProjectsCard: React.FC<{
                     whileTap={{ scale: 0.8 }}
                   >
                     <ActionButton
-                      icon='Github'
+                      cta='code source'
                       href={project.github}
                       type='button'
                       variant='outline'
@@ -291,7 +288,7 @@ export const ProjectsCard: React.FC<{
                     whileTap={{ scale: 0.8 }}
                   >
                     <ActionButton
-                      icon='FileUser'
+                      cta='CDC'
                       href={project.file}
                       type='button'
                       variant='outline'

@@ -34,6 +34,7 @@ export interface ProjectProps {
   title: string;
   organization: string;
   description: string;
+  learned: string;
   imageSrc: string;
   imageAlt: string;
   videoSrc?: string;
