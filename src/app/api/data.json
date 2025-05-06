@@ -91,7 +91,6 @@
           "react native",
           "tailwind css",
           "android studio",
-          "expo",
           "pnpm"
         ]
       },
@@ -101,7 +100,7 @@
         "learned": [
           "concevoir et développer une application en équipe de cinq développeurs en mode agile scrum",
           "uniformiser l'architecture du projet, les conventions de nommage entre les deux équipes",
-          "implémenter l'authentification sécurisée côté le front-end avec la mise en cache locale du token",
+          "implémenter l'authentification avec stockage local du token",
           "utiliser du code réutilisable créé par d'autres développeurs pour créer la modale de validation du code pin requis pour les actions sensibles",
           "styliser l'interface utilisateur moderne et responsive",
           "réalisation du tableau kanban collaboratif et animation des rituels scrum (daily, retrospective, démo)"
@@ -132,11 +131,11 @@
         "title": "casalink api",
         "description": "serveur sécurisé  de l'app casalink.",
         "learned": [
-          "développer l'architecture model, vue, controller entre deux projets distincts",
+          "développer l'architecture model, vue, controller entre deux projets",
           "valider l'intégrité des données dans les couches applicatives jusqu'aux datamappers",
           "gérer les données utilisateurs par transactions",
           "implémenter l'authentification sécurisée à l'api",
-          "Contrôler l'accès à l'api et éviter les injections sql, les attaques xss, ddos",
+          "Contrôler l'accès et éviter les injections sql, les attaques xss, ddos",
           "configurer l'environnement de production et de développement avec npm comprenant les logs",
           "documenter l'api en anglais",
           "déploiement de l'api et la base de données",

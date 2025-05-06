@@ -143,7 +143,7 @@ export const ProjectsCard: React.FC<{
             {visibleCards[projectIndex] && (
               <CardHeader className='p-0'>
                 {project.imageSrc && project.imageAlt && (
-                  <figure className={cn(cnSizeFull)}>
+                  <figure className={'h-[220px] w-full overflow-hidden'}>
                     {!videoLoaded[projectIndex] && (
                       <Image
                         src={`/${project.imageSrc}`}
@@ -157,7 +157,7 @@ export const ProjectsCard: React.FC<{
                         placeholder='blur'
                         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 300))}`}
                         priority={project.title === 'casalink api'}
-                        className='h-fit max-h-full min-h-fit w-fit min-w-full rounded-xl object-cover object-center lg:max-h-[232.61px] xl:max-h-[160.88px] xl:min-h-full'
+                        className='w-full'
                       />
                     )}
                     <video
@@ -175,7 +175,7 @@ export const ProjectsCard: React.FC<{
                       }
                       poster={`/${project.imageSrc}`}
                       className={cn(
-                        'max-h-full min-h-fit min-w-full rounded-xl object-cover object-center lg:max-h-[232.61px] xl:max-h-[160.88px] xl:min-h-full',
+                        'h-full w-full object-cover',
                         videoLoaded[projectIndex] ? '' : 'hidden'
                       )}
                     >
