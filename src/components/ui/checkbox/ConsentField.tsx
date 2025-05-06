@@ -35,8 +35,6 @@ export function ConsentField<T extends FieldValues>({
   name,
   label,
 }: FormFieldProps<T>): JSX.Element {
-  const id = React.useId();
-
   return (
     <FormField
       control={control}
@@ -47,25 +45,28 @@ export function ConsentField<T extends FieldValues>({
           <FormControl>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <Checkbox
-                id={`consent-${id}`}
+                id={`checkbox-${name}`}
                 name={name}
                 checked={field.value}
                 onCheckedChange={field.onChange}
                 className={cn('mr-2 mt-1')}
-                aria-describedby={`consent-description-${id}`}
+                aria-describedby={`consent-description-${name}`}
               />
             </motion.div>
           </FormControl>
           <div className='space-y-1 leading-none'>
-            <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
+            <FormLabel
+              htmlFor={`checkbox-${name}`}
+              className={cn('min-w-full', cnParagraph)}
+            >
               {label}{' '}
             </FormLabel>
-            {errors?.message && (
-              <FormMessage className={cnSmallText}>
-                {String(errors.message)}
-              </FormMessage>
-            )}
           </div>
+          {errors?.message && (
+            <FormMessage className={cnSmallText}>
+              {String(errors.message)}
+            </FormMessage>
+          )}
         </FormItem>
       )}
     />

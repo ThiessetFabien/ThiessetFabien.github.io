@@ -21,21 +21,22 @@ export function MessageField<T extends FieldValues>({
   label,
   placeholder,
 }: FormFieldProps<T>): JSX.Element {
-  const id = React.useId();
-
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
+          <FormLabel
+            htmlFor={`textarea-${name}`}
+            className={cn('min-w-full', cnParagraph)}
+          >
             {label}{' '}
           </FormLabel>
           <FormControl>
             <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
               <Textarea
-                id={id}
+                id={`textarea-${name}`}
                 placeholder={placeholder}
                 className={cn(
                   'min-w-full',
@@ -45,6 +46,7 @@ export function MessageField<T extends FieldValues>({
                 )}
                 {...field}
                 required
+                name={name}
               />
             </motion.div>
           </FormControl>

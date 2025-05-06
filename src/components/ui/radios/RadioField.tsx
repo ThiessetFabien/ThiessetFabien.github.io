@@ -20,15 +20,16 @@ export function EmailTypeField<T extends FieldValues>({
   name,
   label,
 }: FormFieldProps<T>): JSX.Element {
-  const id = React.useId();
-
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
+          <FormLabel
+            htmlFor={`radio-group-${name}`}
+            className={cn('min-w-full', cnParagraph)}
+          >
             {label}{' '}
           </FormLabel>
           <FormControl>
@@ -36,15 +37,16 @@ export function EmailTypeField<T extends FieldValues>({
               onValueChange={field.onChange}
               defaultValue={field.value}
               className={cn('flex flex-row', cnParagraph)}
-              id={id}
+              id={`radio-group-${name}`}
+              name={name}
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={cn('flex items-center')}
               >
-                <RadioGroupItem value='Offer' id='offer' />
-                <FormLabel htmlFor='offer' className={cn('ml-2')}>
+                <RadioGroupItem value='Offer' id={`${name}-offer`} />
+                <FormLabel htmlFor={`${name}-offer`} className={cn('ml-2')}>
                   Offre
                 </FormLabel>
               </motion.div>
@@ -53,8 +55,8 @@ export function EmailTypeField<T extends FieldValues>({
                 whileTap={{ scale: 0.95 }}
                 className={cn('flex items-center')}
               >
-                <RadioGroupItem value='Question' id='question' />
-                <FormLabel htmlFor='question' className={cn('ml-2')}>
+                <RadioGroupItem value='Question' id={`${name}-question`} />
+                <FormLabel htmlFor={`${name}-question`} className={cn('ml-2')}>
                   Question
                 </FormLabel>
               </motion.div>
@@ -63,8 +65,8 @@ export function EmailTypeField<T extends FieldValues>({
                 whileTap={{ scale: 0.95 }}
                 className={cn('flex items-center')}
               >
-                <RadioGroupItem value='Other' id='other' />
-                <FormLabel htmlFor='other' className={cn('ml-2')}>
+                <RadioGroupItem value='Other' id={`${name}-other`} />
+                <FormLabel htmlFor={`${name}-other`} className={cn('ml-2')}>
                   Autre
                 </FormLabel>
               </motion.div>

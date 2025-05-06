@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useId } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -36,6 +37,8 @@ export const ContactForm: React.FC<{
   downloadActive1?: CardProps['downloadActive1'];
   className?: CardProps['className'];
 }> = ({ mailto, downloadActive1, className }): JSX.Element => {
+  const formId = useId();
+
   const form = useForm<FormSchema>({
     resolver: zodResolver(ContactFormSchema),
     defaultValues: {
@@ -96,7 +99,7 @@ export const ContactForm: React.FC<{
   return (
     <Form {...form} aria-labelledby='contact-form-heading'>
       <form
-        id='contact-form'
+        id={`contact-form-${formId}`}
         name='contact-form'
         onSubmit={handleSubmit(onSubmit)}
         className={cn(className, 'w-full', cnGap, isXl && cnSpaceY, cnFlexCol)}

@@ -22,8 +22,6 @@ export function InputField<T extends FieldValues>({
   placeholder,
   autocomplete,
 }: FormFieldProps<T>): JSX.Element {
-  const id = React.useId();
-
   return (
     <FormField
       control={control}
@@ -31,13 +29,16 @@ export function InputField<T extends FieldValues>({
       aria-required='true'
       render={({ field }) => (
         <FormItem>
-          <FormLabel htmlFor={id} className={cn('min-w-full', cnParagraph)}>
+          <FormLabel
+            htmlFor={`input-${name}`}
+            className={cn('min-w-full', cnParagraph)}
+          >
             {label}{' '}
           </FormLabel>
           <FormControl>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <Input
-                id={id}
+                id={`input-${name}`}
                 placeholder={placeholder}
                 autoComplete={autocomplete || name}
                 {...field}
@@ -49,6 +50,7 @@ export function InputField<T extends FieldValues>({
                   errors && 'border-destructive'
                 )}
                 required
+                name={name}
               />
             </motion.div>
           </FormControl>

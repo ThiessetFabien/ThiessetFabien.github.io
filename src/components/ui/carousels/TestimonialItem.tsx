@@ -42,6 +42,10 @@ export const TestimonialItem: React.FC<TestimonialItemProps> = ({
   index,
   isPartial,
 }) => {
+  const testimonialId = `testimonial-item-${index}`;
+  const authorId = `testimonial-author-${index}`;
+  const jobId = `testimonial-job-${index}`;
+
   return (
     <motion.div
       key={`${testimonial.author}-${index}`}
@@ -51,6 +55,8 @@ export const TestimonialItem: React.FC<TestimonialItemProps> = ({
       variants={slideVariants}
       transition={{ duration: 0.4 }}
       className={cn('w-full', isPartial && 'opacity-70')}
+      id={testimonialId}
+      aria-labelledby={authorId}
     >
       <Card
         className={cn(
@@ -85,10 +91,17 @@ export const TestimonialItem: React.FC<TestimonialItemProps> = ({
             </Avatar>
 
             <div className='text-left'>
-              <div className={cn(cnSmallText, 'font-semibold leading-tight')}>
+              <div
+                id={authorId}
+                className={cn(cnSmallText, 'font-semibold leading-tight')}
+              >
                 {capitalizeFirstLetterOfEachWord(testimonial.author)}
               </div>
-              <div className='font-sans text-xs leading-tight text-muted-foreground'>
+              <div
+                id={jobId}
+                className='font-sans text-xs leading-tight text-muted-foreground'
+                aria-describedby={authorId}
+              >
                 {capitalizeFirstLetterOfEachWord(
                   formatSpecialWords(testimonial.company)
                 )}

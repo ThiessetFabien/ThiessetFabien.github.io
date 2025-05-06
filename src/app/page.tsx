@@ -114,7 +114,7 @@ const HomePage: React.FC = (): JSX.Element => {
                     projects={card.projects}
                     className={cn(
                       cnSmallGap,
-                      'grid xs:auto-rows-auto sm:grid-cols-2 lg:grid-cols-4'
+                      'grid xs:auto-rows-auto sm:grid-cols-2 xl:grid-cols-3'
                     )}
                   />
                 )}

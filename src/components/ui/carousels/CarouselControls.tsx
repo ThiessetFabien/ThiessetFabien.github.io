@@ -51,14 +51,23 @@ export const CarouselControls: React.FC<CarouselControlsProps> = ({
       <div className='flex items-center gap-3'>
         <div className='hidden items-center gap-1.5 text-[10px] opacity-70 sm:flex'>
           <div className='flex gap-0.5'>
-            <kbd className='inline-flex h-5 w-5 items-center justify-center rounded border border-border/60 bg-background/90 font-sans'>
+            <kbd
+              id='control-up-key'
+              className='inline-flex h-5 w-5 items-center justify-center rounded border border-border/60 bg-background/90 font-sans'
+            >
               ↑
             </kbd>
-            <kbd className='inline-flex h-5 w-5 items-center justify-center rounded border border-border/60 bg-background/90 font-sans'>
+            <kbd
+              id='control-down-key'
+              className='inline-flex h-5 w-5 items-center justify-center rounded border border-border/60 bg-background/90 font-sans'
+            >
               ↓
             </kbd>
           </div>
-          <kbd className='inline-flex h-5 w-5 items-center justify-center rounded border border-border/60 bg-background/90 font-sans'>
+          <kbd
+            id='control-pause-key'
+            className='inline-flex h-5 w-5 items-center justify-center rounded border border-border/60 bg-background/90 font-sans'
+          >
             P
           </kbd>
         </div>

@@ -76,53 +76,143 @@
     "description": "voici une collection de mes projets javascript récents, montrant le type de clients avec lesquels je collabore et les solutions que je propose.",
     "projects": [
       {
-        "title": "portfolio",
-        "organization": "rendu côté serveur",
-        "description": "site vitrine mettant en avant mes projets et compétences en développement web et mobile.",
+        "title": "Anitapp (projet en cours)",
+        "description": "laucher d'application android adapté aux capacités cognitives et physiques d'une personne en situation de handicap.",
         "learned": [
-          "utiliser les composants shadcn/ui et ajuster leur style avec tailwind css dans next.js",
-          "créer un site intéractif et responsive en utilisant les grids et flexbox",
-          "optimiser les performances avec le lazy loading",
-          "implémenter une carte openstreetmap et un carousel de recommandations",
-          "Rendre le site visible et utilisable par tous (SEO, A11y)",
-          "garantir et automatiser la qualité du code avec husky et lint-staged"
+          "concevoir l'application mobile avec la cliente, l'ergothérapeute et l'éducateur spécialisé",
+          "développer et émuler une application mobile",
+          "vulgariser la technique et réaliser des tests d'utilisation avec la cliente"
         ],
-        "imageSrc": "images/portfolio.webp",
-        "imageAlt": "Portfolio",
-        "website": "fabuilds.netlify.app/",
-        "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
-        "tags": ["next.js", "tailwind css", "OSM", "Embla", "google apis"]
+        "imageSrc": "images/anitapp.svg",
+        "imageAlt": "Anitapp",
+        "github": "github.com/ThiessetFabien/Anitapp",
+        "tags": [
+          "typescript",
+          "react native",
+          "tailwind css",
+          "android studio",
+          "expo",
+          "pnpm"
+        ]
       },
       {
         "title": "casalink",
-        "organization": "application monopage",
-        "description": "application de planning familial pour gérer les tâches et événements avec délégation pour les enfants.",
+        "description": "planning familial de gestion des tâches, d'événements avec délégation aux enfants.",
+        "learned": [
+          "concevoir et développer une application en équipe de cinq développeurs en mode agile scrum",
+          "uniformiser l'architecture du projet, les conventions de nommage entre les deux équipes",
+          "implémenter l'authentification sécurisée côté le front-end avec la mise en cache locale du token",
+          "utiliser du code réutilisable créé par d'autres développeurs pour créer la modale de validation du code pin requis pour les actions sensibles",
+          "styliser l'interface utilisateur moderne et responsive",
+          "réalisation du tableau kanban collaboratif et animation des rituels scrum (daily, retrospective, démo)"
+        ],
         "imageSrc": "images/casalink.webp",
         "imageAlt": "Casalink",
         "videoSrc": "casalink.mp4",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
         "file": "documents/CDC-Casalink.pdf",
         "github": "github.com/ThiessetFabien/Casalink-Frontend",
-        "tags": ["typescript", "react.js", "sass"]
+        "tags": [
+          "typescript",
+          "react.js",
+          "redux.js",
+          "axios",
+          "sass",
+          "pnpm",
+          "notion",
+          "agile",
+          "scrum",
+          "git",
+          "github",
+          "draw.io",
+          "méthode meurise"
+        ]
       },
       {
         "title": "casalink api",
-        "organization": "api restful",
-        "description": "serveur sécurisé pour l'application casalink, gérant les données testées et authentifiées avec jwt.",
+        "description": "serveur sécurisé  de l'app casalink.",
+        "learned": [
+          "développer l'architecture model, vue, controller entre deux projets distincts",
+          "valider l'intégrité des données dans les couches applicatives jusqu'aux datamappers",
+          "gérer les données utilisateurs par transactions",
+          "implémenter l'authentification sécurisée à l'api",
+          "Contrôler l'accès à l'api et éviter les injections sql, les attaques xss, ddos",
+          "configurer l'environnement de production et de développement avec npm comprenant les logs",
+          "documenter l'api en anglais",
+          "déploiement de l'api et la base de données",
+          "synchoriser les deux projets pour fluidifier le développement et la maintenance"
+        ],
         "imageSrc": "images/casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
         "github": "github.com/ThiessetFabien/Casalink-Backend",
-        "tags": ["express.js", "postgresql", "jwt"]
+        "tags": [
+          "javascript",
+          "express.js",
+          "postgresql",
+          "sqitch",
+          "joy",
+          "bcrypt",
+          "cors",
+          "rate-limit",
+          "body-parser",
+          "jwt",
+          "npm",
+          "render",
+          "vercel"
+        ]
+      },
+      {
+        "title": "portfolio 2.0",
+        "description": "site vitrine mettant de mes projets et compétences en développement.",
+        "learned": [
+          "développer une architecture server side rendering avec next.js",
+          "optimiser les performances (lazy loading, shimmer, chargement conditionnel)",
+          "intégration de bibliohèques et apis externes",
+          "animer fluidement les intéractions et transitions",
+          "créer une interface responsive, accessible avec les intéractions complexes (menus, vidéos, carousel, dark mode)",
+          "configuration de l'environnement de production et de développement automatisé, sécurisé et documenté",
+          "implémentation de contrôles de navigation",
+          "optimisation du référencement naturel"
+        ],
+        "imageSrc": "images/portfolio.webp",
+        "imageAlt": "Portfolio 2.0",
+        "website": "fabuilds.netlify.app/",
+        "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
+        "tags": [
+          "typescript",
+          "next.js",
+          "tailwind css",
+          "shadcn",
+          "framer motion",
+          "embla",
+          "openstreetmap",
+          "google apis",
+          "netlify",
+          "pnpm"
+        ]
       },
       {
         "title": "mailnager api",
-        "organization": "api",
-        "description": "serveur pour la gestion des mails et le suivi des emplois, créé pour un ami et ancien élève.",
+        "description": "serveur de gestion de mails et suivi des emplois. créé pour un ami alumni.",
+        "learned": [
+          "développer une api avec nest.js",
+          "réalisation de tests unitaires pour les composants avec jest et de tests d'intégration avec supertest",
+          "gérer les données avec mongodb",
+          "débugguer les erreurs manuellement avec postman",
+          "configurer l'environnement de développement pnpm"
+        ],
         "imageSrc": "images/mailnager.webp",
         "imageAlt": "Casalink documentation",
         "github": "github.com/ThiessetFabien/MailNagerAPI",
-        "tags": ["typescript", "nest.js", "mongodb"]
+        "tags": [
+          "typescript",
+          "nest.js",
+          "mongodb",
+          "jest",
+          "supertest",
+          "pnpm"
+        ]
       }
     ]
   },

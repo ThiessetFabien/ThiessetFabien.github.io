@@ -116,7 +116,7 @@ export const ProjectsCard: React.FC<{
             cardRefs.current[projectIndex] = el;
           }}
           whileHover={{
-            scale: [null, 1.05, 1.1],
+            scale: [null, 1.01, 1.05],
             transition: {
               duration: 0.2,
               times: [0, 0.6, 1],
@@ -157,7 +157,7 @@ export const ProjectsCard: React.FC<{
                         placeholder='blur'
                         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 300))}`}
                         priority={project.title === 'casalink api'}
-                        className='h-fit max-h-full min-h-fit w-fit min-w-full rounded-xl object-cover object-center xl:min-h-full'
+                        className='h-fit max-h-full min-h-fit w-fit min-w-full rounded-xl object-cover object-center lg:max-h-[232.61px] xl:max-h-[160.88px] xl:min-h-full'
                       />
                     )}
                     <video
@@ -175,7 +175,7 @@ export const ProjectsCard: React.FC<{
                       }
                       poster={`/${project.imageSrc}`}
                       className={cn(
-                        'max-h-full min-h-fit min-w-full rounded-xl object-cover object-center xl:min-h-full',
+                        'max-h-full min-h-fit min-w-full rounded-xl object-cover object-center lg:max-h-[232.61px] xl:max-h-[160.88px] xl:min-h-full',
                         videoLoaded[projectIndex] ? '' : 'hidden'
                       )}
                     >
@@ -229,10 +229,11 @@ export const ProjectsCard: React.FC<{
                   Array.isArray(project.learned) &&
                   project.learned.map((learned, index) => (
                     <li key={index} className='flex text-xs font-normal'>
-                      <div className='mr-2 h-2 w-2 flex-shrink-0 translate-y-1 rounded-full bg-ring'></div>
+                      <div className='mr-2 aspect-square h-2 w-2 flex-shrink-0 translate-y-1 rounded-full bg-ring'></div>
                       {capitalizeFirstLetterOfPhrase(
                         formatSpecialWords(learned)
                       )}
+                      {index < project.learned.length - 1 ? ';' : '.'}
                     </li>
                   ))}
               </ul>
@@ -240,12 +241,17 @@ export const ProjectsCard: React.FC<{
             <CardFooter
               className={cn('flex h-fit flex-col p-0', cnSmallSpaceY)}
             >
-              <div className={cn(cnSizeFull, 'flex flex-wrap gap-1 border-t')}>
+              <div
+                className={cn(
+                  cnSizeFull,
+                  'flex flex-wrap gap-x-0.5 border-t border-primary'
+                )}
+              >
                 {project.tags.map((tag, tagIndex) => (
                   <Badge
                     key={tagIndex}
                     variant='outline'
-                    className={cn('border-none px-1 text-xs font-light')}
+                    className={cn('border-none p-0.5 text-xs font-light')}
                   >
                     <p>
                       {capitalizeFirstLetterOfEachWord(
@@ -262,10 +268,9 @@ export const ProjectsCard: React.FC<{
                     whileTap={{ scale: 0.8 }}
                   >
                     <ActionButton
-                      cta='Site'
+                      cta='Démo'
                       href={project.website}
                       type='button'
-                      variant='secondary'
                     />
                   </motion.div>
                 )}
@@ -275,7 +280,7 @@ export const ProjectsCard: React.FC<{
                     whileTap={{ scale: 0.8 }}
                   >
                     <ActionButton
-                      cta='code source'
+                      cta='code'
                       href={project.github}
                       type='button'
                       variant='outline'
@@ -288,7 +293,7 @@ export const ProjectsCard: React.FC<{
                     whileTap={{ scale: 0.8 }}
                   >
                     <ActionButton
-                      cta='CDC'
+                      cta='Spécifications'
                       href={project.file}
                       type='button'
                       variant='outline'

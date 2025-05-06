@@ -101,6 +101,12 @@ export const formatSpecialWords = (string: string | undefined | null) => {
     'dev brother': 'Dev Brother',
     'github desktop': 'GitHub Desktop',
     '3d': '3D',
+    cors: 'CORS',
+    xss: 'XSS',
+    ddos: 'DDoS',
+    windows: 'Windows',
+    pnpm: 'PNPM',
+    npm: 'NPM',
   };
   let formattedString = string;
 
