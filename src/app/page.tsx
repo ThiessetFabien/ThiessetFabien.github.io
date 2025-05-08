@@ -105,7 +105,10 @@ const HomePage: React.FC = (): JSX.Element => {
                     services={card.services}
                     imageSrc={card.imageSrc}
                     imageAlt={card.imageAlt}
-                    className={cn(cnFlexBetweenY, 'w-full space-y-0')}
+                    className={cn(
+                      cnFlexBetweenY,
+                      'w-full max-w-full space-y-0'
+                    )}
                   />
                 )}
                 {card.jobs && <SkillsCard jobs={card.jobs} />}
@@ -114,7 +117,7 @@ const HomePage: React.FC = (): JSX.Element => {
                     projects={card.projects}
                     className={cn(
                       cnSmallGap,
-                      'grid xs:auto-rows-auto sm:grid-cols-2 xl:grid-cols-3'
+                      'grid xs:auto-rows-auto sm:grid-cols-2'
                     )}
                   />
                 )}

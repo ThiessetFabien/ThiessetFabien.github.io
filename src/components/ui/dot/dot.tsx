@@ -19,9 +19,22 @@ export const Dot: React.FC<{ className?: string }> = ({ className }) => {
         className,
         'flex-shrink-0',
         cnBorderRadiusFull,
-        'h-2 w-2 translate-y-2',
+        'aspect-square h-2 w-2 translate-y-2',
         cnSmallMarginX,
         'bg-muted-foreground'
+      )}
+    />
+  );
+};
+
+export const SmallDot: React.FC<{ className?: string }> = ({ className }) => {
+  return (
+    <div
+      className={cn(
+        className,
+        cnBorderRadiusFull,
+        cnSmallMarginX,
+        'aspect-square h-1.5 w-1.5 flex-shrink-0 translate-y-1 rounded-full'
       )}
     />
   );

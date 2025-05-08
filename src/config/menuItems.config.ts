@@ -2,41 +2,18 @@
  * Configuration for menu items used in the application.
  * Each menu item represents a navigational link or action with associated metadata.
  */
+
+import { MenuItemProps } from '@src/types/MenuItemProps';
+
 /**
  * Type definition for a menu item.
  */
 export interface MenuItem {
-  /**
-   * Unique identifier for the menu item.
-   */
   id: string;
-
-  /**
-   * Icon name associated with the menu item.
-   */
   icon: string;
-
-  /**
-   * Display label for the menu item.
-   */
   label: string;
-
-  /**
-   * Hyperlink reference for the menu item.
-   * Can be an anchor link, external URL, or file path.
-   */
   href: string;
-
-  /**
-   * Specifies where to open the linked document.
-   * Common values: '_self', '_blank'.
-   */
   target?: '_self' | '_blank';
-
-  /**
-   * Relationship between the current document and the linked document.
-   * Common values: 'noopener noreferrer'.
-   */
   rel?: string;
 }
 
@@ -59,7 +36,7 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: 'portfolio',
-    icon: 'GalleryHorizontal',
+    icon: 'Grid2x2Plus',
     label: 'Portfolio',
     href: '#card-2',
     target: '_self',
@@ -101,7 +78,7 @@ export const menuItems: MenuItem[] = [
     id: 'linkedin',
     icon: 'Linkedin',
     label: 'LinkedIn',
-    href: 'www.linkedin.com/in/fabien-thiesset',
+    href: 'https://www.linkedin.com/in/fabien-thiesset',
     target: '_blank',
     rel: 'noopener noreferrer',
   },
@@ -128,3 +105,21 @@ export const menuItems: MenuItem[] = [
     href: 'tel:+33610920974',
   },
 ];
+
+export const menuItemsMobile = (items: MenuItemProps[]): MenuItemProps[] =>
+  items.filter(
+    (item) =>
+      ![
+        'services',
+        'about',
+        'portfolio',
+        'contact',
+        'experience',
+        'resume',
+        'motivation',
+      ].includes(item.id)
+  );
+
+export const menuItemsTabletteAndDesktop = (
+  items: MenuItemProps[]
+): MenuItemProps[] => items.filter((item) => item.id !== 'scrollTop');

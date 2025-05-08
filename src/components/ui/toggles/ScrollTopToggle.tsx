@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Toggle } from '@lib/components/ui/toggle';
 import { cn } from '@src/lib/utils';
 import { cnBorderRadiusFull } from '@src/styles/border.style';
+import { containerScale } from '@src/styles/variantsAnimation';
+import { iconBounce } from '@src/styles/variantsAnimation';
 import { IconName } from '@src/types/IconNameProps';
 import type { ScrollTopToggleProps } from '@src/types/ScrollTopToggleProps';
 import { IconLoader } from '@ui/icons/IconLoader';
@@ -28,26 +30,10 @@ export const ScrollTopToggle: React.FC<ScrollTopToggleProps> = ({
   type,
   className,
 }: ScrollTopToggleProps): JSX.Element => {
-  const containerVariants = {
-    hover: { scale: 1.2, transition: { duration: 0.3 } },
-    tap: { scale: 0.8, transition: { duration: 0.1 } },
-  };
-
-  const iconVariants = {
-    initial: { y: 0 },
-    hover: {
-      y: [0, -5, 0, -3, 0],
-      transition: {
-        duration: 1,
-        repeat: Infinity,
-        repeatType: 'loop' as const,
-      },
-    },
-  };
-
   return (
     <motion.div
-      variants={containerVariants}
+      variants={containerScale}
+      initial='initial'
       whileHover='hover'
       whileTap='tap'
       className={className}
@@ -62,7 +48,7 @@ export const ScrollTopToggle: React.FC<ScrollTopToggleProps> = ({
           cnBorderRadiusFull
         )}
       >
-        <motion.div variants={iconVariants} whileHover='hover'>
+        <motion.div variants={iconBounce} initial='initial' whileHover='hover'>
           <IconLoader
             icon={icon as IconName}
             className={'text-accent-foreground'}

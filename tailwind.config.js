@@ -118,6 +118,10 @@ const tailwindConfig = {
             opacity: '0.5',
           },
         },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -126,6 +130,7 @@ const tailwindConfig = {
         pulse: 'pulse 1s infinite',
         bounce: 'bounce 1s infinite',
         blink: 'blink 1s linear infinite',
+        shimmer: 'shimmer 1.5s infinite',
       },
     },
   },

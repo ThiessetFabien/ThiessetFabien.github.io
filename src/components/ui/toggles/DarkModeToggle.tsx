@@ -7,6 +7,7 @@ import { Toggle } from '@lib/components/ui/toggle';
 import { cn } from '@src/lib/utils';
 import { cnBorderNone, cnBorderRadiusFull } from '@src/styles/border.style';
 import { cnSizeIcon } from '@src/styles/size.style';
+import { containerScale, iconRotate } from '@src/styles/variantsAnimation';
 
 /**
  * A component that allows users to toggle between dark and light themes.
@@ -39,49 +40,12 @@ export function ToggleDarkMode({
     setTimeout(() => setIsRotating(false), 500);
   };
 
-  const iconVariants = {
-    initial: {
-      rotate: 0,
-      scale: 0,
-    },
-    animate: {
-      rotate: 0,
-      scale: 1,
-      transition: {
-        duration: 0.2,
-        ease: 'easeInOut',
-      },
-    },
-    exit: {
-      rotate: resolvedTheme === 'dark' ? 90 : -90,
-      scale: 0,
-      transition: {
-        duration: 0.2,
-        ease: 'easeInOut',
-      },
-    },
-    rotate: {
-      rotate: 360,
-      transition: { duration: 0.5 },
-    },
-  };
-
-  const containerVariants = {
-    initial: { opacity: 0.85 },
-    hover: {
-      scale: 1.2,
-      opacity: 1,
-      transition: { duration: 0.3 },
-    },
-    tap: { scale: 0.8, transition: { duration: 0.1 } },
-  };
-
   return (
     <motion.div
       initial='initial'
       whileHover='hover'
       whileTap='tap'
-      variants={containerVariants}
+      variants={containerScale}
       className={className}
     >
       <Toggle
@@ -89,7 +53,7 @@ export function ToggleDarkMode({
         size='sm'
         onClick={handleToggle}
         className={cn(
-          'relative h-10 w-10 bg-accent px-0 transition-colors duration-200',
+          'relative h-10 w-10 bg-accent px-0',
           cnBorderRadiusFull,
           cnBorderNone
         )}
@@ -99,7 +63,7 @@ export function ToggleDarkMode({
           {resolvedTheme === 'dark' ? (
             <motion.div
               key='sun'
-              variants={iconVariants}
+              variants={iconRotate}
               initial='initial'
               animate={isRotating ? 'animate' : ['animate', 'rotate']}
               exit='exit'
@@ -109,7 +73,7 @@ export function ToggleDarkMode({
           ) : (
             <motion.div
               key='moon'
-              variants={iconVariants}
+              variants={iconRotate}
               initial='initial'
               animate={isRotating ? ['animate', 'rotate'] : 'animate'}
               exit='exit'

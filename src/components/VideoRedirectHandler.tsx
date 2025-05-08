@@ -8,10 +8,14 @@ export function VideoRedirectHandler() {
   const router = useRouter();
 
   useEffect(() => {
+    // Check for invalid video paths
     if (
       pathname?.includes('/videos/undefined') ||
-      pathname?.includes('/undefined')
+      pathname?.includes('/undefined') ||
+      pathname?.endsWith('/videos/') ||
+      pathname?.includes('/videos//') // Double slash detection
     ) {
+      console.warn('Invalid video path detected:', pathname);
       router.replace('/not-found');
     }
   }, [pathname, router]);

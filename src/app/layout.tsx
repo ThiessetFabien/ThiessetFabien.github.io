@@ -2,13 +2,17 @@
 
 import { ThemeProvider } from 'next-themes';
 import { useEffect, useState } from 'react';
+import { Suspense } from 'react';
 
 import { Footer } from '@layouts/FooterLayout';
 import { Toaster } from '@lib/components/ui/toaster';
 import { cn } from '@lib/utils';
+import LoadingScreen from '@src/components/ui/loading/LoadingScreen';
 import { FloatingMenubar } from '@src/components/ui/sheet/FloatingMenubar';
 import { VideoRedirectHandler } from '@src/components/VideoRedirectHandler';
 import { menuItems } from '@src/config/menuItems.config';
+import { LoadingProvider } from '@src/contexts/LoadingContext';
+import { useLoading } from '@src/contexts/LoadingContext';
 import { Expletus_Sans } from '@src/fonts/ExpletusSans.font';
 import { Poppins } from '@src/fonts/Poppins.font';
 import {
@@ -57,6 +61,74 @@ import { metadata } from './metadata';
  * </RootLayout>
  * ```
  */
+
+// Composant intermédiaire simplifié
+function LayoutContent({
+  children,
+  data,
+}: {
+  children: React.ReactNode;
+  data: CardProps[];
+}) {
+  const { isPageLoading } = useLoading();
+  const [visible, setVisible] = useState(false);
+
+  // Effet pour gérer la visibilité du contenu
+  useEffect(() => {
+    if (!isPageLoading) {
+      // Court délai pour s'assurer que le loader a terminé sa transition
+      const timer = setTimeout(() => {
+        setVisible(true);
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, [isPageLoading]);
+
+  return (
+    <div
+      className='w-full transition-opacity duration-700'
+      style={{
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? 'auto' : 'none', // Désactive les interactions si invisible
+      }}
+    >
+      <a
+        href='#main-content'
+        className='sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-background focus:p-2 focus:text-foreground'
+      >
+        Aller au contenu principal
+      </a>
+
+      <main
+        id='main-content'
+        aria-label='Contenu principal'
+        className={cn(
+          'h-full',
+          'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
+        )}
+      >
+        {children}
+      </main>
+
+      <Footer
+        name={data[0]?.name}
+        familyName={data[0]?.familyName}
+        expertises={data[0]?.expertises}
+        className={cn(
+          cnPadding,
+          cnMarginTop,
+          cnSizeFull,
+          cnFlexCol,
+          cnLightTextMuted,
+          cnSmallSpaceY,
+          cnFlexCenterX,
+          'mx-auto'
+        )}
+      />
+    </div>
+  );
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -107,39 +179,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <a
-            href='#main-content'
-            className='sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-background focus:p-2 focus:text-foreground'
-          >
-            Aller au contenu principal
-          </a>
+          <LoadingProvider>
+            <LoadingScreen />
+            <Suspense fallback={<LoadingScreen />}>
+              <LayoutContent data={data}>{children}</LayoutContent>
+            </Suspense>
+          </LoadingProvider>
           <FloatingToggles />
           <FloatingMenubar items={menuItems} />
-          <main
-            id='main-content'
-            aria-label='Contenu principal'
-            className={cn(
-              'h-full',
-              'grid grid-cols-1 lg:auto-rows-auto lg:grid-cols-12'
-            )}
-          >
-            {children}
-          </main>
-          <Footer
-            name={data[0]?.name}
-            familyName={data[0]?.familyName}
-            expertises={data[0]?.expertises}
-            className={cn(
-              cnPadding,
-              cnMarginTop,
-              cnSizeFull,
-              cnFlexCol,
-              cnLightTextMuted,
-              cnSmallSpaceY,
-              cnFlexCenterX,
-              'mx-auto'
-            )}
-          />
           <Toaster />
         </ThemeProvider>
       </body>

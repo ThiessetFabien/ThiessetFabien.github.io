@@ -76,15 +76,15 @@
     "description": "voici une collection de mes projets javascript récents, montrant le type de clients avec lesquels je collabore et les solutions que je propose.",
     "projects": [
       {
-        "title": "Anitapp (projet en cours)",
-        "description": "laucher d'application android adapté aux capacités cognitives et physiques d'une personne en situation de handicap.",
+        "title": "anitapp",
+        "description": "launcher d'application android adapté aux capacités cognitives et physiques d'une personne en situation de handicap.",
         "learned": [
           "concevoir l'application mobile avec la cliente, l'ergothérapeute et l'éducateur spécialisé",
           "développer et émuler une application mobile",
           "vulgariser la technique et réaliser des tests d'utilisation avec la cliente"
         ],
         "imageSrc": "images/anitapp.svg",
-        "imageAlt": "Anitapp",
+        "imageAlt": "anitapp",
         "github": "github.com/ThiessetFabien/Anitapp",
         "tags": [
           "typescript",
@@ -248,7 +248,7 @@
         ]
       },
       {
-        "job": "fondateur et développeur de fabuilds - next.js",
+        "job": "développeur fondateur de fabuilds - next.js",
         "date": "novembre 2024 - décembre 2024",
         "company": "projet personnel",
         "goal": "création d'un portfolio et d'un blog moderne présentant mes compétences, projets en développement web et mes articles.",
@@ -417,7 +417,10 @@
         "date": "avril 2023 - décembre 2023",
         "company": "association centre hélène borel",
         "location": "raimbeaucourt",
-        "goal": "structure, organise et suit le quotidien de 52 personnes accueillies porteuses de déficiences physiques en garantissant la qualité du prendre soin et le bien-être en collaborant avec l'équipe pluridisciplinaire de 38 professionnels et les divers services transversaux."
+        "goal": "structure, organise et suit le quotidien de 52 personnes accueillies porteuses de déficiences physiques en garantissant la qualité du prendre soin et le bien-être en collaborant avec l'équipe pluridisciplinaire de 38 professionnels et les divers services transversaux.",
+        "tasks": [
+          "redaction du panoramas, journal à destination des résidents, des familles et des équipes."
+        ]
       },
       {
         "job": "autoformation html/css/javascript et node.js",

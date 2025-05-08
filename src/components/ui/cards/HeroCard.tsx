@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
+import { useLoading } from '@src/contexts/LoadingContext';
 import { Badge } from '@src/lib/components/ui/badge';
 import {
   cnBorder2,
@@ -83,6 +84,8 @@ export const HeroCard: React.FC<{
   }) => {
     const [currentExpertiseIndex, setCurrentExpertiseIndex] = useState(0);
     const [showExpertise, setShowExpertise] = useState(true);
+    const { setLoading } = useLoading();
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const isSM = useIsSm();
 
@@ -101,6 +104,39 @@ export const HeroCard: React.FC<{
       setShowExpertise(true);
       setCurrentExpertiseIndex(0);
     }, []);
+
+    useEffect(() => {
+      if (imageSrc) {
+        const img = new Image();
+        img.src = imageSrc;
+
+        img.onload = () => {
+          setImageLoaded(true);
+
+          setTimeout(() => {
+            setLoading(false);
+          }, 300);
+        };
+
+        img.onerror = () => {
+          console.error("Erreur de chargement de l'image du profil");
+          setImageLoaded(true);
+          setLoading(false);
+        };
+
+        const timeoutId = setTimeout(() => {
+          if (!imageLoaded) {
+            console.warn("Timeout du chargement de l'image du profil");
+            setImageLoaded(true);
+            setLoading(false);
+          }
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+      } else {
+        setLoading(false);
+      }
+    }, [imageSrc, setLoading, imageLoaded]);
 
     return (
       <div className={cn(cnFlexFullCenter, cnFlexCol, 'h-full')}>
@@ -138,9 +174,9 @@ export const HeroCard: React.FC<{
               />
               <Avatar
                 className={cn(
-                  'absolute z-0',
+                  'over absolute z-0',
                   'scale-105 sm:scale-110',
-                  '-top-2 md:-top-2.5',
+                  '-top-2 sm:-top-3 md:-top-[18px]',
                   cnBigImage,
                   cnSizeAuto
                 )}
@@ -151,7 +187,7 @@ export const HeroCard: React.FC<{
                   width={ResponsiveImage()}
                   height={ResponsiveImage()}
                   className={cn(
-                    'relative',
+                    'relative overflow-hidden',
                     cnBorderRadiusFull,
                     cnSizeAuto,
                     cnLittleTranslateSm,
@@ -228,12 +264,20 @@ export const HeroCard: React.FC<{
             'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'
           )}
         >
+          <h5
+            className={cn(
+              'col-span-2 sm:col-span-3 lg:col-span-4 xl:col-span-6',
+              'font-bold'
+            )}
+          >
+            Mes services
+          </h5>
           {services &&
             services.length > 0 &&
             services.map((service, i) => (
               <Badge
-                variant='outline'
                 key={i}
+                variant='outline'
                 className={cn(
                   cnSmallPadding,
                   cnFlexFullCenter,
@@ -247,8 +291,8 @@ export const HeroCard: React.FC<{
                 )}
               >
                 <IconLoader icon={service.icon} className={'text-secondary'} />
-                <p className={cn(cnFlexCol, 'text-center')}>
-                  <span className='font-bold'>
+                <p className={cn(cnFlexCol, 'text-center italic')}>
+                  <span className='font-semibold'>
                     {capitalizeFirstLetterOfPhrase(
                       formatSpecialWords(service.item)
                     )}

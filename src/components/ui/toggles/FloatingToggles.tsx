@@ -14,6 +14,7 @@ import {
   cnTopRightPosition,
 } from '@src/styles/boxModel.style';
 import { useIsLg } from '@src/styles/mediaQueries.style';
+import { containerScale } from '@src/styles/variantsAnimation';
 
 /**
  * FloatingToggles component renders floating buttons for toggling dark mode and scrolling to the top.
@@ -114,6 +115,9 @@ export const FloatingToggles = (): JSX.Element | null => {
                 'pointer-events-auto absolute',
                 cnBottomRightPosition
               )}
+              variants={containerScale}
+              whileHover='hover'
+              whileTap='tap'
               initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: scrollTopOpacity,
@@ -128,8 +132,6 @@ export const FloatingToggles = (): JSX.Element | null => {
                 y: 20,
                 transition: { duration: 0.3 },
               }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
             >
               <ScrollTopToggle
                 type='button'

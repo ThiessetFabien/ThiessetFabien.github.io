@@ -5,6 +5,7 @@ import { Check, ChevronRight, Circle } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '@lib/utils';
+import { NoSSR } from '@src/hooks/useIsClient.hook';
 
 function MenubarMenu({
   ...props
@@ -234,7 +235,7 @@ const MenubarShortcut = ({
     />
   );
 };
-MenubarShortcut.displayname = 'MenubarShortcut';
+MenubarShortcut.displayName = 'MenubarShortcut';
 
 export {
   Menubar,
@@ -253,4 +254,5 @@ export {
   MenubarGroup,
   MenubarSub,
   MenubarShortcut,
+  NoSSR,
 };
