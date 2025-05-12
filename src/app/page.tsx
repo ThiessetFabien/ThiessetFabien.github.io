@@ -10,8 +10,8 @@ import { ExperiencesCard } from '@src/components/ui/cards/ExperiencesCard';
 import { HeroCard } from '@src/components/ui/cards/HeroCard';
 import { FooterCard } from '@src/components/ui/cards/layouts.cards/FooterCard';
 import { Header1Card } from '@src/components/ui/cards/layouts.cards/Header1Card';
-import { ProjectsCard } from '@src/components/ui/cards/ProjectsCard';
 import SkillsCard from '@src/components/ui/cards/SkillsCard';
+import { ProjectsSection } from '@src/components/ui/sections/ProjectsSection';
 import LoadingSpinner from '@src/components/ui/spinner/LoadingSpinner';
 import {
   cnPadding,
@@ -113,7 +113,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 )}
                 {card.jobs && <SkillsCard jobs={card.jobs} />}
                 {card.projects && card.projects.length > 0 && (
-                  <ProjectsCard
+                  <ProjectsSection
                     projects={card.projects}
                     className={cn(
                       cnSmallGap,
