@@ -410,7 +410,17 @@
         "date": "septembre 2024 - aujourd'hui",
         "company": "association udapei59",
         "location": "thumeries",
-        "goal": "analyse les besoins d'onze personnes accueillies porteuses de déficiences mentales et/ou physiques, et propose des solutions adaptées en collaborant avec l'équipe pluridisciplinaire de 25 professionnels."
+        "goal": "analyse les besoins d'onze personnes accueillies porteuses de déficiences mentales et/ou physiques, et propose des solutions adaptées en collaborant avec l'équipe pluridisciplinaire de 25 professionnels.",
+        "tasks": [
+          "co-gestion du \"panoramas\", journal à destination des résidents, des familles et des équipes professionnelles."
+        ],
+        "skills": [
+          "rédaction de documentation",
+          "communication avec les personnes",
+          "suivi des projets",
+          "retouche photo",
+          "canva"
+        ]
       },
       {
         "job": "référent vie quotidienne et aide soignant",
