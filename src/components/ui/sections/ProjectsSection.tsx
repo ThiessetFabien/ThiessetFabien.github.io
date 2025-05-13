@@ -122,9 +122,18 @@ export const ProjectsSection: React.FC<{
         videoRefs.current[index]!.controls = true;
         videoRefs.current[index]!.muted = false;
         videoRefs.current[index]!.preload = 'metadata';
+
+        // Ajouter un gestionnaire d'erreur spécifique pour Casalink
+        videoRefs.current[index]!.onerror = () => {
+          console.warn(
+            'Erreur de chargement vidéo Casalink - passage au fallback'
+          );
+          // Marquer la vidéo comme chargée pour éviter de bloquer l'interface
+          handleVideoLoaded(index);
+        };
       }
     });
-  }, [projects, visibleMediaIndices]);
+  }, [projects, visibleMediaIndices, handleVideoLoaded]);
 
   const setVideoRef = useCallback(
     (el: HTMLVideoElement | null, index: number) => {

@@ -1,4 +1,11 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from 'react';
 
 type LoadingContextType = {
   isLoading: boolean;
@@ -27,6 +34,19 @@ export const LoadingProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const pathname = usePathname();
+
+  // Effet pour désactiver automatiquement le chargement si la page est la page 404
+  useEffect(() => {
+    if (pathname) {
+      // Si nous sommes sur une page inexistante (gérée par not-found.tsx)
+      // On force la désactivation du chargement
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [pathname]);
 
   const setLoading = (loading: boolean) => {
     setIsLoading(loading);

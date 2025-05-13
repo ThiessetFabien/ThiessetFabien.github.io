@@ -114,7 +114,7 @@ export const ProjectCard = memo(
                         project?.imageAlt || `Image du projet ${project.title}`
                       }
                       onLoad={() => handleImageLoaded(projectIndex)}
-                      className='object-cover transition-transform duration-500 ease-in-out group-hover:scale-105'
+                      className='w-full object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-105'
                       priority={projectIndex < 2}
                       width={640}
                       height={220}
@@ -137,9 +137,11 @@ export const ProjectCard = memo(
                       <video
                         ref={(el) => setVideoRef(el, projectIndex)}
                         onLoadedData={() => handleVideoLoaded(projectIndex)}
-                        onError={(e) =>
-                          console.error(`Erreur vidéo (${project.title}):`, e)
-                        }
+                        onError={(e) => {
+                          console.error(`Erreur vidéo (${project.title}):`, e);
+                          // Marquer la vidéo comme chargée même en cas d'erreur pour éviter de bloquer l'interface
+                          handleVideoLoaded(projectIndex);
+                        }}
                         controls={project.title === 'casalink'}
                         autoPlay={
                           project.title !== 'casalink'
@@ -155,7 +157,12 @@ export const ProjectCard = memo(
                             ? project.imageSrc
                             : `/${project.imageSrc}`
                         }
-                        className='h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105'
+                        className='w-full transition-transform duration-500 ease-in-out group-hover:scale-105'
+                        style={{
+                          objectFit: 'cover',
+                          width: '100%',
+                          height: '100%',
+                        }}
                         aria-label={`Vidéo de démonstration du projet ${project.title}`}
                       >
                         <source
@@ -164,7 +171,7 @@ export const ProjectCard = memo(
                               ? project.videoSrc.startsWith('/')
                                 ? project.videoSrc
                                 : `/videos/${project.videoSrc}`
-                              : ''
+                              : undefined
                           }
                           type='video/mp4'
                         />
@@ -193,12 +200,7 @@ export const ProjectCard = memo(
         )}
 
         <CardContent
-          className={cn(
-            cnParagraph,
-            cnSpaceY,
-            cnSizeFull,
-            'max-w-prose px-0 pb-0'
-          )}
+          className={cn(cnParagraph, cnSpaceY, cnSizeFull, 'px-0 pb-0')}
         >
           <CardTitle
             className={cn(
@@ -285,14 +287,12 @@ export const ProjectCard = memo(
             </div>
           </CardTitle>{' '}
           <p className={cn(cnFlexCol, cnSmallText, cnSmallGap)}>
-            <span>
-              {capitalizeFirstLetterOfPhrase(
-                formatSpecialWords(project.description)
-              )}
-            </span>
+            {capitalizeFirstLetterOfPhrase(
+              formatSpecialWords(project.description)
+            )}
           </p>
           <ul
-            className={cn(cnSmallText, 'font-semibold')}
+            className={cn(cnSmallText, 'max-w-prose font-semibold')}
             aria-label={`Compétences acquises sur le projet ${project.title}`}
           >
             Ce que j&apos;ai appris :

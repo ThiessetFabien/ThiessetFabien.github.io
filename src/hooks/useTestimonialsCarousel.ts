@@ -78,7 +78,9 @@ export const useTestimonialsCarousel = (
   }, [testimonials.length]);
 
   const togglePlayPause = useCallback(() => {
-    setIsPaused((prev) => !prev);
+    setIsPaused((prev) => {
+      return !prev;
+    });
   }, []);
 
   const goToFirst = useCallback(() => {
@@ -127,37 +129,39 @@ export const useTestimonialsCarousel = (
 
   const handleKeyboardNavigation = useCallback(
     (e: KeyboardEvent) => {
+      let handled = true;
+
       switch (e.key) {
         case 'ArrowUp':
           prevTestimonial();
-          e.preventDefault();
           break;
         case 'ArrowDown':
           nextTestimonial();
-          e.preventDefault();
           break;
         case ' ':
         case 'p':
         case 'P':
           togglePlayPause();
-          e.preventDefault();
           break;
         case 'Home':
           goToFirst();
-          e.preventDefault();
           break;
         case 'End':
           goToLast();
-          e.preventDefault();
           break;
         case 'PageUp':
           goToPage(-1);
-          e.preventDefault();
           break;
         case 'PageDown':
           goToPage(1);
-          e.preventDefault();
           break;
+        default:
+          handled = false;
+      }
+
+      if (handled) {
+        e.preventDefault();
+        e.stopPropagation();
       }
     },
     [

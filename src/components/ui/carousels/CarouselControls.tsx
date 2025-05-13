@@ -4,6 +4,7 @@ import { Button } from '@lib/components/ui/button';
 import { cn } from '@lib/utils';
 import { cnSmallPadding } from '@src/styles/boxModel.style';
 
+import { Counter } from '../counter/Counter';
 import { IconLoader } from '../icons/IconLoader';
 
 interface CarouselControlsProps {
@@ -27,8 +28,17 @@ export const CarouselControls: React.FC<CarouselControlsProps> = ({
     <div
       className={cn(
         cnSmallPadding,
-        'absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between border-t border-border/40 bg-background/60 backdrop-blur-sm'
+        'absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between border-t border-border/40 bg-background/60 backdrop-blur-sm',
+        'pointer-events-auto'
       )}
+      role='toolbar'
+      aria-label='Contrôles du carousel'
+      onClick={(e) => e.stopPropagation()}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          e.stopPropagation();
+        }
+      }}
     >
       <div className='flex items-center gap-2'>
         <Button
@@ -37,15 +47,15 @@ export const CarouselControls: React.FC<CarouselControlsProps> = ({
           variant='outline'
           size='sm'
           className='rounded-full'
-          onClick={onGoToFirst}
+          onClick={(e) => {
+            e.stopPropagation();
+            onGoToFirst();
+          }}
           aria-label='Premier témoignage'
         >
           <span className='text-xs font-medium'>Revenir au début</span>
         </Button>
-
-        <span className='text-xs font-medium'>
-          {activeIndex + 1} / {totalItems}
-        </span>
+        <Counter value={activeIndex} max={totalItems} />
       </div>
 
       <div className='flex items-center gap-3'>
@@ -78,7 +88,10 @@ export const CarouselControls: React.FC<CarouselControlsProps> = ({
           variant='outline'
           size='icon'
           className='rounded-full'
-          onClick={onTogglePlayPause}
+          onClick={(e) => {
+            e.stopPropagation();
+            onTogglePlayPause();
+          }}
           aria-label={isPaused ? 'Reprendre le défilement' : 'Mettre en pause'}
         >
           {isPaused || isHovering ? (
