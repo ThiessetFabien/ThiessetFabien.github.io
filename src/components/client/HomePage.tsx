@@ -22,11 +22,7 @@ import {
   cnPaddingX,
   cnSmallGap,
 } from '@styles/boxModel.style';
-import {
-  cnFlexBetweenY,
-  cnFlexCenterY,
-  cnFlexCol,
-} from '@styles/flex.style';
+import { cnFlexBetweenY, cnFlexCenterY, cnFlexCol } from '@styles/flex.style';
 import { cnBorderNone } from '@styles/border.style';
 import type { ExperiencesProps } from '@src/types/ExperiencesProps';
 

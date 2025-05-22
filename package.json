@@ -76,7 +76,6 @@
     "check:swc": "./scripts/validate-swc-config.sh",
     "analyze:scripts": "./scripts/analyze-scripts.sh",
     "precommit": "bunx lint-staged",
-    "prepare": "husky",
     "toggle-runtime": "./scripts/toggle-runtime.sh",
     "quality": "./scripts/maintenance-qualite.sh",
     "ci:check": "bun run type-check && bun run format:check && bun run lint:strict",

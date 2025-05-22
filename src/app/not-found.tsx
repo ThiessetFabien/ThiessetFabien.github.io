@@ -9,11 +9,7 @@ import {
   cnSmallText,
   cnLightTextMuted,
 } from '@styles/font.style';
-import {
-  cnFlexCol,
-  cnFlexFullCenter,
-  cnFlexCenterY,
-} from '@styles/flex.style';
+import { cnFlexCol, cnFlexFullCenter, cnFlexCenterY } from '@styles/flex.style';
 import { cnBorderNone } from '@styles/border.style';
 import { cnSmallSpaceY } from '@styles/boxModel.style';
 import {

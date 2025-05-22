@@ -14,12 +14,7 @@ import { menuItems } from '@src/config/menuItems.config';
 import { cn } from '@src/lib/utils';
 import type { FormSchema } from '@src/schemas/contactForm.schema';
 import { ContactFormSchema } from '@src/schemas/contactForm.schema';
-import {
-  cnPadding,
-  cnPaddingX,
-  cnGap,
-  cnSpaceY,
-} from '@styles/boxModel.style';
+import { cnPadding, cnPaddingX, cnGap, cnSpaceY } from '@styles/boxModel.style';
 import { cnFlexCol, cnFlexCenterY } from '@styles/flex.style';
 import { useIsXl } from '@styles/mediaQueries.style';
 import type { CardProps } from '@src/types/CardProps';

@@ -4,7 +4,7 @@ import {
   CardTitle,
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
-import { cnCenteredText } from '@styles';
+import { cnCenteredText, cnResponsiveTextPadding } from '@styles';
 import { cnDescription, cnTitle2, cnTitle2Size } from '@styles/font.style';
 import type { HeaderCardProps } from '@src/types/HeaderProps';
 import {

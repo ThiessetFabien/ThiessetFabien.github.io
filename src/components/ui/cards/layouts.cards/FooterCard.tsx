@@ -81,12 +81,11 @@ export const FooterCard = ({
    * @param {string | undefined} cta - Le texte à masquer si nécessaire
    * @returns {string | undefined} Le texte masqué ou le texte original
    */
-  const hideCta = (cta: string | undefined): string | undefined => !isXs ? cta : '';
+  const hideCta = (cta: string | undefined): string | undefined =>
+    !isXs ? cta : '';
 
   return (
-    <footer
-      className={cn('flex flex-wrap', cnSmallGap, className)}
-    >
+    <footer className={cn('flex flex-wrap', cnSmallGap, className)}>
       {renderActionButton(
         icon1,
         href1,

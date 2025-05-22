@@ -29,7 +29,6 @@ export default function VideoPage() {
       } catch (error) {
         console.error('Erreur lors de la vérification de la vidéo:', error);
         router.push('/not-found');
-        
       }
     }
 

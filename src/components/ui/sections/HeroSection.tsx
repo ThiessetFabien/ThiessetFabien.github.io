@@ -9,7 +9,6 @@ import {
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import { useLoading } from '@src/contexts/LoadingContext';
-import { Badge } from '@src/lib/components/ui/badge';
 import {
   cnBorder2,
   cnBorderBottom4,
@@ -19,7 +18,6 @@ import {
   cnGap,
   cnPaddingY,
   cnSmallGap,
-  cnSmallPadding,
   cnSmallPaddingLeft,
   cnSmallSpaceY,
   cnSpaceY,
@@ -290,43 +288,28 @@ export const HeroSection: React.FC<{
           </CardDescription>
         </CardHeader>
         <CardContent
-          className={cn(
-            cnSmallGap,
-            'grid max-w-full flex-wrap p-0',
-            'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'
-          )}
+          className={cn(cnSmallGap, cnSpaceY, 'w-full max-w-full p-0')}
         >
-          <h5
-            className={cn(
-              'col-span-2 sm:col-span-3 lg:col-span-4 xl:col-span-6',
-              'font-bold'
-            )}
-          >
-            Mes services
-          </h5>
+          <h5 className='font-bold'>Mes services</h5>
           {memoizedServices &&
             memoizedServices.length > 0 &&
             memoizedServices.map((service) => (
-              <div key={service.id}>
+              <div key={service.id} className='flex w-full items-center gap-2'>
                 <IconLoader icon={service.icon} className='text-secondary' />
                 <p
                   className={cn(
-                    cnFlexCol,
                     cnSmallText,
-                    'hyphens-auto break-words',
-                    'italic'
+                    'gap-2 hyphens-auto break-words italic'
                   )}
                 >
                   <span className='font-semibold'>
                     {capitalizeFirstLetterOfPhrase(
                       formatSpecialWords(service.item)
-                    )}
+                    )}{' '}
                   </span>
-                  <span>
-                    {capitalizeFirstLetterOfPhrase(
-                      formatSpecialWords(service.description)
-                    )}
-                  </span>
+                  {capitalizeFirstLetterOfPhrase(
+                    formatSpecialWords(service.description)
+                  )}
                 </p>
               </div>
             ))}
