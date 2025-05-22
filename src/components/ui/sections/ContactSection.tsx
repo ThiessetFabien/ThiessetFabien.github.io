@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import { memo } from 'react';
 
 import { cn } from '@lib/utils';
@@ -8,13 +7,8 @@ import type { TestimonialProps } from '@src/types/TestimonialProps';
 
 import { ContactForm } from '@src/components/ui/forms/ContactForm';
 
-const MapCard = dynamic(() => import('../cards/MapCard'), {
-  ssr: false,
-  loading: () => <p>Chargement de la carte...</p>,
-});
-
 /**
- * A responsive grid layout component displaying contact information, testimonials, and a map.
+ * A responsive grid layout component displaying contact information and testimonials.
  *
  * This component organizes three cards in a responsive grid:
  * - A ContactForm for contact information
@@ -52,8 +46,7 @@ export const ContactSection = memo(
           cnSizeFull,
           'border-none',
           'grid grid-cols-1',
-          'md:grid-cols-2',
-          'lg:grid-cols-3'
+          'md:grid-cols-2'
         )}
       >
         <TestimonialsCarousel
@@ -63,8 +56,6 @@ export const ContactSection = memo(
         <ContactForm
           className={cn(styleColumn, 'border-r bg-card-foreground text-card')}
         />
-
-        <MapCard className={cn(styleColumn, 'bg-card-foreground text-card')} />
       </section>
     );
   }

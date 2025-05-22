@@ -1,5 +1,8 @@
 /* eslint-env node */
 
+// Exécute le typecheck avant le commit via husky
+const typecheckTask = () => 'bun run typecheck';
+
 const config = {
   // Vérifie et corrige les fichiers JS/TS avec ESLint et Prettier
   '*.{js,jsx,ts,tsx}': (files) => {
