@@ -1,0 +1,53 @@
+/**
+ * Styles spécifiques pour les cartes Leaflet en mode sombre
+ * Ces styles sont appliqués quand la classe "dark" est présente sur l'élément root
+ */
+
+/* Mode sombre - Version moderne */
+:root.dark .leaflet-container {
+  filter: brightness(0.8) contrast(1.2);
+}
+
+:root.dark .leaflet-tile-pane {
+  filter: invert(0.9) hue-rotate(180deg) brightness(0.9) contrast(0.9);
+}
+
+:root.dark .leaflet-control-attribution {
+  background-color: rgba(30, 30, 30, 0.8) !important;
+  color: #f0f0f0 !important;
+}
+
+:root.dark .leaflet-control-attribution a {
+  color: #90caf9 !important;
+}
+
+:root.dark .leaflet-control-zoom a {
+  background-color: #333 !important;
+  color: #f0f0f0 !important;
+}
+
+:root.dark .leaflet-control-zoom-in,
+:root.dark .leaflet-control-zoom-out {
+  background-color: #333 !important;
+  color: #f0f0f0 !important;
+}
+
+:root.dark .leaflet-popup-content-wrapper {
+  background-color: #333 !important;
+  color: #f0f0f0 !important;
+}
+
+:root.dark .leaflet-popup-tip {
+  background-color: #333 !important;
+}
+
+/* Alternative pour les navigateurs qui ne supportent pas bien les filtres CSS */
+@supports not (filter: invert(0.9) hue-rotate(180deg)) {
+  :root.dark .leaflet-container {
+    background-color: #222 !important;
+  }
+
+  :root.dark .leaflet-tile {
+    opacity: 0.6 !important;
+  }
+}

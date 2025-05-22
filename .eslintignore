@@ -1,0 +1,9 @@
+**/.next/**
+**/node_modules/**
+**/public/**
+**/build/**
+**/dist/**
+.eslintrc.cjs
+**/*.config.js
+**/*.config.cjs
+.eslintignore

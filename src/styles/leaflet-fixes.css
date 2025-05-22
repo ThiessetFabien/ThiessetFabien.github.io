@@ -1,0 +1,96 @@
+/* Corrections pour l'affichage des cartes Leaflet 
+   Ces styles corrigent les problèmes courants d'affichage des tuiles
+   et assurent la compatibilité avec les modes sombre et clair
+*/
+
+/* Conteneur principal */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
+  background-color: #f8f9fa !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Couche de tuiles */
+.leaflet-tile-pane {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.leaflet-tile {
+  filter: contrast(1.03) brightness(1.05);
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.leaflet-tile-loaded {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.leaflet-tile-container {
+  background-color: #f0f0f0;
+  visibility: visible !important;
+}
+
+/* Attributions et contrôles */
+.leaflet-control-attribution {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  padding: 2px 5px !important;
+  font-size: 10px !important;
+  border-radius: 3px 0 0 0 !important;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+/* Support du mode sombre */
+:root.dark .leaflet-container {
+  filter: brightness(0.85) contrast(1.1);
+}
+
+:root.dark .leaflet-control-attribution {
+  background-color: rgba(30, 30, 30, 0.8) !important;
+  color: #f0f0f0 !important;
+}
+
+:root.dark .leaflet-control-attribution a {
+  color: #90caf9 !important;
+}
+
+/* Correction pour le problème d'affichage des tuiles */
+@media screen {
+  .leaflet-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-color: #f0f0f0;
+  }
+
+  :root.dark .leaflet-container::after {
+    background-color: #202020;
+  }
+}
+
+/* Assurer que les popups sont correctement positionnées */
+.leaflet-popup {
+  z-index: 700 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 6px !important;
+}

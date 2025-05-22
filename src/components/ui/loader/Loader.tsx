@@ -125,7 +125,7 @@ export const Loader: React.FC<LoaderProps> = ({
             height: '100%',
           }}
         >
-          <div className='h-2 w-2 rounded-full bg-primary'></div>
+          <div className='h-2 w-2 rounded-full bg-primary' />
         </motion.div>
       </motion.div>
 

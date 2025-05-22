@@ -1,6 +1,7 @@
 /**
  * Represents the properties of an experience entry.
  *
+ * @property id - Unique identifier for the experience.
  * @property job - The title of the job or position.
  * @property date - The date or duration of the experience.
  * @property company - The name of the company or organization.
@@ -12,6 +13,7 @@
  * @property skills - (Optional) A list of skills acquired or utilized.
  */
 export interface ExperiencesProps {
+  id?: string;
   job: string;
   date: string;
   company: string;

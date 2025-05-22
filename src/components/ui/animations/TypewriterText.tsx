@@ -41,16 +41,17 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
   const completionTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       if (typingTimeout.current) {
         clearTimeout(typingTimeout.current);
       }
       if (completionTimeout.current) {
         clearTimeout(completionTimeout.current);
       }
-    };
-  }, []);
+    },
+    []
+  );
 
   useEffect(() => {
     if (!texts || texts.length === 0) return;
@@ -67,27 +68,25 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
           setIsDeleting(true);
           typingTimeout.current = setTimeout(handleTyping, delayBetweenTexts);
         }
+      } else if (currentTextLength > 0) {
+        setCurrentText(currentText.substring(0, currentTextLength - 1));
+        typingTimeout.current = setTimeout(handleTyping, deletingSpeed);
       } else {
-        if (currentTextLength > 0) {
-          setCurrentText(currentText.substring(0, currentTextLength - 1));
-          typingTimeout.current = setTimeout(handleTyping, deletingSpeed);
-        } else {
-          setIsDeleting(false);
-          setCurrentTextIndex((prevIndex) => {
-            const isLastText = prevIndex === texts.length - 1;
+        setIsDeleting(false);
+        setCurrentTextIndex((prevIndex) => {
+          const isLastText = prevIndex === texts.length - 1;
 
-            if (isLastText && !loop) {
-              if (onComplete) {
-                completionTimeout.current = setTimeout(onComplete, 500);
-              }
-              return prevIndex;
+          if (isLastText && !loop) {
+            if (onComplete) {
+              completionTimeout.current = setTimeout(onComplete, 500);
             }
+            return prevIndex;
+          }
 
-            return isLastText ? 0 : prevIndex + 1;
-          });
+          return isLastText ? 0 : prevIndex + 1;
+        });
 
-          typingTimeout.current = setTimeout(handleTyping, typingSpeed);
-        }
+        typingTimeout.current = setTimeout(handleTyping, typingSpeed);
       }
     };
 

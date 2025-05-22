@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CardProps } from '@src/types/CardProps';
+import type { CardProps } from '@src/types/CardProps';
 
 export const LinkedinIcon: React.FC<{ className: CardProps['className'] }> = ({
   className,

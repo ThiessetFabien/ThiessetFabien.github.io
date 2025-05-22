@@ -1,0 +1,22 @@
+{
+  "name": "Fabien Thiesset Portfolio",
+  "short_name": "Portfolio",
+  "description": "Portfolio de Fabien Thiesset, Expert React et Node - Développeur Web & Mobile Full-Stack",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#6C5DD3",
+  "background_color": "#ffffff",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

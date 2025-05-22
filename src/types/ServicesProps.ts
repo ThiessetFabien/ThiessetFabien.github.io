@@ -1,4 +1,4 @@
-import { IconName } from './IconNameProps';
+import type { IconName } from './IconNameProps';
 
 /**
  * Defines the properties for a service item.

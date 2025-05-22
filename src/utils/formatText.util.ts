@@ -1,12 +1,11 @@
-export const capitalizeFirstLetterOfEachWord = (str: string) => {
-  return str
+export const capitalizeFirstLetterOfEachWord = (str: string) =>
+  str
     .split(' ')
     .map((word) => {
       if (word.length === 0) return word;
       return word.charAt(0).toLocaleUpperCase() + word.slice(1);
     })
     .join(' ');
-};
 
 /**
  * Capitalizes the first letter of each phrase in a string. Phrases are split by `.`, `?`, or `!`.
@@ -14,15 +13,14 @@ export const capitalizeFirstLetterOfEachWord = (str: string) => {
  * @param str - The input string.
  * @returns The string with the first letter of each phrase capitalized.
  */
-export const capitalizeFirstLetterOfPhrase = (str: string) => {
-  return str
+export const capitalizeFirstLetterOfPhrase = (str: string) =>
+  str
     .split(/(?<=\.|\?|!)\s+/)
     .map((phrase) => {
       if (phrase.length === 0) return phrase;
       return phrase.charAt(0).toLocaleUpperCase() + phrase.slice(1);
     })
     .join(' ');
-};
 
 /**
  * Formats a given string by replacing specific words or phrases with their corresponding

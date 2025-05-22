@@ -5,9 +5,9 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 
-import { ProjectCard } from '@src/components/ui/cards/ProjectsCard';
+import { ProjectCard } from '@src/components/ui/cards/ProjectCard';
 import { useIsLg, useIsSm, useIsXs } from '@src/styles/mediaQueries.style';
-import { CardProps } from '@src/types/CardProps';
+import type { CardProps } from '@src/types/CardProps';
 
 /**
  * CardProjects component.
@@ -147,9 +147,7 @@ export const ProjectsSection: React.FC<{
   }, []);
 
   const shouldLoadVideo = useCallback(
-    (index: number): boolean => {
-      return visibleMediaIndices.has(index);
-    },
+    (index: number): boolean => visibleMediaIndices.has(index),
     [visibleMediaIndices]
   );
 

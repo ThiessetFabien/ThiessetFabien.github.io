@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { cn } from '@src/lib/utils';
 
-import { Cursor } from '../cursor/Cursor';
+import { Cursor } from '@src/components/ui/cursor/Cursor';
 
 /**
  * TypewriterText component animates text with a typewriter effect.

@@ -35,9 +35,9 @@ import {
   cnPaddingBottom,
 } from '@src/styles/boxModel.style';
 import { cnFlexCol } from '@src/styles/flex.style';
-import { CardProps } from '@src/types/CardProps';
+import type { CardProps } from '@src/types/CardProps';
 
-import LoadingSpinner from '../spinner/LoadingSpinner';
+import LoadingSpinner from '@src/components/ui/spinner/LoadingSpinner';
 
 import { Header2Card } from './layouts.cards/Header2Card';
 
@@ -48,46 +48,40 @@ const DynamicLeafletMap = dynamic(() => import('../maps/LeafletMap'), {
 
 const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
   className,
-}) => {
-  return (
-    <>
-      <Card
-        className={cn(className, cnBorderNone, cnFlexCol, 'h-full flex-1 p-0')}
-      >
-        <Header2Card
-          title='Où je travaille ?'
-          description='Douai, Nord, France'
-          className={cnPadding}
-        />
-        <CardContent
-          className={cn(
-            'flex-1 overflow-hidden',
-            cnPaddingX,
-            cnPaddingBottom,
-            'min-h-[300px]'
-          )}
-        >
-          <DynamicLeafletMap
-            center={[50.381645, 3.053234]}
-            zoom={9}
-            flyToAnimation
-            markers={[
-              {
-                position: [50.381645, 3.053234],
-                circle: {
-                  radius: 30000,
-                  color: '#4F46E5',
-                  fillColor: '#4F46E5',
-                  fillOpacity: 0.15,
-                  weight: 3,
-                },
-              },
-            ]}
-          />
-        </CardContent>
-      </Card>
-    </>
-  );
-};
+}) => (
+  <Card className={cn(className, cnBorderNone, cnFlexCol, 'h-full flex-1 p-0')}>
+    <Header2Card
+      title='Où je travaille ?'
+      description='Douai, Nord, France'
+      className={cnPadding}
+    />
+    <CardContent
+      className={cn(
+        'flex-1 overflow-hidden',
+        cnPaddingX,
+        cnPaddingBottom,
+        'min-h-[300px]'
+      )}
+    >
+      <DynamicLeafletMap
+        center={[50.381645, 3.053234]}
+        zoom={9}
+        markers={[
+          {
+            position: [50.381645, 3.053234],
+            circle: {
+              radius: 30000,
+              color: '#4F46E5',
+              fillColor: '#4F46E5',
+              fillOpacity: 0.15,
+              weight: 3,
+              opacity: 1,
+            },
+          },
+        ]}
+      />
+    </CardContent>
+  </Card>
+);
 
 export default React.memo(MapCard);

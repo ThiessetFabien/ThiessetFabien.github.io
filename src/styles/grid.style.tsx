@@ -24,42 +24,44 @@ import type { CardProps } from '@src/types/CardProps';
  * // gridConfig will include the `colSpan` property for each card
  */
 export const useCardGrid = (cards: CardProps[]) => {
-  const gridConfig = useMemo(() => {
-    return cards.map((card) => {
-      let colSpan = '';
+  const gridConfig = useMemo(
+    () =>
+      cards.map((card) => {
+        let colSpan = '';
 
-      switch (true) {
-        case !!card.imageSrc:
-          colSpan = 'lg:col-span-12 lg:row-span-1';
-          break;
-        case !!card.jobs:
-          colSpan = 'lg:col-span-12 lg:row-span-1';
-          break;
-        case !!card.experiences:
-          colSpan = 'lg:col-span-12 lg:row-span-1';
-          break;
-        case !!card.projects:
-          colSpan = 'lg:col-span-12 lg:row-span-1';
-          break;
-        case !!card.testimonials:
-          colSpan = 'lg:col-span-12 lg:row-span-1';
-          break;
-        case !!card.map:
-          colSpan = 'lg:col-span-12 lg:row-span-1';
-          break;
-        case !!card.mailto:
-          colSpan = 'lg:col-span-6 lg:row-span-1';
-          break;
-        default:
-          colSpan = 'lg:col-span-3 lg:row-span-1';
-          break;
-      }
-      return {
-        ...card,
-        colSpan,
-      };
-    });
-  }, [cards]);
+        switch (true) {
+          case !!card.imageSrc:
+            colSpan = 'lg:col-span-12 lg:row-span-1';
+            break;
+          case !!card.jobs:
+            colSpan = 'lg:col-span-12 lg:row-span-1';
+            break;
+          case !!card.experiences:
+            colSpan = 'lg:col-span-12 lg:row-span-1';
+            break;
+          case !!card.projects:
+            colSpan = 'lg:col-span-12 lg:row-span-1';
+            break;
+          case !!card.testimonials:
+            colSpan = 'lg:col-span-12 lg:row-span-1';
+            break;
+          case !!card.map:
+            colSpan = 'lg:col-span-12 lg:row-span-1';
+            break;
+          case !!card.mailto:
+            colSpan = 'lg:col-span-6 lg:row-span-1';
+            break;
+          default:
+            colSpan = 'lg:col-span-3 lg:row-span-1';
+            break;
+        }
+        return {
+          ...card,
+          colSpan,
+        };
+      }),
+    [cards]
+  );
 
   return gridConfig;
 };

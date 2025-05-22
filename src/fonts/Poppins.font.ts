@@ -3,7 +3,7 @@
  * @description This file configures the Poppins font from Google Fonts using CDN.
  */
 
-export const Poppins = {
+export const poppins = {
   variable: '--font-poppins-sans',
   className: 'font-poppins-sans',
   style: {

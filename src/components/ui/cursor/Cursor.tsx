@@ -26,21 +26,19 @@ import { motion } from 'framer-motion';
  * );
  * ```
  */
-export const Cursor = (): JSX.Element => {
-  return (
-    <motion.span
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        repeat: Infinity,
-        repeatType: 'reverse',
-        duration: 0.5,
-      }}
-      className='whitespace-nowrap font-bold text-primary'
-    >
-      {' '}
-      |{''}
-    </motion.span>
-  );
-};
+export const Cursor = (): JSX.Element => (
+  <motion.span
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{
+      repeat: Infinity,
+      repeatType: 'reverse',
+      duration: 0.5,
+    }}
+    className='whitespace-nowrap font-bold text-primary'
+  >
+    {' '}
+    |
+  </motion.span>
+);

@@ -20,11 +20,10 @@ export function useMediaQuery(query: string): boolean {
       if (media.addEventListener) {
         media.addEventListener('change', handleChange);
         return () => media.removeEventListener('change', handleChange);
-      } else {
-        // Fallback for older browsers
-        media.addListener(handleChange);
-        return () => media.removeListener(handleChange);
       }
+      // Fallback for older browsers
+      media.addListener(handleChange);
+      return () => media.removeListener(handleChange);
     }
 
     return undefined;

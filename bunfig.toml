@@ -1,0 +1,19 @@
+[install]
+optional = false
+peer = false
+
+[install.cache]
+dir = ".bun"
+
+[install.lockfile]
+save = true
+
+[run]
+# Amélioration des performances en développement
+smol = true
+bun = true
+
+[run.env]
+# Optimisations de performance
+NEXT_TELEMETRY_DISABLED = "1"
+NEXT_IGNORE_TYPECHECK_ERRORS = "true" # Accélère le développement

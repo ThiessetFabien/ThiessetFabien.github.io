@@ -78,9 +78,7 @@ export const useTestimonialsCarousel = (
   }, [testimonials.length]);
 
   const togglePlayPause = useCallback(() => {
-    setIsPaused((prev) => {
-      return !prev;
-    });
+    setIsPaused((prev) => !prev);
   }, []);
 
   const goToFirst = useCallback(() => {

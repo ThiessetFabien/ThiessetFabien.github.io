@@ -36,22 +36,16 @@ const nextconfig = {
   reactStrictMode: false,
   output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
   productionBrowserSourceMaps: false,
-  swcMinify: true,
   images: {
     unoptimized: true,
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
-    domains: ['tile.openstreetmap.org', 'media.licdn.com', 'cdn.jsdelivr.net'],
+    domains: ['tile.openstreetmap.org', 'media.licdn.com'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'media.licdn.com',
         pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.jsdelivr.net',
-        pathname: '/gh/devicons/devicon@latest/icons/**',
       },
     ],
     deviceSizes: [360, 640, 750, 828, 1080, 1200],
@@ -59,6 +53,7 @@ const nextconfig = {
     formats: ['image/webp', 'image/avif'],
   },
   webpack: (config) => {
+    // Optimisez les règles de webpack pour accélérer le build
     config.module.rules.push({
       test: /\.(png|jpg|gif)$/i,
       type: 'asset/resource',
@@ -67,12 +62,47 @@ const nextconfig = {
       },
     });
 
+    // Optimisation pour la première compilation
+    config.watchOptions = {
+      ignored: ['**/.git/**', '**/node_modules/**', '**/public/**'],
+      aggregateTimeout: 300, // Délai en ms après lequel webpack recompile après un changement
+    };
+
+    // Optimisations pour la première compilation
+    if (process.env.OPTIMIZE_FIRST_COMPILATION === 'true') {
+      // Utiliser un cache persistant pour webpack
+      config.cache = {
+        type: 'filesystem',
+        cacheDirectory: resolve(__dirname, '.next/cache/webpack'),
+        buildDependencies: {
+          config: [__filename], // Invalide le cache quand ce fichier change
+        },
+        compression: false, // Désactiver la compression pour la première compilation
+      };
+
+      // Optimisations aggressives pour la première compilation
+      config.optimization = {
+        ...config.optimization,
+        minimize: false, // Désactive la minification pour la première compilation
+        removeAvailableModules: false,
+        removeEmptyChunks: false,
+        splitChunks: false,
+      };
+    } else {
+      // Configuration normale pour les compilations suivantes
+      config.cache = {
+        type: 'filesystem',
+        cacheDirectory: resolve(__dirname, '.next/cache/webpack'),
+      };
+    }
+
+    // Utilisez le cache de Bun pour les transformations CSS
     config.module.rules.push({
       test: /\.css$/,
       exclude: /leaflet\.css$/,
       use: [
-        'style-loader',
-        'css-loader',
+        { loader: 'style-loader', options: { injectType: 'styleTag' } },
+        { loader: 'css-loader', options: { importLoaders: 1 } },
         {
           loader: 'postcss-loader',
           options: {
@@ -106,6 +136,9 @@ const nextconfig = {
             placeholderSize: 20,
             quality: 70,
             name: 'static/images/[name]-[width].[ext]',
+            // Activer le cache pour accélérer les builds suivants
+            cache: true,
+            cacheDirectory: resolve(__dirname, '.cache/images'),
           },
         },
       ],
@@ -146,10 +179,25 @@ const nextconfig = {
                 )[1];
                 return `npm.${packageName.replace('@', '')}`;
               },
+              priority: 10,
+              reuseExistingChunk: true,
+            },
+            common: {
+              minChunks: 2,
+              priority: 5,
+              reuseExistingChunk: true,
             },
           },
         },
         moduleIds: 'deterministic',
+      };
+    } else {
+      // En mode développement, optimiser pour la vitesse plutôt que pour la taille
+      config.optimization = {
+        ...config.optimization,
+        removeAvailableModules: false,
+        removeEmptyChunks: false,
+        splitChunks: false,
       };
     }
 
@@ -158,19 +206,30 @@ const nextconfig = {
   experimental: {
     turbo: {
       rules: {
+        // Simplifier les règles pour Turbopack
         '*.{png,jpg,gif,webp}': ['@next/font/image'],
       },
-    },
-    optimizeCss: true,
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
-    modularizeImports: {
-      'lucide-react': {
-        transform: 'lucide-react/dist/esm/icons/{{member}}',
-        preventFullImport: true,
+      // Réduire les fonctionnalités expérimentales pour augmenter la compatibilité
+      resolveAlias: {
+        '@src': './src',
       },
     },
+    // Désactiver l'optimisation CSS pour éviter les problèmes avec critters
+    optimizeCss: false,
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    // Optimisation du chargement
+    serverMinification: true,
+    webpackBuildWorker: true,
   },
   transpilePackages: ['leaflet', 'react-leaflet', 'lucide-react'],
+  // Configuration correcte pour ignorer certains fichiers lors de la surveillance
+  // https://nextjs.org/docs/app/api-reference/next-config-js/watchOptions
+  onDemandEntries: {
+    // période (en ms) où le serveur continuera à garder les pages en mémoire
+    maxInactiveAge: 25 * 1000,
+    // nombre de pages à garder en mémoire
+    pagesBufferLength: 2,
+  },
 };
 
 export default nextconfig;

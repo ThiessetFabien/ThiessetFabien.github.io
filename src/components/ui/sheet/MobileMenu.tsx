@@ -27,9 +27,9 @@ import { cnBorderRadiusMd } from '@src/styles/border.style';
 import { cnPaddingTop, cnSpaceX, cnSpaceY } from '@src/styles/boxModel.style';
 import { cnFlexCenterY, cnFlexCol } from '@src/styles/flex.style';
 import { cnSmallText, cnTitle3 } from '@src/styles/font.style';
-import { MenuItemProps } from '@src/types/MenuItemProps';
+import type { MenuItemProps } from '@src/types/MenuItemProps';
 
-import { IconLoader } from '../icons/IconLoader';
+import { IconLoader } from '@src/components/ui/icons/IconLoader';
 
 export const MobileMenu = ({ items }: { items: MenuItemProps[] }) => {
   const [open, setOpen] = useState(false);

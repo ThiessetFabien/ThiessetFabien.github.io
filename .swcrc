@@ -1,0 +1,57 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": false,
+      "dynamicImport": true
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic",
+        "pragma": "React.createElement",
+        "pragmaFrag": "React.Fragment",
+        "throwIfNamespace": true,
+        "development": false,
+        "useBuiltins": true
+      }
+    },
+    "target": "es2020",
+    "loose": true,
+    "externalHelpers": true,
+    "keepClassNames": false,
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["*"],
+      "@src/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@api/*": ["src/app/api/*"],
+      "@components/*": ["src/components/*"],
+      "@common/*": ["src/components/common/*"],
+      "@forms/*": ["src/components/forms/*"],
+      "@layouts/*": ["src/components/layouts/*"],
+      "@ui/*": ["src/components/ui/*"],
+      "@config/*": ["src/config/*"],
+      "@fonts/*": ["src/fonts/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@lib/*": ["src/lib/*"],
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["src/utils/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@providers/*": ["src/components/providers/*"],
+      "@schemas/*": ["src/schemas/*"],
+      "@styles/*": ["src/styles/*"],
+      "@types/*": ["src/types/*"]
+    }
+  },
+  "minify": false,
+  "module": {
+    "type": "es6",
+    "strict": true,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": false
+  },
+  "sourceMaps": false,
+  "exclude": ["node_modules", ".next", "dist", "out", ".bun"]
+}

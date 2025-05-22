@@ -1,0 +1,174 @@
+/**
+ * Utilitaires pour tester les composants Leaflet
+ *
+ * Ces fonctions permettent de vérifier le bon fonctionnement des composants
+ * Leaflet et peuvent être exécutées dans la console du navigateur
+ */
+
+import L from 'leaflet';
+
+/**
+ * Vérifie la santé de la carte Leaflet
+ * @param map Instance de carte Leaflet
+ * @returns Résultat de la vérification
+ */
+export const checkMapHealth = (
+  map: L.Map
+): { "status": 'ok' | 'warning' | 'error'; "issues": string[] } => {
+  if (!map) {
+    return {
+      "status": 'error',
+      "issues": ['La carte Leaflet est null ou undefined'],
+    };
+  }
+
+  const issues: string[] = [];
+  let status: 'ok' | 'warning' | 'error' = 'ok';
+
+  // Vérifier le conteneur
+  const container = map.getContainer();
+  if (!container || !document.body.contains(container)) {
+    issues.push("Le conteneur de la carte n'est pas dans le DOM");
+    status = 'error';
+  } else if (container.clientWidth === 0 || container.clientHeight === 0) {
+    // Vérifier les dimensions
+    issues.push('Le conteneur de la carte a une taille nulle');
+    status = 'error';
+  }
+
+  // Vérifier les couches
+  const mapInstance = map as L.Map & { ['_layers']: Record<string, any> };
+  const tileLayer = Object.values(mapInstance['_layers'] || {}).find(
+    (layer: any) => layer instanceof L.TileLayer
+  );
+  const hasTileLayers = tileLayer ? map.hasLayer(tileLayer) : false;
+  if (!hasTileLayers) {
+    issues.push('Aucune couche de tuiles trouvée');
+    status = 'error';
+  }
+
+  // Vérifier les contrôles
+  const mapWithControls = map as L.Map & { ['_controlCorners']: Record<string, any> };
+  if (Object.keys(mapWithControls['_controlCorners'] || {}).length === 0) {
+    issues.push('Aucun contrôle trouvé');
+    status = 'warning';
+  }
+
+  // Vérifier si la carte est initialisée correctement
+  if (!map.getZoom() || !map.getCenter()) {
+    issues.push('Zoom ou centre non définis');
+    status = 'error';
+  }
+
+  return {
+    "status": issues.length === 0 ? 'ok' : status,
+    "issues": issues,
+  };
+};
+
+/**
+ * Vérifie les performances de chargement des tuiles
+ * @param map Instance de carte Leaflet
+ * @returns Promesse résolue avec les statistiques de chargement
+ */
+export const checkTileLoadPerformance = (
+  map: L.Map
+): Promise<{ "loaded": number; "errors": number; "time": number }> => new Promise((resolve) => {
+    const stats = { "loaded": 0, "errors": 0, "time": 0 };
+    const startTime = performance.now();
+
+    const onTileLoad = () => {
+      stats.loaded++;
+    };
+
+    const onTileError = () => {
+      stats.errors++;
+    };
+
+    map.on('tileload', onTileLoad);
+    map.on('tileerror', onTileError);
+
+    // Forcer le rechargement des tuiles
+    map.setZoom(map.getZoom() || 10);
+
+    // Attendre que les tuiles chargent
+    setTimeout(() => {
+      map.off('tileload', onTileLoad);
+      map.off('tileerror', onTileError);
+      stats.time = performance.now() - startTime;
+      resolve(stats);
+    }, 5000);
+  });
+
+/**
+ * Fonction qui peut être exécutée dans la console du navigateur
+ * pour tester le composant de carte Leaflet
+ */
+export const testLeafletMap = async (): Promise<void> => {
+  // Trouver les instances de carte dans la page
+  const mapInstances: L.Map[] = [];
+  const windowObj = window as any;
+  
+  // Rechercher les instances de carte dans l'objet window
+  for (const key in windowObj) {
+    if (windowObj[key] instanceof L.Map) {
+      mapInstances.push(windowObj[key]);
+    }
+  }
+
+  if (mapInstances.length === 0) {
+    // eslint-disable-next-line no-console
+    console.error('Aucune instance de carte Leaflet trouvée');
+    return;
+  }
+
+  // eslint-disable-next-line no-console
+  console.log(`${mapInstances.length} instance(s) de carte trouvée(s)`);
+
+  const logGroup = (title: string, callback: () => void) => {
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.group(title);
+      callback();
+      // eslint-disable-next-line no-console
+      console.groupEnd();
+    } else {
+      callback();
+    }
+  };
+
+  // Vérifier chaque carte
+  for (let i = 0; i < mapInstances.length; i++) {
+    logGroup(`Carte #${i + 1}`, async () => {
+      const health = checkMapHealth(mapInstances[i]);
+      // eslint-disable-next-line no-console
+      console.log(`État: ${health.status}`);
+      
+      if (health.issues.length > 0) {
+        // eslint-disable-next-line no-console
+        console.warn('Problèmes détectés:', health.issues);
+      }
+
+      // eslint-disable-next-line no-console
+      console.log('Test de performance des tuiles...');
+      const perf = await checkTileLoadPerformance(mapInstances[i]);
+      // eslint-disable-next-line no-console
+      console.log(
+        `Performance: ${perf.loaded} tuiles chargées, ${perf.errors} erreurs, ${perf.time.toFixed(2)}ms`
+      );
+    });
+  }
+};
+
+// Exposer la fonction de test au contexte global pour pouvoir l'appeler depuis la console
+if (typeof window !== 'undefined') {
+  try {
+    Object.defineProperty(window, 'testLeafletMap', {
+      "value": testLeafletMap,
+      "writable": true,
+      "configurable": true,
+    });
+  } catch (e) {
+    // Silently fail in production
+  }
+}

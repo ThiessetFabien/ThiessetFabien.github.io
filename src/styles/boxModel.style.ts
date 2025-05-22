@@ -1,4 +1,4 @@
-import { cn } from '../lib/utils';
+import { cn } from '@src/lib/utils';
 
 export const cnSmallPadding: string = 'p-2 md:p-4';
 

@@ -1,4 +1,4 @@
-import { FieldErrors, FieldValues, Control, Path } from 'react-hook-form';
+import type { FieldErrors, FieldValues, Control, Path } from 'react-hook-form';
 
 /**
  * Props for compact display mode

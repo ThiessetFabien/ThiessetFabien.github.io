@@ -4,58 +4,44 @@ import {
   CardTitle,
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
+import { TEXT_CLASSES } from '@src/config/css-classes';
 import { cnDescription, cnTitle3 } from '@src/styles/font.style';
-import type { CardProps } from '@src/types/CardProps';
+import type { HeaderCardProps } from '@src/types/HeaderProps';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@src/utils/formatText.util';
 
 /**
- * HeaderCard component.
+ * Composant d'en-tête secondaire pour les cartes
+ * Affiche un titre avec première lettre en majuscule et optionnellement une description
  *
- * @param {Object} props - Component properties.
- * @param {string} props.title - The card title with the first letter capitalized.
- * @param {string} [props.description] - Optional card description, formatted with special words handled and the first letter capitalized.
- * @param {string} [props.className] - Optional CSS class for custom styles.
- *
- * @returns {JSX.Element} The rendered HeaderCard component.
+ * @param {HeaderCardProps} props - Propriétés du composant
+ * @returns {JSX.Element} Le composant Header2Card rendu
  */
-export const Header2Card: React.FC<{
-  title?: CardProps['title'];
-  description?: CardProps['description'];
-  className?: CardProps['className'];
-}> = ({
+export const Header2Card = ({
   title,
   description,
   className,
-}: {
-  title?: string;
-  description?: string;
-  className?: string;
-}): JSX.Element => {
-  return (
-    <header>
-      <CardHeader
-        className={cn(className, 'hyphens-auto break-words text-center')}
+}: HeaderCardProps): JSX.Element => (
+  <header>
+    <CardHeader className={cn(className, TEXT_CLASSES.CENTERED_TEXT)}>
+      <CardTitle
+        className={cn('max-w-full', TEXT_CLASSES.CENTERED_TEXT)}
+        aria-label={title}
       >
-        <CardTitle
-          className={cn('max-w-full hyphens-auto break-words text-center')}
-          aria-label={title}
+        <h3 className={cnTitle3}>
+          {title && capitalizeFirstLetterOfPhrase(title)}
+        </h3>
+      </CardTitle>
+      {description && (
+        <CardDescription
+          className={cn(cnDescription, TEXT_CLASSES.RESPONSIVE_PADDING)}
+          aria-label={description}
         >
-          <h3 className={cnTitle3}>
-            {title && capitalizeFirstLetterOfPhrase(title)}
-          </h3>
-        </CardTitle>
-        {description && (
-          <CardDescription
-            className={cn(cnDescription, 'px-1 sm:px-0')}
-            aria-label={description}
-          >
-            {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
-          </CardDescription>
-        )}
-      </CardHeader>
-    </header>
-  );
-};
+          {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
+        </CardDescription>
+      )}
+    </CardHeader>
+  </header>
+);

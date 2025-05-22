@@ -1,8 +1,8 @@
 import { Button } from '@src/lib/components/ui/button';
-import { ActionButtonProps } from '@src/types/ActionButtonProps';
-import { CardProps } from '@src/types/CardProps';
+import type { ActionButtonProps } from '@src/types/ActionButtonProps';
+import type { CardProps } from '@src/types/CardProps';
 
-import { IconLoader } from '../icons/IconLoader';
+import { IconLoader } from '@src/components/ui/icons/IconLoader';
 
 /**
  * A carousel arrow button component that displays an icon within a button.
@@ -27,16 +27,14 @@ export const ArrowCarouselButton: React.FC<{
   className: CardProps['className'];
   icon: ActionButtonProps['icon'];
   onClick: ActionButtonProps['onClick'];
-}): JSX.Element => {
-  return (
-    <Button
-      variant='outline'
-      size='icon'
-      className={className}
-      onClick={onClick}
-      aria-label='Témoignage précédent'
-    >
-      <IconLoader icon={`${icon}`} />
-    </Button>
-  );
-};
+}): JSX.Element => (
+  <Button
+    variant='outline'
+    size='icon'
+    className={className}
+    onClick={onClick}
+    aria-label='Témoignage précédent'
+  >
+    <IconLoader icon={`${icon}`} />
+  </Button>
+);

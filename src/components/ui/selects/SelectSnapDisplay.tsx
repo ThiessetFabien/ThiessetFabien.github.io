@@ -16,10 +16,13 @@ export const useSelectedSnapDisplay = (
   const [selectedSnap, setSelectedSnap] = useState(0);
   const [snapCount, setSnapCount] = useState(0);
 
-  const updateScrollSnapState = useCallback((emblaApi: EmblaCarouselType) => {
-    setSnapCount(emblaApi.scrollSnapList().length);
-    setSelectedSnap(emblaApi.selectedScrollSnap());
-  }, []);
+  const updateScrollSnapState = useCallback(
+    (carouselApi: EmblaCarouselType) => {
+      setSnapCount(carouselApi.scrollSnapList().length);
+      setSelectedSnap(carouselApi.selectedScrollSnap());
+    },
+    []
+  );
 
   useEffect(() => {
     if (!emblaApi) return;

@@ -1,9 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
 
 import { Toggle } from '@lib/components/ui/toggle';
+import { useThemeManager } from '@src/hooks/useThemeManager.hook';
 import { cn } from '@src/lib/utils';
 import { cnBorderNone, cnBorderRadiusFull } from '@src/styles/border.style';
 import { cnSizeIcon } from '@src/styles/size.style';
@@ -22,23 +21,13 @@ export function ToggleDarkMode({
 }: {
   className?: string;
 }): JSX.Element | null {
-  const { setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [isRotating, setIsRotating] = useState(false);
+  const { resolvedTheme, toggleTheme, isMounted, isChanging } =
+    useThemeManager();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
+  // Ne rien afficher jusqu'à ce que le composant soit monté côté client
+  if (!isMounted) {
     return null;
   }
-
-  const handleToggle = () => {
-    setIsRotating(true);
-    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
-    setTimeout(() => setIsRotating(false), 500);
-  };
 
   return (
     <motion.div
@@ -51,7 +40,7 @@ export function ToggleDarkMode({
       <Toggle
         variant='outline'
         size='sm'
-        onClick={handleToggle}
+        onClick={toggleTheme}
         className={cn(
           'relative h-10 w-10 bg-accent px-0',
           cnBorderRadiusFull,
@@ -65,7 +54,7 @@ export function ToggleDarkMode({
               key='sun'
               variants={iconRotate}
               initial='initial'
-              animate={isRotating ? 'animate' : ['animate', 'rotate']}
+              animate={isChanging ? 'animate' : ['animate', 'rotate']}
               exit='exit'
             >
               <Sun className={cnSizeIcon} />
@@ -75,7 +64,7 @@ export function ToggleDarkMode({
               key='moon'
               variants={iconRotate}
               initial='initial'
-              animate={isRotating ? ['animate', 'rotate'] : 'animate'}
+              animate={isChanging ? ['animate', 'rotate'] : 'animate'}
               exit='exit'
             >
               <Moon className={cnSizeIcon} />

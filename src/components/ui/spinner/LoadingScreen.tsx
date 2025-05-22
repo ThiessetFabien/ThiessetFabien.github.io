@@ -28,7 +28,7 @@ interface LoadingScreenProps {
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ children }) => {
   const { isLoading } = useLoading();
 
-  if (!isLoading) return <>{children}</>;
+  if (!isLoading) return children;
 
   return (
     <NoSSR fallback={null}>

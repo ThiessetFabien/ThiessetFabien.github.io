@@ -1,0 +1,175 @@
+#!/bin/zsh
+
+# Script pour lancer les commandes npm en utilisant le gestionnaire de paquets disponible
+# Fonctionne avec npm, yarn, pnpm ou bun
+
+# Couleurs pour l'affichage terminal
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+echo -e "${BLUE}${BOLD}
+╔════════════════════════════════════════════════════════════╗
+║         EXÉCUTION DE COMMANDES NPM UNIVERSELLES           ║
+╚════════════════════════════════════════════════════════════╝
+${NC}"
+
+# Vérifier les arguments
+if [ $# -eq 0 ]; then
+  echo -e "${RED}Erreur : Aucune commande spécifiée${NC}"
+  echo -e "${YELLOW}Usage : $0 <commande-npm> [arguments]${NC}"
+  echo -e "${YELLOW}Exemple : $0 dev${NC}"
+  exit 1
+fi
+
+NPM_COMMAND=$1
+shift # Enlever le premier argument pour garder les suivants comme arguments de la commande
+
+# Fonction pour vérifier la disponibilité et la compatibilité des gestionnaires de paquets
+check_package_manager() {
+  local manager=$1
+  case $manager in
+    bun)
+      # Vérifier plusieurs emplacements possibles pour Bun
+      if command -v bun &> /dev/null; then
+        echo -e "${GREEN}Bun détecté dans le PATH système${NC}"
+        export BUN_PATH=$(which bun)
+        return 0
+      elif [ -f "$HOME/.npm-global/bin/bun" ]; then
+        echo -e "${GREEN}Bun détecté dans l'installation npm global${NC}"
+        export BUN_PATH="$HOME/.npm-global/bin/bun"
+        return 0
+      elif [ -f "$HOME/.bun/bin/bun" ]; then
+        echo -e "${GREEN}Bun détecté dans l'installation standard ~/.bun${NC}"
+        export BUN_PATH="$HOME/.bun/bin/bun"
+        return 0
+      elif [ -f "/usr/local/bin/bun" ]; then
+        echo -e "${GREEN}Bun détecté dans /usr/local/bin${NC}"
+        export BUN_PATH="/usr/local/bin/bun"
+        return 0
+      else
+        return 1
+      fi
+      ;;
+    pnpm)
+      if command -v pnpm &> /dev/null; then
+        echo -e "${GREEN}PNPM détecté${NC}"
+        return 0
+      else
+        return 1
+      fi
+      ;;
+    yarn)
+      if command -v yarn &> /dev/null; then
+        echo -e "${GREEN}Yarn détecté${NC}"
+        return 0
+      else
+        return 1
+      fi
+      ;;
+    npm)
+      if command -v npm &> /dev/null; then
+        echo -e "${GREEN}NPM détecté${NC}"
+        return 0
+      else
+        return 1
+      fi
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+# Fonction pour exécuter la commande avec le gestionnaire approprié
+run_with_manager() {
+  local manager=$1
+  local cmd=$2
+  shift 2
+
+  echo -e "${BLUE}Exécution de la commande '$cmd' avec $manager...${NC}"
+  
+  case $manager in
+    bun)
+      if [ "$cmd" = "dev" ]; then
+        $BUN_PATH run dev "$@"
+      else
+        $BUN_PATH run $cmd "$@"
+      fi
+      ;;
+    pnpm)
+      if [ "$cmd" = "dev" ]; then
+        pnpm run dev:npm "$@"
+      else
+        pnpm run $cmd "$@"
+      fi
+      ;;
+    yarn)
+      if [ "$cmd" = "dev" ]; then
+        yarn run dev:npm "$@"
+      else
+        yarn run $cmd "$@"
+      fi
+      ;;
+    npm)
+      if [ "$cmd" = "dev" ]; then
+        npm run dev:npm "$@"
+      else
+        npm run $cmd "$@"
+      fi
+      ;;
+  esac
+  
+  # Capturer le code de retour
+  return $?
+}
+
+# Tester chaque gestionnaire de paquets dans l'ordre de préférence
+for manager in bun pnpm yarn npm; do
+  if check_package_manager $manager; then
+    echo -e "${YELLOW}Utilisation de $manager pour exécuter '$NPM_COMMAND'${NC}"
+    
+    # Si c'est Bun et qu'il s'agit d'une installation en dehors du PATH
+    if [ "$manager" = "bun" ] && [ "$(which bun 2>/dev/null)" != "$BUN_PATH" ]; then
+      echo -e "${YELLOW}⚠️ Bun est détecté hors du PATH système standard.${NC}"
+      
+      # Si c'est la première exécution ou spécifiquement demandé via fix-bun
+      if [ "$NPM_COMMAND" = "fix:bun" ] || [ ! -f "$HOME/.local/bin/bun" ]; then
+        echo -e "${BLUE}⚙️ Configuration de liens symboliques pour Bun...${NC}"
+        
+        # Créer un lien symbolique dans ~/.local/bin/
+        mkdir -p "$HOME/.local/bin"
+        ln -sf "$BUN_PATH" "$HOME/.local/bin/bun"
+        
+        # Proposer d'ajouter ~/.local/bin au PATH
+        if [[ ! "$PATH" == *"$HOME/.local/bin"* ]]; then
+          echo -e "${YELLOW}Pour rendre Bun accessible partout, ajoutez ceci à votre ~/.zshrc :${NC}"
+          echo -e "${BLUE}export PATH=\"\$HOME/.local/bin:\$PATH\"${NC}"
+        fi
+        
+        # Si le but était juste de corriger Bun, sortir avec un message approprié
+        if [ "$NPM_COMMAND" = "fix:bun" ]; then
+          echo -e "${GREEN}✅ Bun a été configuré avec succès !${NC}"
+          echo -e "${YELLOW}Pour l'utiliser partout, ajoutez ~/.local/bin à votre PATH ou redémarrez votre terminal.${NC}"
+          exit 0
+        fi
+      fi
+    fi
+    
+    run_with_manager $manager "$NPM_COMMAND" "$@"
+    exit $?
+  fi
+done
+
+# Si nous arrivons ici, aucun gestionnaire de paquets n'est disponible
+echo -e "${RED}${BOLD}Erreur : Aucun gestionnaire de paquets (Bun, PNPM, Yarn, NPM) n'est disponible sur votre système${NC}"
+echo -e "${YELLOW}Veuillez installer au moins un des gestionnaires suivants :${NC}"
+echo -e "  ${BLUE}• Bun :${NC} curl -fsSL https://bun.sh/install | bash"
+echo -e "  ${BLUE}• PNPM :${NC} curl -fsSL https://get.pnpm.io/install.sh | sh -"
+echo -e "  ${BLUE}• Yarn :${NC} npm install -g yarn"
+echo -e "  ${BLUE}• NPM :${NC} (inclus avec Node.js) - https://nodejs.org/"
+
+exit 1

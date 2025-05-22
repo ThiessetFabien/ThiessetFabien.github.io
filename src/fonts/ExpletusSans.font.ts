@@ -3,7 +3,7 @@
  * @description This file configures the Expletus Sans font from Google Fonts using CDN.
  */
 
-export const Expletus_Sans = {
+export const expletusSans = {
   variable: '--font-caption',
   className: 'font-caption',
   style: {

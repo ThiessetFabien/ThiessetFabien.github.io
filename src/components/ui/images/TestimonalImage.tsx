@@ -18,12 +18,10 @@ export const TestimonialImage = ({ src, alt }: TestimonialImageProps) => {
   let imageUrl;
   if (isAbsoluteUrl || isDataUrl) {
     imageUrl = src;
+  } else if (src.startsWith('media.licdn.com')) {
+    imageUrl = `https://${src}`;
   } else {
-    if (src.startsWith('media.licdn.com')) {
-      imageUrl = `https://${src}`;
-    } else {
-      imageUrl = `${baseUrl}${src}`;
-    }
+    imageUrl = `${baseUrl}${src}`;
   }
 
   return (

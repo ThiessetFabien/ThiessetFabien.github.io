@@ -25,7 +25,7 @@ export const useScrollToSection = (offset: number = 100) => {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash;
+      const { hash } = window.location;
       if (hash) {
         const elementId = hash.slice(1);
         setTimeout(() => scrollToElement(elementId), 100);

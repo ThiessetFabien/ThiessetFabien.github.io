@@ -3,8 +3,10 @@ import { useId } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { CardContent } from '@src/lib/components/ui/card';
 import { Form } from '@lib/components/ui/form';
 import { useToast } from '@lib/hooks/use-toast';
+import { Header2Card } from '@src/components/ui/cards/layouts.cards/Header2Card';
 import { FooterCard } from '@src/components/ui/cards/layouts.cards/FooterCard';
 import { ConsentField } from '@src/components/ui/checkbox/ConsentField';
 import { MessageField } from '@src/components/ui/textarea/TextAreaField';
@@ -12,31 +14,45 @@ import { menuItems } from '@src/config/menuItems.config';
 import { cn } from '@src/lib/utils';
 import type { FormSchema } from '@src/schemas/contactForm.schema';
 import { ContactFormSchema } from '@src/schemas/contactForm.schema';
-import { cnGap, cnSpaceY } from '@src/styles/boxModel.style';
-import { cnFlexCol } from '@src/styles/flex.style';
+import {
+  cnPadding,
+  cnPaddingX,
+  cnGap,
+  cnSpaceY,
+} from '@src/styles/boxModel.style';
+import { cnFlexCol, cnFlexCenterY } from '@src/styles/flex.style';
 import { useIsXl } from '@src/styles/mediaQueries.style';
 import type { CardProps } from '@src/types/CardProps';
-import { IconName } from '@src/types/IconNameProps';
-import { InputField } from '@ui/inputs/InputField';
-import { EmailTypeField } from '@ui/radios/RadioField';
+import type { IconName } from '@src/types/IconNameProps';
+import { InputField } from '@src/components/ui/inputs/InputField';
+import { EmailTypeField } from '@src/components/ui/radios/RadioField';
 
 /**
  * ContactForm Component
  *
- * A form component that handles contact submissions with validation, sanitization, and API integration.
+ * An integrated contact component that combines a header with contact information
+ * and a fully functional contact form with validation. This component can be used
+ * as a standalone section or within other layouts.
  *
  * @component
  * @param {object} props - Component props
- * @param {string} props.mailto - Email address for the contact form submission
- * @param {boolean} props.downloadActive1 - Flag to enable download functionality on the first button
- * @param {string} props.className - Additional CSS classes for styling
- * @returns {JSX.Element} A fully functional contact form with validation
+ * @param {string} [props.className] - Optional CSS class to apply to the container
+ * @param {string} [props.phone] - Phone number to display in the header
+ * @param {string} [props.email] - Email address for contact and form submission
+ * @param {boolean} [props.downloadActive1] - Flag to enable download functionality on the form button
+ * @returns {JSX.Element} A styled contact component with header information and form
  */
 export const ContactForm: React.FC<{
-  mailto: CardProps['mailto'];
+  className?: string;
+  phone?: string;
+  email?: string;
   downloadActive1?: CardProps['downloadActive1'];
-  className?: CardProps['className'];
-}> = ({ mailto, downloadActive1, className }): JSX.Element => {
+}> = ({
+  className,
+  phone = '06 10 92 09 74',
+  email = 'thiessetfabienpro@gmail.com',
+  downloadActive1 = false,
+}): JSX.Element => {
   const formId = useId();
 
   const form = useForm<FormSchema>({
@@ -97,67 +113,75 @@ export const ContactForm: React.FC<{
   const isXl = useIsXl();
 
   return (
-    <Form {...form} aria-labelledby='contact-form-heading'>
-      <form
-        id={`contact-form-${formId}`}
-        name='contact-form'
-        onSubmit={handleSubmit(onSubmit)}
-        className={cn(className, 'w-full', cnGap, isXl && cnSpaceY, cnFlexCol)}
+    <section className={cn(className)}>
+      <Header2Card title={phone} description={email} className={cnPadding} />
+      <CardContent
+        className={cn(cnFlexCol, cnPaddingX, cnFlexCenterY, 'justify-center')}
       >
-        <InputField
-          control={control}
-          name='name'
-          errors={errors}
-          label='Nom prénom :'
-          placeholder='Jean Dupont'
-        />
-        <InputField
-          control={control}
-          errors={errors}
-          name='phone'
-          label='Téléphone direct :'
-          placeholder='+33612345678'
-        />
-        <InputField
-          control={control}
-          errors={errors}
-          name='email'
-          label='Adresse email :'
-          placeholder='votre@mail.com'
-        />
-        <EmailTypeField
-          control={control}
-          errors={errors}
-          name='type'
-          label='Type de demande :'
-        />
-        <MessageField
-          control={control}
-          errors={errors}
-          name='message'
-          label='Message :'
-          placeholder='Parlez-moi un peu de votre projet...'
-        />
-        <ConsentField
-          control={control}
-          errors={errors}
-          name='consent'
-          label="J'accepte d'être contacté(e) en utilisant les informations fournies."
-        />
-        <FooterCard
-          mailto={
-            mailto || menuItems.find((item) => item.id === 'contact')?.href
-          }
-          cta1='Parlons en...'
-          icon1={
-            menuItems.find((item) => item.id === 'contact')?.icon as IconName
-          }
-          href1={menuItems.find((item) => item.id === 'contact')?.href}
-          downloadActive1={downloadActive1}
-          disabled1={isLoading ? true : false}
-          className='flex-none'
-        />
-      </form>
-    </Form>
+        <Form {...form} aria-labelledby='contact-form-heading'>
+          <form
+            id={`contact-form-${formId}`}
+            name='contact-form'
+            onSubmit={handleSubmit(onSubmit)}
+            className={cn('w-full', cnGap, isXl && cnSpaceY, cnFlexCol)}
+          >
+            <InputField
+              control={control}
+              name='name'
+              errors={errors}
+              label='Nom prénom :'
+              placeholder='Jean Dupont'
+            />
+            <InputField
+              control={control}
+              errors={errors}
+              name='phone'
+              label='Téléphone direct :'
+              placeholder='+33612345678'
+            />
+            <InputField
+              control={control}
+              errors={errors}
+              name='email'
+              label='Adresse email :'
+              placeholder='votre@mail.com'
+            />
+            <EmailTypeField
+              control={control}
+              errors={errors}
+              name='type'
+              label='Type de demande :'
+            />
+            <MessageField
+              control={control}
+              errors={errors}
+              name='message'
+              label='Message :'
+              placeholder='Parlez-moi un peu de votre projet...'
+            />
+            <ConsentField
+              control={control}
+              errors={errors}
+              name='consent'
+              label="J'accepte d'être contacté(e) en utilisant les informations fournies."
+            />
+            <FooterCard
+              mailto={
+                email || menuItems.find((item) => item.id === 'contact')?.href
+              }
+              cta1='Parlons en...'
+              icon1={
+                menuItems.find((item) => item.id === 'contact')
+                  ?.icon as IconName
+              }
+              href1={menuItems.find((item) => item.id === 'contact')?.href}
+              downloadActive1={downloadActive1}
+              disabled1={!!isLoading}
+              className='flex-none'
+            />
+          </form>
+        </Form>
+      </CardContent>
+    </section>
   );
 };

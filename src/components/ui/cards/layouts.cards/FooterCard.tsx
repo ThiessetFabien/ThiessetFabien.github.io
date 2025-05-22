@@ -1,6 +1,6 @@
 /**
- * @file CallToAction.tsx
- * @description This component renders call-to-action buttons with dynamic icons.
+ * @file FooterCard.tsx
+ * @description Ce composant affiche les boutons d'action dans le pied de page.
  */
 
 import { motion } from 'framer-motion';
@@ -8,46 +8,18 @@ import React from 'react';
 
 import { cn } from '@lib/utils';
 import { ActionButton } from '@src/components/ui/buttons/ActionButton';
-import { cnSmallGap } from '@src/styles/boxModel.style';
+import { CONTAINER_CLASSES } from '@src/config/css-classes';
 import { useIsXs } from '@src/styles/mediaQueries.style';
 import type { ActionButtonProps } from '@src/types/ActionButtonProps';
-import type { CardProps } from '@src/types/CardProps';
+import type { FooterCardProps } from '@src/types/FooterProps';
+import { buttonAnimation } from '@src/utils/motion.util';
 
 /**
- * FooterCard component props.
- * @typedef {Object} CardProps
- * @property {string} cta1 - The text for the first call-to-action button.
- * @property {string} icon1 - The icon for the first call-to-action button.
- * @property {string} href1 - The href for the first call-to-action button.
- * @property {boolean} downloadActive1 - Whether the first call-to-action button should trigger a download.
- * @property {string} cta2 - The text for the second call-to-action button.
- * @property {string} icon2 - The icon for the second call-to-action button.
- * @property {string} href2 - The href for the second call-to-action button.
- * @property {boolean} downloadActive2 - Whether the second call-to-action button should trigger a download.
+ * Composant FooterCard qui affiche les boutons d'action dans le pied de page
+ * @param {FooterCardProps} props - Les propriétés du composant
+ * @returns {JSX.Element} Le composant rendu
  */
-
-/**
- * FooterCard component.
- * @param {CardProps} props - The props for the component.
- * @returns {JSX.Element} The rendered component.
- */
-export const FooterCard: React.FC<{
-  mailto?: CardProps['mailto'];
-  cta1?: ActionButtonProps['cta'];
-  icon1?: ActionButtonProps['icon'];
-  href1?: ActionButtonProps['href'];
-  downloadActive1?: ActionButtonProps['downloadActive'];
-  disabled1?: ActionButtonProps['disabled'];
-  cta2?: ActionButtonProps['cta'];
-  icon2?: ActionButtonProps['icon'];
-  href2?: ActionButtonProps['href'];
-  downloadActive2?: ActionButtonProps['downloadActive'];
-  cta3?: ActionButtonProps['cta'];
-  icon3?: ActionButtonProps['icon'];
-  href3?: ActionButtonProps['href'];
-  downloadActive3?: ActionButtonProps['downloadActive'];
-  className: CardProps['className'];
-}> = ({
+export const FooterCard = ({
   mailto,
   cta1,
   icon1,
@@ -63,7 +35,18 @@ export const FooterCard: React.FC<{
   href3,
   downloadActive3,
   className,
-}) => {
+}: FooterCardProps): JSX.Element => {
+  /**
+   * Rend un bouton d'action avec animation
+   * @param {ActionButtonProps['icon']} icon - L'icône du bouton
+   * @param {ActionButtonProps['href']} href - L'URL du bouton
+   * @param {ActionButtonProps['cta']} cta - Le texte d'appel à l'action
+   * @param {ActionButtonProps['downloadActive']} downloadActive - Indique si le téléchargement est activé
+   * @param {ActionButtonProps['disabled']} disabled - Indique si le bouton est désactivé
+   * @param {ActionButtonProps['variant']} variant - La variante de style du bouton
+   * @param {CardProps['mailto']} mailtoLink - Adresse email pour le lien mailto
+   * @returns {JSX.Element | null} Le bouton d'action rendu ou null
+   */
   const renderActionButton = (
     icon: ActionButtonProps['icon'],
     href?: ActionButtonProps['href'],
@@ -71,35 +54,39 @@ export const FooterCard: React.FC<{
     downloadActive?: ActionButtonProps['downloadActive'],
     disabled?: ActionButtonProps['disabled'],
     variant?: ActionButtonProps['variant'],
-    mailto?: CardProps['mailto']
-  ) => {
-    return (
-      icon &&
-      (href || mailto) && (
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
-          <ActionButton
-            icon={icon || ''}
-            href={mailto ? mailto : href || ''}
-            cta={cta || ''}
-            downloadActive={downloadActive || undefined}
-            disabled={disabled}
-            variant={variant}
-            type={mailto ? 'submit' : 'button'}
-            aria-label={cta || ''}
-            className={className}
-          />
-        </motion.div>
-      )
-    );
-  };
+    mailtoLink?: string
+  ): JSX.Element | null =>
+    icon && (href || mailtoLink) ? (
+      <motion.div
+        whileHover={buttonAnimation.hover}
+        whileTap={buttonAnimation.tap}
+      >
+        <ActionButton
+          icon={icon}
+          href={mailtoLink || href || ''}
+          cta={cta || ''}
+          downloadActive={downloadActive}
+          disabled={disabled}
+          variant={variant}
+          type={mailtoLink ? 'submit' : 'button'}
+          aria-label={cta || ''}
+          className={className}
+        />
+      </motion.div>
+    ) : null;
   const isXs = useIsXs();
 
-  function hideCta(cta: string | undefined): string | undefined {
-    return !isXs ? cta : '';
-  }
+  /**
+   * Masque le texte du bouton sur les petits écrans
+   * @param {string | undefined} cta - Le texte à masquer si nécessaire
+   * @returns {string | undefined} Le texte masqué ou le texte original
+   */
+  const hideCta = (cta: string | undefined): string | undefined => !isXs ? cta : '';
 
   return (
-    <footer className={cn('flex flex-wrap', cnSmallGap, className)}>
+    <footer
+      className={cn('flex flex-wrap', CONTAINER_CLASSES.SMALL_GAP, className)}
+    >
       {renderActionButton(
         icon1,
         href1,

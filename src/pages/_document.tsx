@@ -1,6 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-import { metadata } from '../app/metadata';
+import { metadata } from '@src/app/metadata';
 
 export default function Document() {
   return (
@@ -17,7 +17,6 @@ export default function Document() {
               : metadata.authors?.name
           }
         />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
 
         <link
           rel='preconnect'

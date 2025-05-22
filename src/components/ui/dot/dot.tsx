@@ -12,30 +12,26 @@ import { cnSmallMarginX } from '@src/styles/boxModel.style';
  *
  * @returns {JSX.Element} A styled `div` element representing the dot.
  */
-export const Dot: React.FC<{ className?: string }> = ({ className }) => {
-  return (
-    <div
-      className={cn(
-        className,
-        'flex-shrink-0',
-        cnBorderRadiusFull,
-        'aspect-square h-2 w-2 translate-y-2',
-        cnSmallMarginX,
-        'bg-muted-foreground'
-      )}
-    />
-  );
-};
+export const Dot: React.FC<{ className?: string }> = ({ className }) => (
+  <div
+    className={cn(
+      className,
+      'flex-shrink-0',
+      cnBorderRadiusFull,
+      'aspect-square h-2 w-2 translate-y-2',
+      cnSmallMarginX,
+      'bg-muted-foreground'
+    )}
+  />
+);
 
-export const SmallDot: React.FC<{ className?: string }> = ({ className }) => {
-  return (
-    <div
-      className={cn(
-        className,
-        cnBorderRadiusFull,
-        cnSmallMarginX,
-        'aspect-square h-1.5 w-1.5 flex-shrink-0 translate-y-1 rounded-full'
-      )}
-    />
-  );
-};
+export const SmallDot: React.FC<{ className?: string }> = ({ className }) => (
+  <div
+    className={cn(
+      className,
+      cnBorderRadiusFull,
+      cnSmallMarginX,
+      'aspect-square h-1.5 w-1.5 flex-shrink-0 translate-y-1 rounded-full'
+    )}
+  />
+);

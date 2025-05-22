@@ -21,7 +21,7 @@ import {
   useIsMd,
   useIsSm,
 } from '@src/styles/mediaQueries.style';
-import { GenericCarouselProps } from '@src/types/GenericCarouselProps';
+import type { GenericCarouselProps } from '@src/types/GenericCarouselProps';
 
 interface AutoplayPlugin {
   name: string;

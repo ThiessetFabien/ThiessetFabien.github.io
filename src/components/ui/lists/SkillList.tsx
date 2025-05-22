@@ -1,3 +1,4 @@
+import React from 'react';
 import { cn } from '@src/lib/utils';
 import { cnSmallMarginRight } from '@src/styles/boxModel.style';
 import { cnParagraph } from '@src/styles/font.style';
@@ -6,7 +7,7 @@ import {
   formatSpecialWords,
 } from '@src/utils/formatText.util';
 
-import { IconLoader } from '../icons/IconLoader';
+import { IconLoader } from '@src/components/ui/icons/IconLoader';
 
 /**
  * Renders a list item representing a skill with a styled indicator and formatted text.
@@ -17,18 +18,14 @@ import { IconLoader } from '../icons/IconLoader';
  */
 export const SkillList: React.FC<{
   skill: string;
-}> = ({ skill }: { skill: string }): JSX.Element => {
-  return (
-    <>
-      <li className='flex'>
-        <IconLoader
-          className={cn(cnSmallMarginRight, 'text-primary')}
-          icon={'Check'}
-        />
-        <span className={cn(cnParagraph)}>
-          {capitalizeFirstLetterOfPhrase(formatSpecialWords(skill))}
-        </span>
-      </li>
-    </>
-  );
-};
+}> = ({ skill }: { skill: string }): JSX.Element => (
+  <li className='flex'>
+    <IconLoader
+      className={cn(cnSmallMarginRight, 'text-primary')}
+      icon='Check'
+    />
+    <span className={cn(cnParagraph)}>
+      {capitalizeFirstLetterOfPhrase(formatSpecialWords(skill))}
+    </span>
+  </li>
+);

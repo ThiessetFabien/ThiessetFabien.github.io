@@ -23,7 +23,7 @@ import {
   formatSpecialWords,
 } from '@src/utils/formatText.util';
 
-import { LinkedinIcon } from '../svg/Linkedin';
+import { LinkedinIcon } from '@src/components/ui/svg/Linkedin';
 
 const slideVariants = {
   enter: { opacity: 0, y: 15 },
@@ -146,7 +146,7 @@ export const TestimonialItem: React.FC<TestimonialItemProps> = ({
           </CardContent>
         ) : (
           <CardContent className='relative h-8 overflow-hidden'>
-            <div className='absolute inset-0 z-10 bg-gradient-to-b from-transparent to-background/80'></div>
+            <div className='absolute inset-0 z-10 bg-gradient-to-b from-transparent to-background/80' />
           </CardContent>
         )}
       </Card>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-import { UseFloatingToggleProps } from '../types/useFloatingToggleProps';
+import type { UseFloatingToggleProps } from '@src/types/useFloatingToggleProps';
 /**
  * A custom hook that manages the visibility, blur effect, and scrolling direction
  * of a floating element based on the user's scroll position.

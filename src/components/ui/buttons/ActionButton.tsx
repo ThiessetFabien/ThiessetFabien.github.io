@@ -7,7 +7,7 @@ import type { CardProps } from '@src/types/CardProps';
 import { baseUrl } from '@src/utils/baseUrl.util';
 import { capitalizeFirstLetterOfEachWord } from '@src/utils/formatText.util';
 import { cnParagraph } from '@styles/font.style';
-import { IconLoader } from '@ui/icons/IconLoader';
+import { IconLoader } from '@src/components/ui/icons/IconLoader';
 
 /**
  * ActionButton component that renders either a button or an anchor tag based on the presence of an href prop.
@@ -102,6 +102,18 @@ export const ActionButton: React.FC<
     }
   };
 
+  const renderButtonContent = () => {
+    if (isDisabled) {
+      return <IconLoader icon='LoaderCircle' className='animate-spin' />;
+    }
+
+    if (icon) {
+      return <IconLoader icon={icon} />;
+    }
+
+    return null;
+  };
+
   return isLink ? (
     <a
       {...linkProps}
@@ -121,11 +133,7 @@ export const ActionButton: React.FC<
         className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
         {...disabledProps}
       >
-        {isDisabled ? (
-          <IconLoader icon='LoaderCircle' className='animate-spin' />
-        ) : icon ? (
-          <IconLoader icon={icon} />
-        ) : null}
+        {renderButtonContent()}
         {cta && (
           <span>
             {capitalizeFirstLetterOfEachWord(isDisabled ? 'Please wait' : cta)}
@@ -144,11 +152,7 @@ export const ActionButton: React.FC<
       className={cn(className, cnParagraph, !cta ? 'gap-0' : '')}
       {...disabledProps}
     >
-      {isDisabled ? (
-        <IconLoader icon='LoaderCircle' className='animate-spin' />
-      ) : icon ? (
-        <IconLoader icon={icon} />
-      ) : null}
+      {renderButtonContent()}
       {cta && (
         <span>
           {capitalizeFirstLetterOfEachWord(isDisabled ? 'Please wait' : cta)}

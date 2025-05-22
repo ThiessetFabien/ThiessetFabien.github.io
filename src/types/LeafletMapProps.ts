@@ -10,6 +10,7 @@ export interface MapMarker {
     fillColor?: string;
     fillOpacity?: number;
     weight?: number;
+    opacity?: number;
   };
 }
 
@@ -34,8 +35,8 @@ export interface LeafletMapProps {
    * Each marker includes a position and an optional popup text.
    * @example
    * [
-   *   { position: [48.8566, 2.3522], popup: "Paris" },
-   *   { position: [51.5074, -0.1278], popup: "London" }
+   *   { "position": [48.8566, 2.3522], "popup": "Paris" },
+   *   { "position": [51.5074, -0.1278], "popup": "London" }
    * ]
    */
   markers?: MapMarker[];

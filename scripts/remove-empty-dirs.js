@@ -45,7 +45,7 @@ function removeEmptyDirs(dirPath) {
     return false;
   }
 
-  // Suppression de la variable non utilisée
+  // Variable pour suivre si des fichiers existent encore dans le dossier
   let filesStillExist = false;
 
   try {

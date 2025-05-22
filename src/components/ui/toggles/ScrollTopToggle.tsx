@@ -3,11 +3,10 @@ import { motion } from 'framer-motion';
 import { Toggle } from '@lib/components/ui/toggle';
 import { cn } from '@src/lib/utils';
 import { cnBorderRadiusFull } from '@src/styles/border.style';
-import { containerScale } from '@src/styles/variantsAnimation';
-import { iconBounce } from '@src/styles/variantsAnimation';
-import { IconName } from '@src/types/IconNameProps';
+import { containerScale, iconBounce } from '@src/styles/variantsAnimation';
+import type { IconName } from '@src/types/IconNameProps';
 import type { ScrollTopToggleProps } from '@src/types/ScrollTopToggleProps';
-import { IconLoader } from '@ui/icons/IconLoader';
+import { IconLoader } from '@src/components/ui/icons/IconLoader';
 
 /**
  * ScrollTopToggle is a reusable component that combines a toggle button with hover card functionality.
@@ -29,33 +28,31 @@ export const ScrollTopToggle: React.FC<ScrollTopToggleProps> = ({
   'aria-label': ariaLabel,
   type,
   className,
-}: ScrollTopToggleProps): JSX.Element => {
-  return (
-    <motion.div
-      variants={containerScale}
-      initial='initial'
-      whileHover='hover'
-      whileTap='tap'
-      className={className}
+}: ScrollTopToggleProps): JSX.Element => (
+  <motion.div
+    variants={containerScale}
+    initial='initial'
+    whileHover='hover'
+    whileTap='tap'
+    className={className}
+  >
+    <Toggle
+      variant={variant}
+      size={size}
+      onClick={onClick}
+      type={type}
+      className={cn(
+        'relative h-10 w-10 bg-accent px-0 transition-colors duration-200',
+        cnBorderRadiusFull
+      )}
     >
-      <Toggle
-        variant={variant}
-        size={size}
-        onClick={onClick}
-        type={type}
-        className={cn(
-          'relative h-10 w-10 bg-accent px-0 transition-colors duration-200',
-          cnBorderRadiusFull
-        )}
-      >
-        <motion.div variants={iconBounce} initial='initial' whileHover='hover'>
-          <IconLoader
-            icon={icon as IconName}
-            className={'text-accent-foreground'}
-          />
-        </motion.div>
-        <span className='sr-only'>{ariaLabel}</span>
-      </Toggle>
-    </motion.div>
-  );
-};
+      <motion.div variants={iconBounce} initial='initial' whileHover='hover'>
+        <IconLoader
+          icon={icon as IconName}
+          className='text-accent-foreground'
+        />
+      </motion.div>
+      <span className='sr-only'>{ariaLabel}</span>
+    </Toggle>
+  </motion.div>
+);

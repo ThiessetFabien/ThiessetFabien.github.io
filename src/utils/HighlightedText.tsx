@@ -4,7 +4,7 @@ import { cn } from '@src/lib/utils';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
-} from '@utils/formatText.util';
+} from '@src/utils/formatText.util';
 
 interface HighlightedTextProps {
   text: string;

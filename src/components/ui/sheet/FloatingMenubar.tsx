@@ -35,8 +35,8 @@ import {
 import { cnSmallText } from '@src/styles/font.style';
 import { useIsLg } from '@src/styles/mediaQueries.style';
 import { containerScale, textShow } from '@src/styles/variantsAnimation';
-import { MenuItemProps } from '@src/types/MenuItemProps';
-import { IconLoader } from '@ui/icons/IconLoader';
+import type { MenuItemProps } from '@src/types/MenuItemProps';
+import { IconLoader } from '@src/components/ui/icons/IconLoader';
 
 interface FloatingMenubarProps {
   items: MenuItemProps[];
@@ -92,10 +92,12 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
   }, [isMounted, handleScroll]);
 
   const handleItemClick = (item: MenuItemProps) => {
+    // Exécuter la fonction onClick si elle existe
     if (item.onClick) {
       item.onClick();
     }
 
+    // Gérer les sous-menus - les ouvrir ou les fermer
     if (item.items && item.items.length > 0) {
       setActiveSubmenu(activeSubmenu === item.id ? null : item.id);
     } else {
@@ -103,9 +105,14 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
     }
   };
 
+  /**
+   * Détermine si un élément de menu est actif en fonction de l'URL actuelle
+   * @param item - L'élément de menu à vérifier
+   * @returns true si l'élément correspond à la section active
+   */
   const isItemActive = (item: MenuItemProps): boolean => {
-    if (item.href?.includes('#card-')) {
-      const sectionId = item.href.replace('#card-', '');
+    if (item.href?.includes('#')) {
+      const sectionId = item.href.replace('#', '');
       return sectionId === activeSection;
     }
     return false;
@@ -175,6 +182,7 @@ export const FloatingMenubar: React.FC<FloatingMenubarProps> = ({
               <NoSSR>
                 <button
                   onClick={scrollToTop}
+                  type='button'
                   className={cn(
                     cnFlexCenterY,
                     'transition-colors duration-200'

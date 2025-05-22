@@ -33,19 +33,15 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
       );
     }
 
-    return new NextResponse(JSON.stringify({ error: 'Video ID is required' }), {
-      status: 404,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    // Rediriger vers la page 404 au lieu de renvoyer une erreur JSON
+    return NextResponse.redirect(new URL('/not-found', request.url));
   }
 
   const videoPath = path.join(VIDEOS_DIRECTORY, `${id}.mp4`);
 
   if (!fs.existsSync(videoPath)) {
-    return new NextResponse(JSON.stringify({ error: 'Video not found' }), {
-      status: 404,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    // Rediriger vers la page not_found au lieu de renvoyer une erreur JSON
+    return NextResponse.redirect(new URL('/not-found', request.url));
   }
 
   return NextResponse.json({

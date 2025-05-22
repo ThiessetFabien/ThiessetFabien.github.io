@@ -1,0 +1,367 @@
+/**
+ * Utilitaires de diagnostic pour les cartes Leaflet
+ * Ces fonctions aident à identifier et corriger les problèmes courants de Leaflet
+ */
+
+import L from 'leaflet';
+
+/**
+ * Structure d'un rapport de diagnostic
+ */
+interface DiagnosticReport {
+  "timestamp": string;
+  "mapInfo": {
+    "size": { "width": number; "height": number };
+    "zoom": number | undefined;
+    "center": L.LatLng | undefined;
+    "hasLayers": boolean;
+    "tileLayerCount": number;
+  };
+  "issues": Array<{
+    "severity": 'info' | 'warning' | 'error';
+    "message": string;
+    "fix"?: string;
+  }>;
+  "solutions": string[];
+}
+
+/**
+ * Vérifie si les styles Leaflet sont correctement chargés
+ * @returns Problèmes détectés liés aux styles
+ */
+const checkForMissingStylesImpl = (): DiagnosticReport['issues'] => {
+  const issues: DiagnosticReport['issues'] = [];
+
+  // Vérifier si le stylesheet Leaflet est chargé
+  const leafletStylesheet = Array.from(document.styleSheets).find((sheet) => {
+    try {
+      return sheet.href && sheet.href.includes('leaflet.css');
+    } catch {
+      // Les feuilles de style cross-origin lèvent une exception lors de l'accès
+      return false;
+    }
+  });
+
+  if (!leafletStylesheet) {
+    issues.push({
+      "severity": 'error',
+      "message": "La feuille de style Leaflet (leaflet.css) n'est pas chargée",
+      "fix": 'Importez "leaflet/dist/leaflet.css" dans votre composant ou fichier CSS global',
+    });
+  }
+
+  // Vérifier les règles de style essentielles
+  const essentialRules = [
+    '.leaflet-container',
+    '.leaflet-tile',
+    '.leaflet-control-zoom',
+  ];
+
+  for (const rule of essentialRules) {
+    const elementWithStyle = document.querySelector(rule);
+    if (!elementWithStyle) {
+      issues.push({
+        "severity": 'warning',
+        "message": `Le sélecteur CSS "${rule}" n'a pas été trouvé dans le DOM`,
+        "fix": 'Assurez-vous que les styles Leaflet sont bien chargés',
+      });
+    }
+  }
+
+  return issues;
+};
+
+/**
+ * Analyse une carte Leaflet et identifie les problèmes potentiels
+ * @param map Instance de carte Leaflet à analyser
+ * @returns Rapport de diagnostic complet
+ */
+export const diagnoseMap = (map: L.Map | null): DiagnosticReport => {
+  const timestamp = new Date().toISOString();
+  const issues: DiagnosticReport['issues'] = [];
+  const solutions: string[] = [];
+
+  // Vérifier si la carte existe
+  if (!map) {
+    return {
+      "timestamp": timestamp,
+      "mapInfo": {
+        "size": { "width": 0, "height": 0 },
+        "zoom": undefined,
+        "center": undefined,
+        "hasLayers": false,
+        "tileLayerCount": 0,
+      },
+      "issues": [
+        {
+          "severity": 'error',
+          "message": "L'instance de carte Leaflet est null ou undefined",
+          "fix": 'Vérifiez que la carte est correctement initialisée et que le composant est monté',
+        },
+      ],
+      "solutions": [
+        'Assurez-vous que le composant contenant la carte est bien monté',
+        'Vérifiez que la référence à la carte est correctement créée et attachée',
+      ],
+    };
+  }
+
+  // Collecter les informations de base sur la carte
+  const container = map.getContainer();
+  const size = {
+    "width": container ? container.clientWidth : 0,
+    "height": container ? container.clientHeight : 0,
+  };
+
+  const mapInfo = {
+    "size": size,
+    "zoom": map.getZoom(),
+    "center": map.getCenter(),
+    "hasLayers": Object.keys((map as any)['_layers'] || {}).length > 0,
+    "tileLayerCount": Object.values((map as any)['_layers'] || {}).filter(
+      (layer: any) => layer instanceof L.TileLayer
+    ).length,
+  };
+
+  // Vérifier les problèmes de taille du conteneur
+  if (size.width === 0 || size.height === 0) {
+    issues.push({
+      "severity": 'error',
+      "message": `Le conteneur de la carte a une taille nulle (${size.width}x${size.height})`,
+      "fix": 'Assurez-vous que le conteneur a une hauteur et largeur définies en CSS',
+    });
+    solutions.push(
+      'Ajoutez une hauteur explicite au conteneur de la carte (par exemple: "height: 400px")',
+      'Si vous utilisez des pourcentages, assurez-vous que le parent a aussi une hauteur définie'
+    );
+  }
+
+  // Vérifier si la carte a un zoom et un centre définis
+  if (mapInfo.zoom === undefined) {
+    issues.push({
+      "severity": 'error',
+      "message": "Le niveau de zoom de la carte n'est pas défini",
+      "fix": 'Définissez un niveau de zoom initial lors de la création de la carte',
+    });
+  }
+
+  if (!mapInfo.center) {
+    issues.push({
+      "severity": 'error',
+      "message": "Le centre de la carte n'est pas défini",
+      "fix": 'Définissez un centre initial lors de la création de la carte',
+    });
+  }
+
+  // Vérifier les couches de tuiles
+  if (mapInfo.tileLayerCount === 0) {
+    issues.push({
+      "severity": 'error',
+      "message": "Aucune couche de tuiles n'est présente sur la carte",
+      "fix": 'Ajoutez un composant TileLayer à votre carte',
+    });
+    solutions.push(
+      "Assurez-vous d'inclure un composant TileLayer dans votre MapContainer",
+      "Vérifiez que l'URL du fournisseur de tuiles est accessible"
+    );
+  }
+
+  // Chercher les erreurs courantes de style
+  const missingStyleIssues = checkForMissingStyles();
+  issues.push(...missingStyleIssues);
+
+  // Vérifier la visibilité
+  if (container && window.getComputedStyle(container).display === 'none') {
+    issues.push({
+      "severity": 'error',
+      "message": 'Le conteneur de la carte est masqué (display: none)',
+      "fix": "Assurez-vous que le conteneur est visible lors de l'initialisation de la carte",
+    });
+  }
+
+  // Si aucun problème n'est trouvé, ajouter une indication positive
+  if (issues.length === 0) {
+    issues.push({
+      "severity": 'info',
+      "message": 'Aucun problème détecté avec la carte Leaflet',
+    });
+  }
+
+  return {
+    "timestamp": timestamp,
+    "mapInfo": mapInfo,
+    "issues": issues,
+    "solutions": [...new Set(solutions)], // Supprimer les doublons
+  };
+};
+
+/**
+ * Vérifie si les styles Leaflet sont correctement chargés
+ * @returns Problèmes détectés liés aux styles
+ */
+const checkForMissingStyles = (): DiagnosticReport['issues'] => {
+  return checkForMissingStylesImpl();
+};
+
+/**
+ * Teste la performance du chargement des tuiles
+ * @param map Instance de carte Leaflet
+ * @returns Promesse résolue avec les résultats de performance
+ */
+export const testTileLoadPerformance = (
+  map: L.Map | null
+): Promise<{
+  "success": boolean;
+  "loaded": number;
+  "errors": number;
+  "time": number;
+  "message": string;
+}> => {
+  if (!map) {
+    return Promise.resolve({
+      "success": false,
+      "loaded": 0,
+      "errors": 0,
+      "time": 0,
+      "message": 'Carte non disponible pour le test',
+    });
+  }
+
+  return new Promise((resolve) => {
+    let loaded = 0;
+    let errors = 0;
+    const startTime = performance.now();
+
+    const onTileLoad = () => {
+      loaded++;
+    };
+
+    const onTileError = () => {
+      errors++;
+    };
+
+    map.on('tileload', onTileLoad);
+    map.on('tileerror', onTileError);
+
+    // Forcer le rechargement des tuiles
+    const currentZoom = map.getZoom();
+    if (currentZoom !== undefined) {
+      map.setZoom(currentZoom);
+    }
+
+    // Attendre un certain temps pour collecter les résultats
+    setTimeout(() => {
+      map.off('tileload', onTileLoad);
+      map.off('tileerror', onTileError);
+
+      const totalTime = performance.now() - startTime;
+      const success = loaded > 0 && errors < loaded * 0.5; // Moins de 50% d'erreurs
+
+      const message = success
+        ? `Performance correcte: ${loaded} tuiles chargées en ${totalTime.toFixed(0)}ms`
+        : `Problème de chargement: ${errors} erreurs sur ${loaded + errors} tuiles`;
+
+      resolve({
+        "success": success,
+        "loaded": loaded,
+        "errors": errors,
+        "time": totalTime,
+        "message": message,
+      });
+    }, 3000); // 3 secondes pour le test
+  });
+};
+
+/**
+ * Effectue un diagnostic complet de la carte et affiche les résultats dans la console
+ * @param map Instance de carte Leaflet
+ * @returns Promesse résolue lorsque le diagnostic est terminé
+ */
+export const runDiagnostics = async (map: L.Map | null): Promise<void> => {
+  // Créer un groupe de logs pour organiser les résultats
+  const logGroup = (title: string, callback: () => void) => {
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.group(title);
+      callback();
+      // eslint-disable-next-line no-console
+      console.groupEnd();
+    } else {
+      callback();
+    }
+  };
+
+  // Logger avec gestion de l'environnement
+  const safeLog = (...args: any[]) => {
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.log(...args);
+    }
+  };
+
+  logGroup('Diagnostic Leaflet', () => {
+    // Faire un diagnostic général
+    const report = diagnoseMap(map);
+    safeLog('Rapport de diagnostic:', report);
+
+    // Afficher les problèmes
+    if (report.issues.length > 0) {
+      logGroup('Problèmes détectés', () => {
+        report.issues.forEach((issue) => {
+          const logSeverity = (msg: string) => {
+            if (process.env.NODE_ENV === 'production') return;
+            
+            if (issue.severity === 'error') {
+              // eslint-disable-next-line no-console
+              console.error(msg);
+            } else if (issue.severity === 'warning') {
+              // eslint-disable-next-line no-console
+              console.warn(msg);
+            } else {
+              // eslint-disable-next-line no-console
+              console.info(msg);
+            }
+          };
+
+          logSeverity(`[${issue.severity.toUpperCase()}] ${issue.message}`);
+          if (issue.fix) {
+            safeLog(`   Solution: ${issue.fix}`);
+          }
+        });
+      });
+    }
+
+    // Tester les performances si la carte est disponible
+    if (map) {
+      safeLog('Test de performance des tuiles en cours...');
+      testTileLoadPerformance(map).then((perfResult) => {
+        safeLog('Résultat du test de performance:', perfResult);
+      });
+    }
+
+    // Récapitulatif des solutions
+    if (report.solutions.length > 0) {
+      logGroup('Solutions recommandées', () => {
+        report.solutions.forEach((solution, index) => {
+          safeLog(`${index + 1}. ${solution}`);
+        });
+      });
+    }
+  });
+};
+
+// Exposer les fonctions au contexte global pour la console
+if (typeof window !== 'undefined') {
+  try {
+    Object.defineProperty(window, 'leafletDiagnostics', {
+      "value": {
+        "diagnoseMap": diagnoseMap,
+        "testTileLoadPerformance": testTileLoadPerformance,
+        "runDiagnostics": runDiagnostics,
+      },
+      "writable": false,
+    });
+  } catch (error) {
+    // Silently fail in production
+  }
+}

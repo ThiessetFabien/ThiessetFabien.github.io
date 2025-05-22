@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.hook.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    ".next/types/**/*.ts",
+    "!**/app/page.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next/types/app/page.ts",
+    "scripts/**/*.js",
+    "netlify/**/*.js"
+  ]
+}

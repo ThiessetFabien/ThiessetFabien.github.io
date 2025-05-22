@@ -3,7 +3,7 @@
  * Each menu item represents a navigational link or action with associated metadata.
  */
 
-import { MenuItemProps } from '@src/types/MenuItemProps';
+import type { MenuItemProps } from '@src/types/MenuItemProps';
 
 /**
  * Type definition for a menu item.
@@ -19,10 +19,10 @@ export interface MenuItem {
 
 export const menuItems: MenuItem[] = [
   {
-    id: 'services',
+    id: 'home',
     icon: 'Home',
-    label: 'Mes services',
-    href: '#card-0',
+    label: 'Accueil',
+    href: '#home',
     target: '_self',
     rel: 'noopener noreferrer',
   },
@@ -30,7 +30,7 @@ export const menuItems: MenuItem[] = [
     id: 'about',
     icon: 'User',
     label: 'À propos',
-    href: '#card-1',
+    href: '#about',
     target: '_self',
     rel: 'noopener noreferrer',
   },
@@ -38,15 +38,15 @@ export const menuItems: MenuItem[] = [
     id: 'portfolio',
     icon: 'Grid2x2Plus',
     label: 'Portfolio',
-    href: '#card-2',
+    href: '#portfolio',
     target: '_self',
     rel: 'noopener noreferrer',
   },
   {
-    id: 'experience',
+    id: 'experiences',
     icon: 'BriefcaseBusiness',
     label: 'Expériences',
-    href: '#card-3',
+    href: '#experiences',
     target: '_self',
     rel: 'noopener noreferrer',
   },
@@ -54,7 +54,7 @@ export const menuItems: MenuItem[] = [
     id: 'contact',
     icon: 'Send',
     label: 'Contact',
-    href: '#card-4',
+    href: '#contact',
     target: '_self',
     rel: 'noopener noreferrer',
   },

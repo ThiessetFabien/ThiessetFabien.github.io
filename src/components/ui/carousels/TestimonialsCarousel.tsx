@@ -8,8 +8,8 @@ import { cnPadding } from '@src/styles/boxModel.style';
 import { cnFlexCol } from '@src/styles/flex.style';
 import type { TestimonialProps } from '@src/types/TestimonialProps';
 
-import { ArrowCarouselButton } from '../buttons/ArrowCarouselButton';
-import { Header2Card } from '../cards/layouts.cards/Header2Card';
+import { ArrowCarouselButton } from '@src/components/ui/buttons/ArrowCarouselButton';
+import { Header2Card } from '@src/components/ui/cards/layouts.cards/Header2Card';
 
 import { CarouselControls } from './CarouselControls';
 import { TestimonialItem } from './TestimonialItem';

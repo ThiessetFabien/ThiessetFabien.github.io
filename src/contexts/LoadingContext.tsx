@@ -1,10 +1,14 @@
+'use client';
+
 import { usePathname } from 'next/navigation';
 import React, {
   createContext,
   useState,
   useContext,
-  ReactNode,
+  type ReactNode,
   useEffect,
+  useMemo,
+  useCallback,
 } from 'react';
 
 type LoadingContextType = {
@@ -36,24 +40,40 @@ export const LoadingProvider: React.FC<{ children: ReactNode }> = ({
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const pathname = usePathname();
 
-  // Effet pour désactiver automatiquement le chargement si la page est la page 404
+  // Effet pour gérer les transitions de page et désactiver automatiquement le chargement
   useEffect(() => {
     if (pathname) {
-      // Si nous sommes sur une page inexistante (gérée par not-found.tsx)
-      // On force la désactivation du chargement
+      // Pour toute nouvelle navigation, on active brièvement le loader
+      setIsLoading(true);
+
+      // Désactiver le chargement après un délai raisonnable
       const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 300);
+        // Si nous sommes sur la page 404, elle gère elle-même le chargement
+        if (!pathname.includes('not-found')) {
+          setIsLoading(false);
+        }
+      }, 800);
+
       return () => clearTimeout(timer);
     }
   }, [pathname]);
 
-  const setLoading = (loading: boolean) => {
+  // Mémorise la fonction setLoading pour éviter les re-renders inutiles
+  const setLoading = useCallback((loading: boolean) => {
     setIsLoading(loading);
-  };
+  }, []);
+
+  // Mémorise la valeur du contexte pour éviter les re-renders inutiles
+  const contextValue = useMemo(
+    () => ({
+      isLoading,
+      setLoading,
+    }),
+    [isLoading, setLoading]
+  );
 
   return (
-    <LoadingContext.Provider value={{ isLoading, setLoading }}>
+    <LoadingContext.Provider value={contextValue}>
       {children}
     </LoadingContext.Provider>
   );

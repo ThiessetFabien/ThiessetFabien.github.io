@@ -1,6 +1,10 @@
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { useEffect, useState, type ReactNode } from 'react';
 
-export const useIsClient = () => {
+/**
+ * Hook personnalisé qui détecte si le code s'exécute côté client
+ * @returns {boolean} True si le code s'exécute dans le navigateur, false sinon
+ */
+export const useIsClient = (): boolean => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -11,28 +15,26 @@ export const useIsClient = () => {
 };
 
 /**
- * A component that renders its children only on the client-side, not during server-side rendering.
- * This is useful for components that use browser-specific APIs or need DOM access.
+ * Props pour le composant NoSSR
+ */
+interface NoSSRProps {
+  /** Contenu à rendre uniquement côté client */
+  children: ReactNode;
+  /** Contenu à afficher pendant le rendu serveur */
+  fallback?: ReactNode;
+}
+
+/**
+ * Composant qui rend son contenu uniquement côté client
+ * Utile pour les composants qui utilisent des APIs spécifiques au navigateur
  *
- * @param props - The component properties
- * @param props.children - The content to render on the client side
- * @param props.fallback - Optional content to render during server-side rendering (defaults to null)
- * @returns The children when on the client side, otherwise the fallback
- *
- * @example
- * ```tsx
- * <NoSSR fallback={<LoadingSpinner />}>
- *   <ComponentThatUsesWindowAPI />
- * </NoSSR>
- * ```
+ * @param props - Propriétés du composant
+ * @returns Le contenu enfant sur le client, sinon le fallback
  */
 export function NoSSR({
   children,
   fallback = null,
-}: {
-  children: ReactNode;
-  fallback?: ReactNode;
-}) {
+}: NoSSRProps): JSX.Element | null {
   const isClient = useIsClient();
 
   if (!isClient) {

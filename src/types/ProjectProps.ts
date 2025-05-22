@@ -1,4 +1,4 @@
-import { TagsProps } from './TagsProps';
+import type { TagsProps } from './TagsProps';
 
 /**
  * @file ProjectsProps.tsx
