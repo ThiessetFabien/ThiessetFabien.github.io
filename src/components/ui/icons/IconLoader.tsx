@@ -8,7 +8,7 @@ import * as Icons from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
 import { cn } from '@src/lib/utils';
-import { cnSizeIcon } from '@src/styles/size.style';
+import { cnSizeIcon } from '@styles/size.style';
 import type { CardProps } from '@src/types/CardProps';
 
 /**

@@ -27,6 +27,7 @@ FIX_TS=false
 FIX_REACT=false
 FIX_BUN=false
 FIX_NPM=false
+FIX_STYLES=false
 ALL=true
 
 # Fonction de sauvegarde
@@ -53,6 +54,7 @@ show_help() {
   echo -e "  --format          - Corrige uniquement le formatage"
   echo -e "  --ts              - Corrige uniquement les erreurs TypeScript"
   echo -e "  --react           - Corrige uniquement les problèmes React (keys, contexts)"
+  echo -e "  --styles          - Centralise les styles et migre les anciennes constantes"
   echo -e "  --bun             - Corrige uniquement les problèmes liés à Bun"
   echo -e "  --npm             - Corrige uniquement les problèmes de configuration NPM"
   echo -e "  --all             - Effectue toutes les corrections (par défaut)"
@@ -77,6 +79,10 @@ for arg in "$@"; do
       ;;
     --react)
       FIX_REACT=true
+      ALL=false
+      ;;
+    --styles)
+      FIX_STYLES=true
       ALL=false
       ;;
     --bun)
@@ -148,6 +154,12 @@ if [ "$FIX_TS" = true ]; then
   
   echo -e "${GREEN}Correction des imports relatifs...${NC}"
   bash ./scripts/fix-relative-imports.sh
+  
+  echo -e "${GREEN}Standardisation des imports de styles...${NC}"
+  bash ./scripts/standardize-style-imports.sh
+  
+  echo -e "${GREEN}Simplification des imports de styles multiples...${NC}"
+  bash ./scripts/simplify-style-imports.sh
 fi
 
 # Corriger les problèmes React si demandé
@@ -155,6 +167,15 @@ if [ "$FIX_REACT" = true ]; then
   echo -e "${GREEN}Correction des problèmes React...${NC}"
   bash ./scripts/fix-react-keys.sh
   bash ./scripts/fix-react-contexts.sh
+fi
+
+# Centraliser les styles si demandé
+if [ "$FIX_STYLES" = true ]; then
+  echo -e "${GREEN}Centralisation des styles...${NC}"
+  bash ./scripts/standardize-style-imports.sh
+  bash ./scripts/simplify-style-imports.sh
+  bash ./scripts/document-styles-centralisation.sh
+  bash ./scripts/migrate-styles.sh
 fi
 
 # Corriger les problèmes Bun si demandé

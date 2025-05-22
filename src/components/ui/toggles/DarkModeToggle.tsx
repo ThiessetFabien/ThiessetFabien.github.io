@@ -4,9 +4,9 @@ import { Moon, Sun } from 'lucide-react';
 import { Toggle } from '@lib/components/ui/toggle';
 import { useThemeManager } from '@src/hooks/useThemeManager.hook';
 import { cn } from '@src/lib/utils';
-import { cnBorderNone, cnBorderRadiusFull } from '@src/styles/border.style';
-import { cnSizeIcon } from '@src/styles/size.style';
-import { containerScale, iconRotate } from '@src/styles/variantsAnimation';
+import { cnBorderNone, cnBorderRadiusFull } from '@styles/border.style';
+import { cnSizeIcon } from '@styles/size.style';
+import { containerScale, iconRotate } from '@styles/variantsAnimation';
 
 /**
  * A component that allows users to toggle between dark and light themes.

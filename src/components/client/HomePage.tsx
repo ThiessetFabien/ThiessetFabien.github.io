@@ -21,13 +21,13 @@ import {
   cnPaddingBottom,
   cnPaddingX,
   cnSmallGap,
-} from '@src/styles/boxModel.style';
+} from '@styles/boxModel.style';
 import {
   cnFlexBetweenY,
   cnFlexCenterY,
   cnFlexCol,
-} from '@src/styles/flex.style';
-import { cnBorderNone } from '@src/styles/border.style';
+} from '@styles/flex.style';
+import { cnBorderNone } from '@styles/border.style';
 import type { ExperiencesProps } from '@src/types/ExperiencesProps';
 
 const LazyTestimonialsCard = dynamic(

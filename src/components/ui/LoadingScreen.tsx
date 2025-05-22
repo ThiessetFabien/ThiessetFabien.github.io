@@ -2,7 +2,7 @@
 
 import { cn } from '@src/lib/utils';
 import LoadingSpinner from './spinner/LoadingSpinner';
-import { cnFlexFullCenter } from '@src/styles/flex.style';
+import { cnFlexFullCenter } from '@styles/flex.style';
 
 export default function LoadingScreen() {
   return (

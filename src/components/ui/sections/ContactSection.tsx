@@ -3,7 +3,7 @@ import { memo } from 'react';
 
 import { cn } from '@lib/utils';
 import { TestimonialsCarousel } from '@src/components/ui/carousels/TestimonialsCarousel';
-import { cnSizeFull } from '@src/styles/size.style';
+import { cnSizeFull } from '@styles/size.style';
 import type { TestimonialProps } from '@src/types/TestimonialProps';
 
 import { ContactForm } from '@src/components/ui/forms/ContactForm';

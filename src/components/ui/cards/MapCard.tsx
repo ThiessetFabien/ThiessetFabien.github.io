@@ -26,18 +26,14 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-import { Card, CardContent } from '@src/lib/components/ui/card';
-import { cn } from '@src/lib/utils';
-import { cnBorderNone } from '@src/styles/border.style';
-import {
-  cnPadding,
-  cnPaddingX,
-  cnPaddingBottom,
-} from '@src/styles/boxModel.style';
-import { cnFlexCol } from '@src/styles/flex.style';
+import { Card, CardContent } from '@lib/components/ui/card';
+import { cn } from '@lib/utils';
+import { cnBorderNone } from '@styles/border.style';
+import { cnPadding, cnPaddingX, cnPaddingBottom } from '@styles/boxModel.style';
+import { cnFlexCol } from '@styles/flex.style';
 import type { CardProps } from '@src/types/CardProps';
 
-import LoadingSpinner from '@src/components/ui/spinner/LoadingSpinner';
+import LoadingSpinner from '@ui/spinner/LoadingSpinner';
 
 import { Header2Card } from './layouts.cards/Header2Card';
 

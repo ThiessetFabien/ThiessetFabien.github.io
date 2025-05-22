@@ -1,1 +1,6 @@
-bun test
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+exec < /dev/tty
+
+bunx lint-staged

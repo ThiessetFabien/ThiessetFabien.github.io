@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 
 import { Toggle } from '@lib/components/ui/toggle';
 import { cn } from '@src/lib/utils';
-import { cnBorderRadiusFull } from '@src/styles/border.style';
-import { containerScale, iconBounce } from '@src/styles/variantsAnimation';
+import { cnBorderRadiusFull } from '@styles/border.style';
+import { containerScale, iconBounce } from '@styles/variantsAnimation';
 import type { IconName } from '@src/types/IconNameProps';
 import type { ScrollTopToggleProps } from '@src/types/ScrollTopToggleProps';
 import { IconLoader } from '@src/components/ui/icons/IconLoader';

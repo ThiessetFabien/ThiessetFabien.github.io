@@ -30,3 +30,8 @@ export const cnFlexCenterY: string = 'flex items-center';
  * and horizontally centered.
  */
 export const cnFlexFullCenter = 'flex items-center justify-center';
+
+/**
+ * A CSS class string for a flex card with column layout and space between items.
+ */
+export const cnFlexCard = 'flex flex-col justify-between';

@@ -17,7 +17,7 @@ import {
   cnBorder,
   cnBorderNone,
   cnBorderRadiusFull,
-} from '@src/styles/border.style';
+} from '@styles/border.style';
 import {
   cnGap,
   cnLeftCenterPosition,
@@ -25,16 +25,16 @@ import {
   cnPaddingX,
   cnSmallPadding,
   cnSmallSpaceY,
-} from '@src/styles/boxModel.style';
+} from '@styles/boxModel.style';
 import {
   cnFlexCenterX,
   cnFlexCenterY,
   cnFlexCol,
   cnFlexFullCenter,
-} from '@src/styles/flex.style';
-import { cnSmallText } from '@src/styles/font.style';
-import { useIsLg } from '@src/styles/mediaQueries.style';
-import { containerScale, textShow } from '@src/styles/variantsAnimation';
+} from '@styles/flex.style';
+import { cnSmallText } from '@styles/font.style';
+import { useIsLg } from '@styles/mediaQueries.style';
+import { containerScale, textShow } from '@styles/variantsAnimation';
 import type { MenuItemProps } from '@src/types/MenuItemProps';
 import { IconLoader } from '@src/components/ui/icons/IconLoader';
 

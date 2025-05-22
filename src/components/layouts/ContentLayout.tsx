@@ -7,10 +7,10 @@ import { cn } from '@lib/utils';
 import { useLoading } from '@src/contexts/LoadingContext';
 import { useData } from '@src/contexts/DataContext';
 import { ANIMATION_TIMING } from '@src/config/constants';
-import { cnFlexCenterX, cnFlexCol } from '@src/styles/flex.style';
+import { cnFlexCenterX, cnFlexCol } from '@styles/flex.style';
 import { cnMarginTop, cnPadding, cnSmallSpaceY } from '@styles/boxModel.style';
-import { cnLightTextMuted } from '@src/styles/font.style';
-import { cnSizeFull } from '@src/styles/size.style';
+import { cnLightTextMuted } from '@styles/font.style';
+import { cnSizeFull } from '@styles/size.style';
 
 interface ContentLayoutProps {
   children: React.ReactNode;

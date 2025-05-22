@@ -8,7 +8,7 @@ import React from 'react';
 
 import { cn } from '@lib/utils';
 import { ActionButton } from '@src/components/ui/buttons/ActionButton';
-import { cnSmallGap } from '@styles';
+import { CONTAINER_CLASSES } from '@src/config/css-classes';
 import { useIsXs } from '@styles/mediaQueries.style';
 import type { ActionButtonProps } from '@src/types/ActionButtonProps';
 import type { FooterCardProps } from '@src/types/FooterProps';
@@ -85,7 +85,7 @@ export const FooterCard = ({
 
   return (
     <footer
-      className={cn('flex flex-wrap', cnSmallGap, className)}
+      className={cn('flex flex-wrap', CONTAINER_CLASSES.SMALL_GAP, className)}
     >
       {renderActionButton(
         icon1,

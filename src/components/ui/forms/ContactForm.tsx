@@ -19,9 +19,9 @@ import {
   cnPaddingX,
   cnGap,
   cnSpaceY,
-} from '@src/styles/boxModel.style';
-import { cnFlexCol, cnFlexCenterY } from '@src/styles/flex.style';
-import { useIsXl } from '@src/styles/mediaQueries.style';
+} from '@styles/boxModel.style';
+import { cnFlexCol, cnFlexCenterY } from '@styles/flex.style';
+import { useIsXl } from '@styles/mediaQueries.style';
 import type { CardProps } from '@src/types/CardProps';
 import type { IconName } from '@src/types/IconNameProps';
 import { InputField } from '@src/components/ui/inputs/InputField';

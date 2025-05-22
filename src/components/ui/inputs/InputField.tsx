@@ -11,7 +11,7 @@ import {
 } from '@lib/components/ui/form';
 import { Input } from '@lib/components/ui/input';
 import { cn } from '@src/lib/utils';
-import { cnParagraph, cnSmallText } from '@src/styles/font.style';
+import { cnParagraph, cnSmallText } from '@styles/font.style';
 import type { FormFieldProps } from '@src/types/FormFieldProps.js';
 
 export function InputField<T extends FieldValues>({

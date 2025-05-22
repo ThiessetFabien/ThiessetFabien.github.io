@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 import { cn } from '@lib/utils';
-import { cnFlexCol, cnFlexFullCenter } from '@src/styles/flex.style';
-import { cnParagraph } from '@src/styles/font.style';
+import { cnFlexCol, cnFlexFullCenter } from '@styles/flex.style';
+import { cnParagraph } from '@styles/font.style';
 
 interface LoaderProps {
   size?: 'small' | 'medium' | 'large';

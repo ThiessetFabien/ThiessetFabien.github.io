@@ -7,14 +7,14 @@ import { scrollToTop } from '@hooks/ScrollToTop.hook';
 import { ToggleDarkMode } from '@src/components/ui/toggles/DarkModeToggle';
 import { ScrollTopToggle } from '@src/components/ui/toggles/ScrollTopToggle';
 import { cn } from '@src/lib/utils';
-import { cnBorderRadiusFull } from '@src/styles/border.style';
+import { cnBorderRadiusFull } from '@styles/border.style';
 import {
   cnBottomRightPosition,
   cnPaddingX,
   cnTopRightPosition,
-} from '@src/styles/boxModel.style';
-import { useIsLg } from '@src/styles/mediaQueries.style';
-import { containerScale } from '@src/styles/variantsAnimation';
+} from '@styles/boxModel.style';
+import { useIsLg } from '@styles/mediaQueries.style';
+import { containerScale } from '@styles/variantsAnimation';
 
 /**
  * FloatingToggles component renders floating buttons for toggling dark mode and scrolling to the top.

@@ -160,6 +160,7 @@ const nextconfig = {
         'node_modules/leaflet/dist/images'
       ),
       'lucide-react': resolve(__dirname, 'node_modules/lucide-react'),
+      '@styles': resolve(__dirname, 'src/styles'),
     };
 
     if (process.env.NODE_ENV === 'production') {

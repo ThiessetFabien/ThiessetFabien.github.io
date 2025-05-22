@@ -13,6 +13,8 @@
     "bun": ">=1.0.0"
   },
   "scripts": {
+    "typecheck": "tsc --noEmit --pretty",
+    "prepare": "husky",
     "menu": "./scripts/menu.sh",
     "copy-leaflet-images": "mkdir -p public/images/leaflet && cp -r node_modules/leaflet/dist/images/* public/images/leaflet/",
     "dev": "dotenv -e .env.development -- sh -c 'bun run copy-leaflet-images && bun --bun next dev'",
@@ -143,7 +145,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.5.2",
+    "lint-staged": "^16.0.0",
     "postcss": "^8.5.3",
     "postcss-import": "^16.1.0",
     "postcss-loader": "^8.1.1",

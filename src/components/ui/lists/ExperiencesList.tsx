@@ -3,18 +3,18 @@ import React from 'react';
 import { Dot } from '@src/components/ui/dot/dot';
 import { Badge } from '@src/lib/components/ui/badge';
 import { cn } from '@src/lib/utils';
-import { cnBorderRadiusFull } from '@src/styles/border.style';
+import { cnBorderRadiusFull } from '@styles/border.style';
 import {
   cnSpaceY,
   cnSmallSpaceY,
   cnSmallMarginX,
   cnPaddingX,
-} from '@src/styles/boxModel.style';
+} from '@styles/boxModel.style';
 import {
   cnDescription,
   cnLightTextMuted,
   cnSmallText,
-} from '@src/styles/font.style';
+} from '@styles/font.style';
 import type { ExperiencesProps } from '@src/types/ExperiencesProps';
 import {
   capitalizeFirstLetterOfEachWord,

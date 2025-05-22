@@ -6,16 +6,16 @@ import { Button } from '@lib/components/ui/button';
 import { Card, CardContent } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import { TestimonialImage } from '@src/components/ui/images/TestimonalImage';
-import { cnBorderRadiusFull, cnBorder } from '@src/styles/border.style';
+import { cnBorderRadiusFull, cnBorder } from '@styles/border.style';
 import {
   cnPadding,
   cnPaddingTop,
   cnPaddingX,
   cnSmallGap,
   cnSmallPadding,
-} from '@src/styles/boxModel.style';
-import { cnFlexCenterY, cnFlexBetweenX } from '@src/styles/flex.style';
-import { cnParagraph, cnSmallText } from '@src/styles/font.style';
+} from '@styles/boxModel.style';
+import { cnFlexCenterY, cnFlexBetweenX } from '@styles/flex.style';
+import { cnParagraph, cnSmallText } from '@styles/font.style';
 import type { TestimonialProps } from '@src/types/TestimonialProps';
 import {
   capitalizeFirstLetterOfEachWord,

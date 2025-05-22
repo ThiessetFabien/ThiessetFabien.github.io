@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { cn } from '@src/lib/utils';
-import { cnBorderRadiusFull } from '@src/styles/border.style';
-import { cnSmallMarginX } from '@src/styles/boxModel.style';
+import { cnBorderRadiusFull } from '@styles/border.style';
+import { cnSmallMarginX } from '@styles/boxModel.style';
 
 /**
  * A functional React component that renders a small, circular dot element.

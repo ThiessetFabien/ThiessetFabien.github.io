@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@src/lib/utils';
-import { cnSmallMarginRight } from '@src/styles/boxModel.style';
-import { cnParagraph } from '@src/styles/font.style';
+import { cnSmallMarginRight } from '@styles/boxModel.style';
+import { cnParagraph } from '@styles/font.style';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,

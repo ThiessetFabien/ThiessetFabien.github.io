@@ -2,7 +2,7 @@ import type { EmblaCarouselType } from 'embla-carousel';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { cn } from '@src/lib/utils';
-import { cnSmallText } from '@src/styles/font.style';
+import { cnSmallText } from '@styles/font.style';
 import type { CardProps } from '@src/types/CardProps';
 
 type UseSelectedSnapDisplayType = {

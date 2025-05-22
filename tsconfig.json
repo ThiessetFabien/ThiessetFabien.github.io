@@ -47,6 +47,7 @@
       "@middlewares/*": ["src/middlewares/*"],
       "@providers/*": ["src/components/providers/*"],
       "@schemas/*": ["src/schemas/*"],
+      "@styles": ["src/styles"],
       "@styles/*": ["src/styles/*"],
       "@types/*": ["src/types/*"]
     },

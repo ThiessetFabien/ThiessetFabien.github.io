@@ -11,8 +11,8 @@ import {
   cnSmallPaddingBottom,
   cnSmallPaddingX,
   cnSpaceY,
-} from '@src/styles/boxModel.style';
-import { cnTitle2, cnTitle2Size } from '@src/styles/font.style';
+} from '@styles/boxModel.style';
+import { cnTitle2, cnTitle2Size } from '@styles/font.style';
 import type { CardProps } from '@src/types/CardProps';
 import type { ExperiencesProps } from '@src/types/ExperiencesProps';
 

@@ -4,7 +4,7 @@ import {
   CardTitle,
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
-import { cnCenteredText } from '@styles';
+import { TEXT_CLASSES } from '@src/config/css-classes';
 import { cnDescription, cnTitle3 } from '@styles/font.style';
 import type { HeaderCardProps } from '@src/types/HeaderProps';
 import {
@@ -25,9 +25,9 @@ export const Header2Card = ({
   className,
 }: HeaderCardProps): JSX.Element => (
   <header>
-    <CardHeader className={cn(className, cnCenteredText)}>
+    <CardHeader className={cn(className, TEXT_CLASSES.CENTERED_TEXT)}>
       <CardTitle
-        className={cn('max-w-full', cnCenteredText)}
+        className={cn('max-w-full', TEXT_CLASSES.CENTERED_TEXT)}
         aria-label={title}
       >
         <h3 className={cnTitle3}>
@@ -36,7 +36,7 @@ export const Header2Card = ({
       </CardTitle>
       {description && (
         <CardDescription
-          className={cn(cnDescription, cnResponsiveTextPadding)}
+          className={cn(cnDescription, TEXT_CLASSES.RESPONSIVE_PADDING)}
           aria-label={description}
         >
           {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}

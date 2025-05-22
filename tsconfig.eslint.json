@@ -12,6 +12,7 @@
     "node_modules",
     ".next/types/app/page.ts",
     "scripts/**/*.js",
-    "netlify/**/*.js"
+    "netlify/**/*.js",
+    "backups/**/*"
   ]
 }

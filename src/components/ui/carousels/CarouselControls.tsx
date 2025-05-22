@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from '@lib/components/ui/button';
 import { cn } from '@lib/utils';
-import { cnSmallPadding } from '@src/styles/boxModel.style';
+import { cnSmallPadding } from '@styles/boxModel.style';
 
 import { Counter } from '@src/components/ui/counter/Counter';
 import { IconLoader } from '@src/components/ui/icons/IconLoader';

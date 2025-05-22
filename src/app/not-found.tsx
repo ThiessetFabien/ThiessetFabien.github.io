@@ -8,14 +8,14 @@ import {
   cnBigDescription,
   cnSmallText,
   cnLightTextMuted,
-} from '@src/styles/font.style';
+} from '@styles/font.style';
 import {
   cnFlexCol,
   cnFlexFullCenter,
   cnFlexCenterY,
-} from '@src/styles/flex.style';
-import { cnBorderNone } from '@src/styles/border.style';
-import { cnSmallSpaceY } from '@src/styles/boxModel.style';
+} from '@styles/flex.style';
+import { cnBorderNone } from '@styles/border.style';
+import { cnSmallSpaceY } from '@styles/boxModel.style';
 import {
   Card,
   CardContent,

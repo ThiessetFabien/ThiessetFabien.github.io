@@ -11,19 +11,19 @@ import {
   CardTitle,
 } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
-import { cnBorder } from '@src/styles/border.style';
+import { cnBorder } from '@styles/border.style';
 import {
   cnMarginLeft,
   cnPadding,
   cnSmallGap,
   cnSmallSpaceY,
   cnSpaceY,
-} from '@src/styles/boxModel.style';
-import { cnFlexCol, cnFlexCenterY } from '@src/styles/flex.style';
-import { cnParagraph, cnSmallText, cnTitle3 } from '@src/styles/font.style';
-import { cnHoverShadowPrimary } from '@src/styles/hovers.style';
-import { cnSizeFull } from '@src/styles/size.style';
-import { containerScale, mediaFade } from '@src/styles/variantsAnimation';
+} from '@styles/boxModel.style';
+import { cnFlexCol, cnFlexCenterY } from '@styles/flex.style';
+import { cnParagraph, cnSmallText, cnTitle3 } from '@styles/font.style';
+import { cnHoverShadowPrimary } from '@styles/hovers.style';
+import { cnSizeFull } from '@styles/size.style';
+import { containerScale, mediaFade } from '@styles/variantsAnimation';
 import type { CardProps } from '@src/types/CardProps';
 import {
   capitalizeFirstLetterOfEachWord,

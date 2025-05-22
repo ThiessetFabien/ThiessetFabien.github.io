@@ -13,14 +13,14 @@ import {
   CarouselItem,
   type CarouselApi,
 } from '@src/lib/components/ui/carousel';
-import { cnBorderRadiusMd } from '@src/styles/border.style';
-import { cnFlexCenterY, cnFlexCol } from '@src/styles/flex.style';
+import { cnBorderRadiusMd } from '@styles/border.style';
+import { cnFlexCenterY, cnFlexCol } from '@styles/flex.style';
 import {
   useIsLg,
   useIsXl,
   useIsMd,
   useIsSm,
-} from '@src/styles/mediaQueries.style';
+} from '@styles/mediaQueries.style';
 import type { GenericCarouselProps } from '@src/types/GenericCarouselProps';
 
 interface AutoplayPlugin {

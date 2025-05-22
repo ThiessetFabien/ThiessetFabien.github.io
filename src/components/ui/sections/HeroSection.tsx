@@ -14,7 +14,7 @@ import {
   cnBorder2,
   cnBorderBottom4,
   cnBorderRadiusFull,
-} from '@src/styles/border.style';
+} from '@styles/border.style';
 import {
   cnGap,
   cnPaddingY,
@@ -23,24 +23,24 @@ import {
   cnSmallPaddingLeft,
   cnSmallSpaceY,
   cnSpaceY,
-} from '@src/styles/boxModel.style';
-import { cnFlexCol, cnFlexFullCenter } from '@src/styles/flex.style';
+} from '@styles/boxModel.style';
+import { cnFlexCol, cnFlexFullCenter } from '@styles/flex.style';
 import {
   cnBigDescription,
   cnDescription,
   cnLightTextMuted,
   cnSmallText,
   cnTitle1,
-} from '@src/styles/font.style';
-import { cnHiddenSmBlock } from '@src/styles/hideItem.style';
-import { cnBigImage } from '@src/styles/image.styles';
-import { ResponsiveImage, useIsSm } from '@src/styles/mediaQueries.style';
+} from '@styles/font.style';
+import { cnHiddenSmBlock } from '@styles/hideItem.style';
+import { cnBigImage } from '@styles/image.styles';
+import { ResponsiveImage, useIsSm } from '@styles/mediaQueries.style';
 import {
   cnAutoHeightFullWidth,
   cnAutoWidthFullHeight,
   cnSizeAuto,
-} from '@src/styles/size.style';
-import { cnLittleTranslateSm } from '@src/styles/translate.style';
+} from '@styles/size.style';
+import { cnLittleTranslateSm } from '@styles/translate.style';
 import type { CardProps } from '@src/types/CardProps';
 import {
   capitalizeFirstLetterOfEachWord,
@@ -307,23 +307,16 @@ export const HeroSection: React.FC<{
           {memoizedServices &&
             memoizedServices.length > 0 &&
             memoizedServices.map((service) => (
-              <Badge
-                key={service.id}
-                variant='outline'
-                className={cn(
-                  cnSmallPadding,
-                  cnFlexFullCenter,
-                  cnSmallGap,
-                  cnFlexCol,
-                  'sm:flex-row',
-                  (service as any).index > 3 &&
-                    'lg:col-span-2 lg:flex-row lg:justify-center xl:col-span-1 xl:flex-row',
-                  cnSmallText,
-                  'hyphens-auto break-words'
-                )}
-              >
+              <div key={service.id}>
                 <IconLoader icon={service.icon} className='text-secondary' />
-                <p className={cn(cnFlexCol, 'text-center italic')}>
+                <p
+                  className={cn(
+                    cnFlexCol,
+                    cnSmallText,
+                    'hyphens-auto break-words',
+                    'italic'
+                  )}
+                >
                   <span className='font-semibold'>
                     {capitalizeFirstLetterOfPhrase(
                       formatSpecialWords(service.item)
@@ -335,7 +328,7 @@ export const HeroSection: React.FC<{
                     )}
                   </span>
                 </p>
-              </Badge>
+              </div>
             ))}
         </CardContent>
       </div>

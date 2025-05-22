@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react';
 
 import { cn } from '@lib/utils';
 import { useLoading } from '@src/contexts/LoadingContext';
-import { cnFlexCol, cnFlexFullCenter } from '@src/styles/flex.style';
-import { cnParagraph } from '@src/styles/font.style';
+import { cnFlexCol, cnFlexFullCenter } from '@styles/flex.style';
+import { cnParagraph } from '@styles/font.style';
 
 const loadingTexts = [
   'Chargement des composants...',

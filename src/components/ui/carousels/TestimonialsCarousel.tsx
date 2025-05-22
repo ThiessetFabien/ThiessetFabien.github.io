@@ -4,8 +4,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Card, CardContent } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import { useTestimonialsCarousel } from '@src/hooks/useTestimonialsCarousel';
-import { cnPadding } from '@src/styles/boxModel.style';
-import { cnFlexCol } from '@src/styles/flex.style';
+import { cnPadding } from '@styles/boxModel.style';
+import { cnFlexCol } from '@styles/flex.style';
 import type { TestimonialProps } from '@src/types/TestimonialProps';
 
 import { ArrowCarouselButton } from '@src/components/ui/buttons/ArrowCarouselButton';

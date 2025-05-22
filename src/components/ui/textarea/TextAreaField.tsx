@@ -11,7 +11,7 @@ import {
 } from '@lib/components/ui/form';
 import { Textarea } from '@lib/components/ui/textarea';
 import { cn } from '@src/lib/utils';
-import { cnParagraph, cnSmallText } from '@src/styles/font.style';
+import { cnParagraph, cnSmallText } from '@styles/font.style';
 import type { FormFieldProps } from '@src/types/FormFieldProps.js';
 
 export function MessageField<T extends FieldValues>({

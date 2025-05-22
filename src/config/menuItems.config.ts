@@ -110,11 +110,11 @@ export const menuItemsMobile = (items: MenuItemProps[]): MenuItemProps[] =>
   items.filter(
     (item) =>
       ![
-        'services',
+        'home',
         'about',
         'portfolio',
         'contact',
-        'experience',
+        'experiences',
         'resume',
         'motivation',
       ].includes(item.id)

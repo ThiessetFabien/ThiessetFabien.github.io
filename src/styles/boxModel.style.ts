@@ -58,6 +58,16 @@ export const cnGap: string = 'gap-4';
 
 export const cnGapX: string = 'gap-x-4';
 
+/**
+ * CSS class for medium gap spacing (4 units)
+ */
+export const cnMediumGap: string = 'gap-4';
+
+/**
+ * CSS class for large gap spacing (6 units)
+ */
+export const cnLargeGap: string = 'gap-6';
+
 export const cnTopRightPosition: string = 'right-4 top-4';
 
 /**

@@ -6,7 +6,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 
 import { ProjectCard } from '@src/components/ui/cards/ProjectCard';
-import { useIsLg, useIsSm, useIsXs } from '@src/styles/mediaQueries.style';
+import { useIsLg, useIsSm, useIsXs } from '@styles/mediaQueries.style';
 import type { CardProps } from '@src/types/CardProps';
 
 /**
