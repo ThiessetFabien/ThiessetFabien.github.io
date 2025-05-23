@@ -5,17 +5,18 @@
 1. ✅ Mise à jour du fichier `src/app/layout.tsx` pour utiliser l'approche App Router
    - Utilisation de l'export `metadata` pour les métadonnées
    - Suppression des balises meta manuelles dans le head
-   
 2. ✅ Suppression de `src/app/metadata-export.tsx` qui n'est plus nécessaire
 
 ## Changements à faire ultérieurement
 
 1. Supprimer le composant `MetaHead.tsx` obsolète
+
    ```bash
    rm -f /home/fabien/Projets/Portfolio/src/components/layouts/MetaHead.tsx
    ```
 
 2. Supprimer le dossier pages quand vous êtes prêt
+
    ```bash
    rm -rf /home/fabien/Projets/Portfolio/src/pages
    ```

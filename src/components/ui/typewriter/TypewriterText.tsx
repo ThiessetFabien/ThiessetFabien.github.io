@@ -86,8 +86,11 @@ export const TypewriterText: React.FC<{
 
   return (
     <span className={cn('inline-block', className)}>
-      {displayedText}
+      <span className='font-semibold text-primary'>
+        {displayedText.replace(/ \?$/, '')}
+      </span>
       {(isTyping || isDeleting) && <Cursor />}
+      {displayedText.endsWith(' ?') && ' ?'}
     </span>
   );
 };

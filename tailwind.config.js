@@ -110,6 +110,16 @@ const tailwindConfig = {
             transform: 'translateY(-3px)',
           },
         },
+        'fade-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
         blink: {
           '0%, 100%': {
             opacity: '1',
@@ -130,6 +140,7 @@ const tailwindConfig = {
         pulse: 'pulse 1s infinite',
         bounce: 'bounce 1s infinite',
         blink: 'blink 1s linear infinite',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
         shimmer: 'shimmer 1.5s infinite',
       },
     },

@@ -7,7 +7,7 @@
       "développeur full-stack",
       "coordonnateur de projet"
     ],
-    "description": "expérimenté en coordination de projet complexe pour la démarche humanitude, mon parcours d'aide soignant nourrit une approche pragmatique, humaine et sensible à la création de solution numérique accessible à tous.",
+    "description": "hello world ! je suis expérimenté en coordination de projet complexe pour la démarche humanitude, mon parcours d'aide soignant nourrit une approche pragmatique, humaine et sensible à la création de solution numérique accessible à tous.",
     "imageSrc": "/images/profile.webp",
     "imageAlt": "profile picture",
     "services": [
@@ -186,9 +186,10 @@
           "framer motion",
           "embla",
           "openstreetmap",
+          "github api",
           "google apis",
           "netlify",
-          "pnpm"
+          "bun"
         ]
       },
       {
