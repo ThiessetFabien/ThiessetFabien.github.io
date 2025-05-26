@@ -1,14 +1,7 @@
-import React, { memo, useEffect, useState, useCallback, useMemo } from 'react';
-import Link from 'next/link';
+import React, { memo, useEffect, useState, useMemo } from 'react';
 
 import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
-import {
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@lib/components/ui/card';
-import { QRCodeComponent } from '@src/components/ui/qrcode/QRCodeComponent';
+import { CardContent } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import { useLoading } from '@src/contexts/LoadingContext';
 import {
@@ -16,55 +9,21 @@ import {
   cnBorderBottom4,
   cnBorderRadiusFull,
 } from '@styles/border.style';
-import { cnGap, cnSmallSpaceY, cnSpaceY } from '@styles/boxModel.style';
-import {
-  cnFlexBetweenY,
-  cnFlexCenterX,
-  cnFlexCenterY,
-  cnFlexCol,
-  cnFlexFullCenter,
-} from '@styles/flex.style';
-import {
-  cnBigDescription,
-  cnDescription,
-  cnLightTextMuted,
-  cnSmallText,
-  cnTitle1,
-} from '@styles/font.style';
+import { cnGap, cnSpaceY } from '@styles/boxModel.style';
+import { cnFlexCenterY, cnFlexFullCenter } from '@styles/flex.style';
+import { cnSmallText } from '@styles/font.style';
 import { cnBigImage } from '@styles/image.styles';
 import { ResponsiveImage } from '@styles/mediaQueries.style';
-import {
-  cnAutoHeightFullWidth,
-  cnAutoWidthFullHeight,
-  cnSizeAuto,
-} from '@styles/size.style';
+import { cnAutoWidthFullHeight, cnSizeAuto } from '@styles/size.style';
 import { cnLittleTranslateSm } from '@styles/translate.style';
 import type { CardProps } from '@src/types/CardProps';
 import {
-  capitalizeFirstLetterOfEachWord,
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@src/utils/formatText.util';
 import { IconLoader } from '@src/components/ui/icons/IconLoader';
 import { ProfileImage } from '@src/components/ui/images/ProfileImage';
-import { GitHubStats } from '@src/components/ui/github/GitHubStats';
-
-import { lazyLoadComponent } from '@src/utils/dynamicLoading.util';
-
-const TypewriterText = lazyLoadComponent<{
-  text: string;
-  typingSpeed?: number;
-  delayBeforeStart?: number;
-  delayBeforeDelete?: number;
-  onComplete?: () => void;
-  className?: string;
-}>(
-  () =>
-    import('@src/components/ui/typewriter/TypewriterText').then((mod) => ({
-      default: mod.TypewriterText,
-    })),
-  300
-);
+import { HeroParallax } from '@src/lib/components/blocks/hero-parallax';
 
 /**
  * HeroSection component displays a profile card with typewriter animation for expertise.
@@ -95,10 +54,7 @@ export const HeroSection: React.FC<{
     services,
     imageSrc,
     imageAlt,
-    className,
   }) => {
-    const [currentExpertiseIndex, setCurrentExpertiseIndex] = useState(0);
-    const [showExpertise, setShowExpertise] = useState(true);
     const { setLoading } = useLoading();
     const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -109,22 +65,6 @@ export const HeroSection: React.FC<{
         id: `service-${service.icon || ''}-${index}`,
       }));
     }, [services]);
-
-    const handleExpertiseComplete = useCallback(() => {
-      if (!expertises || expertises.length === 0) return;
-
-      setShowExpertise(false);
-
-      setTimeout(() => {
-        setCurrentExpertiseIndex((prev) => (prev + 1) % expertises.length);
-        setShowExpertise(true);
-      }, 300);
-    }, [expertises]);
-
-    useEffect(() => {
-      setShowExpertise(true);
-      setCurrentExpertiseIndex(0);
-    }, []);
 
     useEffect(() => {
       if (imageSrc) {
@@ -161,91 +101,117 @@ export const HeroSection: React.FC<{
       setLoading(false);
     }, [imageSrc, setLoading, imageLoaded]);
 
-    return (
-      <div
-        className={cn(
-          cnFlexFullCenter,
-          'min-h-[100dvh] w-full overflow-hidden'
-        )}
-      >
-        <div className='mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 md:grid-cols-3 lg:gap-12 lg:px-8'>
-          <div className='flex flex-col justify-center space-y-8 md:col-span-1'>
-            <CardHeader className={cn(className, 'p-0')}>
-              <CardTitle className={cn(cnFlexCol, 'space-y-4')}>
-                <div className={cn(cnSmallSpaceY, cnFlexCol, cnFlexCenterX)}>
-                  <h1
-                    className={cn(
-                      cnTitle1,
-                      'flex items-center gap-2 text-balance text-4xl sm:text-5xl lg:text-6xl'
-                    )}
-                  >
-                    <span className='whitespace-nowrap'>
-                      {name && capitalizeFirstLetterOfEachWord(name)}
-                    </span>{' '}
-                    <span className='whitespace-nowrap'>
-                      {familyName && familyName.toUpperCase()}
-                    </span>
-                  </h1>
-                  <div className='relative'>
-                    <div
-                      className={cn(
-                        cnBigDescription,
-                        cnFlexCenterY,
-                        'h-12 gap-2 whitespace-nowrap sm:h-8'
-                      )}
-                    >
-                      <span className='whitespace-nowrap'>
-                        Besoin d&apos;un
-                      </span>
-                      <div
-                        className={cn(
-                          cnFlexCenterY,
-                          'relative flex min-w-[200px]'
-                        )}
-                      >
-                        {showExpertise &&
-                          expertises &&
-                          expertises.length > 0 && (
-                            <TypewriterText
-                              text={`${capitalizeFirstLetterOfEachWord(
-                                formatSpecialWords(
-                                  expertises[currentExpertiseIndex]
-                                )
-                              )} ?`}
-                              typingSpeed={60}
-                              delayBeforeStart={500}
-                              delayBeforeDelete={1500}
-                              onComplete={handleExpertiseComplete}
-                              className='whitespace-nowrap'
-                            />
-                          )}
-                        <div className='invisible whitespace-nowrap'>
-                          {expertises &&
-                            expertises.length > 0 &&
-                            `${capitalizeFirstLetterOfEachWord(
-                              formatSpecialWords(expertises[0])
-                            )} ?`}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardTitle>
-              <CardDescription className={cn(cnFlexCol, cnDescription)}>
-                <p
-                  className={cn(
-                    cnAutoHeightFullWidth,
-                    cnLightTextMuted,
-                    'relative text-pretty leading-relaxed'
-                  )}
-                >
-                  {capitalizeFirstLetterOfPhrase(
-                    formatSpecialWords(description)
-                  )}
-                </p>
-              </CardDescription>
-            </CardHeader>
+    const products = [
+      {
+        title: 'Moonbeam',
+        link: 'https://gomoonbeam.com',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/moonbeam.png',
+      },
+      {
+        title: 'Cursor',
+        link: 'https://cursor.so',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/cursor.png',
+      },
+      {
+        title: 'Rogue',
+        link: 'https://userogue.com',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/rogue.png',
+      },
 
+      {
+        title: 'Editorially',
+        link: 'https://editorially.org',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/editorially.png',
+      },
+      {
+        title: 'Editrix AI',
+        link: 'https://editrix.ai',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/editrix.png',
+      },
+      {
+        title: 'Pixel Perfect',
+        link: 'https://app.pixelperfect.quest',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/pixelperfect.png',
+      },
+
+      {
+        title: 'Algochurn',
+        link: 'https://algochurn.com',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/algochurn.png',
+      },
+      {
+        title: 'Aceternity UI',
+        link: 'https://ui.aceternity.com',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/aceternityui.png',
+      },
+      {
+        title: 'Tailwind Master Kit',
+        link: 'https://tailwindmasterkit.com',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png',
+      },
+      {
+        title: 'SmartBridge',
+        link: 'https://smartbridgetech.com',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/smartbridge.png',
+      },
+      {
+        title: 'Renderwork Studio',
+        link: 'https://renderwork.studio',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/renderwork.png',
+      },
+
+      {
+        title: 'Creme Digital',
+        link: 'https://cremedigital.com',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/cremedigital.png',
+      },
+      {
+        title: 'Golden Bells Academy',
+        link: 'https://goldenbellsacademy.com',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png',
+      },
+      {
+        title: 'Invoker Labs',
+        link: 'https://invoker.lol',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/invoker.png',
+      },
+      {
+        title: 'E Free Invoice',
+        link: 'https://efreeinvoice.com',
+        thumbnail:
+          'https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png',
+      },
+    ];
+
+    return (
+      <>
+        <div className='min-h-screen w-full'>
+          <div className='absolute left-0 top-0 w-full'>
+            <HeroParallax
+              projects={products}
+              name={name}
+              familyName={familyName}
+              expertises={expertises}
+              description={description}
+            />
+          </div>
+        </div>
+        <div className='mx-auto w-full max-w-7xl gap-8 px-4 sm:px-6 lg:gap-12 lg:px-8'>
+          <div className='flex flex-col justify-center space-y-8 md:col-span-1'>
             <CardContent className={cn(cnSpaceY, 'w-full max-w-full p-0')}>
               <h5 className='text-lg font-bold text-foreground/90 hover:text-foreground'>
                 Mes services
@@ -338,60 +304,8 @@ export const HeroSection: React.FC<{
               </Avatar>
             </div>
           </div>
-
-          <div
-            className={cn(
-              cnFlexCol,
-              cnFlexCenterX,
-              cnFlexBetweenY,
-              'md:col-span-1'
-            )}
-          >
-            <GitHubStats
-              className={cn(
-                cnFlexCol,
-                cnFlexCenterY,
-                cnSpaceY,
-                'animate-fade-in'
-              )}
-            />
-            <Link
-              href='/documents/resume.pdf'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='group relative block max-w-md'
-              aria-label='Télécharger mon CV'
-            >
-              <QRCodeComponent
-                value='/documents/resume.pdf'
-                title='CV'
-                primaryColor='#737bfb'
-                dotsType='classy-rounded'
-                cornersType='dot'
-                size={140}
-                className='rounded-xl shadow-primary/10'
-              />
-            </Link>
-            <Link
-              href='/documents/motivation-letter.pdf'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='group relative block'
-              aria-label='Télécharger ma lettre de motivation'
-            >
-              <QRCodeComponent
-                value='/documents/motivation-letter.pdf'
-                title='Lettre'
-                primaryColor='#f87c58'
-                dotsType='classy-rounded'
-                cornersType='dot'
-                size={140}
-                className='rounded-xl shadow-secondary/10'
-              />
-            </Link>
-          </div>
         </div>
-      </div>
+      </>
     );
   }
 );

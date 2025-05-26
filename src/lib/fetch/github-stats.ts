@@ -19,6 +19,52 @@ const calculateYearsOfActivity = (createdAt: string): number => {
 };
 
 /**
+ * Fetch GitHub years of activity for a user
+ * @param username - GitHub username
+ * @returns The number of years of activity
+ * @throws Error if the request fails
+ */
+export async function findGitHubYearsOfActivity(
+  username: string = DEFAULT_GITHUB_USERNAME
+): Promise<number> {
+  try {
+    const response = await fetch(`${GITHUB_API_BASE_URL}/${username}`);
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return calculateYearsOfActivity(data.created_at);
+  } catch (error) {
+    console.error('Error retrieving GitHub years of activity:', error);
+    throw error;
+  }
+}
+
+/**
+ * Fetch GitHub repositories count for a user
+ * @param username - GitHub username
+ * @returns The number of public repositories
+ * @throws Error if the request fails
+ */
+export async function findAllGitHubRepositories(
+  username: string = DEFAULT_GITHUB_USERNAME
+): Promise<number> {
+  try {
+    const response = await fetch(`${GITHUB_API_BASE_URL}/${username}`);
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.public_repos;
+  } catch (error) {
+    console.error('Error retrieving GitHub repositories:', error);
+    throw error;
+  }
+}
+
+/**
  * Fetch GitHub statistics for a user
  * @param username - GitHub username
  * @returns The user's GitHub statistics

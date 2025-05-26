@@ -1,96 +1,77 @@
-import { useState, useEffect } from 'react';
+'use client';
 
-import { cn } from '@src/lib/utils';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
 
-import { Cursor } from '@src/components/ui/cursor/Cursor';
-
-/**
- * TypewriterText component animates text with a typewriter effect.
- *
- * @param text - The text to animate.
- * @param typingSpeed - Speed of typing animation in milliseconds.
- * @param delayBeforeStart - Delay before typing starts in milliseconds.
- * @param delayBeforeDelete - Delay before deleting starts in milliseconds.
- * @param onComplete - Callback triggered when animation completes.
- * @param className - Additional class names for styling.
- */
-export const TypewriterText: React.FC<{
-  text: string;
-  typingSpeed?: number;
-  delayBeforeStart?: number;
-  delayBeforeDelete?: number;
-  onComplete?: () => void;
+export interface TypewriterProps {
+  text: string | string[];
+  speed?: number;
+  cursor?: string;
+  loop?: boolean;
+  deleteSpeed?: number;
+  delay?: number;
   className?: string;
-}> = ({
+}
+
+export function Typewriter({
   text,
-  typingSpeed = 70,
-  delayBeforeStart = 300,
-  delayBeforeDelete = 1200,
-  onComplete,
+  speed = 100,
+  cursor = '|',
+  loop = false,
+  deleteSpeed = 50,
+  delay = 1500,
   className,
-}) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
+}: TypewriterProps) {
+  const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [textArrayIndex, setTextArrayIndex] = useState(0);
+
+  // Validate and process input text
+  const textArray = Array.isArray(text) ? text : [text];
+  const currentText = textArray[textArrayIndex] || '';
 
   useEffect(() => {
-    setDisplayedText('');
-    setCurrentIndex(0);
-    setIsTyping(false);
-    setIsDeleting(false);
+    if (!currentText) return;
 
-    const startTimer = setTimeout(() => {
-      setIsTyping(true);
-    }, delayBeforeStart);
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (currentIndex < currentText.length) {
+            setDisplayText((prev) => prev + currentText[currentIndex]);
+            setCurrentIndex((prev) => prev + 1);
+          } else if (loop) {
+            setTimeout(() => setIsDeleting(true), delay);
+          }
+        } else if (displayText.length > 0) {
+          setDisplayText((prev) => prev.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentIndex(0);
+          setTextArrayIndex((prev) => (prev + 1) % textArray.length);
+        }
+      },
+      isDeleting ? deleteSpeed : speed
+    );
 
-    return () => clearTimeout(startTimer);
-  }, [text, delayBeforeStart]);
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-
-    if (isTyping && currentIndex < text.length) {
-      timer = setTimeout(() => {
-        setDisplayedText(text.substring(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      }, typingSpeed);
-    } else if (isTyping && currentIndex === text.length) {
-      timer = setTimeout(() => {
-        setIsTyping(false);
-        setIsDeleting(true);
-        setCurrentIndex(text.length);
-      }, delayBeforeDelete);
-    } else if (isDeleting && currentIndex > 0) {
-      timer = setTimeout(() => {
-        setDisplayedText(text.substring(0, currentIndex - 1));
-        setCurrentIndex(currentIndex - 1);
-      }, typingSpeed / 1.5);
-    } else if (isDeleting && currentIndex === 0) {
-      timer = setTimeout(() => {
-        setIsDeleting(false);
-        if (onComplete) onComplete();
-      }, 500);
-    }
-
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timeout);
   }, [
-    isTyping,
-    isDeleting,
     currentIndex,
+    isDeleting,
+    currentText,
+    loop,
+    speed,
+    deleteSpeed,
+    delay,
+    displayText,
     text,
-    typingSpeed,
-    delayBeforeDelete,
-    onComplete,
+    textArray.length,
   ]);
 
   return (
-    <span className={cn('inline-block', className)}>
-      <span className='font-semibold text-primary'>
-        {displayedText.replace(/ \?$/, '')}
-      </span>
-      {(isTyping || isDeleting) && <Cursor />}
-      {displayedText.endsWith(' ?') && ' ?'}
+    <span className={className}>
+      {displayText}
+      <span className='animate-pulse'>{cursor}</span>
     </span>
   );
-};
+}

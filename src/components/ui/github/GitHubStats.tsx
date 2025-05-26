@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CountUp } from '@src/components/ui/animation/CountUp';
 import type { GitHubStats as GitHubStatsType } from '@src/types/GitHubStats';
 import { fetchGitHubStats } from '@src/lib/fetch/github-stats';
@@ -19,11 +19,11 @@ export const GitHubStats: React.FC<GitHubStatsProps> = ({
   className,
   username = process.env.NEXT_PUBLIC_GITHUB_DEFAULT_USERNAME,
 }): JSX.Element => {
-  const [stats, setStats] = React.useState<GitHubStatsType | null>(null);
-  const [error, setError] = React.useState<string | null>(null);
-  const [isLoading, setIsLoading] = React.useState<boolean>(true);
+  const [stats, setStats] = useState<GitHubStatsType | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const getStats = async () => {
       setIsLoading(true);
       setError(null);

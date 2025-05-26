@@ -63,7 +63,7 @@ export interface CardProps {
   jobs: JobsProps[];
 
   title?: string;
-  description?: string;
+  description: string;
 
   imageSrc?: string;
   imageAlt?: string;

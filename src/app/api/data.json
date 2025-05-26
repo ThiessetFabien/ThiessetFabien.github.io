@@ -3,11 +3,11 @@
     "name": "fabien",
     "familyName": "thiesset",
     "expertises": [
-      "expert react.js & node.js",
+      "expert react & node",
       "développeur full-stack",
       "coordonnateur de projet"
     ],
-    "description": "hello world ! je suis expérimenté en coordination de projet complexe pour la démarche humanitude, mon parcours d'aide soignant nourrit une approche pragmatique, humaine et sensible à la création de solution numérique accessible à tous.",
+    "description": "hello world ! dans le cadre de la coordination de projets complexes liés à la démarche humanitude, mon expérience en tant qu'aide soignant m'a permis d'adopter une approche pragmatique, pédagogique et attentive aux besoins des utilisateurs. Je contribue à la création de solutions numériques structurées et accessibles au plus grand nombre.",
     "imageSrc": "/images/profile.webp",
     "imageAlt": "profile picture",
     "services": [
@@ -37,7 +37,11 @@
         "item": "agilité",
         "description": "développement en mode agile scrum"
       }
-    ]
+    ],
+    "links": {
+      "github-repositories": "https://github.com/ThiessetFabien?tab=repositories",
+      "github-profile": "https://github.com/ThiessetFabien"
+    }
   },
   {
     "title": "à propos",

@@ -1,120 +1,77 @@
-import React, { useEffect, useState, useRef } from 'react';
+'use client';
 
-import { cn } from '@lib/utils';
-import type { TypewriterTextProps } from '@src/types/TypewriterTextProps';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
 
-/**
- * TypewriterText Component
- *
- * A React component that creates a typewriter text effect, sequentially typing and deleting
- * a series of provided texts.
- *
- * @param {string[]} texts - Array of text strings to be displayed with typewriter effect
- * @param {number} [typingSpeed=100] - Speed in milliseconds for typing each character
- * @param {number} [deletingSpeed=50] - Speed in milliseconds for deleting each character
- * @param {number} [delayBetweenTexts=1000] - Delay in milliseconds after typing before starting deletion
- * @param {string} [className] - Optional CSS class names to apply to the component
- * @param {() => void} [onComplete] - Optional callback function executed when all texts have been displayed (only when loop is false)
- * @param {boolean} [loop=true] - Whether to loop through the texts continuously
- *
- * @returns {JSX.Element} A span element containing the currently displayed text
- *
- * @example
- * <TypewriterText
- *   texts={["Hello, world!", "Welcome to my website", "Check out my portfolio"]}
- *   typingSpeed={150}
- *   loop={true}
- * />
- */
-export const TypewriterText: React.FC<TypewriterTextProps> = ({
-  texts,
-  typingSpeed = 100,
-  deletingSpeed = 50,
-  delayBetweenTexts = 1000,
+export interface TypewriterProps {
+  text: string | string[];
+  speed?: number;
+  cursor?: string;
+  loop?: boolean;
+  deleteSpeed?: number;
+  delay?: number;
+  className?: string;
+}
+
+export function Typewriter({
+  text,
+  speed = 100,
+  cursor = '|',
+  loop = false,
+  deleteSpeed = 50,
+  delay = 1500,
   className,
-  onComplete,
-  loop = true,
-}) => {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
+}: TypewriterProps) {
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const typingTimeout = useRef<NodeJS.Timeout | null>(null);
-  const completionTimeout = useRef<NodeJS.Timeout | null>(null);
+  const [textArrayIndex, setTextArrayIndex] = useState(0);
 
-  useEffect(
-    () => () => {
-      if (typingTimeout.current) {
-        clearTimeout(typingTimeout.current);
-      }
-      if (completionTimeout.current) {
-        clearTimeout(completionTimeout.current);
-      }
-    },
-    []
-  );
+  // Validate and process input text
+  const textArray = Array.isArray(text) ? text : [text];
+  const currentText = textArray[textArrayIndex] || '';
 
   useEffect(() => {
-    if (!texts || texts.length === 0) return;
+    if (!currentText) return;
 
-    const handleTyping = () => {
-      const currentFullText = texts[currentTextIndex];
-      const currentTextLength = currentText.length;
-
-      if (!isDeleting) {
-        if (currentTextLength < currentFullText.length) {
-          setCurrentText(currentFullText.substring(0, currentTextLength + 1));
-          typingTimeout.current = setTimeout(handleTyping, typingSpeed);
-        } else {
-          setIsDeleting(true);
-          typingTimeout.current = setTimeout(handleTyping, delayBetweenTexts);
-        }
-      } else if (currentTextLength > 0) {
-        setCurrentText(currentText.substring(0, currentTextLength - 1));
-        typingTimeout.current = setTimeout(handleTyping, deletingSpeed);
-      } else {
-        setIsDeleting(false);
-        setCurrentTextIndex((prevIndex) => {
-          const isLastText = prevIndex === texts.length - 1;
-
-          if (isLastText && !loop) {
-            if (onComplete) {
-              completionTimeout.current = setTimeout(onComplete, 500);
-            }
-            return prevIndex;
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (currentIndex < currentText.length) {
+            setDisplayText((prev) => prev + currentText[currentIndex]);
+            setCurrentIndex((prev) => prev + 1);
+          } else if (loop) {
+            setTimeout(() => setIsDeleting(true), delay);
           }
+        } else if (displayText.length > 0) {
+          setDisplayText((prev) => prev.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentIndex(0);
+          setTextArrayIndex((prev) => (prev + 1) % textArray.length);
+        }
+      },
+      isDeleting ? deleteSpeed : speed
+    );
 
-          return isLastText ? 0 : prevIndex + 1;
-        });
-
-        typingTimeout.current = setTimeout(handleTyping, typingSpeed);
-      }
-    };
-
-    typingTimeout.current = setTimeout(handleTyping, typingSpeed);
-
-    return () => {
-      if (typingTimeout.current) {
-        clearTimeout(typingTimeout.current);
-      }
-    };
+    return () => clearTimeout(timeout);
   }, [
-    currentText,
-    currentTextIndex,
+    currentIndex,
     isDeleting,
-    texts,
-    typingSpeed,
-    deletingSpeed,
-    delayBetweenTexts,
+    currentText,
     loop,
-    onComplete,
+    speed,
+    deleteSpeed,
+    delay,
+    displayText,
+    text,
+    textArray.length,
   ]);
 
   return (
-    <span className={cn('inline-block whitespace-pre', className)}>
-      {currentText}
-      {currentText.length > 0 ? ' ' : ''}
+    <span className={className}>
+      {displayText}
+      <span className='animate-pulse'>{cursor}</span>
     </span>
   );
-};
-
-export default TypewriterText;
+}

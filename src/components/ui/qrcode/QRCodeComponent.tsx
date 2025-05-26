@@ -83,6 +83,7 @@ export const QRCodeComponent: React.FC<QRCodeComponentProps> = ({
 }) => {
   const qrRef = useRef<HTMLDivElement>(null);
   const [qrCodeInstance, setQrCodeInstance] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     import('qr-code-styling').then((QRCodeModule) => {
@@ -119,6 +120,7 @@ export const QRCodeComponent: React.FC<QRCodeComponentProps> = ({
       });
 
       setQrCodeInstance(qrCodeObj);
+      setIsLoading(false);
     });
   }, [
     value,
@@ -142,17 +144,40 @@ export const QRCodeComponent: React.FC<QRCodeComponentProps> = ({
     <div className='group relative'>
       <div
         className={cn(
-          'group max-w-md rounded-xl p-4',
+          'group max-w-md rounded-xl',
           'bg-card/60 backdrop-blur-sm',
+          'transition-all duration-300 focus-within:bg-card/80 hover:bg-card/80',
           className
         )}
+        role='img'
+        aria-label={`Code QR pour ${title} - Scanner ou cliquer pour accéder`}
       >
         {/* Container for QR code */}
-        <div ref={qrRef} className={cn(cnFlexCol, cnFlexCenterY, 'w-full')} />
+        <div ref={qrRef} className={cn(cnFlexCol, cnFlexCenterY, 'w-full')}>
+          {/* Skeleton pendant le chargement */}
+          {isLoading && (
+            <div
+              className='flex animate-pulse items-center justify-center rounded-lg bg-gradient-to-br from-muted/50 to-muted/80'
+              style={{ width: size, height: size }}
+              aria-label={`Chargement du code QR pour ${title}`}
+            >
+              <div className='text-muted-foreground/50'>
+                <svg
+                  className='h-8 w-8 animate-pulse'
+                  fill='currentColor'
+                  viewBox='0 0 24 24'
+                  aria-hidden='true'
+                >
+                  <path d='M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm0 4h2v2h-2v-2zm-2-4h2v2h-2v-2zm0 4h2v2h-2v-2zm2-8h2v2h-2V9zm-4 0h2v2h-2V9zm2-4h2v2h-2V5z' />
+                </svg>
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Title/label below the QR code */}
         {title && (
-          <p className='mt-4 text-center text-sm text-muted-foreground/90 transition-colors group-hover:text-muted-foreground'>
+          <p className='text-center text-sm text-foreground transition-colors group-focus-within:text-primary/80 group-hover:text-primary/80'>
             {capitalizeFirstLetterOfEachWord(title)}
           </p>
         )}
