@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   motion,
   useScroll,
@@ -10,12 +10,41 @@ import {
 } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import {
+  capitalizeFirstLetterOfEachWord,
+  capitalizeFirstLetterOfPhrase,
+  formatSpecialWords,
+} from '@utils/formatText.util';
+import { Loader2 } from 'lucide-react';
+import {
+  findGitHubYearsOfActivity,
+  findAllGitHubRepositories,
+} from '@src/lib/fetch/github-stats';
+import QRCodeComponent from '@src/components/ui/qrcode/QRCodeComponent';
+import { Typewriter } from '@src/components/ui/animations/TypewriterText';
+import {
+  cnAutoWidthFullHeight,
+  cnBigImage,
+  cnBorder2,
+  cnBorderBottom4,
+  cnBorderRadiusFull,
+  cnFlexCol,
+  cnFlexFullCenter,
+  cnGap,
+  cnLittleTranslateSm,
+  cnSizeAuto,
+  cnSmallText,
+  ResponsiveImage,
+} from '@src/styles';
+import { cn } from '@lib/utils';
+import { ProfileImage } from '@src/components/ui/images/ProfileImage';
+import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 
-export const ProductCard = ({
-  product,
+export const ProjectCard = ({
+  project,
   translate,
 }: {
-  product: {
+  project: {
     title: string;
     link: string;
     thumbnail: string;
@@ -29,50 +58,533 @@ export const ProductCard = ({
     whileHover={{
       y: -20,
     }}
-    key={product.title}
-    className='group/product relative h-96 w-[30rem] flex-shrink-0'
+    key={project.title}
+    className='group/project relative h-96 w-[30rem] flex-shrink-0'
   >
-    <Link href={product.link} className='block group-hover/product:shadow-2xl'>
+    <Link href={project.link} className='block group-hover/project:shadow-2xl'>
       <Image
-        src={product.thumbnail}
+        src={project.thumbnail}
         height='600'
         width='600'
         className='absolute inset-0 h-full w-full object-cover object-left-top'
-        alt={product.title}
+        alt={project.title}
       />
     </Link>
-    <div className='pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/product:opacity-80' />
-    <h2 className='absolute bottom-4 left-4 text-white opacity-0 group-hover/product:opacity-100'>
-      {product.title}
+    <div className='pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/project:opacity-80' />
+    <h2 className='absolute bottom-4 left-4 text-white opacity-0 group-hover/project:opacity-100'>
+      {project.title}
     </h2>
   </motion.div>
 );
 
-export const Header = () => (
-  <div className='relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 md:py-40'>
-    <h1 className='text-2xl font-bold dark:text-white md:text-7xl'>
-      The Ultimate <br /> development studio
-    </h1>
-    <p className='mt-8 max-w-2xl text-base dark:text-neutral-200 md:text-xl'>
-      We build beautiful products with the latest technologies and frameworks.
-      We are a team of passionate developers and designers that love to build
-      amazing products.
-    </p>
-  </div>
+// Interfaces
+interface SuccessCountProps {
+  cnLinkContainer: string;
+  cnStatsDivContainer: string;
+  cnStatsText: string;
+  cnStatsTextSmall: string;
+  cnStatsTitle: string;
+  cnStatsBgShadow: string;
+}
+
+interface GitHubRepositoriesCountProps {
+  username: string;
+  cnLinkContainer: string;
+  cnStatsDivContainer: string;
+  cnStatsText: string;
+  cnStatsTitle: string;
+  cnStatsBgShadow: string;
+  cnIconLoader?: string;
+}
+
+interface GitHubYearsActivityProps {
+  username: string;
+  cnLinkContainer: string;
+  cnStatsDivContainer: string;
+  cnStatsText: string;
+  cnStatsTextSmall: string;
+  cnStatsTitle: string;
+  cnStatsBgShadow: string;
+  cnIconLoader?: string;
+}
+
+// Composant pour afficher le nombre de succès
+const SuccessCount: React.FC<SuccessCountProps> = ({
+  cnLinkContainer,
+  cnStatsDivContainer,
+  cnStatsText,
+  cnStatsTextSmall,
+  cnStatsTitle,
+  cnStatsBgShadow,
+}) => (
+  <Link
+    href='https://www.humanitude.fr/les-benefices-de-la-demarche-humanitude-etudies-pendant-la-crise/'
+    target='_blank'
+    rel='noopener noreferrer'
+    aria-label='Voir les certifications et labels de bientraitance - 3+ succès'
+    className={cn(
+      cnLinkContainer,
+      cnStatsBgShadow,
+      'group',
+      'transition-all duration-300'
+    )}
+  >
+    <div className={cn(cnStatsDivContainer, 'transition-colors duration-300')}>
+      <span
+        className={cn(
+          cnStatsText,
+          'transition-colors duration-300 group-hover:text-primary group-focus:text-primary'
+        )}
+        aria-label='3 certifications obtenues'
+      >
+        3+
+      </span>
+      <span
+        className={cn(
+          cnStatsTextSmall,
+          'transition-colors duration-300 group-hover:text-primary/80 group-focus:text-primary/80'
+        )}
+      >
+        Label de bientraitance
+      </span>
+      <span
+        className={cn(
+          cnStatsTextSmall,
+          'transition-colors duration-300 group-hover:text-primary/80 group-focus:text-primary/80'
+        )}
+      >
+        RNCP 37674
+      </span>
+      <h3
+        className={cn(
+          cnStatsTitle,
+          'transition-colors duration-300 group-hover:text-primary/70 group-focus:text-primary/70'
+        )}
+      >
+        Succès
+      </h3>
+    </div>
+  </Link>
 );
 
-export const HeroParallax = ({
-  products,
+// Composant pour afficher le nombre de repositories GitHub
+const GitHubRepositoriesCount: React.FC<GitHubRepositoriesCountProps> = ({
+  username,
+  cnLinkContainer,
+  cnStatsDivContainer,
+  cnStatsText,
+  cnStatsTitle,
+  cnIconLoader,
+  cnStatsBgShadow,
+}) => {
+  const [repositories, setRepositories] = useState<number | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const loadRepositories = async () => {
+      try {
+        const repoCount = await findAllGitHubRepositories(username);
+        setRepositories(repoCount);
+      } catch (error) {
+        console.error(
+          'Erreur lors du chargement du nombre de repositories GitHub:',
+          error
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadRepositories();
+  }, [username]);
+
+  return (
+    <Link
+      href={`https://github.com/${username}?tab=repositories`}
+      target='_blank'
+      rel='noopener noreferrer'
+      aria-label={`Voir les repositories GitHub de ${username} - ${repositories || 0}+ projets open-source`}
+      className={cn(
+        cnLinkContainer,
+        cnStatsBgShadow,
+        'group',
+        'transition-all duration-300'
+      )}
+    >
+      <div
+        className={cn(cnStatsDivContainer, 'transition-colors duration-300')}
+      >
+        {loading ? (
+          <Loader2
+            className={cnIconLoader}
+            aria-label='Chargement du nombre de repositories GitHub'
+          />
+        ) : (
+          <p
+            className={cn(
+              cnStatsText,
+              'transition-colors duration-300 group-hover:text-primary group-focus:text-primary'
+            )}
+            aria-label={`${repositories || 0} repositories GitHub`}
+          >
+            {repositories || 0}+
+          </p>
+        )}
+        <h3
+          className={cn(
+            cnStatsTitle,
+            'transition-colors duration-300 group-hover:text-primary/70 group-focus:text-primary/70'
+          )}
+        >
+          Projets open-source
+        </h3>
+      </div>
+    </Link>
+  );
+};
+
+// Composant pour afficher les années d'activité GitHub
+const GitHubYearsActivity: React.FC<GitHubYearsActivityProps> = ({
+  username,
+  cnLinkContainer,
+  cnStatsDivContainer,
+  cnStatsBgShadow,
+  cnIconLoader,
+  cnStatsText,
+  cnStatsTextSmall,
+  cnStatsTitle,
+}) => {
+  const [years, setYears] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadYears = async () => {
+      try {
+        const yearsOfActivity = await findGitHubYearsOfActivity(username);
+        setYears(yearsOfActivity);
+      } catch (error) {
+        console.error(
+          "Erreur lors du chargement des années d'activité GitHub:",
+          error
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadYears();
+  }, [username]);
+
+  return (
+    <Link
+      href={`https://github.com/${username}`}
+      target='_blank'
+      rel='noopener noreferrer'
+      aria-label={`Voir le profil GitHub de ${username} - ${years || 0}+ années d'activité`}
+      className={cn(
+        cnLinkContainer,
+        cnStatsBgShadow,
+        'group',
+        'transition-all duration-300'
+      )}
+    >
+      <div
+        className={cn(cnStatsDivContainer, 'transition-colors duration-300')}
+      >
+        {loading ? (
+          <Loader2
+            className={cnIconLoader}
+            aria-label='Chargement des statistiques GitHub'
+          />
+        ) : (
+          <>
+            <span
+              className={cn(
+                cnStatsText,
+                'transition-colors duration-300 group-hover:text-primary group-focus:text-primary'
+              )}
+              aria-label={`${years || 0} années d'activité sur GitHub`}
+            >
+              {years || 0}+
+            </span>
+            <span
+              className={cn(
+                cnStatsTextSmall,
+                'transition-colors duration-300 group-hover:text-primary/80 group-focus:text-primary/80'
+              )}
+            >
+              15+ médico-social
+            </span>
+          </>
+        )}
+        <h3
+          className={cn(
+            cnStatsTitle,
+            'transition-colors duration-300 group-hover:text-primary/70 group-focus:text-primary/70'
+          )}
+        >
+          Années d'activité
+        </h3>
+      </div>
+    </Link>
+  );
+};
+
+export const Header = ({
+  name,
+  familyName,
+  expertises,
+  description,
+  imageSrc,
+  imageAlt,
 }: {
-  products: {
+  name: string;
+  familyName: string;
+  expertises: string[];
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+}) => {
+  const username = process.env.NEXT_PUBLIC_GITHUB_DEFAULT_USERNAME;
+
+  const cnStatsGradientBackground = `bg-gradient-to-br from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20`;
+
+  const cnStatsBgShadow = `hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 border border-border/50 hover:border-primary/30`;
+
+  const cnLinkContainer =
+    'group relative block focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background rounded-none';
+
+  const cnStatsDivContainer = cn(
+    cnFlexFullCenter,
+    cnFlexCol,
+    'p-6',
+    'text-center'
+  );
+  const cnStatsText = `text-5xl font-bold text-foreground group-hover:text-primary transition-colors duration-300`;
+  const cnStatsTextSmall = `text-sm text-muted-foreground group-hover:text-primary/80 transition-colors duration-300`;
+  const cnStatsTitle = `text-lg font-semibold text-muted-foreground group-hover:text-primary/70 transition-colors duration-300`;
+
+  const cnIconLoader = `h-12 w-12 animate-spin text-muted-foreground group-hover:text-primary/80 transition-colors duration-300`;
+
+  const variantQRCode: {
+    cornersType: 'dot' | 'square';
+    size: number;
+    className: string;
+  } = {
+    cornersType: 'square',
+    size: 88,
+    className: 'm-0 aspect-square shrink-0 p-0',
+  };
+
+  return (
+    <div className='relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 lg:left-20'>
+      <div className='grid auto-rows-auto grid-cols-2'>
+        <h1 className='col-span-1 row-span-1 text-3xl font-bold md:text-7xl'>
+          {name && capitalizeFirstLetterOfEachWord(name)}{' '}
+          {familyName && familyName.toUpperCase()} <br />{' '}
+          {expertises && expertises.length > 0 && (
+            <Typewriter
+              text={expertises.map((expertise) =>
+                capitalizeFirstLetterOfEachWord(formatSpecialWords(expertise))
+              )}
+              cursor=' |'
+              speed={100}
+              deleteSpeed={50}
+              loop
+              className='whitespace-nowrap font-sans text-xl font-semibold text-primary md:text-5xl'
+            />
+          )}
+        </h1>
+        <div className={cn(cnFlexFullCenter, 'row-span-2 md:col-span-1')}>
+          {imageSrc && (
+            <div
+              className={cn(
+                cnFlexFullCenter,
+                cnAutoWidthFullHeight,
+                'relative z-30',
+                cnBigImage,
+                cnBorderRadiusFull,
+                'border-primary',
+                cnBorder2
+              )}
+            >
+              <div
+                className={cn(
+                  cnAutoWidthFullHeight,
+                  'relative z-50',
+                  cnBigImage,
+                  cnBorderRadiusFull,
+                  'border-primary',
+                  cnBorderBottom4
+                )}
+              />
+              <Avatar
+                className={cn(
+                  'over absolute z-0',
+                  'scale-105 sm:scale-110',
+                  '-top-2 sm:-top-3 md:-top-[18px]',
+                  cnBigImage,
+                  cnSizeAuto
+                )}
+              >
+                <ProfileImage
+                  src={imageSrc}
+                  alt={imageAlt}
+                  width={ResponsiveImage()}
+                  height={ResponsiveImage()}
+                  className={cn(
+                    'relative overflow-hidden',
+                    cnBorderRadiusFull,
+                    cnSizeAuto,
+                    cnLittleTranslateSm,
+                    cnBigImage
+                  )}
+                />
+                <AvatarFallback
+                  className={cn(
+                    cnSmallText,
+                    'relative',
+                    cnBorderRadiusFull,
+                    cnSizeAuto,
+                    cnLittleTranslateSm,
+                    cnBigImage
+                  )}
+                >
+                  Profile
+                </AvatarFallback>
+              </Avatar>
+            </div>
+          )}
+        </div>
+
+        <p className='col-span-1 row-span-1 mt-8 max-w-2xl font-sans text-base text-muted-foreground md:text-xl'>
+          {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
+        </p>
+      </div>
+
+      {/* Section des liens et QR codes organisée en grille */}
+      <div
+        className={cn(
+          cnStatsGradientBackground,
+          'mt-12 grid grid-cols-2 font-sans lg:grid-cols-4'
+        )}
+      >
+        {username && (
+          <>
+            <GitHubRepositoriesCount
+              username={username}
+              cnLinkContainer={cnLinkContainer}
+              cnStatsDivContainer={cnStatsDivContainer}
+              cnStatsText={cnStatsText}
+              cnStatsTitle={cnStatsTitle}
+              cnIconLoader={cnIconLoader}
+              cnStatsBgShadow={cnStatsBgShadow}
+            />
+            <GitHubYearsActivity
+              username={username}
+              cnLinkContainer={cnLinkContainer}
+              cnStatsDivContainer={cnStatsDivContainer}
+              cnStatsText={cnStatsText}
+              cnStatsTextSmall={cnStatsTextSmall}
+              cnStatsTitle={cnStatsTitle}
+              cnIconLoader={cnIconLoader}
+              cnStatsBgShadow={cnStatsBgShadow}
+            />
+          </>
+        )}
+        <SuccessCount
+          cnLinkContainer={cnLinkContainer}
+          cnStatsDivContainer={cnStatsDivContainer}
+          cnStatsText={cnStatsText}
+          cnStatsTextSmall={cnStatsTextSmall}
+          cnStatsTitle={cnStatsTitle}
+          cnStatsBgShadow={cnStatsBgShadow}
+        />
+        {/* QR Codes pour les documents */}
+        <div
+          className={cn(
+            cnLinkContainer,
+            cnStatsBgShadow,
+            cnStatsDivContainer,
+            'group',
+            'transition-all duration-300'
+          )}
+          role='region'
+          aria-label='Documents téléchargeables - QR codes'
+        >
+          <div
+            className={cn(cnFlexFullCenter, cnFlexCol, cnGap, 'text-center')}
+          >
+            <div className='flex w-full flex-col items-center justify-center gap-x-6 sm:flex-row'>
+              <Link
+                href='/documents/resume.pdf'
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label='Télécharger mon CV (PDF) - Scanner le QR code ou cliquer'
+                className={cn(
+                  'group/qr relative flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 focus:ring-offset-background',
+                  'transition-all duration-300 hover:scale-110 focus:scale-110'
+                )}
+              >
+                <QRCodeComponent
+                  value='/documents/resume.pdf'
+                  title='CV'
+                  primaryColor='#3b82f6'
+                  dotsType='classy-rounded'
+                  {...variantQRCode}
+                />
+              </Link>
+              <Link
+                href='/documents/motivation-letter.pdf'
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label='Télécharger ma lettre de motivation (PDF) - Scanner le QR code ou cliquer'
+                className={cn(
+                  'group/qr relative flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:ring-offset-2 focus:ring-offset-background',
+                  'transition-all duration-300 hover:scale-110'
+                )}
+              >
+                <QRCodeComponent
+                  value='/documents/motivation-letter.pdf'
+                  title='Motivation'
+                  primaryColor='#f87c58'
+                  dotsType='classy-rounded'
+                  {...variantQRCode}
+                />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const HeroParallax = ({
+  name,
+  familyName,
+  expertises,
+  description,
+  projects = [],
+  imageSrc,
+  imageAlt,
+}: {
+  name: string;
+  familyName: string;
+  expertises: string[];
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  projects: {
     title: string;
     link: string;
     thumbnail: string;
   }[];
 }) => {
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
+  const firstRow = projects?.slice(0, 5) || [];
+  const secondRow = projects?.slice(5, 10) || [];
+  const thirdRow = projects?.slice(10, 15) || [];
+
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -108,9 +620,16 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className='relative flex h-[300vh] flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]'
+      className='relative flex h-[300vh] flex-col self-auto overflow-x-hidden overflow-y-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]'
     >
-      <Header />
+      <Header
+        name={name}
+        familyName={familyName}
+        expertises={expertises}
+        description={description}
+        imageSrc={imageSrc}
+        imageAlt={imageAlt}
+      />
       <motion.div
         style={{
           rotateX,
@@ -118,32 +637,32 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className=''
+        className='bg-gradient-to-b from-transparent via-slate-900/10 to-transparent'
       >
-        <motion.div className='mb-20 flex flex-row-reverse space-x-20 space-x-reverse'>
-          {firstRow.map((product) => (
-            <ProductCard
-              product={product}
+        <motion.div className='mb-20 flex min-w-max flex-row-reverse space-x-20 space-x-reverse'>
+          {firstRow.map((project) => (
+            <ProjectCard
+              project={project}
               translate={translateX}
-              key={product.title}
+              key={project.title}
             />
           ))}
         </motion.div>
-        <motion.div className='mb-20 flex flex-row space-x-20'>
-          {secondRow.map((product) => (
-            <ProductCard
-              product={product}
+        <motion.div className='mb-20 flex min-w-max flex-row space-x-20'>
+          {secondRow.map((project) => (
+            <ProjectCard
+              project={project}
               translate={translateXReverse}
-              key={product.title}
+              key={project.title}
             />
           ))}
         </motion.div>
-        <motion.div className='flex flex-row-reverse space-x-20 space-x-reverse'>
-          {thirdRow.map((product) => (
-            <ProductCard
-              product={product}
+        <motion.div className='flex min-w-max flex-row-reverse space-x-20 space-x-reverse'>
+          {thirdRow.map((project) => (
+            <ProjectCard
+              project={project}
               translate={translateX}
-              key={product.title}
+              key={project.title}
             />
           ))}
         </motion.div>

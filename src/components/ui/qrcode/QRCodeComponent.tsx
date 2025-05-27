@@ -143,12 +143,7 @@ export const QRCodeComponent: React.FC<QRCodeComponentProps> = ({
   return (
     <div className='group relative'>
       <div
-        className={cn(
-          'group max-w-md rounded-xl',
-          'bg-card/60 backdrop-blur-sm',
-          'transition-all duration-300 focus-within:bg-card/80 hover:bg-card/80',
-          className
-        )}
+        className={cn('group max-w-md', className)}
         role='img'
         aria-label={`Code QR pour ${title} - Scanner ou cliquer pour accéder`}
       >
@@ -157,11 +152,11 @@ export const QRCodeComponent: React.FC<QRCodeComponentProps> = ({
           {/* Skeleton pendant le chargement */}
           {isLoading && (
             <div
-              className='flex animate-pulse items-center justify-center rounded-lg bg-gradient-to-br from-muted/50 to-muted/80'
+              className='flex animate-pulse items-center justify-center rounded-none'
               style={{ width: size, height: size }}
               aria-label={`Chargement du code QR pour ${title}`}
             >
-              <div className='text-muted-foreground/50'>
+              <div>
                 <svg
                   className='h-8 w-8 animate-pulse'
                   fill='currentColor'
@@ -177,9 +172,18 @@ export const QRCodeComponent: React.FC<QRCodeComponentProps> = ({
 
         {/* Title/label below the QR code */}
         {title && (
-          <p className='text-center text-sm text-foreground transition-colors group-focus-within:text-primary/80 group-hover:text-primary/80'>
+          //           <h3
+          //   className={cn(
+          //     cnStatsTitle,
+          //     'transition-colors duration-300 group-focus-within:text-primary/70 group-hover:text-primary/70'
+          //   )}
+          // >
+          //   Carte de visite
+          // </h3>
+
+          <h3 className='text-lg font-semibold text-muted-foreground transition-colors duration-300 group-hover:text-primary/70'>
             {capitalizeFirstLetterOfEachWord(title)}
-          </p>
+          </h3>
         )}
       </div>
     </div>

@@ -1,28 +1,17 @@
 import React, { memo, useEffect, useState, useMemo } from 'react';
 
-import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
 import { CardContent } from '@lib/components/ui/card';
 import { cn } from '@lib/utils';
 import { useLoading } from '@src/contexts/LoadingContext';
-import {
-  cnBorder2,
-  cnBorderBottom4,
-  cnBorderRadiusFull,
-} from '@styles/border.style';
 import { cnGap, cnSpaceY } from '@styles/boxModel.style';
-import { cnFlexCenterY, cnFlexFullCenter } from '@styles/flex.style';
+import { cnFlexCenterY } from '@styles/flex.style';
 import { cnSmallText } from '@styles/font.style';
-import { cnBigImage } from '@styles/image.styles';
-import { ResponsiveImage } from '@styles/mediaQueries.style';
-import { cnAutoWidthFullHeight, cnSizeAuto } from '@styles/size.style';
-import { cnLittleTranslateSm } from '@styles/translate.style';
 import type { CardProps } from '@src/types/CardProps';
 import {
   capitalizeFirstLetterOfPhrase,
   formatSpecialWords,
 } from '@src/utils/formatText.util';
 import { IconLoader } from '@src/components/ui/icons/IconLoader';
-import { ProfileImage } from '@src/components/ui/images/ProfileImage';
 import { HeroParallax } from '@src/lib/components/blocks/hero-parallax';
 
 /**
@@ -200,17 +189,19 @@ export const HeroSection: React.FC<{
     return (
       <>
         <div className='min-h-screen w-full'>
-          <div className='absolute left-0 top-0 w-full'>
+          <div className='absolute left-0 top-0 z-0 h-[300vh] w-full'>
             <HeroParallax
               projects={products}
               name={name}
               familyName={familyName}
               expertises={expertises}
               description={description}
+              imageSrc={imageSrc}
+              imageAlt={imageAlt}
             />
           </div>
         </div>
-        <div className='mx-auto w-full max-w-7xl gap-8 px-4 sm:px-6 lg:gap-12 lg:px-8'>
+        <div className='relative z-10 mx-auto mt-[200vh] w-full max-w-7xl gap-8 px-4 sm:px-6 lg:gap-12 lg:px-8'>
           <div className='flex flex-col justify-center space-y-8 md:col-span-1'>
             <CardContent className={cn(cnSpaceY, 'w-full max-w-full p-0')}>
               <h5 className='text-lg font-bold text-foreground/90 hover:text-foreground'>
@@ -243,66 +234,6 @@ export const HeroSection: React.FC<{
                   </div>
                 ))}
             </CardContent>
-          </div>
-
-          <div className={cn(cnFlexFullCenter, 'md:col-span-1')}>
-            <div
-              className={cn(
-                cnFlexFullCenter,
-                cnAutoWidthFullHeight,
-                'relative z-30',
-                cnBigImage,
-                cnBorderRadiusFull,
-                'border-primary',
-                cnBorder2
-              )}
-            >
-              <div
-                className={cn(
-                  cnAutoWidthFullHeight,
-                  'relative z-50',
-                  cnBigImage,
-                  cnBorderRadiusFull,
-                  'border-primary',
-                  cnBorderBottom4
-                )}
-              />
-              <Avatar
-                className={cn(
-                  'over absolute z-0',
-                  'scale-105 sm:scale-110',
-                  '-top-2 sm:-top-3 md:-top-[18px]',
-                  cnBigImage,
-                  cnSizeAuto
-                )}
-              >
-                <ProfileImage
-                  src={imageSrc || ''}
-                  alt={imageAlt || ''}
-                  width={ResponsiveImage()}
-                  height={ResponsiveImage()}
-                  className={cn(
-                    'relative overflow-hidden',
-                    cnBorderRadiusFull,
-                    cnSizeAuto,
-                    cnLittleTranslateSm,
-                    cnBigImage
-                  )}
-                />
-                <AvatarFallback
-                  className={cn(
-                    cnSmallText,
-                    'relative',
-                    cnBorderRadiusFull,
-                    cnSizeAuto,
-                    cnLittleTranslateSm,
-                    cnBigImage
-                  )}
-                >
-                  Profile
-                </AvatarFallback>
-              </Avatar>
-            </div>
           </div>
         </div>
       </>
