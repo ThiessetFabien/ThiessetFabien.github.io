@@ -32,6 +32,7 @@ import {
   cnFlexFullCenter,
   cnGap,
   cnLittleTranslateSm,
+  cnPadding,
   cnSizeAuto,
   cnSmallText,
   ResponsiveImage,
@@ -347,20 +348,18 @@ export const Header = ({
 }) => {
   const username = process.env.NEXT_PUBLIC_GITHUB_DEFAULT_USERNAME;
 
-  const cnStatsGradientBackground = `bg-gradient-to-br from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20`;
-
   const cnStatsBgShadow = `hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 border border-border/50 hover:border-primary/30`;
 
   const cnLinkContainer =
-    'group relative block focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background rounded-none';
+    'bg-gradient-to-br from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 group relative block focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background rounded-none';
 
   const cnStatsDivContainer = cn(
     cnFlexFullCenter,
     cnFlexCol,
-    'p-6',
+    cnPadding,
     'text-center'
   );
-  const cnStatsText = `text-5xl font-bold text-foreground group-hover:text-primary transition-colors duration-300`;
+  const cnStatsText = `text-5xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300`;
   const cnStatsTextSmall = `text-sm text-muted-foreground group-hover:text-primary/80 transition-colors duration-300`;
   const cnStatsTitle = `text-lg font-semibold text-muted-foreground group-hover:text-primary/70 transition-colors duration-300`;
 
@@ -372,30 +371,20 @@ export const Header = ({
     className: string;
   } = {
     cornersType: 'square',
-    size: 88,
+    size: 80,
     className: 'm-0 aspect-square shrink-0 p-0',
   };
 
   return (
-    <div className='relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 lg:left-20'>
-      <div className='grid auto-rows-auto grid-cols-2'>
-        <h1 className='col-span-1 row-span-1 text-3xl font-bold md:text-7xl'>
-          {name && capitalizeFirstLetterOfEachWord(name)}{' '}
-          {familyName && familyName.toUpperCase()} <br />{' '}
-          {expertises && expertises.length > 0 && (
-            <Typewriter
-              text={expertises.map((expertise) =>
-                capitalizeFirstLetterOfEachWord(formatSpecialWords(expertise))
-              )}
-              cursor=' |'
-              speed={100}
-              deleteSpeed={50}
-              loop
-              className='whitespace-nowrap font-sans text-xl font-semibold text-primary md:text-5xl'
-            />
+    <div className='relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 lg:left-20 lg:px-0'>
+      <div className='grid auto-rows-auto grid-cols-1 lg:grid-cols-2'>
+        {/* Image en premier en mobile (order-1), à droite en desktop */}
+        <div
+          className={cn(
+            cnFlexFullCenter,
+            'order-1 md:col-span-1 md:row-span-2 lg:order-2'
           )}
-        </h1>
-        <div className={cn(cnFlexFullCenter, 'row-span-2 md:col-span-1')}>
+        >
           {imageSrc && (
             <div
               className={cn(
@@ -457,23 +446,37 @@ export const Header = ({
           )}
         </div>
 
-        <p className='col-span-1 row-span-1 mt-8 max-w-2xl font-sans text-base text-muted-foreground md:text-xl'>
+        {/* Titre en deuxième en mobile (order-2), à gauche en desktop */}
+        <h1 className='order-2 col-span-1 row-span-1 mt-8 text-3xl font-bold md:order-1 md:text-7xl lg:mt-0 lg:whitespace-nowrap'>
+          {name && capitalizeFirstLetterOfEachWord(name)}{' '}
+          {familyName && familyName.toUpperCase()} <br />{' '}
+          {expertises && expertises.length > 0 && (
+            <Typewriter
+              text={expertises.map((expertise) =>
+                capitalizeFirstLetterOfEachWord(formatSpecialWords(expertise))
+              )}
+              cursor=' |'
+              speed={100}
+              deleteSpeed={50}
+              loop
+              className='font-sans text-xl font-semibold text-primary md:text-5xl lg:whitespace-nowrap'
+            />
+          )}
+        </h1>
+
+        {/* Description en troisième en mobile (order-3), en bas à gauche en desktop */}
+        <p className='order-3 col-span-1 row-span-1 mt-8 max-w-2xl font-sans text-base text-muted-foreground md:order-3 md:text-xl'>
           {capitalizeFirstLetterOfPhrase(formatSpecialWords(description))}
         </p>
       </div>
 
       {/* Section des liens et QR codes organisée en grille */}
-      <div
-        className={cn(
-          cnStatsGradientBackground,
-          'mt-12 grid grid-cols-2 font-sans lg:grid-cols-4'
-        )}
-      >
+      <div className={cn('mt-12 grid grid-cols-1 font-sans md:grid-cols-4')}>
         {username && (
           <>
             <GitHubRepositoriesCount
               username={username}
-              cnLinkContainer={cnLinkContainer}
+              cnLinkContainer={cn(cnLinkContainer)}
               cnStatsDivContainer={cnStatsDivContainer}
               cnStatsText={cnStatsText}
               cnStatsTitle={cnStatsTitle}
@@ -515,7 +518,7 @@ export const Header = ({
           <div
             className={cn(cnFlexFullCenter, cnFlexCol, cnGap, 'text-center')}
           >
-            <div className='flex w-full flex-col items-center justify-center gap-x-6 sm:flex-row'>
+            <div className='flex w-full items-center justify-center gap-x-4'>
               <Link
                 href='/documents/resume.pdf'
                 target='_blank'
