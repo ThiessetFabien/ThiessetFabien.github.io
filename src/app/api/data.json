@@ -87,8 +87,8 @@
           "développer et émuler une application mobile",
           "vulgariser la technique et réaliser des tests d'utilisation avec la cliente"
         ],
-        "imageSrc": "images/anitapp.svg",
-        "imageAlt": "anitapp",
+        "thumbnail": "/images/anitapp.svg",
+        "imageSrc": "/images/anitapp.svg",
         "github": "github.com/ThiessetFabien/Anitapp",
         "tags": [
           "typescript",
@@ -109,7 +109,8 @@
           "styliser l'interface utilisateur moderne et responsive",
           "réalisation du tableau kanban collaboratif et animation des rituels scrum (daily, retrospective, démo)"
         ],
-        "imageSrc": "images/casalink.webp",
+        "thumbnail": "/images/casalink.webp",
+        "imageSrc": "/images/casalink.webp",
         "imageAlt": "Casalink",
         "videoSrc": "casalink.mp4",
         "website": "o-clock-muffin.github.io/projet-planning-familial-front/",
@@ -145,7 +146,8 @@
           "déploiement de l'api et la base de données",
           "synchoriser les deux projets pour fluidifier le développement et la maintenance"
         ],
-        "imageSrc": "images/casalink-documentation.webp",
+        "thumbnail": "/images/casalink-documentation.webp",
+        "imageSrc": "/images/casalink-documentation.webp",
         "imageAlt": "Casalink documentation",
         "website": "casalink-back.vercel.app/api-docs/",
         "github": "github.com/ThiessetFabien/Casalink-Backend",
@@ -178,8 +180,9 @@
           "implémentation de contrôles de navigation",
           "optimisation du référencement naturel"
         ],
-        "imageSrc": "images/portfolio.webp",
+        "imageSrc": "/images/portfolio.webp",
         "imageAlt": "Portfolio 2.0",
+        "thumbnail": "/images/portfolio.webp",
         "website": "fabuilds.netlify.app/",
         "github": "github.com/ThiessetFabien/ThiessetFabien.github.io",
         "tags": [
@@ -206,8 +209,9 @@
           "débugguer les erreurs manuellement avec postman",
           "configurer l'environnement de développement pnpm"
         ],
-        "imageSrc": "images/mailnager.webp",
+        "imageSrc": "/images/mailnager.webp",
         "imageAlt": "Casalink documentation",
+        "thumbnail": "/images/mailnager.webp",
         "github": "github.com/ThiessetFabien/MailNagerAPI",
         "tags": [
           "typescript",

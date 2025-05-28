@@ -44,6 +44,14 @@ const HomePage: React.FC = () => {
   const { data } = useData();
   const isClient = useIsClient();
 
+  // Récupérer tous les projets de toutes les cartes
+  const allProjects = data.reduce((projects: any[], card) => {
+    if (card.projects && Array.isArray(card.projects)) {
+      return [...projects, ...card.projects];
+    }
+    return projects;
+  }, [] as any[]);
+
   return (
     <>
       {data.map((card, index: number) => {
@@ -84,21 +92,26 @@ const HomePage: React.FC = () => {
                       : 'container h-full min-w-full flex-auto overflow-hidden p-0'
                   )}
                 >
-                  {card.imageSrc && !card.map && (
-                    <HeroSection
-                      name={card.name}
-                      familyName={card.familyName}
-                      expertises={card.expertises}
-                      description={card.description}
-                      services={card.services}
-                      imageSrc={card.imageSrc}
-                      imageAlt={card.imageAlt}
-                      className={cn(
-                        cnFlexBetweenY,
-                        'w-full max-w-full space-y-0'
-                      )}
-                    />
-                  )}
+                  {/* Rendre HeroSection seulement pour la première carte (profil principal) avec tous les projets */}
+                  {index === 0 &&
+                    card.name &&
+                    card.familyName &&
+                    card.expertises && (
+                      <HeroSection
+                        name={card.name}
+                        familyName={card.familyName}
+                        expertises={card.expertises}
+                        description={card.description}
+                        services={card.services}
+                        imageSrc={card.imageSrc}
+                        imageAlt={card.imageAlt}
+                        projects={allProjects}
+                        className={cn(
+                          cnFlexBetweenY,
+                          'w-full max-w-full space-y-0'
+                        )}
+                      />
+                    )}
                   {card.jobs && <SkillsCard jobs={card.jobs} />}
                   {card.projects && card.projects.length > 0 && (
                     <ProjectsSection

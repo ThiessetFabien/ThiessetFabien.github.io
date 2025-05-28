@@ -1,5 +1,3 @@
-import type { TagsProps } from './TagsProps';
-
 /**
  * @file ProjectsProps.tsx
  * @description This file exports interfaces that represent a project and its associated tags.
@@ -32,15 +30,16 @@ import type { TagsProps } from './TagsProps';
  */
 export interface ProjectProps {
   title: string;
-  organization: string;
+  organization?: string;
   description: string;
-  learned: string;
+  learned: string[];
   imageSrc: string;
-  imageAlt: string;
+  thumbnail: string;
+  imageAlt?: string;
   videoSrc?: string;
   file?: string;
   demo?: string;
-  website: string;
-  github: string;
-  tags: TagsProps[];
+  website?: string;
+  github?: string;
+  tags: string[];
 }

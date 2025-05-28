@@ -40,16 +40,21 @@ import {
 import { cn } from '@lib/utils';
 import { ProfileImage } from '@src/components/ui/images/ProfileImage';
 import { Avatar, AvatarFallback } from '@lib/components/ui/avatar';
+import type { CardProps } from '@src/types/CardProps';
+import { ActionButton } from '@src/components/ui/buttons/ActionButton';
+import { Badge } from '@lib/components/ui/badge';
+import { containerScale } from '@styles/variantsAnimation';
+import { cnHoverShadowPrimary } from '@styles/hovers.style';
+import { cnFlexCenterY } from '@styles/flex.style';
+import { cnTitle3 } from '@styles/font.style';
+import { SmallDot } from '@src/components/ui/dot/dot';
+import type { ProjectProps } from '@src/types/ProjectProps';
 
 export const ProjectCard = ({
   project,
   translate,
 }: {
-  project: {
-    title: string;
-    link: string;
-    thumbnail: string;
-  };
+  project: ProjectProps;
   translate: MotionValue<number>;
 }) => (
   <motion.div
@@ -60,21 +65,146 @@ export const ProjectCard = ({
       y: -20,
     }}
     key={project.title}
-    className='group/project relative h-96 w-[30rem] flex-shrink-0'
+    className={cn(
+      'group/project relative h-96 w-[30rem] flex-shrink-0 overflow-hidden rounded-lg',
+      cnHoverShadowPrimary
+    )}
   >
-    <Link href={project.link} className='block group-hover/project:shadow-2xl'>
+    {/* Image container with hover effects */}
+    <div className='relative h-full w-full overflow-hidden'>
       <Image
-        src={project.thumbnail}
+        src={
+          project.thumbnail.startsWith('/')
+            ? project.thumbnail
+            : `/${project.thumbnail}`
+        }
         height='600'
         width='600'
-        className='absolute inset-0 h-full w-full object-cover object-left-top'
-        alt={project.title}
+        priority
+        className='absolute inset-0 h-full w-full object-cover object-left-top transition-transform duration-500 ease-in-out group-hover/project:scale-105'
+        alt={project.imageAlt || project.title}
       />
-    </Link>
-    <div className='pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/project:opacity-80' />
-    <h2 className='absolute bottom-4 left-4 text-white opacity-0 group-hover/project:opacity-100'>
-      {project.title}
-    </h2>
+
+      {/* Dark overlay on hover */}
+      <div className='pointer-events-none absolute inset-0 h-full w-full bg-black/20 opacity-0 transition-opacity duration-300 group-hover/project:opacity-100' />
+
+      {/* Content overlay */}
+      <div className='absolute inset-0 flex flex-col justify-between p-6'>
+        {/* Top section with badges */}
+        <div className='flex translate-y-4 transform flex-wrap gap-2 opacity-0 transition-all duration-300 group-hover/project:translate-y-0 group-hover/project:opacity-100'>
+          {project.tags?.slice(0, 3).map((tag, index) => (
+            <Badge
+              key={index}
+              variant='secondary'
+              className='border-primary/20 bg-background/80 text-foreground backdrop-blur-sm transition-colors duration-200 hover:border-primary'
+            >
+              {capitalizeFirstLetterOfEachWord(formatSpecialWords(tag || ''))}
+            </Badge>
+          ))}
+        </div>
+
+        {/* Bottom section with title, description and actions */}
+        <div className='text-white'>
+          {/* Title */}
+          <h2
+            className={cn(
+              cnTitle3,
+              'mb-2 translate-y-4 transform font-bold text-white opacity-0 transition-all delay-75 duration-300 group-hover/project:translate-y-0 group-hover/project:opacity-100'
+            )}
+          >
+            {capitalizeFirstLetterOfPhrase(formatSpecialWords(project?.title))}
+          </h2>
+
+          {/* Description */}
+          <p
+            className={cn(
+              cnSmallText,
+              'mb-4 line-clamp-3 translate-y-4 transform text-white/90 opacity-0 transition-all delay-100 duration-300 group-hover/project:translate-y-0 group-hover/project:opacity-100'
+            )}
+          >
+            {capitalizeFirstLetterOfPhrase(
+              formatSpecialWords(project.description)
+            )}
+          </p>
+
+          {/* Learned skills section */}
+          {project.learned &&
+            Array.isArray(project.learned) &&
+            project.learned.length > 0 && (
+              <div className='mb-4 translate-y-4 transform opacity-0 transition-all delay-150 duration-300 group-hover/project:translate-y-0 group-hover/project:opacity-100'>
+                <p className='mb-2 text-xs font-semibold text-white/80'>
+                  Ce que j'ai appris :
+                </p>
+                <div className='space-y-1'>
+                  {project.learned.slice(0, 2).map((skill, index) => (
+                    <div
+                      key={index}
+                      className='flex items-start text-xs text-white/70'
+                    >
+                      <SmallDot
+                        className='mr-2 mt-1 bg-primary'
+                        aria-hidden='true'
+                      />
+                      <span className='flex-1'>
+                        {capitalizeFirstLetterOfPhrase(
+                          formatSpecialWords(skill)
+                        )}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+          {/* Action buttons */}
+          <div
+            className={cn(
+              cnFlexCenterY,
+              'translate-y-4 transform gap-2 opacity-0 transition-all delay-200 duration-300 group-hover/project:translate-y-0 group-hover/project:opacity-100'
+            )}
+          >
+            {project.website && (
+              <motion.div
+                variants={containerScale}
+                whileHover='hover'
+                whileTap='tap'
+              >
+                <ActionButton
+                  href={project.website}
+                  icon='ExternalLink'
+                  type='button'
+                  size='sm'
+                  className={cn(
+                    'border-primary/20 bg-primary/90 text-primary-foreground backdrop-blur-sm hover:bg-primary',
+                    project.github ? 'rounded-l-full' : 'rounded-full'
+                  )}
+                  aria-label={`Voir la démo du projet ${project.title}`}
+                />
+              </motion.div>
+            )}
+            {project.github && (
+              <motion.div
+                variants={containerScale}
+                whileHover='hover'
+                whileTap='tap'
+              >
+                <ActionButton
+                  icon='Github'
+                  href={project.github}
+                  size='sm'
+                  type='button'
+                  className={cn(
+                    'border-secondary/20 bg-secondary/90 text-secondary-foreground backdrop-blur-sm hover:bg-secondary',
+                    !project.website ? 'rounded-full' : 'rounded-r-full'
+                  )}
+                  aria-label={`Voir le code source du projet ${project.title}`}
+                />
+              </motion.div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   </motion.div>
 );
 
@@ -473,27 +603,27 @@ export const Header = ({
       {/* Section des liens et QR codes organisée en grille */}
       <div className={cn('mt-12 grid grid-cols-1 font-sans md:grid-cols-4')}>
         {username && (
-          <>
-            <GitHubRepositoriesCount
-              username={username}
-              cnLinkContainer={cn(cnLinkContainer)}
-              cnStatsDivContainer={cnStatsDivContainer}
-              cnStatsText={cnStatsText}
-              cnStatsTitle={cnStatsTitle}
-              cnIconLoader={cnIconLoader}
-              cnStatsBgShadow={cnStatsBgShadow}
-            />
-            <GitHubYearsActivity
-              username={username}
-              cnLinkContainer={cnLinkContainer}
-              cnStatsDivContainer={cnStatsDivContainer}
-              cnStatsText={cnStatsText}
-              cnStatsTextSmall={cnStatsTextSmall}
-              cnStatsTitle={cnStatsTitle}
-              cnIconLoader={cnIconLoader}
-              cnStatsBgShadow={cnStatsBgShadow}
-            />
-          </>
+          <GitHubRepositoriesCount
+            username={username}
+            cnLinkContainer={cn(cnLinkContainer)}
+            cnStatsDivContainer={cnStatsDivContainer}
+            cnStatsText={cnStatsText}
+            cnStatsTitle={cnStatsTitle}
+            cnIconLoader={cnIconLoader}
+            cnStatsBgShadow={cnStatsBgShadow}
+          />
+        )}
+        {username && (
+          <GitHubYearsActivity
+            username={username}
+            cnLinkContainer={cnLinkContainer}
+            cnStatsDivContainer={cnStatsDivContainer}
+            cnStatsText={cnStatsText}
+            cnStatsTextSmall={cnStatsTextSmall}
+            cnStatsTitle={cnStatsTitle}
+            cnIconLoader={cnIconLoader}
+            cnStatsBgShadow={cnStatsBgShadow}
+          />
         )}
         <SuccessCount
           cnLinkContainer={cnLinkContainer}
@@ -578,15 +708,13 @@ export const HeroParallax = ({
   description: string;
   imageSrc: string;
   imageAlt: string;
-  projects: {
-    title: string;
-    link: string;
-    thumbnail: string;
-  }[];
+  projects: CardProps['projects'];
 }) => {
-  const firstRow = projects?.slice(0, 5) || [];
-  const secondRow = projects?.slice(5, 10) || [];
-  const thirdRow = projects?.slice(10, 15) || [];
+  // Diviser les projets en lignes, en s'assurant qu'il y a au moins quelques projets par ligne
+  const safeProjects = projects || [];
+  const firstRow = safeProjects.slice(0, 5);
+  const secondRow = safeProjects.slice(5, 10);
+  const thirdRow = safeProjects.slice(10, 15);
 
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
@@ -596,6 +724,7 @@ export const HeroParallax = ({
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
+  // Réduire les valeurs de translation pour un effet plus subtil
   const translateX = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, 1000]),
     springConfig
@@ -623,7 +752,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className='relative flex h-[300vh] flex-col self-auto overflow-x-hidden overflow-y-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]'
+      className='relative flex h-[300vh] flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]'
     >
       <Header
         name={name}
@@ -640,35 +769,46 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className='bg-gradient-to-b from-transparent via-slate-900/10 to-transparent'
+        className='relative overflow-x-hidden'
       >
-        <motion.div className='mb-20 flex min-w-max flex-row-reverse space-x-20 space-x-reverse'>
-          {firstRow.map((project) => (
-            <ProjectCard
-              project={project}
-              translate={translateX}
-              key={project.title}
-            />
-          ))}
-        </motion.div>
-        <motion.div className='mb-20 flex min-w-max flex-row space-x-20'>
-          {secondRow.map((project) => (
-            <ProjectCard
-              project={project}
-              translate={translateXReverse}
-              key={project.title}
-            />
-          ))}
-        </motion.div>
-        <motion.div className='flex min-w-max flex-row-reverse space-x-20 space-x-reverse'>
-          {thirdRow.map((project) => (
-            <ProjectCard
-              project={project}
-              translate={translateX}
-              key={project.title}
-            />
-          ))}
-        </motion.div>
+        {/* Première ligne - mouvement vers la droite */}
+        {firstRow.length > 0 && (
+          <motion.div className='mb-20 flex min-w-max flex-row space-x-20 pl-4'>
+            {firstRow.map((project) => (
+              <ProjectCard
+                project={project}
+                translate={translateX}
+                key={project.title}
+              />
+            ))}
+          </motion.div>
+        )}
+
+        {/* Deuxième ligne - mouvement vers la gauche */}
+        {secondRow.length > 0 && (
+          <motion.div className='mb-20 flex min-w-max flex-row space-x-20 pr-4'>
+            {secondRow.map((project) => (
+              <ProjectCard
+                project={project}
+                translate={translateXReverse}
+                key={project.title}
+              />
+            ))}
+          </motion.div>
+        )}
+
+        {/* Troisième ligne - mouvement vers la droite */}
+        {thirdRow.length > 0 && (
+          <motion.div className='flex min-w-max flex-row space-x-20 pl-4'>
+            {thirdRow.map((project) => (
+              <ProjectCard
+                project={project}
+                translate={translateX}
+                key={project.title}
+              />
+            ))}
+          </motion.div>
+        )}
       </motion.div>
     </div>
   );
