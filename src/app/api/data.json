@@ -81,33 +81,27 @@
     "projects": [
       {
         "title": "anitapp",
-        "description": "launcher d'application android adapté aux capacités cognitives et physiques d'une personne en situation de handicap.",
+        "description": "launcher android adapté aux capacités cognitives et physiques de la cliente.",
         "learned": [
-          "concevoir l'application mobile avec la cliente, l'ergothérapeute et l'éducateur spécialisé",
-          "développer et émuler une application mobile",
-          "vulgariser la technique et réaliser des tests d'utilisation avec la cliente"
+          "concevoir, tester avec la cliente, et son entourage professionnel",
+          "développer et émuler l'application mobile react native",
+          "gérer le développement bénévole en mode agile"
         ],
         "thumbnail": "/images/anitapp.svg",
         "imageSrc": "/images/anitapp.svg",
         "github": "github.com/ThiessetFabien/Anitapp",
-        "tags": [
-          "typescript",
-          "react native",
-          "tailwind css",
-          "android studio",
-          "pnpm"
-        ]
+        "tags": ["typescript", "react native", "tailwind css", "android studio"]
       },
       {
         "title": "casalink",
-        "description": "planning familial de gestion des tâches, d'événements avec délégation aux enfants.",
+        "description": "planning familial de gestion de tâches, d'événements avec délégation aux plus petits.",
         "learned": [
-          "concevoir et développer une application en équipe de cinq développeurs en mode agile scrum",
-          "uniformiser l'architecture du projet, les conventions de nommage entre les deux équipes",
-          "implémenter l'authentification avec stockage local du token",
-          "utiliser du code réutilisable créé par d'autres développeurs pour créer la modale de validation du code pin requis pour les actions sensibles",
+          "concevoir et développer en mode agile avec cinq développeurs",
+          "animer les rites scrum en optimisant la synergie des équipes",
+          "uniformiser les pratiques entre le front-end et le back-end",
           "styliser l'interface utilisateur moderne et responsive",
-          "réalisation du tableau kanban collaboratif et animation des rituels scrum (daily, retrospective, démo)"
+          "implémenter l'authentification avec stockage local du jeton",
+          "utiliser les composants existants pour coder la modale validant le code pin"
         ],
         "thumbnail": "/images/casalink.webp",
         "imageSrc": "/images/casalink.webp",
@@ -118,33 +112,24 @@
         "github": "github.com/ThiessetFabien/Casalink-Frontend",
         "tags": [
           "typescript",
-          "react.js",
-          "redux.js",
+          "react",
+          "redux",
           "axios",
           "sass",
-          "pnpm",
-          "notion",
-          "agile",
           "scrum",
-          "git",
-          "github",
-          "draw.io",
-          "méthode meurise"
+          "git"
         ]
       },
       {
         "title": "casalink api",
-        "description": "serveur sécurisé  de l'app casalink.",
+        "description": "serveur sécurisé  de l'application web casalink.",
         "learned": [
-          "développer l'architecture model, vue, controller entre deux projets",
-          "valider l'intégrité des données dans les couches applicatives jusqu'aux datamappers",
-          "gérer les données utilisateurs par transactions",
-          "implémenter l'authentification sécurisée à l'api",
-          "Contrôler l'accès et éviter les injections sql, les attaques xss, ddos",
-          "configurer l'environnement de production et de développement avec npm comprenant les logs",
-          "documenter l'api en anglais",
-          "déploiement de l'api et la base de données",
-          "synchoriser les deux projets pour fluidifier le développement et la maintenance"
+          "faciliter les synergies pour optimiser le développement",
+          "configurer l'environnement de développement sur ubuntu",
+          "développer, tester, déployer le back-end sur render et vercel",
+          "assurer l'intégrité des données jusqu'aux datamappers",
+          "créer, valider l'authentification sécurisée à l'api restful",
+          "protéger l'api des principales failles de sécurité (owasp top 10)"
         ],
         "thumbnail": "/images/casalink-documentation.webp",
         "imageSrc": "/images/casalink-documentation.webp",
@@ -161,24 +146,20 @@
           "cors",
           "rate-limit",
           "body-parser",
-          "jwt",
-          "npm",
-          "render",
-          "vercel"
+          "jwt"
         ]
       },
       {
         "title": "portfolio 2.0",
-        "description": "site vitrine mettant de mes projets et compétences en développement.",
+        "description": "site vitrine de projets et compétences de développeur.",
         "learned": [
-          "développer une architecture server side rendering avec next.js",
-          "optimiser les performances (lazy loading, shimmer, chargement conditionnel)",
-          "intégration de bibliohèques et apis externes",
-          "animer fluidement les intéractions et transitions",
-          "créer une interface responsive, accessible avec les intéractions complexes (menus, vidéos, carousel, dark mode)",
-          "configuration de l'environnement de production et de développement automatisé, sécurisé et documenté",
-          "implémentation de contrôles de navigation",
-          "optimisation du référencement naturel"
+          "développer l'architecture server side rendering",
+          "coder une interface responsive aux interactions complexes",
+          "intégrer des bibliohèques et apis externes",
+          "animer fluidement les interactions et transitions",
+          "optimiser les performances de charge et de rendu",
+          "configurer l'environnement automatisé, sécurisé et documenté",
+          "optimiser le référencement naturel"
         ],
         "imageSrc": "/images/portfolio.webp",
         "imageAlt": "Portfolio 2.0",
@@ -189,7 +170,6 @@
           "typescript",
           "next.js",
           "tailwind css",
-          "shadcn",
           "framer motion",
           "embla",
           "openstreetmap",

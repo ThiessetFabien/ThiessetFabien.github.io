@@ -44,14 +44,6 @@ const HomePage: React.FC = () => {
   const { data } = useData();
   const isClient = useIsClient();
 
-  // Récupérer tous les projets de toutes les cartes
-  const allProjects = data.reduce((projects: any[], card) => {
-    if (card.projects && Array.isArray(card.projects)) {
-      return [...projects, ...card.projects];
-    }
-    return projects;
-  }, [] as any[]);
-
   return (
     <>
       {data.map((card, index: number) => {
@@ -105,7 +97,7 @@ const HomePage: React.FC = () => {
                         services={card.services}
                         imageSrc={card.imageSrc}
                         imageAlt={card.imageAlt}
-                        projects={allProjects}
+                        projects={card.projects}
                         className={cn(
                           cnFlexBetweenY,
                           'w-full max-w-full space-y-0'

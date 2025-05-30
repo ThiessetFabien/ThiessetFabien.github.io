@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   motion,
   useScroll,
@@ -66,12 +66,12 @@ export const ProjectCard = ({
     }}
     key={project.title}
     className={cn(
-      'group/project relative h-96 w-[30rem] flex-shrink-0 overflow-hidden rounded-lg',
+      'group/project relative h-96 w-[30rem] flex-shrink-0 overflow-hidden',
       cnHoverShadowPrimary
     )}
   >
-    {/* Image container with hover effects */}
-    <div className='relative h-full w-full overflow-hidden'>
+    {/* Image container with hover effects - Semantic figure */}
+    <figure className='relative h-full w-full overflow-hidden'>
       <Image
         src={
           project.thumbnail.startsWith('/')
@@ -81,24 +81,29 @@ export const ProjectCard = ({
         height='600'
         width='600'
         priority
-        className='absolute inset-0 h-full w-full object-cover object-left-top transition-transform duration-500 ease-in-out group-hover/project:scale-105'
+        className='absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 ease-in-out'
         alt={project.imageAlt || project.title}
       />
 
       {/* Dark overlay on hover */}
-      <div className='pointer-events-none absolute inset-0 h-full w-full bg-black/20 opacity-0 transition-opacity duration-300 group-hover/project:opacity-100' />
+      <div className='pointer-events-none absolute inset-0 h-full w-full bg-black/80 opacity-0 transition-opacity duration-300 group-hover/project:opacity-100' />
+
+      {/* Figcaption for accessibility - visually hidden but available to screen readers */}
+      <figcaption className='sr-only'>
+        {project.imageAlt || `Aperçu du projet ${project.title}`}
+      </figcaption>
 
       {/* Content overlay */}
-      <div className='absolute inset-0 flex flex-col justify-between p-6'>
+      <div className='absolute inset-0 mt-2 flex flex-col justify-between p-6'>
         {/* Top section with badges */}
-        <div className='flex translate-y-4 transform flex-wrap gap-2 opacity-0 transition-all duration-300 group-hover/project:translate-y-0 group-hover/project:opacity-100'>
-          {project.tags?.slice(0, 3).map((tag, index) => (
+        <div className='flex transform flex-wrap gap-1 opacity-0 transition-all duration-300 group-hover/project:opacity-100'>
+          {project.tags?.map((tag, index) => (
             <Badge
               key={index}
-              variant='secondary'
-              className='border-primary/20 bg-background/80 text-foreground backdrop-blur-sm transition-colors duration-200 hover:border-primary'
+              variant='outline'
+              className='backdrop-blur-sm transition-colors duration-200'
             >
-              {capitalizeFirstLetterOfEachWord(formatSpecialWords(tag || ''))}
+              {capitalizeFirstLetterOfEachWord(formatSpecialWords(tag))}
             </Badge>
           ))}
         </div>
@@ -131,24 +136,25 @@ export const ProjectCard = ({
           {project.learned &&
             Array.isArray(project.learned) &&
             project.learned.length > 0 && (
-              <div className='mb-4 translate-y-4 transform opacity-0 transition-all delay-150 duration-300 group-hover/project:translate-y-0 group-hover/project:opacity-100'>
+              <div className='mb-4 translate-y-4 transform font-sans opacity-0 transition-all delay-150 duration-300 group-hover/project:translate-y-0 group-hover/project:opacity-100'>
                 <p className='mb-2 text-xs font-semibold text-white/80'>
                   Ce que j'ai appris :
                 </p>
                 <div className='space-y-1'>
-                  {project.learned.slice(0, 2).map((skill, index) => (
+                  {project.learned.slice(0, 6).map((skill, index) => (
                     <div
                       key={index}
                       className='flex items-start text-xs text-white/70'
                     >
                       <SmallDot
-                        className='mr-2 mt-1 bg-primary'
+                        className='mr-2 bg-primary'
                         aria-hidden='true'
                       />
                       <span className='flex-1'>
                         {capitalizeFirstLetterOfPhrase(
                           formatSpecialWords(skill)
                         )}
+                        .
                       </span>
                     </div>
                   ))}
@@ -170,15 +176,37 @@ export const ProjectCard = ({
                 whileTap='tap'
               >
                 <ActionButton
+                  cta='Démo'
                   href={project.website}
                   icon='ExternalLink'
                   type='button'
                   size='sm'
                   className={cn(
-                    'border-primary/20 bg-primary/90 text-primary-foreground backdrop-blur-sm hover:bg-primary',
+                    'backdrop-blur-sm',
                     project.github ? 'rounded-l-full' : 'rounded-full'
                   )}
                   aria-label={`Voir la démo du projet ${project.title}`}
+                />
+              </motion.div>
+            )}
+            {project.file && (
+              <motion.div
+                variants={containerScale}
+                whileHover='hover'
+                whileTap='tap'
+              >
+                <ActionButton
+                  cta='Cahier des charges'
+                  href={project.file}
+                  icon='FileText'
+                  type='button'
+                  size='sm'
+                  variant='outline'
+                  className={cn(
+                    'rounded-none backdrop-blur-sm',
+                    !project.website && !project.github ? 'rounded-full' : ''
+                  )}
+                  aria-label={`Voir les fichiers du projet ${project.title}`}
                 />
               </motion.div>
             )}
@@ -189,12 +217,14 @@ export const ProjectCard = ({
                 whileTap='tap'
               >
                 <ActionButton
+                  cta='Code source'
                   icon='Github'
                   href={project.github}
                   size='sm'
+                  variant='secondary'
                   type='button'
                   className={cn(
-                    'border-secondary/20 bg-secondary/90 text-secondary-foreground backdrop-blur-sm hover:bg-secondary',
+                    'backdrop-blur-sm',
                     !project.website ? 'rounded-full' : 'rounded-r-full'
                   )}
                   aria-label={`Voir le code source du projet ${project.title}`}
@@ -204,7 +234,7 @@ export const ProjectCard = ({
           </div>
         </div>
       </div>
-    </div>
+    </figure>
   </motion.div>
 );
 
@@ -506,7 +536,7 @@ export const Header = ({
   };
 
   return (
-    <div className='relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 lg:left-20 lg:px-0'>
+    <div className='relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 lg:px-0'>
       <div className='grid auto-rows-auto grid-cols-1 lg:grid-cols-2'>
         {/* Image en premier en mobile (order-1), à droite en desktop */}
         <div
@@ -710,17 +740,17 @@ export const HeroParallax = ({
   imageAlt: string;
   projects: CardProps['projects'];
 }) => {
-  // Diviser les projets en lignes, en s'assurant qu'il y a au moins quelques projets par ligne
-  const safeProjects = projects || [];
-  const firstRow = safeProjects.slice(0, 5);
-  const secondRow = safeProjects.slice(5, 10);
-  const thirdRow = safeProjects.slice(10, 15);
-
-  const ref = React.useRef(null);
+  const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
   });
+
+  const allProjects = [...projects, ...projects];
+
+  const firstRow = allProjects.slice(0, 5);
+  const secondRow = allProjects.slice(5, 10);
+  const thirdRow = allProjects.slice(10, 15);
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
@@ -752,7 +782,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className='relative flex h-[300vh] flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]'
+      className='relative flex h-[300vh] flex-col self-auto overflow-y-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]'
     >
       <Header
         name={name}
@@ -769,11 +799,11 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className='relative overflow-x-hidden'
+        className='relative'
       >
         {/* Première ligne - mouvement vers la droite */}
-        {firstRow.length > 0 && (
-          <motion.div className='mb-20 flex min-w-max flex-row space-x-20 pl-4'>
+        {firstRow && firstRow.length > 0 && (
+          <motion.div className='mb-20 flex min-w-max flex-row gap-x-20'>
             {firstRow.map((project) => (
               <ProjectCard
                 project={project}
@@ -785,8 +815,8 @@ export const HeroParallax = ({
         )}
 
         {/* Deuxième ligne - mouvement vers la gauche */}
-        {secondRow.length > 0 && (
-          <motion.div className='mb-20 flex min-w-max flex-row space-x-20 pr-4'>
+        {secondRow && secondRow.length > 0 && (
+          <motion.div className='mb-20 flex min-w-max flex-row gap-x-20'>
             {secondRow.map((project) => (
               <ProjectCard
                 project={project}
@@ -798,8 +828,8 @@ export const HeroParallax = ({
         )}
 
         {/* Troisième ligne - mouvement vers la droite */}
-        {thirdRow.length > 0 && (
-          <motion.div className='flex min-w-max flex-row space-x-20 pl-4'>
+        {thirdRow && thirdRow.length > 0 && (
+          <motion.div className='flex min-w-max flex-row gap-x-20'>
             {thirdRow.map((project) => (
               <ProjectCard
                 project={project}
