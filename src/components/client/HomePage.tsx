@@ -44,6 +44,11 @@ const HomePage: React.FC = () => {
   const { data } = useData();
   const isClient = useIsClient();
 
+  // Trouver tous les projets dans les données pour les passer à HeroSection
+  const allProjects =
+    data.find((card) => card.projects && card.projects.length > 0)?.projects ||
+    [];
+
   return (
     <>
       {data.map((card, index: number) => {
@@ -97,7 +102,7 @@ const HomePage: React.FC = () => {
                         services={card.services}
                         imageSrc={card.imageSrc}
                         imageAlt={card.imageAlt}
-                        projects={card.projects}
+                        projects={allProjects}
                         className={cn(
                           cnFlexBetweenY,
                           'w-full max-w-full space-y-0'

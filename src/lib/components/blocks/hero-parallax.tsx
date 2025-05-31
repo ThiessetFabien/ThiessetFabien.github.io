@@ -746,7 +746,16 @@ export const HeroParallax = ({
     offset: ['start start', 'end start'],
   });
 
-  const allProjects = [...projects, ...projects];
+  // S'assurer qu'on a un tableau valide
+  const validProjects = Array.isArray(projects) ? projects : [];
+
+  // Si on a moins de 15 projets, les dupliquer pour remplir les 3 lignes
+  let allProjects = [...validProjects];
+  if (validProjects.length > 0) {
+    while (allProjects.length < 15) {
+      allProjects = [...allProjects, ...validProjects];
+    }
+  }
 
   const firstRow = allProjects.slice(0, 5);
   const secondRow = allProjects.slice(5, 10);
@@ -782,7 +791,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className='relative flex h-[300vh] flex-col self-auto overflow-y-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]'
+      className='relative flex h-[300vh] flex-col self-auto overflow-y-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d] lg:pl-20'
     >
       <Header
         name={name}
@@ -803,7 +812,7 @@ export const HeroParallax = ({
       >
         {/* Première ligne - mouvement vers la droite */}
         {firstRow && firstRow.length > 0 && (
-          <motion.div className='mb-20 flex min-w-max flex-row gap-x-20'>
+          <motion.div className='mb-20 flex min-w-max flex-row space-x-20'>
             {firstRow.map((project) => (
               <ProjectCard
                 project={project}
@@ -816,7 +825,7 @@ export const HeroParallax = ({
 
         {/* Deuxième ligne - mouvement vers la gauche */}
         {secondRow && secondRow.length > 0 && (
-          <motion.div className='mb-20 flex min-w-max flex-row gap-x-20'>
+          <motion.div className='mb-20 flex min-w-max flex-row-reverse space-x-20 space-x-reverse'>
             {secondRow.map((project) => (
               <ProjectCard
                 project={project}
@@ -829,7 +838,7 @@ export const HeroParallax = ({
 
         {/* Troisième ligne - mouvement vers la droite */}
         {thirdRow && thirdRow.length > 0 && (
-          <motion.div className='flex min-w-max flex-row gap-x-20'>
+          <motion.div className='flex min-w-max flex-row space-x-20'>
             {thirdRow.map((project) => (
               <ProjectCard
                 project={project}
