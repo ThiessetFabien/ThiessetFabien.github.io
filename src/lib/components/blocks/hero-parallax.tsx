@@ -749,27 +749,28 @@ export const HeroParallax = ({
   // S'assurer qu'on a un tableau valide
   const validProjects = Array.isArray(projects) ? projects : [];
 
-  // Si on a moins de 15 projets, les dupliquer pour remplir les 3 lignes
+  // Dupliquer les projets pour créer suffisamment de contenu pour les 3 lignes
+  // Nous avons besoin d'au moins 45 projets (15 par ligne) pour bien remplir l'écran
   let allProjects = [...validProjects];
   if (validProjects.length > 0) {
-    while (allProjects.length < 15) {
+    while (allProjects.length < 30) {
       allProjects = [...allProjects, ...validProjects];
     }
   }
 
-  const firstRow = allProjects.slice(0, 5);
-  const secondRow = allProjects.slice(5, 10);
-  const thirdRow = allProjects.slice(10, 15);
+  const firstRow = allProjects.slice(0, 10);
+  const secondRow = allProjects.slice(10, 20);
+  const thirdRow = allProjects.slice(20, 30);
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
-  // Réduire les valeurs de translation pour un effet plus subtil
+  // Ajuster les valeurs de translation pour mieux remplir l'écran
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    useTransform(scrollYProgress, [0, 1], [0, 1200]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 1], [0, -1200]),
     springConfig
   );
   const rotateX = useSpring(
@@ -791,7 +792,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className='relative flex h-[300vh] flex-col self-auto overflow-y-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d] lg:pl-20'
+      className='relative flex h-[300vh] flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d] lg:pl-20'
     >
       <Header
         name={name}
@@ -812,12 +813,12 @@ export const HeroParallax = ({
       >
         {/* Première ligne - mouvement vers la droite */}
         {firstRow && firstRow.length > 0 && (
-          <motion.div className='mb-20 flex min-w-max flex-row space-x-20'>
-            {firstRow.map((project) => (
+          <motion.div className='mb-20 flex min-w-max -translate-x-[35rem] flex-row space-x-20 pl-0'>
+            {firstRow.map((project, index) => (
               <ProjectCard
                 project={project}
                 translate={translateX}
-                key={project.title}
+                key={`first-row-${project.title}-${index}`}
               />
             ))}
           </motion.div>
@@ -825,12 +826,12 @@ export const HeroParallax = ({
 
         {/* Deuxième ligne - mouvement vers la gauche */}
         {secondRow && secondRow.length > 0 && (
-          <motion.div className='mb-20 flex min-w-max flex-row-reverse space-x-20 space-x-reverse'>
-            {secondRow.map((project) => (
+          <motion.div className='mb-20 flex min-w-max -translate-x-[35rem] flex-row-reverse space-x-20 space-x-reverse pr-0'>
+            {secondRow.map((project, index) => (
               <ProjectCard
                 project={project}
                 translate={translateXReverse}
-                key={project.title}
+                key={`second-row-${project.title}-${index}`}
               />
             ))}
           </motion.div>
@@ -838,12 +839,12 @@ export const HeroParallax = ({
 
         {/* Troisième ligne - mouvement vers la droite */}
         {thirdRow && thirdRow.length > 0 && (
-          <motion.div className='flex min-w-max flex-row space-x-20'>
-            {thirdRow.map((project) => (
+          <motion.div className='flex min-w-max -translate-x-[35rem] flex-row space-x-20 pl-0'>
+            {thirdRow.map((project, index) => (
               <ProjectCard
                 project={project}
                 translate={translateX}
-                key={project.title}
+                key={`third-row-${project.title}-${index}`}
               />
             ))}
           </motion.div>
