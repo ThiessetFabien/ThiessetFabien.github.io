@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { scrollToTop } from '@hooks/ScrollToTop.hook';
 import { ToggleDarkMode } from '@src/components/ui/toggles/DarkModeToggle';
@@ -24,7 +24,7 @@ import { containerScale } from '@styles/variantsAnimation';
  */
 export const FloatingToggles = (): JSX.Element | null => {
   const [isMounted, setIsMounted] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
   const [darkModeOpacity, setDarkModeOpacity] = useState(1);
   const [scrollTopOpacity, setScrollTopOpacity] = useState(0);
   const [scrollTopVisible, setScrollTopVisible] = useState(false);
@@ -40,8 +40,8 @@ export const FloatingToggles = (): JSX.Element | null => {
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const direction = currentScrollY > lastScrollY ? 'down' : 'up';
-      setLastScrollY(currentScrollY);
+      const direction = currentScrollY > lastScrollYRef.current ? 'down' : 'up';
+      lastScrollYRef.current = currentScrollY;
 
       if (direction === 'up') {
         setDarkModeOpacity(
@@ -81,7 +81,7 @@ export const FloatingToggles = (): JSX.Element | null => {
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMounted, lastScrollY]);
+  }, [isMounted]);
 
   if (!isMounted) {
     return null;

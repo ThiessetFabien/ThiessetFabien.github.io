@@ -172,16 +172,7 @@ export const QRCodeComponent: React.FC<QRCodeComponentProps> = ({
 
         {/* Title/label below the QR code */}
         {title && (
-          //           <h3
-          //   className={cn(
-          //     cnStatsTitle,
-          //     'transition-colors duration-300 group-focus-within:text-primary/70 group-hover:text-primary/70'
-          //   )}
-          // >
-          //   Carte de visite
-          // </h3>
-
-          <h3 className='text-lg font-semibold text-muted-foreground transition-colors duration-300 group-hover:text-primary/70'>
+          <h3 className='translate-y-1 transform text-xs font-semibold text-card-foreground/70 opacity-75 transition-all duration-300 group-hover:translate-y-0 group-hover:text-foreground/80 group-hover:opacity-100 sm:text-sm md:text-base lg:text-lg'>
             {capitalizeFirstLetterOfEachWord(title)}
           </h3>
         )}

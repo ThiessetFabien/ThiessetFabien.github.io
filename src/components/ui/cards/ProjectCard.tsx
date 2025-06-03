@@ -247,8 +247,11 @@ export const ProjectCard = memo(
                 className={cn(
                   cnFlexCenterY,
                   'gap-x-1',
-                  isLg ? 'w-full justify-end' : 'justify-end',
-                  isXs && 'w-full justify-center'
+                  (() => {
+                    if (isLg) return 'w-full justify-end';
+                    if (isXs) return 'w-full justify-center';
+                    return 'justify-end';
+                  })()
                 )}
               >
                 {project.website && (
