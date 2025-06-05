@@ -1,10 +1,10 @@
 import React from 'react';
 
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 
-export const LinkedinIcon: React.FC<{ className: CardProps['className'] }> = ({
-  className,
-}) => (
+export const LinkedinIcon: React.FC<{
+  className: SectionProps['className'];
+}> = ({ className }) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 24 24'

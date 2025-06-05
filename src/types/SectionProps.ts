@@ -2,23 +2,22 @@ import type { ActionButtonProps } from './ActionButtonProps';
 import type { ExperiencesProps } from './ExperiencesProps';
 import type { JobsProps } from './JobsProps';
 import type { ProjectProps } from './ProjectProps';
-import type { ServicesProps } from './ServicesProps';
 import type { TestimonialProps } from './TestimonialProps';
 
 /**
- * Represents the properties for a card component.
+ * Represents the properties for a section component.
  *
- * @interface CardProps
- * @property {number} [index] - The index of the card.
- * @property {string} name - The name associated with the card.
- * @property {string} familyName - The family name associated with the card.
- * @property {ServicesProps[]} services - The list of services provided.
+ * @interface SectionProps
+ * @property {number} [index] - The index of the section.
+ * @property {string} name - The name associated with the section.
+ * @property {string} familyName - The family name associated with the section.
  * @property {string[]} expertises - The list of expertises.
+ * @property {string[]} [success] - The list of success achievements.
  * @property {JobsProps[]} jobs - The list of jobs.
- * @property {string} [title] - The title of the card.
- * @property {string} [description] - The description of the card.
- * @property {string} [imageSrc] - The source URL for the card image.
- * @property {string} [imageAlt] - The alt text for the card image.
+ * @property {string} [title] - The title of the section.
+ * @property {string} [description] - The description of the section.
+ * @property {string} [imageSrc] - The source URL for the section image.
+ * @property {string} [imageAlt] - The alt text for the section image.
  * @property {boolean} [map] - Indicates if a map should be displayed.
  * @property {string} [cta1] - Text for the first call-to-action button.
  * @property {string} [icon1] - Icon for the first call-to-action button.
@@ -53,13 +52,13 @@ import type { TestimonialProps } from './TestimonialProps';
  * @property {string} [className] - Additional class names for styling.
  * @property {string} [colSpan] - Column span for layout purposes.
  */
-export interface CardProps {
+export interface SectionProps {
   index?: number;
   name: string;
   familyName: string;
-  services: ServicesProps[];
 
   expertises: string[];
+  success?: string[];
   jobs: JobsProps[];
 
   title?: string;

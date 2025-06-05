@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 
 /**
  * A custom hook that generates a grid configuration for an array of cards.
  * Each card is assigned a `colSpan` value based on its properties, which determines
  * its column and row span in a responsive grid layout.
  *
- * @param {CardProps[]} cards - An array of card objects, where each card can have
+ * @param {SectionProps[]} cards - An array of card objects, where each card can have
  * properties such as `imageSrc`, `jobs`, `technologies`, `experiences`, `projects`,
  * `achievements`, `testimonials`, `map`, or `mailto`.
  *
@@ -23,7 +23,7 @@ import type { CardProps } from '@src/types/CardProps';
  * const gridConfig = useCardGrid(cards);
  * // gridConfig will include the `colSpan` property for each card
  */
-export const useCardGrid = (cards: CardProps[]) => {
+export const useCardGrid = (cards: SectionProps[]) => {
   const gridConfig = useMemo(
     () =>
       cards.map((card) => {

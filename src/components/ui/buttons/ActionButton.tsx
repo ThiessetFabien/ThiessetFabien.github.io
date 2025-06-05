@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@lib/components/ui/button';
 import { cn } from '@lib/utils';
 import type { ActionButtonProps } from '@src/types/ActionButtonProps';
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 import { baseUrl } from '@src/utils/baseUrl.util';
 import { capitalizeFirstLetterOfEachWord } from '@src/utils/formatText.util';
 import { cnParagraph } from '@styles/font.style';
@@ -38,7 +38,7 @@ import { IconLoader } from '@src/components/ui/icons/IconLoader';
  */
 export const ActionButton: React.FC<
   ActionButtonProps & {
-    className?: CardProps['className'];
+    className?: SectionProps['className'];
   }
 > = ({
   cta,

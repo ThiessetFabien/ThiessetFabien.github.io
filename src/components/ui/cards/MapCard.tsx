@@ -31,7 +31,7 @@ import { cn } from '@lib/utils';
 import { cnBorderNone } from '@styles/border.style';
 import { cnPadding, cnPaddingX, cnPaddingBottom } from '@styles/boxModel.style';
 import { cnFlexCol } from '@styles/flex.style';
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 
 import LoadingSpinner from '@ui/spinner/LoadingSpinner';
 
@@ -42,7 +42,7 @@ const DynamicLeafletMap = dynamic(() => import('../maps/LeafletMap'), {
   loading: () => <LoadingSpinner size='lg' message='Loading map...' />,
 });
 
-const MapCard: React.FC<{ className?: CardProps['className'] }> = ({
+const MapCard: React.FC<{ className?: SectionProps['className'] }> = ({
   className,
 }) => (
   <Card className={cn(className, cnBorderNone, cnFlexCol, 'h-full flex-1 p-0')}>

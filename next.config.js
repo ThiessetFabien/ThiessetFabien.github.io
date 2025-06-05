@@ -34,7 +34,6 @@ const nextconfig = {
     SMTP_SERVER_USERNAME: process.env.SMTP_SERVER_USERNAME,
   },
   reactStrictMode: false,
-  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
   productionBrowserSourceMaps: false,
   images: {
     unoptimized: true,

@@ -7,7 +7,7 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 
 import { ProjectCard } from '@src/components/ui/cards/ProjectCard';
 import { useIsLg, useIsSm, useIsXs } from '@styles/mediaQueries.style';
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 
 /**
  * CardProjects component.
@@ -20,8 +20,8 @@ import type { CardProps } from '@src/types/CardProps';
  */
 
 export const ProjectsSection: React.FC<{
-  projects: CardProps['projects'];
-  className: CardProps['className'];
+  projects: SectionProps['projects'];
+  className: SectionProps['className'];
 }> = ({ projects, className }) => {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [videoLoaded, setVideoLoaded] = useState<boolean[]>([]);

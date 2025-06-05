@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { CountUp } from '@src/components/ui/animation/CountUp';
+import { CountUp } from '@src/components/ui/animations/CountUp';
 import type { GitHubStats as GitHubStatsType } from '@src/types/GitHubStats';
 import { fetchGitHubStats } from '@src/lib/fetch/github-stats';
 

@@ -3,7 +3,7 @@
  */
 
 import type { ActionButtonProps } from './ActionButtonProps';
-import type { CardProps } from './CardProps';
+import type { SectionProps } from './SectionProps';
 
 /**
  * Propriétés pour le composant Footer
@@ -42,7 +42,7 @@ export interface FooterCardProps {
   /**
    * Adresse email pour le lien mailto
    */
-  mailto?: CardProps['mailto'];
+  mailto?: SectionProps['mailto'];
 
   /**
    * Texte du premier bouton d'action
@@ -112,5 +112,5 @@ export interface FooterCardProps {
   /**
    * Classes CSS additionnelles
    */
-  className?: CardProps['className'];
+  className?: SectionProps['className'];
 }

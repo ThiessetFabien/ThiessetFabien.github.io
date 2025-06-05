@@ -10,7 +10,7 @@ import {
 } from '@styles/flex.style';
 import { cnParagraph, cnTitle3 } from '@styles/font.style';
 import { cnSizeFull } from '@styles/size.style';
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 import {
   capitalizeFirstLetterOfEachWord,
   formatSpecialWords,
@@ -21,15 +21,15 @@ import { SkillList } from '@src/components/ui/lists/SkillList';
 
 /**
  * Renders a card displaying job information and associated skills.
- * @param {Pick<CardProps, 'jobs' | 'className'>} props - The component props.
+ * @param {Pick<SectionProps, 'jobs' | 'className'>} props - The component props.
  * @returns {JSX.Element} The rendered AboutSection component.
  */
-export const AboutSection: React.FC<Pick<CardProps, 'jobs' | 'className'>> =
+export const AboutSection: React.FC<Pick<SectionProps, 'jobs' | 'className'>> =
   memo(
     ({
       jobs,
       className,
-    }: Pick<CardProps, 'jobs' | 'className'>): JSX.Element => {
+    }: Pick<SectionProps, 'jobs' | 'className'>): JSX.Element => {
       const highlightWords = [
         'développeur full-stack orienté front-end',
         'next.js',

@@ -3,7 +3,7 @@ import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { cn } from '@src/lib/utils';
 import { cnSmallText } from '@styles/font.style';
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 
 type UseSelectedSnapDisplayType = {
   selectedSnap: number;
@@ -49,7 +49,7 @@ type PropType = {
 };
 
 export const SelectSnapDisplay: React.FC<
-  PropType & { className: CardProps['className'] }
+  PropType & { className: SectionProps['className'] }
 > = memo((props) => {
   const { selectedSnap, snapCount, className } = props;
 

@@ -1,6 +1,6 @@
 import { Button } from '@src/lib/components/ui/button';
 import type { ActionButtonProps } from '@src/types/ActionButtonProps';
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 
 import { IconLoader } from '@src/components/ui/icons/IconLoader';
 
@@ -10,13 +10,13 @@ import { IconLoader } from '@src/components/ui/icons/IconLoader';
  *
  * @component
  * @param {Object} props - The component props
- * @param {CardProps['className']} props.className - CSS class name for styling the button
+ * @param {SectionProps['className']} props.className - CSS class name for styling the button
  * @param {ActionButtonProps['icon']} props.icon - Icon to display inside the button
  * @param {ActionButtonProps['onClick']} props.onClick - Function to execute when the button is clicked
  * @returns {JSX.Element} A button with an icon for carousel navigation
  */
 export const ArrowCarouselButton: React.FC<{
-  className: CardProps['className'];
+  className: SectionProps['className'];
   icon: ActionButtonProps['icon'];
   onClick: ActionButtonProps['onClick'] | undefined;
 }> = ({
@@ -24,7 +24,7 @@ export const ArrowCarouselButton: React.FC<{
   icon,
   onClick,
 }: {
-  className: CardProps['className'];
+  className: SectionProps['className'];
   icon: ActionButtonProps['icon'];
   onClick: ActionButtonProps['onClick'];
 }): JSX.Element => (

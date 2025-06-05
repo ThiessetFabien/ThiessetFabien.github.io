@@ -44,7 +44,7 @@ export const FooterCard = ({
    * @param {ActionButtonProps['downloadActive']} downloadActive - Indique si le téléchargement est activé
    * @param {ActionButtonProps['disabled']} disabled - Indique si le bouton est désactivé
    * @param {ActionButtonProps['variant']} variant - La variante de style du bouton
-   * @param {CardProps['mailto']} mailtoLink - Adresse email pour le lien mailto
+   * @param {SectionProps['mailto']} mailtoLink - Adresse email pour le lien mailto
    * @returns {JSX.Element | null} Le bouton d'action rendu ou null
    */
   const renderActionButton = (

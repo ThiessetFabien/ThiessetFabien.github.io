@@ -9,11 +9,11 @@ import React, {
 } from 'react';
 import type { ReactNode } from 'react';
 
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 import { getAllData } from '@src/fetch/loadData';
 
 interface DataContextType {
-  data: CardProps[];
+  data: SectionProps[];
   isLoading: boolean;
 }
 
@@ -37,7 +37,7 @@ interface DataProviderProps {
  * Centralise le chargement des données pour éviter la duplication
  */
 export function DataProvider({ children }: DataProviderProps): JSX.Element {
-  const [data, setData] = useState<CardProps[]>([]);
+  const [data, setData] = useState<SectionProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

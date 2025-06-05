@@ -13,7 +13,7 @@ import {
   cnSpaceY,
 } from '@styles/boxModel.style';
 import { cnTitle2, cnTitle2Size } from '@styles/font.style';
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 import type { ExperiencesProps } from '@src/types/ExperiencesProps';
 
 /**
@@ -26,7 +26,7 @@ import type { ExperiencesProps } from '@src/types/ExperiencesProps';
  */
 export const ExperiencesSection: React.FC<{
   experiences: ExperiencesProps[];
-  className: CardProps['className'];
+  className: SectionProps['className'];
 }> = ({
   experiences,
   className,

@@ -9,7 +9,7 @@ import React, { useEffect, useState } from 'react';
 
 import { cn } from '@src/lib/utils';
 import { cnSizeIcon } from '@styles/size.style';
-import type { CardProps } from '@src/types/CardProps';
+import type { SectionProps } from '@src/types/SectionProps';
 
 /**
  * IconLoader component.
@@ -21,7 +21,7 @@ import type { CardProps } from '@src/types/CardProps';
 
 interface IconLoaderProps {
   icon: string;
-  className?: CardProps['className'];
+  className?: SectionProps['className'];
 }
 
 export const IconLoader: React.FC<IconLoaderProps> = ({ icon, className }) => {
